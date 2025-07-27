@@ -1,0 +1,259 @@
+{
+  "total_analyzed": 4560,
+  "legitimate_found": 18,
+  "top_projects": [
+    {
+      "ticker": "RILA",
+      "score": 5,
+      "indicators": [
+        "Funding: series t",
+        "Company/VC: YC"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-06-01T22:43:03.910516+00:00",
+      "message_preview": "DT8E8Bx5mrULJEcXSFYCEHB8XjwaMbJFvG35zjGmpump apparently the plushie of this dpg have been sold 25million times and have netflix series too so gamble...",
+      "krom_id": "683cd753eb25eec68c99b76e"
+    },
+    {
+      "ticker": "404",
+      "score": 5,
+      "indicators": [
+        "Funding: series Y",
+        "Company/VC: meta"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-05-29T02:15:06.881943+00:00",
+      "message_preview": "**YOTSUBA KOIWAI  |  404  ****\ud83c\udf4f**** | eth\nApe 1.6\n\nMascot meta.\nGood team but watch snipers situation.\nFresh launch watch clog.\n\nNarra:\n__Yotsuba Koiwai is the main character from the manga series Yot...",
+      "krom_id": "6837c308eb25eec68c97f708"
+    },
+    {
+      "ticker": "MARU",
+      "score": 4,
+      "indicators": [
+        "Company/VC: meta",
+        "Team: cto team here"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "SOLID",
+      "created_at": "2025-07-04T08:04:04.926902+00:00",
+      "message_preview": "good cto team here im hearing. Since this is a good meta atm im trying it. \n\n0x57cd2eCD25EB262124899a5B83299696565E4cE8...",
+      "krom_id": "68678abbeb25eec68ca63fc6"
+    },
+    {
+      "ticker": "KYO",
+      "score": 4,
+      "indicators": [
+        "Company/VC: VC backed",
+        "Team: Founder is prev"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "SOLID",
+      "created_at": "2025-06-29T21:07:03.305858+00:00",
+      "message_preview": "**[** **New Call - ****Kulture_Kall**** ]\n**\n\ud83e\ude99\n\nKayyo | $2.6m\n\n**Review:**\n\n**\u27a1\ufe0f**** Personal MMA training app (1.4m downloads, 50-100m views a month)\n****\u27a1\ufe0f**** Live on app store**\n**\u27a1\ufe0f**** First coi...",
+      "krom_id": "6861aaeceb25eec68ca489a4"
+    },
+    {
+      "ticker": "GM",
+      "score": 4,
+      "indicators": [
+        "Company/VC: yc",
+        "Team: cto\nSometimes this"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "TRASH",
+      "created_at": "2025-05-29T15:00:10.272872+00:00",
+      "message_preview": "https://t.me/getmoneycult\n\nTry this cto\nSometimes this dev pushing well\nLet see what happens\nShit or good \n\nhttps://dexscreener.com/solana/DR7vzG72DMjFSMWcifRMUrYxabp9qb5soX9zJba1LtYR...",
+      "krom_id": "6838764ceb25eec68c9834de"
+    },
+    {
+      "ticker": "OMNIME",
+      "score": 3,
+      "indicators": [
+        "Company/VC: Google",
+        "Product: platform that"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-06-11T15:56:05.09633+00:00",
+      "message_preview": "\ud83d\udfe2\n\n\n**\ud83c\udfac OMNIME**\n\n**OMNIME** is a revolutionary platform that transforms **anyone** into a filmmaker\u2014turning simple text into **stunning, cinema-quality videos** in seconds. Powered by **Google's Veo ...",
+      "krom_id": "6849a70eeb25eec68c9db5cd"
+    },
+    {
+      "ticker": "OMNIME",
+      "score": 3,
+      "indicators": [
+        "Company/VC: Google",
+        "Product: platform that"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-06-11T15:52:05.063821+00:00",
+      "message_preview": "**\ud83c\udfac OMNIME**\n\n**OMNIME** is a revolutionary platform that transforms **anyone** into a filmmaker\u2014turning simple text into **stunning, cinema-quality videos** in seconds. Powered by **Google's Veo 3** ...",
+      "krom_id": "6849a60ceb25eec68c9db56d"
+    },
+    {
+      "ticker": "GAV",
+      "score": 3,
+      "indicators": [
+        "Team: co-founder Gavin Wood",
+        "Product: mainnet launch"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "SOLID",
+      "created_at": "2025-06-05T14:21:04.292316+00:00",
+      "message_preview": "\ud83e\udd29\nGAVCOIN -ETH \n\nMeet $GAVCOIN, the playful token inspired by Ethereum co-founder Gavin Wood. It was first jokingly mentioned in an official Ethereum tweet back in April 2014, even before Ethereum\u2019s m...",
+      "krom_id": "6841a7b4eb25eec68c9b5db7"
+    },
+    {
+      "ticker": "HACIPUPU",
+      "score": 3,
+      "indicators": [
+        "Funding: series f"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "TRASH",
+      "created_at": "2025-06-04T16:50:06.21654+00:00",
+      "message_preview": "(SOL) HACIPUPU \n\n $HACIPUPU is Pop Mart\u2019s newest character series following the success of Labubu. \n\nhttps://t.me/hacipupu_Sol\nhttps://x.com/i/communities/1928474451940892857\n\nhttps://dexscreener.com/...",
+      "krom_id": "68407915eb25eec68c9afc31"
+    },
+    {
+      "ticker": "$0.1B",
+      "score": 3,
+      "indicators": [
+        "Funding: 100million dollar"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "TRASH",
+      "created_at": "2025-05-31T16:43:04.273495+00:00",
+      "message_preview": "\ud83e\ude99 $0.1b  0.1b is not a lot of money. james wynn tweeted this after he got liquidated for $100million dollars. Gud meme. Seems to be taking lots of the volume already. \n\nDwSfpmu1ovgcMocdib4y1v7NXnyf4VD...",
+      "krom_id": "683b3171eb25eec68c9928d5"
+    },
+    {
+      "ticker": "GX3",
+      "score": 3,
+      "indicators": [
+        "Company/VC: YC",
+        "Product: platform that"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "TRASH",
+      "created_at": "2025-05-29T18:26:04.413458+00:00",
+      "message_preview": "\u2705** **GX3.AI** \u2013 Decentralized Compute Powered by Agent AI**\n\nGX3.AI is a decentralized AI-powered platform that unifies compute services\u2014cloud gaming, GPU rental, AI workloads, and mining\u2014through int...",
+      "krom_id": "6838a6b3eb25eec68c98475e"
+    },
+    {
+      "ticker": "404",
+      "score": 3,
+      "indicators": [
+        "Funding: series Y"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-05-29T04:35:05.797751+00:00",
+      "message_preview": "Aped $404 \n\nYotsuba Koiwai is the main character from the manga series Yotsuba&! as well as the adopted 4chan mascot.  A true internet & meme culture legend.\n\nDYOR |NFA \n\nhttps://dexscreener.com/ether...",
+      "krom_id": "6837e3e2eb25eec68c98034d"
+    },
+    {
+      "ticker": "404",
+      "score": 3,
+      "indicators": [
+        "Funding: series Y"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "TRASH",
+      "created_at": "2025-05-29T02:51:04.111506+00:00",
+      "message_preview": "**YOTSUBA KOIWAI - ETH\n\n**Gambled here\nHeard good team\nCulture**\n\n**Yotsuba Koiwai is the main character from the manga series Yotsuba&! as well as the adopted 4chan mascot.  A true internet & meme cu...",
+      "krom_id": "6837cb72eb25eec68c97fa88"
+    },
+    {
+      "ticker": "404",
+      "score": 3,
+      "indicators": [
+        "Funding: series Y"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-05-29T02:16:05.086424+00:00",
+      "message_preview": "\ud83d\udfe2\n\n\nETH YOTSUBA KOIWAI  |  404**  ****\ud83c\udf4f**** **Just went live!**\n\n**__Yotsuba Koiwai is the main character from the manga series Yotsuba&! as well as the adopted 4chan mascot.  A true internet & meme c...",
+      "krom_id": "6837c361eb25eec68c97f734"
+    },
+    {
+      "ticker": "404",
+      "score": 3,
+      "indicators": [
+        "Funding: series Y"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-05-29T02:15:07.385917+00:00",
+      "message_preview": "ETH YOTSUBA KOIWAI  |  404**  ****\ud83c\udf4f**** **Just went live hard working team!**\n\n**__Yotsuba Koiwai is the main character from the manga series Yotsuba&! as well as the adopted 4chan mascot.  A true int...",
+      "krom_id": "6837c301eb25eec68c97f6e0"
+    },
+    {
+      "ticker": "CAPTAINBTC",
+      "score": 3,
+      "indicators": [
+        "Funding: series l"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-05-22T17:31:04.969237+00:00",
+      "message_preview": "SOL $CAPTAINBTC just launched 30k mc!**\n\nCaptain BTC ****$CAPTAIN**** BTC, inspired by the #1 comic book artwork, is the first collection series launched by One Blue Land.\u201d**\n\nhttps://captainbitcoin.o...",
+      "krom_id": "682f5f28eb25eec68c94e276"
+    },
+    {
+      "ticker": "CNC",
+      "score": 3,
+      "indicators": [
+        "Funding: 100 million dollar"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "TRASH",
+      "created_at": "2025-05-20T17:02:05.69286+00:00",
+      "message_preview": "https://dexscreener.com/solana/2unsm3nawu2xk1c7wfpj9ytbwjqbajkgtk8g1mm4upv8\n\nthe one partnership coin and other are both killing it cats and cars is on a tear as there marketing push and cmc was just ...",
+      "krom_id": "682cb588eb25eec68c93e777"
+    },
+    {
+      "ticker": "TEK",
+      "score": 3,
+      "indicators": [
+        "Funding: series o"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-05-19T21:52:04.842462+00:00",
+      "message_preview": "**Technologia**\n\nsometimes spelled Tecnologia, is a series of memes, primarily on TikTok and Instagram Reels, in which a cheap, elaborate, yet functional DIY solution to a problem is shown alongside a...",
+      "krom_id": "682ba7d2eb25eec68c9378c2"
+    }
+  ],
+  "missed_gems": [
+    {
+      "ticker": "RILA",
+      "score": 5,
+      "indicators": [
+        "Funding: series t",
+        "Company/VC: YC"
+      ],
+      "analysis_tier": "BASIC",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-06-01T22:43:03.910516+00:00",
+      "message_preview": "DT8E8Bx5mrULJEcXSFYCEHB8XjwaMbJFvG35zjGmpump apparently the plushie of this dpg have been sold 25million times and have netflix series too so gamble...",
+      "krom_id": "683cd753eb25eec68c99b76e"
+    },
+    {
+      "ticker": "404",
+      "score": 5,
+      "indicators": [
+        "Funding: series Y",
+        "Company/VC: meta"
+      ],
+      "analysis_tier": "SOLID",
+      "x_analysis_tier": "BASIC",
+      "created_at": "2025-05-29T02:15:06.881943+00:00",
+      "message_preview": "**YOTSUBA KOIWAI  |  404  ****\ud83c\udf4f**** | eth\nApe 1.6\n\nMascot meta.\nGood team but watch snipers situation.\nFresh launch watch clog.\n\nNarra:\n__Yotsuba Koiwai is the main character from the manga series Yot...",
+      "krom_id": "6837c308eb25eec68c97f708"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+<\!DOCTYPE html>
+<html>
+<head>
+    <title>Test Wallet Connection</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+    <h1>Wallet Connection Test</h1>
+    <button onclick="testConnection()">Test Connection</button>
+    <div id="output"></div>
+    
+    <script>
+        function log(msg) {
+            document.getElementById("output").innerHTML += "<p>" + msg + "</p>";
+            console.log(msg);
+        }
+        
+        async function testConnection() {
+            log("Starting test...");
+            
+            // Check if ethers is loaded
+            log("Ethers loaded: " + (typeof ethers \!== "undefined"));
+            
+            // Check if window.ethereum exists
+            log("window.ethereum exists: " + (typeof window.ethereum \!== "undefined"));
+            
+            if (typeof window.ethereum \!== "undefined") {
+                try {
+                    // Request accounts
+                    log("Requesting accounts...");
+                    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+                    log("Accounts: " + accounts);
+                    
+                    // Create provider
+                    log("Creating provider...");
+                    const provider = new ethers.BrowserProvider(window.ethereum);
+                    log("Provider created: " + (provider \!== null));
+                    
+                    // Get signer
+                    log("Getting signer...");
+                    const signer = await provider.getSigner();
+                    log("Signer address: " + await signer.getAddress());
+                    
+                    // Check network
+                    const network = await provider.getNetwork();
+                    log("Network: " + network.chainId);
+                    
+                } catch (error) {
+                    log("Error: " + error.message);
+                    console.error(error);
+                }
+            } else {
+                log("No wallet detected\!");
+            }
+        }
+    </script>
+</body>
+</html>

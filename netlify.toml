@@ -1,0 +1,18 @@
+# Netlify configuration for KROM Analysis Tool
+
+[build]
+  publish = "netlify-dist"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://eucfoommxxvqmmwdbkdv.supabase.co/:splat"
+  status = 200
+  force = true
+  headers = {X-Custom-Header = "KROM-Analysis"}
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"

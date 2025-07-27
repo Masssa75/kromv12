@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wallet Debug Test</title>
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+</head>
+<body>
+    <h1>Wallet Connection Debug</h1>
+    <button onclick="testBasicConnection()">Test Basic Connection</button>
+    <button onclick="testEthersV5()">Test Ethers v5</button>
+    <button onclick="testEthersV6()">Test Ethers v6</button>
+    <div id="output" style="margin-top: 20px; padding: 20px; background: #f0f0f0; white-space: pre-wrap;"></div>
+    
+    <script>
+        function log(msg) {
+            const output = document.getElementById('output');
+            output.textContent += msg + '\n';
+            console.log(msg);
+        }
+        
+        async function testBasicConnection() {
+            log('\n=== Testing Basic Connection ===');
+            try {
+                if (typeof window.ethereum === 'undefined') {
+                    log('❌ No wallet detected');
+                    return;
+                }
+                log('✅ Wallet detected');
+                
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                log('✅ Accounts: ' + accounts[0]);
+                
+                const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+                log('✅ Chain ID: ' + chainId);
+                
+            } catch (error) {
+                log('❌ Error: ' + error.message);
+            }
+        }
+        
+        async function testEthersV5() {
+            log('\n=== Testing Ethers v5 ===');
+            try {
+                if (typeof ethers === 'undefined') {
+                    log('❌ Ethers not loaded');
+                    return;
+                }
+                log('✅ Ethers v5 loaded');
+                
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                log('✅ Provider created');
+                
+                await provider.send("eth_requestAccounts", []);
+                const signer = provider.getSigner();
+                log('✅ Signer obtained');
+                
+                const address = await signer.getAddress();
+                log('✅ Address: ' + address);
+                
+                // Test token balance
+                const tokenAddress = '0x2059e89d75f3fc0d2e256d08ba49db7f5a7e5681';
+                const abi = [
+                    'function balanceOf(address owner) view returns (uint256)',
+                    'function decimals() view returns (uint8)'
+                ];
+                const contract = new ethers.Contract(tokenAddress, abi, provider);
+                const decimals = await contract.decimals();
+                const balance = await contract.balanceOf(address);
+                const formatted = ethers.utils.formatUnits(balance, decimals);
+                log('✅ Token balance: ' + formatted + ' ROCKET2');
+                
+            } catch (error) {
+                log('❌ Error: ' + error.message);
+            }
+        }
+        
+        async function testEthersV6() {
+            log('\n=== Testing Ethers v6 (if loaded) ===');
+            // First load ethers v6
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js';
+            script.onload = async function() {
+                try {
+                    log('✅ Ethers v6 loaded');
+                    
+                    const provider = new ethers.BrowserProvider(window.ethereum);
+                    log('✅ Provider created');
+                    
+                    const signer = await provider.getSigner();
+                    log('✅ Signer obtained');
+                    
+                    const address = await signer.getAddress();
+                    log('✅ Address: ' + address);
+                    
+                } catch (error) {
+                    log('❌ Error: ' + error.message);
+                }
+            };
+            script.onerror = function() {
+                log('❌ Failed to load Ethers v6');
+            };
+            document.head.appendChild(script);
+        }
+    </script>
+</body>
+</html>

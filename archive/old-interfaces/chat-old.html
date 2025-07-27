@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM Crypto Analysis Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #242424;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-blue: #00b4d8;
+            --accent-purple: #9945ff;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(26, 26, 26, 0.9);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Tool Sections */
+        .tool-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .tool-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* Forms */
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        input, select, button {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        button {
+            background: var(--accent-blue);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+        }
+
+        button:hover {
+            background: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Results Display */
+        .result-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            min-height: 100px;
+            position: relative;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Price Display */
+        .price-display {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+        }
+
+        .metric-value {
+            font-weight: 600;
+        }
+
+        .positive {
+            color: var(--accent-green);
+        }
+
+        .negative {
+            color: var(--accent-red);
+        }
+
+        /* News Articles */
+        .news-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.2s;
+        }
+
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-title {
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Portfolio Table */
+        .portfolio-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .portfolio-table th,
+        .portfolio-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .portfolio-table th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Grid Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sentiment Indicator */
+        .sentiment-indicator {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .sentiment-emoji {
+            font-size: 2rem;
+        }
+
+        /* Error State */
+        .error {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>KROM Crypto Analysis</h1>
+                <span style="color: var(--text-secondary);">Real-time market intelligence</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Price Checker -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <h2 class="tool-title">💰 Crypto Price Checker</h2>
+            </div>
+            <div class="input-group">
+                <input type="text" id="priceSymbol" placeholder="Enter symbol (e.g., BTC, ETH)" />
+                <button onclick="getPrice()">Get Price</button>
+            </div>
+            <div id="priceResult" class="result-box">
+                <div class="loading" id="priceLoading">
+                    <div class="spinner"></div>
+                    <p>Fetching price data...</p>
+                </div>
+                <div id="priceContent"></div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column">
+            <!-- Market Sentiment -->
+            <div class="tool-section">
+                <div class="tool-header">
+                    <h2 class="tool-title">😊 Market Sentiment</h2>
+                </div>
+                <button onclick="getSentiment()">Check Sentiment</button>
+                <div id="sentimentResult" class="result-box">
+                    <div class="loading" id="sentimentLoading">
+                        <div class="spinner"></div>
+                    </div>
+                    <div id="sentimentContent"></div>
+                </div>
+            </div>
+
+            <!-- Trending Cryptos -->
+            <div class="tool-section">
+                <div class="tool-header">
+                    <h2 class="tool-title">🔥 Trending Now</h2>
+                </div>
+                <button onclick="getTrending()">Get Trending</button>
+                <div id="trendingResult" class="result-box">
+                    <div class="loading" id="trendingLoading">
+                        <div class="spinner"></div>
+                    </div>
+                    <div id="trendingContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Crypto News -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <h2 class="tool-title">📰 Crypto News</h2>
+            </div>
+            <div class="input-group">
+                <input type="text" id="newsQuery" placeholder="Search news (e.g., Bitcoin, Ethereum)" />
+                <button onclick="getNews()">Search News</button>
+            </div>
+            <div id="newsResult" class="result-box">
+                <div class="loading" id="newsLoading">
+                    <div class="spinner"></div>
+                </div>
+                <div id="newsContent"></div>
+            </div>
+        </div>
+
+        <!-- Compare Cryptos -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <h2 class="tool-title">📊 Compare Cryptocurrencies</h2>
+            </div>
+            <div class="input-group">
+                <input type="text" id="compareSymbols" placeholder="Enter symbols separated by commas (e.g., BTC,ETH,SOL)" />
+                <button onclick="compareCryptos()">Compare</button>
+            </div>
+            <div id="compareResult" class="result-box">
+                <div class="loading" id="compareLoading">
+                    <div class="spinner"></div>
+                </div>
+                <div id="compareContent"></div>
+            </div>
+        </div>
+
+        <!-- Portfolio Management -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <h2 class="tool-title">💼 Portfolio Management</h2>
+            </div>
+            <div class="input-group">
+                <input type="text" id="portfolioSymbol" placeholder="Symbol" />
+                <input type="number" id="portfolioQuantity" placeholder="Quantity" step="0.000001" />
+                <input type="number" id="portfolioPrice" placeholder="Entry Price" step="0.01" />
+                <button onclick="addToPortfolio()">Add to Portfolio</button>
+                <button onclick="checkPortfolio()">View Portfolio</button>
+            </div>
+            <div id="portfolioResult" class="result-box">
+                <div class="loading" id="portfolioLoading">
+                    <div class="spinner"></div>
+                </div>
+                <div id="portfolioContent"></div>
+            </div>
+        </div>
+
+        <!-- Position Size Calculator -->
+        <div class="tool-section">
+            <div class="tool-header">
+                <h2 class="tool-title">🧮 Position Size Calculator</h2>
+            </div>
+            <div class="input-group">
+                <input type="number" id="accountSize" placeholder="Account Size ($)" />
+                <input type="number" id="riskPercentage" placeholder="Risk %" step="0.1" />
+                <input type="number" id="entryPrice" placeholder="Entry Price" step="0.01" />
+                <input type="number" id="stopLoss" placeholder="Stop Loss" step="0.01" />
+                <button onclick="calculatePosition()">Calculate</button>
+            </div>
+            <div id="positionResult" class="result-box">
+                <div class="loading" id="positionLoading">
+                    <div class="spinner"></div>
+                </div>
+                <div id="positionContent"></div>
+            </div>
+        </div>
+
+        <!-- AI Chat Interface -->
+        <div class="tool-section" style="grid-column: 1 / -1;">
+            <div class="tool-header">
+                <h2 class="tool-title">🤖 AI Crypto Assistant</h2>
+                <span class="subtitle">Ask me anything about crypto - prices, analysis, news, or market sentiment!</span>
+                <button onclick="copyConversation()" class="copy-conversation-btn" title="Copy entire conversation">
+                    📋 Copy Chat
+                </button>
+            </div>
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                    <div class="chat-message assistant">
+                        <div class="message-bubble">
+                            👋 Hello! I'm your AI crypto assistant powered by MCP. I can help you with:
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>Real-time crypto prices and market data</li>
+                                <li>Latest crypto news and analysis</li>
+                                <li>Market sentiment and Fear & Greed Index</li>
+                                <li>Whale tracking and on-chain analysis</li>
+                                <li>Portfolio calculations and risk management</li>
+                            </ul>
+                            Try asking: "What's the current price of Bitcoin?" or "How's the crypto market sentiment today?"
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything about crypto..." onkeypress="handleChatKeyPress(event)">
+                    <button onclick="sendChatMessage()" class="chat-send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Chat Interface Styles */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-message {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            line-height: 1.5;
+        }
+
+        .chat-message.user .message-bubble {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+        }
+
+        .chat-message.assistant .message-bubble {
+            background: var(--bg-card);
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .chat-send-button {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chat-send-button:hover {
+            background: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 0.3rem;
+            padding: 0.5rem;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            animation: typing 1.4s ease-in-out infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+
+        .copy-conversation-btn {
+            margin-left: auto;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copy-conversation-btn:hover {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
+        .copy-conversation-btn.copied {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        /* Scrollbar styling for chat */
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+    </style>
+
+    <script>
+        const API_BASE = 'http://localhost:5001/api';
+        
+        // Generate a unique session ID for this browser session
+        const SESSION_ID = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+        // Helper function to show loading state
+        function showLoading(elementId) {
+            document.getElementById(elementId + 'Loading').classList.add('active');
+            document.getElementById(elementId + 'Content').innerHTML = '';
+        }
+
+        // Helper function to hide loading state
+        function hideLoading(elementId) {
+            document.getElementById(elementId + 'Loading').classList.remove('active');
+        }
+
+        // Helper function to display error
+        function showError(elementId, message) {
+            hideLoading(elementId);
+            document.getElementById(elementId + 'Content').innerHTML = 
+                `<div class="error">Error: ${message}</div>`;
+        }
+
+        // Get crypto price
+        async function getPrice() {
+            const symbol = document.getElementById('priceSymbol').value.trim();
+            if (!symbol) {
+                alert('Please enter a symbol');
+                return;
+            }
+
+            showLoading('price');
+            
+            try {
+                const response = await fetch(`${API_BASE}/price/${symbol}`);
+                const data = await response.json();
+                
+                hideLoading('price');
+                
+                if (data.error) {
+                    showError('price', data.error);
+                    return;
+                }
+                
+                const changeClass = data['24h_change'] >= 0 ? 'positive' : 'negative';
+                const change1hClass = data['1h_change'] >= 0 ? 'positive' : 'negative';
+                const change7dClass = data['7d_change'] >= 0 ? 'positive' : 'negative';
+                
+                document.getElementById('priceContent').innerHTML = `
+                    <div class="price-display">$${data.price.toLocaleString()}</div>
+                    <div class="metric">
+                        <span class="metric-label">Symbol</span>
+                        <span class="metric-value">${data.symbol} ${data.name ? `(${data.name})` : ''}</span>
+                    </div>
+                    ${data.market_cap_rank ? `
+                    <div class="metric">
+                        <span class="metric-label">Rank</span>
+                        <span class="metric-value">#${data.market_cap_rank}</span>
+                    </div>` : ''}
+                    ${data['1h_change'] !== undefined ? `
+                    <div class="metric">
+                        <span class="metric-label">1h Change</span>
+                        <span class="metric-value ${change1hClass}">${data['1h_change'] >= 0 ? '+' : ''}${data['1h_change'].toFixed(2)}%</span>
+                    </div>` : ''}
+                    <div class="metric">
+                        <span class="metric-label">24h Change</span>
+                        <span class="metric-value ${changeClass}">${data['24h_change'] >= 0 ? '+' : ''}${data['24h_change'].toFixed(2)}%</span>
+                    </div>
+                    ${data['7d_change'] !== undefined ? `
+                    <div class="metric">
+                        <span class="metric-label">7d Change</span>
+                        <span class="metric-value ${change7dClass}">${data['7d_change'] >= 0 ? '+' : ''}${data['7d_change'].toFixed(2)}%</span>
+                    </div>` : ''}
+                    <div class="metric">
+                        <span class="metric-label">Market Cap</span>
+                        <span class="metric-value">$${(data.market_cap / 1e9).toFixed(2)}B</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">24h Volume</span>
+                        <span class="metric-value">$${(data['24h_volume'] / 1e6).toFixed(2)}M</span>
+                    </div>
+                    ${data.source ? `
+                    <div class="metric">
+                        <span class="metric-label">Data Source</span>
+                        <span class="metric-value" style="color: var(--text-secondary);">${data.source}</span>
+                    </div>` : ''}
+                `;
+            } catch (error) {
+                showError('price', error.message);
+            }
+        }
+
+        // Get market sentiment
+        async function getSentiment() {
+            showLoading('sentiment');
+            
+            try {
+                const response = await fetch(`${API_BASE}/sentiment`);
+                const data = await response.json();
+                
+                hideLoading('sentiment');
+                
+                if (data.error) {
+                    showError('sentiment', data.error);
+                    return;
+                }
+                
+                document.getElementById('sentimentContent').innerHTML = `
+                    <div class="sentiment-indicator">
+                        <span class="sentiment-emoji">${data.emoji}</span>
+                        <div>
+                            <div style="font-size: 1.5rem; font-weight: 700;">${data.value}</div>
+                            <div style="color: var(--text-secondary);">${data.classification}</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Analysis</span>
+                    </div>
+                    <p style="margin-top: 0.5rem;">${data.analysis}</p>
+                    <div class="metric" style="margin-top: 1rem;">
+                        <span class="metric-label">7-Day Average</span>
+                        <span class="metric-value">${data['7d_average']} ${data.trend}</span>
+                    </div>
+                `;
+            } catch (error) {
+                showError('sentiment', error.message);
+            }
+        }
+
+        // Get crypto news
+        async function getNews() {
+            const query = document.getElementById('newsQuery').value.trim() || 'cryptocurrency';
+            
+            showLoading('news');
+            
+            try {
+                const response = await fetch(`${API_BASE}/news/${query}`);
+                const data = await response.json();
+                
+                hideLoading('news');
+                
+                if (data.error) {
+                    showError('news', data.error);
+                    return;
+                }
+                
+                if (!data.articles || data.articles.length === 0) {
+                    document.getElementById('newsContent').innerHTML = 
+                        '<p style="text-align: center; color: var(--text-secondary);">No news articles found</p>';
+                    return;
+                }
+                
+                const newsHTML = data.articles.map(article => `
+                    <div class="news-item">
+                        <a href="${article.url}" target="_blank" class="news-title">${article.title}</a>
+                        <div class="news-meta">
+                            ${article.source} • ${new Date(article.published).toLocaleDateString()}
+                            ${article.sentiment ? ` • ${article.sentiment}` : ''}
+                        </div>
+                        ${article.description ? `<p style="margin-top: 0.5rem; color: var(--text-secondary);">${article.description}</p>` : ''}
+                    </div>
+                `).join('');
+                
+                document.getElementById('newsContent').innerHTML = newsHTML;
+            } catch (error) {
+                showError('news', error.message);
+            }
+        }
+
+        // Get trending cryptos
+        async function getTrending() {
+            showLoading('trending');
+            
+            try {
+                const response = await fetch(`${API_BASE}/trending`);
+                const data = await response.json();
+                
+                hideLoading('trending');
+                
+                if (data.error) {
+                    showError('trending', data.error);
+                    return;
+                }
+                
+                const trendingHTML = data.trending.map((coin, index) => `
+                    <div class="metric">
+                        <span class="metric-label">#${index + 1} ${coin.name}</span>
+                        <span class="metric-value">${coin.symbol}</span>
+                    </div>
+                `).join('');
+                
+                document.getElementById('trendingContent').innerHTML = trendingHTML;
+            } catch (error) {
+                showError('trending', error.message);
+            }
+        }
+
+        // Compare cryptocurrencies
+        async function compareCryptos() {
+            const symbols = document.getElementById('compareSymbols').value
+                .split(',')
+                .map(s => s.trim())
+                .filter(s => s);
+                
+            if (symbols.length === 0) {
+                alert('Please enter symbols to compare');
+                return;
+            }
+            
+            showLoading('compare');
+            
+            try {
+                const response = await fetch(`${API_BASE}/compare`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ symbols })
+                });
+                const data = await response.json();
+                
+                hideLoading('compare');
+                
+                if (data.error) {
+                    showError('compare', data.error);
+                    return;
+                }
+                
+                const compareHTML = data.comparisons.map(crypto => {
+                    const changeClass = crypto['24h_change'] >= 0 ? 'positive' : 'negative';
+                    return `
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                            <h3 style="margin-bottom: 0.5rem;">${crypto.symbol}</h3>
+                            <div class="metric">
+                                <span class="metric-label">Price</span>
+                                <span class="metric-value">$${crypto.price.toLocaleString()}</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">24h Change</span>
+                                <span class="metric-value ${changeClass}">${crypto['24h_change'].toFixed(2)}%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Market Cap</span>
+                                <span class="metric-value">$${(crypto.market_cap / 1e9).toFixed(2)}B</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                document.getElementById('compareContent').innerHTML = 
+                    compareHTML + 
+                    (data.summary ? `<p style="margin-top: 1rem;"><strong>Summary:</strong> ${data.summary}</p>` : '');
+            } catch (error) {
+                showError('compare', error.message);
+            }
+        }
+
+        // Add to portfolio
+        async function addToPortfolio() {
+            const symbol = document.getElementById('portfolioSymbol').value.trim();
+            const quantity = parseFloat(document.getElementById('portfolioQuantity').value);
+            const entry_price = parseFloat(document.getElementById('portfolioPrice').value);
+            
+            if (!symbol || !quantity || !entry_price) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            showLoading('portfolio');
+            
+            try {
+                const response = await fetch(`${API_BASE}/portfolio/add`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ symbol, quantity, entry_price })
+                });
+                const data = await response.json();
+                
+                hideLoading('portfolio');
+                
+                if (data.error) {
+                    showError('portfolio', data.error);
+                    return;
+                }
+                
+                document.getElementById('portfolioContent').innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 2rem;">✅</div>
+                        <p style="margin-top: 1rem;">Successfully added ${data.quantity} ${data.symbol} at $${data.entry_price}</p>
+                        <p style="color: var(--text-secondary);">Total cost: $${data.total_cost.toFixed(2)}</p>
+                    </div>
+                `;
+                
+                // Clear form
+                document.getElementById('portfolioSymbol').value = '';
+                document.getElementById('portfolioQuantity').value = '';
+                document.getElementById('portfolioPrice').value = '';
+            } catch (error) {
+                showError('portfolio', error.message);
+            }
+        }
+
+        // Check portfolio
+        async function checkPortfolio() {
+            showLoading('portfolio');
+            
+            try {
+                const response = await fetch(`${API_BASE}/portfolio`);
+                const data = await response.json();
+                
+                hideLoading('portfolio');
+                
+                if (data.error) {
+                    showError('portfolio', data.error);
+                    return;
+                }
+                
+                if (!data.portfolio || data.portfolio.length === 0) {
+                    document.getElementById('portfolioContent').innerHTML = 
+                        '<p style="text-align: center; color: var(--text-secondary);">Portfolio is empty</p>';
+                    return;
+                }
+                
+                const plClass = data.total_profit_loss >= 0 ? 'positive' : 'negative';
+                
+                const tableHTML = `
+                    <table class="portfolio-table">
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Quantity</th>
+                                <th>Entry</th>
+                                <th>Current</th>
+                                <th>Value</th>
+                                <th>P&L</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.portfolio.map(item => {
+                                const itemPlClass = item.profit_loss >= 0 ? 'positive' : 'negative';
+                                return `
+                                    <tr>
+                                        <td>${item.symbol}</td>
+                                        <td>${item.quantity}</td>
+                                        <td>$${item.entry_price.toFixed(2)}</td>
+                                        <td>$${item.current_price.toFixed(2)}</td>
+                                        <td>$${item.current_value.toFixed(2)}</td>
+                                        <td class="${itemPlClass}">${item.profit_loss >= 0 ? '+' : ''}$${item.profit_loss.toFixed(2)} (${item.profit_loss_pct.toFixed(2)}%)</td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 1rem; text-align: right;">
+                        <div class="metric">
+                            <span class="metric-label">Total Value</span>
+                            <span class="metric-value">$${data.total_value.toFixed(2)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Total P&L</span>
+                            <span class="metric-value ${plClass}">${data.total_profit_loss >= 0 ? '+' : ''}$${data.total_profit_loss.toFixed(2)} (${data.total_profit_loss_pct.toFixed(2)}%)</span>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('portfolioContent').innerHTML = tableHTML;
+            } catch (error) {
+                showError('portfolio', error.message);
+            }
+        }
+
+        // Calculate position size
+        async function calculatePosition() {
+            const account_size = parseFloat(document.getElementById('accountSize').value);
+            const risk_percentage = parseFloat(document.getElementById('riskPercentage').value);
+            const entry_price = parseFloat(document.getElementById('entryPrice').value);
+            const stop_loss = parseFloat(document.getElementById('stopLoss').value);
+            
+            if (!account_size || !risk_percentage || !entry_price || !stop_loss) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            showLoading('position');
+            
+            try {
+                const response = await fetch(`${API_BASE}/position-size`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ account_size, risk_percentage, entry_price, stop_loss })
+                });
+                const data = await response.json();
+                
+                hideLoading('position');
+                
+                if (data.error) {
+                    showError('position', data.error);
+                    return;
+                }
+                
+                document.getElementById('positionContent').innerHTML = `
+                    <div class="metric">
+                        <span class="metric-label">Position Size</span>
+                        <span class="metric-value">${data.position_size} units</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Position Value</span>
+                        <span class="metric-value">$${data.position_value.toFixed(2)}</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Risk Amount</span>
+                        <span class="metric-value negative">$${data.risk_amount.toFixed(2)}</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Stop Loss %</span>
+                        <span class="metric-value negative">${data.stop_loss_percentage.toFixed(2)}%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Leverage Required</span>
+                        <span class="metric-value">${data.leverage_required}x</span>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">Target Prices:</h4>
+                        <div class="metric">
+                            <span class="metric-label">1:1 Risk/Reward</span>
+                            <span class="metric-value positive">$${data.risk_reward_ratios['1:1'].toFixed(2)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">1:2 Risk/Reward</span>
+                            <span class="metric-value positive">$${data.risk_reward_ratios['1:2'].toFixed(2)}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">1:3 Risk/Reward</span>
+                            <span class="metric-value positive">$${data.risk_reward_ratios['1:3'].toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                showError('position', error.message);
+            }
+        }
+
+        // Add enter key support for inputs
+        document.getElementById('priceSymbol').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') getPrice();
+        });
+        
+        document.getElementById('newsQuery').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') getNews();
+        });
+        
+        document.getElementById('compareSymbols').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') compareCryptos();
+        });
+
+        // Chat interface functions
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function addChatMessage(message, isUser = false) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${isUser ? 'user' : 'assistant'}`;
+            
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.className = 'message-bubble';
+            bubbleDiv.innerHTML = message;
+            
+            messageDiv.appendChild(bubbleDiv);
+            chatMessages.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addTypingIndicator() {
+            const chatMessages = document.getElementById('chatMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typingIndicator';
+            typingDiv.className = 'chat-message assistant';
+            typingDiv.innerHTML = `
+                <div class="message-bubble">
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addChatMessage(message, true);
+            
+            // Clear input
+            input.value = '';
+            
+            // Show typing indicator
+            addTypingIndicator();
+            
+            try {
+                const response = await fetch(`${API_BASE}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        message: message,
+                        session_id: SESSION_ID 
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Remove typing indicator
+                removeTypingIndicator();
+                
+                // Add assistant response
+                addChatMessage(data.response);
+                
+            } catch (error) {
+                removeTypingIndicator();
+                addChatMessage(`Sorry, I encountered an error: ${error.message}. Please make sure the API server is running.`);
+            }
+        }
+
+        // Focus on chat input when page loads
+        window.addEventListener('load', () => {
+            document.getElementById('chatInput').focus();
+        });
+
+        // Copy conversation function
+        function copyConversation() {
+            const chatMessages = document.getElementById('chatMessages');
+            const messages = chatMessages.querySelectorAll('.chat-message');
+            
+            let conversationText = '';
+            
+            messages.forEach(message => {
+                const isUser = message.classList.contains('user');
+                const bubble = message.querySelector('.message-bubble');
+                
+                if (bubble) {
+                    // Get text content and preserve some formatting
+                    let text = bubble.innerHTML
+                        .replace(/<br\s*\/?>/gi, '\n')
+                        .replace(/<\/p><p>/gi, '\n\n')
+                        .replace(/<\/?strong>/gi, '**')
+                        .replace(/<[^>]*>/g, '')
+                        .replace(/&nbsp;/g, ' ')
+                        .replace(/&lt;/g, '<')
+                        .replace(/&gt;/g, '>')
+                        .replace(/&amp;/g, '&')
+                        .trim();
+                    
+                    if (isUser) {
+                        conversationText += `> ${text}\n\n`;
+                    } else {
+                        conversationText += `${text}\n\n`;
+                    }
+                }
+            });
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(conversationText).then(() => {
+                // Show success feedback
+                const btn = document.querySelector('.copy-conversation-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy conversation. Please try again.');
+            });
+        }
+    </script>
+</body>
+</html>

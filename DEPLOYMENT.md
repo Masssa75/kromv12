@@ -1,0 +1,1 @@
+# Deployment Ready Files\n\nThese files match the online names in Supabase and are ready for deployment:\n\n- crypto-analyzer.ts (with MevX fix)\n- crypto-notifier.ts (complete version)\n- crypto-orchestrator.ts (with X analysis)\n- crypto-poller.ts\n- crypto-x-analyzer-nitter.ts (ScraperAPI version)\n\nYou should deploy the crypto-analyzer.ts file to fix the MevX issue.

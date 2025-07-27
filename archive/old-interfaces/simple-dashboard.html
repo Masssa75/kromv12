@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM Analysis Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #00d4ff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .stat-label {
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .table-container {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background: #0d0d0d;
+            color: #00d4ff;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background: #252525;
+        }
+
+        .loading {
+            text-align: center;
+            color: #888;
+            padding: 40px;
+        }
+
+        .error {
+            color: #ff4444;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        select, input {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background: #252525;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination .current {
+            background: #00d4ff;
+            color: #000;
+        }
+
+        .roi-positive {
+            color: #00ff88;
+        }
+
+        .roi-negative {
+            color: #ff4444;
+        }
+
+        .raw-data-btn {
+            background: #1a1a1a;
+            border: 1px solid #00d4ff;
+            color: #00d4ff;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+
+        .raw-data-btn:hover {
+            background: #00d4ff;
+            color: #000;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px;
+            max-height: 80vh;
+            margin: 50px auto;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 2em;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        pre {
+            background: #0d0d0d;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KROM Analysis Dashboard</h1>
+
+        <div class="stats-grid" id="stats-grid">
+            <div class="loading">Loading statistics...</div>
+        </div>
+
+        <div class="table-container">
+            <h2 style="margin-bottom: 20px;">Recent Calls</h2>
+            
+            <div class="controls">
+                <label>Sort by:</label>
+                <select id="sort-select">
+                    <option value="timestamp-desc">Date (Newest)</option>
+                    <option value="timestamp-asc">Date (Oldest)</option>
+                    <option value="roi-desc">ROI (Highest)</option>
+                    <option value="roi-asc">ROI (Lowest)</option>
+                </select>
+                
+                <label>Per page:</label>
+                <select id="perpage-select">
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1;">
+            </div>
+
+            <table id="calls-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Symbol</th>
+                        <th>Network</th>
+                        <th>Group</th>
+                        <th>Buy Price</th>
+                        <th>Top Price</th>
+                        <th>ROI</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="8" class="loading">Loading calls...</td></tr>
+                </tbody>
+            </table>
+
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="raw-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3>Raw Data</h3>
+            <pre id="raw-data-content"></pre>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5001/api';
+        let currentPage = 1;
+
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_URL}/stats`);
+                const data = await response.json();
+                
+                const statsHtml = `
+                    <div class="stat-card">
+                        <div class="stat-value">${data.total_calls.toLocaleString()}</div>
+                        <div class="stat-label">Total Calls</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${data.groups}</div>
+                        <div class="stat-label">Groups</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${data.profitable_calls.toLocaleString()}</div>
+                        <div class="stat-label">Profitable Calls</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${data.avg_roi.toFixed(2)}x</div>
+                        <div class="stat-label">Average ROI</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${data.networks}</div>
+                        <div class="stat-label">Networks</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${((data.profitable_calls / data.total_calls) * 100).toFixed(1)}%</div>
+                        <div class="stat-label">Win Rate</div>
+                    </div>
+                `;
+                
+                document.getElementById('stats-grid').innerHTML = statsHtml;
+            } catch (error) {
+                document.getElementById('stats-grid').innerHTML = '<div class="error">Error loading stats</div>';
+            }
+        }
+
+        async function loadCalls(page = 1) {
+            currentPage = page;
+            const sortSelect = document.getElementById('sort-select');
+            const perPageSelect = document.getElementById('perpage-select');
+            const searchInput = document.getElementById('search-input');
+            
+            const [sortBy, sortOrder] = sortSelect.value.split('-');
+            const perPage = perPageSelect.value;
+            const search = searchInput.value;
+            
+            try {
+                const response = await fetch(`${API_URL}/calls?page=${page}&per_page=${perPage}&sort_by=${sortBy}&sort_order=${sortOrder}&search=${search}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    renderCalls(result.data);
+                    renderPagination(result.pagination);
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                document.querySelector('#calls-table tbody').innerHTML = 
+                    `<tr><td colspan="8" class="error">Error loading calls: ${error.message}</td></tr>`;
+            }
+        }
+
+        function renderCalls(calls) {
+            const tbody = document.querySelector('#calls-table tbody');
+            
+            if (calls.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center;">No calls found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = calls.map(call => `
+                <tr>
+                    <td>${call.formatted_date || 'N/A'}</td>
+                    <td>${call.symbol || 'N/A'}</td>
+                    <td>${call.network || 'N/A'}</td>
+                    <td>${call.group_name || 'N/A'}</td>
+                    <td>${call.buy_price ? call.buy_price.toFixed(8) : 'N/A'}</td>
+                    <td>${call.top_price ? call.top_price.toFixed(8) : 'N/A'}</td>
+                    <td class="${call.roi >= 1 ? 'roi-positive' : 'roi-negative'}">
+                        ${call.roi ? call.roi.toFixed(2) + 'x' : 'N/A'}
+                    </td>
+                    <td>
+                        <button class="raw-data-btn" onclick="showRawData('${call.id}')">
+                            View Raw
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderPagination(pagination) {
+            const container = document.getElementById('pagination');
+            const pages = [];
+            
+            // Previous button
+            pages.push(`<button onclick="loadCalls(${pagination.page - 1})" ${pagination.page === 1 ? 'disabled' : ''}>Previous</button>`);
+            
+            // Page numbers
+            const startPage = Math.max(1, pagination.page - 2);
+            const endPage = Math.min(pagination.pages, pagination.page + 2);
+            
+            for (let i = startPage; i <= endPage; i++) {
+                pages.push(`<button onclick="loadCalls(${i})" class="${i === pagination.page ? 'current' : ''}">${i}</button>`);
+            }
+            
+            // Next button
+            pages.push(`<button onclick="loadCalls(${pagination.page + 1})" ${pagination.page === pagination.pages ? 'disabled' : ''}>Next</button>`);
+            
+            container.innerHTML = pages.join('');
+        }
+
+        async function showRawData(callId) {
+            try {
+                const response = await fetch(`${API_URL}/call/${callId}/raw`);
+                const data = await response.json();
+                
+                document.getElementById('raw-data-content').textContent = JSON.stringify(data, null, 2);
+                document.getElementById('raw-modal').style.display = 'block';
+            } catch (error) {
+                alert('Error loading raw data');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('raw-modal').style.display = 'none';
+        }
+
+        // Event listeners
+        document.getElementById('sort-select').addEventListener('change', () => loadCalls(1));
+        document.getElementById('perpage-select').addEventListener('change', () => loadCalls(1));
+        document.getElementById('search-input').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') loadCalls(1);
+        });
+
+        // Click outside modal to close
+        window.onclick = function(event) {
+            const modal = document.getElementById('raw-modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Initialize
+        loadStats();
+        loadCalls();
+    </script>
+</body>
+</html>

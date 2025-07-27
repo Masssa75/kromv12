@@ -1,0 +1,18 @@
+{
+  "total_analyzed": 1000,
+  "claude_tiers": {
+    "TRASH": 358,
+    "BASIC": 486,
+    "SOLID": 132,
+    "ALPHA": 24
+  },
+  "x_tiers": {
+    "null": 1,
+    "SOLID": 66,
+    "TRASH": 477,
+    "BASIC": 430,
+    "ALPHA": 26
+  },
+  "both_alpha": 1,
+  "premium_worthy": 227
+}

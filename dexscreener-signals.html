@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DexScreener Signals - Tokens Worth X Research</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #00ffcc;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .signals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .signal-category {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .signal-category h2 {
+            color: #00ffcc;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .token-card {
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .token-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .token-symbol {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+        .token-chain {
+            background: #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .token-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .stat {
+            display: flex;
+            justify-content: space-between;
+        }
+        .stat-label {
+            color: #888;
+        }
+        .stat-value {
+            color: #fff;
+            font-weight: 500;
+        }
+        .positive {
+            color: #00ff88;
+        }
+        .negative {
+            color: #ff4444;
+        }
+        .address {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+            word-break: break-all;
+        }
+        .dex-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #00ccff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .dex-link:hover {
+            text-decoration: underline;
+        }
+        .refresh-btn {
+            background: #00ffcc;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto 30px;
+        }
+        .refresh-btn:hover {
+            background: #00ddaa;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+        .x-research-btn {
+            background: #1DA1F2;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .x-research-btn:hover {
+            background: #1a8ed8;
+        }
+        .summary {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .summary h3 {
+            color: #00ffcc;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 DexScreener Signals - Tokens Worth X Research</h1>
+        
+        <button class="refresh-btn" onclick="fetchSignals()">🔄 Refresh Signals</button>
+        
+        <div class="summary" id="summary">
+            <h3>Loading signals...</h3>
+        </div>
+        
+        <div class="signals-grid" id="signals-container">
+            <div class="loading">Fetching DexScreener data...</div>
+        </div>
+    </div>
+
+    <script>
+        let isFetching = false;
+        
+        async function fetchSignals() {
+            // Prevent concurrent calls
+            if (isFetching) {
+                console.log('Already fetching, skipping...');
+                return;
+            }
+            
+            isFetching = true;
+            const container = document.getElementById('signals-container');
+            const summary = document.getElementById('summary');
+            container.innerHTML = '<div class="loading">Fetching DexScreener data... (this may take 20-30 seconds)</div>';
+            
+            try {
+                // Add timeout of 60 seconds
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 60000);
+                
+                const response = await fetch('http://localhost:5001/api/dexscreener/signals', {
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    displaySignals(data.signals);
+                    updateSummary(data);
+                } else {
+                    container.innerHTML = `<div class="loading">Error: ${data.error}</div>`;
+                }
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    container.innerHTML = `<div class="loading">Request timed out. The API is taking too long. Please try again.</div>`;
+                } else {
+                    container.innerHTML = `<div class="loading">Error fetching signals: ${error.message}</div>`;
+                }
+            } finally {
+                isFetching = false;
+            }
+        }
+        
+        function updateSummary(data) {
+            const summary = document.getElementById('summary');
+            const total = data.summary.total || 0;
+            
+            summary.innerHTML = `
+                <h3>📊 Found ${total} Tokens Worth Researching</h3>
+                <p>
+                   🔥 Trending: ${data.summary.trending || 0} | 
+                   🆕 New Launches: ${data.summary.new_launches || 0} | 
+                   📈 Volume Spikes: ${data.summary.volume_spikes || 0} | 
+                   🚀 Top Gainers: ${data.summary.top_gainers || 0} | 
+                   💎 Boosted: ${data.summary.boosted_tokens || 0} | 
+                   ⚡ High Activity: ${data.summary.high_activity || 0}
+                </p>
+                <p style="color: #666; font-size: 14px;">Last updated: ${new Date(data.timestamp).toLocaleString()}</p>
+            `;
+        }
+        
+        function displaySignals(signals) {
+            const container = document.getElementById('signals-container');
+            container.innerHTML = '';
+            
+            // Trending
+            if (signals.trending && signals.trending.length > 0) {
+                const trendingDiv = createCategoryDiv('🔥 Trending Tokens', signals.trending, 'trending');
+                container.appendChild(trendingDiv);
+            }
+            
+            // New Launches
+            if (signals.new_launches && signals.new_launches.length > 0) {
+                const newLaunchesDiv = createCategoryDiv('🆕 New Launches (<24h)', signals.new_launches, 'new');
+                container.appendChild(newLaunchesDiv);
+            }
+            
+            // Volume Spikes
+            if (signals.volume_spikes && signals.volume_spikes.length > 0) {
+                const volumeSpikesDiv = createCategoryDiv('📈 Volume Spikes', signals.volume_spikes, 'volume');
+                container.appendChild(volumeSpikesDiv);
+            }
+            
+            // Top Gainers
+            if (signals.top_gainers && signals.top_gainers.length > 0) {
+                const gainersDiv = createCategoryDiv('🚀 Top Gainers', signals.top_gainers, 'gainers');
+                container.appendChild(gainersDiv);
+            }
+            
+            // Boosted Tokens
+            if (signals.boosted_tokens && signals.boosted_tokens.length > 0) {
+                const boostedDiv = createCategoryDiv('💎 Boosted Tokens', signals.boosted_tokens, 'boosted');
+                container.appendChild(boostedDiv);
+            }
+            
+            // High Activity
+            if (signals.high_activity && signals.high_activity.length > 0) {
+                const activityDiv = createCategoryDiv('⚡ High Activity', signals.high_activity, 'activity');
+                container.appendChild(activityDiv);
+            }
+        }
+        
+        function createCategoryDiv(title, tokens, type) {
+            const div = document.createElement('div');
+            div.className = 'signal-category';
+            
+            const html = `
+                <h2>${title}</h2>
+                ${tokens.map(token => createTokenCard(token, type)).join('')}
+            `;
+            
+            div.innerHTML = html;
+            return div;
+        }
+        
+        function createTokenCard(token, type) {
+            let statsHtml = '';
+            
+            if (type === 'trending') {
+                const volumeToLiq = token.volume_24h / token.liquidity_usd;
+                statsHtml = `
+                    <div class="stat"><span class="stat-label">Volume/Liq:</span> <span class="stat-value positive">${volumeToLiq.toFixed(2)}x</span></div>
+                    <div class="stat"><span class="stat-label">24h Volume:</span> <span class="stat-value">$${formatNumber(token.volume_24h)}</span></div>
+                    <div class="stat"><span class="stat-label">Liquidity:</span> <span class="stat-value">$${formatNumber(token.liquidity_usd)}</span></div>
+                    <div class="stat"><span class="stat-label">24h Change:</span> <span class="stat-value ${token.price_change_24h >= 0 ? 'positive' : 'negative'}">${token.price_change_24h > 0 ? '+' : ''}${token.price_change_24h.toFixed(1)}%</span></div>
+                    <div class="stat"><span class="stat-label">24h Txns:</span> <span class="stat-value">${formatNumber(token.total_txns_24h)}</span></div>
+                `;
+            } else if (type === 'new') {
+                statsHtml = `
+                    <div class="stat"><span class="stat-label">Age:</span> <span class="stat-value">${token.age_hours}h</span></div>
+                    <div class="stat"><span class="stat-label">Liquidity:</span> <span class="stat-value">$${formatNumber(token.liquidity_usd)}</span></div>
+                    <div class="stat"><span class="stat-label">24h Volume:</span> <span class="stat-value">$${formatNumber(token.volume_24h)}</span></div>
+                    <div class="stat"><span class="stat-label">24h Txns:</span> <span class="stat-value">${formatNumber(token.total_txns_24h)}</span></div>
+                    <div class="stat"><span class="stat-label">24h Change:</span> <span class="stat-value ${token.price_change_24h >= 0 ? 'positive' : 'negative'}">${token.price_change_24h > 0 ? '+' : ''}${token.price_change_24h.toFixed(1)}%</span></div>
+                `;
+            } else if (type === 'volume') {
+                statsHtml = `
+                    <div class="stat"><span class="stat-label">Volume Spike:</span> <span class="stat-value positive">${token.volume_spike_ratio}x</span></div>
+                    <div class="stat"><span class="stat-label">6h Volume:</span> <span class="stat-value">$${formatNumber(token.volume_6h)}</span></div>
+                    <div class="stat"><span class="stat-label">24h Volume:</span> <span class="stat-value">$${formatNumber(token.volume_24h)}</span></div>
+                    <div class="stat"><span class="stat-label">Liquidity:</span> <span class="stat-value">$${formatNumber(token.liquidity_usd)}</span></div>
+                    <div class="stat"><span class="stat-label">6h Change:</span> <span class="stat-value ${token.price_change_6h >= 0 ? 'positive' : 'negative'}">${token.price_change_6h > 0 ? '+' : ''}${token.price_change_6h.toFixed(1)}%</span></div>
+                `;
+            } else if (type === 'gainers') {
+                statsHtml = `
+                    <div class="stat"><span class="stat-label">6h Change:</span> <span class="stat-value positive">+${token.price_change_6h.toFixed(1)}%</span></div>
+                    <div class="stat"><span class="stat-label">24h Change:</span> <span class="stat-value ${token.price_change_24h >= 0 ? 'positive' : 'negative'}">${token.price_change_24h > 0 ? '+' : ''}${token.price_change_24h.toFixed(1)}%</span></div>
+                    <div class="stat"><span class="stat-label">24h Volume:</span> <span class="stat-value">$${formatNumber(token.volume_24h)}</span></div>
+                    <div class="stat"><span class="stat-label">Liquidity:</span> <span class="stat-value">$${formatNumber(token.liquidity_usd)}</span></div>
+                    <div class="stat"><span class="stat-label">Age:</span> <span class="stat-value">${token.age_hours.toFixed(0)}h</span></div>
+                `;
+            } else if (type === 'boosted') {
+                statsHtml = `
+                    <div class="stat"><span class="stat-label">Boost Amount:</span> <span class="stat-value">${formatNumber(token.boost_amount)}</span></div>
+                    <div class="stat"><span class="stat-label">Liquidity:</span> <span class="stat-value">$${formatNumber(token.liquidity_usd)}</span></div>
+                    <div class="stat"><span class="stat-label">24h Volume:</span> <span class="stat-value">$${formatNumber(token.volume_24h)}</span></div>
+                    <div class="stat"><span class="stat-label">Age:</span> <span class="stat-value">${token.age_hours.toFixed(0)}h</span></div>
+                    <div class="stat"><span class="stat-label">24h Change:</span> <span class="stat-value ${token.price_change_24h >= 0 ? 'positive' : 'negative'}">${token.price_change_24h > 0 ? '+' : ''}${token.price_change_24h.toFixed(1)}%</span></div>
+                `;
+            } else if (type === 'activity') {
+                statsHtml = `
+                    <div class="stat"><span class="stat-label">24h Txns:</span> <span class="stat-value positive">${formatNumber(token.total_txns_24h)}</span></div>
+                    <div class="stat"><span class="stat-label">24h Volume:</span> <span class="stat-value">$${formatNumber(token.volume_24h)}</span></div>
+                    <div class="stat"><span class="stat-label">Liquidity:</span> <span class="stat-value">$${formatNumber(token.liquidity_usd)}</span></div>
+                    <div class="stat"><span class="stat-label">Age:</span> <span class="stat-value">${token.age_hours.toFixed(0)}h</span></div>
+                    <div class="stat"><span class="stat-label">24h Change:</span> <span class="stat-value ${token.price_change_24h >= 0 ? 'positive' : 'negative'}">${token.price_change_24h > 0 ? '+' : ''}${token.price_change_24h.toFixed(1)}%</span></div>
+                `;
+            }
+            
+            const xSearchUrl = `https://twitter.com/search?q=${token.address}&src=typed_query&f=live`;
+            
+            return `
+                <div class="token-card">
+                    <div class="token-header">
+                        <span class="token-symbol">$${token.symbol}</span>
+                        <span class="token-chain">${token.chain}</span>
+                    </div>
+                    <div class="token-stats">
+                        ${statsHtml}
+                    </div>
+                    <div class="address">Contract: ${token.address.substring(0, 10)}...${token.address.substring(token.address.length - 8)}</div>
+                    <a href="${token.url}" target="_blank" class="dex-link">View on DexScreener →</a>
+                    <button class="x-research-btn" onclick="window.open('${xSearchUrl}', '_blank')">🔍 Search on X</button>
+                </div>
+            `;
+        }
+        
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(2) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num.toFixed(0);
+        }
+        
+        // Fetch signals on page load
+        fetchSignals();
+        
+        // Auto-refresh disabled for now due to long processing time
+        // setInterval(fetchSignals, 120000);
+    </script>
+</body>
+</html>

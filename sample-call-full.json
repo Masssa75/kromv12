@@ -1,0 +1,41 @@
+{
+  "token": {
+    "pa": "BBBs7SJBQ6sTcsubK3Ect86stLVDj2TMFqkT5qAjdYHR",
+    "pairTimestamp": 1748078116,
+    "network": "solana",
+    "ca": "E5dpauhuRdWLKWQfbTPaHRGdJJyfGu7sjoRj8kabpump",
+    "symbol": "FORG",
+    "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/E5dpauhuRdWLKWQfbTPaHRGdJJyfGu7sjoRj8kabpump.png?key=756150"
+  },
+  "trade": {
+    "buyPrice": 8.091937098962241e-05,
+    "buyTimestamp": 1748078160,
+    "topPrice": 0.00014036412392390337,
+    "topTimestamp": 1748079180,
+    "roi": 1.7346170911524326,
+    "error": false
+  },
+  "hidden": false,
+  "_id": "68318e83eb25eec68c95b011",
+  "groupId": "1851567457",
+  "__v": 0,
+  "groupName": "Insider_ECA",
+  "messageId": 13715,
+  "text": "**#SOL**** ****\ud83e\ude99**** ****\ud83e\ude99****$forg\n\nDyor/NFA 70K MCAP \n\nCA**: `E5dpauhuRdWLKWQfbTPaHRGdJJyfGu7sjoRj8kabpump`\n\n**\ud83e\udd11****Buy Bot****\ud83e\udd11****Buy on MevX**",
+  "timestamp": 1748078208,
+  "group": {
+    "stats": {
+      "callFrequency": 8.63,
+      "winRate30": 23,
+      "profit30": 1114,
+      "earlyTop50": 1,
+      "lot30": 48,
+      "ins30": 256
+    },
+    "_id": "67adf28aeb25eec68c52c4bf",
+    "name": "Insider_ECA",
+    "groupId": "1851567457",
+    "id": "67adf28aeb25eec68c52c4bf"
+  },
+  "id": "68318e83eb25eec68c95b011"
+}

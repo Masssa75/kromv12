@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Wallet Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+    <h1>Minimal Wallet Test</h1>
+    <button onclick="connect()">Connect Wallet</button>
+    <div id="result"></div>
+    
+    <script>
+        async function connect() {
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                // Check ethers
+                if (typeof ethers === 'undefined') {
+                    resultDiv.innerHTML = 'Error: Ethers not loaded';
+                    return;
+                }
+                
+                // Check wallet
+                if (typeof window.ethereum === 'undefined') {
+                    resultDiv.innerHTML = 'Error: No wallet detected';
+                    return;
+                }
+                
+                // Connect
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                await provider.send("eth_requestAccounts", []);
+                const signer = provider.getSigner();
+                const address = await signer.getAddress();
+                
+                resultDiv.innerHTML = 'Connected: ' + address;
+                
+                // Get ROCKET2 balance on Base
+                const tokenAddress = '0x2059e89d75f3fc0d2e256d08ba49db7f5a7e5681';
+                const abi = ['function balanceOf(address) view returns (uint256)', 'function decimals() view returns (uint8)'];
+                const contract = new ethers.Contract(tokenAddress, abi, provider);
+                
+                const [balance, decimals] = await Promise.all([
+                    contract.balanceOf(address),
+                    contract.decimals()
+                ]);
+                
+                const formatted = ethers.utils.formatUnits(balance, decimals);
+                resultDiv.innerHTML += '<br>ROCKET2 Balance: ' + formatted;
+                
+            } catch (error) {
+                resultDiv.innerHTML = 'Error: ' + error.message;
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>

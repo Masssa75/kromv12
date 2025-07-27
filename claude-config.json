@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "crypto-analyzer": {
+      "command": "python",
+      "args": ["/Users/marcschwyn/Desktop/projects/KROMV12/mcp-server.py"],
+      "env": {
+        "PYTHONPATH": "/Users/marcschwyn/Desktop/projects/KROMV12"
+      }
+    }
+  }
+}

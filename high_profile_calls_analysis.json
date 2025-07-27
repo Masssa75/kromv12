@@ -1,0 +1,249 @@
+{
+  "total_processed": 4544,
+  "tokens_found": 438,
+  "pattern_matches": {
+    "meta": 90,
+    "yc": 186,
+    "followed": 22,
+    "elon": 91,
+    "vitalik": 27,
+    "buterin": 22,
+    "block": 45,
+    "facebook": 12,
+    "coinbase": 7,
+    "replied": 6,
+    "tweeted": 13,
+    "google": 17,
+    "collaboration": 1,
+    "backed by": 16,
+    "backed": 19,
+    "binance": 18,
+    "musk": 36,
+    "ftx": 7,
+    "uniswap": 16,
+    "cz_binance": 6,
+    "liked": 4,
+    "chainlink": 3,
+    "created by": 16,
+    "amazon": 1,
+    "apple": 2,
+    "tesla": 6,
+    "microsoft": 1,
+    "microstrategy": 3,
+    "endorsed": 3,
+    "ethereum foundation": 2,
+    "vc backed": 2,
+    "cz ": 10,
+    "michael saylor": 3,
+    "advisor": 2,
+    "investor": 2,
+    "avalanche": 13,
+    "supports": 3,
+    "retweeted": 2,
+    "opensea": 4,
+    "gavin wood": 1,
+    "partnership with": 1
+  },
+  "top_tokens": [
+    [
+      "MTPLF",
+      7
+    ],
+    [
+      "CASE",
+      6
+    ],
+    [
+      "MANYU",
+      5
+    ],
+    [
+      "AMERICA",
+      5
+    ],
+    [
+      "DEGEN",
+      5
+    ],
+    [
+      "TEDDY",
+      4
+    ],
+    [
+      "SWAGGY",
+      4
+    ],
+    [
+      "MAG",
+      4
+    ],
+    [
+      "SQUIGG",
+      4
+    ],
+    [
+      "CUDDLES",
+      4
+    ],
+    [
+      "TAP",
+      4
+    ],
+    [
+      "WOOLLY",
+      3
+    ],
+    [
+      "STACK",
+      3
+    ],
+    [
+      "GOB",
+      3
+    ],
+    [
+      "HB",
+      3
+    ],
+    [
+      "LORE",
+      3
+    ],
+    [
+      "EAGLE",
+      3
+    ],
+    [
+      "BONKHOUSE",
+      3
+    ],
+    [
+      "AP",
+      3
+    ],
+    [
+      "NEXYAI",
+      3
+    ],
+    [
+      "PPP",
+      3
+    ],
+    [
+      "ELON",
+      3
+    ],
+    [
+      "DOGPHONE",
+      3
+    ],
+    [
+      "DR. ELEPHANT",
+      3
+    ],
+    [
+      "DOGGO",
+      3
+    ],
+    [
+      "ANTON",
+      3
+    ],
+    [
+      "WE",
+      3
+    ],
+    [
+      "DOGE",
+      3
+    ],
+    [
+      "BROWN",
+      3
+    ],
+    [
+      "TPT",
+      3
+    ],
+    [
+      "PLAI",
+      3
+    ],
+    [
+      "HUANG",
+      2
+    ],
+    [
+      "MACROHARD",
+      2
+    ],
+    [
+      "KIKO",
+      2
+    ],
+    [
+      "BOO",
+      2
+    ],
+    [
+      "TRUE",
+      2
+    ],
+    [
+      "NALA",
+      2
+    ],
+    [
+      "HANK",
+      2
+    ],
+    [
+      "WAKUKU",
+      2
+    ],
+    [
+      "MAYA",
+      2
+    ],
+    [
+      "PUMP",
+      2
+    ],
+    [
+      "LUCKYCOIN",
+      2
+    ],
+    [
+      "THIS YOU?",
+      2
+    ],
+    [
+      "SHOPPY",
+      2
+    ],
+    [
+      "XBT",
+      2
+    ],
+    [
+      "ERC",
+      2
+    ],
+    [
+      "KYO",
+      2
+    ],
+    [
+      "@ELON",
+      2
+    ],
+    [
+      "BOP",
+      2
+    ],
+    [
+      "USB",
+      2
+    ]
+  ]
+}

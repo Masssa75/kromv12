@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM MCP Crypto Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #242424;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-blue: #00b4d8;
+            --accent-purple: #9945ff;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(26, 26, 26, 0.9);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-blue);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Stats Cards */
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            grid-column: span 2;
+        }
+
+        .activity-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .activity-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .activity-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-tool {
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        .activity-time {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .activity-result {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .portfolio-symbol {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .portfolio-value {
+            text-align: right;
+        }
+
+        .profit {
+            color: var(--accent-green);
+        }
+
+        .loss {
+            color: var(--accent-red);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            grid-column: span 2;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            color: var(--text-secondary);
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .tool-count {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+        }
+
+        .tool-name {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .activity-feed {
+                grid-column: span 1;
+            }
+            
+            .chart-container {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>KROM MCP</h1>
+                <span style="color: var(--text-secondary);">Crypto Analysis Dashboard</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span id="connectionStatus">Connected to MCP Server</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Stats Grid -->
+        <div class="dashboard-grid">
+            <!-- Total API Calls -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Total API Calls</h3>
+                    <span class="card-icon">📊</span>
+                </div>
+                <div class="stat-value" id="totalCalls">0</div>
+                <div class="stat-label">Since <span id="startTime">--</span></div>
+            </div>
+
+            <!-- Active Tools -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Active Tools</h3>
+                    <span class="card-icon">🛠️</span>
+                </div>
+                <div class="stat-value" id="activeTools">10</div>
+                <div class="stat-label">Available for Analysis</div>
+            </div>
+
+            <!-- Portfolio Value -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Portfolio Value</h3>
+                    <span class="card-icon">💰</span>
+                </div>
+                <div class="stat-value" id="portfolioValue">$0</div>
+                <div class="stat-label">Total Holdings</div>
+            </div>
+
+            <!-- Market Sentiment -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Market Sentiment</h3>
+                    <span class="card-icon" id="sentimentEmoji">😐</span>
+                </div>
+                <div class="stat-value" id="sentimentValue">--</div>
+                <div class="stat-label" id="sentimentLabel">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Activity Feed & Chart -->
+        <div class="dashboard-grid">
+            <!-- Recent Activity -->
+            <div class="card activity-feed">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Activity</h3>
+                    <span class="card-icon">⚡</span>
+                </div>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-item">
+                        <div>
+                            <div class="activity-tool">Waiting for activity...</div>
+                            <div class="activity-result">MCP server will log activities here</div>
+                        </div>
+                        <div class="activity-time">--</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Placeholder -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Performance Chart</h3>
+                    <span class="card-icon">📈</span>
+                </div>
+                <div class="chart-container">
+                    <div style="text-align: center;">
+                        <div class="loading"></div>
+                        <p style="margin-top: 1rem;">Chart visualization coming soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Usage -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Tool Usage Statistics</h3>
+                <span class="card-icon">📊</span>
+            </div>
+            <div class="tools-grid" id="toolsGrid">
+                <!-- Tool cards will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Portfolio Section -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Portfolio Holdings</h3>
+                <span class="card-icon">💎</span>
+            </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <div class="portfolio-item">
+                    <div>
+                        <div class="portfolio-symbol">No Holdings</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Add positions via Claude</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock data for demonstration
+        const mockActivity = [
+            { tool: "get_crypto_price", args: { symbol: "BTC" }, result: "BTC: $45,250 (+2.5%)", time: "2 min ago" },
+            { tool: "get_market_sentiment", args: {}, result: "Market: Greed (72)", time: "5 min ago" },
+            { tool: "add_to_portfolio", args: { symbol: "ETH", quantity: 2.5 }, result: "Added 2.5 ETH to portfolio", time: "10 min ago" },
+            { tool: "get_crypto_news", args: { query: "Bitcoin" }, result: "Found 5 news articles", time: "15 min ago" },
+            { tool: "compare_cryptos", args: { symbols: ["BTC", "ETH", "SOL"] }, result: "Best: SOL (+8.2%)", time: "20 min ago" }
+        ];
+
+        const toolStats = {
+            "get_crypto_price": 45,
+            "get_market_sentiment": 23,
+            "get_crypto_news": 31,
+            "add_to_portfolio": 8,
+            "check_portfolio": 15,
+            "compare_cryptos": 12,
+            "analyze_krom_call": 7,
+            "get_trending_cryptos": 18,
+            "calculate_position_size": 5
+        };
+
+        // Initialize dashboard
+        function initDashboard() {
+            updateStats();
+            updateActivityFeed();
+            updateToolsGrid();
+            setInterval(simulateActivity, 5000); // Simulate new activity every 5 seconds
+        }
+
+        function updateStats() {
+            document.getElementById('totalCalls').textContent = Object.values(toolStats).reduce((a, b) => a + b, 0);
+            document.getElementById('startTime').textContent = new Date().toLocaleDateString();
+            
+            // Simulate market sentiment
+            const sentimentValue = Math.floor(Math.random() * 100);
+            document.getElementById('sentimentValue').textContent = sentimentValue;
+            
+            let sentimentLabel, sentimentEmoji;
+            if (sentimentValue < 25) {
+                sentimentLabel = "Extreme Fear";
+                sentimentEmoji = "😱";
+            } else if (sentimentValue < 45) {
+                sentimentLabel = "Fear";
+                sentimentEmoji = "😨";
+            } else if (sentimentValue < 55) {
+                sentimentLabel = "Neutral";
+                sentimentEmoji = "😐";
+            } else if (sentimentValue < 75) {
+                sentimentLabel = "Greed";
+                sentimentEmoji = "😊";
+            } else {
+                sentimentLabel = "Extreme Greed";
+                sentimentEmoji = "🤑";
+            }
+            
+            document.getElementById('sentimentLabel').textContent = sentimentLabel;
+            document.getElementById('sentimentEmoji').textContent = sentimentEmoji;
+        }
+
+        function updateActivityFeed() {
+            const activityList = document.getElementById('activityList');
+            activityList.innerHTML = mockActivity.map(activity => `
+                <div class="activity-item">
+                    <div>
+                        <div class="activity-tool">${activity.tool}</div>
+                        <div class="activity-result">${activity.result}</div>
+                    </div>
+                    <div class="activity-time">${activity.time}</div>
+                </div>
+            `).join('');
+        }
+
+        function updateToolsGrid() {
+            const toolsGrid = document.getElementById('toolsGrid');
+            toolsGrid.innerHTML = Object.entries(toolStats).map(([tool, count]) => `
+                <div class="tool-card">
+                    <div class="tool-count">${count}</div>
+                    <div class="tool-name">${tool.replace(/_/g, ' ')}</div>
+                </div>
+            `).join('');
+        }
+
+        function simulateActivity() {
+            // Randomly increment a tool count
+            const tools = Object.keys(toolStats);
+            const randomTool = tools[Math.floor(Math.random() * tools.length)];
+            toolStats[randomTool]++;
+            
+            // Add new activity
+            mockActivity.unshift({
+                tool: randomTool,
+                args: {},
+                result: `Executed ${randomTool} successfully`,
+                time: "Just now"
+            });
+            
+            // Keep only last 10 activities
+            if (mockActivity.length > 10) {
+                mockActivity.pop();
+            }
+            
+            // Update display
+            updateStats();
+            updateActivityFeed();
+            updateToolsGrid();
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initDashboard);
+
+        // WebSocket connection (for future real-time updates)
+        // This would connect to a WebSocket server that the MCP server could push updates to
+        function connectWebSocket() {
+            // const ws = new WebSocket('ws://localhost:8080');
+            // ws.onmessage = (event) => {
+            //     const data = JSON.parse(event.data);
+            //     // Update dashboard with real data
+            // };
+        }
+    </script>
+</body>
+</html>

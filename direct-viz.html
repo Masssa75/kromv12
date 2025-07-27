@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct Visualization Tool - No AI Required</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .controls {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .chart-container {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        canvas {
+            max-height: 400px;
+        }
+        input, select {
+            background: #3a3a3a;
+            color: white;
+            border: 1px solid #555;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 4px;
+        }
+        textarea {
+            width: 100%;
+            background: #3a3a3a;
+            color: white;
+            border: 1px solid #555;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Direct Visualization Tool</h1>
+        <p>Create charts without AI - just enter SQL queries!</p>
+        
+        <div class="controls">
+            <h3>Quick Charts:</h3>
+            <button onclick="createChart('roi_network')">ROI by Network</button>
+            <button onclick="createChart('group_volume')">Group Volume</button>
+            <button onclick="createChart('daily_trends')">Daily Trends</button>
+            <button onclick="createChart('win_rates')">Win Rates</button>
+            <button onclick="createChart('top_performers')">Top Performers</button>
+            
+            <h3>Custom Query:</h3>
+            <textarea id="customQuery" rows="4" placeholder="Enter SQL query (must return 2 columns: labels and values)">SELECT network, AVG(roi) as avg_roi 
+FROM calls 
+WHERE roi IS NOT NULL 
+GROUP BY network 
+ORDER BY avg_roi DESC 
+LIMIT 10</textarea>
+            <br>
+            <input type="text" id="chartTitle" placeholder="Chart Title" value="Custom Analysis">
+            <select id="chartType">
+                <option value="bar">Bar Chart</option>
+                <option value="line">Line Chart</option>
+                <option value="pie">Pie Chart</option>
+                <option value="doughnut">Doughnut Chart</option>
+            </select>
+            <button onclick="createCustomChart()">Create Custom Chart</button>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        
+        <div id="status"></div>
+    </div>
+    
+    <script>
+    let currentChart = null;
+    
+    const predefinedQueries = {
+        roi_network: {
+            query: "SELECT network, AVG(roi) as avg_roi FROM calls WHERE roi IS NOT NULL GROUP BY network ORDER BY avg_roi DESC",
+            title: "Average ROI by Network",
+            type: "bar"
+        },
+        group_volume: {
+            query: "SELECT group_name, COUNT(*) as calls FROM calls GROUP BY group_name ORDER BY calls DESC LIMIT 15",
+            title: "Top 15 Groups by Call Volume", 
+            type: "bar"
+        },
+        daily_trends: {
+            query: "SELECT DATE(datetime(buy_timestamp, 'unixepoch')) as date, COUNT(*) as calls FROM calls WHERE buy_timestamp > strftime('%s', 'now', '-30 days') GROUP BY date ORDER BY date",
+            title: "Daily Call Volume (Last 30 Days)",
+            type: "line"
+        },
+        win_rates: {
+            query: "SELECT network, ROUND(CAST(SUM(CASE WHEN roi > 0 THEN 1 ELSE 0 END) AS FLOAT) / COUNT(*) * 100, 2) as win_rate FROM calls WHERE roi IS NOT NULL GROUP BY network",
+            title: "Win Rate by Network (%)",
+            type: "bar"
+        },
+        top_performers: {
+            query: "SELECT symbol || ' (' || group_name || ')' as label, roi FROM calls WHERE roi > 100 ORDER BY roi DESC LIMIT 20",
+            title: "Top 20 Highest ROI Calls",
+            type: "bar"
+        }
+    };
+    
+    async function createChart(type) {
+        const config = predefinedQueries[type];
+        await executeQuery(config.query, config.title, config.type);
+    }
+    
+    async function createCustomChart() {
+        const query = document.getElementById('customQuery').value;
+        const title = document.getElementById('chartTitle').value;
+        const type = document.getElementById('chartType').value;
+        await executeQuery(query, title, type);
+    }
+    
+    async function executeQuery(query, title, chartType) {
+        document.getElementById('status').innerHTML = 'Loading...';
+        
+        try {
+            const response = await fetch('http://localhost:5001/api/chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    message: `Use create_chart tool with this query: ${query}`,
+                    session_id: 'direct_viz'
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.visualization) {
+                displayChart(data.visualization.data, title, chartType);
+                document.getElementById('status').innerHTML = '✅ Chart created successfully!';
+            } else {
+                // Fallback: try to parse the response
+                document.getElementById('status').innerHTML = '⚠️ No visualization data. Check console for details.';
+                console.log('Response:', data);
+            }
+        } catch (error) {
+            document.getElementById('status').innerHTML = '❌ Error: ' + error.message;
+        }
+    }
+    
+    function displayChart(data, title, type) {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        
+        if (currentChart) {
+            currentChart.destroy();
+        }
+        
+        currentChart = new Chart(ctx, {
+            type: type,
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: title,
+                    data: data.values,
+                    backgroundColor: type === 'pie' || type === 'doughnut' 
+                        ? ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40']
+                        : 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: title,
+                        color: 'white',
+                        font: { size: 16 }
+                    },
+                    legend: {
+                        display: type === 'pie' || type === 'doughnut',
+                        labels: { color: 'white' }
+                    }
+                },
+                scales: type !== 'pie' && type !== 'doughnut' ? {
+                    x: {
+                        ticks: { color: 'white' },
+                        grid: { color: '#444' }
+                    },
+                    y: {
+                        ticks: { color: 'white' },
+                        grid: { color: '#444' }
+                    }
+                } : {}
+            }
+        });
+    }
+    
+    // Load default chart on page load
+    window.onload = () => createChart('roi_network');
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+Database Backup Summary
+=====================
+Date: 2025-07-22T10:47:41.387Z
+Total Analyzed Calls: 47
+Sample Unanalyzed Calls: 100
+
+Analysis Model Distribution:
+- claude-3-haiku-20240307: 46
+- moonshotai/kimi-k2: 1
+
+Score Distribution:
+- Score 1: 1 calls
+- Score 2: 42 calls
+- Score 3: 2 calls
+- Score 4: 1 calls
+- Score 8: 1 calls
+
+Token Type Distribution:
+- meme: 22
+- unknown: 23
+- utility: 2

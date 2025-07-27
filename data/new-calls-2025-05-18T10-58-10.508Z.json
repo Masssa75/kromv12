@@ -1,0 +1,3880 @@
+[
+  {
+    "token": {
+      "pa": "0x0cDfc4dEaDF5EaAe5E89604a8F2a2a104eb9955D",
+      "ca": "0xD4336dCe7aFe19b7092a37Eaa6b273B3Cf8DFcFD",
+      "network": "ethereum",
+      "symbol": "BULLIUS",
+      "pairTimestamp": 1747560215
+    },
+    "trade": {
+      "buyPrice": 0.0000265125934842311,
+      "buyTimestamp": 1747564200,
+      "topPrice": 0.0000453628140484945,
+      "topTimestamp": 1747565340,
+      "roi": 1.7109911965223223,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6829b745eb25eec68c92c0f5",
+    "groupId": "1810124798",
+    "__v": 0,
+    "groupName": "Maestrosdegen",
+    "messageId": 36266,
+    "text": "Eth play launched few mins ago $Bullius Maximum meme meta based on the The gladiator of green candles! \n\nhttps://t.me/BulliusMaximusEntry\nhttps://x.com/BulliusETH\nhttps://www.bulliusmaximus.vip/\n\nhttps://dexscreener.com/ethereum/0x0cdfc4deadf5eaae5e89604a8f2a2a104eb9955d",
+    "timestamp": 1747564355,
+    "group": {
+      "stats": {
+        "callFrequency": 4.14,
+        "winRate30": 43,
+        "profit30": 4298,
+        "earlyTop50": 1,
+        "lot30": 99,
+        "ins30": 1848
+      },
+      "_id": "67adf28aeb25eec68c52c5a2",
+      "name": "Maestrosdegen",
+      "groupId": "1810124798",
+      "id": "67adf28aeb25eec68c52c5a2"
+    },
+    "id": "6829b745eb25eec68c92c0f5"
+  },
+  {
+    "token": {
+      "pa": "Fwte4zuYyskdwW9ymjGT7TWzz2Fp94o9Z7Z4yKQYEcx7",
+      "pairTimestamp": 1747563904,
+      "network": "solana",
+      "ca": "ENxHDG5mKZtLbTS3Km9LqXJpc9mu5MwgJm5akM3pump",
+      "symbol": "SCHOOL",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/ENxHDG5mKZtLbTS3Km9LqXJpc9mu5MwgJm5akM3pump.png?key=4e721e"
+    },
+    "trade": {
+      "buyPrice": 0.00009214643400643971,
+      "buyTimestamp": 1747564320,
+      "topPrice": 0.00010475845801673984,
+      "topTimestamp": 1747564800,
+      "roi": 1.1368693660941749,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6829b736eb25eec68c92c0d7",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13606,
+    "text": "**#SOL**** ****🪙**** ****🪙****$school\n\nDyor/NFA 80K MCAP\n\nCA**: `ENxHDG5mKZtLbTS3Km9LqXJpc9mu5MwgJm5akM3pump`\n\n**🤑****Buy Bot****🤑****__Buy on MevX**__",
+    "timestamp": 1747564339,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "6829b736eb25eec68c92c0d7"
+  },
+  {
+    "token": {
+      "pa": "0x0cDfc4dEaDF5EaAe5E89604a8F2a2a104eb9955D",
+      "pairTimestamp": 1747560215,
+      "network": "ethereum",
+      "ca": "0xD4336dCe7aFe19b7092a37Eaa6b273B3Cf8DFcFD",
+      "symbol": "BULLIUS"
+    },
+    "trade": {
+      "buyPrice": 0.0000228285621306575,
+      "buyTimestamp": 1747561500,
+      "topPrice": 0.000024529077490381,
+      "topTimestamp": 1747561560,
+      "roi": 1.0744906906528204,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6829ac39eb25eec68c92bd47",
+    "groupId": "1568396440",
+    "__v": 0,
+    "groupName": "CryptachCalls",
+    "messageId": 5293,
+    "text": "1-st post ➜ 🎲 Gambles\n\n🌩 **Just launched**\n\n🔷 **Bullius Maximus** (ETH)\n💲 MCap: ⏳\n👉 t.me/BulliusMaximusEntry\n\nhttps://dexscreener.com/ethereum/0xD4336dCe7aFe19b7092a37Eaa6b273B3Cf8DFcFD\n\n`0xD4336dCe7aFe19b7092a37Eaa6b273B3Cf8DFcFD`\n➖➖➖➖➖➖➖➖➖➖➖➖\n⚡️ Calls❕🎲 Gambles❕🐸 Emoji\n\n🍌 Your trading ETH bot",
+    "timestamp": 1747561526,
+    "group": {
+      "stats": {
+        "callFrequency": 1.12,
+        "winRate30": 26,
+        "profit30": 36234,
+        "earlyTop50": 1,
+        "lot30": 1393,
+        "ins30": 9420
+      },
+      "_id": "67adf28beb25eec68c52c78c",
+      "name": "CryptachCalls",
+      "groupId": "1568396440",
+      "id": "67adf28beb25eec68c52c78c"
+    },
+    "id": "6829ac39eb25eec68c92bd47"
+  },
+  {
+    "token": {
+      "pa": "GkTuWuS7KQ5YSWvRLEERH9xY1ZocQgh6nDCqGd1E5p4x",
+      "pairTimestamp": 1747558380,
+      "network": "solana",
+      "ca": "7yHeuciFT3jHMLEbkWTGHVKQzSAgwqKUZ52HJyDcpump",
+      "symbol": "AIPL",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/7yHeuciFT3jHMLEbkWTGHVKQzSAgwqKUZ52HJyDcpump.png?key=82ece6"
+    },
+    "trade": {
+      "buyPrice": 0.0001506228175320162,
+      "buyTimestamp": 1747560660,
+      "topPrice": 0.00017087739868084753,
+      "topTimestamp": 1747560780,
+      "roi": 1.134472196714326,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6829a8e8eb25eec68c92bc1d",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13605,
+    "text": "**#SOL**** ****🪙**** ****🪙****$AIPL****\n\nDyor/NFA 150K MCAP\n\nCA**: `7yHeuciFT3jHMLEbkWTGHVKQzSAgwqKUZ52HJyDcpump`\n\n**🤑****Buy Bot****🤑****__Buy on MevX**__",
+    "timestamp": 1747560679,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "6829a8e8eb25eec68c92bc1d"
+  },
+  {
+    "token": {
+      "pa": "C7ebXr6HcNYYaK3efoaTt3ZnXXgm5V3CcBpp4HTR6DTu",
+      "pairTimestamp": 1747547979,
+      "network": "solana",
+      "ca": "DpySBBrUSyRoSSovFjaoxb9MityQJ9ZYbK9yPWxapump",
+      "symbol": "TIME",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/DpySBBrUSyRoSSovFjaoxb9MityQJ9ZYbK9yPWxapump.png?key=8dd5b6"
+    },
+    "trade": {
+      "buyPrice": 0.0009643274576031708,
+      "buyTimestamp": 1747556340,
+      "topPrice": 0.0018882342961432262,
+      "topTimestamp": 1747558080,
+      "roi": 1.958084135482795,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68299803eb25eec68c92b730",
+    "groupId": "2240713922",
+    "__v": 0,
+    "groupName": "DarthVadorsgems",
+    "messageId": 11343,
+    "text": "DpySBBrUSyRoSSovFjaoxb9MityQJ9ZYbK9yPWxapump already ran up to way higher on a dip been holding liek a chad",
+    "timestamp": 1747556354,
+    "group": {
+      "stats": {
+        "callFrequency": 2.67,
+        "winRate30": 26,
+        "profit30": 344,
+        "earlyTop50": 1,
+        "lot30": 13,
+        "ins30": 89
+      },
+      "_id": "67adf28aeb25eec68c52c610",
+      "name": "DarthVadorsgems",
+      "groupId": "2240713922",
+      "id": "67adf28aeb25eec68c52c610"
+    },
+    "id": "68299803eb25eec68c92b730"
+  },
+  {
+    "token": {
+      "pa": "0x5DA915d8310C8E952478317a31F3F9869E7f7295",
+      "pairTimestamp": 1747555955,
+      "network": "ethereum",
+      "ca": "0x81e09811812C1e2bD8Eb5f7Ba32E69eF5DD1E5Cd",
+      "symbol": "BRETT"
+    },
+    "trade": {
+      "buyPrice": 0.00012261526421614,
+      "buyTimestamp": 1747555980,
+      "topPrice": 0.000365599554671366,
+      "topTimestamp": 1747556100,
+      "roi": 2.981680600768478,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682996afeb25eec68c92b6a4",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29115,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x81e09811812c1e2bd8eb5f7ba32e69ef5dd1e5cd\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747556014,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "682996afeb25eec68c92b6a4"
+  },
+  {
+    "token": {
+      "pa": "3Japa5hTU8LQMQu7qgARKPTzjjRms1yroKH1vhScgVxH",
+      "pairTimestamp": 1747554421,
+      "network": "solana",
+      "ca": "JCB1qEkvcZFqMuoRiE3fi6A3C6iPcy4mbyFxzouMpump",
+      "symbol": "LAUNCHGORK"
+    },
+    "hidden": false,
+    "_id": "68299536eb25eec68c92b62f",
+    "groupId": "2097924459",
+    "__v": 0,
+    "groupName": "alphagemsxplorer",
+    "messageId": 854,
+    "text": "**GAMBLE HERE**\n\nContract address: `JCB1qEkvcZFqMuoRiE3fi6A3C6iPcy4mbyFxzouMpump`\n\n**~ ALWAYS DYOR ~**",
+    "timestamp": 1747555637,
+    "group": {
+      "stats": {
+        "callFrequency": 0.19,
+        "winRate30": 65,
+        "profit30": 18559,
+        "earlyTop50": 0,
+        "lot30": 285,
+        "ins30": 12063
+      },
+      "_id": "67eb9b48b7a7be06f8bb835c",
+      "name": "alphagemsxplorer",
+      "groupId": "2097924459",
+      "id": "67eb9b48b7a7be06f8bb835c"
+    },
+    "id": "68299536eb25eec68c92b62f"
+  },
+  {
+    "token": {
+      "pa": "81qTQqJZuez8dFmKE2j7Eu2hUnYVDB6jfkP7DykrhcnL",
+      "pairTimestamp": 1747554059,
+      "network": "solana",
+      "ca": "Hbqv4n33tidePXDKrDA7NGt3Jux1trSyxVpsDaWGpump",
+      "symbol": "R/IM14"
+    },
+    "trade": {
+      "buyPrice": 0.00007351899159392693,
+      "buyTimestamp": 1747554300,
+      "topPrice": 0.00009613526157011991,
+      "topTimestamp": 1747555140,
+      "roi": 1.3076248665257972,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68299003eb25eec68c92b44f",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13603,
+    "text": "**#SOL**** ****🪙**** ****🪙****$r/im14\n\nDyor/NFA 60K MCAP\n\nCA**: `Hbqv4n33tidePXDKrDA7NGt3Jux1trSyxVpsDaWGpump`\n\n**🤑****Buy Bot****🤑****__Buy on MevX**__",
+    "timestamp": 1747554304,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "68299003eb25eec68c92b44f"
+  },
+  {
+    "token": {
+      "pa": "0x0fF31E748189eeb72d6C730943708aEA2395Bd1b",
+      "pairTimestamp": 1747553603,
+      "network": "ethereum",
+      "ca": "0x9D5b4CC597e2897Cf5E0500A815B71EFb31F7240",
+      "symbol": "SIMPSON"
+    },
+    "hidden": false,
+    "_id": "68298f06eb25eec68c92b3e9",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29113,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x9D5b4CC597e2897Cf5E0500A815B71EFb31F7240\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747554053,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "68298f06eb25eec68c92b3e9"
+  },
+  {
+    "token": {
+      "pa": "5KcU47WKrnPCZHFCacYrwzzddgeu1BHc9vhAtgaswNQT",
+      "pairTimestamp": 1747551502,
+      "network": "solana",
+      "ca": "6i5KT7jEMkS7FFL9s9rLq9jh2zp7kKqtoTWumoS1nzJM",
+      "symbol": "SUN"
+    },
+    "trade": {
+      "buyPrice": 0.0001674139906718614,
+      "buyTimestamp": 1747552200,
+      "topPrice": 0.00029079287326855193,
+      "topTimestamp": 1747552560,
+      "roi": 1.7369687688678208,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682987ebeb25eec68c92b176",
+    "groupId": "1936110610",
+    "__v": 0,
+    "groupName": "LuigisGambles",
+    "messageId": 4216,
+    "text": "6i5KT7jEMkS7FFL9s9rLq9jh2zp7kKqtoTWumoS1nzJM\n\naped this\n\nfirst grok sketch",
+    "timestamp": 1747552233,
+    "group": {
+      "stats": {
+        "callFrequency": 1.36,
+        "winRate30": 33,
+        "profit30": 1530,
+        "earlyTop50": 1,
+        "lot30": 46,
+        "ins30": 504
+      },
+      "_id": "67adf28aeb25eec68c52c6e0",
+      "name": "LuigisGambles",
+      "groupId": "1936110610",
+      "id": "67adf28aeb25eec68c52c6e0"
+    },
+    "id": "682987ebeb25eec68c92b176"
+  },
+  {
+    "token": {
+      "pa": "FHDCWTxKu1CsaR3D55YAbgm5NkvuWiBDikybVS3fgtSc",
+      "pairTimestamp": 1747457353,
+      "network": "solana",
+      "ca": "8Ma3ZxjVmEeNbARkZCnE3bZXVPn73LvBghY9VFKjpump",
+      "symbol": "BAGS",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/8Ma3ZxjVmEeNbARkZCnE3bZXVPn73LvBghY9VFKjpump.png?key=2d5b77"
+    },
+    "trade": {
+      "buyPrice": 0.0003290968091745257,
+      "buyTimestamp": 1747551720,
+      "topPrice": 0.000445551299477214,
+      "topTimestamp": 1747555200,
+      "roi": 1.3538608915558659,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68298646eb25eec68c92b0e4",
+    "groupId": "1823659062",
+    "__v": 0,
+    "groupName": "kweensjournal",
+    "messageId": 10490,
+    "text": "big fan of the lore here. \n\n8Ma3ZxjVmEeNbARkZCnE3bZXVPn73LvBghY9VFKjpump",
+    "timestamp": 1747551812,
+    "group": {
+      "stats": {
+        "callFrequency": 1.98,
+        "winRate30": 43,
+        "profit30": 1770,
+        "earlyTop50": 4,
+        "lot30": 41,
+        "ins30": 761
+      },
+      "_id": "67adf28aeb25eec68c52c570",
+      "name": "kweensjournal",
+      "groupId": "1823659062",
+      "id": "67adf28aeb25eec68c52c570"
+    },
+    "id": "68298646eb25eec68c92b0e4"
+  },
+  {
+    "token": {
+      "pa": "0xB71b4E954F132f3770d9bdE0D1d5eb50c32147ef",
+      "ca": "0x5417994ae69E6CCb283Bb6dBdbA3006b3d3F9f95",
+      "network": "ethereum",
+      "symbol": "ETHCHAN",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0x5417994ae69e6ccb283bb6dbdba3006b3d3f9f95.png?key=dfafcb",
+      "pairTimestamp": 1747549367
+    },
+    "trade": {
+      "buyPrice": 0.0000855916668080615,
+      "buyTimestamp": 1747550580,
+      "topPrice": 0.000200406479385857,
+      "topTimestamp": 1747551600,
+      "roi": 2.3414251276969127,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68298183eb25eec68c92af86",
+    "groupId": "2161078179",
+    "__v": 0,
+    "groupName": "chengambles",
+    "messageId": 2015,
+    "text": "0x5417994ae69e6ccb283bb6dbdba3006b3d3f9f95",
+    "timestamp": 1747550594,
+    "group": {
+      "stats": {
+        "callFrequency": 0.89,
+        "winRate30": 26,
+        "profit30": 871,
+        "earlyTop50": 1,
+        "lot30": 33,
+        "ins30": 226
+      },
+      "_id": "67adf28aeb25eec68c52c5fc",
+      "name": "chengambles",
+      "groupId": "2161078179",
+      "id": "67adf28aeb25eec68c52c5fc"
+    },
+    "id": "68298183eb25eec68c92af86"
+  },
+  {
+    "token": {
+      "pa": "0xB71b4E954F132f3770d9bdE0D1d5eb50c32147ef",
+      "ca": "0x5417994ae69E6CCb283Bb6dBdbA3006b3d3F9f95",
+      "network": "ethereum",
+      "symbol": "ETHCHAN",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0x5417994ae69e6ccb283bb6dbdba3006b3d3f9f95.png?key=dfafcb",
+      "pairTimestamp": 1747549367
+    },
+    "trade": {
+      "buyPrice": 0.0000719192570851492,
+      "buyTimestamp": 1747550520,
+      "topPrice": 0.000200406479385857,
+      "topTimestamp": 1747551600,
+      "roi": 2.786548241851061,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6829817feb25eec68c92af7a",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29112,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x5417994ae69E6CCb283Bb6dBdbA3006b3d3F9f95\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747550590,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "6829817feb25eec68c92af7a"
+  },
+  {
+    "token": {
+      "pa": "0xB71b4E954F132f3770d9bdE0D1d5eb50c32147ef",
+      "ca": "0x5417994ae69E6CCb283Bb6dBdbA3006b3d3F9f95",
+      "network": "ethereum",
+      "symbol": "ETHCHAN",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0x5417994ae69e6ccb283bb6dbdba3006b3d3f9f95.png?key=dfafcb",
+      "pairTimestamp": 1747549367
+    },
+    "trade": {
+      "buyPrice": 0.0000719192570851492,
+      "buyTimestamp": 1747550520,
+      "topPrice": 0.000200406479385857,
+      "topTimestamp": 1747551600,
+      "roi": 2.786548241851061,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68298176eb25eec68c92af5f",
+    "groupId": "1823659062",
+    "__v": 0,
+    "groupName": "kweensjournal",
+    "messageId": 10489,
+    "text": "gambled abit here. Seems like a good narrative but don’t know team \n\n0x5417994ae69e6ccb283bb6dbdba3006b3d3f9f95",
+    "timestamp": 1747550580,
+    "group": {
+      "stats": {
+        "callFrequency": 1.98,
+        "winRate30": 43,
+        "profit30": 1770,
+        "earlyTop50": 4,
+        "lot30": 41,
+        "ins30": 761
+      },
+      "_id": "67adf28aeb25eec68c52c570",
+      "name": "kweensjournal",
+      "groupId": "1823659062",
+      "id": "67adf28aeb25eec68c52c570"
+    },
+    "id": "68298176eb25eec68c92af5f"
+  },
+  {
+    "token": {
+      "pa": "0xB71b4E954F132f3770d9bdE0D1d5eb50c32147ef",
+      "pairTimestamp": 1747549367,
+      "network": "ethereum",
+      "ca": "0x5417994ae69E6CCb283Bb6dBdbA3006b3d3F9f95",
+      "symbol": "ETHCHAN",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0x5417994ae69e6ccb283bb6dbdba3006b3d3f9f95.png?key=dfafcb"
+    },
+    "trade": {
+      "buyPrice": 0.0000464052737095183,
+      "buyTimestamp": 1747550460,
+      "topPrice": 0.000200406479385857,
+      "topTimestamp": 1747551600,
+      "roi": 4.318614316130003,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68298144eb25eec68c92af45",
+    "groupId": "2000865668",
+    "__v": 0,
+    "groupName": "degenrex",
+    "messageId": 1391,
+    "text": "https://dexscreener.com/ethereum/0x5417994ae69E6CCb283Bb6dBdbA3006b3d3F9f95",
+    "timestamp": 1747550530,
+    "group": {
+      "stats": {
+        "callFrequency": 0.36,
+        "winRate30": 50,
+        "profit30": 21794,
+        "earlyTop50": 0,
+        "lot30": 435,
+        "ins30": 10897
+      },
+      "_id": "67adf28aeb25eec68c52c6c6",
+      "name": "degenrex",
+      "groupId": "2000865668",
+      "id": "67adf28aeb25eec68c52c6c6"
+    },
+    "id": "68298144eb25eec68c92af45"
+  },
+  {
+    "token": {
+      "pa": "ARwzSvwhpns5S2vAzTV41kra4qvRizbH3aS6ZWBf5usA",
+      "ca": "H1aoUqmp2vJu5o8w3o8LjrN6jKyWErS69PtYxGhfoXxf",
+      "network": "solana",
+      "symbol": "YAPPER",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/H1aoUqmp2vJu5o8w3o8LjrN6jKyWErS69PtYxGhfoXxf.png?key=7b69ea",
+      "pairTimestamp": 1747261149
+    },
+    "trade": {
+      "buyPrice": 0.0063610447180766075,
+      "buyTimestamp": 1747549920,
+      "topPrice": 0.00793525331578653,
+      "topTimestamp": 1747558800,
+      "roi": 1.2474764236818503,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68297f01eb25eec68c92ae8d",
+    "groupId": "1293932368",
+    "__v": 0,
+    "groupName": "Minidraftcalls",
+    "messageId": 4822,
+    "text": "🪙 SUNDAY dip list is here, as always DYOR too before you ape. Because they might reverse, or might no. \n\n$TweetDM : https://dexscreener.com/solana/dh2fufjn9jktutmlgjyqskldnvuwgnb9lhiqj3mrbrls\n\n$UBER : https://dexscreener.com/solana/7swd9kletbgktybpzfbkvulipdcqszjjfjibawpky2k8\n\n$Yapper : https://dexscreener.com/solana/arwzsvwhpns5s2vaztv41kra4qvrizbh3as6zwbf5usa\n\n$Bpad : https://dexscreener.com/solana/ctivct2ebnsarig3mlgfebpoqapexqwchufzcevkmr39\n\n$BScreener : https://dexscreener.com/solana/frsyh7zyf8jwvbmbphttbobhtndqg5ujeudf8mfr99dq\n\n$XCCOM : https://dexscreener.com/solana/aadhrzsmxkpunhf8ojrkqxesehbshtwktmc5z43stsqz\n\n$KNET : https://dexscreener.com/solana/b1jkxqh1yvtqtravmastwoy2pu54ssjlqfwphl9vwpgu\n\n$Creator : https://dexscreener.com/solana/3gq7tbvpkdjnrhteaayaypgp57szogyjhjjykl8pqjrs\n\n$Launch : https://dexscreener.com/solana/hvfhdmkw5qnrk7wvor32ug8fvwj3hrjy5c6ak2zfagdq\n\n$ICM : https://dexscreener.com/solana/fh15p9masx8mck4abxyf7bfhbbhkjplhxlqjvm8hw2oa",
+    "timestamp": 1747549950,
+    "group": {
+      "stats": {
+        "callFrequency": 3.52,
+        "winRate30": 16,
+        "profit30": -649,
+        "earlyTop50": 3,
+        "lot30": 0,
+        "ins30": -104
+      },
+      "_id": "67adf28aeb25eec68c52c4dc",
+      "name": "Minidraftcalls",
+      "groupId": "1293932368",
+      "id": "67adf28aeb25eec68c52c4dc"
+    },
+    "id": "68297f01eb25eec68c92ae8d"
+  },
+  {
+    "token": {
+      "pa": "CiEzYQSZhGQkcLSK9ES7KpuDb1JiyMFTNcCR5H6zTGFt",
+      "pairTimestamp": 1747546038,
+      "network": "solana",
+      "ca": "GQeJJeQQHcZoaHBEEPMdJNUhwDiJNsXUaANiYA4vpump",
+      "symbol": "GILL",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/GQeJJeQQHcZoaHBEEPMdJNUhwDiJNsXUaANiYA4vpump.png?key=6c1256"
+    },
+    "trade": {
+      "buyPrice": 0.00006395954746762023,
+      "buyTimestamp": 1747546080,
+      "topPrice": 0.00019114052590570247,
+      "topTimestamp": 1747547220,
+      "roi": 2.9884596354042077,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68297013eb25eec68c92aa65",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13601,
+    "text": "**#SOL**** ****🪙**** ****🪙****$gill\n\nDyor/NFA 60K MCAP\n\nCA**: `GQeJJeQQHcZoaHBEEPMdJNUhwDiJNsXUaANiYA4vpump`\n\n**🤑****Buy Bot****🤑****__Buy on MevX**__",
+    "timestamp": 1747546129,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "68297013eb25eec68c92aa65"
+  },
+  {
+    "token": {
+      "pa": "0xFc3de7D5786960842e66299ac4050Aa3DBeA409C",
+      "pairTimestamp": 1747521527,
+      "network": "ethereum",
+      "ca": "0x4C0b194415cE27904EC16d7E101e1302A437fe20",
+      "symbol": "CHAD",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0x4c0b194415ce27904ec16d7e101e1302a437fe20.png?key=8e21f3"
+    },
+    "hidden": false,
+    "_id": "68296f5feb25eec68c92aa0a",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29111,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x4c0b194415ce27904ec16d7e101e1302a437fe20\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747545950,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "68296f5feb25eec68c92aa0a"
+  },
+  {
+    "token": {
+      "pa": "ARwzSvwhpns5S2vAzTV41kra4qvRizbH3aS6ZWBf5usA",
+      "ca": "H1aoUqmp2vJu5o8w3o8LjrN6jKyWErS69PtYxGhfoXxf",
+      "network": "solana",
+      "symbol": "YAPPER",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/H1aoUqmp2vJu5o8w3o8LjrN6jKyWErS69PtYxGhfoXxf.png?key=7b69ea",
+      "pairTimestamp": 1747261149
+    },
+    "trade": {
+      "buyPrice": 0.00578684461250759,
+      "buyTimestamp": 1747544580,
+      "topPrice": 0.007929788974717097,
+      "topTimestamp": 1747558800,
+      "roi": 1.3703130990553614,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68296a0aeb25eec68c92a81d",
+    "groupId": "1523523939",
+    "__v": 0,
+    "groupName": "DegenSeals",
+    "messageId": 12276,
+    "text": "🪙 SUNDAY dip list is here, as always DYOR too before you ape. Because they might reverse, or might no. \n\n$TweetDM : https://dexscreener.com/solana/dh2fufjn9jktutmlgjyqskldnvuwgnb9lhiqj3mrbrls\n\n$UBER : https://dexscreener.com/solana/7swd9kletbgktybpzfbkvulipdcqszjjfjibawpky2k8\n\n$Yapper : https://dexscreener.com/solana/arwzsvwhpns5s2vaztv41kra4qvrizbh3as6zwbf5usa\n\n$Bpad : https://dexscreener.com/solana/ctivct2ebnsarig3mlgfebpoqapexqwchufzcevkmr39\n\n$BScreener : https://dexscreener.com/solana/frsyh7zyf8jwvbmbphttbobhtndqg5ujeudf8mfr99dq\n\n$XCCOM : https://dexscreener.com/solana/aadhrzsmxkpunhf8ojrkqxesehbshtwktmc5z43stsqz\n\n$KNET : https://dexscreener.com/solana/b1jkxqh1yvtqtravmastwoy2pu54ssjlqfwphl9vwpgu\n\n$Creator : https://dexscreener.com/solana/3gq7tbvpkdjnrhteaayaypgp57szogyjhjjykl8pqjrs\n\n$Launch : https://dexscreener.com/solana/hvfhdmkw5qnrk7wvor32ug8fvwj3hrjy5c6ak2zfagdq\n\n$ICM : https://dexscreener.com/solana/fh15p9masx8mck4abxyf7bfhbbhkjplhxlqjvm8hw2oa",
+    "timestamp": 1747544581,
+    "group": {
+      "stats": {
+        "callFrequency": 2.46,
+        "winRate30": 30,
+        "profit30": 854,
+        "earlyTop50": 1,
+        "lot30": 28,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c5d6",
+      "name": "DegenSeals",
+      "groupId": "1523523939",
+      "id": "67adf28aeb25eec68c52c5d6"
+    },
+    "id": "68296a0aeb25eec68c92a81d"
+  },
+  {
+    "token": {
+      "pa": "D6cpGDCQzajuSVCwhCMBMahkiZCKK8KCfh42JmwfXoNM",
+      "pairTimestamp": 1747543722,
+      "network": "solana",
+      "ca": "71QXMcNExFJMvGZ88dF5Q6v5f4c36BsdvTrun61mpump",
+      "symbol": "FATGIRLS",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/71QXMcNExFJMvGZ88dF5Q6v5f4c36BsdvTrun61mpump.png?key=287be1"
+    },
+    "trade": {
+      "buyPrice": 0.00015847829590022366,
+      "buyTimestamp": 1747544400,
+      "topPrice": 0.00047019557371575857,
+      "topTimestamp": 1747545840,
+      "roi": 2.966939864193069,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68296966eb25eec68c92a7d4",
+    "groupId": "1823659062",
+    "__v": 0,
+    "groupName": "kweensjournal",
+    "messageId": 10482,
+    "text": "71QXMcNExFJMvGZ88dF5Q6v5f4c36BsdvTrun61mpump\n\nnew bitcoin \nthis is for the fatgirls 🤷🏼‍♀️ has motion and i’m bored",
+    "timestamp": 1747544421,
+    "group": {
+      "stats": {
+        "callFrequency": 1.98,
+        "winRate30": 43,
+        "profit30": 1770,
+        "earlyTop50": 4,
+        "lot30": 41,
+        "ins30": 761
+      },
+      "_id": "67adf28aeb25eec68c52c570",
+      "name": "kweensjournal",
+      "groupId": "1823659062",
+      "id": "67adf28aeb25eec68c52c570"
+    },
+    "id": "68296966eb25eec68c92a7d4"
+  },
+  {
+    "token": {
+      "pa": "DyQjYfk1rpXn5RjcnD3r166tr4XL4Vs9D4NzFvQKS8XD",
+      "pairTimestamp": 1747540365,
+      "network": "solana",
+      "ca": "BY42VTMCqat9VXwsLLHjAV8EtGfn5iMCoS2dYTVzpump",
+      "symbol": "TCW"
+    },
+    "trade": {
+      "buyPrice": 0.00011386015045760719,
+      "buyTimestamp": 1747542360,
+      "topPrice": 0.00028481430135604747,
+      "topTimestamp": 1747543140,
+      "roi": 2.501439706617027,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68296175eb25eec68c92a543",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13599,
+    "text": "**#SOL**** ****🪙**** ****🪙****$TCW****\n\nDyor/NFA 100K MCAP\n\nCA**: `BY42VTMCqat9VXwsLLHjAV8EtGfn5iMCoS2dYTVzpump`\n\n🤑Buy Bot🤑__Buy on MevX__",
+    "timestamp": 1747542388,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "68296175eb25eec68c92a543"
+  },
+  {
+    "token": {
+      "pa": "FEsFicbdfFpXDaSeDo4yBeGqde6bBGpZTSQmT6EnMhDC",
+      "ca": "AX8b9A79uDBTKDQoWTzq3NaD1FN4JEDGKR2yTQGhcwjo",
+      "network": "solana",
+      "symbol": "PIPEIQ",
+      "pairTimestamp": 1747264094
+    },
+    "trade": {
+      "buyPrice": 0.002160900602855589,
+      "buyTimestamp": 1747541700,
+      "topPrice": 0.00412060927610491,
+      "topTimestamp": 1747558800,
+      "roi": 1.9068944081276125,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68295f19eb25eec68c92a46d",
+    "groupId": "2054466090",
+    "__v": 0,
+    "groupName": "casgem",
+    "messageId": 12146,
+    "text": "Watching list for Believe coins:\n$PIPEIQ : Indian dev\nhttps://dexscreener.com/solana/AX8b9A79uDBTKDQoWTzq3NaD1FN4JEDGKR2yTQGhcwjo?id=f1hz182d\n$CHAD\nhttps://dexscreener.com/solana/CmUnSFZCKUFGs2L8eZGQukAj833Y8r2SiJav55Nnrihd?id=iv281wb5\n$CLOON\nhttps://dexscreener.com/solana/Hnks94gfX3TfvZSNM1ZkCRt9UbLain8jyqnYMEtXyNuT?id=o9myw1p9\n$FITCOIN\nhttps://dexscreener.com/solana/Cr2mM4szbt8286XMn7iTpY5A8S17LbGAu1UyodkyEwn4?id=0nkqf36z\n$GRID\nhttps://dexscreener.com/solana/7ulsprptkdum624w7vlg7xfosamhhcntcos3xy61s9pt",
+    "timestamp": 1747541784,
+    "group": {
+      "stats": {
+        "callFrequency": 2.85,
+        "winRate30": 36,
+        "profit30": 1427,
+        "earlyTop50": 1,
+        "lot30": 39,
+        "ins30": 513
+      },
+      "_id": "67adf28aeb25eec68c52c4f0",
+      "name": "casgem",
+      "groupId": "2054466090",
+      "id": "67adf28aeb25eec68c52c4f0"
+    },
+    "id": "68295f19eb25eec68c92a46d"
+  },
+  {
+    "token": {
+      "pa": "0x4b54a5864f18731c6D71bf4b1Ec850521f06447B",
+      "pairTimestamp": 1747541435,
+      "network": "ethereum",
+      "ca": "0xa55e8f689897a5eF0B256E5d57cfE26b538d7a73",
+      "symbol": "ALFRED"
+    },
+    "trade": {
+      "buyPrice": 2.16380617342919e-7,
+      "buyTimestamp": 1747541520,
+      "topPrice": 3.08490821421223e-7,
+      "topTimestamp": 1747543800,
+      "roi": 1.4256860212776277,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68295e26eb25eec68c92a40f",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29108,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0xa55e8f689897a5eF0B256E5d57cfE26b538d7a73\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747541540,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "68295e26eb25eec68c92a40f"
+  },
+  {
+    "token": {
+      "pa": "6L3wwvQnges45Bp6iD9ddfXJJ4XB2qk74PvJvMCca7xy",
+      "ca": "CYwvrqeCgMY8VhXjXUcHrYLhJWkkXzstY52hrkMypump",
+      "network": "solana",
+      "symbol": "GM",
+      "pairTimestamp": 1747511420
+    },
+    "trade": {
+      "buyPrice": 0.00039549547857831906,
+      "buyTimestamp": 1747538160,
+      "topPrice": 0.0004116117067233686,
+      "topTimestamp": 1747538820,
+      "roi": 1.0407494624287041,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68295128eb25eec68c929fd7",
+    "groupId": "1983450418",
+    "__v": 0,
+    "groupName": "shitcoinneverland",
+    "messageId": 13499,
+    "text": "CYwvrqeCgMY8VhXjXUcHrYLhJWkkXzstY52hrkMypump",
+    "timestamp": 1747538215,
+    "group": {
+      "stats": {
+        "callFrequency": 2.79,
+        "winRate30": 30,
+        "profit30": 1198,
+        "earlyTop50": 3,
+        "lot30": 39,
+        "ins30": 359
+      },
+      "_id": "67adf28aeb25eec68c52c554",
+      "name": "shitcoinneverland",
+      "groupId": "1983450418",
+      "id": "67adf28aeb25eec68c52c554"
+    },
+    "id": "68295128eb25eec68c929fd7"
+  },
+  {
+    "token": {
+      "pa": "8mj2yr2Yd9TR8gCrEyWXrKgCAxx3gvoMcCWHcXQJbWQS",
+      "pairTimestamp": 1747536432,
+      "network": "solana",
+      "ca": "6QwKgm7c6GsRKC1vT2WxDatJVM6MUbMLmyTaJVuJpump",
+      "symbol": "AI"
+    },
+    "trade": {
+      "buyPrice": 0.00005617584344076875,
+      "buyTimestamp": 1747537020,
+      "topPrice": 0.00009373665998105891,
+      "topTimestamp": 1747537080,
+      "roi": 1.6686293296137853,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68294cb8eb25eec68c929e45",
+    "groupId": "2054466090",
+    "__v": 0,
+    "groupName": "casgem",
+    "messageId": 12145,
+    "text": "https://dexscreener.com/solana/6QwKgm7c6GsRKC1vT2WxDatJVM6MUbMLmyTaJVuJpump\n\nhttps://x.com/automated_idiot\n\ngamble cause narrative match with solana",
+    "timestamp": 1747537079,
+    "group": {
+      "stats": {
+        "callFrequency": 2.85,
+        "winRate30": 36,
+        "profit30": 1427,
+        "earlyTop50": 1,
+        "lot30": 39,
+        "ins30": 513
+      },
+      "_id": "67adf28aeb25eec68c52c4f0",
+      "name": "casgem",
+      "groupId": "2054466090",
+      "id": "67adf28aeb25eec68c52c4f0"
+    },
+    "id": "68294cb8eb25eec68c929e45"
+  },
+  {
+    "token": {
+      "pa": "0x405b79Ff9f6a214779182f15c0F17f976074E70a",
+      "pairTimestamp": 1747332073,
+      "network": "base",
+      "ca": "0xEBDC07bBEd482778a82901Dd98895b53d51F72Cd",
+      "symbol": "DWF",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/base/0xebdc07bbed482778a82901dd98895b53d51f72cd.png?key=50eef1"
+    },
+    "hidden": false,
+    "_id": "682944a6eb25eec68c929bbd",
+    "groupId": "2385226263",
+    "__v": 0,
+    "groupName": "kulture_kall",
+    "messageId": 766,
+    "text": "`0xEBDC07bBEd482778a82901Dd98895b53d51F72Cd`",
+    "timestamp": 1747535013,
+    "group": {
+      "stats": {
+        "callFrequency": 1.93,
+        "winRate30": 43,
+        "profit30": 4505,
+        "earlyTop50": 2,
+        "lot30": 104,
+        "ins30": 1937
+      },
+      "_id": "67adf28beb25eec68c52c81a",
+      "name": "kulture_kall",
+      "groupId": "2385226263",
+      "id": "67adf28beb25eec68c52c81a"
+    },
+    "id": "682944a6eb25eec68c929bbd"
+  },
+  {
+    "token": {
+      "pa": "BKwEjGXu2wtTnhMNZP7QsP7wrDRLsDddUZ7Grx4we5hg",
+      "pairTimestamp": 1747530000,
+      "network": "solana",
+      "ca": "EgZuUsFKcXrqqjedDfnFJJ9KjKEak6w11J6b9W8bTzeB",
+      "symbol": "GROKKY"
+    },
+    "hidden": false,
+    "_id": "6829331eeb25eec68c929651",
+    "groupId": "1983450418",
+    "__v": 0,
+    "groupName": "shitcoinneverland",
+    "messageId": 13481,
+    "text": "EgZuUsFKcXrqqjedDfnFJJ9KjKEak6w11J6b9W8bTzeB",
+    "timestamp": 1747530524,
+    "group": {
+      "stats": {
+        "callFrequency": 2.79,
+        "winRate30": 30,
+        "profit30": 1198,
+        "earlyTop50": 3,
+        "lot30": 39,
+        "ins30": 359
+      },
+      "_id": "67adf28aeb25eec68c52c554",
+      "name": "shitcoinneverland",
+      "groupId": "1983450418",
+      "id": "67adf28aeb25eec68c52c554"
+    },
+    "id": "6829331eeb25eec68c929651"
+  },
+  {
+    "token": {
+      "pa": "4cc8YbVmSRUEQ3BQEbnshEKxcRqMYeq54USeJ2b11Q8K",
+      "pairTimestamp": 1747526853,
+      "network": "solana",
+      "ca": "2TUc7EArF2fxfnWepFKQPE6ByREACNaXAcFW476Ypump",
+      "symbol": "HANZ",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/2TUc7EArF2fxfnWepFKQPE6ByREACNaXAcFW476Ypump.png?key=48c253"
+    },
+    "hidden": false,
+    "_id": "68292d52eb25eec68c92943f",
+    "groupId": "1936110610",
+    "__v": 0,
+    "groupName": "LuigisGambles",
+    "messageId": 4210,
+    "text": "Gambled at this mc cause I like it \n\nhttps://dexscreener.com/solana/4cc8YbVmSRUEQ3BQEbnshEKxcRqMYeq54USeJ2b11Q8K",
+    "timestamp": 1747529040,
+    "group": {
+      "stats": {
+        "callFrequency": 1.36,
+        "winRate30": 33,
+        "profit30": 1530,
+        "earlyTop50": 1,
+        "lot30": 46,
+        "ins30": 504
+      },
+      "_id": "67adf28aeb25eec68c52c6e0",
+      "name": "LuigisGambles",
+      "groupId": "1936110610",
+      "id": "67adf28aeb25eec68c52c6e0"
+    },
+    "id": "68292d52eb25eec68c92943f"
+  },
+  {
+    "token": {
+      "pa": "HXYiU433tDNcMMGUgFFGg95AwTdwMbmnApAoQ9sdw4cB",
+      "pairTimestamp": 1747380089,
+      "network": "solana",
+      "ca": "8biqsLDiRPaPM11S42zKtNaC3WWKF64PNoPG9htzy99n",
+      "symbol": "OK",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/8biqsLDiRPaPM11S42zKtNaC3WWKF64PNoPG9htzy99n.png?key=c44b14"
+    },
+    "trade": {
+      "buyPrice": 0.0002305552381607888,
+      "buyTimestamp": 1747525980,
+      "topPrice": 0.00024318838261998415,
+      "topTimestamp": 1747526100,
+      "roi": 1.0547944369426343,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68292178eb25eec68c9290f6",
+    "groupId": "1983450418",
+    "__v": 0,
+    "groupName": "shitcoinneverland",
+    "messageId": 13476,
+    "text": "8biqsLDiRPaPM11S42zKtNaC3WWKF64PNoPG9htzy99n",
+    "timestamp": 1747526007,
+    "group": {
+      "stats": {
+        "callFrequency": 2.79,
+        "winRate30": 30,
+        "profit30": 1198,
+        "earlyTop50": 3,
+        "lot30": 39,
+        "ins30": 359
+      },
+      "_id": "67adf28aeb25eec68c52c554",
+      "name": "shitcoinneverland",
+      "groupId": "1983450418",
+      "id": "67adf28aeb25eec68c52c554"
+    },
+    "id": "68292178eb25eec68c9290f6"
+  },
+  {
+    "token": {
+      "pa": "5RH1aLDavmegSCCQWdRM9nofq7ZwgnYGJnFHfshV8xfx",
+      "pairTimestamp": 1747422023,
+      "network": "solana",
+      "ca": "HUWzPAUYLgAMWbP8MiQctEUDjqgp5dzQDVw61xpA1Xdc",
+      "symbol": "TICKERON",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/HUWzPAUYLgAMWbP8MiQctEUDjqgp5dzQDVw61xpA1Xdc.png?key=734255"
+    },
+    "trade": {
+      "buyPrice": 0.0009789890477661053,
+      "buyTimestamp": 1747522020,
+      "topPrice": 0.0019429986672579792,
+      "topTimestamp": 1747522560,
+      "roi": 1.9846990849301,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682911eceb25eec68c928c96",
+    "groupId": "2088887132",
+    "__v": 0,
+    "groupName": "sadcatgamble",
+    "messageId": 8601,
+    "text": "Find entry in  $TICKERON \n\nThey have a AI powered web terminal and AI agents to trade stocks\nhttps://tickeron.com/app-ng/home\n\nAs per Tracxn its a US based company founded in 2011 and has raised over $10M so far. \nhttps://tracxn.com/d/companies/tickeron/__HuZkqUGbGtp9TH5lOcZf1rSKcOusG7IJcun6Ov__8OY\n\nThey have a annual revenue of over $5Million and their competitors are worth over $1 Billion\nhttps://growjo.com/company/Tickeron?utm_source=chatgpt.com#google_vignette\n\nI checked on Web archive. The company has been building since 2014. Check here\nhttps://web.archive.org/web/20160101000000*/https://tickeron.com\n\nFounder is doxxed their Twitter has over 2.5Million posts and active since quite a few years.\nhttps://x.com/Tickeron\n\nThey have been building AI bots and tools since 2018. Way before since AI was cool. That’s nuts. Check the Web archive snapshot from 2018 here. \nhttps://web.archive.org/web/20180419191721/https://tickeron.com/#!/\n\nhttps://dexscreener.com/solana/5rh1aldavmegsccqwdrm9nofq7zwgnygjnfhfshv8xfx\n\nCA: `HUWzPAUYLgAMWbP8MiQctEUDjqgp5dzQDVw61xpA1Xdc`",
+    "timestamp": 1747522022,
+    "group": {
+      "stats": {
+        "callFrequency": 1.51,
+        "winRate30": 46,
+        "profit30": 7087,
+        "earlyTop50": 1,
+        "lot30": 154,
+        "ins30": 3260
+      },
+      "_id": "67adf28beb25eec68c52c7fe",
+      "name": "sadcatgamble",
+      "groupId": "2088887132",
+      "id": "67adf28beb25eec68c52c7fe"
+    },
+    "id": "682911eceb25eec68c928c96"
+  },
+  {
+    "token": {
+      "pa": "qrGDLDCDeyup15dyDWCAs942o5z5Y88t9PRVd6KxyxV",
+      "pairTimestamp": 1747520149,
+      "network": "solana",
+      "ca": "25X9nyQz6S61ZsVfFdxP7CEyVDkEU1wza5UwymDJpump",
+      "symbol": "CALLMEBABY",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/25X9nyQz6S61ZsVfFdxP7CEyVDkEU1wza5UwymDJpump.png?key=f0cfd7"
+    },
+    "trade": {
+      "buyPrice": 0.00003792025510826572,
+      "buyTimestamp": 1747521600,
+      "topPrice": 0.00006897968638285221,
+      "topTimestamp": 1747521960,
+      "roi": 1.8190723186304796,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6829105ceb25eec68c928c1f",
+    "groupId": "2116815656",
+    "__v": 0,
+    "groupName": "AltcoinAdventures",
+    "messageId": 6203,
+    "text": "Useless, but something new.\n\nCall to deploy.\n\n25X9nyQz6S61ZsVfFdxP7CEyVDkEU1wza5UwymDJpump\n\nhttps://x.com/callmebabyfun\nhttp://callmebaby.fun/\n\nQuick buy:\nMaestro🤖",
+    "timestamp": 1747521627,
+    "group": {
+      "stats": {
+        "callFrequency": 3.3,
+        "winRate30": 33,
+        "profit30": 2719,
+        "earlyTop50": 3,
+        "lot30": 82,
+        "ins30": 897
+      },
+      "_id": "67adf28aeb25eec68c52c59e",
+      "name": "AltcoinAdventures",
+      "groupId": "2116815656",
+      "id": "67adf28aeb25eec68c52c59e"
+    },
+    "id": "6829105ceb25eec68c928c1f"
+  },
+  {
+    "token": {
+      "pa": "6jAwMM5gyjxvBJutHweACrNDgHATiGzWP6kxfudDRDvP",
+      "pairTimestamp": 1747516612,
+      "network": "solana",
+      "ca": "bd8eZhS9a2jEtzUcVPcgwU7LXWNhTNSwPRJ6QAoDray",
+      "symbol": "ILLUSION"
+    },
+    "hidden": false,
+    "_id": "6828fecbeb25eec68c92871c",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29105,
+    "text": "🟢\n\n\nhttps://dexscreener.com/solana/6jawmm5gyjxvbjuthweacrndghatigzwp6kxfuddrdvp\n\nJoin ✈️  @TopCallersChannel",
+    "timestamp": 1747517129,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "6828fecbeb25eec68c92871c"
+  },
+  {
+    "token": {
+      "pa": "4FD1MZsJ65Sz2HTRJuAwXCMVJ1ndqtBEUaJ5pPvE4oL1",
+      "pairTimestamp": 1747510311,
+      "network": "solana",
+      "ca": "CEDFLgJUPHMGsAEJUTsZdrVrrAfU7ythx8YrSSzapump",
+      "symbol": "RAWDOG",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/CEDFLgJUPHMGsAEJUTsZdrVrrAfU7ythx8YrSSzapump.png?key=46c3ce"
+    },
+    "trade": {
+      "buyPrice": 0.0003884112585130553,
+      "buyTimestamp": 1747516800,
+      "topPrice": 0.00120145740218732,
+      "topTimestamp": 1747519200,
+      "roi": 3.093261010988271,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828fdb8eb25eec68c9286a5",
+    "groupId": "1936110610",
+    "__v": 0,
+    "groupName": "LuigisGambles",
+    "messageId": 4207,
+    "text": "A ca suggest by alon pumpfun onwer\n\nhttps://dexscreener.com/solana/4FD1MZsJ65Sz2HTRJuAwXCMVJ1ndqtBEUaJ5pPvE4oL1",
+    "timestamp": 1747516855,
+    "group": {
+      "stats": {
+        "callFrequency": 1.36,
+        "winRate30": 33,
+        "profit30": 1530,
+        "earlyTop50": 1,
+        "lot30": 46,
+        "ins30": 504
+      },
+      "_id": "67adf28aeb25eec68c52c6e0",
+      "name": "LuigisGambles",
+      "groupId": "1936110610",
+      "id": "67adf28aeb25eec68c52c6e0"
+    },
+    "id": "6828fdb8eb25eec68c9286a5"
+  },
+  {
+    "token": {
+      "pa": "VoBwfnNDSNYendQFtJm3EbNRvqQ43WRGJDRz4oXQbtU",
+      "pairTimestamp": 1747514955,
+      "network": "solana",
+      "ca": "ACV26usocqPE6p1TnZxRZMa26M3eXrCzDxrWV3pmpump",
+      "symbol": "PUMPSOHARD"
+    },
+    "hidden": false,
+    "_id": "6828f807eb25eec68c9284fd",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29103,
+    "text": "🟢\n\n\nhttps://dexscreener.com/solana/vobwfnndsnyendqftjm3ebnrvqq43wrgjdrz4oxqbtu\n\nAped $PUMPSOHARD\n\nHIGH RISKY 🚨🚨\n\nJoin ✈️  @TopCallersChannel",
+    "timestamp": 1747515397,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "6828f807eb25eec68c9284fd"
+  },
+  {
+    "token": {
+      "pa": "B1JkXQH1yvTQtRavmAStwoy2Pu54SsjLqfWphL9VwpGu",
+      "ca": "CfVs3waH2Z9TM397qSkaipTDhA9wWgtt8UchZKfwkYiu",
+      "network": "solana",
+      "symbol": "KNET",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/CfVs3waH2Z9TM397qSkaipTDhA9wWgtt8UchZKfwkYiu.png?key=19c232",
+      "pairTimestamp": 1747312545
+    },
+    "trade": {
+      "buyPrice": 0.006665705380091092,
+      "buyTimestamp": 1747514460,
+      "topPrice": 0.017852554703260425,
+      "topTimestamp": 1747522800,
+      "roi": 2.678269393151075,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828f481eb25eec68c9283f6",
+    "groupId": "1593046999",
+    "__v": 0,
+    "groupName": "VultureCalls",
+    "messageId": 5214,
+    "text": "CfVs3waH2Z9TM397qSkaipTDhA9wWgtt8UchZKfwkYiu\n\nPartnership with Ton and their AI agent went live \n\nhttps://x.com/ton_blockchain/status/1909477885594800164?s=46\n\nAI by a $7.5bn company\n\n6m",
+    "timestamp": 1747514496,
+    "group": {
+      "stats": {
+        "callFrequency": 0.69,
+        "winRate30": 33,
+        "profit30": 5346,
+        "earlyTop50": 1,
+        "lot30": 162,
+        "ins30": 1764
+      },
+      "_id": "67adf28aeb25eec68c52c680",
+      "name": "VultureCalls",
+      "groupId": "1593046999",
+      "id": "67adf28aeb25eec68c52c680"
+    },
+    "id": "6828f481eb25eec68c9283f6"
+  },
+  {
+    "token": {
+      "pa": "6L3wwvQnges45Bp6iD9ddfXJJ4XB2qk74PvJvMCca7xy",
+      "ca": "CYwvrqeCgMY8VhXjXUcHrYLhJWkkXzstY52hrkMypump",
+      "network": "solana",
+      "symbol": "GM",
+      "pairTimestamp": 1747511420
+    },
+    "hidden": false,
+    "_id": "6828eddceb25eec68c928205",
+    "groupId": "2088887132",
+    "__v": 0,
+    "groupName": "sadcatgamble",
+    "messageId": 8592,
+    "text": "Volume “gm” `CYwvrqeCgMY8VhXjXUcHrYLhJWkkXzstY52hrkMypump\n\n`Pf(prob intern) deploy` 5sq4dYagEqL8uh9f9ytnF8KSShseUNNE9UgQLSgUpump`",
+    "timestamp": 1747512792,
+    "group": {
+      "stats": {
+        "callFrequency": 1.51,
+        "winRate30": 46,
+        "profit30": 7087,
+        "earlyTop50": 1,
+        "lot30": 154,
+        "ins30": 3260
+      },
+      "_id": "67adf28beb25eec68c52c7fe",
+      "name": "sadcatgamble",
+      "groupId": "2088887132",
+      "id": "67adf28beb25eec68c52c7fe"
+    },
+    "id": "6828eddceb25eec68c928205"
+  },
+  {
+    "token": {
+      "pa": "6EVoMTG1DsNComAUECbBR8RyrQZqa7StoaLQseba2CjL",
+      "pairTimestamp": 1747510320,
+      "network": "solana",
+      "ca": "2NhoUWfCbM8V63aCpqdTk4tpf6AmP1Rq11zJvEWHpump",
+      "symbol": "FARTKMM",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/2NhoUWfCbM8V63aCpqdTk4tpf6AmP1Rq11zJvEWHpump.png?key=98be6a"
+    },
+    "trade": {
+      "buyPrice": 0.00018305020822781209,
+      "buyTimestamp": 1747512720,
+      "topPrice": 0.0004370407821165548,
+      "topTimestamp": 1747530000,
+      "roi": 2.3875459435295645,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828edb5eb25eec68c9281df",
+    "groupId": "2240713922",
+    "__v": 0,
+    "groupName": "DarthVadorsgems",
+    "messageId": 11310,
+    "text": "2NhoUWfCbM8V63aCpqdTk4tpf6AmP1Rq11zJvEWHpump fartcoin dev",
+    "timestamp": 1747512756,
+    "group": {
+      "stats": {
+        "callFrequency": 2.67,
+        "winRate30": 26,
+        "profit30": 344,
+        "earlyTop50": 1,
+        "lot30": 13,
+        "ins30": 89
+      },
+      "_id": "67adf28aeb25eec68c52c610",
+      "name": "DarthVadorsgems",
+      "groupId": "2240713922",
+      "id": "67adf28aeb25eec68c52c610"
+    },
+    "id": "6828edb5eb25eec68c9281df"
+  },
+  {
+    "token": {
+      "pa": "CQfYtJQpSTcsXxzjGCfs3GeKViEBQ2YAdAFHresGda17",
+      "pairTimestamp": 1744712102,
+      "network": "solana",
+      "ca": "5sq4dYagEqL8uh9f9ytnF8KSShseUNNE9UgQLSgUpump",
+      "symbol": "GM",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/5sq4dYagEqL8uh9f9ytnF8KSShseUNNE9UgQLSgUpump.png?key=6852db"
+    },
+    "trade": {
+      "buyPrice": 0.0006045601033767837,
+      "buyTimestamp": 1747512540,
+      "topPrice": 0.0008214539718103187,
+      "topTimestamp": 1747513380,
+      "roi": 1.3587631192036485,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828ed08eb25eec68c92819b",
+    "groupId": "2054466090",
+    "__v": 0,
+    "groupName": "casgem",
+    "messageId": 12140,
+    "text": "https://dexscreener.com/solana/cqfytjqpstcsxxzjgcfs3gekviebq2yadafhresgda17",
+    "timestamp": 1747512582,
+    "group": {
+      "stats": {
+        "callFrequency": 2.85,
+        "winRate30": 36,
+        "profit30": 1427,
+        "earlyTop50": 1,
+        "lot30": 39,
+        "ins30": 513
+      },
+      "_id": "67adf28aeb25eec68c52c4f0",
+      "name": "casgem",
+      "groupId": "2054466090",
+      "id": "67adf28aeb25eec68c52c4f0"
+    },
+    "id": "6828ed08eb25eec68c92819b"
+  },
+  {
+    "token": {
+      "pa": "0xA387B91A5966E7D568891A4898B855C48c705DcA",
+      "pairTimestamp": 1747509875,
+      "network": "ethereum",
+      "ca": "0x7DaA85ae88B341dF745b04e837EBFECc3Ba4826f",
+      "symbol": "OPTIMAX"
+    },
+    "trade": {
+      "buyPrice": 0.00000589419724969489,
+      "buyTimestamp": 1747512480,
+      "topPrice": 0.00000849546137408895,
+      "topTimestamp": 1747512780,
+      "roi": 1.4413262763693078,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828ece0eb25eec68c92817e",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29102,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x7DaA85ae88B341dF745b04e837EBFECc3Ba4826f\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747512543,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "6828ece0eb25eec68c92817e"
+  },
+  {
+    "token": {
+      "pa": "0x68E0a1D211dd2cE59683089fFc79A710383a5B28",
+      "pairTimestamp": 1747512119,
+      "network": "ethereum",
+      "ca": "0x5EFF4849E7AF817760314DdDf8d701F5faBEe4F8",
+      "symbol": "OPTIMIUS"
+    },
+    "trade": {
+      "buyPrice": 2.2500248020962e-8,
+      "buyTimestamp": 1747512180,
+      "topPrice": 2.02603067353396e-7,
+      "topTimestamp": 1747522800,
+      "roi": 9.004481513476831,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828eb8feb25eec68c928113",
+    "groupId": "2116815656",
+    "__v": 0,
+    "groupName": "AltcoinAdventures",
+    "messageId": 6202,
+    "text": "Gamble ⚠️⚠️\n\n0x5EFF4849E7AF817760314DdDf8d701F5faBEe4F8",
+    "timestamp": 1747512206,
+    "group": {
+      "stats": {
+        "callFrequency": 3.3,
+        "winRate30": 33,
+        "profit30": 2719,
+        "earlyTop50": 3,
+        "lot30": 82,
+        "ins30": 897
+      },
+      "_id": "67adf28aeb25eec68c52c59e",
+      "name": "AltcoinAdventures",
+      "groupId": "2116815656",
+      "id": "67adf28aeb25eec68c52c59e"
+    },
+    "id": "6828eb8feb25eec68c928113"
+  },
+  {
+    "token": {
+      "pa": "14VufdKaV7ZLTXco1H2WnZMYVi1yxPNkb19U3DF8gn3t",
+      "ca": "9X3RVxesGoac5UY1T5z9C8dbiFXv1eDmapq7Xna8xnhM",
+      "network": "solana",
+      "symbol": "FARTKMM",
+      "pairTimestamp": 1747507689
+    },
+    "hidden": false,
+    "_id": "6828ea2eeb25eec68c928090",
+    "groupId": "2054466090",
+    "__v": 0,
+    "groupName": "casgem",
+    "messageId": 12137,
+    "text": "https://dexscreener.com/solana/9X3RVxesGoac5UY1T5z9C8dbiFXv1eDmapq7Xna8xnhM?id=49lcdblb",
+    "timestamp": 1747511838,
+    "group": {
+      "stats": {
+        "callFrequency": 2.85,
+        "winRate30": 36,
+        "profit30": 1427,
+        "earlyTop50": 1,
+        "lot30": 39,
+        "ins30": 513
+      },
+      "_id": "67adf28aeb25eec68c52c4f0",
+      "name": "casgem",
+      "groupId": "2054466090",
+      "id": "67adf28aeb25eec68c52c4f0"
+    },
+    "id": "6828ea2eeb25eec68c928090"
+  },
+  {
+    "token": {
+      "pa": "6L3wwvQnges45Bp6iD9ddfXJJ4XB2qk74PvJvMCca7xy",
+      "pairTimestamp": 1747511420,
+      "network": "solana",
+      "ca": "CYwvrqeCgMY8VhXjXUcHrYLhJWkkXzstY52hrkMypump",
+      "symbol": "GM"
+    },
+    "trade": {
+      "buyPrice": 0.0002591501716869205,
+      "buyTimestamp": 1747511580,
+      "topPrice": 0.0016860927102963204,
+      "topTimestamp": 1747511940,
+      "roi": 6.506238060043772,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828e938eb25eec68c92803e",
+    "groupId": "1936110610",
+    "__v": 0,
+    "groupName": "LuigisGambles",
+    "messageId": 4199,
+    "text": "CYwvrqeCgMY8VhXjXUcHrYLhJWkkXzstY52hrkMypump gambled here now.",
+    "timestamp": 1747511607,
+    "group": {
+      "stats": {
+        "callFrequency": 1.36,
+        "winRate30": 33,
+        "profit30": 1530,
+        "earlyTop50": 1,
+        "lot30": 46,
+        "ins30": 504
+      },
+      "_id": "67adf28aeb25eec68c52c6e0",
+      "name": "LuigisGambles",
+      "groupId": "1936110610",
+      "id": "67adf28aeb25eec68c52c6e0"
+    },
+    "id": "6828e938eb25eec68c92803e"
+  },
+  {
+    "token": {
+      "pa": "Ft4gE3wm6EWkN6t4Tfp1aGoAftEjdxLQ2PNvvK5kJcmg",
+      "pairTimestamp": 1747511215,
+      "network": "solana",
+      "ca": "BE18cbEW5g7FjCVvMfYZq7Pk9N5RcLGCF357fniQtah",
+      "symbol": "$100M"
+    },
+    "trade": {
+      "buyPrice": 0.000153281558220717,
+      "buyTimestamp": 1747511280,
+      "topPrice": 0.0002763590363727645,
+      "topTimestamp": 1747511340,
+      "roi": 1.8029503325822323,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828e7f8eb25eec68c927fd4",
+    "groupId": "1523240618",
+    "__v": 0,
+    "groupName": "mewgambles",
+    "messageId": 4803,
+    "text": "🪙 $100M pumpfun tweet. lots of volume. following the volume.\n\nBE18cbEW5g7FjCVvMfYZq7Pk9N5RcLGCF357fniQtah",
+    "timestamp": 1747511286,
+    "group": {
+      "stats": {
+        "callFrequency": 3.56,
+        "winRate30": 26,
+        "profit30": 1277,
+        "earlyTop50": 1,
+        "lot30": 49,
+        "ins30": 332
+      },
+      "_id": "67adf28aeb25eec68c52c552",
+      "name": "mewgambles",
+      "groupId": "1523240618",
+      "id": "67adf28aeb25eec68c52c552"
+    },
+    "id": "6828e7f8eb25eec68c927fd4"
+  },
+  {
+    "token": {
+      "pa": "14VufdKaV7ZLTXco1H2WnZMYVi1yxPNkb19U3DF8gn3t",
+      "pairTimestamp": 1747507689,
+      "network": "solana",
+      "ca": "9X3RVxesGoac5UY1T5z9C8dbiFXv1eDmapq7Xna8xnhM",
+      "symbol": "FARTKMM"
+    },
+    "trade": {
+      "buyPrice": 0.0004606958421762476,
+      "buyTimestamp": 1747509960,
+      "topPrice": 0.0019370653465780813,
+      "topTimestamp": 1747510740,
+      "roi": 4.204651245445844,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828e2f4eb25eec68c927e62",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29100,
+    "text": "🟢\n\n\nhttps://dexscreener.com/solana/9X3RVxesGoac5UY1T5z9C8dbiFXv1eDmapq7Xna8xnhM\n\n$FARTKMM. 👀\n\nJoin ✈️  @TopCallersChannel",
+    "timestamp": 1747510003,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "6828e2f4eb25eec68c927e62"
+  },
+  {
+    "token": {
+      "pa": "0x51B6E15Ea472AE056FFB2250D54aeb02B0E46bAF",
+      "ca": "0x0E4B68F6EC53bbDEe439989040cd5E8D58b14444",
+      "network": "bsc",
+      "symbol": "LFC",
+      "pairTimestamp": 1747506663
+    },
+    "trade": {
+      "buyPrice": 0.000143773401113859,
+      "buyTimestamp": 1747507320,
+      "topPrice": 0.000147799217465297,
+      "topTimestamp": 1747507740,
+      "roi": 1.0280011206540896,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828d8adeb25eec68c927b89",
+    "groupId": "1593046999",
+    "__v": 0,
+    "groupName": "VultureCalls",
+    "messageId": 5213,
+    "text": "Bsc play\n\n0x0e4b68f6ec53bbdee439989040cd5e8d58b14444\n\nhttps://t.me/LaunchFour\nhttps://twitter.com/LaunchFourCoin\nhttps://launchfourcoin.live/\n\n130k",
+    "timestamp": 1747507373,
+    "group": {
+      "stats": {
+        "callFrequency": 0.69,
+        "winRate30": 33,
+        "profit30": 5346,
+        "earlyTop50": 1,
+        "lot30": 162,
+        "ins30": 1764
+      },
+      "_id": "67adf28aeb25eec68c52c680",
+      "name": "VultureCalls",
+      "groupId": "1593046999",
+      "id": "67adf28aeb25eec68c52c680"
+    },
+    "id": "6828d8adeb25eec68c927b89"
+  },
+  {
+    "token": {
+      "pa": "0x51B6E15Ea472AE056FFB2250D54aeb02B0E46bAF",
+      "ca": "0x0E4B68F6EC53bbDEe439989040cd5E8D58b14444",
+      "network": "bsc",
+      "symbol": "LFC",
+      "pairTimestamp": 1747506663
+    },
+    "trade": {
+      "buyPrice": 0.0000970080966717452,
+      "buyTimestamp": 1747507260,
+      "topPrice": 0.000147799217465297,
+      "topTimestamp": 1747507740,
+      "roi": 1.523576098657189,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828d842eb25eec68c927b60",
+    "groupId": "1708344141",
+    "__v": 0,
+    "groupName": "slavaearlygambles",
+    "messageId": 1915,
+    "text": "0x0e4b68f6ec53bbdee439989040cd5e8d58b14444\n\nGood tech on bsc\n\nRisky af",
+    "timestamp": 1747507265,
+    "group": {
+      "stats": {
+        "callFrequency": 0.33,
+        "winRate30": 30,
+        "profit30": 39468,
+        "earlyTop50": 1,
+        "lot30": 1315,
+        "ins30": 11840
+      },
+      "_id": "67adf28aeb25eec68c52c6f0",
+      "name": "slavaearlygambles",
+      "groupId": "1708344141",
+      "id": "67adf28aeb25eec68c52c6f0"
+    },
+    "id": "6828d842eb25eec68c927b60"
+  },
+  {
+    "token": {
+      "pa": "0x51B6E15Ea472AE056FFB2250D54aeb02B0E46bAF",
+      "pairTimestamp": 1747506663,
+      "network": "bsc",
+      "ca": "0x0E4B68F6EC53bbDEe439989040cd5E8D58b14444",
+      "symbol": "LFC"
+    },
+    "trade": {
+      "buyPrice": 0.000043470244752592,
+      "buyTimestamp": 1747506660,
+      "topPrice": 0.000147799217465297,
+      "topTimestamp": 1747507740,
+      "roi": 3.4000088636833397,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828d615eb25eec68c927abc",
+    "groupId": "2116815656",
+    "__v": 0,
+    "groupName": "AltcoinAdventures",
+    "messageId": 6199,
+    "text": "Bsc play\n\n0x0e4b68f6ec53bbdee439989040cd5e8d58b14444",
+    "timestamp": 1747506707,
+    "group": {
+      "stats": {
+        "callFrequency": 3.3,
+        "winRate30": 33,
+        "profit30": 2719,
+        "earlyTop50": 3,
+        "lot30": 82,
+        "ins30": 897
+      },
+      "_id": "67adf28aeb25eec68c52c59e",
+      "name": "AltcoinAdventures",
+      "groupId": "2116815656",
+      "id": "67adf28aeb25eec68c52c59e"
+    },
+    "id": "6828d615eb25eec68c927abc"
+  },
+  {
+    "token": {
+      "pa": "0x7C3A1a9e6a9789801307A8A54a3103DB9301adc9",
+      "pairTimestamp": 1735737731,
+      "network": "ethereum",
+      "ca": "0xf9Cd960DA57ce6FADfD762C5355E3E107A869f54",
+      "symbol": "DOGEUS",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0xf9cd960da57ce6fadfd762c5355e3e107a869f54.png?key=577fac"
+    },
+    "trade": {
+      "buyPrice": 0.0000555569853274558,
+      "buyTimestamp": 1747504680,
+      "topPrice": 0.0000563826672193515,
+      "topTimestamp": 1747508400,
+      "roi": 1.0148618915700536,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828cf3ceb25eec68c9278d8",
+    "groupId": "2007360534",
+    "__v": 0,
+    "groupName": "rHoodGems",
+    "messageId": 530,
+    "text": "0xf9Cd960DA57ce6FADfD762C5355E3E107A869f54\n\nGamble 50k",
+    "timestamp": 1747504955,
+    "group": {
+      "stats": {
+        "callFrequency": 0.24,
+        "winRate30": 36,
+        "profit30": 241661,
+        "earlyTop50": 2,
+        "lot30": 6712,
+        "ins30": 86997
+      },
+      "_id": "67adf28beb25eec68c52c872",
+      "name": "rHoodGems",
+      "groupId": "2007360534",
+      "id": "67adf28beb25eec68c52c872"
+    },
+    "id": "6828cf3ceb25eec68c9278d8"
+  },
+  {
+    "token": {
+      "pa": "5Nhc7jBVxecnsA3BKXzuznNjWKtbYjWWSMfP8vEW1P87",
+      "pairTimestamp": 1747493559,
+      "network": "solana",
+      "ca": "9AmXAJUk2HKSDAynfhGoJMw22rGNN12oAC2xcjzmpump",
+      "symbol": "TUSYA",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/9AmXAJUk2HKSDAynfhGoJMw22rGNN12oAC2xcjzmpump.png?key=e10be0"
+    },
+    "trade": {
+      "buyPrice": 0.00018031083322587446,
+      "buyTimestamp": 1747503060,
+      "topPrice": 0.0004614693020494743,
+      "topTimestamp": 1747522800,
+      "roi": 2.5592988163467365,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828c7fceb25eec68c9276c7",
+    "groupId": "1756488143",
+    "__v": 0,
+    "groupName": "lowtaxsolana",
+    "messageId": 17473,
+    "text": "TUSYAA the cat 🟣🔵⚪️\n\nIntroducing $TUSYA — the meme coin from the TikTok star with 8.8 million followers! 🐱 $TUSYA isn't just a cat; it's a true internet idol that has captured the hearts of millions with its adorable antics and funny moments.\n\nhttps://dexscreener.com/solana/5nhc7jbvxecnsa3bkxzuznnjwktbyjwwsmfp8vew1p87\n\nhttps://www.tiktok.com/@_tusya_kiskis\n\n9AmXAJUk2HKSDAynfhGoJMw22rGNN12oAC2xcjzmpump\n\nPromote your token with lowtaxcrypto.net",
+    "timestamp": 1747503096,
+    "group": {
+      "stats": {
+        "callFrequency": 4.96,
+        "winRate30": 33,
+        "profit30": 1150,
+        "earlyTop50": 1,
+        "lot30": 34,
+        "ins30": 379
+      },
+      "_id": "67adf28aeb25eec68c52c64a",
+      "name": "lowtaxsolana",
+      "groupId": "1756488143",
+      "id": "67adf28aeb25eec68c52c64a"
+    },
+    "id": "6828c7fceb25eec68c9276c7"
+  },
+  {
+    "token": {
+      "pa": "ncsxWXzy4qxEiDmYDDpZiBPRe5FqiMzRfm6pXNHTTQU",
+      "pairTimestamp": 1747501987,
+      "network": "solana",
+      "ca": "G6qxkek3bvvotwSCnFkQsMF5qAjxFsrfcwks9tn1bonk",
+      "symbol": "NITRO"
+    },
+    "hidden": false,
+    "_id": "6828c6dbeb25eec68c927666",
+    "groupId": "1983450418",
+    "__v": 0,
+    "groupName": "shitcoinneverland",
+    "messageId": 13451,
+    "text": "G6qxkek3bvvotwSCnFkQsMF5qAjxFsrfcwks9tn1bonk",
+    "timestamp": 1747502809,
+    "group": {
+      "stats": {
+        "callFrequency": 2.79,
+        "winRate30": 30,
+        "profit30": 1198,
+        "earlyTop50": 3,
+        "lot30": 39,
+        "ins30": 359
+      },
+      "_id": "67adf28aeb25eec68c52c554",
+      "name": "shitcoinneverland",
+      "groupId": "1983450418",
+      "id": "67adf28aeb25eec68c52c554"
+    },
+    "id": "6828c6dbeb25eec68c927666"
+  },
+  {
+    "token": {
+      "pa": "AEiqZqS6GPPSQNbHBAZGY1TaLZvHehDvkwtDMA3vVikP",
+      "pairTimestamp": 1747500829,
+      "network": "solana",
+      "ca": "cdwmqcpjcqzrvVsKYANCdGkdvGG8H5rpeKVT9YZpump",
+      "symbol": "LOPS",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/cdwmqcpjcqzrvVsKYANCdGkdvGG8H5rpeKVT9YZpump.png?key=2de2be"
+    },
+    "trade": {
+      "buyPrice": 0.00008553704714423238,
+      "buyTimestamp": 1747501200,
+      "topPrice": 0.00028958969229629655,
+      "topTimestamp": 1747504020,
+      "roi": 3.3855469877045326,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828c0a6eb25eec68c927497",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13597,
+    "text": "**#SOL**** ****🪙**** ****🪙****$LOPS****\n\nDyor/NFA 80K MCAP\n\nCA**: `cdwmqcpjcqzrvVsKYANCdGkdvGG8H5rpeKVT9YZpump`\n\n🤑Buy Bot🤑__Buy on MevX__",
+    "timestamp": 1747501218,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "6828c0a6eb25eec68c927497"
+  },
+  {
+    "token": {
+      "pa": "2n47n76b4FxKnKT2wn4tXQk2EWKawzpH8nWCyVxAriyX",
+      "ca": "vXn1KKT46PYKYHLyAuhVv6pWAXQxRcobxaBowGe4JRx",
+      "network": "solana",
+      "symbol": "ATTAC",
+      "pairTimestamp": 1747494288
+    },
+    "trade": {
+      "buyPrice": 0.00018816984328582728,
+      "buyTimestamp": 1747500000,
+      "topPrice": 0.000278184452803235,
+      "topTimestamp": 1747504800,
+      "roi": 1.478368945552433,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828bc0feb25eec68c92734b",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29098,
+    "text": "🟢\n\n\nhttps://dexscreener.com/solana/2n47n76b4fxknkt2wn4txqk2ewkawzph8nwcyvxariyx\n\nAped $ATTAC\n\nGAMBLE\n\nJoin ✈️  @TopCallersChannel",
+    "timestamp": 1747500046,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "6828bc0feb25eec68c92734b"
+  },
+  {
+    "token": {
+      "pa": "J43qZeG6ADaW7zs3TCmjwGzHnetxb2vLY3wv8pvYvxr1",
+      "pairTimestamp": 1747499687,
+      "network": "solana",
+      "ca": "4TL25casZm6M5tq26FGdfmEcoGN7EzWgoTVy2C2Rpump",
+      "symbol": "XX_XX"
+    },
+    "hidden": false,
+    "_id": "6828bb16eb25eec68c9272eb",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13596,
+    "text": "**#SOL**** ****🪙**** ****🪙****$xX_Xx\n\nDyor/NFA 50K MCAP\n\nCA**: `4TL25casZm6M5tq26FGdfmEcoGN7EzWgoTVy2C2Rpump`\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747499796,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "6828bb16eb25eec68c9272eb"
+  },
+  {
+    "token": {
+      "pa": "6htGWMdVqY2XZ98KJ1MtuqWg1sHHRq9fPCSXMu5aSSM8",
+      "pairTimestamp": 1747499453,
+      "network": "solana",
+      "ca": "6Unk3HjxwMj7XxhV6EzjkH5oiNyoopUoEYai9CyUUhsh",
+      "symbol": "GORKIT"
+    },
+    "trade": {
+      "buyPrice": 0.00007367608310235512,
+      "buyTimestamp": 1747499460,
+      "topPrice": 0.00010785653349858462,
+      "topTimestamp": 1747500000,
+      "roi": 1.4639287127783926,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828ba02eb25eec68c927288",
+    "groupId": "1523523939",
+    "__v": 0,
+    "groupName": "DegenSeals",
+    "messageId": 12272,
+    "text": "🪙 $Gorkit\n\nDegenning some here,  this was test token launched by Launch on pump https://x.com/LaunchOnPump/status/1923506985301107066\n\n```6Unk3HjxwMj7XxhV6EzjkH5oiNyoopUoEYai9CyUUhsh```\n\nhttps://axiom.trade/t/6Unk3HjxwMj7XxhV6EzjkH5oiNyoopUoEYai9CyUUhsh/@princexsa",
+    "timestamp": 1747499518,
+    "group": {
+      "stats": {
+        "callFrequency": 2.46,
+        "winRate30": 30,
+        "profit30": 854,
+        "earlyTop50": 1,
+        "lot30": 28,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c5d6",
+      "name": "DegenSeals",
+      "groupId": "1523523939",
+      "id": "67adf28aeb25eec68c52c5d6"
+    },
+    "id": "6828ba02eb25eec68c927288"
+  },
+  {
+    "token": {
+      "pa": "Gxw91tKQ3228cNLDWg4UDB93nscbeVmaxwiCd72dPemk",
+      "ca": "H88NR6BLs1w8KxjTttbgbE6SBfEc9zKHqFdQ97Wqpump",
+      "network": "solana",
+      "symbol": "PIZZA",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/H88NR6BLs1w8KxjTttbgbE6SBfEc9zKHqFdQ97Wqpump.png?key=76ace0",
+      "pairTimestamp": 1747434067
+    },
+    "trade": {
+      "buyPrice": 0.00006629607356132671,
+      "buyTimestamp": 1747499100,
+      "topPrice": 0.000251825224834342,
+      "topTimestamp": 1747515600,
+      "roi": 3.7984938067469844,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828b868eb25eec68c92720e",
+    "groupId": "1983450418",
+    "__v": 0,
+    "groupName": "shitcoinneverland",
+    "messageId": 13442,
+    "text": "H88NR6BLs1w8KxjTttbgbE6SBfEc9zKHqFdQ97Wqpump",
+    "timestamp": 1747499111,
+    "group": {
+      "stats": {
+        "callFrequency": 2.79,
+        "winRate30": 30,
+        "profit30": 1198,
+        "earlyTop50": 3,
+        "lot30": 39,
+        "ins30": 359
+      },
+      "_id": "67adf28aeb25eec68c52c554",
+      "name": "shitcoinneverland",
+      "groupId": "1983450418",
+      "id": "67adf28aeb25eec68c52c554"
+    },
+    "id": "6828b868eb25eec68c92720e"
+  },
+  {
+    "token": {
+      "pa": "75YrV1J7swpgZEazAKoowS4rTENu5Z8EcP2nKkxqjtVh",
+      "ca": "23cB5pvtxCL1Kj7cSrqAnz35suoTJbCCcryPVUhfAHsa",
+      "network": "solana",
+      "symbol": "PUFF",
+      "pairTimestamp": 1747473126
+    },
+    "trade": {
+      "buyPrice": 0.0001672179326691782,
+      "buyTimestamp": 1747498620,
+      "topPrice": 0.00019959659138532677,
+      "topTimestamp": 1747500660,
+      "roi": 1.1936314975272782,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828b6aceb25eec68c927184",
+    "groupId": "1983450418",
+    "__v": 0,
+    "groupName": "shitcoinneverland",
+    "messageId": 13438,
+    "text": "23cB5pvtxCL1Kj7cSrqAnz35suoTJbCCcryPVUhfAHsa",
+    "timestamp": 1747498667,
+    "group": {
+      "stats": {
+        "callFrequency": 2.79,
+        "winRate30": 30,
+        "profit30": 1198,
+        "earlyTop50": 3,
+        "lot30": 39,
+        "ins30": 359
+      },
+      "_id": "67adf28aeb25eec68c52c554",
+      "name": "shitcoinneverland",
+      "groupId": "1983450418",
+      "id": "67adf28aeb25eec68c52c554"
+    },
+    "id": "6828b6aceb25eec68c927184"
+  },
+  {
+    "token": {
+      "pa": "EaUiSjDuu9L3k65MDcDVvw88dQGXYrcfjVkmNPRaaMGj",
+      "pairTimestamp": 1747496184,
+      "network": "solana",
+      "ca": "5fzpDYpJUicFMTmGTxDJyLNVntpKe6QMerQDrFfXpump",
+      "symbol": "AMIDA"
+    },
+    "trade": {
+      "buyPrice": 0.00016622842254624244,
+      "buyTimestamp": 1747496580,
+      "topPrice": 0.0003815798733611414,
+      "topTimestamp": 1747497420,
+      "roi": 2.2955152164485657,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828ae8eeb25eec68c926f03",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13594,
+    "text": "**#SOL**** ****🪙**** ****🪙****$Amida\n\nDyor/NFA 170K MCAP\n\nCA**: `5fzpDYpJUicFMTmGTxDJyLNVntpKe6QMerQDrFfXpump`\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747496588,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "6828ae8eeb25eec68c926f03"
+  },
+  {
+    "token": {
+      "pa": "4QTQR1PVaqDaGbJW4g2zg1MFDHCGr2QUTEKG36VowWr5",
+      "pairTimestamp": 1747486136,
+      "network": "solana",
+      "ca": "7s6TBuZmLfvyqPh8MTJqQSeyxgF6P62QFNn237Lmpump",
+      "symbol": "COMMUNITY",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/7s6TBuZmLfvyqPh8MTJqQSeyxgF6P62QFNn237Lmpump.png?key=050c0b"
+    },
+    "trade": {
+      "buyPrice": 0.0008360356857626532,
+      "buyTimestamp": 1747496520,
+      "topPrice": 0.00101555385833311,
+      "topTimestamp": 1747501200,
+      "roi": 1.2147254903439866,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828ae68eb25eec68c926ee5",
+    "groupId": "1523240618",
+    "__v": 0,
+    "groupName": "mewgambles",
+    "messageId": 4802,
+    "text": "🪙 $community cool concept. make the biggest crypto X community. it hit 3.5m and is at 800k now. trying the dip here\n\n7s6TBuZmLfvyqPh8MTJqQSeyxgF6P62QFNn237Lmpump",
+    "timestamp": 1747496550,
+    "group": {
+      "stats": {
+        "callFrequency": 3.56,
+        "winRate30": 26,
+        "profit30": 1277,
+        "earlyTop50": 1,
+        "lot30": 49,
+        "ins30": 332
+      },
+      "_id": "67adf28aeb25eec68c52c552",
+      "name": "mewgambles",
+      "groupId": "1523240618",
+      "id": "67adf28aeb25eec68c52c552"
+    },
+    "id": "6828ae68eb25eec68c926ee5"
+  },
+  {
+    "token": {
+      "pa": "2n47n76b4FxKnKT2wn4tXQk2EWKawzpH8nWCyVxAriyX",
+      "pairTimestamp": 1747494288,
+      "network": "solana",
+      "ca": "vXn1KKT46PYKYHLyAuhVv6pWAXQxRcobxaBowGe4JRx",
+      "symbol": "ATTAC"
+    },
+    "trade": {
+      "buyPrice": 0.00017261671347085545,
+      "buyTimestamp": 1747495560,
+      "topPrice": 0.000278184452803235,
+      "topTimestamp": 1747504800,
+      "roi": 1.6115731044213375,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828aaa2eb25eec68c926dd1",
+    "groupId": "2054466090",
+    "__v": 0,
+    "groupName": "casgem",
+    "messageId": 12132,
+    "text": "https://dexscreener.com/solana/2n47n76b4FxKnKT2wn4tXQk2EWKawzpH8nWCyVxAriyX\nlast time believe in stacc dev\nhttps://staccattac.fun/",
+    "timestamp": 1747495584,
+    "group": {
+      "stats": {
+        "callFrequency": 2.85,
+        "winRate30": 36,
+        "profit30": 1427,
+        "earlyTop50": 1,
+        "lot30": 39,
+        "ins30": 513
+      },
+      "_id": "67adf28aeb25eec68c52c4f0",
+      "name": "casgem",
+      "groupId": "2054466090",
+      "id": "67adf28aeb25eec68c52c4f0"
+    },
+    "id": "6828aaa2eb25eec68c926dd1"
+  },
+  {
+    "token": {
+      "pa": "EB73naUnHSRiB1Za6nroUS5qdnHJTUqZbTFnjnKuczZ6",
+      "pairTimestamp": 1747494280,
+      "network": "solana",
+      "ca": "HcJGaTo6WpcXcLapqhsULfV5yP5y9S6vs9TUxV8pump",
+      "symbol": "VOC",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/HcJGaTo6WpcXcLapqhsULfV5yP5y9S6vs9TUxV8pump.png?key=1a0223"
+    },
+    "trade": {
+      "buyPrice": 0.000023712978310058953,
+      "buyTimestamp": 1747494660,
+      "topPrice": 0.000049704602095513635,
+      "topTimestamp": 1747494960,
+      "roi": 2.0960927575440467,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828a713eb25eec68c926ccd",
+    "groupId": "2097924459",
+    "__v": 0,
+    "groupName": "alphagemsxplorer",
+    "messageId": 852,
+    "text": "**GAMBLE HERE**\n\nContract address: `HcJGaTo6WpcXcLapqhsULfV5yP5y9S6vs9TUxV8pump`\n\n**~ ALWAYS DYOR ~**",
+    "timestamp": 1747494674,
+    "group": {
+      "stats": {
+        "callFrequency": 0.19,
+        "winRate30": 65,
+        "profit30": 18559,
+        "earlyTop50": 0,
+        "lot30": 285,
+        "ins30": 12063
+      },
+      "_id": "67eb9b48b7a7be06f8bb835c",
+      "name": "alphagemsxplorer",
+      "groupId": "2097924459",
+      "id": "67eb9b48b7a7be06f8bb835c"
+    },
+    "id": "6828a713eb25eec68c926ccd"
+  },
+  {
+    "token": {
+      "pa": "AiZX5csv17jX7CgP8WmZACqxN9ZiXf3WirkoeikGBNNE",
+      "ca": "2pegqDj8Kn1L2Nv7MFQevSPXsz48ApmYSukihyjspump",
+      "network": "solana",
+      "symbol": "SPACES",
+      "pairTimestamp": 1747493797
+    },
+    "hidden": false,
+    "_id": "6828a4bdeb25eec68c926c1b",
+    "groupId": "2161078179",
+    "__v": 0,
+    "groupName": "chengambles",
+    "messageId": 2012,
+    "text": "Gambled\n\nhttps://pump.fun/coin/2pegqDj8Kn1L2Nv7MFQevSPXsz48ApmYSukihyjspump",
+    "timestamp": 1747494077,
+    "group": {
+      "stats": {
+        "callFrequency": 0.89,
+        "winRate30": 26,
+        "profit30": 871,
+        "earlyTop50": 1,
+        "lot30": 33,
+        "ins30": 226
+      },
+      "_id": "67adf28aeb25eec68c52c5fc",
+      "name": "chengambles",
+      "groupId": "2161078179",
+      "id": "67adf28aeb25eec68c52c5fc"
+    },
+    "id": "6828a4bdeb25eec68c926c1b"
+  },
+  {
+    "token": {
+      "pa": "AiZX5csv17jX7CgP8WmZACqxN9ZiXf3WirkoeikGBNNE",
+      "pairTimestamp": 1747493797,
+      "network": "solana",
+      "ca": "2pegqDj8Kn1L2Nv7MFQevSPXsz48ApmYSukihyjspump",
+      "symbol": "SPACES"
+    },
+    "hidden": false,
+    "_id": "6828a41deb25eec68c926bd6",
+    "groupId": "1936110610",
+    "__v": 0,
+    "groupName": "LuigisGambles",
+    "messageId": 4192,
+    "text": "Ape\n\nhttps://dexscreener.com/solana/AiZX5csv17jX7CgP8WmZACqxN9ZiXf3WirkoeikGBNNE",
+    "timestamp": 1747493915,
+    "group": {
+      "stats": {
+        "callFrequency": 1.36,
+        "winRate30": 33,
+        "profit30": 1530,
+        "earlyTop50": 1,
+        "lot30": 46,
+        "ins30": 504
+      },
+      "_id": "67adf28aeb25eec68c52c6e0",
+      "name": "LuigisGambles",
+      "groupId": "1936110610",
+      "id": "67adf28aeb25eec68c52c6e0"
+    },
+    "id": "6828a41deb25eec68c926bd6"
+  },
+  {
+    "token": {
+      "pa": "Fhg2QcTH9Ha3wYXwaZV8a92Ambe9tPbBE97oiX6Q9XDC",
+      "pairTimestamp": 1747485677,
+      "network": "solana",
+      "ca": "H7xJEp3eCEYozScbZKZoL7kSAXnJV7VEUGkksx6dpump",
+      "symbol": "XET",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/H7xJEp3eCEYozScbZKZoL7kSAXnJV7VEUGkksx6dpump.png?key=5a6aa0"
+    },
+    "trade": {
+      "buyPrice": 0.00039101804405605614,
+      "buyTimestamp": 1747493460,
+      "topPrice": 0.000447477737784681,
+      "topTimestamp": 1747501200,
+      "roi": 1.1443915302295635,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828a262eb25eec68c926b4f",
+    "groupId": "1682311744",
+    "__v": 0,
+    "groupName": "GarudaJpCalls",
+    "messageId": 11297,
+    "text": "jajal satu lagi \n\nXET\n\nhttp://t.me/maestro?start=H7xJEp3eCEYozScbZKZoL7kSAXnJV7VEUGkksx6dpump-riosukarya\n\nmasak iyah bau mulu wakwakawk",
+    "timestamp": 1747493472,
+    "group": {
+      "stats": {
+        "callFrequency": 0.55,
+        "winRate30": 40,
+        "profit30": 75814,
+        "earlyTop50": 1,
+        "lot30": 1895,
+        "ins30": 30325
+      },
+      "_id": "67adf28aeb25eec68c52c504",
+      "name": "GarudaJpCalls",
+      "groupId": "1682311744",
+      "id": "67adf28aeb25eec68c52c504"
+    },
+    "id": "6828a262eb25eec68c926b4f"
+  },
+  {
+    "token": {
+      "pa": "DzH5aS2n7bxxW2kg3LSJy2uTUK4UK6VMres8qsCSovP9",
+      "pairTimestamp": 1747492705,
+      "network": "solana",
+      "ca": "EwEJgQDDJGpSUu2NywkDTxEnph4HN4pf8HTWshsMpump",
+      "symbol": "LOD"
+    },
+    "trade": {
+      "buyPrice": 0.00015511256184267395,
+      "buyTimestamp": 1747492980,
+      "topPrice": 0.0002489260632112513,
+      "topTimestamp": 1747493340,
+      "roi": 1.6048091802115265,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828a07feb25eec68c926aae",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13591,
+    "text": "**#SOL**** ****🪙**** ****🪙****$LOD****\n\nDyor/NFA 100K MCAP\n\nCA**: `EwEJgQDDJGpSUu2NywkDTxEnph4HN4pf8HTWshsMpump`\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747492987,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "6828a07feb25eec68c926aae"
+  },
+  {
+    "token": {
+      "pa": "ERi8ocKULnXKkBiyKYu5oL9XGFfFFmYjqiaqVyB6WMp1",
+      "pairTimestamp": 1747490308,
+      "network": "solana",
+      "ca": "F2CvRDMkhkKq41uNtsBkFH4gAxU7kzMGPguFQqp3pump",
+      "symbol": "SAFLE",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/F2CvRDMkhkKq41uNtsBkFH4gAxU7kzMGPguFQqp3pump.png?key=f85c31"
+    },
+    "trade": {
+      "buyPrice": 0.00012835282013777674,
+      "buyTimestamp": 1747491300,
+      "topPrice": 0.0002848411840698708,
+      "topTimestamp": 1747492980,
+      "roi": 2.2192047184013255,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682899efeb25eec68c9268d8",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13590,
+    "text": "**#SOL**** ****🪙**** ****🪙****$SAFLE****\n\nDyor/NFA 100K MCAP\n\nCA**: `F2CvRDMkhkKq41uNtsBkFH4gAxU7kzMGPguFQqp3pump`\n\nhttps://t.me/saflechat\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747491309,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "682899efeb25eec68c9268d8"
+  },
+  {
+    "token": {
+      "pa": "4BEPcVZmPQVWctS2ivhGfAQnHHbHqrQF5grJxV5YYYeH",
+      "pairTimestamp": 1747489955,
+      "network": "solana",
+      "ca": "C2J9jwj7cA6wRkKVqJSZRVaZdEzTkR9U4nf2gc7Ppump",
+      "symbol": "MEME",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/C2J9jwj7cA6wRkKVqJSZRVaZdEzTkR9U4nf2gc7Ppump.png?key=d0acdb"
+    },
+    "trade": {
+      "buyPrice": 0.000958669730688158,
+      "buyTimestamp": 1747490940,
+      "topPrice": 0.0014032042449459697,
+      "topTimestamp": 1747491000,
+      "roi": 1.4636993325519032,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68289894eb25eec68c926864",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29096,
+    "text": "🟢\n\n\nhttps://dexscreener.com/solana/4BEPcVZmPQVWctS2ivhGfAQnHHbHqrQF5grJxV5YYYeH\n\nJoin ✈️  @TopCallersChannel",
+    "timestamp": 1747490962,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "68289894eb25eec68c926864"
+  },
+  {
+    "token": {
+      "pa": "F8N7SqmfwKbxECBaTc32ToyT8vYvGc4PXzwXkcGxpbBt",
+      "pairTimestamp": 1747488016,
+      "network": "solana",
+      "ca": "HNmnFgi3pkYuw1rX5ksdVqnxoapCyPCJGC3FDFCcpump",
+      "symbol": "COMMUNITY",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/HNmnFgi3pkYuw1rX5ksdVqnxoapCyPCJGC3FDFCcpump.png?key=ff6bf1"
+    },
+    "hidden": false,
+    "_id": "68289310eb25eec68c9266d0",
+    "groupId": "1543825418",
+    "__v": 0,
+    "groupName": "TrustCallers2023",
+    "messageId": 9703,
+    "text": "HNmnFgi3pkYuw1rX5ksdVqnxoapCyPCJGC3FDFCcpump\n\naped this dyor",
+    "timestamp": 1747489550,
+    "group": {
+      "stats": {
+        "callFrequency": 0.83,
+        "winRate30": 43,
+        "profit30": 5315,
+        "earlyTop50": 1,
+        "lot30": 123,
+        "ins30": 2285
+      },
+      "_id": "67adf28aeb25eec68c52c574",
+      "name": "TrustCallers2023",
+      "groupId": "1543825418",
+      "id": "67adf28aeb25eec68c52c574"
+    },
+    "id": "68289310eb25eec68c9266d0"
+  },
+  {
+    "token": {
+      "pa": "0x42aCa40510163223Dc867E4B57575ca8e2eC0493",
+      "ca": "0x37Cc0543ED3DB6281d293cBE29C21D102527DFfA",
+      "network": "ethereum",
+      "symbol": "ORAX",
+      "pairTimestamp": 1745416835
+    },
+    "trade": {
+      "buyPrice": 0.00102943355343697,
+      "buyTimestamp": 1747487460,
+      "topPrice": 0.00118609036295628,
+      "topTimestamp": 1747487640,
+      "roi": 1.1521776796533199,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68288b31eb25eec68c926473",
+    "groupId": "1620856213",
+    "__v": 0,
+    "groupName": "Veigarcalls",
+    "messageId": 10263,
+    "text": "as i said yesterday at 60k, $Orax team started pushing and today reached a new ath, 100k now and more to come. NFA/DYOR\n\nOraX AI is a cutting-edge platform that seamlessly combines blockchain technology with artificial intelligence. Empowering users with tools for AI-generated text, image and video creation, advanced 3D modeling, and more – it’s your all-in-one hub for next-gen creativity and innovation.\n\nhttps://www.oraxai.org/\nhttps://t.me/OraXAI\n\nhttps://dexscreener.com/ethereum/0x42aca40510163223dc867e4b57575ca8e2ec0493",
+    "timestamp": 1747487532,
+    "group": {
+      "stats": {
+        "callFrequency": 2.23,
+        "winRate30": 33,
+        "profit30": 2873,
+        "earlyTop50": 1,
+        "lot30": 87,
+        "ins30": 948
+      },
+      "_id": "67adf28aeb25eec68c52c55c",
+      "name": "Veigarcalls",
+      "groupId": "1620856213",
+      "id": "67adf28aeb25eec68c52c55c"
+    },
+    "id": "68288b31eb25eec68c926473"
+  },
+  {
+    "token": {
+      "pa": "CD8RuBZGwZZ2Rd1xFui4n1noxsqrYHZ4bk3qwzHbirxb",
+      "pairTimestamp": 1747485879,
+      "network": "solana",
+      "ca": "C7p6KesouGeo75vwFrisyMYVaffkp6GhSN6211bjpump",
+      "symbol": "FLYCAT"
+    },
+    "hidden": false,
+    "_id": "6828874deb25eec68c926344",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13588,
+    "text": "**#SOL**** ****🪙**** ****🪙****$FlyCat\n\nDyor/NFA 140K MCAP\n\nCA**: `C7p6KesouGeo75vwFrisyMYVaffkp6GhSN6211bjpump`\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747486539,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "6828874deb25eec68c926344"
+  },
+  {
+    "token": {
+      "pa": "0x9E0321bAa86DD221752664582958fe253BbD7f9b",
+      "pairTimestamp": 1747483259,
+      "network": "ethereum",
+      "ca": "0x8e8703910Cf0c2A96ce5c6027e6BAb1BE82aAE18",
+      "symbol": "DUDE",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0x8e8703910cf0c2a96ce5c6027e6bab1be82aae18.png?key=c23a9c"
+    },
+    "hidden": false,
+    "_id": "68288518eb25eec68c9262a0",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29094,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x8e8703910Cf0c2A96ce5c6027e6BAb1BE82aAE18\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747485975,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "68288518eb25eec68c9262a0"
+  },
+  {
+    "token": {
+      "pa": "Fc84t5K4js1GzvG4wW8FrWoEa7LhLorNjCbFvPe3c76B",
+      "pairTimestamp": 1747482931,
+      "network": "solana",
+      "ca": "EjsVjbfJ3GNvkfCuBUQJ9Y1oiGT8dWK2DATwJL8kpump",
+      "symbol": "MAO",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/EjsVjbfJ3GNvkfCuBUQJ9Y1oiGT8dWK2DATwJL8kpump.png?key=21555f"
+    },
+    "hidden": false,
+    "_id": "68287cbdeb25eec68c92601d",
+    "groupId": "2055101998",
+    "__v": 0,
+    "groupName": "metagambler",
+    "messageId": 3037,
+    "text": "Aped here $MAO (SOL)\n\nThis cat is looking cute so getting bags here\n\nhttps://x.com/leadermaocat?s=21&t=RgjoQ0reSbybxOaIIw444A\n\nhttps://dexscreener.com/solana/Fc84t5K4js1GzvG4wW8FrWoEa7LhLorNjCbFvPe3c76B\n\nEjsVjbfJ3GNvkfCuBUQJ9Y1oiGT8dWK2DATwJL8kpump",
+    "timestamp": 1747483836,
+    "group": {
+      "stats": {
+        "callFrequency": 1.99,
+        "winRate30": 20,
+        "profit30": 1567,
+        "earlyTop50": 1,
+        "lot30": 78,
+        "ins30": 313
+      },
+      "_id": "67adf28aeb25eec68c52c72a",
+      "name": "metagambler",
+      "groupId": "2055101998",
+      "id": "67adf28aeb25eec68c52c72a"
+    },
+    "id": "68287cbdeb25eec68c92601d"
+  },
+  {
+    "token": {
+      "pa": "0x15F1E66aF1Ba3693d2B6E2998CeD62BE77a9e9FC",
+      "pairTimestamp": 1747483115,
+      "network": "ethereum",
+      "ca": "0x5296CebE12bcEb896e86D05Ed4e6639116acC411",
+      "symbol": "RATIUS"
+    },
+    "trade": {
+      "buyPrice": 3.70434180787977e-8,
+      "buyTimestamp": 1747483200,
+      "topPrice": 7.43122384977777e-8,
+      "topTimestamp": 1747501200,
+      "roi": 2.0060848148435664,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68287a6eeb25eec68c925f48",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29093,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x5296CebE12bcEb896e86D05Ed4e6639116acC411\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747483244,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "68287a6eeb25eec68c925f48"
+  },
+  {
+    "token": {
+      "pa": "CcSERr5gRWJvgD2wBVfa24Qjt5jgzHKp5QaZH8wxg74N",
+      "pairTimestamp": 1747479930,
+      "network": "solana",
+      "ca": "BZb61Ad2PPogyY8GsMFjv8NFCXkTnjJFGAMvtnWUpump",
+      "symbol": "CRYBABY",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/BZb61Ad2PPogyY8GsMFjv8NFCXkTnjJFGAMvtnWUpump.png?key=57571e"
+    },
+    "trade": {
+      "buyPrice": 0.00015031569573155083,
+      "buyTimestamp": 1747480200,
+      "topPrice": 0.0002404524844708978,
+      "topTimestamp": 1747480920,
+      "roi": 1.5996498788810616,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68286ea2eb25eec68c925c04",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13587,
+    "text": "**#SOL**** ****🪙**** ****🪙****$CRYBABY****\n\nDyor/NFA 140K MCAP\n\nCA**: `BZb61Ad2PPogyY8GsMFjv8NFCXkTnjJFGAMvtnWUpump`\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747480224,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "68286ea2eb25eec68c925c04"
+  },
+  {
+    "token": {
+      "pa": "75YrV1J7swpgZEazAKoowS4rTENu5Z8EcP2nKkxqjtVh",
+      "ca": "23cB5pvtxCL1Kj7cSrqAnz35suoTJbCCcryPVUhfAHsa",
+      "network": "solana",
+      "symbol": "PUFF",
+      "pairTimestamp": 1747473126
+    },
+    "trade": {
+      "buyPrice": 0.000035439624754726086,
+      "buyTimestamp": 1747479720,
+      "topPrice": 0.0003978791874671222,
+      "topTimestamp": 1747494000,
+      "roi": 11.226958248593268,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68286cbaeb25eec68c925b6c",
+    "groupId": "1936110610",
+    "__v": 0,
+    "groupName": "LuigisGambles",
+    "messageId": 4187,
+    "text": "First launch by AIXBT\n\nhttps://dexscreener.com/solana/75YrV1J7swpgZEazAKoowS4rTENu5Z8EcP2nKkxqjtVh",
+    "timestamp": 1747479737,
+    "group": {
+      "stats": {
+        "callFrequency": 1.36,
+        "winRate30": 33,
+        "profit30": 1530,
+        "earlyTop50": 1,
+        "lot30": 46,
+        "ins30": 504
+      },
+      "_id": "67adf28aeb25eec68c52c6e0",
+      "name": "LuigisGambles",
+      "groupId": "1936110610",
+      "id": "67adf28aeb25eec68c52c6e0"
+    },
+    "id": "68286cbaeb25eec68c925b6c"
+  },
+  {
+    "token": {
+      "pa": "B1JkXQH1yvTQtRavmAStwoy2Pu54SsjLqfWphL9VwpGu",
+      "pairTimestamp": 1747312545,
+      "network": "solana",
+      "ca": "CfVs3waH2Z9TM397qSkaipTDhA9wWgtt8UchZKfwkYiu",
+      "symbol": "KNET",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/CfVs3waH2Z9TM397qSkaipTDhA9wWgtt8UchZKfwkYiu.png?key=19c232"
+    },
+    "trade": {
+      "buyPrice": 0.0007384218516807023,
+      "buyTimestamp": 1747479180,
+      "topPrice": 0.0174282403654633,
+      "topTimestamp": 1747519200,
+      "roi": 23.6020105929901,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68286aa1eb25eec68c925ac5",
+    "groupId": "2055101998",
+    "__v": 0,
+    "groupName": "metagambler",
+    "messageId": 3030,
+    "text": "Aped here $KNET kingnet AI (SOL)\n\nThis is looking good getting some bags here \n\nhttps://x.com/kingnet_ai?s=21&t=RgjoQ0reSbybxOaIIw444A\n\nhttps://dexscreener.com/solana/CfVs3waH2Z9TM397qSkaipTDhA9wWgtt8UchZKfwkYiu\n\nCfVs3waH2Z9TM397qSkaipTDhA9wWgtt8UchZKfwkYiu",
+    "timestamp": 1747479200,
+    "group": {
+      "stats": {
+        "callFrequency": 1.99,
+        "winRate30": 20,
+        "profit30": 1567,
+        "earlyTop50": 1,
+        "lot30": 78,
+        "ins30": 313
+      },
+      "_id": "67adf28aeb25eec68c52c72a",
+      "name": "metagambler",
+      "groupId": "2055101998",
+      "id": "67adf28aeb25eec68c52c72a"
+    },
+    "id": "68286aa1eb25eec68c925ac5"
+  },
+  {
+    "token": {
+      "pa": "ByN5PhKH8mFAFViBGFaakuBCTnEtpYeYMqY8ndEZC76L",
+      "pairTimestamp": 1747403362,
+      "network": "solana",
+      "ca": "DeaVrje4tWsFNJ9Shs1CtjfXDbQsNeR1eSWtGxjJoFpS",
+      "symbol": "DEALR",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/DeaVrje4tWsFNJ9Shs1CtjfXDbQsNeR1eSWtGxjJoFpS.png?key=45b709"
+    },
+    "hidden": false,
+    "_id": "68286481eb25eec68c925907",
+    "groupId": "1620856213",
+    "__v": 0,
+    "groupName": "Veigarcalls",
+    "messageId": 10262,
+    "text": "$DEALR \n\nAped here\n\nhttps://x.com/Dealr_dotfun\n\nhttps://dexscreener.com/solana/DeaVrje4tWsFNJ9Shs1CtjfXDbQsNeR1eSWtGxjJoFpS",
+    "timestamp": 1747477629,
+    "group": {
+      "stats": {
+        "callFrequency": 2.23,
+        "winRate30": 33,
+        "profit30": 2873,
+        "earlyTop50": 1,
+        "lot30": 87,
+        "ins30": 948
+      },
+      "_id": "67adf28aeb25eec68c52c55c",
+      "name": "Veigarcalls",
+      "groupId": "1620856213",
+      "id": "67adf28aeb25eec68c52c55c"
+    },
+    "id": "68286481eb25eec68c925907"
+  },
+  {
+    "token": {
+      "pa": "BwDKzinnncUawXK7iKHcv1d1pitcFP8FG22ANB8oHAv",
+      "pairTimestamp": 1747440331,
+      "network": "solana",
+      "ca": "FEGREnzDPdnCTjHyqMgU5A8PpN2BzGYL1v93GRz6wz1V",
+      "symbol": "SIMP",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/FEGREnzDPdnCTjHyqMgU5A8PpN2BzGYL1v93GRz6wz1V.png?key=e0cd58"
+    },
+    "trade": {
+      "buyPrice": 0.0001615111487031124,
+      "buyTimestamp": 1747475160,
+      "topPrice": 0.00022319132542658322,
+      "topTimestamp": 1747475580,
+      "roi": 1.381894235901018,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68285adaeb25eec68c9255d5",
+    "groupId": "1823659062",
+    "__v": 0,
+    "groupName": "kweensjournal",
+    "messageId": 10465,
+    "text": "launch is reversing and just made this bull happen. \n\nsimp was first migrated - should run hard\n\nFEGREnzDPdnCTjHyqMgU5A8PpN2BzGYL1v93GRz6wz1V\n\nit’s okay to be a simp",
+    "timestamp": 1747475161,
+    "group": {
+      "stats": {
+        "callFrequency": 1.98,
+        "winRate30": 43,
+        "profit30": 1770,
+        "earlyTop50": 4,
+        "lot30": 41,
+        "ins30": 761
+      },
+      "_id": "67adf28aeb25eec68c52c570",
+      "name": "kweensjournal",
+      "groupId": "1823659062",
+      "id": "67adf28aeb25eec68c52c570"
+    },
+    "id": "68285adaeb25eec68c9255d5"
+  },
+  {
+    "token": {
+      "pa": "0xAefc2a405C54c91F8A89a0af675225d4E6FD66a0",
+      "pairTimestamp": 1747466207,
+      "network": "ethereum",
+      "ca": "0x002d088B4B5F691E09D326D5fa52dc554ac0E435",
+      "symbol": "GATOR",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0x002d088b4b5f691e09d326d5fa52dc554ac0e435.png?key=4b683c"
+    },
+    "trade": {
+      "buyPrice": 0.000153302375561199,
+      "buyTimestamp": 1747474860,
+      "topPrice": 0.000426806933205791,
+      "topTimestamp": 1747476000,
+      "roi": 2.7840855801703333,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682859d8eb25eec68c925570",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29091,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x002d088B4B5F691E09D326D5fa52dc554ac0E435\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747474902,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "682859d8eb25eec68c925570"
+  },
+  {
+    "token": {
+      "pa": "7pnVdxdrCE9UxKdMsbDo4S6hzAFTfh2NFTg4auLMJ6LP",
+      "pairTimestamp": 1747472888,
+      "network": "solana",
+      "ca": "5SV6fTeKwkJNE4Cd7iTSYspbLscAiD5PEyYqhdPvpump",
+      "symbol": "LOUIE"
+    },
+    "trade": {
+      "buyPrice": 0.00021373261610411416,
+      "buyTimestamp": 1747474140,
+      "topPrice": 0.00032484450714777383,
+      "topTimestamp": 1747474680,
+      "roi": 1.519863992070983,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682856ffeb25eec68c92545d",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13585,
+    "text": "**#SOL**** ****🪙**** ****🪙****$louie\n\nDyor/NFA 200K MCAP\n\nCA**: `5SV6fTeKwkJNE4Cd7iTSYspbLscAiD5PEyYqhdPvpump`\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747474170,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "682856ffeb25eec68c92545d"
+  },
+  {
+    "token": {
+      "pa": "75YrV1J7swpgZEazAKoowS4rTENu5Z8EcP2nKkxqjtVh",
+      "ca": "23cB5pvtxCL1Kj7cSrqAnz35suoTJbCCcryPVUhfAHsa",
+      "network": "solana",
+      "symbol": "PUFF",
+      "pairTimestamp": 1747473126
+    },
+    "trade": {
+      "buyPrice": 0.00008678051481326063,
+      "buyTimestamp": 1747473780,
+      "topPrice": 0.0003996836819841214,
+      "topTimestamp": 1747494000,
+      "roi": 4.605684615310062,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682855abeb25eec68c9253ce",
+    "groupId": "1823659062",
+    "__v": 0,
+    "groupName": "kweensjournal",
+    "messageId": 10458,
+    "text": "ai deploying meta \n\nwent here 🤣\n\n23cB5pvtxCL1Kj7cSrqAnz35suoTJbCCcryPVUhfAHsa\n\nhttps://x.com/aixbt_agent/status/1923665343899369529",
+    "timestamp": 1747473835,
+    "group": {
+      "stats": {
+        "callFrequency": 1.98,
+        "winRate30": 43,
+        "profit30": 1770,
+        "earlyTop50": 4,
+        "lot30": 41,
+        "ins30": 761
+      },
+      "_id": "67adf28aeb25eec68c52c570",
+      "name": "kweensjournal",
+      "groupId": "1823659062",
+      "id": "67adf28aeb25eec68c52c570"
+    },
+    "id": "682855abeb25eec68c9253ce"
+  },
+  {
+    "token": {
+      "pa": "75YrV1J7swpgZEazAKoowS4rTENu5Z8EcP2nKkxqjtVh",
+      "pairTimestamp": 1747473126,
+      "network": "solana",
+      "ca": "23cB5pvtxCL1Kj7cSrqAnz35suoTJbCCcryPVUhfAHsa",
+      "symbol": "PUFF"
+    },
+    "trade": {
+      "buyPrice": 0.0000589880633691323,
+      "buyTimestamp": 1747473600,
+      "topPrice": 0.0003996836819841214,
+      "topTimestamp": 1747494000,
+      "roi": 6.775670519694851,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682854d7eb25eec68c92537d",
+    "groupId": "2116815656",
+    "__v": 0,
+    "groupName": "AltcoinAdventures",
+    "messageId": 6195,
+    "text": "$PUFF\nLaunched by Aixbt\n\n23cB5pvtxCL1Kj7cSrqAnz35suoTJbCCcryPVUhfAHsa\n\nhttps://twitter.com/aixbt_agent/status/1923665343899369529\n\nQuick buy:\nMaestro🤖",
+    "timestamp": 1747473622,
+    "group": {
+      "stats": {
+        "callFrequency": 3.3,
+        "winRate30": 33,
+        "profit30": 2719,
+        "earlyTop50": 3,
+        "lot30": 82,
+        "ins30": 897
+      },
+      "_id": "67adf28aeb25eec68c52c59e",
+      "name": "AltcoinAdventures",
+      "groupId": "2116815656",
+      "id": "67adf28aeb25eec68c52c59e"
+    },
+    "id": "682854d7eb25eec68c92537d"
+  },
+  {
+    "token": {
+      "pa": "8rpq1bgY6DQtVauk8HufUuqxVUK5JjLqstsKPo3CPjdj",
+      "ca": "GuKMr2mAFh4CFM4Qo2LkU6MKS2fmReTGcmu8GSudgos9",
+      "network": "solana",
+      "symbol": "BULL",
+      "pairTimestamp": 1747472220
+    },
+    "trade": {
+      "buyPrice": 0.0013288767416605675,
+      "buyTimestamp": 1747473480,
+      "topPrice": 0.00723253095199829,
+      "topTimestamp": 1747486800,
+      "roi": 5.44258976416466,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68285482eb25eec68c925348",
+    "groupId": "2055101998",
+    "__v": 0,
+    "groupName": "metagambler",
+    "messageId": 3023,
+    "text": "Aped here $BULL by GROK (SOL) 1M mc\n\nhttps://x.com/grok/status/1923660809047249040\n\nhttps://dexscreener.com/solana/8rpq1bgy6dqtvauk8hufuuqxvuk5jjlqstskpo3cpjdj\n\nGuKMr2mAFh4CFM4Qo2LkU6MKS2fmReTGcmu8GSudgos9",
+    "timestamp": 1747473537,
+    "group": {
+      "stats": {
+        "callFrequency": 1.99,
+        "winRate30": 20,
+        "profit30": 1567,
+        "earlyTop50": 1,
+        "lot30": 78,
+        "ins30": 313
+      },
+      "_id": "67adf28aeb25eec68c52c72a",
+      "name": "metagambler",
+      "groupId": "2055101998",
+      "id": "67adf28aeb25eec68c52c72a"
+    },
+    "id": "68285482eb25eec68c925348"
+  },
+  {
+    "token": {
+      "pa": "8rpq1bgY6DQtVauk8HufUuqxVUK5JjLqstsKPo3CPjdj",
+      "ca": "GuKMr2mAFh4CFM4Qo2LkU6MKS2fmReTGcmu8GSudgos9",
+      "network": "solana",
+      "symbol": "BULL",
+      "pairTimestamp": 1747472220
+    },
+    "trade": {
+      "buyPrice": 0.00046438252172208947,
+      "buyTimestamp": 1747472520,
+      "topPrice": 0.00723253095199829,
+      "topTimestamp": 1747486800,
+      "roi": 15.574511558224861,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682850c2eb25eec68c9251f8",
+    "groupId": "1936110610",
+    "__v": 0,
+    "groupName": "LuigisGambles",
+    "messageId": 4180,
+    "text": "Ape \n\nhttps://dexscreener.com/solana/8rpq1bgY6DQtVauk8HufUuqxVUK5JjLqstsKPo3CPjdj\n\nhttps://x.com/grok/status/1923660809047249040",
+    "timestamp": 1747472578,
+    "group": {
+      "stats": {
+        "callFrequency": 1.36,
+        "winRate30": 33,
+        "profit30": 1530,
+        "earlyTop50": 1,
+        "lot30": 46,
+        "ins30": 504
+      },
+      "_id": "67adf28aeb25eec68c52c6e0",
+      "name": "LuigisGambles",
+      "groupId": "1936110610",
+      "id": "67adf28aeb25eec68c52c6e0"
+    },
+    "id": "682850c2eb25eec68c9251f8"
+  },
+  {
+    "token": {
+      "pa": "8rpq1bgY6DQtVauk8HufUuqxVUK5JjLqstsKPo3CPjdj",
+      "ca": "GuKMr2mAFh4CFM4Qo2LkU6MKS2fmReTGcmu8GSudgos9",
+      "network": "solana",
+      "symbol": "BULL",
+      "pairTimestamp": 1747472220
+    },
+    "trade": {
+      "buyPrice": 0.0002633190611483064,
+      "buyTimestamp": 1747472460,
+      "topPrice": 0.00723253095199829,
+      "topTimestamp": 1747486800,
+      "roi": 27.466796062761247,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6828506beb25eec68c9251c3",
+    "groupId": "1662041785",
+    "__v": 0,
+    "groupName": "ArcaneGems",
+    "messageId": 14645,
+    "text": "in\n\nhttps://axiom.trade/t/GuKMr2mAFh4CFM4Qo2LkU6MKS2fmReTGcmu8GSudgos9/@gcarranza",
+    "timestamp": 1747472486,
+    "group": {
+      "stats": {
+        "callFrequency": 1.04,
+        "winRate30": 56,
+        "profit30": 14362,
+        "earlyTop50": 2,
+        "lot30": 256,
+        "ins30": 8042
+      },
+      "_id": "67adf2cf750acd54890cf414",
+      "name": "ArcaneGems",
+      "groupId": "1662041785",
+      "id": "67adf2cf750acd54890cf414"
+    },
+    "id": "6828506beb25eec68c9251c3"
+  },
+  {
+    "token": {
+      "pa": "8rpq1bgY6DQtVauk8HufUuqxVUK5JjLqstsKPo3CPjdj",
+      "pairTimestamp": 1747472220,
+      "network": "solana",
+      "ca": "GuKMr2mAFh4CFM4Qo2LkU6MKS2fmReTGcmu8GSudgos9",
+      "symbol": "BULL"
+    },
+    "trade": {
+      "buyPrice": 0.00025301465694235964,
+      "buyTimestamp": 1747472460,
+      "topPrice": 0.007951233293217064,
+      "topTimestamp": 1747486800,
+      "roi": 31.42597898993839,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68285050eb25eec68c92519e",
+    "groupId": "1823659062",
+    "__v": 0,
+    "groupName": "kweensjournal",
+    "messageId": 10451,
+    "text": "GuKMr2mAFh4CFM4Qo2LkU6MKS2fmReTGcmu8GSudgos9",
+    "timestamp": 1747472463,
+    "group": {
+      "stats": {
+        "callFrequency": 1.98,
+        "winRate30": 43,
+        "profit30": 1770,
+        "earlyTop50": 4,
+        "lot30": 41,
+        "ins30": 761
+      },
+      "_id": "67adf28aeb25eec68c52c570",
+      "name": "kweensjournal",
+      "groupId": "1823659062",
+      "id": "67adf28aeb25eec68c52c570"
+    },
+    "id": "68285050eb25eec68c92519e"
+  },
+  {
+    "token": {
+      "pa": "9rroQoL9UVTDZe7b8oZE2rzVW95VwZyoKco3EHscR49Z",
+      "pairTimestamp": 1747467908,
+      "network": "solana",
+      "ca": "FpoD3o8XThWC9u5T2zCHXPP9Gqw14WgvyKtg8sTpump",
+      "symbol": "BURNI",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/FpoD3o8XThWC9u5T2zCHXPP9Gqw14WgvyKtg8sTpump.png?key=251e3b"
+    },
+    "trade": {
+      "buyPrice": 0.00012573739393395504,
+      "buyTimestamp": 1747471800,
+      "topPrice": 0.0001876763354684047,
+      "topTimestamp": 1747472100,
+      "roi": 1.4926055773589817,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68284dd0eb25eec68c9250b6",
+    "groupId": "1682311744",
+    "__v": 0,
+    "groupName": "GarudaJpCalls",
+    "messageId": 11293,
+    "text": "BurnifyDotFun\n\nngikutin hype nya believe, kalo believe bikin token pake tweet, ini nge burn token pake twit. \n\nhttp://t.me/maestro?start=FpoD3o8XThWC9u5T2zCHXPP9Gqw14WgvyKtg8sTpump-riosukarya",
+    "timestamp": 1747471823,
+    "group": {
+      "stats": {
+        "callFrequency": 0.55,
+        "winRate30": 40,
+        "profit30": 75814,
+        "earlyTop50": 1,
+        "lot30": 1895,
+        "ins30": 30325
+      },
+      "_id": "67adf28aeb25eec68c52c504",
+      "name": "GarudaJpCalls",
+      "groupId": "1682311744",
+      "id": "67adf28aeb25eec68c52c504"
+    },
+    "id": "68284dd0eb25eec68c9250b6"
+  },
+  {
+    "token": {
+      "pa": "99D5oi479AxQpQcfVKkTK6E7r1Y8KJSKhaA9dUBws1vd",
+      "ca": "A8YHuvQBMAxXoZAZE72FyC8B7jKHo8RJyByXRRffpump",
+      "network": "solana",
+      "symbol": "XBT",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/A8YHuvQBMAxXoZAZE72FyC8B7jKHo8RJyByXRRffpump.png?key=08b43a",
+      "pairTimestamp": 1747352676
+    },
+    "trade": {
+      "buyPrice": 0.027176841521491853,
+      "buyTimestamp": 1747471020,
+      "topPrice": 0.02898703584512199,
+      "topTimestamp": 1747472340,
+      "roi": 1.0666079729021714,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68284addeb25eec68c924f8e",
+    "groupId": "1823659062",
+    "__v": 0,
+    "groupName": "kweensjournal",
+    "messageId": 10447,
+    "text": "A8YHuvQBMAxXoZAZE72FyC8B7jKHo8RJyByXRRffpump\n\nwent here yesterday - shared in lounge but word is this can really run.",
+    "timestamp": 1747471068,
+    "group": {
+      "stats": {
+        "callFrequency": 1.98,
+        "winRate30": 43,
+        "profit30": 1770,
+        "earlyTop50": 4,
+        "lot30": 41,
+        "ins30": 761
+      },
+      "_id": "67adf28aeb25eec68c52c570",
+      "name": "kweensjournal",
+      "groupId": "1823659062",
+      "id": "67adf28aeb25eec68c52c570"
+    },
+    "id": "68284addeb25eec68c924f8e"
+  },
+  {
+    "token": {
+      "pa": "0x42aCa40510163223Dc867E4B57575ca8e2eC0493",
+      "ca": "0x37Cc0543ED3DB6281d293cBE29C21D102527DFfA",
+      "network": "ethereum",
+      "symbol": "ORAX",
+      "pairTimestamp": 1745416835
+    },
+    "trade": {
+      "buyPrice": 0.000796759871741454,
+      "buyTimestamp": 1747465500,
+      "topPrice": 0.00107617106653001,
+      "topTimestamp": 1747504800,
+      "roi": 1.3506843212094193,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682841d5eb25eec68c924cf1",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29089,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x37Cc0543ED3DB6281d293cBE29C21D102527DFfA\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747468756,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "682841d5eb25eec68c924cf1"
+  },
+  {
+    "token": {
+      "pa": "EXjv7u53MpbQX568Vm16rdtcLWiCiqUgkK3UFj5yRNBi",
+      "pairTimestamp": 1747463275,
+      "network": "solana",
+      "ca": "51VyzRWrVPXfVg1N55WdenEfUjnnUGWeScpHf6P13H9D",
+      "symbol": "LOOTS",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/51VyzRWrVPXfVg1N55WdenEfUjnnUGWeScpHf6P13H9D.png?key=2da9de"
+    },
+    "trade": {
+      "buyPrice": 0.00011193959331906125,
+      "buyTimestamp": 1747467480,
+      "topPrice": 0.0001250054758612885,
+      "topTimestamp": 1747467840,
+      "roi": 1.1167226193594038,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68283d12eb25eec68c924bc7",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13583,
+    "text": "**#SOL**** ****🪙**** ****🪙****$LOOTS****\n\nDyor/NFA 100K MCAP\n\nCA**: `51VyzRWrVPXfVg1N55WdenEfUjnnUGWeScpHf6P13H9D`\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747467535,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "68283d12eb25eec68c924bc7"
+  },
+  {
+    "token": {
+      "pa": "0x0547719bD0122A6e2BC1D64B475C46cD267D38Eb",
+      "ca": "0x80E8582050e9f62122b525527f983cf6D26c0B54",
+      "network": "ethereum",
+      "symbol": "PEPIUS",
+      "pairTimestamp": 1747459823
+    },
+    "trade": {
+      "buyPrice": 3.30545880448249e-7,
+      "buyTimestamp": 1747461300,
+      "topPrice": 3.94917920549378e-7,
+      "topTimestamp": 1747461600,
+      "roi": 1.1947446448699797,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682824dceb25eec68c9245ac",
+    "groupId": "2007360534",
+    "__v": 0,
+    "groupName": "rHoodGems",
+    "messageId": 529,
+    "text": "0x80E8582050e9f62122b525527f983cf6D26c0B54\n\nGamble",
+    "timestamp": 1747461339,
+    "group": {
+      "stats": {
+        "callFrequency": 0.24,
+        "winRate30": 36,
+        "profit30": 241661,
+        "earlyTop50": 2,
+        "lot30": 6712,
+        "ins30": 86997
+      },
+      "_id": "67adf28beb25eec68c52c872",
+      "name": "rHoodGems",
+      "groupId": "2007360534",
+      "id": "67adf28beb25eec68c52c872"
+    },
+    "id": "682824dceb25eec68c9245ac"
+  },
+  {
+    "token": {
+      "pa": "0x0547719bD0122A6e2BC1D64B475C46cD267D38Eb",
+      "ca": "0x80E8582050e9f62122b525527f983cf6D26c0B54",
+      "network": "ethereum",
+      "symbol": "PEPIUS",
+      "pairTimestamp": 1747459823
+    },
+    "trade": {
+      "buyPrice": 2.8549956536799e-7,
+      "buyTimestamp": 1747461120,
+      "topPrice": 3.94917920549378e-7,
+      "topTimestamp": 1747461600,
+      "roi": 1.3832522653418229,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68282421eb25eec68c924569",
+    "groupId": "1539955866",
+    "__v": 0,
+    "groupName": "mooneagle_call",
+    "messageId": 5517,
+    "text": "$PEPIUS - **Pepius Maximus **- Ape 1.5 \n\nCA: 0x80E8582050e9f62122b525527f983cf6D26c0B54\n\nAll Maximus are made of Frog. The Divine Frog of Meme Empire “Veni, Vidi, Pepe.” — Pepius Maximus, Emperor of X\n\nhttps://t.me/pepiuserc\nhttps://x.com/pepiuserc\nhttp://pepiuserc.com/",
+    "timestamp": 1747461152,
+    "group": {
+      "stats": {
+        "callFrequency": 0.47,
+        "winRate30": 40,
+        "profit30": 18363,
+        "earlyTop50": 1,
+        "lot30": 459,
+        "ins30": 7345
+      },
+      "_id": "67adf28aeb25eec68c52c52c",
+      "name": "mooneagle_call",
+      "groupId": "1539955866",
+      "id": "67adf28aeb25eec68c52c52c"
+    },
+    "id": "68282421eb25eec68c924569"
+  },
+  {
+    "token": {
+      "pa": "0x0547719bD0122A6e2BC1D64B475C46cD267D38Eb",
+      "ca": "0x80E8582050e9f62122b525527f983cf6D26c0B54",
+      "network": "ethereum",
+      "symbol": "PEPIUS",
+      "pairTimestamp": 1747459823
+    },
+    "trade": {
+      "buyPrice": 3.52473653073634e-7,
+      "buyTimestamp": 1747459920,
+      "topPrice": 3.94917920549378e-7,
+      "topTimestamp": 1747461600,
+      "roi": 1.120418269863924,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68281f5ceb25eec68c92442f",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29086,
+    "text": "@topcallerschannel ⭐️ \n \n0x80E8582050e9f62122b525527f983cf6D26c0B54\n \n @topcallerschannel 🤖",
+    "timestamp": 1747459931,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "68281f5ceb25eec68c92442f"
+  },
+  {
+    "token": {
+      "pa": "0x0547719bD0122A6e2BC1D64B475C46cD267D38Eb",
+      "pairTimestamp": 1747459823,
+      "network": "ethereum",
+      "ca": "0x80E8582050e9f62122b525527f983cf6D26c0B54",
+      "symbol": "PEPIUS"
+    },
+    "hidden": false,
+    "_id": "68281f5beb25eec68c924416",
+    "groupId": "1927494975",
+    "__v": 0,
+    "groupName": "chiggajogambles",
+    "messageId": 18901,
+    "text": "0x80E8582050e9f62122b525527f983cf6D26c0B54\n\nDegened this",
+    "timestamp": 1747459929,
+    "group": {
+      "stats": {
+        "callFrequency": 1.92,
+        "winRate30": 30,
+        "profit30": 2295,
+        "earlyTop50": 0,
+        "lot30": 76,
+        "ins30": 688
+      },
+      "_id": "67adf28aeb25eec68c52c6a4",
+      "name": "chiggajogambles",
+      "groupId": "1927494975",
+      "id": "67adf28aeb25eec68c52c6a4"
+    },
+    "id": "68281f5beb25eec68c924416"
+  },
+  {
+    "token": {
+      "pa": "0x9F9244a4b5fd6C18B39F55a18045a8DA2e06B5c9",
+      "pairTimestamp": 1747457591,
+      "network": "ethereum",
+      "ca": "0x0cc1544d8FeD51352976f8E636A11a0d3E1955AF",
+      "symbol": "WITCH"
+    },
+    "trade": {
+      "buyPrice": 4.7777186955294e-8,
+      "buyTimestamp": 1747458720,
+      "topPrice": 1.18933116095683e-7,
+      "topTimestamp": 1747459080,
+      "roi": 2.489328561913261,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "68281abbeb25eec68c9242f2",
+    "groupId": "1915321527",
+    "__v": 0,
+    "groupName": "TopCallersChannel",
+    "messageId": 29085,
+    "text": "🎰 Gamble Signals  \n \n  😳 @TopCallersChannel \n \n0x0cc1544d8FeD51352976f8E636A11a0d3E1955AF\n  \n 😀 Ensure no risk after  2️⃣🔠  3️⃣🔠",
+    "timestamp": 1747458745,
+    "group": {
+      "stats": {
+        "callFrequency": 8.27,
+        "winRate30": 30,
+        "profit30": 957,
+        "earlyTop50": 7,
+        "lot30": 31,
+        "ins30": 287
+      },
+      "_id": "67adf28aeb25eec68c52c696",
+      "name": "TopCallersChannel",
+      "groupId": "1915321527",
+      "id": "67adf28aeb25eec68c52c696"
+    },
+    "id": "68281abbeb25eec68c9242f2"
+  },
+  {
+    "token": {
+      "pa": "HSGAWNxraTVSkovSMFD4gQ8hcE5zGJLHmLUm6hiUsAed",
+      "pairTimestamp": 1747453346,
+      "network": "solana",
+      "ca": "5SBNCxKsiqxgmd7NMJ9wTbAXxfCDF1DMv9WinNyVpump",
+      "symbol": "MOONCOIN",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/5SBNCxKsiqxgmd7NMJ9wTbAXxfCDF1DMv9WinNyVpump.png?key=133075"
+    },
+    "trade": {
+      "buyPrice": 0.00010637342940164725,
+      "buyTimestamp": 1747453620,
+      "topPrice": 0.0001543771262588418,
+      "topTimestamp": 1747454340,
+      "roi": 1.4512752585604913,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682806bfeb25eec68c923c75",
+    "groupId": "1851567457",
+    "__v": 0,
+    "groupName": "Insider_ECA",
+    "messageId": 13581,
+    "text": "**#SOL**** ****🪙**** ****🪙****$mooncoin\n\nDyor/NFA 100K MCAP\n\nCA**: `5SBNCxKsiqxgmd7NMJ9wTbAXxfCDF1DMv9WinNyVpump`\n\n🤑Buy Bot🤑Buy on MevX",
+    "timestamp": 1747453623,
+    "group": {
+      "stats": {
+        "callFrequency": 8.63,
+        "winRate30": 23,
+        "profit30": 1114,
+        "earlyTop50": 1,
+        "lot30": 48,
+        "ins30": 256
+      },
+      "_id": "67adf28aeb25eec68c52c4bf",
+      "name": "Insider_ECA",
+      "groupId": "1851567457",
+      "id": "67adf28aeb25eec68c52c4bf"
+    },
+    "id": "682806bfeb25eec68c923c75"
+  },
+  {
+    "token": {
+      "pa": "4pMwztvfMUo6Hxqr3YNSfZw4Q4frY9muNbhSkA91zWYZ",
+      "pairTimestamp": 1747452808,
+      "network": "solana",
+      "ca": "BKhtaT1Faw8ddyrKS7rFsjDjGs9RmVRegkVQDU3kpump",
+      "symbol": "MONKEY"
+    },
+    "trade": {
+      "buyPrice": 0.00008248674459008338,
+      "buyTimestamp": 1747453080,
+      "topPrice": 0.00012158920521378836,
+      "topTimestamp": 1747453260,
+      "roi": 1.4740453853285649,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "682804c2eb25eec68c923bee",
+    "groupId": "1523240618",
+    "__v": 0,
+    "groupName": "mewgambles",
+    "messageId": 4800,
+    "text": "🪙 $Monkey Monkey Logic. Cool X lol. Seems funny. \n\nBKhtaT1Faw8ddyrKS7rFsjDjGs9RmVRegkVQDU3kpump",
+    "timestamp": 1747453121,
+    "group": {
+      "stats": {
+        "callFrequency": 3.56,
+        "winRate30": 26,
+        "profit30": 1277,
+        "earlyTop50": 1,
+        "lot30": 49,
+        "ins30": 332
+      },
+      "_id": "67adf28aeb25eec68c52c552",
+      "name": "mewgambles",
+      "groupId": "1523240618",
+      "id": "67adf28aeb25eec68c52c552"
+    },
+    "id": "682804c2eb25eec68c923bee"
+  },
+  {
+    "token": {
+      "pa": "Gxw91tKQ3228cNLDWg4UDB93nscbeVmaxwiCd72dPemk",
+      "ca": "H88NR6BLs1w8KxjTttbgbE6SBfEc9zKHqFdQ97Wqpump",
+      "network": "solana",
+      "symbol": "PIZZA",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/H88NR6BLs1w8KxjTttbgbE6SBfEc9zKHqFdQ97Wqpump.png?key=76ace0",
+      "pairTimestamp": 1747434067
+    },
+    "trade": {
+      "buyPrice": 0.00027175240516940974,
+      "buyTimestamp": 1747448220,
+      "topPrice": 0.000417388651821203,
+      "topTimestamp": 1747450800,
+      "roi": 1.535915207672234,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6827f1c8eb25eec68c9233e7",
+    "groupId": "1823659062",
+    "__v": 0,
+    "groupName": "kweensjournal",
+    "messageId": 10434,
+    "text": "pizzacoin seems like a good narra. been holding well, let’s see \n\nH88NR6BLs1w8KxjTttbgbE6SBfEc9zKHqFdQ97Wqpump",
+    "timestamp": 1747448264,
+    "group": {
+      "stats": {
+        "callFrequency": 1.98,
+        "winRate30": 43,
+        "profit30": 1770,
+        "earlyTop50": 4,
+        "lot30": 41,
+        "ins30": 761
+      },
+      "_id": "67adf28aeb25eec68c52c570",
+      "name": "kweensjournal",
+      "groupId": "1823659062",
+      "id": "67adf28aeb25eec68c52c570"
+    },
+    "id": "6827f1c8eb25eec68c9233e7"
+  },
+  {
+    "token": {
+      "pa": "21JyjnJB5h8zPWCt1G6oEBmgUxC6T9JT56iSid1V4HwE",
+      "pairTimestamp": 1747447058,
+      "network": "solana",
+      "ca": "8TtgfY7B9jFRa57mTZm8rGrzzvghx7iijQNe4G9Npump",
+      "symbol": "MNLNLNLKNK",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/8TtgfY7B9jFRa57mTZm8rGrzzvghx7iijQNe4G9Npump.png?key=2fa74f"
+    },
+    "hidden": false,
+    "_id": "6827efc5eb25eec68c92336d",
+    "groupId": "1523240618",
+    "__v": 0,
+    "groupName": "mewgambles",
+    "messageId": 4798,
+    "text": "🪙 $mnlnlnlknk  m,n,lnl,n'lknklohioujiojopijlk good og bitcointalk post\n\n8TtgfY7B9jFRa57mTZm8rGrzzvghx7iijQNe4G9Npump",
+    "timestamp": 1747447748,
+    "group": {
+      "stats": {
+        "callFrequency": 3.56,
+        "winRate30": 26,
+        "profit30": 1277,
+        "earlyTop50": 1,
+        "lot30": 49,
+        "ins30": 332
+      },
+      "_id": "67adf28aeb25eec68c52c552",
+      "name": "mewgambles",
+      "groupId": "1523240618",
+      "id": "67adf28aeb25eec68c52c552"
+    },
+    "id": "6827efc5eb25eec68c92336d"
+  },
+  {
+    "token": {
+      "pa": "0x416f359564E32bFE9B755f7d829Bd89DB15fab40",
+      "ca": "0x699Ec925118567b6475Fe495327ba0a778234AaA",
+      "network": "ethereum",
+      "symbol": "DUCKY",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0x699ec925118567b6475fe495327ba0a778234aaa.png?key=8d30b6"
+    },
+    "trade": {
+      "buyPrice": 6.99389765513507e-7,
+      "buyTimestamp": 1747447260,
+      "topPrice": 0.00000149553349586979,
+      "topTimestamp": 1747448280,
+      "roi": 2.1383405500246875,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6827edf1eb25eec68c92322d",
+    "groupId": "1927494975",
+    "__v": 0,
+    "groupName": "chiggajogambles",
+    "messageId": 18887,
+    "text": "Jason furie sorta hyped now?\nAped this OG ducky by jason furie. 25m ath 6 months ago, 200k now.\n\nhttps://www.dextools.io/app/ether/pair-explorer/0x416f359564e32bfe9b755f7d829bd89db15fab40",
+    "timestamp": 1747447278,
+    "group": {
+      "stats": {
+        "callFrequency": 1.92,
+        "winRate30": 30,
+        "profit30": 2295,
+        "earlyTop50": 0,
+        "lot30": 76,
+        "ins30": 688
+      },
+      "_id": "67adf28aeb25eec68c52c6a4",
+      "name": "chiggajogambles",
+      "groupId": "1927494975",
+      "id": "67adf28aeb25eec68c52c6a4"
+    },
+    "id": "6827edf1eb25eec68c92322d"
+  },
+  {
+    "token": {
+      "pa": "EnPHgh2GtgbJ4etpAycwQDPYyU2kGxcbTzGdmnXfNyaz",
+      "pairTimestamp": 1745714118,
+      "network": "solana",
+      "ca": "5VQk752Sh8EjRsmWTqEGZbYTuD5uerGNVv2i3nNSpump",
+      "symbol": "GUMBINO",
+      "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/5VQk752Sh8EjRsmWTqEGZbYTuD5uerGNVv2i3nNSpump.png?key=0da36a"
+    },
+    "trade": {
+      "buyPrice": 0.00010855016739762378,
+      "buyTimestamp": 1747446960,
+      "topPrice": 0.00033014794139008224,
+      "topTimestamp": 1747515600,
+      "roi": 3.0414318955468453,
+      "error": false
+    },
+    "hidden": false,
+    "_id": "6827ecdceb25eec68c923167",
+    "groupId": "1983450418",
+    "__v": 0,
+    "groupName": "shitcoinneverland",
+    "messageId": 13419,
+    "text": "5VQk752Sh8EjRsmWTqEGZbYTuD5uerGNVv2i3nNSpump",
+    "timestamp": 1747447003,
+    "group": {
+      "stats": {
+        "callFrequency": 2.79,
+        "winRate30": 30,
+        "profit30": 1198,
+        "earlyTop50": 3,
+        "lot30": 39,
+        "ins30": 359
+      },
+      "_id": "67adf28aeb25eec68c52c554",
+      "name": "shitcoinneverland",
+      "groupId": "1983450418",
+      "id": "67adf28aeb25eec68c52c554"
+    },
+    "id": "6827ecdceb25eec68c923167"
+  }
+]

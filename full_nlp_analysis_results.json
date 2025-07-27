@@ -1,0 +1,1675 @@
+{
+  "analysis_date": "2025-07-15T10:05:16.051214",
+  "total_calls_analyzed": 4543,
+  "legitimate_projects_found": 183,
+  "time_taken_minutes": 1030.8822258472442,
+  "score_distribution": {
+    "score_10": 0,
+    "score_9": 0,
+    "score_8": 1,
+    "score_7": 9,
+    "score_6": 53,
+    "score_5": 120
+  },
+  "high_legitimacy_projects": [
+    {
+      "ticker": "ETH2.0",
+      "score": 8.0,
+      "best_feature": "Ethereum 2.0 is a major upgrade to the Ethereum network.\n\nThe Ethereum 2.0 project has several posit",
+      "date": "2025-06-09",
+      "time": "06:36",
+      "original_ratings": "C:ALPHA X:TRASH",
+      "krom_id": "684680b6eb25eec68c9cc7c8"
+    }
+  ],
+  "potentially_missed_gems": [],
+  "all_legitimate_projects": [
+    {
+      "ticker": "HUAHUA",
+      "score": 5.0,
+      "best_feature": "Promising animal-themed project with some real elements\n\nThis project has some positive signs, such ",
+      "date": "2025-07-13",
+      "time": "23:15",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "68743dedeb25eec68ca9f8ab"
+    },
+    {
+      "ticker": "ONE",
+      "score": 5.0,
+      "best_feature": "Previous project by team, but limited details on this one.\n\nThe project you mentioned, $ONE, has som",
+      "date": "2025-07-11",
+      "time": "09:49",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "6870de0deb25eec68ca8fd34"
+    },
+    {
+      "ticker": "QBIT",
+      "score": 5.0,
+      "best_feature": "Mentions utility and potential for alt season performance.\n\nBased on the information provided, this ",
+      "date": "2025-07-11",
+      "time": "06:09",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "6870aa5deb25eec68ca8eeb6"
+    },
+    {
+      "ticker": "ROSCOE",
+      "score": 5.0,
+      "best_feature": "Leveraging influencer popularity, but lacking technical details.\n\nThis project has some positive sig",
+      "date": "2025-07-10",
+      "time": "20:08",
+      "original_ratings": "C:ALPHA X:BASIC",
+      "krom_id": "68701d9eeb25eec68ca8c481"
+    },
+    {
+      "ticker": "ROSCOE",
+      "score": 5.0,
+      "best_feature": "Leveraging F1 popularity, but lacking technical details and team transparency.\n\nThis project seems t",
+      "date": "2025-07-10",
+      "time": "19:32",
+      "original_ratings": "C:ALPHA X:BASIC",
+      "krom_id": "68701501eb25eec68ca8c1ae"
+    },
+    {
+      "ticker": "FAIR",
+      "score": 5.0,
+      "best_feature": "Mentions product utility, technical features, and links to website.\n\nThe $FAIR project seems to have",
+      "date": "2025-07-10",
+      "time": "18:28",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "68700614eb25eec68ca8bcae"
+    },
+    {
+      "ticker": "FAIR",
+      "score": 5.0,
+      "best_feature": "Some real elements, but lacking in transparency and utility.\n\nThe project you've provided has some p",
+      "date": "2025-07-09",
+      "time": "21:38",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "686ee105eb25eec68ca866fa"
+    },
+    {
+      "ticker": "KOBIKI",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThe Kobiki project appears",
+      "date": "2025-07-09",
+      "time": "18:44",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "686eb866eb25eec68ca85a8f"
+    },
+    {
+      "ticker": "KOBIKI",
+      "score": 6.0,
+      "best_feature": "Decent project with some real elements, but lacking verification.\n\nThe project you've mentioned has ",
+      "date": "2025-07-09",
+      "time": "18:30",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "686eb519eb25eec68ca85986"
+    },
+    {
+      "ticker": "VOCAL",
+      "score": 5.0,
+      "best_feature": "Mentions a utility product with hands-free execution.\n\nThe project seems to have some potential, wit",
+      "date": "2025-07-09",
+      "time": "17:49",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "686eab8feb25eec68ca85684"
+    },
+    {
+      "ticker": "VOCAL",
+      "score": 5.0,
+      "best_feature": "AI-driven DeFi trading with voice controls, but lacking verification.\n\nThe project seems to have som",
+      "date": "2025-07-09",
+      "time": "17:14",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "686ea325eb25eec68ca8538a"
+    },
+    {
+      "ticker": "ELLIE",
+      "score": 6.0,
+      "best_feature": "Strong team with previous successful projects\n\nThe provided information suggests that this crypto pr",
+      "date": "2025-07-09",
+      "time": "17:14",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "686ea358eb25eec68ca853b7"
+    },
+    {
+      "ticker": "PUMPKIN",
+      "score": 5.0,
+      "best_feature": "Popular raccoon influencer with real social media presence\n\nThis project seems to have some real-wor",
+      "date": "2025-07-09",
+      "time": "16:33",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "686e99b5eb25eec68ca85047"
+    },
+    {
+      "ticker": "NAKA",
+      "score": 5.0,
+      "best_feature": "Mentions product utility, some technical details, and links to website.\n\nThe NAKA project seems to h",
+      "date": "2025-07-09",
+      "time": "12:47",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "686e64bdeb25eec68ca84054"
+    },
+    {
+      "ticker": "STX",
+      "score": 5.0,
+      "best_feature": "Utility play with real equity backing and rewards.\n\nThe project seems to have some promising element",
+      "date": "2025-07-09",
+      "time": "12:40",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "686e62f6eb25eec68ca83fc1"
+    },
+    {
+      "ticker": "STACK",
+      "score": 6.0,
+      "best_feature": "Provides infrastructure for launching customizable Ethereum layer 2 chains.\n\nThis project seems to h",
+      "date": "2025-07-09",
+      "time": "10:50",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "686e4950eb25eec68ca8381c"
+    },
+    {
+      "ticker": "WOOLLY",
+      "score": 5.0,
+      "best_feature": "Mentions real company and partnership, but lacks technical details.\n\nThe project you mentioned, \"Woo",
+      "date": "2025-07-09",
+      "time": "06:10",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "686e078ceb25eec68ca824e6"
+    },
+    {
+      "ticker": "STACK",
+      "score": 6.0,
+      "best_feature": "Modular, flexible Layer 2 solution with technical details described.\n\nThe StratoStack project appear",
+      "date": "2025-07-09",
+      "time": "03:04",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "686ddbe9eb25eec68ca81865"
+    },
+    {
+      "ticker": "STACK",
+      "score": 7.0,
+      "best_feature": "Flexible, low-friction Ethereum rollup deployment with technical features.\n\nThe StratoStack project ",
+      "date": "2025-07-09",
+      "time": "02:57",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "686dda71eb25eec68ca817a2"
+    },
+    {
+      "ticker": "STACK",
+      "score": 7.0,
+      "best_feature": "Enables easy Ethereum rollup deployment with customization options.\n\nThe StratoStack project appears",
+      "date": "2025-07-09",
+      "time": "02:19",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "686dd18beb25eec68ca8151c"
+    },
+    {
+      "ticker": "MAYA",
+      "score": 5.0,
+      "best_feature": "Decent team, real product, but limited verification.\n\nThis project seems to have some positive eleme",
+      "date": "2025-07-08",
+      "time": "02:56",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "686c8892eb25eec68ca7b18e"
+    },
+    {
+      "ticker": "HEX",
+      "score": 6.0,
+      "best_feature": "AI-powered firewall to detect wallet risks and exposures.\n\nThe Hexly project seems to have some prom",
+      "date": "2025-07-07",
+      "time": "19:03",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "686c19e7eb25eec68ca790b5"
+    },
+    {
+      "ticker": "COIN",
+      "score": 5.0,
+      "best_feature": "Mentions technical features, links to website, some community metrics.\n\nThis project appears to have",
+      "date": "2025-07-07",
+      "time": "18:11",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "686c0db4eb25eec68ca78c9e"
+    },
+    {
+      "ticker": "$AMP",
+      "score": 5.0,
+      "best_feature": "Mentions actual product/utility, links to website, some technical details.\n\nThe $AMP project appears",
+      "date": "2025-07-05",
+      "time": "04:06",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "6868a472eb25eec68ca69195"
+    },
+    {
+      "ticker": "LA\u00cfKA",
+      "score": 5.0,
+      "best_feature": "Mentions Laika the dog, has some basic project details.\n\nThe project seems to have some basic elemen",
+      "date": "2025-07-05",
+      "time": "01:19",
+      "original_ratings": "C:BASIC X:SOLID",
+      "krom_id": "68687d7eeb25eec68ca6866e"
+    },
+    {
+      "ticker": "LIQUID",
+      "score": 6.0,
+      "best_feature": "Doxxed team, real product, and partnerships described.\n\nThis project seems to have some legitimate e",
+      "date": "2025-07-04",
+      "time": "11:28",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "6867ba91eb25eec68ca64d1a"
+    },
+    {
+      "ticker": "NEXYAI",
+      "score": 6.0,
+      "best_feature": "Real-time token intelligence and portfolio optimization tools.\n\nThe NEXY AI project appears to have ",
+      "date": "2025-07-03",
+      "time": "16:01",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "6866a93eeb25eec68ca5ffa5"
+    },
+    {
+      "ticker": "NEXYAI",
+      "score": 6.0,
+      "best_feature": "Real-time token intelligence and portfolio optimization features.\n\nThe NEXY AI project appears to ha",
+      "date": "2025-07-03",
+      "time": "15:47",
+      "original_ratings": "C:ALPHA X:SOLID",
+      "krom_id": "6866a5dbeb25eec68ca5fe73"
+    },
+    {
+      "ticker": "NEXYAI",
+      "score": 6.0,
+      "best_feature": "Real-time token intelligence and portfolio optimization features.\n\nThe NEXY AI project appears to ha",
+      "date": "2025-07-03",
+      "time": "15:37",
+      "original_ratings": "C:ALPHA X:TRASH",
+      "krom_id": "6866a37deb25eec68ca5fdba"
+    },
+    {
+      "ticker": "WOLFIE",
+      "score": 5.0,
+      "best_feature": "Team looks decent, some real elements but lacking details.\n\nThis project seems to have some positive",
+      "date": "2025-07-03",
+      "time": "04:36",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6866088eeb25eec68ca5d2a6"
+    },
+    {
+      "ticker": "VLT",
+      "score": 6.0,
+      "best_feature": "Decentralized vault system with some real-world utility and transparency.\n\nThe $VLT project appears ",
+      "date": "2025-07-02",
+      "time": "17:02",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68656600eb25eec68ca5a1f5"
+    },
+    {
+      "ticker": "WOOLLYMICE",
+      "score": 5.0,
+      "best_feature": "Mentions real company and product, but lacks verification.\n\nThe Colossal Woolly Mouse project has so",
+      "date": "2025-07-02",
+      "time": "13:27",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "68653397eb25eec68ca5935f"
+    },
+    {
+      "ticker": "HRZ",
+      "score": 7.0,
+      "best_feature": "Synthetic trading exchange with real technical features.\n\nThe Horizon project appears to be a legiti",
+      "date": "2025-07-02",
+      "time": "02:57",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68649ff1eb25eec68ca569a7"
+    },
+    {
+      "ticker": "MANYU",
+      "score": 5.0,
+      "best_feature": "Promising project with some real elements, but lacking verification.\n\nThe project has some positive ",
+      "date": "2025-07-01",
+      "time": "19:10",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "68643289eb25eec68ca549ab"
+    },
+    {
+      "ticker": "XELO",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThe project appears to hav",
+      "date": "2025-07-01",
+      "time": "16:24",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "68640b87eb25eec68ca53d4f"
+    },
+    {
+      "ticker": "NRX",
+      "score": 6.0,
+      "best_feature": "Automated DeFi strategies via smart AI agents\n\nThe project seems to have some legitimate elements, s",
+      "date": "2025-07-01",
+      "time": "15:08",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6863f9b9eb25eec68ca537c0"
+    },
+    {
+      "ticker": "SIF",
+      "score": 5.0,
+      "best_feature": "Solana index fund with some technical details provided.\n\nThe project seems to have some positive sig",
+      "date": "2025-07-01",
+      "time": "04:54",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "686369d8eb25eec68ca50e21"
+    },
+    {
+      "ticker": "NULL",
+      "score": 6.0,
+      "best_feature": "Decentralized AI platform with modular infrastructure and token incentives.\n\nThe project seems to ha",
+      "date": "2025-07-01",
+      "time": "03:40",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "68635872eb25eec68ca50933"
+    },
+    {
+      "ticker": "\u20bfO\u20bf",
+      "score": 6.0,
+      "best_feature": "Established team with previous projects, but lacking key details.\n\nThe project has some positive sig",
+      "date": "2025-06-30",
+      "time": "18:22",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "6862d5b8eb25eec68ca4e1ce"
+    },
+    {
+      "ticker": "ZENT",
+      "score": 5.0,
+      "best_feature": "AI-driven blockchain with technical features and ecosystem utility.\n\nThe ZENTIUM project appears to ",
+      "date": "2025-06-30",
+      "time": "14:18",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68629c8deb25eec68ca4cfdd"
+    },
+    {
+      "ticker": "ERC",
+      "score": 6.0,
+      "best_feature": "Directly based on Ethereum Foundation's ERC20 example\n\nThis project appears to be a relatively strai",
+      "date": "2025-06-30",
+      "time": "06:17",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "68622baceb25eec68ca4ae26"
+    },
+    {
+      "ticker": "ERC",
+      "score": 5.0,
+      "best_feature": "Based on official Ethereum example, some technical details provided.\n\nThis project seems to have som",
+      "date": "2025-06-30",
+      "time": "06:09",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "686229e1eb25eec68ca4ad92"
+    },
+    {
+      "ticker": "KYO",
+      "score": 6.0,
+      "best_feature": "Utility-focused crypto project with real-world application in MMA/martial arts.\n\nThe Kayyo project a",
+      "date": "2025-06-29",
+      "time": "07:44",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "6860eebbeb25eec68ca45387"
+    },
+    {
+      "ticker": "HADES",
+      "score": 5.0,
+      "best_feature": "Mentions actual product/utility and has an active community.\n\nThe project seems to have some positiv",
+      "date": "2025-06-28",
+      "time": "16:02",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "686011f3eb25eec68ca414bb"
+    },
+    {
+      "ticker": "PHYSICS",
+      "score": 5.0,
+      "best_feature": "Mentions technical features and links to documentation.\n\nThe project \"Physics \ud83d\udd35\ud83d\udfe3\" seems to have some",
+      "date": "2025-06-28",
+      "time": "12:37",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "685fe1ebeb25eec68ca406df"
+    },
+    {
+      "ticker": "HRZ",
+      "score": 6.0,
+      "best_feature": "Utility-focused project with unique CEX features, team details.\n\nThe Horizon project appears to have",
+      "date": "2025-06-27",
+      "time": "23:14",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "685f2595eb25eec68ca3d2a0"
+    },
+    {
+      "ticker": "ASTERIX",
+      "score": 5.0,
+      "best_feature": "Mentions a product and some technical features\n\nThe project seems to have some positive signs, such ",
+      "date": "2025-06-27",
+      "time": "15:21",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "685eb6dceb25eec68ca3b0ef"
+    },
+    {
+      "ticker": "QBIT",
+      "score": 5.0,
+      "best_feature": "Mentions product, team, and community, but lacks verification.\n\nThe project seems to have some posit",
+      "date": "2025-06-26",
+      "time": "19:33",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "685da05beb25eec68ca360fc"
+    },
+    {
+      "ticker": "$ROBO",
+      "score": 5.0,
+      "best_feature": "Mentions product, whitepaper, and testnet, but lacks verified team.\n\nThe THINKMESH $ROBO project app",
+      "date": "2025-06-26",
+      "time": "18:25",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "685d9070eb25eec68ca35bb1"
+    },
+    {
+      "ticker": "SPIN",
+      "score": 5.0,
+      "best_feature": "Mentions a product and website, but lacks substantial verification.\n\nThis project appears to have so",
+      "date": "2025-06-26",
+      "time": "18:04",
+      "original_ratings": "C:BASIC X:SOLID",
+      "krom_id": "685d8b74eb25eec68ca35a31"
+    },
+    {
+      "ticker": "SPIN",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and links to documentation.\n\nThe Spin project appears to have some positive",
+      "date": "2025-06-26",
+      "time": "16:44",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "685d78cbeb25eec68ca35466"
+    },
+    {
+      "ticker": "WLFI",
+      "score": 5.0,
+      "best_feature": "Meme-inspired project with potential, but lacking verification.\n\nThe project description provides so",
+      "date": "2025-06-26",
+      "time": "01:55",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "685ca842eb25eec68ca31954"
+    },
+    {
+      "ticker": "PILSO",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThe project you've provide",
+      "date": "2025-06-25",
+      "time": "18:55",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "685c4605eb25eec68ca2fc8c"
+    },
+    {
+      "ticker": "BEBE",
+      "score": 5.0,
+      "best_feature": "Roadmap shows potential utility, but team and project details unclear.\n\nThe project has some positiv",
+      "date": "2025-06-25",
+      "time": "17:06",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "685c2c6deb25eec68ca2f488"
+    },
+    {
+      "ticker": "EVAI",
+      "score": 6.0,
+      "best_feature": "Decentralized AI content creation platform with blockchain integration.\n\nThe project seems to have s",
+      "date": "2025-06-25",
+      "time": "17:00",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "685c2b0deb25eec68ca2f3f2"
+    },
+    {
+      "ticker": "RSPACEX ",
+      "score": 5.0,
+      "best_feature": "Mentions actual product and links to some information.\n\nThis project seems to have some potential, b",
+      "date": "2025-06-25",
+      "time": "14:52",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "685c0d13eb25eec68ca2eaa4"
+    },
+    {
+      "ticker": "NEXUS",
+      "score": 6.0,
+      "best_feature": "Decentralized research platform with AI collaboration, some real elements.\n\nThe $NEXUS project has s",
+      "date": "2025-06-25",
+      "time": "14:31",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "685c0808eb25eec68ca2e90b"
+    },
+    {
+      "ticker": "NEXUS",
+      "score": 6.0,
+      "best_feature": "Decentralized research platform with AI collaboration, some real elements.\n\nThe $NEXUS project has s",
+      "date": "2025-06-25",
+      "time": "14:24",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "685c0650eb25eec68ca2e860"
+    },
+    {
+      "ticker": "19B-4",
+      "score": 6.0,
+      "best_feature": "Mentions real company, partnership, and technical features.\n\nThe project seems to have some legitima",
+      "date": "2025-06-25",
+      "time": "12:13",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "685be7aaeb25eec68ca2dfc0"
+    },
+    {
+      "ticker": "BOJI",
+      "score": 5.0,
+      "best_feature": "Legitimate street dog project with previous team experience.\n\nThe project has some positive signs, s",
+      "date": "2025-06-24",
+      "time": "15:49",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "685ac8e3eb25eec68ca28c84"
+    },
+    {
+      "ticker": "OPL",
+      "score": 6.0,
+      "best_feature": "Raised $15M, backed by reputable partners, has active user base.\n\nThe OpenLoop project appears to ha",
+      "date": "2025-06-24",
+      "time": "15:35",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "685ac57deb25eec68ca28b80"
+    },
+    {
+      "ticker": "RECODE",
+      "score": 6.0,
+      "best_feature": "AI-powered bridge between design and code, live utility preview.\n\nThe Recode AI project seems to hav",
+      "date": "2025-06-24",
+      "time": "09:58",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "685a7676eb25eec68ca272cd"
+    },
+    {
+      "ticker": "BUNKER",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and links to website/docs.\n\nThis project seems to have some positive signs,",
+      "date": "2025-06-22",
+      "time": "18:07",
+      "original_ratings": "C:BASIC X:ALPHA",
+      "krom_id": "6858462ceb25eec68ca1d186"
+    },
+    {
+      "ticker": "ERC-69",
+      "score": 5.0,
+      "best_feature": "Mentions a product, but lacks substantial verification.\n\nThe project you've described, \"truth termin",
+      "date": "2025-06-21",
+      "time": "22:50",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "685736e5eb25eec68ca1849b"
+    },
+    {
+      "ticker": "MALCOLM",
+      "score": 5.0,
+      "best_feature": "Influencer-backed dog token with some real community metrics\n\nThis project has some positive signs, ",
+      "date": "2025-06-21",
+      "time": "18:41",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6856fcb2eb25eec68ca17403"
+    },
+    {
+      "ticker": "DODO",
+      "score": 6.0,
+      "best_feature": "Mentions real product, team, and technical features, but lacks full verification.\n\nThe DODO project ",
+      "date": "2025-06-21",
+      "time": "02:37",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "68561aafeb25eec68ca132aa"
+    },
+    {
+      "ticker": "BOG",
+      "score": 6.0,
+      "best_feature": "Mentions product utility, technical features, and links to documentation.\n\nThe BOG project appears t",
+      "date": "2025-06-20",
+      "time": "17:51",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "68559f58eb25eec68ca10f49"
+    },
+    {
+      "ticker": "X",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThis project appears to ha",
+      "date": "2025-06-19",
+      "time": "12:31",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "685402d8eb25eec68ca093ca"
+    },
+    {
+      "ticker": "GOR",
+      "score": 5.0,
+      "best_feature": "Mentions real people, some technical details, and community metrics.\n\nThis project seems to have som",
+      "date": "2025-06-19",
+      "time": "02:10",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "68537142eb25eec68ca0677f"
+    },
+    {
+      "ticker": "PAWSE",
+      "score": 5.0,
+      "best_feature": "Mentions real people, some product details, but lacking verification.\n\nThis project seems to have so",
+      "date": "2025-06-18",
+      "time": "10:20",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "685292d5eb25eec68ca02505"
+    },
+    {
+      "ticker": "RECA",
+      "score": 5.0,
+      "best_feature": "Mentions product utility, technical features, and links to website.\n\nThis project seems to have some",
+      "date": "2025-06-17",
+      "time": "20:41",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "6851d2a9eb25eec68c9fee51"
+    },
+    {
+      "ticker": "HECHI",
+      "score": 5.0,
+      "best_feature": "Mascot of Seoul, South Korea, with government support\n\nThe project has some positive signs, such as ",
+      "date": "2025-06-17",
+      "time": "14:24",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68517a4aeb25eec68c9fd3a3"
+    },
+    {
+      "ticker": "MSTR",
+      "score": 5.0,
+      "best_feature": "Potential project with some real elements, needs more verification.\n\nThe project has some positive s",
+      "date": "2025-06-17",
+      "time": "09:32",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "685135dbeb25eec68c9fbf7c"
+    },
+    {
+      "ticker": "COG",
+      "score": 5.0,
+      "best_feature": "Mentions product utility, some technical details, and links to website.\n\nThe COG project seems to ha",
+      "date": "2025-06-17",
+      "time": "06:22",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "68510980eb25eec68c9fb2cf"
+    },
+    {
+      "ticker": "COG",
+      "score": 5.0,
+      "best_feature": "Mentions product utility, some technical details, and links to website.\n\nThe COG project seems to ha",
+      "date": "2025-06-17",
+      "time": "06:22",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "68510980eb25eec68c9fb2cf"
+    },
+    {
+      "ticker": "SQUIGG",
+      "score": 5.0,
+      "best_feature": "Real physical product created by known artist\n\nThis project seems to have some legitimate elements, ",
+      "date": "2025-06-17",
+      "time": "03:27",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "6850e072eb25eec68c9fa73c"
+    },
+    {
+      "ticker": "MYAI",
+      "score": 5.0,
+      "best_feature": "AI-powered features with some technical details, but lacking verification.\n\nThe project seems to hav",
+      "date": "2025-06-17",
+      "time": "00:06",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "6850b139eb25eec68c9f9966"
+    },
+    {
+      "ticker": "SOLPLAY",
+      "score": 7.0,
+      "best_feature": "AI-powered platform for creating animated videos and viral content.\n\nThe SolPlay project appears to ",
+      "date": "2025-06-16",
+      "time": "21:43",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "68508fd1eb25eec68c9f8fc4"
+    },
+    {
+      "ticker": "SQUIGG",
+      "score": 6.0,
+      "best_feature": "Tangible art by renowned meme creator, Matt Furie.\n\nThis project has some promising elements, such a",
+      "date": "2025-06-16",
+      "time": "20:31",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "68507ef3eb25eec68c9f8ac0"
+    },
+    {
+      "ticker": "SQUIGG",
+      "score": 5.0,
+      "best_feature": "Real physical product created by known artist\n\nThis project has some positive signs, such as the men",
+      "date": "2025-06-16",
+      "time": "20:10",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "685079feeb25eec68c9f8901"
+    },
+    {
+      "ticker": "SQUIGG",
+      "score": 5.0,
+      "best_feature": "Mentions real artist and physical product, but lacking details.\n\nThis project has some positive sign",
+      "date": "2025-06-16",
+      "time": "20:10",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "68507a0aeb25eec68c9f891f"
+    },
+    {
+      "ticker": "CYPHER",
+      "score": 6.0,
+      "best_feature": "Anonymity through ZKPs, verified user access, describes technical features.\n\nThis project seems to h",
+      "date": "2025-06-16",
+      "time": "17:38",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68505658eb25eec68c9f7c25"
+    },
+    {
+      "ticker": "VIBE",
+      "score": 5.0,
+      "best_feature": "Mentions a product/utility and has some technical details\n\nThe project seems to have some positive s",
+      "date": "2025-06-16",
+      "time": "16:56",
+      "original_ratings": "C:TRASH X:SOLID",
+      "krom_id": "68504c6aeb25eec68c9f78e2"
+    },
+    {
+      "ticker": "DIG",
+      "score": 6.0,
+      "best_feature": "Launched by DappRadar co-founder, some real-world connections.\n\nThe $DIG project has some positive s",
+      "date": "2025-06-15",
+      "time": "15:21",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "684edf70eb25eec68c9f0cec"
+    },
+    {
+      "ticker": "DEGEN",
+      "score": 5.0,
+      "best_feature": "Established game studio, existing product, blockchain integration\n\nThis project has some promising e",
+      "date": "2025-06-12",
+      "time": "13:11",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "684ad1e6eb25eec68c9e10af"
+    },
+    {
+      "ticker": "NAKA",
+      "score": 5.0,
+      "best_feature": "Pays homage to the Shiba Inu breed's history.\n\nThis project seems to have some potential, as it appe",
+      "date": "2025-06-12",
+      "time": "01:04",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "684a275eeb25eec68c9ddd96"
+    },
+    {
+      "ticker": "NAKA",
+      "score": 5.0,
+      "best_feature": "Mentions product, team, and community-focused approach.\n\nThe Naka Go project appears to have some le",
+      "date": "2025-06-11",
+      "time": "23:19",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "684a0eb0eb25eec68c9dd5ce"
+    },
+    {
+      "ticker": "ABYSS",
+      "score": 6.0,
+      "best_feature": "Marketplace for transferring ownership of locked LP tokens.\n\nThe Abyssal project appears to have som",
+      "date": "2025-06-11",
+      "time": "16:16",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6849ab99eb25eec68c9db765"
+    },
+    {
+      "ticker": "OMNIME",
+      "score": 6.0,
+      "best_feature": "Promising AI-powered video generation with technical details.\n\nThe project seems to have some legiti",
+      "date": "2025-06-11",
+      "time": "15:56",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6849a70eeb25eec68c9db5cd"
+    },
+    {
+      "ticker": "OMNIME",
+      "score": 6.0,
+      "best_feature": "Leverages AI to automate video creation for creators.\n\nThe OMNIME project appears to have some legit",
+      "date": "2025-06-11",
+      "time": "15:52",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6849a60ceb25eec68c9db56d"
+    },
+    {
+      "ticker": "AURA",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThis project seems to have",
+      "date": "2025-06-11",
+      "time": "12:02",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "68497037eb25eec68c9da57d"
+    },
+    {
+      "ticker": "FIND",
+      "score": 5.0,
+      "best_feature": "Mentions a product and technical features, but lacks verification.\n\nThe project seems to have some p",
+      "date": "2025-06-11",
+      "time": "01:28",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6848db7ceb25eec68c9d7b5a"
+    },
+    {
+      "ticker": "FIND",
+      "score": 5.0,
+      "best_feature": "Mentions doxxed tech founder, but limited details on product/utility.\n\nThe project mentions a \"doxxe",
+      "date": "2025-06-10",
+      "time": "23:51",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "6848c4c4eb25eec68c9d746a"
+    },
+    {
+      "ticker": "YIELD",
+      "score": 7.0,
+      "best_feature": "Doxxed founders, real-world asset vault, institutional partnerships.\n\nThe project you've described, ",
+      "date": "2025-06-10",
+      "time": "23:21",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "6848bdbaeb25eec68c9d726a"
+    },
+    {
+      "ticker": "SNOW",
+      "score": 6.0,
+      "best_feature": "Decent team, real product, but lacking some key verifications.\n\nThe project seems to have some posit",
+      "date": "2025-06-10",
+      "time": "15:08",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "68484a4beb25eec68c9d5034"
+    },
+    {
+      "ticker": "SOLBOX",
+      "score": 5.0,
+      "best_feature": "Mentions actual product/utility and technical features, but lacks verification.\n\nThe SOLBOX project ",
+      "date": "2025-06-10",
+      "time": "12:20",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "684822c6eb25eec68c9d43e4"
+    },
+    {
+      "ticker": "TWT",
+      "score": 5.0,
+      "best_feature": "Mentions NFT utility, but lacks details on team and product.\n\nThe information provided suggests this",
+      "date": "2025-06-10",
+      "time": "09:12",
+      "original_ratings": "C:BASIC X:SOLID",
+      "krom_id": "6847f6b5eb25eec68c9d3693"
+    },
+    {
+      "ticker": "PUFF",
+      "score": 5.0,
+      "best_feature": "Leveraging influencer's brand to build crypto community.\n\nThis project has some positive signs, such",
+      "date": "2025-06-09",
+      "time": "16:23",
+      "original_ratings": "C:ALPHA X:BASIC",
+      "krom_id": "68470a2feb25eec68c9ceff8"
+    },
+    {
+      "ticker": "CDB",
+      "score": 6.0,
+      "best_feature": "Real company with tech focus, some transparency but lacking details.\n\nThe project appears to have so",
+      "date": "2025-06-09",
+      "time": "09:41",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6846ac04eb25eec68c9cd434"
+    },
+    {
+      "ticker": "TOR",
+      "score": 6.0,
+      "best_feature": "Legitimate team, active community, and some technical details.\n\nThe $TOR project seems to have some ",
+      "date": "2025-06-09",
+      "time": "08:57",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6846a1daeb25eec68c9cd130"
+    },
+    {
+      "ticker": "ETH2.0",
+      "score": 8.0,
+      "best_feature": "Ethereum 2.0 is a major upgrade to the Ethereum network.\n\nThe Ethereum 2.0 project has several posit",
+      "date": "2025-06-09",
+      "time": "06:36",
+      "original_ratings": "C:ALPHA X:TRASH",
+      "krom_id": "684680b6eb25eec68c9cc7c8"
+    },
+    {
+      "ticker": "BEU",
+      "score": 6.0,
+      "best_feature": "Mentions product utility, team, and technical features.\n\nThis project appears to have some legitimat",
+      "date": "2025-06-08",
+      "time": "14:24",
+      "original_ratings": "C:BASIC X:SOLID",
+      "krom_id": "68459cf2eb25eec68c9c863c"
+    },
+    {
+      "ticker": "TUGGIN",
+      "score": 5.0,
+      "best_feature": "Meme-based project with a team that has done well before.\n\nThe project has some positive signs, such",
+      "date": "2025-06-07",
+      "time": "22:32",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "6844bdd2eb25eec68c9c472f"
+    },
+    {
+      "ticker": "HMG",
+      "score": 5.0,
+      "best_feature": "Mentions product, website, and community, but lacks verification.\n\nThe $HMG project appears to have ",
+      "date": "2025-06-07",
+      "time": "14:03",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "6844467ceb25eec68c9c24cf"
+    },
+    {
+      "ticker": "ROBET",
+      "score": 6.0,
+      "best_feature": "Mentions actual product and technical features, has some documentation.\n\nThis project appears to hav",
+      "date": "2025-06-07",
+      "time": "10:23",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "68441303eb25eec68c9c1615"
+    },
+    {
+      "ticker": "DUMBS",
+      "score": 5.0,
+      "best_feature": "Previous projects by team, some technical details described.\n\nThis project appears to have some posi",
+      "date": "2025-06-06",
+      "time": "09:34",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "6842b5e0eb25eec68c9baf01"
+    },
+    {
+      "ticker": "BILL",
+      "score": 5.0,
+      "best_feature": "Fusion of meme culture and financial critique with character IP\n\nThe project seems to have some inte",
+      "date": "2025-06-06",
+      "time": "05:06",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "6842772eeb25eec68c9b9d19"
+    },
+    {
+      "ticker": "WOLFSMILE",
+      "score": 5.0,
+      "best_feature": "Mentions real person and character, some social media presence.\n\nThis project seems to have some rea",
+      "date": "2025-06-05",
+      "time": "18:06",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6841dc7beb25eec68c9b6fa8"
+    },
+    {
+      "ticker": "WOLFSMILE",
+      "score": 5.0,
+      "best_feature": "Mentions a character from a book, some social media presence.\n\nThis project seems to have some basic",
+      "date": "2025-06-05",
+      "time": "18:05",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6841dc36eb25eec68c9b6f75"
+    },
+    {
+      "ticker": "GRAY",
+      "score": 6.0,
+      "best_feature": "Mentions actual product/utility and technical features, but lacks verification.\n\nThe Gradient projec",
+      "date": "2025-06-05",
+      "time": "14:45",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "6841ad3beb25eec68c9b5f5f"
+    },
+    {
+      "ticker": "KANDY",
+      "score": 7.0,
+      "best_feature": "Confirmed by original artist, with real community access.\n\nThis project appears to have some legitim",
+      "date": "2025-06-04",
+      "time": "22:56",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6840ceceeb25eec68c9b1b44"
+    },
+    {
+      "ticker": "PICKLE",
+      "score": 5.0,
+      "best_feature": "Mentions actual product/utility, links to website\n\nThis project seems to have some potential, but th",
+      "date": "2025-06-04",
+      "time": "19:31",
+      "original_ratings": "C:BASIC X:SOLID",
+      "krom_id": "68409ee8eb25eec68c9b0a1e"
+    },
+    {
+      "ticker": "BELLA",
+      "score": 5.0,
+      "best_feature": "Mentions AI utility, some technical details, and real website.\n\nThe Bella Believe project seems to h",
+      "date": "2025-06-04",
+      "time": "16:48",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "684078b0eb25eec68c9afbe9"
+    },
+    {
+      "ticker": "SOLBOX",
+      "score": 5.0,
+      "best_feature": "On-chain cloud storage with revenue-share model, but limited verification.\n\nThis project seems to ha",
+      "date": "2025-06-04",
+      "time": "15:43",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68406982eb25eec68c9af5ed"
+    },
+    {
+      "ticker": "APE",
+      "score": 5.0,
+      "best_feature": "Appears to have a real product and some community engagement.\n\nThe project seems to have some positi",
+      "date": "2025-06-04",
+      "time": "11:31",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "68402e5feb25eec68c9ae14c"
+    },
+    {
+      "ticker": "SHEDGE",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThe $SOLHEDGE project appe",
+      "date": "2025-06-03",
+      "time": "16:34",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "683f23c3eb25eec68c9a84c3"
+    },
+    {
+      "ticker": "SHEDGE",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThe $SOLHEDGE project appe",
+      "date": "2025-06-03",
+      "time": "16:34",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "683f23c3eb25eec68c9a84c3"
+    },
+    {
+      "ticker": "ACML",
+      "score": 5.0,
+      "best_feature": "Mentions actual product/utility and links to website.\n\nThis project appears to have some potential, ",
+      "date": "2025-06-03",
+      "time": "12:46",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "683eee55eb25eec68c9a71b9"
+    },
+    {
+      "ticker": "ACML",
+      "score": 6.0,
+      "best_feature": "Actively trading and accumulating ETH at scale.\n\nThe $ACML project appears to have some legitimate e",
+      "date": "2025-06-03",
+      "time": "12:42",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "683eed6aeb25eec68c9a7162"
+    },
+    {
+      "ticker": "WREATH",
+      "score": 6.0,
+      "best_feature": "Decentralized bond protocol with technical details and documentation.\n\nThe Wreath project appears to",
+      "date": "2025-06-02",
+      "time": "21:55",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "683e1d7deb25eec68c9a2b03"
+    },
+    {
+      "ticker": "ACML",
+      "score": 5.0,
+      "best_feature": "Institutional player acquiring ETH, beta play to existing project.\n\nThe project seems to have some p",
+      "date": "2025-06-02",
+      "time": "18:57",
+      "original_ratings": "C:ALPHA X:TRASH",
+      "krom_id": "683df3caeb25eec68c9a1b66"
+    },
+    {
+      "ticker": "TAIKI",
+      "score": 5.0,
+      "best_feature": "Old school team with a deep network, but lacking details.\n\nThis project has some positive signs, suc",
+      "date": "2025-06-02",
+      "time": "18:52",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "683df2d0eb25eec68c9a1aec"
+    },
+    {
+      "ticker": "ACML",
+      "score": 5.0,
+      "best_feature": "Mentions actual product and some real elements\n\nThe project seems to have some legitimate elements, ",
+      "date": "2025-06-02",
+      "time": "17:04",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "683dd95beb25eec68c9a1195"
+    },
+    {
+      "ticker": "LABS",
+      "score": 5.0,
+      "best_feature": "Launchpad, DAO, and incubator services with some real elements.\n\nThe project seems to have some legi",
+      "date": "2025-06-02",
+      "time": "15:17",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "683dc063eb25eec68c9a0891"
+    },
+    {
+      "ticker": "DUCKY",
+      "score": 5.0,
+      "best_feature": "Leverages existing character with some real-world history.\n\nThe project seems to have some potential",
+      "date": "2025-06-02",
+      "time": "11:18",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "683d8838eb25eec68c99f481"
+    },
+    {
+      "ticker": "PONZI",
+      "score": 5.0,
+      "best_feature": "Mentions a product and technical features, but lacks verification.\n\nThis project appears to have som",
+      "date": "2025-05-30",
+      "time": "20:20",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "683a12c7eb25eec68c98c89f"
+    },
+    {
+      "ticker": "FOX",
+      "score": 6.0,
+      "best_feature": "Mentions real people, previous projects, and some utility.\n\nThe project seems to have some legitimat",
+      "date": "2025-05-30",
+      "time": "13:18",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6839afddeb25eec68c98a596"
+    },
+    {
+      "ticker": "NODL",
+      "score": 6.0,
+      "best_feature": "Decent utility, OG finder with notification features.\n\nThis project seems to have some legitimate el",
+      "date": "2025-05-30",
+      "time": "11:25",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "68399578eb25eec68c989c79"
+    },
+    {
+      "ticker": "RDP",
+      "score": 5.0,
+      "best_feature": "Doxxed devs, live utility, low market cap, potential for growth.\n\nThe RuglessDP project seems to hav",
+      "date": "2025-05-30",
+      "time": "01:58",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "683910a5eb25eec68c986fd3"
+    },
+    {
+      "ticker": "RASTO",
+      "score": 5.0,
+      "best_feature": "Verified Vitalik Buterin connection, but lacking other details.\n\nThe project seems to have some inte",
+      "date": "2025-05-29",
+      "time": "23:52",
+      "original_ratings": "C:ALPHA X:SOLID",
+      "krom_id": "6838f2f3eb25eec68c986542"
+    },
+    {
+      "ticker": "OMALLEY",
+      "score": 5.0,
+      "best_feature": "Leveraging Pepe the Frog's popularity for an Ethereum-based project.\n\nThe O'MALLEY - ETH project has",
+      "date": "2025-05-29",
+      "time": "22:46",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6838e394eb25eec68c985f21"
+    },
+    {
+      "ticker": "OMALLEY",
+      "score": 5.0,
+      "best_feature": "Leveraging Pepe the Frog's popularity, potential utility\n\nThis project seems to have some potential,",
+      "date": "2025-05-29",
+      "time": "22:13",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "6838dbd0eb25eec68c985ba4"
+    },
+    {
+      "ticker": "OMALLEY",
+      "score": 5.0,
+      "best_feature": "Leveraging Pepe the Frog's popularity, but lacking substantial details.\n\nThis project appears to hav",
+      "date": "2025-05-29",
+      "time": "21:52",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6838d6e0eb25eec68c98597a"
+    },
+    {
+      "ticker": "VANYA",
+      "score": 5.0,
+      "best_feature": "Mentions actual product/utility and technical features\n\nPositives:\n- Mentions an actual product/util",
+      "date": "2025-05-29",
+      "time": "18:43",
+      "original_ratings": "C:BASIC X:SOLID",
+      "krom_id": "6838aa8aeb25eec68c9848d9"
+    },
+    {
+      "ticker": "GX3",
+      "score": 7.0,
+      "best_feature": "Decentralized AI-powered platform with real compute services and technical features.\n\nThe project ap",
+      "date": "2025-05-29",
+      "time": "18:26",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "6838a6b3eb25eec68c98475e"
+    },
+    {
+      "ticker": "CASE STUDY 001 \u2014 DISCOVERY",
+      "score": 6.0,
+      "best_feature": "Mentions real product, team, and technical features, but lacks full verification.\n\nThe Zora project ",
+      "date": "2025-05-29",
+      "time": "17:23",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "683897e8eb25eec68c984134"
+    },
+    {
+      "ticker": "PASSROO",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThe project appears to hav",
+      "date": "2025-05-29",
+      "time": "14:31",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "68386f87eb25eec68c983255"
+    },
+    {
+      "ticker": "FRANK",
+      "score": 6.0,
+      "best_feature": "Mentions real team, product utility, and technical features.\n\nBased on the information provided in t",
+      "date": "2025-05-29",
+      "time": "04:21",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "6837e0adeb25eec68c980221"
+    },
+    {
+      "ticker": "ORYN",
+      "score": 5.0,
+      "best_feature": "Mentions actual product and technical features, but lacks verification.\n\nThe project appears to have",
+      "date": "2025-05-28",
+      "time": "20:09",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "68376d28eb25eec68c97d958"
+    },
+    {
+      "ticker": "RESONAX",
+      "score": 7.0,
+      "best_feature": "Promising AI-powered music creation tool with a working product.\n\nThe Resonax project appears to be ",
+      "date": "2025-05-28",
+      "time": "16:50",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68373e9aeb25eec68c97c887"
+    },
+    {
+      "ticker": "BROWN",
+      "score": 5.0,
+      "best_feature": "Leveraging existing brand recognition of LINE FRIENDS character\n\nThis project has some positive elem",
+      "date": "2025-05-28",
+      "time": "06:23",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "6836abb1eb25eec68c9794b7"
+    },
+    {
+      "ticker": "BROWN",
+      "score": 5.0,
+      "best_feature": "Leverages existing LINE app userbase, but lacks verification.\n\nThe project has some positive signs, ",
+      "date": "2025-05-28",
+      "time": "03:46",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "683686d3eb25eec68c97882e"
+    },
+    {
+      "ticker": "WYNN",
+      "score": 5.0,
+      "best_feature": "Mentions real people involved, but lacking in other details.\n\nThe information provided suggests that",
+      "date": "2025-05-27",
+      "time": "21:05",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "683628dceb25eec68c9767c9"
+    },
+    {
+      "ticker": "OSIRAI",
+      "score": 6.0,
+      "best_feature": "Legitimate project with real utility and technical features\n\nThe Osirium project appears to have som",
+      "date": "2025-05-27",
+      "time": "19:08",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68360d5beb25eec68c975d6a"
+    },
+    {
+      "ticker": "LORE",
+      "score": 5.0,
+      "best_feature": "Organic community metrics and narrative, but lacking verification.\n\nThis project seems to have some ",
+      "date": "2025-05-27",
+      "time": "01:38",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "68351771eb25eec68c97079f"
+    },
+    {
+      "ticker": "BROWN",
+      "score": 5.0,
+      "best_feature": "Previous projects by team, some real elements\n\nThe project seems to have some positive signs, such a",
+      "date": "2025-05-26",
+      "time": "22:54",
+      "original_ratings": "C:BASIC X:SOLID",
+      "krom_id": "6834f0ddeb25eec68c96fa8a"
+    },
+    {
+      "ticker": "CONY",
+      "score": 5.0,
+      "best_feature": "Leveraging LINE's user base, potential utility\n\nThe CONY project has some promising elements, but al",
+      "date": "2025-05-26",
+      "time": "21:50",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "6834e1d7eb25eec68c96f55b"
+    },
+    {
+      "ticker": "NYRA",
+      "score": 6.0,
+      "best_feature": "Decentralized OS with composable AI agents and encrypted compute.\n\nThe NyraOS project appears to hav",
+      "date": "2025-05-26",
+      "time": "18:33",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "6834b3dceb25eec68c96e487"
+    },
+    {
+      "ticker": "ZEUS",
+      "score": 5.0,
+      "best_feature": "Mentions a product, but lacks substantial details and verification.\n\nThe Zeus project has some posit",
+      "date": "2025-05-26",
+      "time": "06:19",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "683407c8eb25eec68c96a82d"
+    },
+    {
+      "ticker": "TPT",
+      "score": 6.0,
+      "best_feature": "Mentions product utility, team, and technical features, but lacks verification.\n\nThe TPT project app",
+      "date": "2025-05-26",
+      "time": "04:28",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "6833edcceb25eec68c969ef2"
+    },
+    {
+      "ticker": "QUANT",
+      "score": 5.0,
+      "best_feature": "Mentions utility, team, and technical features, but lacks verification.\n\nThe Quant project appears t",
+      "date": "2025-05-25",
+      "time": "23:16",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "6833a47ceb25eec68c968655"
+    },
+    {
+      "ticker": "STREK",
+      "score": 6.0,
+      "best_feature": "Allows visual block-based development on Solana without coding.\n\nThe project seems to have some legi",
+      "date": "2025-05-24",
+      "time": "15:40",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "6831e853eb25eec68c95e781"
+    },
+    {
+      "ticker": "STREK",
+      "score": 6.0,
+      "best_feature": "Visual no-code Solana development platform with some real elements.\n\nThe project seems to have some ",
+      "date": "2025-05-24",
+      "time": "15:40",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "6831e853eb25eec68c95e781"
+    },
+    {
+      "ticker": "MOCHI",
+      "score": 5.0,
+      "best_feature": "Mentions a character and creator, but lacks substantial details.\n\nThis project seems to have some po",
+      "date": "2025-05-23",
+      "time": "23:30",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "683104dceb25eec68c957bf9"
+    },
+    {
+      "ticker": "AGI",
+      "score": 6.0,
+      "best_feature": "Decentralized framework for AI agents to interact with off-chain services.\n\nThe Agistry project appe",
+      "date": "2025-05-23",
+      "time": "19:11",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "6830c82ceb25eec68c9564af"
+    },
+    {
+      "ticker": "REGEN",
+      "score": 5.0,
+      "best_feature": "Mentions real product and technical features, but lacks verification.\n\nThe $REGEN project appears to",
+      "date": "2025-05-23",
+      "time": "05:39",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "683009ddeb25eec68c951e0c"
+    },
+    {
+      "ticker": "CRE8",
+      "score": 6.0,
+      "best_feature": "Tokenizing real-world services, potential utility, some transparency.\n\nThe CRE8 Finance project appe",
+      "date": "2025-05-22",
+      "time": "22:45",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "682fa8deeb25eec68c94fc5a"
+    },
+    {
+      "ticker": "CRE8",
+      "score": 6.0,
+      "best_feature": "Tokenizing real-world services, potential utility, some transparency.\n\nThe project seems to have som",
+      "date": "2025-05-22",
+      "time": "22:45",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "682fa8efeb25eec68c94fc74"
+    },
+    {
+      "ticker": "SVM",
+      "score": 6.0,
+      "best_feature": "Mentions actual product/utility and technical features.\n\nThe SensorVM project appears to have some l",
+      "date": "2025-05-22",
+      "time": "17:46",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "682f62bfeb25eec68c94e421"
+    },
+    {
+      "ticker": "BONE",
+      "score": 5.0,
+      "best_feature": "Leveraging artist's brand, some real community engagement\n\nThis project seems to have some promising",
+      "date": "2025-05-22",
+      "time": "17:13",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "682f5b10eb25eec68c94e0b0"
+    },
+    {
+      "ticker": "PLAI",
+      "score": 7.0,
+      "best_feature": "Promising gaming project with AI-driven creator economy and data royalties.\n\nThe SOL Playmind projec",
+      "date": "2025-05-22",
+      "time": "15:14",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "682f3f25eb25eec68c94d5fa"
+    },
+    {
+      "ticker": "SKULL",
+      "score": 5.0,
+      "best_feature": "Previous projects by team, some technical details\n\nPositives:\n- The project mentions previous succes",
+      "date": "2025-05-22",
+      "time": "08:34",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "682ee15beb25eec68c94b4d8"
+    },
+    {
+      "ticker": "FROGETTE",
+      "score": 5.0,
+      "best_feature": "Officially featured by creator, but limited details on utility.\n\nThe project has some positive signs",
+      "date": "2025-05-22",
+      "time": "03:37",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "682e9bb9eb25eec68c949bc8"
+    },
+    {
+      "ticker": "TEST",
+      "score": 5.0,
+      "best_feature": "Mentions technical features and links to documentation.\n\nBased on the information provided, this cry",
+      "date": "2025-05-22",
+      "time": "02:43",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "682e8f28eb25eec68c949749"
+    },
+    {
+      "ticker": "USDC",
+      "score": 5.0,
+      "best_feature": "Legitimate stablecoin with real-world use case on Solana.\n\nThe project you've provided, $USDC (SOL),",
+      "date": "2025-05-21",
+      "time": "19:50",
+      "original_ratings": "C:TRASH X:TRASH",
+      "krom_id": "682e2e63eb25eec68c947383"
+    },
+    {
+      "ticker": "WHISPR",
+      "score": 6.0,
+      "best_feature": "Decentralized messaging protocol with focus on privacy and security.\n\nThe project seems to have some",
+      "date": "2025-05-21",
+      "time": "19:17",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "682e26aaeb25eec68c9470b2"
+    },
+    {
+      "ticker": "CTP",
+      "score": 5.0,
+      "best_feature": "Interesting cat-themed project with some real elements\n\nThe project seems to have some positive sign",
+      "date": "2025-05-21",
+      "time": "17:44",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "682e10c2eb25eec68c94678c"
+    },
+    {
+      "ticker": "RMK",
+      "score": 5.0,
+      "best_feature": "Working website, active team, mentions real people and utility.\n\nThe $RMK project seems to have some",
+      "date": "2025-05-21",
+      "time": "03:06",
+      "original_ratings": "C:BASIC X:BASIC",
+      "krom_id": "682d42f5eb25eec68c941c53"
+    },
+    {
+      "ticker": "3BAI",
+      "score": 5.0,
+      "best_feature": "Mentions AI, blockchain, and community-driven approach.\n\nThe project seems to have some potential, w",
+      "date": "2025-05-21",
+      "time": "01:13",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "682d289beb25eec68c9412f6"
+    },
+    {
+      "ticker": "SPEP",
+      "score": 5.0,
+      "best_feature": "Mentions real people and previous projects, but lacks documentation.\n\nThis project seems to have som",
+      "date": "2025-05-20",
+      "time": "20:20",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "682ce3caeb25eec68c93fa7f"
+    },
+    {
+      "ticker": "S2B",
+      "score": 5.0,
+      "best_feature": "Launched by Aurora dev with some utility features\n\nThe project seems to have some positive elements,",
+      "date": "2025-05-20",
+      "time": "16:37",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "682cafaeeb25eec68c93e4f5"
+    },
+    {
+      "ticker": "MUFFIN",
+      "score": 5.0,
+      "best_feature": "Real-life cat of an established artist, some community.\n\nThis project has some positive elements, su",
+      "date": "2025-05-20",
+      "time": "10:08",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "682c545feb25eec68c93be33"
+    },
+    {
+      "ticker": "BOOCHIE",
+      "score": 6.0,
+      "best_feature": "Experienced team, good narrative, potential Pepe the Frog connection\n\nThis project seems to have som",
+      "date": "2025-05-20",
+      "time": "04:06",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "682bff91eb25eec68c939bdd"
+    },
+    {
+      "ticker": "AMIKO",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and links to documentation.\n\nBased on the information provided, the AMIKO p",
+      "date": "2025-05-19",
+      "time": "23:53",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "682bc44ceb25eec68c938394"
+    },
+    {
+      "ticker": "BOOCHIE",
+      "score": 5.0,
+      "best_feature": "Legitimate project with some real elements, but lacking verification.\n\nThe project has some positive",
+      "date": "2025-05-19",
+      "time": "21:37",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "682ba494eb25eec68c93771a"
+    },
+    {
+      "ticker": "BOOCHIE",
+      "score": 5.0,
+      "best_feature": "Mentions real creator, but limited details on utility/product.\n\nThis project seems to have some prom",
+      "date": "2025-05-19",
+      "time": "21:17",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "682b9fb1eb25eec68c9374ab"
+    },
+    {
+      "ticker": "SNARDLER",
+      "score": 5.0,
+      "best_feature": "Officially part of the story, but lacking key details.\n\nThe provided information suggests that this ",
+      "date": "2025-05-19",
+      "time": "20:54",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "682b9a5aeb25eec68c93721d"
+    },
+    {
+      "ticker": "ZXCPTR",
+      "score": 5.0,
+      "best_feature": "Mentions product utility and technical features, but lacks verification.\n\nThe project you've provide",
+      "date": "2025-05-19",
+      "time": "17:03",
+      "original_ratings": "C:BASIC X:TRASH",
+      "krom_id": "682b6417eb25eec68c935ca9"
+    },
+    {
+      "ticker": "ART",
+      "score": 5.0,
+      "best_feature": "Decentralized AI art platform with Solana integration and Arweave storage.\n\nThe project seems to hav",
+      "date": "2025-05-19",
+      "time": "13:44",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "682b358feb25eec68c9349e1"
+    },
+    {
+      "ticker": "YLT",
+      "score": 5.0,
+      "best_feature": "Automatic rewards, but lacking in transparency and documentation.\n\nThe Yieltra project has some posi",
+      "date": "2025-05-19",
+      "time": "09:30",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "682af9e6eb25eec68c933218"
+    },
+    {
+      "ticker": "TRUTH",
+      "score": 5.0,
+      "best_feature": "Mentions Bible verse, verified community, and some real elements.\n\nThis project seems to have some p",
+      "date": "2025-05-19",
+      "time": "05:47",
+      "original_ratings": "C:SOLID X:TRASH",
+      "krom_id": "682ac5c0eb25eec68c93209c"
+    },
+    {
+      "ticker": "PAYAI",
+      "score": 5.0,
+      "best_feature": "Mentions real partnership with Visa, but lacking in other areas.\n\nThe PAY AI project has some positi",
+      "date": "2025-05-19",
+      "time": "05:30",
+      "original_ratings": "C:SOLID X:SOLID",
+      "krom_id": "682ac1c5eb25eec68c931f44"
+    },
+    {
+      "ticker": "MOGWAI",
+      "score": 5.0,
+      "best_feature": "Real character creator, some community, but lacking details.\n\nThis project seems to have some legiti",
+      "date": "2025-05-18",
+      "time": "23:59",
+      "original_ratings": "C:SOLID X:BASIC",
+      "krom_id": "682a7422eb25eec68c9304dd"
+    }
+  ]
+}

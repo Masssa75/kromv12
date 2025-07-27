@@ -1,0 +1,406 @@
+{
+  "total_analyzed": 4543,
+  "claude_tiers": {
+    "TRASH": 1276,
+    "BASIC": 2492,
+    "SOLID": 687,
+    "ALPHA": 88
+  },
+  "x_tiers": {
+    "BASIC": 1867,
+    "SOLID": 336,
+    "TRASH": 2242,
+    "ALPHA": 98
+  },
+  "both_alpha": [
+    {
+      "ticker": "THIS YOU?",
+      "created_at": "2025-07-02T05:32:04.476543+00:00"
+    },
+    {
+      "ticker": "BINANCIENS",
+      "created_at": "2025-06-28T13:23:04.007503+00:00"
+    },
+    {
+      "ticker": "CASE",
+      "created_at": "2025-06-19T13:17:03.747688+00:00"
+    }
+  ],
+  "both_solid": [
+    {
+      "ticker": "HUAHUA",
+      "created_at": "2025-07-13T19:14:04.485446+00:00"
+    },
+    {
+      "ticker": "QBIT",
+      "created_at": "2025-07-11T06:09:03.731211+00:00"
+    },
+    {
+      "ticker": "FAIR",
+      "created_at": "2025-07-09T21:38:04.250306+00:00"
+    },
+    {
+      "ticker": "STACK",
+      "created_at": "2025-07-09T10:50:05.298534+00:00"
+    },
+    {
+      "ticker": "STACK",
+      "created_at": "2025-07-09T03:04:04.808647+00:00"
+    },
+    {
+      "ticker": "STACK",
+      "created_at": "2025-07-09T02:57:03.969192+00:00"
+    },
+    {
+      "ticker": "STACK",
+      "created_at": "2025-07-09T02:19:04.752804+00:00"
+    },
+    {
+      "ticker": "GOB",
+      "created_at": "2025-07-09T01:35:05.266524+00:00"
+    },
+    {
+      "ticker": "MARU",
+      "created_at": "2025-07-07T19:29:04.488547+00:00"
+    },
+    {
+      "ticker": "QBIT",
+      "created_at": "2025-07-05T01:18:04.457823+00:00"
+    },
+    {
+      "ticker": "MSTR2",
+      "created_at": "2025-07-04T16:18:04.943287+00:00"
+    },
+    {
+      "ticker": "LIQUID",
+      "created_at": "2025-07-04T11:28:04.522064+00:00"
+    },
+    {
+      "ticker": "MANYU",
+      "created_at": "2025-07-02T19:38:04.176597+00:00"
+    },
+    {
+      "ticker": "VLT",
+      "created_at": "2025-07-02T17:02:04.642322+00:00"
+    },
+    {
+      "ticker": "HRZ",
+      "created_at": "2025-07-02T02:57:04.120781+00:00"
+    },
+    {
+      "ticker": "WMDR",
+      "created_at": "2025-07-01T15:06:04.692949+00:00"
+    },
+    {
+      "ticker": "ZENT",
+      "created_at": "2025-06-30T14:18:04.596309+00:00"
+    },
+    {
+      "ticker": "LUCKYCOIN",
+      "created_at": "2025-06-30T11:48:05.145454+00:00"
+    },
+    {
+      "ticker": "KYO",
+      "created_at": "2025-06-29T21:07:03.305858+00:00"
+    },
+    {
+      "ticker": "KYO",
+      "created_at": "2025-06-29T07:44:05.02549+00:00"
+    },
+    {
+      "ticker": "FIRSTHOUSE",
+      "created_at": "2025-06-28T17:17:03.911412+00:00"
+    },
+    {
+      "ticker": "HRZ",
+      "created_at": "2025-06-27T23:14:04.573366+00:00"
+    },
+    {
+      "ticker": "$ROBO",
+      "created_at": "2025-06-26T18:25:04.884003+00:00"
+    },
+    {
+      "ticker": "KAI",
+      "created_at": "2025-06-24T15:52:03.980803+00:00"
+    },
+    {
+      "ticker": "OPL",
+      "created_at": "2025-06-24T15:35:05.037096+00:00"
+    },
+    {
+      "ticker": "INFLU",
+      "created_at": "2025-06-23T18:04:04.743694+00:00"
+    },
+    {
+      "ticker": "FOTTIE",
+      "created_at": "2025-06-20T05:28:04.895113+00:00"
+    },
+    {
+      "ticker": "CASE",
+      "created_at": "2025-06-19T11:19:03.86712+00:00"
+    },
+    {
+      "ticker": "ISHI",
+      "created_at": "2025-06-19T03:42:04.074326+00:00"
+    },
+    {
+      "ticker": "REFLECT",
+      "created_at": "2025-06-18T19:50:06.237649+00:00"
+    },
+    {
+      "ticker": "HECHI",
+      "created_at": "2025-06-17T14:24:04.683897+00:00"
+    },
+    {
+      "ticker": "MSTR",
+      "created_at": "2025-06-17T09:32:05.614826+00:00"
+    },
+    {
+      "ticker": "SQUIGG",
+      "created_at": "2025-06-17T03:27:04.305195+00:00"
+    },
+    {
+      "ticker": "MYAI",
+      "created_at": "2025-06-17T00:06:04.131991+00:00"
+    },
+    {
+      "ticker": "CYPHER",
+      "created_at": "2025-06-16T17:38:04.141511+00:00"
+    },
+    {
+      "ticker": "DIG",
+      "created_at": "2025-06-15T15:21:52.431751+00:00"
+    },
+    {
+      "ticker": "QI",
+      "created_at": "2025-06-12T10:50:06.2816+00:00"
+    },
+    {
+      "ticker": "NAKA",
+      "created_at": "2025-06-12T01:04:04.240857+00:00"
+    },
+    {
+      "ticker": "YIELD",
+      "created_at": "2025-06-10T23:21:03.888185+00:00"
+    },
+    {
+      "ticker": "ELAINE",
+      "created_at": "2025-06-10T03:22:04.983594+00:00"
+    },
+    {
+      "ticker": "RENT",
+      "created_at": "2025-06-09T02:09:05.14268+00:00"
+    },
+    {
+      "ticker": "INTERN",
+      "created_at": "2025-06-06T02:20:06.751059+00:00"
+    },
+    {
+      "ticker": "GRAY",
+      "created_at": "2025-06-05T14:45:06.935595+00:00"
+    },
+    {
+      "ticker": "GAV",
+      "created_at": "2025-06-05T14:21:04.292316+00:00"
+    },
+    {
+      "ticker": "TOR",
+      "created_at": "2025-06-05T12:43:04.518863+00:00"
+    },
+    {
+      "ticker": "PICKLE",
+      "created_at": "2025-06-04T18:52:05.042147+00:00"
+    },
+    {
+      "ticker": "SOLBOX",
+      "created_at": "2025-06-04T15:43:04.212802+00:00"
+    },
+    {
+      "ticker": "EPOT",
+      "created_at": "2025-06-03T17:43:04.017088+00:00"
+    },
+    {
+      "ticker": "TOR",
+      "created_at": "2025-06-03T01:52:04.664677+00:00"
+    },
+    {
+      "ticker": "WREATH",
+      "created_at": "2025-06-02T21:55:05.562081+00:00"
+    },
+    {
+      "ticker": "TAIKI",
+      "created_at": "2025-06-02T20:20:06.911659+00:00"
+    },
+    {
+      "ticker": "LABS",
+      "created_at": "2025-06-02T15:17:03.987825+00:00"
+    },
+    {
+      "ticker": "BADFROG",
+      "created_at": "2025-06-02T14:59:04.240078+00:00"
+    },
+    {
+      "ticker": "CHICKEN",
+      "created_at": "2025-05-31T09:18:04.732808+00:00"
+    },
+    {
+      "ticker": "OMALLEY",
+      "created_at": "2025-05-29T22:13:05.015124+00:00"
+    },
+    {
+      "ticker": "FRANK",
+      "created_at": "2025-05-29T04:29:03.917444+00:00"
+    },
+    {
+      "ticker": "RESONAX",
+      "created_at": "2025-05-28T16:50:06.668313+00:00"
+    },
+    {
+      "ticker": "BUNCHIE",
+      "created_at": "2025-05-28T08:09:04.786097+00:00"
+    },
+    {
+      "ticker": "OSIRAI",
+      "created_at": "2025-05-27T19:08:05.159331+00:00"
+    },
+    {
+      "ticker": "PBJT",
+      "created_at": "2025-05-27T16:41:03.881412+00:00"
+    },
+    {
+      "ticker": "LORE",
+      "created_at": "2025-05-27T01:38:04.73516+00:00"
+    },
+    {
+      "ticker": "GLYPH",
+      "created_at": "2025-05-25T08:06:05.337314+00:00"
+    },
+    {
+      "ticker": "TINY",
+      "created_at": "2025-05-24T23:25:06.1302+00:00"
+    },
+    {
+      "ticker": "TINY",
+      "created_at": "2025-05-24T23:22:04.703785+00:00"
+    },
+    {
+      "ticker": "MOCHI",
+      "created_at": "2025-05-23T23:30:08.178826+00:00"
+    },
+    {
+      "ticker": "PLAI",
+      "created_at": "2025-05-22T15:14:04.967119+00:00"
+    },
+    {
+      "ticker": "NCM",
+      "created_at": "2025-05-22T07:24:05.912867+00:00"
+    },
+    {
+      "ticker": "BAG",
+      "created_at": "2025-05-22T05:27:04.60942+00:00"
+    },
+    {
+      "ticker": "BEAST",
+      "created_at": "2025-05-21T10:15:06.947104+00:00"
+    },
+    {
+      "ticker": "3BAI",
+      "created_at": "2025-05-21T01:13:04.83441+00:00"
+    },
+    {
+      "ticker": "KOLT",
+      "created_at": "2025-05-20T13:07:04.447676+00:00"
+    },
+    {
+      "ticker": "BOOCHIE",
+      "created_at": "2025-05-20T04:06:04.780457+00:00"
+    },
+    {
+      "ticker": "BOOCHIE",
+      "created_at": "2025-05-20T03:39:04.779948+00:00"
+    },
+    {
+      "ticker": "TARO",
+      "created_at": "2025-05-20T03:12:04.527731+00:00"
+    },
+    {
+      "ticker": "SNARDLER",
+      "created_at": "2025-05-19T20:54:05.119715+00:00"
+    },
+    {
+      "ticker": "EXTEND",
+      "created_at": "2025-05-19T18:39:04.301329+00:00"
+    },
+    {
+      "ticker": "PAYAI",
+      "created_at": "2025-05-19T05:30:07.814108+00:00"
+    }
+  ],
+  "premium_worthy": 1116,
+  "disagreements": {
+    "claude_better": 1934,
+    "x_better": 840,
+    "examples": [
+      {
+        "ticker": "MOONDOGE",
+        "claude": "BASIC",
+        "x": "TRASH",
+        "message": "**[** **New Call - ****Kulture_Kall**** ]\n**\nhttps://dexscreener.com/solana/7Zp14qU2fGtTzFkDeExCSG6M"
+      },
+      {
+        "ticker": "FARTCOIN",
+        "claude": "BASIC",
+        "x": "TRASH",
+        "message": "Aping $FARTCOIN on bonk\nBranding fits\nI like the lore & chads behind\nStill high risk\n\nhttps://x.com/"
+      },
+      {
+        "ticker": "ZHONG",
+        "claude": "SOLID",
+        "x": "BASIC",
+        "message": "$zhong | eth\n\nChina animal meta.\nFresh launch watch heavy clog for entries.\nAlpha team?\n\nZHONG'S STO"
+      },
+      {
+        "ticker": "TRILLION",
+        "claude": "BASIC",
+        "x": "TRASH",
+        "message": "Trillion dollar coin \ud83d\udca1\n\nWaited for Dip but still its going up only\n\nhttps://dexscreener.com/solana/4"
+      },
+      {
+        "ticker": "ZHONG",
+        "claude": "SOLID",
+        "x": "BASIC",
+        "message": "\ud83d\udfe2\n\n\n$Zhong just launched watch entries/clog! Previous did well\n\nZhong Zhong isn\u2019t just any monkey \u2014 "
+      },
+      {
+        "ticker": "ZHONG",
+        "claude": "SOLID",
+        "x": "BASIC",
+        "message": "$Zhong just launched watch entries/clog! Previous did well\n\nZhong Zhong isn\u2019t just any monkey \u2014 he\u2019s"
+      },
+      {
+        "ticker": "CRINGE",
+        "claude": "BASIC",
+        "x": "TRASH",
+        "message": "CRINGE\n\nCulture call why not\n\n150k\n\nhttps://dexscreener.com/solana/6nkxeacr3vcinks3grcvqmpzznaqar1js"
+      },
+      {
+        "ticker": "HUAHUA",
+        "claude": "SOLID",
+        "x": "BASIC",
+        "message": "I\u2019m finding dip here $HUAHUA \n\nThe famous animal narrative is exploding, and Hua Hua is not just ano"
+      },
+      {
+        "ticker": "XIAOBAI",
+        "claude": "BASIC",
+        "x": "TRASH",
+        "message": "Aped a bag into $XIAOBAI (1m)\ud83d\udd37\n\nWith $MANYU hitting ATH it\u2019s only right to buy her brother \ud83e\ude99\n\nI see "
+      },
+      {
+        "ticker": "HUANG",
+        "claude": "SOLID",
+        "x": "BASIC",
+        "message": "Dan huang \u86cb\u9ec4 | eth\nApe 1.88\n\nDecent team.\nClog burned.\nReversing from dip run it.\n\nNarrative:\nDan Hu"
+      }
+    ]
+  }
+}

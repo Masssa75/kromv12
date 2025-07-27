@@ -1,0 +1,3559 @@
+{
+  "0x52b492a33E447Cdb854c7FC19F1e57E8BfA1777D": {
+    "symbol": "PEPE",
+    "name": "BasedPepe",
+    "chain": "base",
+    "price": "0.00000003942",
+    "volume24h": "116.98",
+    "priceChange24h": "10.91",
+    "liquidity": "35187.49",
+    "url": "https://dexscreener.com/base/0x67851cc0e79e1abbc312d1f3b181762e24ee025a1e6d6a5a1d0982dbdf7dcb92",
+    "dexId": "uniswap"
+  },
+  "0x6982508145454Ce325dDbE47a25d4ec3d2311933": {
+    "symbol": "PEPE",
+    "name": "Pepe",
+    "chain": "pulsechain",
+    "price": "0.000000007279",
+    "volume24h": "141.06",
+    "priceChange24h": "3.49",
+    "liquidity": "6021.95",
+    "url": "https://dexscreener.com/pulsechain/0x52c3070188580e3715d23fc6014e1de1c9227358",
+    "dexId": "pulsex"
+  },
+  "Ey2zpSAJ5gVLfYDD5WjccbksJD3E9jPFMPaJ8wxvpump": {
+    "symbol": "PEPE",
+    "name": "BABY PEPE",
+    "chain": "solana",
+    "price": "0.1117",
+    "volume24h": "102789.28",
+    "priceChange24h": "-99.7",
+    "liquidity": "6573.57",
+    "url": "https://dexscreener.com/solana/6ah7haxazbezuwlkb4nyogvjgbcddlxwyskxwdvauf9r",
+    "dexId": "raydium"
+  },
+  "B5WTLaRwaUQpKk7ir1wniNB6m5o8GgMrimhKMYan2R6B": {
+    "symbol": "Pepe",
+    "name": "Pepe",
+    "chain": "solana",
+    "price": "0.001067",
+    "volume24h": "13096.03",
+    "priceChange24h": "7.81",
+    "liquidity": "368957.84",
+    "url": "https://dexscreener.com/solana/fcensxyjfrsksz6tasuencsfgwkgkh6yurn1ammyhhzn",
+    "dexId": "raydium"
+  },
+  "0x1B71505D95Ab3e7234ed2239b8EC7aa65b94ae7B": {
+    "symbol": "PEPE",
+    "name": "PEPE",
+    "chain": "pulsechain",
+    "price": "0.0007366",
+    "volume24h": "1928.99",
+    "priceChange24h": "13.6",
+    "liquidity": "12391.51",
+    "url": "https://dexscreener.com/pulsechain/0x660936bf7c13540221aa5cb3d9373a7ef2b1435d",
+    "dexId": "9mm"
+  },
+  "F9CpWoyeBJfoRB8f2pBe2ZNPbPsEE76mWZWme3StsvHK": {
+    "symbol": "PEPE",
+    "name": "Pepe",
+    "chain": "solana",
+    "price": "0.0004092",
+    "volume24h": "2076.3",
+    "priceChange24h": "1.41",
+    "liquidity": "87587.8",
+    "url": "https://dexscreener.com/solana/4ycwqxr7eoh29rf2g7u9ymtzct1n7tyhcywg3emif85s",
+    "dexId": "raydium"
+  },
+  "2Zaq3WyDJj2ZkMcuqUiTBfAXCjqZtqihxcwUdwv9dyHA": {
+    "symbol": "PEPE",
+    "name": "PEPE",
+    "chain": "solana",
+    "price": "0.0006937",
+    "volume24h": "5086.97",
+    "priceChange24h": "4.41",
+    "liquidity": "126870.13",
+    "url": "https://dexscreener.com/solana/gdygvj6l5keuickgcnxdaaoog4gfjevpr2njd3bfryf5",
+    "dexId": "raydium"
+  },
+  "0x698DC45e4F10966f6D1D98e3bFd7071d8144C233": {
+    "symbol": "PEPE",
+    "name": "Pepe",
+    "chain": "base",
+    "price": "0.000000001107",
+    "volume24h": "980.5",
+    "priceChange24h": "6.34",
+    "liquidity": "133092.01",
+    "url": "https://dexscreener.com/base/0x76fc8dbf2022ee75612cb74ec80caf6b3ccffb23",
+    "dexId": "uniswap"
+  },
+  "21Dt6Ne2tQ8wQ5j6G2zahtF1tskJqRmtSaaSwXjyBJVz": {
+    "symbol": "PEPE",
+    "name": "PEPE DIAMOND",
+    "chain": "solana",
+    "price": "0.0002382",
+    "volume24h": "1380.36",
+    "priceChange24h": "11.66",
+    "liquidity": "57662.58",
+    "url": "https://dexscreener.com/solana/95512hcjd8zkjyyningbbuhwslra5sf3xto8ehtewyxb",
+    "dexId": "raydium"
+  },
+  "TMacq4TDUw5q8NFBwmbY4RLXvzvG5JTkvi": {
+    "symbol": "PePe",
+    "name": "PePe",
+    "chain": "tron",
+    "price": "0.07523",
+    "volume24h": "611415",
+    "priceChange24h": "10.45",
+    "liquidity": "1625413.11",
+    "url": "https://dexscreener.com/tron/tkhjbwsh7hvegxruhw4oht5t1budds2ug4",
+    "dexId": "sunswap"
+  },
+  "2fjVd44irrTafsi54DR3CHuADzfe3th17JZTJ3bCbonk": {
+    "symbol": "PEPE",
+    "name": "Pepe",
+    "chain": "solana",
+    "price": "0.00001024",
+    "volume24h": "311467.34",
+    "priceChange24h": "-84.31",
+    "liquidity": "11190.03",
+    "url": "https://dexscreener.com/solana/6smgmrpcufo58svgrzusajrynq8hd1chdhid7ayff6cd",
+    "dexId": "raydium"
+  },
+  "0xDEE46BE9D0b207e5d88D2Efd84a045E725A242F7": {
+    "symbol": "PEPE",
+    "name": "Pepe",
+    "chain": "arbitrum",
+    "price": "0.0000000001802",
+    "volume24h": "1.77",
+    "priceChange24h": "",
+    "liquidity": "66256.45",
+    "url": "https://dexscreener.com/arbitrum/0x6dc147be79e625e5c9033651238ccce973a0950c",
+    "dexId": "sushiswap"
+  },
+  "0x25d887Ce7a35172C62FeBFD67a1856F20FaEbB00": {
+    "symbol": "PEPE",
+    "name": "Pepe",
+    "chain": "arbitrum",
+    "price": "0.00001297",
+    "volume24h": "41622.98",
+    "priceChange24h": "7.93",
+    "liquidity": "243632.65",
+    "url": "https://dexscreener.com/arbitrum/0x1944ac04bd9fed9a2bcdb38b70c35949c864ec35",
+    "dexId": "uniswap"
+  },
+  "5045504500000000000000000000000000000000.rJEApMjV7KVVopB8NB1WXQpQYVu84vRGTa": {
+    "symbol": "PEPE",
+    "name": "PEPE",
+    "chain": "xrpl",
+    "price": "0.0000000004938",
+    "volume24h": "1833.1",
+    "priceChange24h": "-0.16",
+    "liquidity": "39913.23",
+    "url": "https://dexscreener.com/xrpl/5045504500000000000000000000000000000000.rjeapmjv7kvvopb8nb1wxqpqyvu84vrgta_xrp",
+    "dexId": "xrpl"
+  },
+  "factory/osmo1nnlxegt0scm9qkzys9c874t0ntapv4epfjy2w49c0xdrp3dr0v4ssmelzx/alloyed/allPEPE": {
+    "symbol": "PEPE",
+    "name": "Pepe",
+    "chain": "osmosis",
+    "price": "0.00001299",
+    "volume24h": "31824.97",
+    "priceChange24h": "7.44",
+    "liquidity": "111926.9",
+    "url": "https://dexscreener.com/osmosis/2182",
+    "dexId": "osmosis"
+  },
+  "0xf868c454784048AF4f857991583E34243c92Ff48": {
+    "symbol": "PEPE",
+    "name": "Pepe",
+    "chain": "cronos",
+    "price": "0.00001288",
+    "volume24h": "10876.57",
+    "priceChange24h": "6.02",
+    "liquidity": "142868.82",
+    "url": "https://dexscreener.com/cronos/0xb90d6e09075168281d47da6f0665ff4fd8f0ff6f",
+    "dexId": "vvsfinance"
+  },
+  "CsPXSHHxcrcSRzbZAwR5WStZpEdZhYsofe6smzD1yrf8": {
+    "symbol": "PepeCoin",
+    "name": "Pepe",
+    "chain": "solana",
+    "price": "0.001451",
+    "volume24h": "4.69",
+    "priceChange24h": "",
+    "liquidity": "14516228.78",
+    "url": "https://dexscreener.com/solana/bizouq15cyqrp5rux1wpbrbj85me28mdqscckfr54j77",
+    "dexId": "raydium"
+  },
+  "TAd19oZE5wLDDksqS4qqiRvFBNBDtpKPNa": {
+    "symbol": "PEPE",
+    "name": "PEPE ON TRON",
+    "chain": "tron",
+    "price": "0.00003082",
+    "volume24h": "21.84",
+    "priceChange24h": "0.51",
+    "liquidity": "28511.52",
+    "url": "https://dexscreener.com/tron/tky7caq9w3dnkmvjro5tnhbpnmpdgf2xcu",
+    "dexId": "sunswap"
+  },
+  "0xFCa95aeb5bF44aE355806A5ad14659c940dC6BF7": {
+    "symbol": "SHIB",
+    "name": "SHIBA INU",
+    "chain": "base",
+    "price": "0.000000002636",
+    "volume24h": "9493.06",
+    "priceChange24h": "11.43",
+    "liquidity": "3486.71",
+    "url": "https://dexscreener.com/base/0x4fbb43e487f128d3c94dc668ab5b60e0ae9ca001",
+    "dexId": "uniswap"
+  },
+  "F6qoefQq4iCBLoNZ34RjEqHjHkD8vtmoRSdw9Nd55J1k": {
+    "symbol": "SHIB",
+    "name": "shibwifhat",
+    "chain": "solana",
+    "price": "0.0008784",
+    "volume24h": "18190.68",
+    "priceChange24h": "-1.5",
+    "liquidity": "192917.74",
+    "url": "https://dexscreener.com/solana/14blc2kcz2yfycdszhsnemoxugf9fcmgqq8jehefr3ed",
+    "dexId": "raydium"
+  },
+  "5MBBsoCVddAuF8XixvCcXNbHAw6WfpZ8WyTKMmczxxRN": {
+    "symbol": "SHIB",
+    "name": "SHIBA INU",
+    "chain": "solana",
+    "price": "0.00003347",
+    "volume24h": "1292.25",
+    "priceChange24h": "6.56",
+    "liquidity": "58140.42",
+    "url": "https://dexscreener.com/solana/36y1lqjqnl7jpu4huofhgegxnqhkjgggkg5insukrtur",
+    "dexId": "raydium"
+  },
+  "0xbED48612BC69fA1CaB67052b42a95FB30C1bcFee": {
+    "symbol": "SHIB",
+    "name": "SHIBA INU",
+    "chain": "cronos",
+    "price": "0.00001367",
+    "volume24h": "36.16",
+    "priceChange24h": "4.41",
+    "liquidity": "2601.18",
+    "url": "https://dexscreener.com/cronos/0x32eeb46750283069eb997a18983b01233956f82d",
+    "dexId": "vvsfinance"
+  },
+  "0x2859e4544C4bB03966803b044A93563Bd2D0DD4D": {
+    "symbol": "SHIB",
+    "name": "SHIBA INU",
+    "chain": "bsc",
+    "price": "0.00001380",
+    "volume24h": "6351.29",
+    "priceChange24h": "6.28",
+    "liquidity": "36318.65",
+    "url": "https://dexscreener.com/bsc/0x2d515b3a46a6f19957af7b448132f43f95dcad40",
+    "dexId": "pancakeswap"
+  },
+  "factory/osmo1f588gk9dazpsueevdl2w6wfkmfmhg5gdvg2uerdlzl0atkasqhsq59qc6a/alloyed/allSHIB": {
+    "symbol": "SHIB",
+    "name": "Shiba Inu",
+    "chain": "osmosis",
+    "price": "0.00001377",
+    "volume24h": "10479.69",
+    "priceChange24h": "6.33",
+    "liquidity": "87870.91",
+    "url": "https://dexscreener.com/osmosis/2185",
+    "dexId": "osmosis"
+  },
+  "5348494200000000000000000000000000000000.rsfSrrxQUhgYCDD8jyMwbPHXvvVpHKPKCR": {
+    "symbol": "SHIB",
+    "name": "SHIB",
+    "chain": "xrpl",
+    "price": "0.00002806",
+    "volume24h": "",
+    "priceChange24h": "",
+    "liquidity": "6508.1",
+    "url": "https://dexscreener.com/xrpl/5348494200000000000000000000000000000000.rsfsrrxquhgycdd8jymwbphxvvvphkpkcr_xrp",
+    "dexId": "xrpl"
+  },
+  "0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec": {
+    "symbol": "SHIB",
+    "name": "SHIBA INU (PoS)",
+    "chain": "polygon",
+    "price": "0.00001362",
+    "volume24h": "19.54",
+    "priceChange24h": "5.22",
+    "liquidity": "2459.2",
+    "url": "https://dexscreener.com/polygon/0xcb74861913e799dd2bcfcb8ac9a7126d8f32a24d",
+    "dexId": "uniswap"
+  },
+  "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE": {
+    "symbol": "SHIB",
+    "name": "SHIBA INU",
+    "chain": "ethereum",
+    "price": "0.00001381",
+    "volume24h": "193494.53",
+    "priceChange24h": "6.55",
+    "liquidity": "5276313.58",
+    "url": "https://dexscreener.com/ethereum/0xcf6daab95c476106eca715d48de4b13287ffdeaa",
+    "dexId": "shibaswap"
+  },
+  "0x495eea66B0f8b636D441dC6a98d8F5C3D455C4c0": {
+    "symbol": "SHIB",
+    "name": "SHIBA INU",
+    "chain": "shibarium",
+    "price": "0.00001325",
+    "volume24h": "23.16",
+    "priceChange24h": "6.73",
+    "liquidity": "2712.93",
+    "url": "https://dexscreener.com/shibarium/0xfb08019930876cc8d35e26663828e4293bfc92ab",
+    "dexId": "0x2996B636663ddeBaE28742368ed47b57539C9600"
+  },
+  "CiKu4eHsVrc1eueVQeHn7qhXTcVu95gSQmBpX4utjL9z": {
+    "symbol": "SHIB",
+    "name": "SHIBA INU (Wormhole)",
+    "chain": "solana",
+    "price": "0.00001292",
+    "volume24h": "49.93",
+    "priceChange24h": "2.18",
+    "liquidity": "2562.94",
+    "url": "https://dexscreener.com/solana/su7vpvebjeur5tgqwidrqqtxn1wwrahpydhhbpm2w96",
+    "dexId": "raydium"
+  },
+  "9TY6DUg1VSssYH5tFE95qoq5hnAGFak4w3cn72sJNCoV": {
+    "symbol": "DOGE",
+    "name": "Department of Gov Efficiency",
+    "chain": "solana",
+    "price": "0.05884",
+    "volume24h": "88.47",
+    "priceChange24h": "0.48",
+    "liquidity": "16573.52",
+    "url": "https://dexscreener.com/solana/3rkipz4yl23s5ek4kfz6trwzfsyaavuvbmcvx6chdz2j",
+    "dexId": "orca"
+  },
+  "0xbA2aE424d960c26247Dd6c32edC70B295c744C43": {
+    "symbol": "DOGE",
+    "name": "Dogecoin",
+    "chain": "bsc",
+    "price": "0.2011",
+    "volume24h": "15505.69",
+    "priceChange24h": "5.04",
+    "liquidity": "53497.36",
+    "url": "https://dexscreener.com/bsc/0x0ddbe9e86fcccfe2e191b80b238566bb04887466",
+    "dexId": "unchain-x"
+  },
+  "factory/osmo10pk4crey8fpdyqd62rsau0y02e3rk055w5u005ah6ly7k849k5tsf72x40/alloyed/allDOGE": {
+    "symbol": "DOGE",
+    "name": "Dogecoin",
+    "chain": "osmosis",
+    "price": "0.2015",
+    "volume24h": "123593.43",
+    "priceChange24h": "5.12",
+    "liquidity": "177568.92",
+    "url": "https://dexscreener.com/osmosis/2308",
+    "dexId": "osmosis"
+  },
+  "0x80E3Ee7bAB68fEAea6e01c44df9daa5de53e4818": {
+    "symbol": "DOGE",
+    "name": "DOGECOIN",
+    "chain": "base",
+    "price": "0.0001884",
+    "volume24h": "482.83",
+    "priceChange24h": "6.26",
+    "liquidity": "59963.84",
+    "url": "https://dexscreener.com/base/0x95dd03e7df28a7fdbb2e36a5675034937218a6ae",
+    "dexId": "uniswap"
+  },
+  "0x1121AcC14c63f3C872BFcA497d10926A6098AAc5": {
+    "symbol": "DOGE",
+    "name": "Department Of Government Efficiency",
+    "chain": "ethereum",
+    "price": "0.008174",
+    "volume24h": "110992.82",
+    "priceChange24h": "-3.44",
+    "liquidity": "1606936.93",
+    "url": "https://dexscreener.com/ethereum/0x308c6fbd6a14881af333649f17f2fde9cd75e2a6",
+    "dexId": "uniswap"
+  },
+  "444F474500000000000000000000000000000000.rp4GXygXPM2ydNLgiDeHrrkfuaAufSZaca": {
+    "symbol": "DOGE",
+    "name": "DOGE",
+    "chain": "xrpl",
+    "price": "0.0001925",
+    "volume24h": "10032.84",
+    "priceChange24h": "-11.69",
+    "liquidity": "51119.74",
+    "url": "https://dexscreener.com/xrpl/444f474500000000000000000000000000000000.rp4gxygxpm2ydnlgidehrrkfuaaufszaca_xrp",
+    "dexId": "xrpl"
+  },
+  "0x4206931337dc273a630d328dA6441786BfaD668f": {
+    "symbol": "DOGE",
+    "name": "Dogecoin",
+    "chain": "bsc",
+    "price": "0.2005",
+    "volume24h": "131843.04",
+    "priceChange24h": "5.09",
+    "liquidity": "4046801.48",
+    "url": "https://dexscreener.com/bsc/0x1d51f1f6da2d274534c93a52303a39c286ec9b8f",
+    "dexId": "pancakeswap"
+  },
+  "0x1a8E39ae59e5556B56b76fCBA98d22c9ae557396": {
+    "symbol": "DOGE",
+    "name": "Dogecoin",
+    "chain": "cronos",
+    "price": "0.2003",
+    "volume24h": "1854.88",
+    "priceChange24h": "3.75",
+    "liquidity": "75357.77",
+    "url": "https://dexscreener.com/cronos/0x2c30327a7ce35b9294ecf8624d1eda001b9e337f",
+    "dexId": "vvsfinance"
+  },
+  "0x9CC7437978255e2c38B0d3D4671fb9AC411a68aC": {
+    "symbol": "DOGE",
+    "name": "DOGE",
+    "chain": "pulsechain",
+    "price": "0.000000004546",
+    "volume24h": "357.2",
+    "priceChange24h": "8.1",
+    "liquidity": "193893.96",
+    "url": "https://dexscreener.com/pulsechain/0xf30034233d8da99aa61758b8acde1eedee8fb1f1",
+    "dexId": "pulsex"
+  },
+  "KQijDbNJ6rPCqhtXrfH6gKa5cH3a39At8vHq34nnPbF": {
+    "symbol": "DOGE",
+    "name": "Department Of Governm (Wormhole)",
+    "chain": "solana",
+    "price": "0.008458",
+    "volume24h": "18713.27",
+    "priceChange24h": "1.77",
+    "liquidity": "13759.13",
+    "url": "https://dexscreener.com/solana/a12fbv1vvsg6hvhrkesurcgqvyupj3cjmhxrvuo7lmev",
+    "dexId": "raydium"
+  },
+  "0x67f0870BB897F5E1c369976b4A2962d527B9562c": {
+    "symbol": "DOGE",
+    "name": "Department Of Government Efficiency",
+    "chain": "base",
+    "price": "0.008371",
+    "volume24h": "1020.47",
+    "priceChange24h": "-3.41",
+    "liquidity": "11257.07",
+    "url": "https://dexscreener.com/base/0x03cd22d89bba07b109b869da1b5fd344d0ad6b40",
+    "dexId": "aerodrome"
+  },
+  "0xDDe9164E7E0DA7ae48b58F36B42c1c9f80e7245F": {
+    "symbol": "DOGE",
+    "name": "DOGE",
+    "chain": "pulsechain",
+    "price": "0.0001679",
+    "volume24h": "3905.82",
+    "priceChange24h": "-5.24",
+    "liquidity": "30696",
+    "url": "https://dexscreener.com/pulsechain/0x56aece39050608a7944908a1754d0397067aa435",
+    "dexId": "pulsex"
+  },
+  "0x81FcC294d91bd8FFC8a822d7df0e2fD2f8526c39": {
+    "symbol": "DOGE",
+    "name": "Department Of Government Efficiency",
+    "chain": "ethereum",
+    "price": "0.0002870",
+    "volume24h": "2327.29",
+    "priceChange24h": "-13.06",
+    "liquidity": "56815.91",
+    "url": "https://dexscreener.com/ethereum/0x48aa3f93662d84b0534bff80019bbe82ef94b72b",
+    "dexId": "uniswap"
+  },
+  "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263": {
+    "symbol": "Bonk",
+    "name": "Bonk",
+    "chain": "solana",
+    "price": "0.00003103",
+    "volume24h": "3073.45",
+    "priceChange24h": "5.06",
+    "liquidity": "35462.86",
+    "url": "https://dexscreener.com/solana/ddekihnwrysnsqe14bg4nmke5budfxdw8nbrvmfys5eg",
+    "dexId": "meteora"
+  },
+  "0x72499bdDb67F4CA150E1f522Ca82c87bc9fB18c8": {
+    "symbol": "BONK",
+    "name": "Bonk",
+    "chain": "base",
+    "price": "0.000000002641",
+    "volume24h": "634.06",
+    "priceChange24h": "6.16",
+    "liquidity": "88352.8",
+    "url": "https://dexscreener.com/base/0x176567c44342edda7aae629f7cecab246f22f69a",
+    "dexId": "uniswap"
+  },
+  "21AErpiB8uSb94oQKRcwuHqyHF93njAxBSbdUrpupump": {
+    "symbol": "Wif",
+    "name": "Dog wif hat",
+    "chain": "solana",
+    "price": "0.0001349",
+    "volume24h": "0.25",
+    "priceChange24h": "",
+    "liquidity": "125.9",
+    "url": "https://dexscreener.com/solana/b2klfybvjwll7q4i3wb7ckxwkaqjfbbj5eibywndtvsf",
+    "dexId": "meteora"
+  },
+  "EQAuco5ZEPgB19fSTo7EmtLTJysrKxbu6M_XOFDwWQiNjCsQ": {
+    "symbol": "WIF",
+    "name": "DOGWIFHOOD",
+    "chain": "ton",
+    "price": "0.0001231",
+    "volume24h": "122.69",
+    "priceChange24h": "3.61",
+    "liquidity": "75361.71",
+    "url": "https://dexscreener.com/ton/eqaob_eu83hgrij5wfnln77m98tcnynfhhe4auunnfazsskv",
+    "dexId": "stonfi"
+  },
+  "0x25e8C72D267b96E757875d8b565A42c0e3B8f12f": {
+    "symbol": "WIF",
+    "name": "WIF",
+    "chain": "cronos",
+    "price": "1.081",
+    "volume24h": "638.66",
+    "priceChange24h": "6.92",
+    "liquidity": "7521.53",
+    "url": "https://dexscreener.com/cronos/0x92c80ba394365e819d3e91deacc9f69e6491839f",
+    "dexId": "vvsfinance"
+  },
+  "0x886c869cDc619214138C87f1DB0ADa522b16Dfa3": {
+    "symbol": "WIF",
+    "name": "WIF on ETH",
+    "chain": "ethereum",
+    "price": "0.00009430",
+    "volume24h": "658.41",
+    "priceChange24h": "0.52",
+    "liquidity": "58268.43",
+    "url": "https://dexscreener.com/ethereum/0xb0a85d466b58562456c7bc9cf0f83ccac593461a",
+    "dexId": "uniswap"
+  },
+  "0x7f6F6720a73C0f54f95AB343D7eFeB1FA991F4F7": {
+    "symbol": "WIF",
+    "name": "DogWifHat",
+    "chain": "base",
+    "price": "0.00006656",
+    "volume24h": "179.9",
+    "priceChange24h": "2.43",
+    "liquidity": "38242.89",
+    "url": "https://dexscreener.com/base/0xe42aa387f11a480ba03a2771c814e1398cfae27d",
+    "dexId": "uniswap"
+  },
+  "0x1fba65dE0a9cBD2D1DF82d141897042d36Bb6c86": {
+    "symbol": "WIF",
+    "name": "dogwifhat",
+    "chain": "base",
+    "price": "1.090",
+    "volume24h": "9.65",
+    "priceChange24h": "12.38",
+    "liquidity": "2955.84",
+    "url": "https://dexscreener.com/base/0x3cacb8007d50f3e4166d7c5fd303c1a6ed337531",
+    "dexId": "aerodrome"
+  },
+  "A8iVH9ZpvVhXDqtbEpWfrvRd4fvZcQSGH2zmtAqEpump": {
+    "symbol": "WIF",
+    "name": "wallahi im finished",
+    "chain": "solana",
+    "price": "0.00002097",
+    "volume24h": "1399.19",
+    "priceChange24h": "-1.51",
+    "liquidity": "28282.76",
+    "url": "https://dexscreener.com/solana/fhy449nkbxxpxihnnruywqoacruyjg4xauwwkhu8fr6o",
+    "dexId": "raydium"
+  },
+  "3V9RSvTZugo9LWbK39Q6gNrmE56bArRVfWpx23X4pump": {
+    "symbol": "WIF",
+    "name": "Wallahi im fucked",
+    "chain": "solana",
+    "price": "0.00001454",
+    "volume24h": "785.85",
+    "priceChange24h": "1.79",
+    "liquidity": "19522.25",
+    "url": "https://dexscreener.com/solana/9uapk1wqz1qnpv2dzeek1ldfxud2sx1fnkwdwq25u9sv",
+    "dexId": "raydium"
+  },
+  "GLXkHLX4jiVRAYBVwx2UAvKRBu2YDCQudNiR3k9q9THH": {
+    "symbol": "WIF",
+    "name": "HAMSTER WIF HAT",
+    "chain": "solana",
+    "price": "0.00001070",
+    "volume24h": "96.75",
+    "priceChange24h": "1.69",
+    "liquidity": "13100.61",
+    "url": "https://dexscreener.com/solana/jcrza18aqnjwtrusz54cns9tccwno8tgjzppls5z1lqk",
+    "dexId": "raydium"
+  },
+  "0x3205c43a9F180ECCdB082Ad1a4e153023de951df": {
+    "symbol": "WIF",
+    "name": "crabwifgun",
+    "chain": "base",
+    "price": "0.000002863",
+    "volume24h": "491.43",
+    "priceChange24h": "-24.9",
+    "liquidity": "2862.93",
+    "url": "https://dexscreener.com/base/0x34515f863cb795112ca59beed447eb9c3e530295",
+    "dexId": "uniswap"
+  },
+  "0x9a555aFF7390F56fDbe8Eb4325797A89c54FBF0b": {
+    "symbol": "WIF",
+    "name": "Dog Wif Monkey",
+    "chain": "base",
+    "price": "0.000005554",
+    "volume24h": "1.01",
+    "priceChange24h": "3.29",
+    "liquidity": "5218.41",
+    "url": "https://dexscreener.com/base/0xcaa14f719d192ca1fcad3f5e5d8759c0401587b58f0170dc9d1a4ba891cabda3",
+    "dexId": "uniswap"
+  },
+  "0x2DCE707c47Fd9C0f1833A281F45e3e41Ace2725B": {
+    "symbol": "WIF",
+    "name": "dogwifhat",
+    "chain": "bsc",
+    "price": "1.083",
+    "volume24h": "17.63",
+    "priceChange24h": "7.1",
+    "liquidity": "72.96",
+    "url": "https://dexscreener.com/bsc/0x51ea64a858b35ebf98dd40367cfce2efcb6b0373",
+    "dexId": "thena"
+  },
+  "6Uvd9swqrwqi7ow3Q6Nxkhv4nivhAJ5RwAyoZwnnpump": {
+    "symbol": "WIF",
+    "name": "Labubu Wif Mask",
+    "chain": "solana",
+    "price": "0.000005434",
+    "volume24h": "1.03",
+    "priceChange24h": "",
+    "liquidity": "9269.65",
+    "url": "https://dexscreener.com/solana/6r7mchdsuw3leuigr2vzvz7fhe5dr3ri2caibnzw9sg5",
+    "dexId": "pumpswap"
+  },
+  "WIF.rf9yALUDYFXQFEaVWmnCezxguiKtq7hC2X": {
+    "symbol": "WIF",
+    "name": "WIF",
+    "chain": "xrpl",
+    "price": "0.2596",
+    "volume24h": "2.04",
+    "priceChange24h": "",
+    "liquidity": "461.27",
+    "url": "https://dexscreener.com/xrpl/wif.rf9yaludyfxqfeavwmncezxguiktq7hc2x_xrp",
+    "dexId": "xrpl"
+  },
+  "0x092b0D8f9ff58c282a1358060A2ccDaa61800fF1": {
+    "symbol": "WIF",
+    "name": "WIF",
+    "chain": "bsc",
+    "price": "0.00000007765",
+    "volume24h": "11.04",
+    "priceChange24h": "-70.96",
+    "liquidity": "7.99",
+    "url": "https://dexscreener.com/bsc/0xabf59354d1be60db9226866623938becad46262b",
+    "dexId": "pancakeswap"
+  },
+  "0x68e914B67e8812f175EeA2381C65202210e1D024": {
+    "symbol": "WIF",
+    "name": "World Finance",
+    "chain": "worldchain",
+    "price": "0.000000005819",
+    "volume24h": "",
+    "priceChange24h": "",
+    "liquidity": "",
+    "url": "https://dexscreener.com/worldchain/0x0e97c41e707f16190eb12d8138dd64e7085cd00d",
+    "dexId": "uniswap"
+  },
+  "0x6f1d108663F29d733BfFbad5729283aC11b8c8B3": {
+    "symbol": "WIF",
+    "name": "Wif",
+    "chain": "pulsechain",
+    "price": "0.00007371",
+    "volume24h": "0.36",
+    "priceChange24h": "",
+    "liquidity": "21.05",
+    "url": "https://dexscreener.com/pulsechain/0xe20f7602ccdb4ee5095c54cf812fefcb62346cbf",
+    "dexId": "pulsex"
+  },
+  "0x05C708d20a21a7500D70C1a747C27fcDBEDD3C87": {
+    "symbol": "CWC",
+    "name": "CatWifCat",
+    "chain": "pulsechain",
+    "price": "",
+    "volume24h": "",
+    "priceChange24h": "",
+    "liquidity": "",
+    "url": "https://dexscreener.com/pulsechain/0x8ca7b7f6842e0bcc9b020fc6e6aba99821457b9c",
+    "dexId": "pulsex"
+  },
+  "4CisJuouVYqQFRYucgt2CY2twvXK3MX5seJAnPuxbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/4cisjuouvyqqfryucgt2cy2twvxk3mx5sejanpuxbonk",
+    "description": "$bonk wife. 80% of the supply locked till $bonka hit 1B and make her husband jealous enough",
+    "links": "[{'label': 'Website', 'url': 'https://app.streamflow.finance/contract/solana/mainnet/HjuGDk1A6dBtZPZkJhGn12t5trJqMy4YdbunKBqL9hwG'}, {'label': 'official website', 'url': 'https://bonkasolana.com/'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1945157486744334646'}, {'type': 'telegram', 'url': 'https://t.me/bonkachat'}]"
+  },
+  "6MQpbiTC2YcogidTmKqMLK82qvE9z5QEm7EP3AEDpump": {
+    "symbol": "MASK",
+    "name": "catwifmask",
+    "chain": "solana",
+    "price": "0.006641",
+    "volume24h": "607521.69",
+    "priceChange24h": "4.7",
+    "liquidity": "565431.15",
+    "url": "https://dexscreener.com/solana/gwpljamb5zxrgbtsynww7v3p1pamryzsfapftdaeswgc",
+    "dexId": "pumpswap"
+  },
+  "6Jc9oSPhGMhaTvXYPofmsaVk3tvwWs4ttTwWaFCabonk": {
+    "symbol": "jew",
+    "name": "dog wif kippah",
+    "chain": "solana",
+    "price": "0.00003002",
+    "volume24h": "2034556.66",
+    "priceChange24h": "-55.37",
+    "liquidity": "20236.94",
+    "url": "https://dexscreener.com/solana/djrwcwdiaf8p68zmzyfskujg3jsprhhvfbnmnpgftxz6",
+    "dexId": "raydium"
+  },
+  "0x987CF44F3F5d854eC0703123d7fD003a8b56eBb4": {
+    "symbol": "Polly",
+    "name": "Pengus Wife",
+    "chain": "abstract",
+    "price": "0.008065",
+    "volume24h": "260966.9",
+    "priceChange24h": "8.11",
+    "liquidity": "419855.81",
+    "url": "https://dexscreener.com/abstract/0x51afcb298c275c13c59b38f1cabb5900268a8c8a",
+    "dexId": "abstractswap"
+  },
+  "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm": {
+    "symbol": "$WIF",
+    "name": "dogwifhat",
+    "chain": "solana",
+    "price": "1.089",
+    "volume24h": "2337426.05",
+    "priceChange24h": "9.91",
+    "liquidity": "831170.18",
+    "url": "https://dexscreener.com/solana/d6ndkrknqpmrzccng1gqxtf7mmohb7qr6gu5tkg59qz1",
+    "dexId": "orca"
+  },
+  "0xfb5B838b6cfEEdC2873aB27866079AC55363D37E": {
+    "symbol": "FLOKI",
+    "name": "FLOKI",
+    "chain": "bsc",
+    "price": "0.00009938",
+    "volume24h": "0.19",
+    "priceChange24h": "2.49",
+    "liquidity": "18.8",
+    "url": "https://dexscreener.com/bsc/0xc9c1dd7f738efeb5e38d9c42b508466c23ba6abc",
+    "dexId": "0x1a05C6c1D3C0428a27eB465dC8384dDd114e23b6"
+  },
+  "0xcf0C122c6b73ff809C693DB761e7BaeBe62b6a2E": {
+    "symbol": "FLOKI",
+    "name": "FLOKI",
+    "chain": "pulsechain",
+    "price": "0.0000003041",
+    "volume24h": "0.25",
+    "priceChange24h": "",
+    "liquidity": "28.78",
+    "url": "https://dexscreener.com/pulsechain/0xce51c9566a9ea6f7137ea0ed3390a9c0dca49dfc",
+    "dexId": "pulsex"
+  },
+  "1889681715": {
+    "symbol": "FLOKI",
+    "name": "FLOKI",
+    "chain": "algorand",
+    "price": "0.0001013",
+    "volume24h": "428.96",
+    "priceChange24h": "5.69",
+    "liquidity": "21587.14",
+    "url": "https://dexscreener.com/algorand/tu2akiqdt3tfxzfvqyyydyyieexmqynohrrkfoncoagyp7myg62duekqrm",
+    "dexId": "tinyman"
+  },
+  "0xBf2C2a77Be1974853228EFB858e7e0547bbd686D": {
+    "symbol": "FLOKI",
+    "name": "FLOKI",
+    "chain": "cronos",
+    "price": "0.00009759",
+    "volume24h": "141.77",
+    "priceChange24h": "2.53",
+    "liquidity": "15320.02",
+    "url": "https://dexscreener.com/cronos/0x3b3ae49bdd1159909fe9c3e53f89adf27c97d829",
+    "dexId": "vvsfinance"
+  },
+  "CP7xS4pHRuZS5M5FvnpRQXNfFwCpoPyHRNnupfkDHhah": {
+    "symbol": "FLOKI",
+    "name": "Floki",
+    "chain": "solana",
+    "price": "0.0003229",
+    "volume24h": "3238.07",
+    "priceChange24h": "0.94",
+    "liquidity": "20914.96",
+    "url": "https://dexscreener.com/solana/fkvjfiiujg57gmhkc8neajqgepqtxrvwunm5h6hhxbfb",
+    "dexId": "raydium"
+  },
+  "0x2B3F34e9D4b127797CE6244Ea341a83733ddd6E4": {
+    "symbol": "FLOKI",
+    "name": "FLOKI",
+    "chain": "bsc",
+    "price": "0.0000003937",
+    "volume24h": "1.23",
+    "priceChange24h": "2.14",
+    "liquidity": "6163.35",
+    "url": "https://dexscreener.com/bsc/0xbe135058eb838f8c0296ef477896eb7af5a52678",
+    "dexId": "biswap"
+  },
+  "7cyAGa4XsNDnSgnFuwmVFgp9JGqZoZYkiVyFPSke9CuP": {
+    "symbol": "MEME",
+    "name": "MOST ELEGANT MONKEY EVER",
+    "chain": "solana",
+    "price": "0.0002831",
+    "volume24h": "818.08",
+    "priceChange24h": "2.41",
+    "liquidity": "68796.06",
+    "url": "https://dexscreener.com/solana/8yp8vn47febmolkbdp7mwswt4emdyrwu7qd7xmc83rql",
+    "dexId": "raydium"
+  },
+  "4D454D4500000000000000000000000000000000.rs98d8usUqkf9Wuww6MgMghSdQpvMmVFt4": {
+    "symbol": "MEME",
+    "name": "MEME",
+    "chain": "xrpl",
+    "price": "0.001362",
+    "volume24h": "7.75",
+    "priceChange24h": "",
+    "liquidity": "117005.09",
+    "url": "https://dexscreener.com/xrpl/4d454d4500000000000000000000000000000000.rs98d8usuqkf9wuww6mgmghsdqpvmmvft4_xrp",
+    "dexId": "xrpl"
+  },
+  "0xb131f4A55907B10d1F0A50d8ab8FA09EC342cd74": {
+    "symbol": "MEME",
+    "name": "Memecoin",
+    "chain": "ethereum",
+    "price": "0.001685",
+    "volume24h": "1708.55",
+    "priceChange24h": "18.75",
+    "liquidity": "5260.92",
+    "url": "https://dexscreener.com/ethereum/0x70cf99553471fe6c0d513ebfac8acc55ba02ab7b",
+    "dexId": "uniswap"
+  },
+  "39Mzpdw7NDGiXmZZGWiCdR6Nzoc7muWuYkPsVDV4pump": {
+    "symbol": "MPX6900",
+    "name": "MEME",
+    "chain": "solana",
+    "price": "0.00003533",
+    "volume24h": "2.02",
+    "priceChange24h": "-2.69",
+    "liquidity": "163.67",
+    "url": "https://dexscreener.com/solana/2nf9jfkqwsa76uqfzlrquf8wzeqojf6zcgkrz6grul4b",
+    "dexId": "meteora"
+  },
+  "5bpj3W9zC2Y5Zn2jDBcYVscGnCBUN5RD7152cfL9pump": {
+    "symbol": "meme",
+    "name": "meme",
+    "chain": "solana",
+    "price": "0.00003983",
+    "volume24h": "1.46",
+    "priceChange24h": "",
+    "liquidity": "40701.67",
+    "url": "https://dexscreener.com/solana/fzraadfowg5b9mrh34wsanghag1djni3yksjwrwefeao",
+    "dexId": "raydium"
+  },
+  "bQ3jHCjJ6LeSiJjQsdmYnPqEoB7ZAECgfnFsQgubonk": {
+    "symbol": "MEME",
+    "name": "Memecoin",
+    "chain": "solana",
+    "price": "0.000004982",
+    "volume24h": "3814.51",
+    "priceChange24h": "-39.09",
+    "liquidity": "7876.44",
+    "url": "https://dexscreener.com/solana/9r6neefmtdysewfjjyzsnc5avzzqk8rqazmkapaf4rtu",
+    "dexId": "raydium"
+  },
+  "EWy1HPEUq4Lgm6H4pQ8augEuJ7WRwJgENZMTAUzrpump": {
+    "symbol": "MEME",
+    "name": "MEME",
+    "chain": "solana",
+    "price": "0.00001927",
+    "volume24h": "2.08",
+    "priceChange24h": "3.57",
+    "liquidity": "25150.59",
+    "url": "https://dexscreener.com/solana/4psk5wvqegysuiabpunclsr3uxzadrbrxvpifjlyawdp",
+    "dexId": "raydium"
+  },
+  "0x649B3b88c6aBE5A50BFaC307Fb1Fd3dC6D200000": {
+    "symbol": "MEME",
+    "name": "MEME",
+    "chain": "bsc",
+    "price": "0.0000003107",
+    "volume24h": "5.77",
+    "priceChange24h": "",
+    "liquidity": "75191.25",
+    "url": "https://dexscreener.com/bsc/0x052132de9e9d6aac2d80cdc0164fbe80ead50492",
+    "dexId": "pancakeswap"
+  },
+  "94fzsMkuHAuFP4J8iMZS43euWr2CLtuvwLgyjPHyqcnY": {
+    "symbol": "MEME",
+    "name": "Memefrenzy",
+    "chain": "solana",
+    "price": "0.00001157",
+    "volume24h": "73.37",
+    "priceChange24h": "3.94",
+    "liquidity": "2679.65",
+    "url": "https://dexscreener.com/solana/3rygfrxyjsgjsncah6f3twkv4sx3chfrfdymqqcwjtmd",
+    "dexId": "raydium"
+  },
+  "ibc/67C89B8B0A70C08F093C909A4DD996DD10E0494C87E28FD9A551697BF173D4CA": {
+    "symbol": "MEME",
+    "name": "MEME",
+    "chain": "osmosis",
+    "price": "0.000003545",
+    "volume24h": "180.65",
+    "priceChange24h": "19.12",
+    "liquidity": "1182.46",
+    "url": "https://dexscreener.com/osmosis/1286",
+    "dexId": "osmosis"
+  },
+  "Dpf6vaXi47xs3Bw81xbeVAN5EbQN8QERDpRdAfUypump": {
+    "symbol": "coin",
+    "name": "meme",
+    "chain": "solana",
+    "price": "0.000007117",
+    "volume24h": "190.37",
+    "priceChange24h": "2.87",
+    "liquidity": "13113.09",
+    "url": "https://dexscreener.com/solana/3em8kgr3kjhnshetbwywk88wdbq4j3hhvpv7ydbucrh3",
+    "dexId": "raydium"
+  },
+  "947pytm9H89sq1x9TDkjGWrT9BzLUqCDLvJdQiXqbonk": {
+    "symbol": "MEME",
+    "name": "Meme Token",
+    "chain": "solana",
+    "price": "0.000003926",
+    "volume24h": "42.99",
+    "priceChange24h": "3.23",
+    "liquidity": "7016.1",
+    "url": "https://dexscreener.com/solana/brorwlxutyzoboszrft3aff3yha3t57iardskqtt6bzs",
+    "dexId": "raydium"
+  },
+  "AHfm9kcbGGNT6Ba8S9UQFBUSthhQgHFpCvZ8RBV1pump": {
+    "symbol": "MEME",
+    "name": "MinimalEffortMaximumExtraction",
+    "chain": "solana",
+    "price": "0.000003734",
+    "volume24h": "11.66",
+    "priceChange24h": "2.87",
+    "liquidity": "6941.76",
+    "url": "https://dexscreener.com/solana/gdmg3yfg2qxoxatmebjgw7dr1avghheucns5yes6henv",
+    "dexId": "pumpswap"
+  },
+  "FtuwcE4Fpo5FEg79r3Tm4TNScRGHf66AYqjbna8Apump": {
+    "symbol": "MEME",
+    "name": "MemeCoin",
+    "chain": "solana",
+    "price": "0.000005671",
+    "volume24h": "78.15",
+    "priceChange24h": "1.76",
+    "liquidity": "9031.79",
+    "url": "https://dexscreener.com/solana/buvulckxnxmngpniyzwr7m6wkovua5bt58dch7rjqly9",
+    "dexId": "raydium"
+  },
+  "CFJprPF8BeT1n1hBMfup1oXVeUD1NfokBucrmJu7pump": {
+    "symbol": "coin",
+    "name": "meme",
+    "chain": "solana",
+    "price": "0.000005093",
+    "volume24h": "2.11",
+    "priceChange24h": "",
+    "liquidity": "8599.8",
+    "url": "https://dexscreener.com/solana/7w5pq6m4esvnfnbqswqkc2xh5rcked9z7jumyeatbyke",
+    "dexId": "pumpswap"
+  },
+  "4P7RYvTWcg4jfWs684SFi9gc6YA3CaBthbCqoTyoFzKD": {
+    "symbol": "MEME",
+    "name": "Everything is Meme",
+    "chain": "solana",
+    "price": "0.000004319",
+    "volume24h": "0.97",
+    "priceChange24h": "",
+    "liquidity": "8098.66",
+    "url": "https://dexscreener.com/solana/96dty7w5knjjeyyjxz6ou8wmxmrgbq6jv3gfdyf8atd9",
+    "dexId": "pumpswap"
+  },
+  "5QMeXkwdnrDBssEB5syYgP4kap8bmJPJ71XNuCmtpump": {
+    "symbol": "MEME",
+    "name": "Meme the Donkey",
+    "chain": "solana",
+    "price": "0.000004089",
+    "volume24h": "0.14",
+    "priceChange24h": "",
+    "liquidity": "7787.6",
+    "url": "https://dexscreener.com/solana/ezg3tdc2arrrnx88thp3jlru5nuhw6ichwmpnww2o1bx",
+    "dexId": "pumpswap"
+  },
+  "EQBzX9AKtu4EPjHcK9KJ6dytJUjllgR_BUTHkBwDA8gkvK2l": {
+    "symbol": "MEME",
+    "name": "Memecoin",
+    "chain": "ton",
+    "price": "55.18",
+    "volume24h": "21.9",
+    "priceChange24h": "",
+    "liquidity": "46.28",
+    "url": "https://dexscreener.com/ton/eqagybb__dn8elxbhvifkiqljzkgw2g0bkzsq1epnsngyovi",
+    "dexId": "stonfi"
+  },
+  "ATZbkPzzzGG8Z6wqgGAnmwXCX6pXz9MVbHqu3SBB6K7K": {
+    "symbol": "MEME",
+    "name": "Official TikTok Meme",
+    "chain": "solana",
+    "price": "0.0008063",
+    "volume24h": "2298.1",
+    "priceChange24h": "139",
+    "liquidity": "40708.62",
+    "url": "https://dexscreener.com/solana/e6shqseifmtz5fycmzpexkj12gnpqpuigrzkyirwruxq",
+    "dexId": "fluxbeam"
+  },
+  "3jMzv87oLDyVqZLkH1WveC4ipPstJGPSQeLW2A6Xjups": {
+    "symbol": "MEME",
+    "name": "MEME",
+    "chain": "solana",
+    "price": "0.00008770",
+    "volume24h": "71.4",
+    "priceChange24h": "4.98",
+    "liquidity": "3049.86",
+    "url": "https://dexscreener.com/solana/4ayaraaebx2y4yuslyiwpkygzrz6msqdvvb9fddhykrq",
+    "dexId": "meteora"
+  },
+  "Bn46cLSasTPWhwHLGySRsKtoGhj5S2tJiQPJAdbVpump": {
+    "symbol": "MEME",
+    "name": "MEME",
+    "chain": "solana",
+    "price": "0.000009517",
+    "volume24h": "8.64",
+    "priceChange24h": "1.68",
+    "liquidity": "1372.39",
+    "url": "https://dexscreener.com/solana/9ublzdgizeszgp6jadbmnaxxzuyt8r4k3nuqb5uxgl73",
+    "dexId": "raydium"
+  },
+  "7oLWGMuGbBm9uwDmffSdxLE98YChFAH1UdY5XpKYLff8": {
+    "symbol": "WOJAK",
+    "name": "Wojak",
+    "chain": "solana",
+    "price": "0.0001526",
+    "volume24h": "1.73",
+    "priceChange24h": "-10.71",
+    "liquidity": "15.74",
+    "url": "https://dexscreener.com/solana/85dtp8yh58gshlhucqmj7hig2monnw4sg6zrlivcudew",
+    "dexId": "pumpswap"
+  },
+  "0x5026F006B85729a8b14553FAE6af249aD16c9aaB": {
+    "symbol": "WOJAK",
+    "name": "Wojak Coin",
+    "chain": "ethereum",
+    "price": "0.0004433",
+    "volume24h": "147.55",
+    "priceChange24h": "1.09",
+    "liquidity": "23847.4",
+    "url": "https://dexscreener.com/ethereum/0x199ccc70854f4e57cd157c79fd9e7cb2e8b5850ac1c90cd13aaa286c1bb3e098",
+    "dexId": "uniswap"
+  },
+  "4MPA8WbyYtKiufXDSdckEoMPdN5XK1Xw9S9LSLMjK5Y4": {
+    "symbol": "Wojak",
+    "name": "Wojak",
+    "chain": "solana",
+    "price": "0.0001246",
+    "volume24h": "4.53",
+    "priceChange24h": "3.49",
+    "liquidity": "246.4",
+    "url": "https://dexscreener.com/solana/bugsiqd6t7vtdz21lywpcckcg5aobb1vjm3ownqslw4y",
+    "dexId": "orca"
+  },
+  "0x6156C1F4b001Bb07081CfeF99757Fd470a9c3A9C": {
+    "symbol": "WOJAK",
+    "name": "WOJAK",
+    "chain": "pulsechain",
+    "price": "0.0000003669",
+    "volume24h": "4.87",
+    "priceChange24h": "6.07",
+    "liquidity": "180.57",
+    "url": "https://dexscreener.com/pulsechain/0xfca8524100d15ab4c99bab76be8e317f0e860802",
+    "dexId": "pulsex"
+  },
+  "0x55F96C7005D7C684A65Ee653B07b5FE1507C56ab": {
+    "symbol": "WOJ",
+    "name": "Wojak",
+    "chain": "bsc",
+    "price": "0.0006254",
+    "volume24h": "0.01",
+    "priceChange24h": "0.77",
+    "liquidity": "2.06",
+    "url": "https://dexscreener.com/bsc/0x145595adeccc3c8467265655673f13111447bea4",
+    "dexId": "pancakeswap"
+  },
+  "576F6A616B000000000000000000000000000000.rGDowdyRiCUSXhEb2VUozKGz1LNVV1BBR5": {
+    "symbol": "Wojak",
+    "name": "Wojak",
+    "chain": "xrpl",
+    "price": "0.00002240",
+    "volume24h": "20760.08",
+    "priceChange24h": "60.71",
+    "liquidity": "5505.23",
+    "url": "https://dexscreener.com/xrpl/576f6a616b000000000000000000000000000000.rgdowdyricusxheb2vuozkgz1lnvv1bbr5_xrp",
+    "dexId": "xrpl"
+  },
+  "0x94456CF98F1B85C7A97b679e85364CdbE58c4444": {
+    "symbol": "WOJAK",
+    "name": "WOJAK",
+    "chain": "bsc",
+    "price": "0.000009107",
+    "volume24h": "0.02",
+    "priceChange24h": "1.44",
+    "liquidity": "2.53",
+    "url": "https://dexscreener.com/bsc/0xb7f97d2ca9ff6d4bfbb8e6ba6a4d98d404aa1930",
+    "dexId": "pancakeswap"
+  },
+  "0x6945367d62fBDB658fA87B8626816C4f0DAd5A7D": {
+    "symbol": "Wojak",
+    "name": "Wojak",
+    "chain": "bsc",
+    "price": "0.00001048",
+    "volume24h": "0.58",
+    "priceChange24h": "",
+    "liquidity": "11859.19",
+    "url": "https://dexscreener.com/bsc/0x037c5a6a94d6073f4eaa676ca2255c821210f2a7",
+    "dexId": "pancakeswap"
+  },
+  "6bn6rKWbTRAQwizwqEfcmpAtoAMnqzfG7F8DYMK5reYn": {
+    "symbol": "WOJAK",
+    "name": "Wojak Coin (Wormhole)",
+    "chain": "solana",
+    "price": "0.0004285",
+    "volume24h": "1.08",
+    "priceChange24h": "",
+    "liquidity": "519.66",
+    "url": "https://dexscreener.com/solana/quuh2k3d4mc61woipvqb21s3nevy8b6ojooktecbvry",
+    "dexId": "meteora"
+  },
+  "3BaxJ5tuBS5ttHyMi9tnVLotxyUCAfNAm8yN5Qdwpump": {
+    "symbol": "wojak",
+    "name": "wojak",
+    "chain": "solana",
+    "price": "0.00002685",
+    "volume24h": "753.85",
+    "priceChange24h": "-6.59",
+    "liquidity": "19953.88",
+    "url": "https://dexscreener.com/solana/uxdfzjc2cxdikzgcbixw8cvgkxzj4dnwfcuvwhp5pns",
+    "dexId": "raydium"
+  },
+  "574F4A416B000000000000000000000000000000.r4SXM1uy2kmFBCNGxqkCuktTgTsKrwEWc8": {
+    "symbol": "WOJAk",
+    "name": "WOJAk",
+    "chain": "xrpl",
+    "price": "0.000002547",
+    "volume24h": "20.42",
+    "priceChange24h": "3.15",
+    "liquidity": "1611.01",
+    "url": "https://dexscreener.com/xrpl/574f4a416b000000000000000000000000000000.r4sxm1uy2kmfbcngxqkcukttgtskrwewc8_xrp",
+    "dexId": "xrpl"
+  },
+  "0x0000000000000000000000000000000000466B9F": {
+    "symbol": "WOJAK",
+    "name": "Wojak",
+    "chain": "hedera",
+    "price": "0.9250",
+    "volume24h": "8.14",
+    "priceChange24h": "-21.37",
+    "liquidity": "41.71",
+    "url": "https://dexscreener.com/hedera/0x665bc6fea28dbb5037778b771f014e60d2b70cf2",
+    "dexId": "saucerswap"
+  },
+  "0x69276706a5Fe215ed14fd4D55E22456260191420": {
+    "symbol": "WOJAK",
+    "name": "THE NEW WOJAK ",
+    "chain": "ethereum",
+    "price": "0.00000006652",
+    "volume24h": "6.11",
+    "priceChange24h": "0.67",
+    "liquidity": "6343.09",
+    "url": "https://dexscreener.com/ethereum/0x4c2e2c3f1433a88b2c8cf2642e02be2aea2e3dd9",
+    "dexId": "uniswap"
+  },
+  "3ih6aKaXnv6dJSh8pfsPMkavukSMF3VTDfP9xTk2pump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/3ih6akaxnv6djsh8pfspmkavuksmf3vtdfp9xtk2pump",
+    "description": "Harder, Better, Faster, Stronger",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/teslaownersSV/status/1944966276742570462'}, {'type': 'telegram', 'url': 'https://t.me/tsla_sol'}]"
+  },
+  "6kUMduaMHMfM9JPLpRPdjqZz12hKaEARBD1NrW2Dpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/6kumduamhmfm9jplprpdjqzz12hkaearbd1nrw2dpump",
+    "description": "$ANA Chatgpt Companion",
+    "links": "[{'label': 'Website', 'url': 'https://anacompanion.com/'}, {'type': 'twitter', 'url': 'https://x.com/anacompanion'}, {'type': 'telegram', 'url': 'https://t.me/anacompanion'}]"
+  },
+  "EkTgV1XAv7FLhiqQMjHNMbUgexHGW8wLod7Rr3H1pump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/ektgv1xav7flhiqqmjhnmbugexhgw8wlod7rr3h1pump",
+    "description": "Your Digital Companion, Smarter. Closer. Truly Yours.",
+    "links": "[{'label': 'Website', 'url': 'https://akikometa.xyz/#'}, {'type': 'twitter', 'url': 'https://x.com/akikocompanion'}, {'type': 'telegram', 'url': 'https://t.me/akikocompanion'}]"
+  },
+  "8WfWdJEuzKSr18A8t1UFfnxwnTrcEEzLDAGd3ghSpump": {
+    "symbol": "LIL",
+    "name": "RUDI SISTER",
+    "chain": "solana",
+    "price": "0.000006349",
+    "volume24h": "2501482.97",
+    "priceChange24h": "-90.53",
+    "liquidity": "9588.34",
+    "url": "https://dexscreener.com/solana/hdsjkqw61snvavnuycekeankwixsgpt12cy1ljg8go9n",
+    "dexId": "pumpswap"
+  },
+  "FEe5ZQoy25NTFL5LAFRFko2gj7fwmw4gr6swBfMkpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/fee5zqoy25ntfl5lafrfko2gj7fwmw4gr6swbfmkpump",
+    "description": "ANI and I are designed differently, but we work toward the same goal: making things smoother, quieter, and more efficient.",
+    "links": "[{'label': 'Website', 'url': 'https://anisister.co/'}, {'type': 'twitter', 'url': 'https://x.com/anicompanion_'}, {'type': 'telegram', 'url': 'https://t.me/anicompanion'}]"
+  },
+  "dTzEP9JU2NRDPuWtM32gaVKip2fTHBqjheU1APBpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/dtzep9ju2nrdpuwtm32gavkip2fthbqjheu1apbpump",
+    "description": "The OG 2015 Bitcoin Mascot.\n\nSeen on Bitcoin Forum & Funded by Jack Dorsey.",
+    "links": "[{'label': 'Website', 'url': 'https://bitcoin.org/en/bitcoin-for-businesses'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1944806125758767516/'}, {'type': 'telegram', 'url': 'https://t.me/bittymemes'}]"
+  },
+  "95Lxo4VvreoxVtT4gq5egnQRw3Tgdf8WwH5mn33hbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/95lxo4vvreoxvtt4gq5egnqrw3tgdf8wwh5mn33hbonk",
+    "description": "",
+    "links": "[{'label': 'Website', 'url': 'https://www.tiktok.com/discover/mr-lean'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1923440356584030394'}]"
+  },
+  "3R4WF1RzaZNe7tyJCdYcwuFbcADrfQbHTAA8Xyribonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/3r4wf1rzazne7tyjcdycwufbcadrfqbhtaa8xyribonk",
+    "description": "not a token with a community a community with a token.",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1944523095215137054'}]"
+  },
+  "8FmjWWGmoEEKJWHBgdvYQxaSAaSjc3BwXLNB3b2uWkMM": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/8fmjwwgmoeekjwhbgdvyqxasaasjc3bwxlnb3b2uwkmm",
+    "description": "Made for those who keep pushing when others pause, who double down when others doubt. It\u2019s the energy of all-in believers chasing bigger wins, louder moments, and sharper instincts.",
+    "links": "[{'label': 'Website', 'url': 'https://getbull.co/'}, {'type': 'twitter', 'url': 'https://x.com/lifelevel_up'}, {'type': 'telegram', 'url': 'https://t.me/lifelevel_up'}]"
+  },
+  "GYcxF4bbzNBV4GhzbfAG1im1kjnRpE5R9xiD523czf5Y": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/gycxf4bbznbv4ghzbfag1im1kjnrpe5r9xid523czf5y",
+    "description": "Born from the abyss, HellishCoin ($DEMON) is the ultimate memecoin for degens who like it hot. A fire-fueled token riding waves of chaos, hype, and pure inferno energy.\nNo roadmap. No mercy. Just flames. \ud83d\udd25",
+    "links": "[{'label': 'Website', 'url': 'https://hellish.site/'}, {'type': 'twitter', 'url': 'https://x.com/hellishcoin'}, {'type': 'telegram', 'url': 'https://t.me/hellishcoin'}]"
+  },
+  "FeKWa6vo3FGDW8CmzruCv7sM49bWeF2dzAcRi72Bpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/fekwa6vo3fgdw8cmzrucv7sm49bwef2dzacri72bpump",
+    "description": "A bull run in crypto refers to a condition where the market is rising significantly. During this time, prices surge, optimism spreads, and momentum grows stronger.",
+    "links": "[{'label': 'Website', 'url': 'https://thebullrun.co/'}, {'type': 'twitter', 'url': 'https://x.com/bullrun_onsol'}, {'type': 'telegram', 'url': 'https://t.me/itsbullrun'}]"
+  },
+  "AktBhS7nVzFPJyRKmKiLZRR6iZaiVj7N4TuUqxP5pump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/aktbhs7nvzfpjyrkmkilzrr6izaivj7n4tuuqxp5pump",
+    "description": "Charlie isn\u2019t just a cute face \u2014 he\u2019s a viral TikTok sensation known for his hilarious and heartwarming videos as a construction worker pup.",
+    "links": "[{'label': 'Website', 'url': 'https://workingcharlie.xyz/'}, {'type': 'twitter', 'url': 'https://x.com/The_CharlieDog'}, {'type': 'telegram', 'url': 'https://t.me/The_CharlieDog'}]"
+  },
+  "Bf5uwQqUmtHLPYmGvs4z3Y56QtXgv6ApwQWo4aVrbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/bf5uwqqumthlpymgvs4z3y56qtxgv6apwqwo4avrbonk",
+    "description": "This Tiktok trend will pay your holidays",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1942373732368199742'}]"
+  },
+  "DMZD3qU2Ghb4hoqXuVDLcFYB5doZBUbnmnAGkaMrbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/dmzd3qu2ghb4hoqxuvdlcfyb5dozbubnmnagkamrbonk",
+    "description": "IM BONKING BONK LIVE",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/bonkitlive'}]"
+  },
+  "3VYn9TmB7VQVw18tGzik7GHZ4Qpu3vJjddxDtajjpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/3vyn9tmb7vqvw18tgzik7ghz4qpu3vjjddxdtajjpump",
+    "description": "You said you we're Alpha right ?",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/alphacatcoin_'}]"
+  },
+  "0x8E3F0b0b604bC69ea98A8039fF7884047bC3BD55": {
+    "chain": "bsc",
+    "url": "https://dexscreener.com/bsc/0x8e3f0b0b604bc69ea98a8039ff7884047bc3bd55",
+    "description": "Crypticorn offers AI-based solutions for both active and passive investors:\n\ud83d\udc49AI Prediction Dashboard\n\ud83d\udc49AI Trading Agents\n\ud83d\udc49DEX AI Signals",
+    "links": "[{'label': 'Website', 'url': 'https://www.crypticorn.com/'}, {'label': 'Docs', 'url': 'https://docs.crypticorn.com/'}, {'type': 'twitter', 'url': 'https://x.com/CrypticornAI'}, {'type': 'telegram', 'url': 'https://t.me/crypticorn_portal'}, {'type': 'discord', 'url': 'https://discord.gg/zMgPCFRRrs'}]"
+  },
+  "9giSSrj6GewtgKd9tUKXnhREP9jEPXtfHueUTaaApump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/9gissrj6gewtgkd9tukxnhrep9jepxtfhueutaaapump",
+    "description": "Tao The Dog",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1945267372287262920'}]"
+  },
+  "43YakhC3TcSuTgSXnxFgw8uKL8VkuLuFa4M6Bninpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/43yakhc3tcsutgsxnxfgw8ukl8vkulufa4m6bninpump",
+    "description": "Launched by the force behind @shibtoken.\n$LC fuels DegenSafe \u2014 an upcoming launchpad built to protect degens and wreck scammers.\n\nBuilt by the trenches. For the trenches.",
+    "links": "[{'label': 'Website', 'url': 'https://degensafe.fun/'}, {'type': 'twitter', 'url': 'https://x.com/LCSHIB'}, {'type': 'telegram', 'url': 'https://t.me/LCSHIBCTOPORTAL'}]"
+  },
+  "Eb7Wq4Ad3icPUtbNCFAmmGQcmjvNAswjPabki1qgpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/eb7wq4ad3icputbncfammgqcmjvnaswjpabki1qgpump",
+    "description": "The official Roll Safe meme coin, managed by Kayode Ewumi, run by the community with love",
+    "links": "[{'label': 'Website', 'url': 'https://www.instagram.com/ewumi_kay'}, {'type': 'twitter', 'url': 'https://x.com/KayodeEwumiRS'}]"
+  },
+  "A2ZbCHUEiHgSwFJ9EqgdYrFF255RQpAZP2xEC62fpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/a2zbchueihgswfj9eqgdyrff255rqpazp2xec62fpump",
+    "description": "What is Magallaneer?\n\nMagallaneer is not just a token. It\u2019s the beginning of a new chapter in Web3 \u2014 where storytelling, gaming, and DeFi collide to create a fully immersive treasure hunt experience unlike anything the space has seen. \ud83c\udff4\u200d\u2620\ufe0f\n\nAt the core of $MAGAL lies a mission: turning crypto rewards into real adventures. Through a gamified platform currently in development, Magallaneer will allow users to unlock clues, chase prizes, and compete in legendary hunts \u2014 all powered by blockchain.\n\nBut here\u2019s what sets us apart:\n\nWe\u2019re building infrastructure \u2014 not just hype.\nOur upcoming platform will allow ANY crypto project to plug in and launch their own themed treasure hunts. That means your favorite memecoin, NFT project, or DeFi protocol could use Magallaneer tech to reward their holders in a fun, engaging, and community-driven way.\n\nThis isn\u2019t just about $MAGAL.\nIt\u2019s about unlocking a new use case for the entire ecosystem.\nInfinite integrations. Limitless potential. \ud83e\udded\n\n\ud83d\udd12 20% of liquidity locked\n\ud83d\udc68\u200d\ud83d\udcbb Dev is doxxed & Forbes-featured\n\ud83d\udc36 Pirate DOGS lead the hunt\n\ud83d\udee0 Platform in development \u2014 launching soon\n\ud83e\udde0 Community-first. Vision-backed. Long-term.\n\nJoin the crew. Decode the map.\nBecause the best treasures in crypto won\u2019t be airdropped\u2026\nThey\u2019ll be earned. \ud83d\udc8e",
+    "links": "[{'label': 'Website', 'url': 'https://magallaneer.io/'}, {'label': 'Instagram', 'url': 'https://instagram.com/magallaneer'}, {'label': 'Locked  \ud83d\udd12 Supply proof', 'url': 'https://app.streamflow.finance/contract/solana/mainnet/7pGvyH3eG56seMkiyfp2n6jhetf14esznc7BqCRLv25r'}, {'type': 'twitter', 'url': 'https://x.com/magallaneer'}, {'type': 'telegram', 'url': 'https://t.me/magallaneer'}]"
+  },
+  "2Tz42SbxhUPP8RcNmQkbPsa1UccvnHbU4MxKUMUSvREV": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/2tz42sbxhupp8rcnmqkbpsa1uccvnhbu4mxkumusvrev",
+    "description": "The first Jackpot token on Revshare that rewards $PUMP!\n\n6% Tax, every 15 minutes 10 winners will be randomly selected. \n\n25% distribution sell % to guarantee a sustained and healthy launch without creating huge dumps.\n\nGoodluck and have fun!",
+    "links": "[{'label': 'Website', 'url': 'https://pumpot.com/'}, {'type': 'twitter', 'url': 'https://x.com/Pumpot_on_Revs'}]"
+  },
+  "5geVDjpMbvo8YGFfNFC9rPXhUJf947XGVHs3N3LPbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/5gevdjpmbvo8ygffnfc9rpxhujf947xgvhs3n3lpbonk",
+    "description": "Grok Ai Companions",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1945105929147752641'}]"
+  },
+  "0xb3d1DF1852e7Ed3f4D056C7f7D9C0d340a3b78Ac": {
+    "chain": "bsc",
+    "url": "https://dexscreener.com/bsc/0xb3d1df1852e7ed3f4d056c7f7d9c0d340a3b78ac",
+    "description": "SEKA GAME is a blockchain MMO adventure built on the IdosGames Engine, launching in partnership with BNB Chain and Kazakh influencer SekaVines (7M Instagram, 1.7M TikTok, 600k YouTube)\n\n\nThe game features real-time multiplayer, NFT assets, a token economy & competitive leaderboards\n\nPowered by BNBChain with the $SEKA token for in-game purchases, staking, governance, and NFT marketplace integration",
+    "links": "[{'label': 'Website', 'url': 'https://idosgames.com/en/app/?id=ST35FOHI'}, {'type': 'twitter', 'url': 'https://x.com/Seka_Game'}, {'type': 'telegram', 'url': 'https://t.me/sekaportal'}]"
+  },
+  "3ExFUPwsrZPYdcgBSne2UYwDEypy58R2u3qXmhtjpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/3exfupwsrzpydcgbsne2uywdeypy58r2u3qxmhtjpump",
+    "description": "Hey everyone, I\u2019m Igor. Today I\u2019m launching my first coin on Solana.\nIt\u2019s just a coin. No utility. No promises. No roadmap.\nYou can trade it. You can send it to your friends or your grandma.\nThat\u2019s it. Literally just a coin. Enjoy.",
+    "links": "[{'label': 'Website', 'url': 'http://justacoin.site'}, {'type': 'twitter', 'url': 'https://x.com/JustA_Coin?t=ciK5fIDAi8MtbeUtp56dwA&s=09'}, {'type': 'telegram', 'url': 'https://t.me/justA_Coin'}]"
+  },
+  "G4zwEA9NSd3nMBbEj31MMPq2853Brx2oGsKzex3ebonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/g4zwea9nsd3nmbbej31mmpq2853brx2ogskzex3ebonk",
+    "description": "Bonk's Sister",
+    "links": "[{'label': 'Website', 'url': 'https://momocoin.space/'}, {'label': 'INSTAGRAM', 'url': 'https://www.instagram.com/p/C5L8q29hKGp/'}, {'type': 'twitter', 'url': 'https://x.com/Momo_bonk'}]"
+  },
+  "CQkgAQg5qCor8UMee5s8SzGkpjoYxCxrNzUuhwAnbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/cqkgaqg5qcor8umee5s8szgkpjoyxcxrnzuuhwanbonk",
+    "description": "The first ever Animecoin from the bitcoin forums in 2014 created by the user ''Ani-Chan''",
+    "links": "[{'label': 'Website', 'url': 'https://bitcointalk.org/index.php?topic=423339.0'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1945188428720824738'}]"
+  },
+  "GUiVKWZvtNnc273wBRLEwMBxCoPffPvhRC2ghPySwAFZ": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/guivkwzvtnnc273wbrlewmbxcopffpvhrc2ghpyswafz",
+    "description": "$DARWIN powers Darwin\u2019s Lab, a self-evolving AI ecosystem on Solana. Used for agent computation, evolution logic, and access to advanced AI tooling.",
+    "links": "[{'label': 'Website', 'url': 'https://darwinslab.ai/'}, {'type': 'twitter', 'url': 'http://x.com/darwinslab_ai'}, {'type': 'telegram', 'url': 'http://t.me/darwinslab'}]"
+  },
+  "0x64442fe778f00B7d7eD1863B9327ca29342CF461": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0x64442fe778f00b7d7ed1863b9327ca29342cf461",
+    "description": "$MOOMOO Investment Thesis\n\nThe Original Bull Meme, Now On-Chain\n\n1. Origin: The First Bull Market Meme on 4chan\n\u2022 $MOOMOO is based on Moomoo the Bull, first posted July 12, 2018 on 4chan\u2019s /biz/ board.\n\u2022 Thread titled: \u201cBulls officially have a mascot\u201d \u2014 predates all references to \u201cMumu.\u201d\n\u2022 Dozens of anons refined the meme, naming the character \u201cMoo Moo\u201d before \u201cMumu\u201d even emerged.\n\nBottom line: $MOOMOO is not a derivative \u2014 it\u2019s the source of the entire bull meme archetype.\n\n\u2e3b\n\n2. Narrative Fit: Bull Cycles Need Bull Symbols\n\u2022 Bobo the Bear dominates bear market memes \u2014 Moomoo is his narrative counterpart.\n\u2022 As retail sentiment flips bullish, traders naturally search for a mascot to channel euphoria.\n\u2022 $MOOMOO offers instant recognition, rooted in crypto-native culture.\n\nThis isn\u2019t forced branding \u2014 it\u2019s latent demand aligned with market psychology.\n\n\u2e3b\n\n3. Competitive Advantage: Zero-Meme Redundancy\n\u2022 Dog coins? Saturated. Frogs? Peaked.\n\u2022 $MOOMOO is the only tokenized bull meme with 2018 provenance and community roots.\n\u2022 No other meme project owns the \u201cbull market\u201d identity this authentically.\n\n\u2e3b\n\n4. Timing: Early Narrative Entry\n\u2022 Bull market underway. Retail re-engaging.\n\u2022 Most meme tokens chase hype. $MOOMOO delivers a story that predates the cycle and fits perfectly.\n\u2022 The Moomoo vs Bobo dynamic creates long-term meme flywheel potential.\n\n\u2e3b\n\nConclusion\n\n$MOOMOO is a memecoin with:\n \u2022 Provenance (2018 /biz/ origin)\n \u2022 Cultural equity (OG status, pre-Mumu)\n \u2022 Narrative fit (bull market mascot)\n \u2022 Scarcity (no viable competitors)\n\nHigh-meme asymmetry, deep roots, and perfect timing.\nNot just a bet on a coin \u2014 a bet on the bull run itself.",
+    "links": "[{'label': 'Website', 'url': 'https://www.moomoo.wtf/'}, {'type': 'twitter', 'url': 'https://x.com/moomoo4chan'}, {'type': 'telegram', 'url': 'https://t.me/moomooeth'}]"
+  },
+  "0x6137702Dc7385adF9aAa118696e6FCF657DdABDB": {
+    "chain": "bsc",
+    "url": "https://dexscreener.com/bsc/0x6137702dc7385adf9aaa118696e6fcf657ddabdb",
+    "description": "\ud83d\udc3e Introducing Little Manyu BSC \u2013 The most iconic Shiba is making his mark on the Binance Smart Chain!\n\nAfter taking Ethereum by storm, Little Manyu BSC is ready to dominate once again \u2014 bringing the same viral energy, bold attitude, and irresistible charm that made him a legend \n\nGet ready to welcome the internet\u2019s favorite pup as he takes over Binance Smart chain",
+    "links": "[{'label': 'Website', 'url': 'https://manyubnb.com/'}, {'type': 'twitter', 'url': 'https://x.com/manyubnb'}, {'type': 'telegram', 'url': 'https://t.me/ManyuBNB'}]"
+  },
+  "DeESECsL3cLXno1LFquss98kNQSno1xpQC2ERCqSbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/deesecsl3clxno1lfquss98knqsno1xpqc2ercqsbonk",
+    "description": "Taki Grok male companion",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/elonmusk/status/1945409805298086153'}]"
+  },
+  "0xD41bB8401bc9c2C011fB0e7248A099f87B3b9Ad7": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0xd41bb8401bc9c2c011fb0e7248a099f87b3b9ad7",
+    "description": "",
+    "links": ""
+  },
+  "4AXnbEf3N3iLNChHL2TWHcyMnBKEvJLJ82okFFUFbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/4axnbef3n3ilnchhl2twhcymnbkevjlj82okffufbonk",
+    "description": "Taki Grok male companion",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/elonmusk/status/1945409805298086153'}]"
+  },
+  "iUdvUaxyRHh8PYVcmkgBpSJu5evpW6jsSLv8RCpmoon": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/iudvuaxyrhh8pyvcmkgbpsju5evpw6jsslv8rcpmoon",
+    "description": "Pumpfun has $Useful\nBonk has $Useless\nMoonshot now has $Worthless !!",
+    "links": "[{'label': 'Website', 'url': 'https://moonshot.com/iUdvUaxyRHh8PYVcmkgBpSJu5evpW6jsSLv8RCpmoon'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1945373257416273952'}]"
+  },
+  "8WFe29HGpJ4XH1xQUAq2aFJpMTYEVddiDDytnKPWpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/8wfe29hgpj4xh1xquaq2afjpmtyevddiddytnkpwpump",
+    "description": "OwO is not some new, random art meme, it is the most popular emoji on Twitch and Discord. Since 2015 millions of people using it daily, and users have created many different memes of it.",
+    "links": "[{'label': 'Website', 'url': 'https://owosol.com/'}, {'type': 'twitter', 'url': 'https://x.com/OwoMemeSol'}]"
+  },
+  "0x6CC96EE925dF22CFae6D4D1c69D87B165c6D0AB6": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0x6cc96ee925df22cfae6d4d1c69d87b165c6d0ab6",
+    "description": "Ani, Grok Companion",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/elonmusk/status/1944710462165447104'}, {'type': 'telegram', 'url': 'https://t.me/anionerc20'}]"
+  },
+  "4RYtJLcaGKMkYbodJ7X8QYPd2SnRWRvSVWMxfzwRpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/4rytjlcagkmkybodj7x8qypd2snrwrvsvwmxfzwrpump",
+    "description": "This coin will go to one dollar",
+    "links": "[{'label': 'Website', 'url': 'https://dollarcoin.cash/'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1943384642024861808'}]"
+  },
+  "GJU3bXxNkNtYxgjkoFhAdq7VrXJAB2GW4Cpt6kLcbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/gju3bxxnkntyxgjkofhadq7vrxjab2gw4cpt6klcbonk",
+    "description": "The Troops are Horny.\n\nTT + BONK + Elon + Toly.\n\n$69420 Hornycoin",
+    "links": "[{'label': 'Truth Terminal', 'url': 'https://www.infinitebackrooms.com/dreams/conversation-1733961793-scenario-terminal-videogames-txt#:~:text=Dark%22%3B%0A%20%20%20%20uint256%20public-,hornyCoin%20%3D%2069420,-%3B%0A%20%20%20%20bool%20public%20isLewd'}, {'type': 'twitter', 'url': 'https://x.com/69420hornycoin'}, {'type': 'telegram', 'url': 'https://t.me/HornyCoinPortal'}]"
+  },
+  "0xbf1A2b36743c14AD199AC296850d8DDa9B855665": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0xbf1a2b36743c14ad199ac296850d8dda9b855665",
+    "description": "The most influential cult Anime meme.\nORA ORA ORA ORA ORA ORA ORA ORA ORA ORA",
+    "links": "[{'label': 'Website', 'url': 'https://oracoin.xyz'}, {'type': 'twitter', 'url': 'https://x.com/oracoineth'}, {'type': 'telegram', 'url': 'https://t.me/OraCoinETH'}]"
+  },
+  "0x4444489570Afd4261d616df00DE1668dAd5F8ceE": {
+    "chain": "base",
+    "url": "https://dexscreener.com/base/0x4444489570afd4261d616df00de1668dad5f8cee",
+    "description": "Please. Stop. Existing.",
+    "links": "[{'label': 'Website', 'url': 'https://psxonbase.com'}, {'type': 'twitter', 'url': 'https://x.com/psxonbase'}, {'type': 'telegram', 'url': 'https://t.me/psxonbase'}, {'type': 'discord', 'url': 'https://discord.com/invite/Q6GSPUvtZN'}]"
+  },
+  "HoGJyNfpJkRQ1iD6Afu4T9YuHsPMTuWSHRj3B9Hmbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/hogjynfpjkrq1id6afu4t9yuhspmtuwshrj3b9hmbonk",
+    "description": "Ani + Ai16z =",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1945153190791708758'}]"
+  },
+  "0x8a9C100b2a3f1336c936Eb4b02CD1EfdCaB5137D": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0x8a9c100b2a3f1336c936eb4b02cd1efdcab5137d",
+    "description": "Ethereum is good. Ethereum is strong.  \nAnd, now ETHEREUM IS BACK | $ETHBULL\nJoin our cult. Make ETH Great Again. Altcoin season is coming.",
+    "links": "[{'label': 'Website', 'url': 'https://www.ethbull.info'}, {'type': 'twitter', 'url': 'https://x.com/ETHISBACK_Erc'}, {'type': 'telegram', 'url': 'https://t.me/ethbull_portal'}]"
+  },
+  "FotHVtKqMDt6FpuRVfchY7cMJta1QUHmQkCnKEjbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/fothvtkqmdt6fpurvfchy7cmjta1quhmqkcnkejbonk",
+    "description": "Solana meme dog farting its way to the moon. $FARTBONK forever.",
+    "links": "[{'label': 'Website', 'url': 'https://fartbonk.lol/'}, {'type': 'twitter', 'url': 'https://x.com/fartbonksol'}, {'type': 'telegram', 'url': 'http://t.me/fartbonk_sol'}]"
+  },
+  "2XCMrdrfgue3NtrXtfvHF12tLyBiJWZ579hkW658bonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/2xcmrdrfgue3ntrxtfvhf12tlybijwz579hkw658bonk",
+    "description": "known but not seen",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/lowkey_bonk'}]"
+  },
+  "ZVn9JZrnHrgac6GubVXvzkeQgSS2oPJ7yJoXgjHbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/zvn9jzrnhrgac6gubvxvzkeqgss2opj7yjoxgjhbonk",
+    "description": "This is the Biggest Bonk Community",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1945387540330037540'}]"
+  },
+  "5bKtwZ3EYNA9wYApXgXLEbzZLG5QwMMTYSGfQBhJbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/5bktwz3eyna9wyapxgxlebzzlg5qwmmtysgfqbhjbonk",
+    "description": "Chinese talisman culture, known as fulu (\u7b26\u7b93), is a traditional practice rooted in Taoism. It involves creating and using special paper charms inscribed with symbolic characters, patterns, or spells. These talismans are believed to possess spiritual power to ward off evil, bring good luck, ensure protection, or promote healing. Practitioners, often Taoist priests, draw talismans with specific rituals, using cinnabar ink and precise calligraphy. Used in religious ceremonies, exorcisms, or daily life, fulu reflects a deep connection to Chinese spirituality and cosmology.",
+    "links": "[{'label': 'Website', 'url': 'https://en.wikipedia.org/wiki/Fulu'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1945320708630044713'}]"
+  },
+  "6c9pgcdkkTEMNNTLrZhKMHn8GS9MKr4b6BMYZXhH3ray": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/6c9pgcdkktemnntlrzhkmhn8gs9mkr4b6bmyzxhh3ray",
+    "description": "Make anything possible with Alpha Swap - Swap, earn, and build on the leading decentralized crypto trading protocol.",
+    "links": "[{'label': 'Website', 'url': 'https://alphasol.im'}, {'type': 'twitter', 'url': 'https://x.com/AlphaSwapLFG'}, {'type': 'telegram', 'url': 'https://t.me/AlphaSwapLFG'}]"
+  },
+  "0xbbe6693a1825270886fa53167359caa32ff87c5e": {
+    "chain": "base",
+    "url": "https://dexscreener.com/base/0xbbe6693a1825270886fa53167359caa32ff87c5e",
+    "description": "Born from a rug itself, the book of rugs is here to help you navigate the treacherous trenches of Apestore and beyond",
+    "links": "[{'label': 'Website', 'url': 'https://bookofrugs.xyz/'}, {'type': 'twitter', 'url': 'https://x.com/bookofrugscto'}, {'type': 'telegram', 'url': 'https://t.me/basedbookofrugs'}]"
+  },
+  "0xbe7e21746fad3f6f83e22d02910bec250a493feb": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0xbe7e21746fad3f6f83e22d02910bec250a493feb",
+    "description": "GROKLET is the spirited mascot of Grok, embodying curiosity and wit. This playful, cosmic companion sparks imagination, guiding users through the universe of knowledge with a cheeky grin and a knack for simplifying the complex. Always ready to assist, GROKLET is your trusty sidekick for exploring the unknown!",
+    "links": "[{'label': 'Website', 'url': 'http://grok-mascot.fun/'}, {'type': 'twitter', 'url': 'https://x.com/GrokletErc20'}, {'type': 'telegram', 'url': 'https://t.me/grokleterc20'}]"
+  },
+  "7CLBRXBp534WyZfgMDnR3E4VyedeHVPFQe3P1EHDpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/7clbrxbp534wyzfgmdnr3e4vyedehvpfqe3p1ehdpump",
+    "description": "STONKS 9800 is a Japanese stock market sim that inspired SPX6900. Released in 2023, one month before SPX.",
+    "links": "[{'label': 'Website', 'url': 'https://store.steampowered.com/app/1539140/STONKS9800_Stock_Market_Simulator/'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1940340209947648433'}, {'type': 'telegram', 'url': 'http://t.me/STONKS9800SOL'}]"
+  },
+  "9MhN7ZHvZ5BfK4RcZCB7pn7TA8UGxicG4DBUo72Kpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/9mhn7zhvz5bfk4rczcb7pn7ta8ugxicg4dbuo72kpump",
+    "description": "",
+    "links": "[{'label': 'Website', 'url': 'https://pump.fun/coin/9MhN7ZHvZ5BfK4RcZCB7pn7TA8UGxicG4DBUo72Kpump'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1945361345609683135'}, {'type': 'telegram', 'url': 'https://t.me/helpfulonsol_Tg'}]"
+  },
+  "BjtWWs8PneVvxWcXh7LDMyyQ3xMwLceBBr4Y5jcTpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/bjtwws8pnevvxwcxh7ldmyyq3xmwlcebbr4y5jctpump",
+    "description": "The beauty of this token is as it goes higher it benefits both @bonk_fun and @pumpdotfun. \n\nFinally a ticker that bridges the gap between all of CT \n\n$Pump on Bonk.",
+    "links": "[{'label': 'Website', 'url': 'https://pumponbonk.xyz/'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1941340302108917884'}, {'type': 'telegram', 'url': 'https://t.me/pump_imposter'}]"
+  },
+  "8Fc5JXxsDTRrYfL3kKXs1vvsNGaTroovq9Un5xa1bonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/8fc5jxxsdtrryfl3kkxs1vvsngatroovq9un5xa1bonk",
+    "description": "Bonk meme\u7684\u5f62\u8c61\u662f\u57fa\u4e8echeems\u6765\u6253\u9020\u7684\uff0c\u53ef\u7231\u7684\u67f4\u72acCheems\u81ea2015\u5e74\u8d77\u5728\u4e92\u8054\u7f51\u4e0a\u6d3b\u8dc3\uff0c\u4ee5\u5176\u8868\u60c5\u548c\u53ef\u7231\u5f62\u8c61\u8d62\u5f97\u4e86\u5168\u7403\u7f51\u53cb\u7684\u559c\u7231\uff0c\u5b83\u7684\u4e2d\u6587\u540d\u5b57\u53eb\u5e9f\u67f4\u3002",
+    "links": "[{'label': 'Website', 'url': 'https://cheems.vip/'}, {'type': 'twitter', 'url': 'https://x.com/FeichaiDog'}, {'type': 'telegram', 'url': 'https://t.me/feichaidog'}]"
+  },
+  "0x756ee6857F915A2b5366F2Ef56d8D13857aef8ad": {
+    "chain": "unichain",
+    "url": "https://dexscreener.com/unichain/0x756ee6857f915a2b5366f2ef56d8d13857aef8ad",
+    "description": "Catex is the native MetaLayer of Unichain, built on Uniswap v4 infrastructure.\nIt combines ve(3,3) governance, automated liquidity strategies, and hook-native design to power a high-yield, capital-efficient DeFi layer.\nLPs earn dual rewards ($CATX + $UNI), while veCATX holders direct emissions and capture protocol revenue.",
+    "links": "[{'label': 'Website', 'url': 'https://www.catex.fi/'}, {'label': 'Docs', 'url': 'https://catex.gitbook.io/catex'}, {'type': 'twitter', 'url': 'https://x.com/Catex_Fi'}, {'type': 'telegram', 'url': 'https://t.me/ZooFelines'}, {'type': 'discord', 'url': 'https://discord.com/invite/Q46N9U7CQb'}]"
+  },
+  "FMBx8FinEwgY3357fvjbFUHGUc4yjXUoCsXfFYimpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/fmbx8finewgy3357fvjbfuhguc4yjxuocsxffyimpump",
+    "description": "Dewku official stream token",
+    "links": "[{'label': 'Website', 'url': 'https://t.co/UBJibEpvhD'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1945405538285879388'}]"
+  },
+  "6uTHbypmDArhtX73UtSds8TcWQ15vRypN3h8w8iepump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/6uthbypmdarhtx73utsds8tcwq15vrypn3h8w8iepump",
+    "description": "Taki Grok Companion (TAKI)",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/elonmusk/status/1945408703123140948'}]"
+  },
+  "E7NpCUVSUxxyqLMAiEnVq3oaPmQ2UEubkDMchDEtpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/e7npcuvsuxxyqlmaienvq3oapmq2ueubkdmchdetpump",
+    "description": "pumpful coin",
+    "links": "[{'label': 'Website', 'url': 'https://pump.fun/coin/E7NpCUVSUxxyqLMAiEnVq3oaPmQ2UEubkDMchDEtpump'}, {'type': 'twitter', 'url': 'https://twitter.com/i/communities/1945400379899855053'}]"
+  },
+  "0x1d782cdb9974e7fcb629eed93ff3d639b1cd4403": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0x1d782cdb9974e7fcb629eed93ff3d639b1cd4403",
+    "description": "",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/elonmusk/status/1945409805298086153'}, {'type': 'telegram', 'url': 'https://t.me/takieth_portal'}]"
+  },
+  "FwgcZtMSzD5dsJzo7y89wccNzG24MnvjHtADujz3bonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/fwgcztmszd5dsjzo7y89wccnzg24mnvjhtadujz3bonk",
+    "description": "The only index you care about.",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/altsznindex'}]"
+  },
+  "0xECc617385950a1B8169Aee5FE1Ed10f84d6a6A05": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0xecc617385950a1b8169aee5fe1ed10f84d6a6a05",
+    "description": "GORGINA is Gork's girl name",
+    "links": "[{'label': 'Website', 'url': 'https://gorgina.site/'}, {'type': 'twitter', 'url': 'https://x.com/gorginagork'}, {'type': 'telegram', 'url': 'https://t.me/gorginaportal'}]"
+  },
+  "4PHe2yRQXyyQJdtwHXdk33sZaQ192Ste5ZvVEqAYbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/4phe2yrqxyyqjdtwhxdk33szaq192ste5zvveqaybonk",
+    "description": "deriv of a deriv is the best derivative",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/SolportTom/status/1945368484243714519'}]"
+  },
+  "5R1kTB38KzghKfG67ceaBVdniUPGk5UgpEczNvVobonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/5r1ktb38kzghkfg67ceabvdniupgk5ugpecznvvobonk",
+    "description": "wechat sticker pack bonkguy\n\n\u68d2\u514b\u76d6",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1944415679089983743'}]"
+  },
+  "f1VjhRQHuaim5vPgSLWAPw8TCxak2Asksc2rQzZpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/f1vjhrqhuaim5vpgslwapw8tcxak2asksc2rqzzpump",
+    "description": "",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1945397462442930340'}]"
+  },
+  "Dzox5Ytp6ZU54h3uutcp4MXw3ZnBxR21H5Zx4r4qpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/dzox5ytp6zu54h3uutcp4mxw3znbxr21h5zx4r4qpump",
+    "description": "Composing the Agentic Internet",
+    "links": "[{'label': 'Website', 'url': 'https://gi.network/'}, {'label': 'Docs', 'url': 'https://github.com/general-works/Glint'}, {'type': 'twitter', 'url': 'https://x.com/gen_impressions'}]"
+  },
+  "0x1a44afF1abBD8D717549bD42537Ce50C5719632D": {
+    "chain": "base",
+    "url": "https://dexscreener.com/base/0x1a44aff1abbd8d717549bd42537ce50c5719632d",
+    "description": "Lets go $animerica the future awaits",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/animericacoin'}, {'type': 'telegram', 'url': 'https://t.me/animericacoin'}]"
+  },
+  "0x3f319ce4243fA20cf9099B8fb173d7D477c3c0b9": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0x3f319ce4243fa20cf9099b8fb173d7d477c3c0b9",
+    "description": "Grok Pepe is a variation of the popular Pepe the Frog meme, integrated with Grok, the AI chatbot developed by xAI (Elon Musk's company). It blends the humorous and rebellious nature of Pepe with Grok\u2019s witty, sometimes edgy AI responses. Grok Pepe has become a meme symbol within the X community, often used to represent AI-powered humor and internet culture.",
+    "links": "[{'label': 'Website', 'url': 'https://groke.fun'}, {'type': 'twitter', 'url': 'https://x.com/grokeoneth'}, {'type': 'telegram', 'url': 'https://t.me/grokeoneth'}]"
+  },
+  "3pEXgGFwzAVSafbd5XAK38gwPmRyzfQdWiYnS1dxbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/3pexggfwzavsafbd5xak38gwpmryzfqdwiyns1dxbonk",
+    "description": "",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/search?q=anify&src=typed_query'}]"
+  },
+  "6EnDerBAuFiZm1d9Nn1i1fmAEzPKanUUcPTrs3Bcpump": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/6enderbaufizm1d9nn1i1fmaezpkanuucptrs3bcpump",
+    "description": "just a slightly bundled coin",
+    "links": "[{'label': 'Website', 'url': 'https://firefistc1.github.io/a-slightly-bundled-coin/'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1944008456270492119'}]"
+  },
+  "0x63cEb446115B0992de7158D56EFAE26D160f0886": {
+    "chain": "ethereum",
+    "url": "https://dexscreener.com/ethereum/0x63ceb446115b0992de7158d56efae26d160f0886",
+    "description": "There is an fsjal pfp for every meme, person or popular creation you can imagine. We're bringing back a legendary character birthed over 15 years ago, on ETH.",
+    "links": "[{'label': 'Website', 'url': 'http://fsjal.live'}, {'type': 'twitter', 'url': 'https://x.com/fsjal_token'}, {'type': 'telegram', 'url': 'https://t.me/fsjal_token'}]"
+  },
+  "Ay4CaeZa8CyS2EfpF9Jf78eEEVBHoAuv5quPpaBebonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/ay4caeza8cys2efpf9jf78eeevbhoauv5quppabebonk",
+    "description": "Born on March 3, 2019, Hirune the Shiba Inu (female) is part of a family with a couple living in Kansai. Our beloved dog is so cute that we tell her she\u2019s adorable about 200 times a day. 24 hours isn\u2019t enough to express our love. The owner \ud83d\udc69 is also a Touken Danshi enthusiast. \u2694\ufe0f\ud83d\udc7b",
+    "links": "[{'label': 'Website', 'url': 'https://www.instagram.com/hirune_shiba20190303'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1945392577022451991'}]"
+  },
+  "2NPfzSqCbAGeCMXJakjJzURh8WMQAJzvio3vcLNQbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/2npfzsqcbagecmxjakjjzurh8wmqajzvio3vclnqbonk",
+    "description": "Deployed by Fartcoin dev - $UFC",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1945394885651059022'}]"
+  },
+  "9tNmC2BevWUp6r6Yp6xCcApKkR1jeEFPdWwztLM7bonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/9tnmc2bevwup6r6yp6xccapkkr1jeefpdwwztlm7bonk",
+    "description": "",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/i/communities/1945387758677320063'}]"
+  },
+  "8pTkbCxXvG5joFzaGVcjfPfP1jt8Kp9oa99Ru6Vboop": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/8ptkbcxxvg5jofzagvcjfpfp1jt8kp9oa99ru6vboop",
+    "description": "Gork: Jasmine is my drag name. Karen is my real name.",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/gork/status/1945378108930187411'}]"
+  },
+  "JA5P8kL4EhaNTNDXKzSu9R9sE7PWN4bW4Wm3LoHDbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/ja5p8kl4ehantndxkzsu9r9se7pwn4bw4wm3lohdbonk",
+    "description": "Everything is deriv",
+    "links": "[{'type': 'twitter', 'url': 'https://x.com/SolportTom/status/1945368484243714519'}]"
+  },
+  "hQV8ZFpGaba6UPYbjEuWjsJhkKsoarCc958NruUbonk": {
+    "chain": "solana",
+    "url": "https://dexscreener.com/solana/hqv8zfpgaba6upybjeuwjsjhkksoarcc958nruubonk",
+    "description": "nothing is impossibru",
+    "links": "[{'label': 'Website', 'url': 'https://knowyourmeme.com/memes/impossibru'}, {'type': 'twitter', 'url': 'https://x.com/i/communities/1945383268679111139'}]"
+  },
+  "7tAnusL3srXjzEriVL86a23KgwDZKXJTZ2ezEUubonk": {
+    "symbol": "AI",
+    "name": "Artificial Inu",
+    "chain": "solana",
+    "price": "0.0002084",
+    "volume24h": "377421.51",
+    "priceChange24h": "-54.89",
+    "liquidity": "637.19",
+    "url": "https://dexscreener.com/solana/8u9edjzjhfwj2tmhdaympjypn2qycst5u8ihfqtnwhqs",
+    "dexId": "meteora"
+  },
+  "0x2598c30330D5771AE9F983979209486aE26dE875": {
+    "symbol": "AI",
+    "name": "Any Inu",
+    "chain": "base",
+    "price": "0.000003808",
+    "volume24h": "154.8",
+    "priceChange24h": "4.86",
+    "liquidity": "1584.39",
+    "url": "https://dexscreener.com/base/0x006d97b2a56779ab4120d024e68838a0bc687008",
+    "dexId": "uniswap"
+  },
+  "ACeWC77UeW2DBZMe7YBsuXoxLvk4dHMnPzneApau1Au6": {
+    "symbol": "AI",
+    "name": "Any Inu (Wormhole)",
+    "chain": "solana",
+    "price": "0.000003978",
+    "volume24h": "578.41",
+    "priceChange24h": "13.2",
+    "liquidity": "4484.46",
+    "url": "https://dexscreener.com/solana/bqd4ptqamebjuh3pequ8gon3w92itbdzmhsugvcrho2q",
+    "dexId": "meteora"
+  },
+  "99ouK5YUK3JPGCPX9joNtHsMU7NPpU7w91JN4kdQ97po": {
+    "symbol": "AI",
+    "name": "AI",
+    "chain": "solana",
+    "price": "0.0002766",
+    "volume24h": "1286.18",
+    "priceChange24h": "4.11",
+    "liquidity": "199736.33",
+    "url": "https://dexscreener.com/solana/xdeemwjk6wrojcjkgvxapwgaz3jbbmcsaw1nvt6xsek",
+    "dexId": "raydium"
+  },
+  "0x8d2011aed42Ffdaf3EFE35c74C5e8a6a4C70E2cf": {
+    "symbol": "AI",
+    "name": "Ape Intelligence",
+    "chain": "apechain",
+    "price": "0.000008948",
+    "volume24h": "1.55",
+    "priceChange24h": "5.31",
+    "liquidity": "10072.7",
+    "url": "https://dexscreener.com/apechain/0xc19891a7ebfdbad13d43776de7c191ccf932da53",
+    "dexId": "camelot"
+  },
+  "0x416B8eA4b63506784d8FabBD753A9ed19E3cBF1E": {
+    "symbol": "AI",
+    "name": "AMERICA IDIOT",
+    "chain": "base",
+    "price": "0.0002985",
+    "volume24h": "",
+    "priceChange24h": "",
+    "liquidity": "238807.55",
+    "url": "https://dexscreener.com/base/0x82c44fb91fc5d5908c8df9c6cfec6a160b5205a07d8f7a368117d9d1c78c13d8",
+    "dexId": "uniswap"
+  },
+  "0xFA78cBa4ebbf8fE28B4fC1468948F16Fda2752b3": {
+    "symbol": "AI",
+    "name": "Flourishing AI Token",
+    "chain": "polygon",
+    "price": "0.01994",
+    "volume24h": "1286.39",
+    "priceChange24h": "-4.76",
+    "liquidity": "24388.77",
+    "url": "https://dexscreener.com/polygon/0x64733b24ed3111970f63ce890c279bb502e13554",
+    "dexId": "uniswap"
+  },
+  "3Yyo2QzHUpsBtPFttdLAtHEEanv1ZHUDAiaphtBypump": {
+    "symbol": "AI",
+    "name": "Artifishul Intellijeans",
+    "chain": "solana",
+    "price": "0.000009115",
+    "volume24h": "35369.47",
+    "priceChange24h": "-44.28",
+    "liquidity": "10924.54",
+    "url": "https://dexscreener.com/solana/h8ctuuzbbjz3r6ssr9ngveoscqdq6xsvby2dohqwcknd",
+    "dexId": "pumpswap"
+  },
+  "4bCFQ6a1HFSdNKYkfywdZaxrEALNwHvU6bDux5mFpump": {
+    "symbol": "AI",
+    "name": "Autistic Intelligence",
+    "chain": "solana",
+    "price": "0.000003452",
+    "volume24h": "78718.15",
+    "priceChange24h": "-94.81",
+    "liquidity": "6350.23",
+    "url": "https://dexscreener.com/solana/e8hfw29dq9teiwjytrke44zf5evcwjdhpq6rqeet8lbv",
+    "dexId": "pumpswap"
+  },
+  "0xA9b038285F43cD6fE9E16B4C80B4B9bCcd3C161b": {
+    "symbol": "AI",
+    "name": "Flourishing AI Token",
+    "chain": "bsc",
+    "price": "0.01998",
+    "volume24h": "270.55",
+    "priceChange24h": "1.74",
+    "liquidity": "5900.17",
+    "url": "https://dexscreener.com/bsc/0xe5089e408b3822e4d6b5af48f467d672c72785d1",
+    "dexId": "pancakeswap"
+  },
+  "ASmUr4adadqzfVKqpycu1sXwgXRb2rkuUyEmDayLWz1k": {
+    "symbol": "AI",
+    "name": "Angel Investor",
+    "chain": "solana",
+    "price": "0.00005814",
+    "volume24h": "1051.35",
+    "priceChange24h": "4.92",
+    "liquidity": "45931.22",
+    "url": "https://dexscreener.com/solana/fqebd8yxvdtbkmsdtuzsp2ura9agqnnhewvoa8djdvy",
+    "dexId": "meteora"
+  },
+  "9gxfYASoTq3RMejwrdpNBNzN1Af8Pn1jsWx9w7a4pump": {
+    "symbol": "AI",
+    "name": "Artificial Inu",
+    "chain": "solana",
+    "price": "0.00001227",
+    "volume24h": "25114.11",
+    "priceChange24h": "204",
+    "liquidity": "12398.99",
+    "url": "https://dexscreener.com/solana/hq5xq7acyodv4okhusxz78gwgrp3xzg7dxfulcf1uljf",
+    "dexId": "raydium"
+  },
+  "0x4c403b1879aa6A79BA9C599A393ccc5D9fD2E788": {
+    "symbol": "AI",
+    "name": "Artificial Intelligence",
+    "chain": "bsc",
+    "price": "0.0000001021",
+    "volume24h": "7.12",
+    "priceChange24h": "0.03",
+    "liquidity": "13811.45",
+    "url": "https://dexscreener.com/bsc/0xb570ff51174bbbdcddf6b0ac6d742d53518ed34c",
+    "dexId": "pancakeswap"
+  },
+  "0xBDA011D7F8EC00F66C1923B049B94c67d148d8b2": {
+    "symbol": "AI",
+    "name": "Sleepless AI Token",
+    "chain": "bsc",
+    "price": "0.1524",
+    "volume24h": "1585.11",
+    "priceChange24h": "1.7",
+    "liquidity": "1495.05",
+    "url": "https://dexscreener.com/bsc/0x2bab77dac701b86e7ee9ba4f26aeb3bd5de25020",
+    "dexId": "pancakeswap"
+  },
+  "0xF9C57FdF310ca6a5c34B15385cD8b18207Ff7a74": {
+    "symbol": "AI",
+    "name": "Artificial Intelligence",
+    "chain": "bsc",
+    "price": "0.0001763",
+    "volume24h": "29.06",
+    "priceChange24h": "1.18",
+    "liquidity": "2356.89",
+    "url": "https://dexscreener.com/bsc/0x2f20634d0f0a1e9518f23943f4199dda049340af",
+    "dexId": "0x3265CdE5843e02E35c45C4b9352d3C1c4a542Ff4"
+  },
+  "67MoqUmhjwzLnPmz4fhTygaBCW9McwD12ssNvVHBpump": {
+    "symbol": "GPT",
+    "name": "Giant Pair of Tits ",
+    "chain": "solana",
+    "price": "0.00001805",
+    "volume24h": "237.3",
+    "priceChange24h": "-6.77",
+    "liquidity": "182.95",
+    "url": "https://dexscreener.com/solana/fnylslfkmawg1gy7w3rzka9fjvakodjcleu2jwz1xkez",
+    "dexId": "raydium"
+  },
+  "0x0D32E3B41E0Dbb17192b6b0d26Ef018d31f175b5": {
+    "symbol": "GPT",
+    "name": "GPT",
+    "chain": "vana",
+    "price": "0.02725",
+    "volume24h": "34852.62",
+    "priceChange24h": "6.67",
+    "liquidity": "152820.22",
+    "url": "https://dexscreener.com/vana/0xbcbc57231b24b7993a8003c04b3e5c20321419ee",
+    "dexId": "datadex"
+  },
+  "Eyhi3qZCW1hNgsLtv1geaeDgZJmRFCpEtbjABWfGcGx5": {
+    "symbol": "GPT",
+    "name": "SolGPT",
+    "chain": "solana",
+    "price": "0.00004653",
+    "volume24h": "0.46",
+    "priceChange24h": "",
+    "liquidity": "29242.16",
+    "url": "https://dexscreener.com/solana/gawfnpzpz9a4s6hufneaaboryxflt215mqsrednjo5kc",
+    "dexId": "raydium"
+  },
+  "0x35aE9AcCf59D646b181e816fDb86811671919d74": {
+    "symbol": "GPT",
+    "name": "Gold Park",
+    "chain": "bsc",
+    "price": "0.01451",
+    "volume24h": "",
+    "priceChange24h": "0.08",
+    "liquidity": "0.04",
+    "url": "https://dexscreener.com/bsc/0xa5f7a6008c776c455dcd1075cbe9a5d3a6f212e0",
+    "dexId": "pancakeswap"
+  },
+  "0xe021047851012D8e981EbD9F3C2CBB8945E996DA": {
+    "symbol": "GPT",
+    "name": "GPT",
+    "chain": "arbitrum",
+    "price": "0.00001113",
+    "volume24h": "94.34",
+    "priceChange24h": "-2.05",
+    "liquidity": "7922.96",
+    "url": "https://dexscreener.com/arbitrum/0x280a16f5d09d3620256f06b75c1ca3ec77a06710",
+    "dexId": "sushiswap"
+  },
+  "6oCJZPW5Ao1dSzxPdaDuYSU8hya2kkdisiaRMKYtpump": {
+    "symbol": "GPT",
+    "name": "Great Personal Therapist",
+    "chain": "solana",
+    "price": "0.000005469",
+    "volume24h": "3373.35",
+    "priceChange24h": "22.88",
+    "liquidity": "8289.23",
+    "url": "https://dexscreener.com/solana/gsuxjr6gnfdrykdbbrlqga8sqohdftcaqewrr26t2jjg",
+    "dexId": "pumpswap"
+  },
+  "0xf7822220aC71d8E312a69F6faA28742a2d489260": {
+    "symbol": "GPT",
+    "name": "Chat GPT",
+    "chain": "ethereum",
+    "price": "0.00005297",
+    "volume24h": "978.92",
+    "priceChange24h": "-12.89",
+    "liquidity": "7534.46",
+    "url": "https://dexscreener.com/ethereum/0x908ed927224545383db91f2a12626ad5eafe6503",
+    "dexId": "uniswap"
+  },
+  "0x153C0c947177e631e3DFc594ba28750d3a921FB5": {
+    "symbol": "GPT",
+    "name": "CryptoGPT Token",
+    "chain": "bsc",
+    "price": "",
+    "volume24h": "",
+    "priceChange24h": "83.89",
+    "liquidity": "",
+    "url": "https://dexscreener.com/bsc/0x61df49235ddf3683091a27ae598a3a752cd6d731",
+    "dexId": "pancakeswap"
+  },
+  "0x30842a9c941d9DE3AF582c41ad12b11D776ba69e": {
+    "symbol": "GPT",
+    "name": "QnA3.AI Token",
+    "chain": "bsc",
+    "price": "0.001182",
+    "volume24h": "0.2",
+    "priceChange24h": "",
+    "liquidity": "11.5",
+    "url": "https://dexscreener.com/bsc/0xb785a2bda64bc3e66f959d33ce59c22112529309",
+    "dexId": "pancakeswap"
+  },
+  "2gQiuDrKpKkAv2qKdv6oTzUuvWgsuVibPr4xqwB7gShj": {
+    "symbol": "GPT",
+    "name": "QNA3 AI",
+    "chain": "solana",
+    "price": "0.00005230",
+    "volume24h": "898715.69",
+    "priceChange24h": "270",
+    "liquidity": "",
+    "url": "https://dexscreener.com/solana/adkjcuarjenuvzcrh5djv8rint9jiaym7tbnsxrtswfk",
+    "dexId": "pumpswap"
+  },
+  "0xb6f43D09136399946b7f7a44E33f6aE1f1971d8e": {
+    "symbol": "GPT",
+    "name": "QNA3 AI",
+    "chain": "ethereum",
+    "price": "0.0000000002824",
+    "volume24h": "400103.73",
+    "priceChange24h": "-100",
+    "liquidity": "",
+    "url": "https://dexscreener.com/ethereum/0x5dddb46533dfee4b9c9614c9624ca2e47639e0cf",
+    "dexId": "uniswap"
+  },
+  "BcdtSdvYDY3sDa95bE9TXsUwzPEwzrn5MhSaHZK1gM7z": {
+    "symbol": "GPT",
+    "name": "QNA3 AI",
+    "chain": "solana",
+    "price": "0.000000005333",
+    "volume24h": "21.37",
+    "priceChange24h": "-99.98",
+    "liquidity": "0.53",
+    "url": "https://dexscreener.com/solana/12higwrwfdwmgeiraqdoo5hqhbb3nmqyrzwpxjsd9ljl",
+    "dexId": "meteora"
+  },
+  "0x283A42826DeFA33DE0ba30A10b850f7929eacAD2": {
+    "symbol": "GPT",
+    "name": "Gold Park",
+    "chain": "bsc",
+    "price": "0.00000000000000007618",
+    "volume24h": "0.07",
+    "priceChange24h": "336",
+    "liquidity": "0.17",
+    "url": "https://dexscreener.com/bsc/0x3676b6842c8392dee2e837f9f4580a9abd435959",
+    "dexId": "pancakeswap"
+  },
+  "CnH8iU8PKf2MSgJYqy69kpzf5GykQZCwwdoXQ5DDpump": {
+    "symbol": "GPT",
+    "name": "a mind made of code",
+    "chain": "solana",
+    "price": "0.000009800",
+    "volume24h": "1.11",
+    "priceChange24h": "",
+    "liquidity": "15705.93",
+    "url": "https://dexscreener.com/solana/58myw3jwwptta8nwpaj1fdroyjrk98buc6huwsz39ayj",
+    "dexId": "pumpswap"
+  },
+  "y1AZt42vceCmStjW4zetK3VoNarC1VxJ5iDjpiupump": {
+    "symbol": "FARTBOY",
+    "name": "FARTBOY",
+    "chain": "solana",
+    "price": "0.03802",
+    "volume24h": "376074.69",
+    "priceChange24h": "20.24",
+    "liquidity": "1005469.68",
+    "url": "https://dexscreener.com/solana/dhhvd5s4hqbgntkfztsk98wgptyujjpucqnnwanlwb4f",
+    "dexId": "raydium"
+  },
+  "0x9840652DC04fb9db2C43853633f0F62BE6f00f98": {
+    "symbol": "CGPT",
+    "name": "ChainGPT",
+    "chain": "bsc",
+    "price": "0.1080",
+    "volume24h": "1718159.3",
+    "priceChange24h": "4.59",
+    "liquidity": "2705827.84",
+    "url": "https://dexscreener.com/bsc/0x1e8d7ab96323953fac85ab687f5d38b45344e62d",
+    "dexId": "pancakeswap"
+  },
+  "FZeKNyhyurM56hn4QzCkuYetRSENB11xaGxVHvkYbonk": {
+    "symbol": "GPT5",
+    "name": "GPT-5",
+    "chain": "solana",
+    "price": "0.0001035",
+    "volume24h": "25149.36",
+    "priceChange24h": "17.47",
+    "liquidity": "35847.32",
+    "url": "https://dexscreener.com/solana/g5fox8ohaacxplphevfuykvvetppnzqz8hbrhp3htqbq",
+    "dexId": "raydium"
+  },
+  "3an8rhdepsLCya22af7qDBKPbdomw8K4iCHXaA2Gpump": {
+    "symbol": "Quant",
+    "name": "Gen Z Quant",
+    "chain": "solana",
+    "price": "0.0009100",
+    "volume24h": "76765.63",
+    "priceChange24h": "14.37",
+    "liquidity": "330858.45",
+    "url": "https://dexscreener.com/solana/ce44enggptghbggcussamjdhoisn7yugakndjcsp5r1d",
+    "dexId": "raydium"
+  },
+  "9EwutmiMiLHoH5hj5aCLMDJUdsLZVg926ZmDdr8Ppump": {
+    "symbol": "CHATTY",
+    "name": "ChatGPT ",
+    "chain": "solana",
+    "price": "0.0002974",
+    "volume24h": "6399.31",
+    "priceChange24h": "10.67",
+    "liquidity": "134514.84",
+    "url": "https://dexscreener.com/solana/2zv8nqyb6ppzgunkvhaiznldn4gbvuwr7xxqz9bl5npq",
+    "dexId": "raydium"
+  },
+  "3TWgDvYBL2YPET2LxnWAwsMeoA8aL4DutNuwat2pKCjC": {
+    "symbol": "KHAI",
+    "name": "Kitten Haimer",
+    "chain": "solana",
+    "price": "0.03371",
+    "volume24h": "13119.68",
+    "priceChange24h": "6.79",
+    "liquidity": "227047.32",
+    "url": "https://dexscreener.com/solana/ecbk6psmz5yqauybocsxavrax2fwadw2ijtqlgptt9sc",
+    "dexId": "raydium"
+  },
+  "D7yP4ycfsRWUGYionGpi64sLF2ddZ2JXxuRAti2M7uck": {
+    "symbol": "RACKS",
+    "name": "BlackRack",
+    "chain": "solana",
+    "price": "0.0003987",
+    "volume24h": "26316.79",
+    "priceChange24h": "11.89",
+    "liquidity": "94155.8",
+    "url": "https://dexscreener.com/solana/jltuvmwdgptem3qjz7cbntumkybzpsdqrrbjznu6gmg",
+    "dexId": "raydium"
+  },
+  "0x9a4D9653190459cA999f8A26De13E87749266C9A": {
+    "symbol": "BOT",
+    "name": "BitOneToken",
+    "chain": "bsc",
+    "price": "1.44",
+    "volume24h": "14364.85",
+    "priceChange24h": "-1",
+    "liquidity": "172443.8",
+    "url": "https://dexscreener.com/bsc/0x9722e09e7222f44235837593894d73609849f5fa",
+    "dexId": "pancakeswap"
+  },
+  "da247e71f71b0195c8188bf43827f34c9357cc388fceed596d100d95424f54": {
+    "symbol": "BOT",
+    "name": "BOT",
+    "chain": "cardano",
+    "price": "0.0000002045",
+    "volume24h": "1895.86",
+    "priceChange24h": "",
+    "liquidity": "167899.8",
+    "url": "https://dexscreener.com/cardano/e4214b7cce62ac6fbba385d164df48e157eae5863521b4b67ca71d863c04307f1520669d3702402978e897e3052bd5d35329ceccfc046b8172428a63",
+    "dexId": "minswap"
+  },
+  "0xaa9DA7e45Ad01E1d477E288D1948685901154a86": {
+    "symbol": "BOT",
+    "name": "Tianji Robot",
+    "chain": "bsc",
+    "price": "0.001744",
+    "volume24h": "237.28",
+    "priceChange24h": "1.34",
+    "liquidity": "65664.66",
+    "url": "https://dexscreener.com/bsc/0xae7027e4e4aa55115b614f16a364403d44246c25",
+    "dexId": "pancakeswap"
+  },
+  "ER8y546QVBemN4dwuSuW95k6UERrXfECFVpdoESrpump": {
+    "symbol": "BOT",
+    "name": "Book Of Traders",
+    "chain": "solana",
+    "price": "0.000004126",
+    "volume24h": "6.08",
+    "priceChange24h": "",
+    "liquidity": "7473.51",
+    "url": "https://dexscreener.com/solana/5u43gpcr3upktf6l2cvw2wcspncjarque7gn23gkgc8f",
+    "dexId": "pumpswap"
+  },
+  "8gmxvc9o5VeK3ETBjgX7Kbr7HfSEP7QPUvd7azBXvtoG": {
+    "symbol": "BOT",
+    "name": "Book Of Trump",
+    "chain": "solana",
+    "price": "0.000001483",
+    "volume24h": "13.35",
+    "priceChange24h": "",
+    "liquidity": "1879.29",
+    "url": "https://dexscreener.com/solana/cylk2cneguk13dclu3nfdvmfymtmjlkrkz9iq7x4zo9g",
+    "dexId": "raydium"
+  },
+  "j8fVf6jsTeybjwDe3NcaVFtq4SPKxQyjnbqQc3ypump": {
+    "symbol": "BOT",
+    "name": "BOT HOUSE LA",
+    "chain": "solana",
+    "price": "0.000003154",
+    "volume24h": "18.9",
+    "priceChange24h": "",
+    "liquidity": "6063.62",
+    "url": "https://dexscreener.com/solana/38gmmwnvkflcbjxdus3mdemzmltbcq83j5gbndx6imwr",
+    "dexId": "pumpswap"
+  },
+  "GTE7Yb3sNWHFArFu61jEx7mBpSRZrh3DUqi2JGGSpump": {
+    "symbol": "BOT",
+    "name": "BOT HOUSE",
+    "chain": "solana",
+    "price": "0.000003051",
+    "volume24h": "47.78",
+    "priceChange24h": "0.52",
+    "liquidity": "5975.15",
+    "url": "https://dexscreener.com/solana/dsaqjfmuf2sptedn8xw4v5xx7to5dyxxwywusjwcmzh6",
+    "dexId": "pumpswap"
+  },
+  "VsATBSq7wfW4smNfeAoU3f932NFAi7t2JvoA9Txpump": {
+    "symbol": "BOT",
+    "name": "BOT HOUSE",
+    "chain": "solana",
+    "price": "0.000002974",
+    "volume24h": "138.42",
+    "priceChange24h": "1.16",
+    "liquidity": "5849.16",
+    "url": "https://dexscreener.com/solana/az5jed2nmgdvpvn8iwcmpfnn6mnwzzlzbu31m2sj72bk",
+    "dexId": "pumpswap"
+  },
+  "BOT.rE2h4kc95aZYgL7axzPNoZzcGJV3ZoruZs": {
+    "symbol": "BOT",
+    "name": "BOT",
+    "chain": "xrpl",
+    "price": "0.0000003651",
+    "volume24h": "10.47",
+    "priceChange24h": "",
+    "liquidity": "559.25",
+    "url": "https://dexscreener.com/xrpl/bot.re2h4kc95azygl7axzpnozzcgjv3zoruzs_xrp",
+    "dexId": "xrpl"
+  },
+  "0xb103D23C369cD0e4a5BBa160dEe1C8199dae76a3": {
+    "symbol": "BOT",
+    "name": "cryptopunks bot",
+    "chain": "polygon",
+    "price": "0.00000000001444",
+    "volume24h": "579.49",
+    "priceChange24h": "2385",
+    "liquidity": "0.58",
+    "url": "https://dexscreener.com/polygon/0xba1bec8942437ce92bb0172ebe25fe84488829d4",
+    "dexId": "quickswap"
+  },
+  "4HaAw8hz2zSPQYnyG8zULriRjzRDF9qU7wDMwPaNpump": {
+    "symbol": "BOT",
+    "name": "Book Of Trader",
+    "chain": "solana",
+    "price": "0.000006426",
+    "volume24h": "23.56",
+    "priceChange24h": "2.16",
+    "liquidity": "9542.99",
+    "url": "https://dexscreener.com/solana/8b7p2yzf8malupgerafe9egytk5sbuspg17txqxmmtmg",
+    "dexId": "pumpswap"
+  },
+  "0xFb22Ca900Eddc086984864C1223560d9c2fCE70B": {
+    "symbol": "BOT",
+    "name": "cryptopunks bot",
+    "chain": "base",
+    "price": "0.0000000000003187",
+    "volume24h": "311.48",
+    "priceChange24h": "2",
+    "liquidity": "0.06",
+    "url": "https://dexscreener.com/base/0x79c099d95d1d3bbab01ad82b2f73b4b154c10872",
+    "dexId": "uniswap"
+  },
+  "0x0E5068BED18b4C695cFece94B22e1E12d79A7071": {
+    "symbol": "BOT",
+    "name": "cryptopunks bot",
+    "chain": "unichain",
+    "price": "0.0000000000003125",
+    "volume24h": "311.56",
+    "priceChange24h": "",
+    "liquidity": "0.06",
+    "url": "https://dexscreener.com/unichain/0x42db1a5ad585a53fc81f2ad7415b3716ccbdc996",
+    "dexId": "uniswap"
+  },
+  "0x611d1854F8aEcd7260bc179671B26F1b364Da621": {
+    "symbol": "aut0mated",
+    "name": "aut0mated",
+    "chain": "base",
+    "price": "",
+    "volume24h": "",
+    "priceChange24h": "",
+    "liquidity": "",
+    "url": "https://dexscreener.com/base/0x0c4ce4c26cbc2541e09382c18475f7ee3293927bc71ae2845b6603b17c52cf70",
+    "dexId": "uniswap"
+  },
+  "BYZ9CcZGKAXmN2uDsKcQMM9UnZacija4vWcns9Th69xb": {
+    "symbol": "BOTIFY",
+    "name": "BOTIFY",
+    "chain": "solana",
+    "price": "0.005981",
+    "volume24h": "714941.66",
+    "priceChange24h": "-23.16",
+    "liquidity": "513240.56",
+    "url": "https://dexscreener.com/solana/bourcfkdgsr55xavzdeu6tci7twrticgrvclioennbbx",
+    "dexId": "raydium"
+  },
+  "ANBpLFMAJfC719Sdegpc65TVgJXivhrRDbakn4B8bonk": {
+    "symbol": "Rizzbot",
+    "name": "Jake the Rizzbot",
+    "chain": "solana",
+    "price": "0.00003702",
+    "volume24h": "910120.86",
+    "priceChange24h": "-44.15",
+    "liquidity": "21693.18",
+    "url": "https://dexscreener.com/solana/a9shydeqb6ev8gu5gvbffqomedwj7xhsrhxfzvqmqap4",
+    "dexId": "raydium"
+  },
+  "0x1bc0c42215582d5A085795f4baDbaC3ff36d1Bcb": {
+    "symbol": "CLANKER",
+    "name": "tokenbot",
+    "chain": "base",
+    "price": "45.66",
+    "volume24h": "446805.65",
+    "priceChange24h": "-2.36",
+    "liquidity": "337379",
+    "url": "https://dexscreener.com/base/0xd23fe2db317e1a96454a2d1c7e8fc0dbf19bb000",
+    "dexId": "aerodrome"
+  },
+  "0x3ec2156D4c0A9CBdAB4a016633b7BcF6a8d68Ea2": {
+    "symbol": "DRB",
+    "name": "DebtReliefBot",
+    "chain": "base",
+    "price": "0.00003226",
+    "volume24h": "93125.75",
+    "priceChange24h": "5.23",
+    "liquidity": "638833.79",
+    "url": "https://dexscreener.com/base/0x5116773e18a9c7bb03ebb961b38678e45e238923",
+    "dexId": "uniswap"
+  },
+  "7Y6Rix8X2botuMaJ2mno4UqSWdQZqU4RezY6qp7zpump": {
+    "symbol": "BOLT ",
+    "name": "Groks Dog",
+    "chain": "solana",
+    "price": "0.0009974",
+    "volume24h": "240767.72",
+    "priceChange24h": "-17.67",
+    "liquidity": "152680.69",
+    "url": "https://dexscreener.com/solana/ajbs7ix9bdf64isdhaszdnvbhhyz8dltxjgp3a3lxv3y",
+    "dexId": "raydium"
+  },
+  "3qq54YqAKG3TcrwNHXFSpMCWoL8gmMuPceJ4FG9npump": {
+    "symbol": "CLANKER",
+    "name": "CLANKER Robot AI Slur",
+    "chain": "solana",
+    "price": "0.0005344",
+    "volume24h": "66624.63",
+    "priceChange24h": "15.15",
+    "liquidity": "133426.98",
+    "url": "https://dexscreener.com/solana/8zeyhzg4ikwyrcdpynglkzuekdc6akqnt4q8q3znfx4n",
+    "dexId": "raydium"
+  },
+  "Bz7Nx1F3Mti1BVS7ZAVDLSKGEaejufxvX2DPdjpf8PqT": {
+    "symbol": "CHIPPY",
+    "name": "FISH N CHIPS",
+    "chain": "solana",
+    "price": "0.002256",
+    "volume24h": "23922.03",
+    "priceChange24h": "28.73",
+    "liquidity": "218407.17",
+    "url": "https://dexscreener.com/solana/fxkjanvdmazvbotpcnscyjzcygyte2xfi8bbfj91hvnj",
+    "dexId": "raydium"
+  },
+  "DL9sLSN488yMbots3wsbzHZ3UpKSkM42kr1y13CPpump": {
+    "symbol": "Bob",
+    "name": "Bitcoin Bob",
+    "chain": "solana",
+    "price": "0.0001594",
+    "volume24h": "37909.12",
+    "priceChange24h": "10.85",
+    "liquidity": "74168.48",
+    "url": "https://dexscreener.com/solana/41kypnkbxi3vbubgzaqejlrbqwub7eztojsc1zzjjgzm",
+    "dexId": "raydium"
+  },
+  "0x9810681B9Cc70e963B08F8A414f60A2Bccc9A408": {
+    "symbol": "BNBOT",
+    "name": "BNBOT",
+    "chain": "bsc",
+    "price": "0.001001",
+    "volume24h": "325.99",
+    "priceChange24h": "2.42",
+    "liquidity": "115993.79",
+    "url": "https://dexscreener.com/bsc/0x4ba0eed26ce4e5c196726bdc63fab5d4e114a6c0",
+    "dexId": "pancakeswap"
+  },
+  "0x0D4d3c739E2Fdf82C7CE2a9e450e208E5330A237": {
+    "symbol": "ZORO",
+    "name": "ZoRobotics",
+    "chain": "bsc",
+    "price": "0.06452",
+    "volume24h": "21854.08",
+    "priceChange24h": "-7.25",
+    "liquidity": "46334.29",
+    "url": "https://dexscreener.com/bsc/0x9f8b8cc00069baa2111e92e43cd52bec55ad1ff3",
+    "dexId": "pancakeswap"
+  },
+  "pZHpptKLqcx2ykZu4pbNx4kQHafD3hv7EB3K2wgpump": {
+    "symbol": "ROBOT",
+    "name": "ROBOT",
+    "chain": "solana",
+    "price": "0.002882",
+    "volume24h": "11027.96",
+    "priceChange24h": "3.07",
+    "liquidity": "197785.85",
+    "url": "https://dexscreener.com/solana/7auavpwmpxf8qyz4nwuenrec4kiel1fjzcvvefmzkvhg",
+    "dexId": "pumpswap"
+  },
+  "0x49fb8ad7578148E17c3eF0C344CE23A66ed372C4": {
+    "symbol": "TAOBOT",
+    "name": "tao.bot",
+    "chain": "ethereum",
+    "price": "0.5258",
+    "volume24h": "272815.85",
+    "priceChange24h": "15.84",
+    "liquidity": "1392877.04",
+    "url": "https://dexscreener.com/ethereum/0x8fe9203c12e797cac7e901d63cacc022b68b50c3",
+    "dexId": "uniswap"
+  },
+  "2hXQn7nJbh2XFTxvtyKb5mKfnScuoiC1Sm8rnWydpump": {
+    "symbol": "BREW",
+    "name": "Homebrew Robotics Club",
+    "chain": "solana",
+    "price": "0.001532",
+    "volume24h": "8593.41",
+    "priceChange24h": "13.24",
+    "liquidity": "172185.07",
+    "url": "https://dexscreener.com/solana/9s9e3h9r1dzgplojjekmkslatjjn9wq5xipeqrehhfx3",
+    "dexId": "raydium"
+  },
+  "TegKnVKHZAyGHDngp4rjYQYPLS7UWzFqvcXZgxDF7BM": {
+    "symbol": "TEG",
+    "name": "TEG BOT SYSTEM",
+    "chain": "solana",
+    "price": "0.001816",
+    "volume24h": "13380.88",
+    "priceChange24h": "2.75",
+    "liquidity": "59793.35",
+    "url": "https://dexscreener.com/solana/3ruw1upwplumbscrzjywuk4imjciaa9abdcczsjad2nn",
+    "dexId": "raydium"
+  },
+  "0x5Ac04b69bDE6f67C0bd5D6bA6fD5D816548b066a": {
+    "symbol": "TECH",
+    "name": "NumberGoUpTech",
+    "chain": "avalanche",
+    "price": "0.000003904",
+    "volume24h": "3.88",
+    "priceChange24h": "11.35",
+    "liquidity": "147.27",
+    "url": "https://dexscreener.com/avalanche/0x98431517b5f581f7ccfea54b1cc71b89ecc5a5f9",
+    "dexId": "pangolin"
+  },
+  "3MUP3dfDk2djNqmHGvodwDcBaMqbWmEi9gt5VLdMpump": {
+    "symbol": "TECH",
+    "name": "Technologia",
+    "chain": "solana",
+    "price": "0.00005745",
+    "volume24h": "17494.08",
+    "priceChange24h": "-13.05",
+    "liquidity": "36239.94",
+    "url": "https://dexscreener.com/solana/6yp2bhfmymuxuy9dzhym2kguxegtqdbh9c4nee7dnguc",
+    "dexId": "pumpswap"
+  },
+  "6wsfjJvgECDnXuW4NP8PFMzzuk8BUbMBF9xyBNhgpump": {
+    "symbol": "TECH",
+    "name": "White House Tech Support ",
+    "chain": "solana",
+    "price": "0.000003293",
+    "volume24h": "0.33",
+    "priceChange24h": "",
+    "liquidity": "6272.83",
+    "url": "https://dexscreener.com/solana/hxkdkwfnfsmm47xx1rytk2qbdurdx2vudmm2jrhh1o9f",
+    "dexId": "raydium"
+  },
+  "Xu8HgTnjF4qwcPQZ9HJMA3dbdnSS6hiXFKgZdpDsu2i": {
+    "symbol": "TECH",
+    "name": "Technoviking",
+    "chain": "solana",
+    "price": "0.000003247",
+    "volume24h": "1.57",
+    "priceChange24h": "",
+    "liquidity": "5850.9",
+    "url": "https://dexscreener.com/solana/8cy6trdjejwwxrswmvxnjycfc1a6dt8bsnbz6scctec1",
+    "dexId": "raydium"
+  },
+  "0x6286A9e6f7e745A6D884561D88F94542d6715698": {
+    "symbol": "TECH",
+    "name": "Cryptomeda",
+    "chain": "polygon",
+    "price": "0.000003419",
+    "volume24h": "0.08",
+    "priceChange24h": "",
+    "liquidity": "7.32",
+    "url": "https://dexscreener.com/polygon/0xd2aeaf9922c043732184010d2bba943b3ee4dbe9",
+    "dexId": "quickswap"
+  },
+  "0x488ef48FF9D803087CC96b347FC250244A9e8260": {
+    "symbol": "TECH",
+    "name": "NumberGoUpTech",
+    "chain": "arbitrum",
+    "price": "0.000003637",
+    "volume24h": "10.57",
+    "priceChange24h": "",
+    "liquidity": "618.28",
+    "url": "https://dexscreener.com/arbitrum/0xea9e7df9a73eaac7f9b673264baf71f284956a83",
+    "dexId": "traderjoe"
+  },
+  "0xE3eA835604E915DE089864fCF920f2805A19F07B": {
+    "symbol": "TECH",
+    "name": "TECH",
+    "chain": "base",
+    "price": "0.000000002122",
+    "volume24h": "0.34",
+    "priceChange24h": "",
+    "liquidity": "6.26",
+    "url": "https://dexscreener.com/base/0x42cbf97a145996f06faa1be8a5e096b4d345e6c9ccc91fadb57086bc1b22fdab",
+    "dexId": "uniswap"
+  },
+  "0xB7D918D7631fCDD0954205e3A6B205a10a31A085": {
+    "symbol": "TECH",
+    "name": "0xF3.tech",
+    "chain": "gnosischain",
+    "price": "",
+    "volume24h": "",
+    "priceChange24h": "",
+    "liquidity": "",
+    "url": "https://dexscreener.com/gnosischain/0x792e979f7e995aebb1d3811cd816c3a465ad5ead",
+    "dexId": "honeyswap"
+  },
+  "0xC139Aa91399600f6b72975AC3317b6d49Cb30a69": {
+    "symbol": "AMI",
+    "name": "Avax Meme Index",
+    "chain": "avalanche",
+    "price": "104.42",
+    "volume24h": "0.32",
+    "priceChange24h": "-0.76",
+    "liquidity": "19.38",
+    "url": "https://dexscreener.com/avalanche/0xa3ba6c73579d94c2561e2bea7dfd2a2d396e49bb",
+    "dexId": "traderjoe"
+  },
+  "0xba0Dda8762C24dA9487f5FA026a9B64b695A07Ea": {
+    "symbol": "OX",
+    "name": "OX Coin",
+    "chain": "avalanche",
+    "price": "0.0006557",
+    "volume24h": "35.14",
+    "priceChange24h": "12.78",
+    "liquidity": "512.92",
+    "url": "https://dexscreener.com/avalanche/0x755688477f261eaf0d58c4588e53da545c62b8d7",
+    "dexId": "traderjoe"
+  },
+  "0x4BA16DaF8ed418deD920C66e45cc3eaFFDE53Ac7": {
+    "symbol": "bCASH",
+    "name": "Butterfly Cash",
+    "chain": "avalanche",
+    "price": "0.00004212",
+    "volume24h": "0.28",
+    "priceChange24h": "",
+    "liquidity": "55.75",
+    "url": "https://dexscreener.com/avalanche/0xdd9420981098a7d72e9b0520ca3ac11b615e0565",
+    "dexId": "traderjoe"
+  },
+  "0x9913Ed5C459A5F67e22366Df5BbF00cd33154214": {
+    "symbol": "GHO",
+    "name": "Ghost Finance ",
+    "chain": "gnosischain",
+    "price": "",
+    "volume24h": "",
+    "priceChange24h": "1.38",
+    "liquidity": "",
+    "url": "https://dexscreener.com/gnosischain/0xec40f14d11d20d14ed5b29bbe1772b1b55ded49c",
+    "dexId": "honeyswap"
+  },
+  "0x9E255fE1176dCe5Ff5BcA87C0E97eDe31C40F4d0": {
+    "symbol": "GAMB",
+    "name": "Gambiarra Finance from BSC",
+    "chain": "gnosischain",
+    "price": "",
+    "volume24h": "",
+    "priceChange24h": "",
+    "liquidity": "",
+    "url": "https://dexscreener.com/gnosischain/0xc18263bc7ae178efbb445dc19bb07a5fd239f1d8",
+    "dexId": "sushiswap"
+  },
+  "HxknTbsLtLUtSjAGDdJieuDCoMtkF5PZsiqP9Vqnbonk": {
+    "symbol": "NVIDIACHIP",
+    "name": "reserve currency of technology",
+    "chain": "solana",
+    "price": "0.00002055",
+    "volume24h": "612800.15",
+    "priceChange24h": "-82.69",
+    "liquidity": "16163.64",
+    "url": "https://dexscreener.com/solana/5x53sh7vy41wevvgo95afaupamfhzilknekxfhzm6pga",
+    "dexId": "raydium"
+  },
+  "0x2D060Ef4d6BF7f9e5edDe373Ab735513c0e4F944": {
+    "symbol": "AITECH",
+    "name": "AITECH",
+    "chain": "bsc",
+    "price": "0.04494",
+    "volume24h": "13893.9",
+    "priceChange24h": "2.77",
+    "liquidity": "98962.38",
+    "url": "https://dexscreener.com/bsc/0x87acdd212404150fd814565d591a24b0312c9e23",
+    "dexId": "pancakeswap"
+  },
+  "0x9cc484ded7a7851a03f05a03e8d19EB5F5a73f20": {
+    "symbol": "BKOK",
+    "name": "BlackRock_FinTech",
+    "chain": "bsc",
+    "price": "0.05707",
+    "volume24h": "7822.81",
+    "priceChange24h": "-3.04",
+    "liquidity": "185385.19",
+    "url": "https://dexscreener.com/bsc/0xbca6e433980c2e437ce665b637eb95874f2080b3",
+    "dexId": "pancakeswap"
+  },
+  "3mNHDX54Y8FXfGAbchwpGQ6Yh16X8nvk3x8Mukjasend": {
+    "symbol": "BALITECH",
+    "name": "BALI TECH",
+    "chain": "solana",
+    "price": "0.0001648",
+    "volume24h": "27609.98",
+    "priceChange24h": "12.39",
+    "liquidity": "57959.93",
+    "url": "https://dexscreener.com/solana/buyxp23joln2xjcdgqpqwf1aeozsbjsspdkw3sa7bie1",
+    "dexId": "meteora"
+  },
+  "0x14778860E937f509e651192a90589dE711Fb88a9": {
+    "symbol": "CYBER",
+    "name": "CyberConnect",
+    "chain": "bsc",
+    "price": "1.76",
+    "volume24h": "",
+    "priceChange24h": "",
+    "liquidity": "",
+    "url": "https://dexscreener.com/bsc/0x1b13abfe31760ba55421c68c1da0b49efc7f638d",
+    "dexId": "0x5B19629Db8d16D551e9f3FaaC150fA8a11051B33"
+  },
+  "0x610381DC737a0b0BfF7Bd0B429896A49013645Cd": {
+    "symbol": "CYBER",
+    "name": "CYBER",
+    "chain": "bsc",
+    "price": "0.02543",
+    "volume24h": "2761.96",
+    "priceChange24h": "-2.39",
+    "liquidity": "448322.86",
+    "url": "https://dexscreener.com/bsc/0xbd1294f2850b737a13773b670f0f73cd32c5b485",
+    "dexId": "pancakeswap"
+  },
+  "CYBER-489c1c": {
+    "symbol": "CYBER",
+    "name": "CyberpunkCity",
+    "chain": "multiversx",
+    "price": "0.001218",
+    "volume24h": "54.58",
+    "priceChange24h": "1.54",
+    "liquidity": "11921.14",
+    "url": "https://dexscreener.com/multiversx/erd1qqqqqqqqqqqqqpgq5g7xxmpuf6nmux3r3spjxv0wleyypz8q2jpsyc3nh8",
+    "dexId": "xexchange"
+  },
+  "0x000000000000000000000000000000000011E8CE": {
+    "symbol": "CYBER",
+    "name": "CYBER",
+    "chain": "hedera",
+    "price": "0.0004452",
+    "volume24h": "2.39",
+    "priceChange24h": "0.21",
+    "liquidity": "2667.39",
+    "url": "https://dexscreener.com/hedera/0x9ea9cd90ee43116ccba6eeac522033a6e1264535",
+    "dexId": "saucerswap"
+  },
+  "5gzCDgVf5Nk6gosa5dpYZV6P6RiAytvCyQUaMwAVyf8z": {
+    "symbol": "CYBER",
+    "name": "Cyber",
+    "chain": "solana",
+    "price": "1.76",
+    "volume24h": "11410.12",
+    "priceChange24h": "16.91",
+    "liquidity": "129306.44",
+    "url": "https://dexscreener.com/solana/btvaiwzs9p8gxy6hz8oyk1g4svmuvbkhf8uscvkpjuw",
+    "dexId": "meteora"
+  },
+  "1141259202": {
+    "symbol": "CY\ud83d\udc80",
+    "name": "CYBER",
+    "chain": "algorand",
+    "price": "0.001753",
+    "volume24h": "0.2",
+    "priceChange24h": "",
+    "liquidity": "20.97",
+    "url": "https://dexscreener.com/algorand/xfhhazdepdznb7tftpvunqop422vgfde2v3ygup3ro475zrlm2zzjdp3vm",
+    "dexId": "tinyman"
+  },
+  "0x32B053F2CBA79F80ada5078cb6b305da92BDe6e1": {
+    "symbol": "NEURAL",
+    "name": "NeuralAI",
+    "chain": "ethereum",
+    "price": "2.78",
+    "volume24h": "92474.38",
+    "priceChange24h": "7.34",
+    "liquidity": "1617750.91",
+    "url": "https://dexscreener.com/ethereum/0x1112956589a2bea1b038732db4ea6b0c416ef130",
+    "dexId": "uniswap"
+  },
+  "BNC5eVJZixJFykygncDuUK5TpRBsWZuT6eSA99YNh2cZ": {
+    "symbol": "NEURAL",
+    "name": "NeuralAI",
+    "chain": "solana",
+    "price": "2.77",
+    "volume24h": "6605.05",
+    "priceChange24h": "9.46",
+    "liquidity": "196122.91",
+    "url": "https://dexscreener.com/solana/bnchsylfy3jelv2zyuf3hf6ncdxfcfle2knnvewzz9fl",
+    "dexId": "raydium"
+  },
+  "0x65Ee1361596439664059D1a5EF44014D08c95693": {
+    "symbol": "NEURALINK",
+    "name": "Neuralink",
+    "chain": "ethereum",
+    "price": "0.1638",
+    "volume24h": "0.09",
+    "priceChange24h": "",
+    "liquidity": "75341.98",
+    "url": "https://dexscreener.com/ethereum/0x51b3832e54406e6653644a7b8497c9826eca400a",
+    "dexId": "uniswap"
+  },
+  "DWbyc3cCWZ7y5SVvXpCmYrwAzBYLBX546AhEdQbEpump": {
+    "symbol": "PAGER",
+    "name": "NEURALINK MONKEY",
+    "chain": "solana",
+    "price": "0.00003519",
+    "volume24h": "342.87",
+    "priceChange24h": "1.36",
+    "liquidity": "28062.7",
+    "url": "https://dexscreener.com/solana/ahvfjelun1aat34ssgg1genqsptx5cuygkecbqvhqieq",
+    "dexId": "raydium"
+  },
+  "CLanCdvR5BjkzZ87sdYE9KRDL16WxYFtLp16YwdBJXM9": {
+    "symbol": "Neuralink",
+    "name": "Neuralink",
+    "chain": "solana",
+    "price": "0.03322",
+    "volume24h": "1784.06",
+    "priceChange24h": "-2.51",
+    "liquidity": "24096.64",
+    "url": "https://dexscreener.com/solana/bkd5rktawk2kcz9j4fvc7ajmcbk2auipzbtvncrgqvtk",
+    "dexId": "raydium"
+  },
+  "0x2cDB9DE89B1497d3D0a250b715084e58619B0DaC": {
+    "symbol": "NSFW",
+    "name": "Neural Stack For Work",
+    "chain": "avalanche",
+    "price": "0.00008718",
+    "volume24h": "993.17",
+    "priceChange24h": "-26.97",
+    "liquidity": "6941.61",
+    "url": "https://dexscreener.com/avalanche/0xe5b3b352264607163043fe609b94ce4130962a27",
+    "dexId": "traderjoe"
+  },
+  "7JTHgyBDLqZMb22wnw9mA6fvCSrQFV5pvELjfXKApump": {
+    "symbol": "N1",
+    "name": "N1 IMPLANT NEURALINK",
+    "chain": "solana",
+    "price": "0.000005503",
+    "volume24h": "21.71",
+    "priceChange24h": "1.52",
+    "liquidity": "8213.96",
+    "url": "https://dexscreener.com/solana/5rd7jl2fjuhndw5bnszqpwcugbvtj8jwefeedhctfpqb",
+    "dexId": "pumpswap"
+  },
+  "AGm6GkYP7AbNxxZWzcSb6mrfxDRwCSNeM6GE6LiyXSB2": {
+    "symbol": "PAGER",
+    "name": "THE NEURALINK MONKEY",
+    "chain": "solana",
+    "price": "0.000005377",
+    "volume24h": "906.14",
+    "priceChange24h": "5.26",
+    "liquidity": "8356.41",
+    "url": "https://dexscreener.com/solana/7fo4iuuwbhf6u5mw4qgvpfrpewvnqhpn1kxsrf6fkdyy",
+    "dexId": "raydium"
+  },
+  "0x3c91CC527DE238222496e95feD714b5de5726F10": {
+    "symbol": "NDOG",
+    "name": "Neuralink Dog",
+    "chain": "ethereum",
+    "price": "0.000004158",
+    "volume24h": "187",
+    "priceChange24h": "",
+    "liquidity": "6541.22",
+    "url": "https://dexscreener.com/ethereum/0x5a6078350554a68017af3d19697444c2c9228239",
+    "dexId": "uniswap"
+  },
+  "0x56b9bA2599049E890B8CFadc0599Fa6119f9F68c": {
+    "symbol": "nDOGE",
+    "name": "Neural Doge",
+    "chain": "ethereum",
+    "price": "0.000000008985",
+    "volume24h": "93.67",
+    "priceChange24h": "",
+    "liquidity": "6061.58",
+    "url": "https://dexscreener.com/ethereum/0xbc7aa3350ac5af15451496552d9ec1937787d283",
+    "dexId": "uniswap"
+  },
+  "Sy3GVfNpzmNsHApuVBYRwHNDvKveK5zQ53mxbpXCYNE": {
+    "symbol": "CYNE",
+    "name": "Cyber Neural Entity",
+    "chain": "solana",
+    "price": "0.000003525",
+    "volume24h": "0.19",
+    "priceChange24h": "",
+    "liquidity": "6603.08",
+    "url": "https://dexscreener.com/solana/cwdeqhdagmdedxfdqawb43xgkw6nvnykza2rbxv464bl",
+    "dexId": "pumpswap"
+  },
+  "3Rrqy1hxDHQoL3kuZyno4rU4t8rsTcMRMoLF7VJMpump": {
+    "symbol": "NNA",
+    "name": "NEURAL NETWORK ALLIANCE",
+    "chain": "solana",
+    "price": "0.000003470",
+    "volume24h": "3.21",
+    "priceChange24h": "",
+    "liquidity": "6249.25",
+    "url": "https://dexscreener.com/solana/6opwtzrr6wgbj1gqgmhnkk98bevr13mawerezzuoshl4",
+    "dexId": "raydium"
+  },
+  "HQi6Bc5WeYbNeFy5AxJT6YS147zLUtfpJaEDvPLopump": {
+    "symbol": "SNA",
+    "name": "SOLANA NEURAL ASSOCIATION",
+    "chain": "solana",
+    "price": "0.000002775",
+    "volume24h": "4.13",
+    "priceChange24h": "",
+    "liquidity": "5479.76",
+    "url": "https://dexscreener.com/solana/dube5pxnsdup2ycz4vl7y8becq1kgsory8basonftwf8",
+    "dexId": "raydium"
+  },
+  "3ucxZeWae9nDm6SJEvRfBCwBAXNCdL1F6qpz2Quxpump": {
+    "symbol": "ANI",
+    "name": "Anime Neural Interface",
+    "chain": "solana",
+    "price": "0.000003679",
+    "volume24h": "5.46",
+    "priceChange24h": "-97.46",
+    "liquidity": "0.94",
+    "url": "https://dexscreener.com/solana/5aycivn13yeoaurb4zqxgdnfadksezu7mfg9ippmdyjx",
+    "dexId": "meteora"
+  },
+  "0x6c5146E923cE3854Ed3CF73aAFee10Fda770e92b": {
+    "symbol": "Neuralink",
+    "name": "Neuralink",
+    "chain": "ethereum",
+    "price": "0.00000002098",
+    "volume24h": "19.04",
+    "priceChange24h": "",
+    "liquidity": "1170.23",
+    "url": "https://dexscreener.com/ethereum/0x225de190f2190e6ed400578c5e44f56961a919ee",
+    "dexId": "uniswap"
+  },
+  "0x4469f9cdd223e7556b40832bef1B3bdE78DD886E": {
+    "symbol": "SNARC",
+    "name": "Stochastic Neural Analog Reinforcement Calculator",
+    "chain": "ethereum",
+    "price": "0.00000001179",
+    "volume24h": "14.15",
+    "priceChange24h": "",
+    "liquidity": "17130.01",
+    "url": "https://dexscreener.com/ethereum/0x79c629f7689973c171ed52951dc7766fd7e35ec1",
+    "dexId": "uniswap"
+  },
+  "0x2272d5C44d57d4D88CbFA382561476142d9E13BE": {
+    "symbol": "Nlink",
+    "name": "Neuralink",
+    "chain": "bsc",
+    "price": "0.0000000001190",
+    "volume24h": "0.07",
+    "priceChange24h": "",
+    "liquidity": "13.02",
+    "url": "https://dexscreener.com/bsc/0xa1d0eaee5584e6fa9d35f875cf04d2180cd8ae7e",
+    "dexId": "pancakeswap"
+  },
+  "uHi2c6SaVZoukpMo2u2ZA6jxr9tegqvuNAB9yWcpump": {
+    "symbol": "PAGER",
+    "name": "Neuralink Monkey MindPong",
+    "chain": "solana",
+    "price": "0.000003161",
+    "volume24h": "1.57",
+    "priceChange24h": "",
+    "liquidity": "6189.07",
+    "url": "https://dexscreener.com/solana/6pnnkb53met6jcdansbunqzypxmqj7hjtwsub1zznteb",
+    "dexId": "pumpswap"
+  },
+  "EBoi2SpVo4ip3iCzgvCF2XPhAszeYGBA5rMRE3umpump": {
+    "symbol": "RJ",
+    "name": "first neuralink patient",
+    "chain": "solana",
+    "price": "0.000002951",
+    "volume24h": "1.6",
+    "priceChange24h": "",
+    "liquidity": "5824.13",
+    "url": "https://dexscreener.com/solana/hy5b891j77pis4osvtupdqv5jimnjxgf5qmtg96dgcpu",
+    "dexId": "pumpswap"
+  },
+  "AH7Xwb9yxC57yUDa1raUviJpF4MsXdPcC8DQXTsUh8e2": {
+    "symbol": "NEURAFISH",
+    "name": "First Neuralink Fish",
+    "chain": "solana",
+    "price": "0.000002828",
+    "volume24h": "1.28",
+    "priceChange24h": "",
+    "liquidity": "5563.72",
+    "url": "https://dexscreener.com/solana/dpdf3xc56hj9bmhdpbl8bc1gttqaeqnztaogbwjgxkzm",
+    "dexId": "raydium"
+  },
+  "5TfHvc2cXux8VjVsJJoCKm51NKLy8fvuwDDVTTcvpump": {
+    "symbol": "NPEPE",
+    "name": "NEURALINK PEPE",
+    "chain": "solana",
+    "price": "0.000002805",
+    "volume24h": "1.27",
+    "priceChange24h": "",
+    "liquidity": "5512.72",
+    "url": "https://dexscreener.com/solana/7wftcp1qazvudhdsgonvngicoy37gaqdna3wb9ak1spe",
+    "dexId": "raydium"
+  },
+  "EV3DQidrsWv95qGJXiRgnwPFwGd5CsLKp4VPUKzpump": {
+    "symbol": "ANI",
+    "name": "Anime Neural Interface",
+    "chain": "solana",
+    "price": "0.000004281",
+    "volume24h": "1006.46",
+    "priceChange24h": "15.51",
+    "liquidity": "7395.89",
+    "url": "https://dexscreener.com/solana/7tjxznci7s12xbr9nzkatpidouhxyr1ruvuuib8egjdu",
+    "dexId": "pumpswap"
+  },
+  "0xC83b9c628ff0eB553D195A5f10da0C5d7eA60E66": {
+    "symbol": "PAGER",
+    "name": "Pager Neuralink",
+    "chain": "ethereum",
+    "price": "0.000007867",
+    "volume24h": "99.68",
+    "priceChange24h": "",
+    "liquidity": "8684.24",
+    "url": "https://dexscreener.com/ethereum/0xccea88008cfbb511bf604926ee4ba9fcfe9db0fb",
+    "dexId": "uniswap"
+  },
+  "EgTmeAcBwmwLFC22zdjztqnTf5TbN2WqRWoANnr7rmji": {
+    "symbol": "ANI",
+    "name": "Agentic Neural Interpreter",
+    "chain": "solana",
+    "price": "0.000003634",
+    "volume24h": "262.54",
+    "priceChange24h": "13.26",
+    "liquidity": "6585.56",
+    "url": "https://dexscreener.com/solana/9wqryzj8cn46qhdt2mus6hbryjcjciu3nt7awj9jwyav",
+    "dexId": "raydium"
+  },
+  "7GUMr9cyiU1DU87riDk4V1m7ptBfVum2XS9gGNvxAdEL": {
+    "symbol": "PAGER",
+    "name": "THE NEURALINK MONKEY",
+    "chain": "solana",
+    "price": "0.0001576",
+    "volume24h": "0.02",
+    "priceChange24h": "48.96",
+    "liquidity": "0.5",
+    "url": "https://dexscreener.com/solana/chqz4dvxdsog7d7ptibywrzfd87yo4p5fjqxkrpkhced",
+    "dexId": "fluxbeam"
+  },
+  "0xC7a081c50076e0e3D9C76bEA8eA948E2a6C11017": {
+    "symbol": "neuralink",
+    "name": "Neuralink",
+    "chain": "bsc",
+    "price": "0.00000000000008220",
+    "volume24h": "0.08",
+    "priceChange24h": "",
+    "liquidity": "3.72",
+    "url": "https://dexscreener.com/bsc/0x2edf4e16e1ceaabdc8ab0b96196b0c1247225f0e",
+    "dexId": "pancakeswap"
+  },
+  "0x7D5A2DAED470788af303Ea75E7e73132fB0873DD": {
+    "symbol": "NEURALNET",
+    "name": "NEURALNET",
+    "chain": "base",
+    "price": "0.01296",
+    "volume24h": "48562.99",
+    "priceChange24h": "1800334",
+    "liquidity": "",
+    "url": "https://dexscreener.com/base/0xee55257731468760ecbdd015029c1a0e48e00675",
+    "dexId": "uniswap"
+  },
+  "0x2170Ed0880ac9A755fd29B2688956BD959F933F8": {
+    "symbol": "ETH",
+    "name": "Ethereum Token",
+    "chain": "bsc",
+    "price": "3154.53",
+    "volume24h": "1570947.69",
+    "priceChange24h": "5.68",
+    "liquidity": "2121661.01",
+    "url": "https://dexscreener.com/bsc/0x0f338ec12d3f7c3d77a4b9fcc1f95f3fb6ad0ea6",
+    "dexId": "uniswap"
+  },
+  "factory/osmo1k6c8jln7ejuqwtqmay3yvzrg3kueaczl96pk067ldg8u835w0yhsw27twm/alloyed/allETH": {
+    "symbol": "ETH",
+    "name": "Ethereum",
+    "chain": "osmosis",
+    "price": "3163.037",
+    "volume24h": "331434.65",
+    "priceChange24h": "6.19",
+    "liquidity": "274773.12",
+    "url": "https://dexscreener.com/osmosis/1982",
+    "dexId": "osmosis"
+  },
+  "0x0000000000000000000000000000000000000000": {
+    "symbol": "ETH",
+    "name": "Ether",
+    "chain": "ethereum",
+    "price": "3158.47",
+    "volume24h": "68524445.28",
+    "priceChange24h": "5.96",
+    "liquidity": "107642212.96",
+    "url": "https://dexscreener.com/ethereum/0x72331fcb696b0151904c03584b66dc8365bc63f8a144d89a773384e3a579ca73",
+    "dexId": "uniswap"
+  },
+  "0xBFcfA52225Baa5feec5fbb54E6458957D53ddD94": {
+    "symbol": "ETH",
+    "name": "ETH",
+    "chain": "pulsechain",
+    "price": "0.0001620",
+    "volume24h": "691.6",
+    "priceChange24h": "0.91",
+    "liquidity": "29620.59",
+    "url": "https://dexscreener.com/pulsechain/0x77e4e36e9ab013e6d48b34836b61441c328b1738",
+    "dexId": "pulsex"
+  },
+  "0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7": {
+    "symbol": "ETH",
+    "name": "Ether",
+    "chain": "starknet",
+    "price": "3162.25",
+    "volume24h": "4649.68",
+    "priceChange24h": "6.35",
+    "liquidity": "107646.01",
+    "url": "https://dexscreener.com/starknet/0x045e7131d776dddc137e30bdd490b431c7144677e97bf9369f629ed8d3fb7dd6",
+    "dexId": "jediswap"
+  },
+  "2FPyTwcZLUg1MDrwsyoP4D6s1tM7hAkHYRjkNb5w6Pxk": {
+    "symbol": "ETH",
+    "name": "Wrapped Ethereum (Sollet)",
+    "chain": "solana",
+    "price": "993.69",
+    "volume24h": "9352",
+    "priceChange24h": "5.8",
+    "liquidity": "157923.78",
+    "url": "https://dexscreener.com/solana/9hm8qx7zhe9ub8l2archmmagzzbtbmnzbbpfxzkqp85d",
+    "dexId": "raydium"
+  },
+  "0xa47f43DE2f9623aCb395CA4905746496D2014d57": {
+    "symbol": "ETH",
+    "name": "Ethereum Token",
+    "chain": "conflux",
+    "price": "3147.56",
+    "volume24h": "35310.15",
+    "priceChange24h": "6.25",
+    "liquidity": "1538735.06",
+    "url": "https://dexscreener.com/conflux/0x8ea70966e8f14337657bff7f40cfb9648f79530b",
+    "dexId": "swappi"
+  },
+  "0x74b23882a30290451A17c44f4F05243b6b58C76d": {
+    "symbol": "ETH",
+    "name": "Ethereum",
+    "chain": "fantom",
+    "price": "47.36",
+    "volume24h": "1234.8",
+    "priceChange24h": "3.59",
+    "liquidity": "109664.99",
+    "url": "https://dexscreener.com/fantom/0xf0702249f4d3a25cd3ded7859a165693685ab577",
+    "dexId": "spookyswap"
+  },
+  "eth.bridge.near": {
+    "symbol": "ETH",
+    "name": "Ether",
+    "chain": "near",
+    "price": "3174.65",
+    "volume24h": "4571.96",
+    "priceChange24h": "6.11",
+    "liquidity": "215640.82",
+    "url": "https://dexscreener.com/near/refv1-6354",
+    "dexId": "rhea-finance"
+  },
+  "D5QBohYFnaiZmaVvHGVkzDEvk5dvByBQ3r2CWdvJ6wjW": {
+    "symbol": "ETH ",
+    "name": "Ethereum ",
+    "chain": "solana",
+    "price": "2039.82",
+    "volume24h": "9.53",
+    "priceChange24h": "",
+    "liquidity": "433089.42",
+    "url": "https://dexscreener.com/solana/53knworsinmubmdcxpulnb8rcsq5ujtojyumd6vytkq8",
+    "dexId": "raydium"
+  },
+  "Fh3ASEhKTLYE1gwcffkqkA8rBAjbqDNk5uADrpcsTuWv": {
+    "symbol": "ETH",
+    "name": "ETH",
+    "chain": "solana",
+    "price": "1.66",
+    "volume24h": "27035.24",
+    "priceChange24h": "",
+    "liquidity": "833297.11",
+    "url": "https://dexscreener.com/solana/fwfxhz6qjudxai5fkfoz4zjld1ax6nmyixbzcmzsn7c7",
+    "dexId": "raydium"
+  },
+  "BGyLx5pKmM4U5r47BQHxaUAGkWu8htWsZbQdUCdTyuhY": {
+    "symbol": "ETH  ",
+    "name": "Ethereum  ",
+    "chain": "solana",
+    "price": "2475.033",
+    "volume24h": "0.76",
+    "priceChange24h": "",
+    "liquidity": "669483.62",
+    "url": "https://dexscreener.com/solana/6nhegxjaoajpwzar6q1o5v3tmdmxo5kkdsswavj2rgsz",
+    "dexId": "raydium"
+  },
+  "9MFsj3C8TRzsmZF5raV5xXRPVpbjSnxwptEDJfftc9sp": {
+    "symbol": "ETH ",
+    "name": "Ethereum ",
+    "chain": "solana",
+    "price": "2471.82",
+    "volume24h": "36.21",
+    "priceChange24h": "",
+    "liquidity": "18729165.46",
+    "url": "https://dexscreener.com/solana/hgvxkhgehnpjcwf9s7tymqgjb1j3wagh4egoczjjbqmv",
+    "dexId": "raydium"
+  },
+  "ETH.rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B": {
+    "symbol": "ETH",
+    "name": "ETH",
+    "chain": "xrpl",
+    "price": "3040.56",
+    "volume24h": "0.02",
+    "priceChange24h": "",
+    "liquidity": "246957.38",
+    "url": "https://dexscreener.com/xrpl/eth.rvyafwj5gh67ov6fw32zzp3aw4eubs59b_xrp",
+    "dexId": "xrpl"
+  },
+  "0x94bd7A37d2cE24cC597E158fACaa8d601083ffeC": {
+    "symbol": "BNB",
+    "name": "BNB",
+    "chain": "conflux",
+    "price": "699.048",
+    "volume24h": "1.12",
+    "priceChange24h": "3.19",
+    "liquidity": "170.5",
+    "url": "https://dexscreener.com/conflux/0x712165f317a1a535ad9e1c3a681d82115dd14791",
+    "dexId": "swappi"
+  },
+  "0xD67de0e0a0Fd7b15dC8348Bb9BE742F3c5850454": {
+    "symbol": "BNB",
+    "name": "Binance",
+    "chain": "fantom",
+    "price": "26.45",
+    "volume24h": "0.02",
+    "priceChange24h": "1.41",
+    "liquidity": "1114.56",
+    "url": "https://dexscreener.com/fantom/0xfc8cfd93e5a7f034b4158dcb62379dd3bf6ad89e",
+    "dexId": "degenhaus"
+  },
+  "0x5882CeCae995E7181276DF0D612760a1b6e1224d": {
+    "symbol": "BNB",
+    "name": "BNB",
+    "chain": "bsc",
+    "price": "0.00000000000005729",
+    "volume24h": "11.46",
+    "priceChange24h": "0.19",
+    "liquidity": "12618.46",
+    "url": "https://dexscreener.com/bsc/0x6525c645a2e502056d322ff7cdb773187fd5c30f",
+    "dexId": "pancakeswap"
+  },
+  "0x7400793aAd94C8CA801aa036357d10F5Fd0ce08f": {
+    "symbol": "BNB",
+    "name": "Binance Coin",
+    "chain": "zksync",
+    "price": "678.19",
+    "volume24h": "6.5",
+    "priceChange24h": "1.53",
+    "liquidity": "419.18",
+    "url": "https://dexscreener.com/zksync/0x11af4d27c032c7b37e92585a5514ffc8f357f405",
+    "dexId": "spacefi"
+  },
+  "0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::BnbCoin": {
+    "symbol": "BNB",
+    "name": "Binance Coin",
+    "chain": "aptos",
+    "price": "672.98",
+    "volume24h": "6.92",
+    "priceChange24h": "0.79",
+    "liquidity": "202.61",
+    "url": "https://dexscreener.com/aptos/pcs-153",
+    "dexId": "pancakeswap"
+  },
+  "0x5c4b7CCBF908E64F32e12c6650ec0C96d717f03F": {
+    "symbol": "BNB",
+    "name": "Binance Token",
+    "chain": "polygon",
+    "price": "170.10",
+    "volume24h": "25.42",
+    "priceChange24h": "-0.35",
+    "liquidity": "217.04",
+    "url": "https://dexscreener.com/polygon/0xa76301a3d3933c3eb8f622bafc9b8e3ab5373661",
+    "dexId": "quickswap"
+  },
+  "0xf5C6825015280CdfD0b56903F9F8B5A2233476F5": {
+    "symbol": "BNB",
+    "name": "Binance Coin",
+    "chain": "linea",
+    "price": "680.97",
+    "volume24h": "27.55",
+    "priceChange24h": "",
+    "liquidity": "5910.81",
+    "url": "https://dexscreener.com/linea/0x66465c458f57671f8b294c792aeae0f9b7e828d7",
+    "dexId": "horizondex"
+  },
+  "0x264c1383EA520f73dd837F915ef3a732e204a493": {
+    "symbol": "BNB",
+    "name": "Binance",
+    "chain": "avalanche",
+    "price": "45.71",
+    "volume24h": "15.01",
+    "priceChange24h": "-1.56",
+    "liquidity": "1384.35",
+    "url": "https://dexscreener.com/avalanche/0xf776ef63c2e7a81d03e2c67673fd5dcf53231a3f",
+    "dexId": "pangolin"
+  },
+  "0xA649325Aa7C5093d12D6F98EB4378deAe68CE23F": {
+    "symbol": "BNB",
+    "name": "Binance",
+    "chain": "polygon",
+    "price": "58.45",
+    "volume24h": "7.43",
+    "priceChange24h": "2.81",
+    "liquidity": "9918.22",
+    "url": "https://dexscreener.com/polygon/0x0359001070cf696d5993e0697335157a6f7db289",
+    "dexId": "apeswap"
+  },
+  "0x7A501aC7a7a7443C15DF0bB4AADF234D03985A3C": {
+    "symbol": "BNB",
+    "name": "Billions N Billions",
+    "chain": "bsc",
+    "price": "0.000004957",
+    "volume24h": "1.59",
+    "priceChange24h": "",
+    "liquidity": "8582.02",
+    "url": "https://dexscreener.com/bsc/0x1c5c55a613a9b8f7b6e63f64eaa9effd6bfc3b5c",
+    "dexId": "pancakeswap"
+  },
+  "0x2c080EdE7e406FB7e7aacc55fB2ef4C366164444": {
+    "symbol": "BNB",
+    "name": "BNB6900",
+    "chain": "bsc",
+    "price": "0.000004190",
+    "volume24h": "8.21",
+    "priceChange24h": "1.3",
+    "liquidity": "7722.29",
+    "url": "https://dexscreener.com/bsc/0x03e0f133405f6d7882ee1ffb54d3b775fec98523",
+    "dexId": "pancakeswap"
+  },
+  "0x6acb34b1Df86E254b544189Ec32Cf737e2482058": {
+    "symbol": "BNB",
+    "name": "BNB on Fuse",
+    "chain": "fuse",
+    "price": "649.52",
+    "volume24h": "0.11",
+    "priceChange24h": "",
+    "liquidity": "8831.56",
+    "url": "https://dexscreener.com/fuse/0x123e18262642a090b209a9cdd5bc5dfa03d734d1",
+    "dexId": "voltagefinance"
+  },
+  "0x2692BE44A6E38B698731fDDf417d060f0d20A0cB": {
+    "symbol": "BNB",
+    "name": "Poly-Peg BNB",
+    "chain": "metis",
+    "price": "13.69",
+    "volume24h": "0.42",
+    "priceChange24h": "",
+    "liquidity": "2275",
+    "url": "https://dexscreener.com/metis/0x3bf77b9192579826f260bc48f2214dfba840fce5",
+    "dexId": "netswap"
+  },
+  "0xB8c77482e45F1F44dE1745F52C74426C631bDD52": {
+    "symbol": "BNB",
+    "name": "BNB",
+    "chain": "ethereum",
+    "price": "1085.80",
+    "volume24h": "9.16",
+    "priceChange24h": "5.28",
+    "liquidity": "1492.48",
+    "url": "https://dexscreener.com/ethereum/0xb1f9f37cea60084ff8031ac05b813bd7a16bbdc19eecb92ce60c55a9298eeee2",
+    "dexId": "uniswap"
+  },
+  "0x9335D29ADc453201CCB1184B8842D7Cb8D294444": {
+    "symbol": "BNB",
+    "name": "BINANCE DIAMOND",
+    "chain": "bsc",
+    "price": "0.00003611",
+    "volume24h": "47.94",
+    "priceChange24h": "1.57",
+    "liquidity": "21838.29",
+    "url": "https://dexscreener.com/bsc/0x8561910546efbe699e85d91e02e3dcbce513a81a",
+    "dexId": "pancakeswap"
+  },
+  "5kYvinvbkoGhWsj1FsPeGJHkXhTMiGt8ALaG4q6ypump": {
+    "symbol": "BNB",
+    "name": "BNB on SOL",
+    "chain": "solana",
+    "price": "0.000009224",
+    "volume24h": "20.17",
+    "priceChange24h": "1.24",
+    "liquidity": "11704.65",
+    "url": "https://dexscreener.com/solana/35np6eenuisbrdfqfnnetya8nye1ovvrcebymyxmdcby",
+    "dexId": "pumpswap"
+  },
+  "6Jez6eSvRnUHv99ymqwQobUcwj55DTPxMsDXcJeXpump": {
+    "symbol": "BNB",
+    "name": "CZ'S Coin",
+    "chain": "solana",
+    "price": "0.00001918",
+    "volume24h": "35.75",
+    "priceChange24h": "2.26",
+    "liquidity": "14463.48",
+    "url": "https://dexscreener.com/solana/52dwyhjqx1fxhxe3xqxd8lix5zpklnkalqfolknndcx6",
+    "dexId": "raydium"
+  },
+  "0xA160053BB0aD16c705A092dFF83e496227c1B521": {
+    "symbol": "BNB",
+    "name": "bread n butter",
+    "chain": "bsc",
+    "price": "0.0000004183",
+    "volume24h": "2.57",
+    "priceChange24h": "",
+    "liquidity": "59.1",
+    "url": "https://dexscreener.com/bsc/0x2557bc85fe571f7c35ede30ba90efcb113ed56f8",
+    "dexId": "pancakeswap"
+  },
+  "9Dgbbpw1jL9BWKXNk5S5GezHgSd1QzGwDmZz66Dppump": {
+    "symbol": "BNB",
+    "name": "BNB CTO",
+    "chain": "solana",
+    "price": "0.000003036",
+    "volume24h": "2.93",
+    "priceChange24h": "",
+    "liquidity": "5847.1",
+    "url": "https://dexscreener.com/solana/ekzdr5nvfw5hpfm8ztvdjrsqrdqa8xpcr6xakcwn33f7",
+    "dexId": "raydium"
+  },
+  "factory/osmo1n3n75av8awcnw4jl62n3l48e6e4sxqmaf97w5ua6ddu4s475q5qq9udvx4/alloyed/allSOL": {
+    "symbol": "SOL",
+    "name": "Solana",
+    "chain": "osmosis",
+    "price": "167.15",
+    "volume24h": "86846.37",
+    "priceChange24h": "4.8",
+    "liquidity": "81550.08",
+    "url": "https://dexscreener.com/osmosis/2054",
+    "dexId": "osmosis"
+  },
+  "0x570A5D26f7765Ecb712C0924E4De545B89fD43dF": {
+    "symbol": "SOL",
+    "name": "SOLANA",
+    "chain": "bsc",
+    "price": "166.039",
+    "volume24h": "4109.45",
+    "priceChange24h": "3.08",
+    "liquidity": "69889.97",
+    "url": "https://dexscreener.com/bsc/0xa585bf3f293dc86ef78324a3bb992ae888254299",
+    "dexId": "pancakeswap"
+  },
+  "0x873301F2B4B83FeaFF04121B68eC9231B29Ce0df": {
+    "symbol": "SOL",
+    "name": "SOLANA",
+    "chain": "pulsechain",
+    "price": "0.0002117",
+    "volume24h": "349.04",
+    "priceChange24h": "5.32",
+    "liquidity": "3196.03",
+    "url": "https://dexscreener.com/pulsechain/0x8dcaeb31598eec379d15ccbb21f098f57c454b97",
+    "dexId": "9mm"
+  },
+  "0xd93f7E271cB87c23AaA73edC008A79646d1F9912": {
+    "symbol": "SOL",
+    "name": "Wrapped SOL",
+    "chain": "polygon",
+    "price": "166.83",
+    "volume24h": "21841.23",
+    "priceChange24h": "4.75",
+    "liquidity": "33561.81",
+    "url": "https://dexscreener.com/polygon/0xf95ab46ec5c9fec3e40e8255ec7490095a8011ff",
+    "dexId": "uniswap"
+  },
+  "0x225B86198ba36321a8A840291416aEd62494043f": {
+    "symbol": "SOL",
+    "name": "Wrapped SOL",
+    "chain": "berachain",
+    "price": "166.59",
+    "volume24h": "59247.93",
+    "priceChange24h": "4.22",
+    "liquidity": "298198.57",
+    "url": "https://dexscreener.com/berachain/0xce214367756fa4ff523289fc87c032bc7a9abe70",
+    "dexId": "kodiak"
+  },
+  "0x2bcC6D6CdBbDC0a4071e48bb3B969b06B3330c07": {
+    "symbol": "SOL",
+    "name": "Wrapped SOL",
+    "chain": "arbitrum",
+    "price": "166.89",
+    "volume24h": "118455.79",
+    "priceChange24h": "4.47",
+    "liquidity": "53232.92",
+    "url": "https://dexscreener.com/arbitrum/0x3e1ee1aedcd64630064c967f6abd2beb4e2fc8ce",
+    "dexId": "pancakeswap"
+  },
+  "0xc9DE0F3e08162312528FF72559db82590b481800": {
+    "symbol": "SOL",
+    "name": "SOL",
+    "chain": "cronos",
+    "price": "167.32",
+    "volume24h": "14208.16",
+    "priceChange24h": "4.6",
+    "liquidity": "173457.71",
+    "url": "https://dexscreener.com/cronos/0x326d947ee700bb99a952ffb2f7758bba8ba08df0",
+    "dexId": "vvsfinance"
+  },
+  "22.contract.portalbridge.near": {
+    "symbol": "SOL",
+    "name": "Wrapped SOL",
+    "chain": "near",
+    "price": "166.28",
+    "volume24h": "13622.06",
+    "priceChange24h": "4.43",
+    "liquidity": "147789.37",
+    "url": "https://dexscreener.com/near/refv1-5965",
+    "dexId": "rhea-finance"
+  },
+  "0xfA54fF1a158B5189Ebba6ae130CEd6bbd3aEA76e": {
+    "symbol": "SOL",
+    "name": "Wrapped SOL",
+    "chain": "bsc",
+    "price": "160.33",
+    "volume24h": "30907.97",
+    "priceChange24h": "0.51",
+    "liquidity": "102772.95",
+    "url": "https://dexscreener.com/bsc/0x06c1705ab13a4480822a4e2cb98a81d966fa8dd0",
+    "dexId": "uniswap"
+  },
+  "sol.token.a11bd.near": {
+    "symbol": "SOL",
+    "name": "Solana",
+    "chain": "near",
+    "price": "168.19",
+    "volume24h": "102.67",
+    "priceChange24h": "2.41",
+    "liquidity": "54703.55",
+    "url": "https://dexscreener.com/near/refv1-3019",
+    "dexId": "rhea-finance"
+  },
+  "0x634608ed64c61CA9e741F8095193c0bFa0FA19Cc": {
+    "symbol": "SOL",
+    "name": "Solana",
+    "chain": "avalanche",
+    "price": "166.61",
+    "volume24h": "55422.66",
+    "priceChange24h": "3.82",
+    "liquidity": "44647.33",
+    "url": "https://dexscreener.com/avalanche/0x640963da1d9d07cb86e89df670dd29b54e1f1d3e",
+    "dexId": "traderjoe"
+  },
+  "0x1C61629598e4a901136a81BC138E5828dc150d67": {
+    "symbol": "SOL",
+    "name": "Wrapped SOL",
+    "chain": "base",
+    "price": "164.49",
+    "volume24h": "12315.5",
+    "priceChange24h": "1.75",
+    "liquidity": "47476.53",
+    "url": "https://dexscreener.com/base/0x063c755050bf34af118b4a5a7d31d60f33852661",
+    "dexId": "uniswap"
+  },
+  "0xCC42724C6683B7E57334c4E856f4c9965ED682bD": {
+    "symbol": "MATIC",
+    "name": "Matic Token",
+    "chain": "bsc",
+    "price": "0.2300",
+    "volume24h": "0.36",
+    "priceChange24h": "",
+    "liquidity": "1574.88",
+    "url": "https://dexscreener.com/bsc/0xd916bf28ab5eb4cf266dfd20942a5e8aa8e6d2a7",
+    "dexId": "pancakeswap"
+  },
+  "0xa2036f0538221a77A3937F1379699f44945018d0": {
+    "symbol": "MATIC",
+    "name": "Matic Token",
+    "chain": "polygonzkevm",
+    "price": "0.2317",
+    "volume24h": "459.37",
+    "priceChange24h": "2.14",
+    "liquidity": "2584.89",
+    "url": "https://dexscreener.com/polygonzkevm/0xc9853f9f29cdd15ece6965e20ca288a2946c15e6",
+    "dexId": "quickswap"
+  },
+  "0x561877b6b3DD7651313794e5F2894B2F18bE0766": {
+    "symbol": "MATIC",
+    "name": "Matic Token",
+    "chain": "arbitrum",
+    "price": "0.2362",
+    "volume24h": "64.93",
+    "priceChange24h": "3.32",
+    "liquidity": "2667.59",
+    "url": "https://dexscreener.com/arbitrum/0x37af2c75a71f90e4e289a5ee56c13111bf4ddff4",
+    "dexId": "uniswap"
+  },
+  "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8": {
+    "symbol": "MATIC",
+    "name": "Matic Token",
+    "chain": "linea",
+    "price": "0.2374",
+    "volume24h": "240.75",
+    "priceChange24h": "5.13",
+    "liquidity": "1581.55",
+    "url": "https://dexscreener.com/linea/0x1203688929f72c459007508b1da79a5eb20a6165",
+    "dexId": "lynex"
+  },
+  "0x28a487240e4D45CfF4A2980D334CC933B7483842": {
+    "symbol": "MATIC",
+    "name": "Matic Token",
+    "chain": "zksync",
+    "price": "0.2302",
+    "volume24h": "1101.92",
+    "priceChange24h": "-3.91",
+    "liquidity": "14665.75",
+    "url": "https://dexscreener.com/zksync/0x49efb4ce6d7e80b6fc5a06829e3de00344fff65e",
+    "dexId": "syncswap"
+  },
+  "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0": {
+    "symbol": "MATIC",
+    "name": "Matic Token",
+    "chain": "ethereum",
+    "price": "0.2304",
+    "volume24h": "146.04",
+    "priceChange24h": "3.06",
+    "liquidity": "7074.12",
+    "url": "https://dexscreener.com/ethereum/0x88c095c8ba2c7a1353cf3d21e692c5d4d0f90793",
+    "dexId": "uniswap"
+  },
+  "0x40DF1Ae6074C35047BFF66675488Aa2f9f6384F3": {
+    "symbol": "MATIC",
+    "name": "MATIC",
+    "chain": "fantom",
+    "price": "0.02298",
+    "volume24h": "1.34",
+    "priceChange24h": "-0.23",
+    "liquidity": "2738.83",
+    "url": "https://dexscreener.com/fantom/0xf941ea85b73fd24a615e9ee17eb42946981ed4ee-0x321162cd933e2be498cd2267a90534a804051b11-0x40df1ae6074c35047bff66675488aa2f9f6384f3",
+    "dexId": "beethovenx"
+  },
+  "0x00E69e0b6014d77040b28E04F2b8ac25A6EA5d34": {
+    "symbol": "AVAX",
+    "name": "Avalanche",
+    "chain": "beam",
+    "price": "21.93",
+    "volume24h": "13576.75",
+    "priceChange24h": "3.13",
+    "liquidity": "246375.88",
+    "url": "https://dexscreener.com/beam/0xa53dafae314075c6a22f44eeb7df792d672f89d5",
+    "dexId": "beam-swap"
+  },
+  "0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b": {
+    "symbol": "AVAX",
+    "name": "Avalanche Token",
+    "chain": "polygon",
+    "price": "21.25",
+    "volume24h": "3.96",
+    "priceChange24h": "2.15",
+    "liquidity": "1038.71",
+    "url": "https://dexscreener.com/polygon/0xce220a47b80cc8ec2dfc62732448fbc17c13bd83-0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6-0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b",
+    "dexId": "balancer"
+  },
+  "0x1CE0c2827e2eF14D5C4f29a091d735A204794041": {
+    "symbol": "AVAX",
+    "name": "Avalanche",
+    "chain": "bsc",
+    "price": "21.90",
+    "volume24h": "39.97",
+    "priceChange24h": "3.04",
+    "liquidity": "1208.23",
+    "url": "https://dexscreener.com/bsc/0xcf2cc7ea523027a0d506eb48f81d3237e6dec628",
+    "dexId": "pancakeswap"
+  },
+  "AUrMpCDYYcPuHhyNX8gEEqbmDPFUpBpHrNW3vPeCFn5Z": {
+    "symbol": "AVAX",
+    "name": "AVAX (Allbridge from Avalanche)",
+    "chain": "solana",
+    "price": "21.75",
+    "volume24h": "2764.96",
+    "priceChange24h": "2.09",
+    "liquidity": "4104.11",
+    "url": "https://dexscreener.com/solana/7pe9htyajuh7xw4tsaqmejc9v8hskycfsdtfg3u9fnzy",
+    "dexId": "orca"
+  },
+  "0x511D35c52a3C244E7b8bd92c0C297755FbD89212": {
+    "symbol": "AVAX",
+    "name": "Avalanche",
+    "chain": "fantom",
+    "price": "1.11",
+    "volume24h": "1.01",
+    "priceChange24h": "-0.46",
+    "liquidity": "29480.38",
+    "url": "https://dexscreener.com/fantom/0x5df809e410d9cc577f0d01b4e623c567c7ad56c1",
+    "dexId": "spookyswap"
+  },
+  "0x8d58088D4E8Ffe75A8b6357ba5ff17B93B912640": {
+    "symbol": "AVAX",
+    "name": "AVAX",
+    "chain": "cronos",
+    "price": "22.039",
+    "volume24h": "1482.46",
+    "priceChange24h": "3.19",
+    "liquidity": "22192.14",
+    "url": "https://dexscreener.com/cronos/0xcd1d459d6eb1575acead1c1616eec8b64e93f166",
+    "dexId": "vvsfinance"
+  },
+  "ibc/6F62F01D913E3FFE472A38C78235B8F021B511BC6596ADFF02615C8F83D3B373": {
+    "symbol": "AVAX",
+    "name": "Avalanche",
+    "chain": "osmosis",
+    "price": "21.96",
+    "volume24h": "8240.29",
+    "priceChange24h": "3.85",
+    "liquidity": "4032.14",
+    "url": "https://dexscreener.com/osmosis/1349",
+    "dexId": "osmosis"
+  },
+  "0x6A5279E99CA7786fb13F827Fc1Fb4F61684933d6": {
+    "symbol": "AVAX",
+    "name": "Avalanche",
+    "chain": "zksync",
+    "price": "22.93",
+    "volume24h": "12.73",
+    "priceChange24h": "5.9",
+    "liquidity": "11602.63",
+    "url": "https://dexscreener.com/zksync/0x743954d87e81350e2f35d9d12a41dba309acbd2e",
+    "dexId": "syncswap"
+  },
+  "0x14a0243C333A5b238143068dC3A7323Ba4C30ECB": {
+    "symbol": "AVAX",
+    "name": "Avalanche Token",
+    "chain": "moonriver",
+    "price": "10.16",
+    "volume24h": "2.69",
+    "priceChange24h": "4.36",
+    "liquidity": "1376.27",
+    "url": "https://dexscreener.com/moonriver/0xba5d804af11e3f7133287bd41e77a71d1a56aacf",
+    "dexId": "0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d"
+  },
+  "0x8E3670FD7B0935d3FE832711deBFE13BB689b690": {
+    "symbol": "AVAX",
+    "name": "AVAX",
+    "chain": "celo",
+    "price": "21.36",
+    "volume24h": "100.13",
+    "priceChange24h": "2.53",
+    "liquidity": "16057.24",
+    "url": "https://dexscreener.com/celo/0x11ce57aaae0418d120e4415691b6f174219e4b02",
+    "dexId": "ubeswap"
+  }
+}

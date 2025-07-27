@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(cp:*)",
+      "Bash(source:*)",
+      "Bash(python:*)",
+      "Bash(cat:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:rocketappstour.web.app)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(grep:*)",
+      "Bash(sqlite3:*)",
+      "Bash(rm:*)",
+      "Bash(curl:*)",
+      "Bash(kill:*)",
+      "Bash(sed:*)",
+      "Bash(pip3 install:*)",
+      "Bash(time sqlite3:*)",
+      "Bash(find:*)",
+      "Bash(supabase functions:*)"
+    ],
+    "deny": []
+  },
+  "enableAllProjectMcpServers": false
+}
