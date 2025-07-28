@@ -100,12 +100,12 @@ serve(async (req)=>{
           console.log(`Fetching current price for ${call.token.symbol || 'UNKNOWN'} on ${call.token.network}...`);
           const priceData = await fetchCurrentPrice(call.token.network, call.token.pa);
           
-          callData.historical_price_usd = priceData.price;
+          callData.price_at_call = priceData.price;
           callData.price_source = priceData.source;
           callData.price_updated_at = new Date().toISOString();
         } else {
           console.log(`No pool address or network for ${call.token?.symbol || 'UNKNOWN'} - skipping price fetch`);
-          callData.historical_price_usd = null;
+          callData.price_at_call = null;
           callData.price_source = "NO_POOL_DATA";
           callData.price_updated_at = new Date().toISOString();
         }
@@ -124,8 +124,8 @@ serve(async (req)=>{
           }
         } else {
           newCallsCount++;
-          const priceInfo = callData.historical_price_usd 
-            ? `Price: $${callData.historical_price_usd} (${callData.price_source})`
+          const priceInfo = callData.price_at_call 
+            ? `Price: $${callData.price_at_call} (${callData.price_source})`
             : `No price (${callData.price_source})`;
           
           console.log(`Added new call: ${call._id} - ${call.token?.symbol || 'Unknown'} on ${call.token?.network || 'unknown'} - ${priceInfo}`);

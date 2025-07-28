@@ -876,7 +876,75 @@ Dead Token Detection: Correctly identifies genuinely delisted tokens
 4. **Deploy crypto-price-ath** edge function
 5. **Update krom-analysis-app** to use new edge functions
 
+## Column Migration Complete (July 28, 2025 - Evening Session 2)
+
+### Major Achievement: Removed `historical_price_usd` Column ✅
+
+Successfully migrated from `historical_price_usd` to `price_at_call`:
+
+1. **Updated all code references**:
+   - crypto-poller edge function now writes to `price_at_call`
+   - Batch processor updated to use `price_at_call`
+   - Verified no other code uses old column
+
+2. **Database cleanup**:
+   - Created full backup (5,648 records) before removal
+   - Successfully dropped `historical_price_usd` column
+   - System now cleaner with single price column
+
+3. **Fixed chart price display bug**:
+   - GeckoTerminal chart was showing wrong entry prices
+   - Added `kromId` to ensure correct record is fetched
+   - Chart now displays accurate prices for each specific call
+
+### Current Progress:
+- 671 tokens have entry prices (11.9% of 5,647 total)
+- All new calls get immediate price via crypto-poller
+- Batch processor ready to populate remaining ~5,000 tokens
+
+### Key Files Updated:
+- `/supabase/functions/crypto-poller/index.ts` - Uses `price_at_call`
+- `/populate-historical-prices-using-created-at.py` - Batch processor
+- `/krom-analysis-app/components/geckoterminal-panel.tsx` - Fixed chart prices
+- `/database-backups/crypto_calls_backup_20250728_195953.json.gz` - Pre-removal backup
+
+## Next Session Instructions
+
+### Priority 1: Complete Historical Price Population
+Run the batch processor until ALL tokens have entry prices:
+```bash
+# Script to run repeatedly:
+python3 populate-historical-prices-using-created-at.py
+
+# Current progress: 671/5,647 tokens (11.9%)
+# Processes 50-60 tokens per 2-minute run
+# Estimated runs needed: ~90-100
+```
+
+### Priority 2: Implement Current Price Storage
+After all entry prices are populated, implement current price fetching:
+
+**NOTE: We have duplicate columns!**
+- `price_current` (0 records) - unused duplicate
+- `current_price` (11 records) - use this one
+- Consider removing `price_current` column later
+
+1. **Create `crypto-price-current` edge function**
+   - Fetch current price from GeckoTerminal
+   - Store in `current_price` column (NOT price_current)
+   - Update `price_updated_at` timestamp
+
+2. **Create batch processor for current prices**
+   - Process all tokens to get current prices
+   - Calculate ROI: `roi_percent = ((current_price - price_at_call) / price_at_call) * 100`
+   - Store in `roi_percent` column (already exists)
+   - Update regularly (daily/hourly as needed)
+
+3. **Consider cron job for price updates**
+   - Keep current prices fresh
+   - Recalculate ROI on each update
+
 ---
 **Last Updated**: July 28, 2025
-**Status**: Price system operational. Network mapping fixed. Historical prices displaying.
-**Version**: 7.0.0 - Price System Fully Operational
+**Status**: Price system fully operational. Column migration complete. Chart prices fixed.
+**Version**: 7.1.0 - Database Cleanup & Chart Fix Complete

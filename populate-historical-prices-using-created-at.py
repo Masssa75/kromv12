@@ -10,8 +10,8 @@ print(f"Started: {datetime.now()}")
 print()
 
 # Configuration
-BATCH_SIZE = 50
-RATE_LIMIT_DELAY = 0.3  # seconds between API calls
+BATCH_SIZE = 25  # Reduced for better progress tracking
+RATE_LIMIT_DELAY = 0.2  # Slightly faster between calls
 
 # Get service key
 service_key = None
@@ -42,7 +42,7 @@ def process_batch(batch_number, offset):
     print(f"{'='*60}")
     
     # Get tokens without historical price, ordered by creation
-    query_url = f"{supabase_url}?select=krom_id,ticker,network,pool_address,contract_address,buy_timestamp,created_at,raw_data&historical_price_usd=is.null&order=created_at.asc&limit={BATCH_SIZE}&offset={offset}"
+    query_url = f"{supabase_url}?select=krom_id,ticker,network,pool_address,contract_address,buy_timestamp,created_at,raw_data&price_at_call=is.null&order=created_at.asc&limit={BATCH_SIZE}&offset={offset}"
     
     req = urllib.request.Request(query_url)
     req.add_header('apikey', service_key)
@@ -78,7 +78,7 @@ def process_batch(batch_number, offset):
                 if krom_price > 0:
                     # Update with KROM price
                     update_data = {
-                        'historical_price_usd': krom_price,
+                        'price_at_call': krom_price,
                         'price_source': 'KROM',
                         'price_updated_at': datetime.now().isoformat()
                     }
@@ -185,7 +185,7 @@ def process_batch(batch_number, offset):
                     fetched_price = float(edge_data['price'])
                     
                     update_data = {
-                        'historical_price_usd': fetched_price,
+                        'price_at_call': fetched_price,
                         'price_source': f'GECKO_{timestamp_source.upper()}',
                         'price_updated_at': datetime.now().isoformat()
                     }
@@ -275,8 +275,27 @@ def process_batch(batch_number, offset):
         print(f"❌ Error processing batch: {e}")
         return 0, 0, 0, 0
 
+# Get current progress first
+def get_current_progress():
+    count_url = f"{supabase_url}?select=*&price_at_call=not.is.null"
+    count_req = urllib.request.Request(count_url, method='HEAD')
+    count_req.add_header('apikey', service_key)
+    count_req.add_header('Authorization', f'Bearer {service_key}')
+    count_req.add_header('Prefer', 'count=exact')
+    
+    try:
+        response = urllib.request.urlopen(count_req)
+        content_range = response.headers.get('content-range')
+        if content_range:
+            return int(content_range.split('/')[1])
+    except:
+        pass
+    return 0
+
 # Main processing
+initial_count = get_current_progress()
 print("🚀 Starting batch processing with created_at fallback...")
+print(f"📊 Current progress: {initial_count} tokens already have prices")
 
 batch_number = 1
 offset = 0
@@ -285,7 +304,7 @@ total_krom = 0
 total_gecko = 0
 total_failed = 0
 
-while batch_number <= 10:  # Process 10 batches = 500 tokens
+while batch_number <= 20:  # Process 20 batches = 500 tokens with new batch size
     processed, krom, gecko, failed = process_batch(batch_number, offset)
     
     if processed == 0:

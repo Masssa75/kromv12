@@ -1,0 +1,10 @@
+Database Backup Summary
+======================
+
+Timestamp: 2025-07-28T20:00:20.442194
+Purpose: Backup before removing historical_price_usd column
+Total records: 5648
+Records with historical_price_usd: 630
+Records with price_at_call: 671
+Backup file: database-backups/crypto_calls_backup_20250728_195953.json (45.9 MB)
+Compressed file: database-backups/crypto_calls_backup_20250728_195953.json.gz (5.4 MB)
