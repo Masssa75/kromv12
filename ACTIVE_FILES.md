@@ -1,6 +1,8 @@
 # KROMV12 Active Files
-**Last Updated**: July 26, 2025
-**Version**: 6.6.0 - UI Enhancements & Price Fetching Complete
+**Last Updated**: July 28, 2025
+**Version**: 6.6.1 - Database Documentation Clarified
+
+⚠️ **DATABASE NOTICE**: All KROM apps use SUPABASE exclusively. The local SQLite database is LEGACY only.
 
 These are the currently active files in the KROMV12 project:
 
@@ -34,11 +36,11 @@ These are the currently active files in the KROMV12 project:
   - `analysis_model` - For tracking which AI model used
 
 ## Primary Files (ACTIVE)
-- `all-in-one-server.py` - Unified server with all endpoints (port 5001)
+- `all-in-one-server.py` - **LEGACY** - Uses SQLite database (DO NOT USE for new development)
 - `krom-dashboard-main.html` - Token-gated dashboard with ROCKET2 requirement
 - `krom-analytics.html` - KROM-styled alternative dashboard
 - `krom-standalone-dashboard.html` - Analytics dashboard without token gating
-- `krom_calls.db` - SQLite database with 98,040 crypto calls
+- `krom_calls.db` - **LEGACY** SQLite database (DO NOT USE - all apps use Supabase)
 
 ## Edge Functions (Active)
 - `crypto-orchestrator-with-x.ts` - Main orchestrator
@@ -73,9 +75,10 @@ git push origin main
 # Netlify auto-deploys from GitHub
 ```
 
-### Local Dashboards
+### Local Dashboards (LEGACY - Uses SQLite)
 ```bash
-# Single server for everything:
+# WARNING: This server uses the LEGACY SQLite database
+# For production data, use the deployed krom-analysis-app instead
 python3 all-in-one-server.py
 
 # Access dashboards at:
@@ -84,22 +87,37 @@ http://localhost:5001/krom        # KROM-styled dashboard
 http://localhost:5001/standalone  # No-wallet analytics dashboard
 ```
 
-## Database Status
-- **Total Calls**: 5,103 (in Supabase crypto_calls table)
+## Database Status (SUPABASE ONLY)
+- **Total Calls**: 5,103+ (in Supabase crypto_calls table)
+- **Database**: All data operations use Supabase cloud database
 - **Analyzed with Call scores**: Growing (real-time analysis)
 - **X raw tweets available**: 5,232 calls
 - **X analysis needed**: 5,223 calls
 - **Contract addresses**: Stored in `raw_data.token.ca`
 - **Networks**: Stored in `raw_data.token.network`
 
-## Completed Today (July 26)
-- ✅ Added date column to analyzed calls table with Thai timezone tooltips
-- ✅ Enhanced GeckoTerminal chart - removed transactions, maximized space
-- ✅ Migrated single token price fetching to Supabase edge function
-- ✅ Fixed .env parsing issues - uncommented headers
-- ✅ Deployed crypto-price-single with ATH calculation support
-- ✅ Fixed Entry/Now price display issues
-- ✅ Updated documentation for session wrap-up
+## Current Work: Price Data Migration (July 28, 2025)
+
+### Active Migration Scripts
+- `repopulate-with-pagination.py` - Smart KROM API pagination for missing data
+- `backup-before-price-clear.py` - Database backup before clearing prices
+- `clear-price-data-test-50.py` - Tested price clearing on 50 records
+- `check-krom-api-trade-section.py` - KROM API structure analysis
+- `check-missing-calls-status.py` - Missing trade data analysis
+
+### Modified Files This Session
+- `/krom-analysis-app/components/price-display.tsx` - Shows raw_data.trade.buyPrice
+- `/krom-analysis-app/app/api/analyzed/route.ts` - Returns raw_data in response
+- `/krom-analysis-app/app/page.tsx` - Passes raw_data to PriceDisplay
+
+### Migration Status
+- ✅ UI updated to show buy prices from raw_data
+- ✅ Repopulated 100+ calls with correct trade data
+- ✅ Database backed up: `database-backups/crypto_calls_backup_20250728_114514.json`
+- ✅ Test cleared 50 oldest records successfully
+- ⏳ Ready to clear all 445 records with price data
+- ⏳ Need to implement new price fetching logic
+- ⏳ Need to fix edge functions for correct price fetching
 
 ## Edge Functions (Active)
 - `crypto-orchestrator-with-x.ts` - Main orchestrator
@@ -109,8 +127,9 @@ http://localhost:5001/standalone  # No-wallet analytics dashboard
 - `crypto-notifier-complete.ts` - Dual bot Telegram notifications
 - `crypto-price-single` - Single token price fetching (NEW - with ATH support)
 
-## Database Status
+## Database Status (SUPABASE ONLY)
 - **Total Calls**: 5,103+ (in Supabase crypto_calls table)
+- **Database**: All data operations use Supabase cloud database
 - **Call Analysis**: 150+ completed with scores
 - **X Analysis**: 149+ completed with scores
 - **Price Data**: Edge function ready for all tokens

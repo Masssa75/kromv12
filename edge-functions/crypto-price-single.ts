@@ -135,7 +135,7 @@ class GeckoTerminalAPI {
     }
   }
 
-  async getTokenDataWithMarketCaps(network: string, address: string, callTimestamp: number) {
+  async getTokenDataWithMarketCaps(network: string, address: string, callTimestamp: number, providedPoolAddress?: string) {
     const tokenInfo = await this.getTokenInfo(network, address);
     
     if (!tokenInfo) {
@@ -155,7 +155,11 @@ class GeckoTerminalAPI {
     
     // For historical price, we need to find pools if not already available
     let priceAtCall = null;
-    let poolAddress = tokenInfo.pool_address;
+    let poolAddress = providedPoolAddress || tokenInfo.pool_address;
+    
+    if (providedPoolAddress) {
+      console.log(`Using provided pool address: ${providedPoolAddress}`);
+    }
     
     // If no pool address, try to find pools
     if (!poolAddress) {
@@ -176,7 +180,7 @@ class GeckoTerminalAPI {
             });
             
             poolAddress = sortedPools[0].attributes?.address;
-            console.log(`Found pool: ${poolAddress}`);
+            console.log(`Auto-selected most liquid pool: ${poolAddress}`);
           }
         }
       } catch (error) {
@@ -263,7 +267,7 @@ Deno.serve(async (req) => {
 
   try {
     // Parse request body
-    const { contractAddress, callTimestamp, network: providedNetwork } = await req.json()
+    const { contractAddress, callTimestamp, network: providedNetwork, poolAddress } = await req.json()
     
     if (!contractAddress) {
       return new Response(
@@ -286,14 +290,16 @@ Deno.serve(async (req) => {
     console.log('Fetching price data for:', {
       contractAddress,
       network,
-      callTimestamp: new Date(timestampInSeconds * 1000).toISOString()
+      callTimestamp: new Date(timestampInSeconds * 1000).toISOString(),
+      poolAddress: poolAddress || 'not provided'
     })
     
     // Fetch comprehensive token data
     const tokenData = await geckoTerminal.getTokenDataWithMarketCaps(
       network,
       contractAddress,
-      timestampInSeconds
+      timestampInSeconds,
+      poolAddress
     )
     
     // Calculate ROI

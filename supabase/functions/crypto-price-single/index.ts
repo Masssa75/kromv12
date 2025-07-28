@@ -87,8 +87,7 @@ class GeckoTerminalAPI {
       ];
       
       for (const { interval, beforeOffset, limit } of timeframes) {
-        // We want data from BEFORE the timestamp, not after
-        const url = `${GECKOTERMINAL_BASE_URL}/networks/${network}/pools/${poolAddress}/ohlcv/${interval}?before_timestamp=${timestamp}&limit=${limit}&currency=usd`;
+        const url = `${GECKOTERMINAL_BASE_URL}/networks/${network}/pools/${poolAddress}/ohlcv/${interval}?before_timestamp=${timestamp + beforeOffset}&limit=${limit}&currency=usd`;
         console.log(`Trying ${interval} timeframe: ${url}`);
         
         const response = await fetch(url);
@@ -136,44 +135,7 @@ class GeckoTerminalAPI {
     }
   }
 
-  async getATHSinceTimestamp(network: string, poolAddress: string, sinceTimestamp: number): Promise<{ price: number; timestamp: number } | null> {
-    try {
-      console.log(`Fetching ATH since ${new Date(sinceTimestamp * 1000).toISOString()}`);
-      
-      let maxPrice = 0;
-      let maxTimestamp = 0;
-      const currentTime = Math.floor(Date.now() / 1000);
-      
-      // Fetch OHLCV data to find ATH
-      const url = `${GECKOTERMINAL_BASE_URL}/networks/${network}/pools/${poolAddress}/ohlcv/day?limit=1000&currency=usd`;
-      const response = await fetch(url);
-      
-      if (response.ok) {
-        const data = await response.json();
-        const ohlcvData = data.data?.attributes?.ohlcv_list || [];
-        
-        // Filter data since call timestamp and find highest price
-        for (const candle of ohlcvData) {
-          if (candle[0] >= sinceTimestamp && candle[2] > maxPrice) { // candle[2] is high
-            maxPrice = candle[2];
-            maxTimestamp = candle[0];
-          }
-        }
-        
-        if (maxPrice > 0) {
-          console.log(`Found ATH: $${maxPrice} at ${new Date(maxTimestamp * 1000).toISOString()}`);
-          return { price: maxPrice, timestamp: maxTimestamp };
-        }
-      }
-      
-      return null;
-    } catch (error) {
-      console.error(`Error fetching ATH: ${error}`);
-      return null;
-    }
-  }
-
-  async getTokenDataWithMarketCaps(network: string, address: string, callTimestamp: number) {
+  async getTokenDataWithMarketCaps(network: string, address: string, callTimestamp: number, providedPoolAddress?: string) {
     const tokenInfo = await this.getTokenInfo(network, address);
     
     if (!tokenInfo) {
@@ -182,13 +144,10 @@ class GeckoTerminalAPI {
         tokenInfo: null,
         priceAtCall: null,
         currentPrice: null,
-        ath: null,
         marketCapAtCall: null,
         currentMarketCap: null,
-        athMarketCap: null,
         fdvAtCall: null,
         currentFDV: null,
-        athFDV: null,
       };
     }
     
@@ -196,7 +155,11 @@ class GeckoTerminalAPI {
     
     // For historical price, we need to find pools if not already available
     let priceAtCall = null;
-    let poolAddress = tokenInfo.pool_address;
+    let poolAddress = providedPoolAddress || tokenInfo.pool_address;
+    
+    if (providedPoolAddress) {
+      console.log(`Using provided pool address: ${providedPoolAddress}`);
+    }
     
     // If no pool address, try to find pools
     if (!poolAddress) {
@@ -217,7 +180,7 @@ class GeckoTerminalAPI {
             });
             
             poolAddress = sortedPools[0].attributes?.address;
-            console.log(`Found pool: ${poolAddress}`);
+            console.log(`Auto-selected most liquid pool: ${poolAddress}`);
           }
         }
       } catch (error) {
@@ -225,18 +188,8 @@ class GeckoTerminalAPI {
       }
     }
     
-    let ath = null;
-    
     if (poolAddress) {
-      // Fetch both historical price and ATH
-      const [historicalPrice, athData] = await Promise.all([
-        this.getHistoricalPrice(network, poolAddress, callTimestamp),
-        this.getATHSinceTimestamp(network, poolAddress, callTimestamp)
-      ]);
-      
-      priceAtCall = historicalPrice;
-      ath = athData;
-      
+      priceAtCall = await this.getHistoricalPrice(network, poolAddress, callTimestamp);
       if (!priceAtCall) {
         console.log(`No historical price data available`);
       }
@@ -245,56 +198,63 @@ class GeckoTerminalAPI {
     }
     
     // Calculate market caps if we have supply info
-    const supply = tokenInfo.circulating_supply ? parseFloat(tokenInfo.circulating_supply) : 
-                   tokenInfo.total_supply ? parseFloat(tokenInfo.total_supply) : null;
+    // Parse supply carefully - it might be in scientific notation or have many digits
+    let supply = null;
+    let totalSupply = null;
     
-    // Calculate FDVs
-    const currentFDV = tokenInfo.fdv_usd || 
-      (tokenInfo.price_usd && tokenInfo.total_supply ? tokenInfo.price_usd * parseFloat(tokenInfo.total_supply) : null);
-    
-    let fdvAtCall = null;
-    let athFDV = null;
-    
-    if (currentFDV && tokenInfo.price_usd && tokenInfo.price_usd > 0) {
-      if (priceAtCall) {
-        fdvAtCall = (priceAtCall / tokenInfo.price_usd) * currentFDV;
+    try {
+      if (tokenInfo.circulating_supply) {
+        supply = parseFloat(tokenInfo.circulating_supply);
+        // Sanity check - if supply is absurdly large, it might be an error
+        if (supply > 1e30) {
+          console.warn(`Circulating supply seems too large: ${tokenInfo.circulating_supply}`);
+          supply = null;
+        }
       }
-      if (ath?.price) {
-        athFDV = (ath.price / tokenInfo.price_usd) * currentFDV;
+      
+      if (tokenInfo.total_supply) {
+        totalSupply = parseFloat(tokenInfo.total_supply);
+        // Sanity check
+        if (totalSupply > 1e30) {
+          console.warn(`Total supply seems too large: ${tokenInfo.total_supply}`);
+          totalSupply = null;
+        }
       }
+      
+      // If no circulating supply but we have total supply, use it
+      if (!supply && totalSupply) {
+        supply = totalSupply;
+      }
+    } catch (e) {
+      console.error('Error parsing supply:', e);
     }
+    
+    // Log for debugging
+    console.log('Supply calculation:', {
+      circulatingSupply: tokenInfo.circulating_supply,
+      totalSupply: tokenInfo.total_supply,
+      parsedSupply: supply,
+      parsedTotalSupply: totalSupply,
+      priceAtCall,
+      currentPrice: tokenInfo.price_usd
+    });
+    
+    // If we already have market cap from the API, prefer that over calculating it
+    const marketCapAtCall = priceAtCall && supply ? priceAtCall * supply : null;
+    const currentMarketCap = tokenInfo.market_cap_usd || (tokenInfo.price_usd && supply ? tokenInfo.price_usd * supply : null);
+    const fdvAtCall = priceAtCall && totalSupply ? priceAtCall * totalSupply : null;
+    const currentFDV = tokenInfo.fdv_usd || (tokenInfo.price_usd && totalSupply ? tokenInfo.price_usd * totalSupply : null);
     
     return {
       tokenInfo,
       priceAtCall,
       currentPrice: tokenInfo.price_usd,
-      ath,
-      marketCapAtCall: priceAtCall && supply ? priceAtCall * supply : null,
-      currentMarketCap: tokenInfo.market_cap_usd || (tokenInfo.price_usd && supply ? tokenInfo.price_usd * supply : null),
-      athMarketCap: ath?.price && supply ? ath.price * supply : null,
+      marketCapAtCall,
+      currentMarketCap,
       fdvAtCall,
       currentFDV,
-      athFDV,
     };
   }
-}
-
-// Helper function to format date in Thai timezone
-function formatThaiDate(timestamp: number | null): string | null {
-  if (!timestamp) return null
-  
-  const date = new Date(timestamp * 1000)
-  const options: Intl.DateTimeFormatOptions = {
-    timeZone: 'Asia/Bangkok',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true
-  }
-  
-  return date.toLocaleString('en-US', options) + ' (Thai Time)'
 }
 
 Deno.serve(async (req) => {
@@ -307,7 +267,7 @@ Deno.serve(async (req) => {
 
   try {
     // Parse request body
-    const { contractAddress, callTimestamp, network: providedNetwork } = await req.json()
+    const { contractAddress, callTimestamp, network: providedNetwork, poolAddress } = await req.json()
     
     if (!contractAddress) {
       return new Response(
@@ -330,27 +290,21 @@ Deno.serve(async (req) => {
     console.log('Fetching price data for:', {
       contractAddress,
       network,
-      callTimestamp: new Date(timestampInSeconds * 1000).toISOString()
+      callTimestamp: new Date(timestampInSeconds * 1000).toISOString(),
+      poolAddress: poolAddress || 'not provided'
     })
     
     // Fetch comprehensive token data
     const tokenData = await geckoTerminal.getTokenDataWithMarketCaps(
       network,
       contractAddress,
-      timestampInSeconds
+      timestampInSeconds,
+      poolAddress
     )
     
-    // Calculate ROIs
+    // Calculate ROI
     const roi = tokenData.priceAtCall && tokenData.currentPrice 
       ? ((tokenData.currentPrice - tokenData.priceAtCall) / tokenData.priceAtCall) * 100 
-      : null
-    
-    const athROI = tokenData.priceAtCall && tokenData.ath?.price 
-      ? ((tokenData.ath.price - tokenData.priceAtCall) / tokenData.priceAtCall) * 100 
-      : null
-    
-    const drawdownFromATH = tokenData.ath?.price && tokenData.currentPrice
-      ? ((tokenData.ath.price - tokenData.currentPrice) / tokenData.ath.price) * 100
       : null
     
     const result = {
@@ -358,21 +312,13 @@ Deno.serve(async (req) => {
       network,
       priceAtCall: tokenData.priceAtCall,
       currentPrice: tokenData.currentPrice,
-      ath: tokenData.ath?.price || null,
-      athDate: tokenData.ath?.timestamp ? new Date(tokenData.ath.timestamp * 1000).toISOString() : null,
-      athDateFormatted: formatThaiDate(tokenData.ath?.timestamp || null),
       roi,
-      athROI,
-      drawdownFromATH,
       callDate: new Date(timestampInSeconds * 1000).toISOString(),
-      callDateFormatted: formatThaiDate(timestampInSeconds),
       fetchedAt: new Date().toISOString(),
       marketCapAtCall: tokenData.marketCapAtCall,
       currentMarketCap: tokenData.currentMarketCap,
-      athMarketCap: tokenData.athMarketCap,
       fdvAtCall: tokenData.fdvAtCall,
       currentFDV: tokenData.currentFDV,
-      athFDV: tokenData.athFDV,
       tokenSupply: tokenData.tokenInfo?.total_supply || null,
       duration: ((Date.now() - startTime) / 1000).toFixed(1)
     }

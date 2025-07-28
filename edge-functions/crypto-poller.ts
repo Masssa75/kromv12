@@ -41,6 +41,9 @@ serve(async (req)=>{
           krom_id: call._id,
           ticker: call.token?.symbol || 'UNKNOWN',
           buy_timestamp: call.trade?.buyTimestamp ? new Date(call.trade.buyTimestamp * 1000).toISOString() : null,
+          contract_address: call.token?.ca || null,
+          pool_address: call.token?.pa || null,
+          network: call.token?.network || null,
           raw_data: call
         }).select();
         if (error) {
@@ -55,7 +58,7 @@ serve(async (req)=>{
           }
         } else {
           newCallsCount++;
-          console.log(`Added new call: ${call._id} - ${call.token?.symbol || 'Unknown'}`);
+          console.log(`Added new call: ${call._id} - ${call.token?.symbol || 'Unknown'} on ${call.token?.network || 'unknown'} ${call.token?.ca ? `CA: ${call.token.ca.slice(0,8)}...` : 'no CA'} ${call.token?.pa ? `Pool: ${call.token.pa.slice(0,8)}...` : 'no pool'}`);
         }
       } catch (err) {
         console.error(`Error processing call ${call._id}:`, err);

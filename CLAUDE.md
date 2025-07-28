@@ -1,5 +1,10 @@
 # KROMV12 Crypto Monitoring System Documentation
 
+⚠️ **CRITICAL DATABASE NOTICE** ⚠️
+- **ALL KROM APPS USE SUPABASE** - This is the ONLY production database
+- **DO NOT USE `krom_calls.db`** - This local SQLite database is LEGACY/reference only
+- When you see any database operations, ALWAYS use Supabase credentials from `.env`
+
 ## Overview
 KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring applications. Each app serves a specific purpose in the crypto analysis ecosystem.
 
@@ -17,13 +22,21 @@ KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring
 
 2. **krom-analysis-app/** (Next.js - Netlify Deployment)
    - **Live URL**: https://lively-torrone-8199e0.netlify.app
+   - **Database**: Uses Supabase EXCLUSIVELY (PostgreSQL)
    - Batch historical analysis tool
    - AI-powered scoring (1-10 scale)
    - Contract address extraction with DexScreener links
    - CSV export functionality
    - **Full documentation**: See `krom-analysis-app/CLAUDE.md`
 
-3. **Future Apps** (Planned):
+3. **krom-api-explorer/** (Next.js - Netlify Deployment)
+   - **Live URL**: https://majestic-centaur-0d5fcc.netlify.app
+   - **Purpose**: Discover trending tokens from external APIs (GeckoTerminal, DexScreener)
+   - Adds tokens as additional "coin of interest" signals
+   - Manual import workflow with source attribution
+   - **Full documentation**: See `krom-api-explorer/CLAUDE.md`
+
+4. **Future Apps** (Planned):
    - **krom-referral-bot/** - Telegram referral tracking bot
    - **krom-whale-tracker/** - Whale wallet monitoring
    - **krom-sentiment-analyzer/** - Social sentiment analysis
@@ -32,8 +45,14 @@ KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring
 ### Shared Resources:
 - `.env` - Central environment variables (all apps use this)
 - `CLAUDE.md` - This documentation (main project context)
-- `krom_calls.db` - Local SQLite database with 98K+ calls
-- Supabase instance - Shared cloud database
+- `krom_calls.db` - **LEGACY** Local SQLite database (reference only - DO NOT USE)
+- **Supabase instance** - **PRIMARY DATABASE** - All apps use this cloud database
+
+**IMPORTANT DATABASE CLARIFICATION**:
+- **krom-analysis-app uses SUPABASE EXCLUSIVELY** - Never the local SQLite database
+- The local SQLite database (`krom_calls.db`) is for legacy reference only
+- ALL production data operations should target Supabase
+- When working with any KROM app, always use Supabase credentials from `.env`
 
 ## Autonomous Development Workflow
 
@@ -109,6 +128,8 @@ npx supabase db execute --sql "YOUR SQL"
 
 ### Database Schema Management
 
+**CRITICAL**: All database operations must target Supabase. Never use the local SQLite database.
+
 When you need to add new columns to existing tables in Supabase, use the Management API:
 
 ```bash
@@ -150,6 +171,13 @@ curl -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?selec
 
 
 ## Working with This Project - Important Notes
+
+### Critical Database Rule
+**ALWAYS USE SUPABASE for any data operations**. The SQLite database (`krom_calls.db`) is legacy reference only. When you see database operations:
+1. Use Supabase credentials from `.env`
+2. Connect to the `crypto_calls` table in Supabase
+3. Never use `sqlite3.connect()` or reference `krom_calls.db`
+4. If unsure, check `krom-analysis-app/` for proper Supabase usage examples
 
 ### User Preferences
 - **Always explain before executing** - User prefers understanding what will happen before code changes
@@ -199,22 +227,101 @@ Cron Job (every minute) → crypto-orchestrator
                          crypto-notifier (Telegram notifications)
 ```
 
-## Database Schema
-Table: `crypto_calls`
-- `krom_id` (TEXT PRIMARY KEY)
-- `ticker` (TEXT)
-- `buy_timestamp` (TIMESTAMPTZ)
-- `raw_data` (JSONB)
+## Database Schema (Supabase)
+**Note**: This schema is for the Supabase cloud database. Do NOT use the local SQLite database.
+
+**Table: `crypto_calls`** (70 columns total - Multi-Source Support)
+
+### Core Fields (9)
+Essential fields for basic token tracking:
+- `id` (UUID PRIMARY KEY) - Universal unique ID, auto-generated
+- `krom_id` (TEXT UNIQUE NOT NULL) - KROM's original ID (NULL for other sources)
+- `source` (TEXT DEFAULT 'krom') - Signal source: 'krom', 'geckoterminal', etc.
+- `network` (TEXT) - Blockchain network: 'solana', 'ethereum', 'bsc', etc.
+- `contract_address` (TEXT) - Token contract address
+- `ticker` (TEXT) - Token symbol/ticker
+- `buy_timestamp` (TIMESTAMPTZ) - When the call was made
+- `raw_data` (JSONB NOT NULL) - Source-specific API response
+- `created_at` (TIMESTAMPTZ DEFAULT now()) - Record creation timestamp
+
+### Call Analysis Fields (13)
+AI analysis results for legitimacy scoring:
 - `analysis_tier` (TEXT) - Claude rating: ALPHA/SOLID/BASIC/TRASH
-- `analysis_description` (TEXT)
-- `analyzed_at` (TIMESTAMPTZ)
+- `analysis_description` (TEXT) - Analysis summary
+- `analyzed_at` (TIMESTAMPTZ) - When initial analysis was completed
+- `analysis_score` (INTEGER) - Legitimacy score (1-10)
+- `analysis_model` (TEXT) - AI model used (claude-3-haiku, gpt-4, kimi-k2, etc.)
+- `analysis_legitimacy_factor` (TEXT) - High/Medium/Low legitimacy
+- `analysis_token_type` (TEXT) - meme/utility classification
+- `analysis_reasoning` (TEXT) - Detailed analysis reasoning
+- `analysis_prompt_used` (TEXT) - Full prompt sent to AI
+- `analysis_batch_id` (UUID) - Batch processing identifier
+- `analysis_batch_timestamp` (TIMESTAMPTZ) - When batch was processed
+- `analysis_duration_ms` (INTEGER) - Processing time in milliseconds
+- `analysis_confidence` (NUMERIC) - AI confidence level
+- `analysis_reanalyzed_at` (TIMESTAMPTZ) - Last re-analysis timestamp
+
+### X (Twitter) Analysis Fields (18)
+Social media presence evaluation:
 - `x_analysis_tier` (TEXT) - X research rating
-- `x_analysis_summary` (TEXT)
-- `x_raw_tweets` (JSONB)
-- `x_analyzed_at` (TIMESTAMPTZ)
-- `notified` (BOOLEAN) - Regular bot notifications sent
-- `notified_premium` (BOOLEAN) - Premium bot notifications sent (SOLID/ALPHA only)
-- `created_at` (TIMESTAMPTZ)
+- `x_analysis_summary` (TEXT) - Summary of X analysis
+- `x_raw_tweets` (JSONB) - Raw tweet data from API
+- `x_analyzed_at` (TIMESTAMPTZ) - When X analysis was completed
+- `x_analysis_score` (INTEGER) - Social media score (1-10)
+- `x_analysis_model` (TEXT) - AI model used for X analysis
+- `x_best_tweet` (TEXT) - Most relevant tweet found
+- `x_legitimacy_factor` (TEXT) - Legitimacy based on social presence
+- `x_analysis_token_type` (TEXT) - Token type from social analysis
+- `x_analysis_reasoning` (TEXT) - Detailed X analysis reasoning
+- `x_analysis_prompt_used` (TEXT) - Prompt used for X analysis
+- `x_analysis_batch_id` (UUID) - X analysis batch identifier
+- `x_analysis_batch_timestamp` (TIMESTAMPTZ) - X batch processing time
+- `x_analysis_duration_ms` (INTEGER) - X analysis processing time
+- `x_reanalyzed_at` (TIMESTAMPTZ) - Last X re-analysis timestamp
+- `x_analysis_legitimacy_factor` (TEXT) - Enhanced legitimacy assessment
+- `x_analysis_best_tweet` (TEXT) - Best tweet for analysis
+- `x_analysis_key_observations` (JSONB) - Key social media observations
+
+### Price & ROI Fields (13)
+Token price tracking and performance metrics:
+- `price_at_call` (NUMERIC) - Token price when call was made
+- `price_current` (NUMERIC) - Current/latest token price
+- `current_price` (NUMERIC) - Alternative current price field
+- `price_updated_at` (TIMESTAMPTZ) - When price was last updated
+- `price_fetched_at` (TIMESTAMPTZ) - When price data was fetched
+- `price_change_percent` (NUMERIC) - Price change percentage
+- `price_network` (TEXT) - Network used for price fetching
+- `ath_price` (NUMERIC) - All-time high price
+- `ath_timestamp` (TIMESTAMPTZ) - When ATH was reached
+- `ath_roi_percent` (NUMERIC) - ROI percentage from ATH
+- `ath_market_cap` (NUMERIC) - Market cap at ATH
+- `ath_fdv` (NUMERIC) - Fully diluted value at ATH
+- `roi_percent` (NUMERIC) - Current ROI percentage
+
+### Market Data Fields (7)
+Additional market metrics:
+- `market_cap_at_call` (NUMERIC) - Market cap when call was made
+- `current_market_cap` (NUMERIC) - Current market capitalization
+- `fdv_at_call` (NUMERIC) - Fully diluted value at call time
+- `current_fdv` (NUMERIC) - Current fully diluted value
+- `token_supply` (NUMERIC) - Total token supply
+- `pool_address` (TEXT) - DEX pool address for price fetching
+
+### User Interaction Fields (5)
+User-generated content and tracking:
+- `is_coin_of_interest` (BOOLEAN DEFAULT false) - User-marked interesting tokens
+- `coin_of_interest_marked_at` (TIMESTAMPTZ) - When marked as interesting
+- `coin_of_interest_notes` (TEXT) - User notes for interesting coins
+- `user_comment` (TEXT) - User comments on the call
+- `user_comment_updated_at` (TIMESTAMPTZ) - When comment was last updated
+
+### System & Notification Fields (5)
+Internal system tracking:
+- `notified` (BOOLEAN DEFAULT false) - Regular bot notifications sent
+- `notified_premium` (BOOLEAN DEFAULT false) - Premium bot notifications sent (SOLID/ALPHA only)
+- `is_invalidated` (BOOLEAN DEFAULT false) - Whether call is invalidated
+- `invalidated_at` (TIMESTAMPTZ) - When call was invalidated
+- `invalidation_reason` (TEXT) - Reason for invalidation
 
 ## Edge Functions
 
@@ -359,6 +466,12 @@ supabase functions invoke crypto-orchestrator
 
 ## Common Issues & Solutions (this is for the crypto poller and notifier. should be moved into the project's own folder once created)
 
+**IMPORTANT - Database Confusion**:
+- **Always use Supabase** for any data operations
+- The local SQLite database (`krom_calls.db`) is LEGACY and should NOT be used
+- If you see `krom_calls.db` mentioned, ignore it and use Supabase instead
+- All apps in KROMV12 use the Supabase cloud database
+
 1. **No notifications sent**
    - Check if calls are analyzed (`analyzed_at` not null)
    - Check if X analysis completed (`x_analyzed_at` not null)
@@ -402,8 +515,8 @@ KROMV12/
 │
 ├── Core Files:
 │   ├── all-in-one-server.py  # Main unified server (port 5001)
-│   ├── krom_calls.db         # SQLite database (98K+ calls)
-│   ├── .env                  # Environment variables
+│   ├── krom_calls.db         # LEGACY SQLite database (DO NOT USE - reference only)
+│   ├── .env                  # Environment variables (includes Supabase credentials)
 │   └── CLAUDE.md             # This documentation
 │
 ├── Dashboard Files:
@@ -434,8 +547,9 @@ KROMV12/
 
 1. **For New Sessions**: Start by reading the "Working with This Project" section
 2. **For Debugging**: Check "Common Issues & Solutions" first
-3. **For Database Changes**: See "Database Schema Management" in Autonomous Development Workflow
-4. **For Context**: Review "Current State & Optimizations" to understand decisions made
+3. **For Database Work**: ALWAYS use Supabase (never the local SQLite database)
+4. **For Database Changes**: See "Database Schema Management" in Autonomous Development Workflow
+5. **For Context**: Review "Current State & Optimizations" to understand decisions made
 
 
 
@@ -578,7 +692,87 @@ KROMV12/
 - Enhanced GeckoTerminal chart view - maximized space, added price grid
 - [Full session details →](logs/SESSION-LOG-2025-07-26.md)
 
+## Edge Function Redesign & Price Data Migration (July 28, 2025)
+
+### Session Summary
+- Discovered old edge function has major accuracy issues (45-78% error rates)  
+- Direct GeckoTerminal API calls are much more accurate (2-10% error rates)
+- KROM timestamps are already in UTC (no timezone conversion needed)
+- **Decision**: Create new edge functions from scratch with proper separation of concerns
+
+### New Price Fetching Architecture
+
+We're splitting price fetching into three separate, focused edge functions:
+
+#### 1. `crypto-price-historical` (Priority: HIGH - In Progress)
+- **Purpose**: Get price at specific timestamp (for KROM call prices)
+- **Caching**: Forever (historical data never changes)
+- **Inputs**: contractAddress, network, timestamp, poolAddress
+- **Output**: price at that exact moment
+- **Implementation**: Simple direct call to GeckoTerminal OHLCV endpoint
+
+#### 2. `crypto-price-current` (Priority: MEDIUM - Planned)
+- **Purpose**: Get current market price
+- **Caching**: 30-60 seconds
+- **Inputs**: contractAddress, network
+- **Output**: current price, 24h change, volume
+
+#### 3. `crypto-price-ath` (Priority: LOW - Planned)
+- **Purpose**: Get all-time high data
+- **Caching**: 5-15 minutes
+- **Inputs**: contractAddress, network
+- **Output**: ATH price, ATH date, % from ATH
+
+### Key Testing Results
+
+**Direct API accuracy with 10 oldest calls**:
+- BIP177: -2.1% (excellent)
+- PGUSSY: -2.6% (excellent) 
+- ASSOL: +3.3% (excellent)
+- Most within 10% of KROM's recorded price
+
+**Old edge function issues**:
+- Complex timeframe logic with arbitrary offsets
+- Returns incorrect prices even when data is available
+- Poor accuracy compared to direct API calls
+
+### Implementation Strategy
+1. Create `crypto-price-historical` first (most urgent need)
+2. Deploy alongside existing function to avoid disruption
+3. Test thoroughly with known test cases
+4. Migrate krom-analysis-app to use new endpoint
+5. Keep old function as backup until migration complete
+
+### Previous Session Findings
+- KROM's buyPrice is the actual market price at the moment of the call
+- Pool address is critical - must use KROM's pool (`raw_data.token.pa`)
+- Increased calls with trade data from 124 → 498 (4x improvement)
+- Started populating pool_address column: 690+ records completed
+
+### Key Scripts Created
+```
+/validate-gecko-price-fetching.py     # Validates price fetching approach
+/direct-gecko-ohlcv.py               # Direct OHLCV fetching showing correct prices
+/populate-pool-address.py            # Populates pool_address column
+/continue-pool-population.py         # Efficient batch population
+/final-price-comparison.py           # Shows the pool mismatch issue
+```
+
+### Database State
+- Total calls: 5,638
+- Calls with trade data: 498 (8.8%)
+- Calls with pool_address populated: 690+ (in progress)
+- All old price data cleared ✅
+
+### Architecture Understanding
+```
+Entry Price: raw_data.trade.buyPrice (from KROM - most accurate)
+Current Price: GeckoTerminal API with correct pool
+ATH: GeckoTerminal historical with correct pool
+Pool Address: raw_data.token.pa (must use this, not auto-select)
+```
+
 ---
-**Last Updated**: July 26, 2025
-**Status**: All features operational, price fetching restored
-**Version**: 6.6.0 - UI Enhancements & Price Fetching Complete
+**Last Updated**: July 28, 2025
+**Status**: Price migration - discovered pool mismatch issue, populating pool_address column
+**Version**: 6.8.0 - Pool Address Population In Progress
