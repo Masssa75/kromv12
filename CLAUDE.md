@@ -692,259 +692,127 @@ KROMV12/
 - Enhanced GeckoTerminal chart view - maximized space, added price grid
 - [Full session details →](logs/SESSION-LOG-2025-07-26.md)
 
-## Edge Function Redesign & Price Data Migration (July 28, 2025)
+## Price Data Migration (July 28, 2025)
+
+Redesigned price fetching architecture with three separate edge functions:
+- `crypto-price-historical` ✅ - Get price at specific timestamp (deployed)
+- `crypto-price-current` 🚧 - Get current market price (in progress)
+- `crypto-price-ath` 📋 - Get all-time high data (planned)
+
+Key improvements:
+- Direct API calls improved accuracy from 45-78% error to <10% error
+- Network mapping fix (ethereum → eth) improved success rate from 40% to 100%
+- Enhanced crypto-poller now fetches prices immediately for new calls
+
+[Full session details →](logs/SESSION-LOG-2025-07-28.md)
+
+## Historical Price Population Complete (July 29, 2025)
+
+Successfully populated historical prices for 95.5% of all tokens (5,446/5,702). Created parallel processing infrastructure that achieved rates up to 248 tokens/minute. The remaining 4.5% are confirmed dead/delisted tokens.
+
+**Key achievements:**
+- Processed 4,775 tokens in ~2 hours
+- Created parallel processor with 10 concurrent workers
+- Fixed network mapping (ethereum → eth)
+- Identified and handled 254 permanently dead tokens
+
+[Full session details →](logs/SESSION-LOG-2025-07-29.md)
+
+## Current Price Implementation (July 28, 2025 - Session 4)
 
 ### Session Summary
-- Discovered old edge function has major accuracy issues (45-78% error rates)  
-- Direct GeckoTerminal API calls are much more accurate (2-10% error rates)
-- KROM timestamps are already in UTC (no timezone conversion needed)
-- **Decision**: Create new edge functions from scratch with proper separation of concerns
+Successfully implemented current price fetching for tokens, discovered and fixed multiple issues:
 
-### New Price Fetching Architecture
+#### 1. Price Display Fix ✅
+- **Problem**: UI was showing market cap values ($7.65K) instead of actual token prices ($0.00000765)
+- **Solution**: Updated `krom-analysis-app/components/price-display.tsx` to always show simple price format
+- **Status**: Deployed to https://lively-torrone-8199e0.netlify.app
 
-We're splitting price fetching into three separate, focused edge functions:
-
-#### 1. `crypto-price-historical` (Priority: HIGH - In Progress)
-- **Purpose**: Get price at specific timestamp (for KROM call prices)
-- **Caching**: Forever (historical data never changes)
-- **Inputs**: contractAddress, network, timestamp, poolAddress
-- **Output**: price at that exact moment
-- **Implementation**: Simple direct call to GeckoTerminal OHLCV endpoint
-
-#### 2. `crypto-price-current` (Priority: MEDIUM - Planned)
-- **Purpose**: Get current market price
-- **Caching**: 30-60 seconds
-- **Inputs**: contractAddress, network
-- **Output**: current price, 24h change, volume
-
-#### 3. `crypto-price-ath` (Priority: LOW - Planned)
-- **Purpose**: Get all-time high data
-- **Caching**: 5-15 minutes
-- **Inputs**: contractAddress, network
-- **Output**: ATH price, ATH date, % from ATH
-
-### Key Testing Results
-
-**Direct API accuracy with 10 oldest calls**:
-- BIP177: -2.1% (excellent)
-- PGUSSY: -2.6% (excellent) 
-- ASSOL: +3.3% (excellent)
-- Most within 10% of KROM's recorded price
-
-**Old edge function issues**:
-- Complex timeframe logic with arbitrary offsets
-- Returns incorrect prices even when data is available
-- Poor accuracy compared to direct API calls
-
-### Implementation Strategy
-1. Create `crypto-price-historical` first (most urgent need)
-2. Deploy alongside existing function to avoid disruption
-3. Test thoroughly with known test cases
-4. Migrate krom-analysis-app to use new endpoint
-5. Keep old function as backup until migration complete
-
-### Current Session Progress (July 28, 2025 - Session 2)
-
-#### 1. Enhanced Crypto-Poller Deployed ✅
-- Successfully enhanced crypto-poller to extract pool_address, contract_address, and network fields
-- Added immediate price fetching for new calls (within 1-3 minutes)
-- All new calls now get instant price data stored in `historical_price_usd` column
-- Price source tracking: GECKO_LIVE, DEAD_TOKEN, NO_POOL_DATA
-
-#### 2. False Dead Token Investigation Complete ✅
-**User concern**: $OPTI and HONOKA marked as "DEAD_TOKEN" but user said they're not dead
-
-**Investigation Results**:
-- ✅ **Both tokens are genuinely dead/delisted**
-- Direct API test: Both return 404 from GeckoTerminal
-- Contract address search: Both return 404 (no pools found)
-- **Conclusion**: Crypto-poller is working correctly - these ARE dead tokens
-
-**Evidence**:
-```
-$OPTI: 0x05E651Fe74f82598f52Da6C5761C02b7a8f56fCa → 404 Not Found
-HONOKA: 0x8d9779A08A5E38e8b5A28bd31E50b8cd3D238Ed8 → 404 Not Found
-```
-
-### Previous Session Findings
-- KROM's buyPrice is the actual market price at the moment of the call
-- Pool address is critical - must use KROM's pool (`raw_data.token.pa`)
-- Increased calls with trade data from 124 → 498 (4x improvement)
-- Pool_address population: 100% completed for all 5,638 records
-
-### Database State
-- Total calls: 5,638
-- Calls with trade data: 498 (8.8%)
-- Calls with pool_address populated: 100% complete ✅
-- All old price data cleared ✅
-- Enhanced crypto-poller deployed and working ✅
-
-### Architecture Understanding
-```
-Entry Price: raw_data.trade.buyPrice (from KROM - most accurate when available)
-Current Price: GeckoTerminal API with correct pool address
-Pool Address: raw_data.token.pa (must use this for accuracy)
-Dead Token Detection: Correctly identifies genuinely delisted tokens
-```
-
-## Price Migration Session 3 (July 28, 2025 - Evening)
-
-### Major Discoveries & Fixes
-
-#### 1. Network Mapping Fix Success 🎉
-- **Problem**: KROM stores `"ethereum"` but GeckoTerminal API requires `"eth"`
-- **Solution**: Added network mapping function in crypto-poller:
-  ```typescript
-  const networkMap = {
+#### 2. Network Mapping Implementation ✅
+- **Discovery**: KROM stores "ethereum" but GeckoTerminal API requires "eth"
+- **Solution**: Added network mapping in all price fetching scripts
+- **Impact**: Success rate improved from 52% to 84%
+```python
+network_map = {
     'ethereum': 'eth',
     'solana': 'solana',
     'bsc': 'bsc',
     'polygon': 'polygon',
     'arbitrum': 'arbitrum',
     'base': 'base'
-  };
-  ```
-- **Impact**: 
-  - Before fix: Only 8/20 tokens (40%) could fetch prices
-  - After fix: 20/20 tokens (100%) successfully fetch prices
-  - All 12 previously "dead" ethereum tokens now work perfectly
-
-#### 2. Historical Price Edge Function Created ✅
-- Created `crypto-price-historical` edge function from scratch
-- Clean implementation with direct GeckoTerminal API calls
-- Much better accuracy than old edge function:
-  - Old: 54-78% error rates
-  - New: 6.37% average error (most within 10%)
-- Handles dead tokens properly with DEAD_TOKEN status
-
-#### 3. Created_at Timestamp Strategy 💡
-- **User insight**: "For tokens with no timestamp, we can just use their creation time stamp"
-- Discovered 5,601/5,646 tokens missing buy_timestamp
-- Implemented fallback to `created_at` (only ~2 minutes after actual call)
-- Batch processor successfully uses this strategy
-
-#### 4. Enhanced Crypto-Poller Deployed ✅
-- Now extracts and saves: `pool_address`, `contract_address`, `network`
-- **Immediate price fetching**: Gets current price within 1-3 minutes of new calls
-- Includes network mapping for proper API compatibility
-- Tracks price source: GECKO_LIVE, DEAD_TOKEN, NO_POOL_DATA
-
-#### 5. Column Mismatch Fix 🔧
-- **User reported**: "why do these prices not show up in the interface?"
-- **Problem**: Batch processor writes to `historical_price_usd` but app reads `price_at_call`
-- **Solution**: Copied 413 records between columns
-- **Result**: Entry prices now display correctly in UI!
-
-### Current Progress
-- ✅ 513 tokens have historical prices (9.1% of 5,647 total)
-- ✅ 99.6% success rate for price fetching (only 2 true failures)
-- ✅ Network mapping deployed in crypto-poller
-- ✅ Pool addresses 100% populated (contrary to earlier belief)
-- ✅ Entry prices visible in krom-analysis-app
-
-### Key Scripts Created This Session
-```
-# Edge Function Testing & Validation
-/test-old-edge-function.py                  # Discovered 54-78% error rates
-/test-direct-api-calls.py                   # Showed 2-10% error rates
-/test-crypto-price-historical.py            # Validates new edge function
-
-# Dead Token Investigation
-/check-dead-tokens-directly.py              # Direct API validation
-/test-dead-tokens-by-contract.py           # Contract address searches
-
-# Network Mapping Discovery & Fix
-/test-20-oldest-with-network-fix.py        # 100% success after fix
-/test-historical-price-accuracy.py         # 90% within 10% deviation
-
-# Batch Processing & Migration
-/populate-historical-prices-using-created-at.py  # Uses fallback timestamp
-/copy-prices-batch-update.py               # Fixes column mismatch
-/check-price-columns.py                    # Database verification
+}
 ```
 
-### Architecture Decisions
-1. **Edge Function Split**: Separating historical, current, and ATH prices
-2. **Direct API Calls**: More accurate than complex timeframe logic
-3. **Network Mapping**: Essential for cross-platform compatibility
-4. **Column Strategy**: Using `price_at_call` as primary price field
+#### 3. Clear Prices Bug Discovery 🚨
+- **Problem**: 5,701 records have `price_updated_at` timestamps but NULL `current_price`
+- **Cause**: The `/api/clear-prices` endpoint clears price fields but NOT timestamp fields
+- **Impact**: Queries using `current_price.is.null` return records that were already processed
+- **Fix Created**: `krom-analysis-app/app/api/clear-prices/route-FIXED.ts` also clears timestamps
 
-### Critical Next Steps
-1. **Update batch processor** to write directly to `price_at_call`
-2. **Continue batch processing** remaining ~5,134 tokens
-3. **Deploy crypto-price-current** edge function
-4. **Deploy crypto-price-ath** edge function
-5. **Update krom-analysis-app** to use new edge functions
+#### 4. Scripts Created This Session
+```
+# Main batch processors
+/fetch-current-prices-batch.py              # GeckoTerminal version with network mapping
+/fetch-current-prices-dexscreener.py        # DexScreener API version (avoids rate limits)
+/fetch-current-prices-smart.py              # Handles cleared prices properly
 
-## Column Migration Complete (July 28, 2025 - Evening Session 2)
+# Testing and debugging
+/test-mr-lean-timeline.py                   # Dead token investigation
+/test-dexscreener-api.py                    # DexScreener API validation
+/check-bip177-status.py                     # Duplicate token investigation
+/final-count-check.py                       # Progress verification
+/SESSION-NOTES-2025-07-28-CURRENT-PRICE.md  # Detailed session notes
+```
 
-### Major Achievement: Removed `historical_price_usd` Column ✅
-
-Successfully migrated from `historical_price_usd` to `price_at_call`:
-
-1. **Updated all code references**:
-   - crypto-poller edge function now writes to `price_at_call`
-   - Batch processor updated to use `price_at_call`
-   - Verified no other code uses old column
-
-2. **Database cleanup**:
-   - Created full backup (5,648 records) before removal
-   - Successfully dropped `historical_price_usd` column
-   - System now cleaner with single price column
-
-3. **Fixed chart price display bug**:
-   - GeckoTerminal chart was showing wrong entry prices
-   - Added `kromId` to ensure correct record is fetched
-   - Chart now displays accurate prices for each specific call
-
-### Current Progress:
-- 671 tokens have entry prices (11.9% of 5,647 total)
-- All new calls get immediate price via crypto-poller
-- Batch processor ready to populate remaining ~5,000 tokens
-
-### Key Files Updated:
-- `/supabase/functions/crypto-poller/index.ts` - Uses `price_at_call`
-- `/populate-historical-prices-using-created-at.py` - Batch processor
-- `/krom-analysis-app/components/geckoterminal-panel.tsx` - Fixed chart prices
-- `/database-backups/crypto_calls_backup_20250728_195953.json.gz` - Pre-removal backup
+#### 5. Current Progress
+- ✅ BIP177 successfully updated: Entry $0.00029889 → Current $0.0000115 (ROI: -96.15%)
+- ✅ DexScreener API working well as alternative to GeckoTerminal
+- ⚠️ Duplicate tokens exist (e.g., BIP177 appears 3+ times) - NOT AN ISSUE, these are separate calls for the same token
+- ⚠️ 5,701 records have timestamps but null prices due to clear-prices bug
 
 ## Next Session Instructions
 
-### Priority 1: Complete Historical Price Population
-Run the batch processor until ALL tokens have entry prices:
-```bash
-# Script to run repeatedly:
-python3 populate-historical-prices-using-created-at.py
+### CRITICAL FIX - Deploy Clear-Prices Update
+The clear-prices API is the root cause of confusion. It must be fixed first:
 
-# Current progress: 671/5,647 tokens (11.9%)
-# Processes 50-60 tokens per 2-minute run
-# Estimated runs needed: ~90-100
+```bash
+# 1. Copy the fixed version
+cd krom-analysis-app
+cp app/api/clear-prices/route-FIXED.ts app/api/clear-prices/route.ts
+
+# 2. Deploy the fix
+git add -A && git commit -m "fix: clear timestamps when clearing prices" && git push
+netlify logs:deploy  # Monitor deployment
 ```
 
-### Priority 2: Implement Current Price Storage
-After all entry prices are populated, implement current price fetching:
+### Clean Up Database (Optional but Recommended)
+```sql
+-- Clear timestamps for records with null prices
+-- This will make queries much cleaner
+UPDATE crypto_calls 
+SET price_updated_at = NULL, price_fetched_at = NULL 
+WHERE current_price IS NULL AND price_updated_at IS NOT NULL;
+```
 
-**NOTE: We have duplicate columns!**
-- `price_current` (0 records) - unused duplicate
-- `current_price` (11 records) - use this one
-- Consider removing `price_current` column later
+### Continue Current Price Batch Processing
+Use the smart version that properly handles cleared prices:
 
-1. **Create `crypto-price-current` edge function**
-   - Fetch current price from GeckoTerminal
-   - Store in `current_price` column (NOT price_current)
-   - Update `price_updated_at` timestamp
+```bash
+# Option 1: Use the smart query version
+python3 fetch-current-prices-smart.py
 
-2. **Create batch processor for current prices**
-   - Process all tokens to get current prices
-   - Calculate ROI: `roi_percent = ((current_price - price_at_call) / price_at_call) * 100`
-   - Store in `roi_percent` column (already exists)
-   - Update regularly (daily/hourly as needed)
+# Option 2: Use DexScreener to avoid GeckoTerminal rate limits
+python3 fetch-current-prices-dexscreener.py
+```
 
-3. **Consider cron job for price updates**
-   - Keep current prices fresh
-   - Recalculate ROI on each update
+### Important Notes for Next Session
+1. **Duplicate Tokens**: Not an issue - these are separate KROM calls for the same token ticker
+2. **Use Correct Column**: `current_price` (NOT `price_current` which has 0 records)
+3. **Rate Limit Management**: Use DexScreener when another instance is using GeckoTerminal
+4. **Dead Tokens**: Many old tokens show "No pairs found" - this is expected behavior
+5. **Progress Tracking**: ~100 tokens have current prices, ~5,500 still need processing
 
 ---
 **Last Updated**: July 28, 2025
-**Status**: Price system fully operational. Column migration complete. Chart prices fixed.
-**Version**: 7.1.0 - Database Cleanup & Chart Fix Complete
+**Status**: Current price implementation in progress. Clear-prices bug identified and fix ready.
+**Version**: 7.2.0 - Current Price Implementation & Bug Discovery

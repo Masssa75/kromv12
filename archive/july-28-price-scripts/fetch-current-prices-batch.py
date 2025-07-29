@@ -70,9 +70,21 @@ def get_tokens_needing_current_prices(limit=50):
 
 def fetch_current_price_via_edge_function(contract_address, network, pool_address=None):
     """Fetch current price using the crypto-price-single edge function"""
+    # Network mapping - KROM stores "ethereum" but GeckoTerminal API requires "eth"
+    network_map = {
+        'ethereum': 'eth',
+        'solana': 'solana',
+        'bsc': 'bsc',
+        'polygon': 'polygon',
+        'arbitrum': 'arbitrum',
+        'base': 'base'
+    }
+    
+    mapped_network = network_map.get(network, network)
+    
     payload = {
         "contractAddress": contract_address,
-        "network": network,
+        "network": mapped_network,
         "callTimestamp": int(time.time()),  # Current timestamp
     }
     
@@ -165,7 +177,7 @@ def main():
     
     print(f"📈 Tokens with current prices: {total_with_prices}")
     
-    batch_size = 10
+    batch_size = 10  # Reduced to avoid timeouts
     processed = 0
     successful = 0
     failed = 0
