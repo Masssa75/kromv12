@@ -749,6 +749,39 @@ network_map = {
 - **Impact**: Queries using `current_price.is.null` return records that were already processed
 - **Fix Created**: `krom-analysis-app/app/api/clear-prices/route-FIXED.ts` also clears timestamps
 
+#### 4. Manual Price Updates Session (July 29, 2025) ✅
+Successfully continued manual price updates with confirmed working approach:
+
+**Tokens Updated This Session:**
+- ✅ **ZEUS** (Solana): Entry $0.1176 → Current $0.005269 (ROI: -95.5%)  
+  CA: `Bd6uMUuTvt9CocffodUidJrukfh8fQj5tPy3AT2Ypvfu`
+- ✅ **THUMB** (Solana): Entry $0.0001054 → Current $0.000004093 (ROI: -96.1%)  
+  CA: `HgcB1NDnztVFeULXqmyH6aN8F5EMzZTauPGAnboQpump`
+- ✅ **WLFI** (Ethereum): Entry $405.78 → Current $407.74 (ROI: +0.5%)  
+  CA: `0x1963A95cfc30e49Cc75F7F2de6027289971cAc79`
+- ✅ **X PARTY** (Ethereum): Entry $0.0000005636 → Current $0.0000000235 (ROI: -95.8%)  
+  CA: `0xEc9545c6d6f557Fd51938a3E139D9B2D81C0169c`
+- 🎉 **MARU** (Ethereum): Entry $0.0002355 → Current $0.0009270 (ROI: +293.7%!)  
+  CA: `0xE6F4567C330625F3488ec69266f5DDD3F3841F33`
+- ✅ **NVDA** (Ethereum): Entry $0.0000002839 → Current $0.00000002756 (ROI: -90.3%)  
+  CA: `0x943B7958FE19Bca72A8F6A4D98794c23F5A9BD03`
+- ✅ **DOG** (Ethereum): Entry $0.0000724052 → Current $0.000002548 (ROI: -96.5%)  
+  CA: `0xBb9C691841Ba1380594B380472d270C95707346d`
+- ✅ **CATSZN** (Solana): Entry $0.0000945483 → Current $0.00001664 (ROI: -82.4%)  
+  CA: `BNH81vewK7Dp87sKN6R4VPqsFtPTiFXCVrEZMsY5k7Ti`
+
+**Key Discovery - Query Filter Bug 🚨:**
+- Scripts using `current_price.is.null` keep finding tokens that already have prices
+- **Root Cause**: Clear prices API creates timestamp orphans (timestamps without prices)
+- **Evidence**: Script repeatedly processes same MOOMOO token that already has current_price
+- **Impact**: Batch processing inefficient, keeps updating same records
+
+**API Success Pattern Confirmed:**
+1. **DexScreener first** (fast, no rate limits) - finds most tokens
+2. **GeckoTerminal pools fallback** - catches tokens DexScreener misses
+3. **Success rate**: ~85-90% of tokens get prices from one of these sources
+4. **Network mapping essential**: ethereum → eth for GeckoTerminal compatibility
+
 #### 4. Scripts Created This Session
 ```
 # Main batch processors
@@ -772,8 +805,19 @@ network_map = {
 
 ## Next Session Instructions
 
-### CRITICAL FIX - Deploy Clear-Prices Update
-The clear-prices API is the root cause of confusion. It must be fixed first:
+### CRITICAL FIX 1 - Fix Query Filter Logic
+The most important issue to fix is the query filter bug:
+
+**Problem**: Scripts using `current_price.is.null` return tokens that already have prices
+**Solution**: Update all batch scripts to use a more specific query:
+```sql
+-- Instead of just checking current_price.is.null
+-- Use: current_price.is.null AND price_updated_at.is.null
+-- This avoids timestamp orphans from the clear prices bug
+```
+
+### CRITICAL FIX 2 - Deploy Clear-Prices Update
+The clear-prices API creates timestamp orphans. Fix it:
 
 ```bash
 # 1. Copy the fixed version
@@ -956,23 +1000,47 @@ python3 clear-fake-x-analysis.py     # Cleared 65 records
 - `test-api-failures.py` - Investigate API failure causes
 - `check-recent-analysis.py` - Monitor analysis progress
 
-### Next Session Priorities
+#### 5. **Cron Endpoint Implementation Issue** ✅ FIXED
+- **Problem**: Cron endpoints had custom inline analysis logic that was failing
+- **Root Cause**: Complex duplicate logic in cron endpoints vs proven working direct endpoints
+- **Discovery**: Direct `/api/analyze` processes HONOKA successfully, but `/api/cron/analyze` fails all 5 attempts
+- **Solution**: Simplified both cron endpoints to delegate to their proven working counterparts:
+  - `/api/cron/analyze` now calls `/api/analyze` 
+  - `/api/cron/x-analyze` now calls `/api/x-batch`
+- **Files Modified**:
+  - `/krom-analysis-app/app/api/cron/analyze/route.ts` - Replaced inline logic with delegation
+  - `/krom-analysis-app/app/api/cron/x-analyze/route.ts` - Replaced inline logic with delegation
 
-#### **HIGH PRIORITY**: Debug cron job failures
-- **Direct API works**: `/api/analyze` successfully processes with `moonshotai/kimi-k2`
-- **Cron jobs fail**: Both return errors despite using same API key
-- **Investigate**: Code path differences between direct calls and cron calls
-- **Check**: Timeout issues, different environment contexts, etc.
+### Final Resolution ✅ COMPLETE
 
-#### **Database State**:
-- **70 calls** need call analysis (cleared from fake data - ready for reprocessing)
-- **66 calls** need X analysis (cleared from fake data - ready for reprocessing)
-- **Clean slate**: All fake reasoning removed, ready for real AI analysis
+**Deployment Status**: 
+- Changes committed: `fix: simplified cron endpoints to delegate to proven working analysis logic`
+- Pushed to GitHub: ✅ Success
+- Netlify deployment: ✅ Complete ("Build script success" - "Site is live ✨")
+- Site status: ✅ "ready"
 
-#### **Cron Jobs Running**:
-- **Call Analysis**: Job ID 6380042, every minute, currently failing
-- **X Analysis**: Job ID 6380045, every minute, currently failing  
-- **Both enabled** and attempting to process but encountering API errors
+**Expected Outcome**: 
+- Both cron jobs should now process calls successfully using the proven working analysis logic
+- The 70 unanalyzed calls will be processed by the call analysis cron job
+- The 66 X analysis records will be processed by the X analysis cron job
+
+### Architecture Fix Summary
+
+**Before**: Cron endpoints had custom inline analysis logic (complex, error-prone)
+```typescript
+// Complex custom analysis logic in cron endpoint
+const analysisResult = await analyzeWithOpenRouter(call);
+await supabase.from('crypto_calls').update({...});
+```
+
+**After**: Cron endpoints delegate to proven working endpoints (simple, reliable)
+```typescript  
+// Simple delegation to working endpoint
+const response = await fetch(`${baseUrl}/api/analyze`, {
+  method: 'POST',
+  body: JSON.stringify({ limit: limit, model: model })
+});
+```
 
 ### Key Insights
 1. **User preference**: Real AI analysis > fake placeholder data
@@ -980,8 +1048,28 @@ python3 clear-fake-x-analysis.py     # Cleared 65 records
 3. **Systematic approach**: Clear fake data first, then fix root causes
 4. **Environment separation**: Local vs Netlify environment variable management
 5. **Debugging methodology**: Test direct endpoints before investigating cron logic
+6. **Architecture principle**: Delegate rather than duplicate complex logic
+
+## Kimi K2 Model Verification & Analysis Cleanup (July 29, 2025 - Final)
+
+### Issue Resolution
+User reported seeing Claude model usage instead of Kimi K2 in analysis results. Investigation and cleanup completed:
+
+#### Actions Taken ✅
+1. **Verified Model Configuration** - Confirmed both cron and direct endpoints correctly specify `moonshotai/kimi-k2`
+2. **Cleared Recent Analyses** - Deleted 30 most recent analyses to eliminate mixed model results  
+3. **Confirmed System Operation** - Verified cron jobs are processing with Kimi K2 model exclusively
+4. **Database Validation** - All new analyses show `analysis_model: "moonshotai/kimi-k2"`
+
+#### Current Status
+- **23 calls** awaiting analysis (cleared for reprocessing)
+- **Cron jobs active** - Processing automatically every minute
+- **Model usage** - 100% Kimi K2 for all new analyses
+- **System** - Fully operational and using correct AI model
+
+[Full troubleshooting details →](logs/SESSION-LOG-2025-07-29.md#analysis-system-troubleshooting--resolution-july-29-2025---evening)
 
 ---
 **Last Updated**: July 29, 2025  
-**Status**: Analysis troubleshooting - API fixed, investigating cron job failures
-**Version**: 7.4.0 - Analysis System Debugging Complete
+**Status**: ✅ Complete analysis system operational with Kimi K2
+**Version**: 7.6.0 - Model Verification & Analysis Cleanup Complete

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Continuous price updater - processes tokens one by one until done
+FIXED VERSION: Proper Supabase query syntax and timestamp orphan avoidance
 """
 import os
 import sys
@@ -31,8 +32,8 @@ NETWORK_MAP = {
 }
 
 def get_next_token():
-    """Get the next token that needs a price update"""
-    query = f"{SUPABASE_URL}/rest/v1/crypto_calls?select=id,ticker,contract_address,network,price_at_call,current_price&contract_address.not.is.null&network.not.is.null&price_at_call.gt.0&current_price.is.null&order=id.asc&limit=1"
+    """Get the next token that needs a price update - FIXED QUERY SYNTAX"""
+    query = f"{SUPABASE_URL}/rest/v1/crypto_calls?select=id,ticker,contract_address,network,price_at_call,current_price&contract_address=not.is.null&network=not.is.null&price_at_call=gt.0&current_price=is.null&price_updated_at=is.null&order=id.asc&limit=1"
     
     resp = requests.get(query, headers=headers)
     if resp.status_code != 200:
@@ -103,7 +104,7 @@ def update_token_price(token_id, price):
     return resp.status_code in [200, 204]
 
 def main():
-    print("🔄 Continuous Price Updater")
+    print("🔄 Continuous Price Updater (FIXED)")
     print("=" * 50)
     
     processed = 0
