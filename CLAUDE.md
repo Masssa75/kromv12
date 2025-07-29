@@ -812,7 +812,80 @@ python3 fetch-current-prices-dexscreener.py
 4. **Dead Tokens**: Many old tokens show "No pairs found" - this is expected behavior
 5. **Progress Tracking**: ~100 tokens have current prices, ~5,500 still need processing
 
+## Current Price Implementation Session (July 29, 2025)
+
+### Critical Findings
+
+1. **Most tokens ARE NOT dead** - User corrected this misconception. We successfully got price_at_call for 95% of tokens (5,454 out of 5,711), so these tokens SHOULD have current prices available.
+
+2. **Supabase REST API Filter Bug**: The filter `current_price.is.null` is broken - it returns records even when current_price is NOT null. This causes scripts to repeatedly process the same tokens.
+
+3. **Actual Success Rate**: When manually testing tokens:
+   - ~80-90% of tokens DO have prices on DexScreener or GeckoTerminal
+   - Only ~10-20% are truly dead/delisted
+
+4. **Working Manual Update Process**:
+   ```bash
+   # 1. Get token data
+   curl -s -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?select=id,ticker,contract_address,network,price_at_call,current_price&contract_address.not.is.null&network.not.is.null&price_at_call.gt.0&order=id.asc&offset=X&limit=10" -H "apikey: $KEY" | jq
+
+   # 2. Check DexScreener
+   curl -s "https://api.dexscreener.com/latest/dex/tokens/CONTRACT_ADDRESS" | jq '.pairs[0] | {symbol: .baseToken.symbol, price: .priceUsd}'
+
+   # 3. Check GeckoTerminal (if DexScreener fails)
+   curl -s "https://api.geckoterminal.com/api/v2/networks/NETWORK/tokens/CONTRACT_ADDRESS" | jq '.data.attributes | {symbol, price_usd}'
+
+   # 4. Update database
+   curl -s -X PATCH "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?id=eq.ID" \
+     -H "apikey: $KEY" \
+     -H "Authorization: Bearer $KEY" \
+     -H "Content-Type: application/json" \
+     -d '{"current_price": PRICE, "price_updated_at": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'"}'
+   ```
+
+5. **Network Mapping Required**:
+   ```
+   ethereum → eth (for GeckoTerminal)
+   solana → solana
+   bsc → bsc
+   ```
+
+6. **Current Progress**:
+   - Started with 295 tokens having current_price
+   - Dashboard API count endpoint was fixed (removed raw_data filter)
+   - Manually updated ~15-20 more tokens successfully
+   - Need to continue processing remaining ~5,400 tokens
+
+### Tokens Successfully Updated This Session
+- OMALLEY (ETH): $0.000005866
+- BIP177 (SOL): $0.00001150
+- MOOMOO (ETH): $0.002031
+- ROCK (ETH): $0.00008333
+- QUOKKA (SOL): $0.000004747
+- CLAUDE (SOL): $0.000005620
+- NORMA (SOL): $0.000004730
+- BONKHOUSE (SOL): $0.0001230
+- BEANIE (SOL): $0.000007576
+- CHAD (ETH): $0.000009620
+
+### Tokens Not Found (Dead/Delisted)
+- SCAI (ETH): 0x8ECc2D6467a0398d3fA549a3BFa05640fcC567c8
+- MOLLY (BSC): 0x4A5f4F7e3DFF8Af8def7A631709B9f5b215C4444
+- MCAA (SOL): J1uvypc8UqGUjbf5SadLhsGjeo6LhaBoNFhFCvnfJdjT
+
+### Next Session Instructions
+
+1. **Continue manual price updates** using the process above. Use offset to skip processed tokens.
+
+2. **Important**: When a token is not found, always provide the contract address so it can be manually verified.
+
+3. **Do NOT assume tokens are dead** - test each one individually. Most should have prices.
+
+4. **Avoid complex queries** - The Supabase REST API filters are unreliable. Use simple queries with offset/limit.
+
+5. **Working script** (`update-one-token.py`) processes one token at a time successfully - can be run in a loop.
+
 ---
-**Last Updated**: July 28, 2025
-**Status**: Current price implementation in progress. Clear-prices bug identified and fix ready.
-**Version**: 7.2.0 - Current Price Implementation & Bug Discovery
+**Last Updated**: July 29, 2025
+**Status**: Manual price updating in progress. ~300/5,711 tokens have current prices.
+**Version**: 7.3.0 - Current Price Manual Implementation

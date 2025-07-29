@@ -1,130 +1,121 @@
-#!/usr/bin/env python3
+#\!/usr/bin/env python3
+"""Check X analysis status and progress"""
 
-import sqlite3
-from datetime import datetime, timedelta
-import json
+import os
+import requests
+from datetime import datetime, timezone
 
-# Connect to database
-db_path = '/Users/marcschwyn/Desktop/projects/KROMV12/krom_calls.db'
-conn = sqlite3.connect(db_path)
-conn.row_factory = sqlite3.Row
-cursor = conn.cursor()
+# Load environment variables
+url = os.environ.get('SUPABASE_URL')
+key = os.environ.get('SUPABASE_SERVICE_ROLE_KEY')
 
-# Check overall X analysis status
-print("=== X ANALYSIS STATUS CHECK ===\n")
+if not url or not key:
+    with open('.env', 'r') as f:
+        for line in f:
+            if '=' in line and not line.strip().startswith('#'):
+                k, v = line.strip().split('=', 1)
+                if k == 'SUPABASE_URL' and not url:
+                    url = v.strip().strip('"')
+                elif k == 'SUPABASE_SERVICE_ROLE_KEY' and not key:
+                    key = v.strip().strip('"')
 
-# 1. Check how many calls have X analysis
-cursor.execute("""
-    SELECT 
-        COUNT(*) as total_calls,
-        COUNT(x_analyzed_at) as x_analyzed,
-        COUNT(CASE WHEN x_analyzed_at IS NULL THEN 1 END) as not_x_analyzed,
-        COUNT(CASE WHEN x_analysis_tier = 'ALPHA' THEN 1 END) as alpha_calls,
-        COUNT(CASE WHEN x_analysis_tier = 'SOLID' THEN 1 END) as solid_calls,
-        COUNT(CASE WHEN x_analysis_tier = 'BASIC' THEN 1 END) as basic_calls,
-        COUNT(CASE WHEN x_analysis_tier = 'TRASH' THEN 1 END) as trash_calls
-    FROM calls
-""")
-stats = cursor.fetchone()
-print(f"Total calls: {stats['total_calls']:,}")
-print(f"X analyzed: {stats['x_analyzed']:,}")
-print(f"Not X analyzed: {stats['not_x_analyzed']:,}")
-print(f"\nX Analysis Tiers:")
-print(f"  ALPHA: {stats['alpha_calls']}")
-print(f"  SOLID: {stats['solid_calls']}")
-print(f"  BASIC: {stats['basic_calls']}")
-print(f"  TRASH: {stats['trash_calls']}")
+headers = {
+    'apikey': key,
+    'Authorization': f'Bearer {key}',
+    'Content-Type': 'application/json'
+}
 
-# 2. Check recent X analysis activity
-print("\n=== RECENT X ANALYSIS ACTIVITY ===")
-cursor.execute("""
-    SELECT 
-        ticker,
-        buy_timestamp,
-        x_analyzed_at,
-        x_analysis_tier,
-        substr(x_analysis_summary, 1, 100) as summary_preview
-    FROM calls
-    WHERE x_analyzed_at IS NOT NULL
-    ORDER BY x_analyzed_at DESC
-    LIMIT 10
-""")
-recent = cursor.fetchall()
+print('X ANALYSIS STATUS CHECK')
+print('=' * 50)
 
-if recent:
-    print(f"\nLast 10 X analyses:")
-    for row in recent:
-        x_time = datetime.fromisoformat(row['x_analyzed_at'].replace('Z', '+00:00'))
-        print(f"\n{row['ticker']} - {x_time.strftime('%Y-%m-%d %H:%M:%S')} - {row['x_analysis_tier']}")
-        if row['summary_preview']:
-            print(f"  Summary: {row['summary_preview']}...")
-else:
-    print("\nNo X analyses found!")
+# 1. Count calls that need X analysis
+headers_with_count = {**headers, 'Prefer': 'count=exact'}
+response = requests.get(
+    f'{url}/rest/v1/crypto_calls',
+    headers=headers_with_count,
+    params={
+        'select': 'count',
+        'x_raw_tweets': 'not.is.null',
+        'x_analysis_score': 'is.null'
+    }
+)
+needs_x_analysis = int(response.headers.get('content-range', '0/0').split('/')[1])
+print(f'Calls with tweets that need X analysis: {needs_x_analysis}')
 
-# 3. Check if X analysis stopped recently
-print("\n=== X ANALYSIS TIMELINE ===")
-cursor.execute("""
-    SELECT 
-        DATE(x_analyzed_at) as analysis_date,
-        COUNT(*) as count
-    FROM calls
-    WHERE x_analyzed_at IS NOT NULL
-    GROUP BY DATE(x_analyzed_at)
-    ORDER BY analysis_date DESC
-    LIMIT 7
-""")
-timeline = cursor.fetchall()
+# 2. Count calls with completed X analysis
+response = requests.get(
+    f'{url}/rest/v1/crypto_calls',
+    headers=headers_with_count,
+    params={
+        'select': 'count',
+        'x_analysis_score': 'not.is.null'
+    }
+)
+has_x_analysis = int(response.headers.get('content-range', '0/0').split('/')[1])
+print(f'Calls with completed X analysis: {has_x_analysis}')
 
-if timeline:
-    print("\nX analyses per day (last 7 days):")
-    for row in timeline:
-        print(f"  {row['analysis_date']}: {row['count']} analyses")
-else:
-    print("\nNo X analysis timeline data found!")
+# 3. Count total calls with tweets
+response = requests.get(
+    f'{url}/rest/v1/crypto_calls',
+    headers=headers_with_count,
+    params={
+        'select': 'count',
+        'x_raw_tweets': 'not.is.null'
+    }
+)
+total_with_tweets = int(response.headers.get('content-range', '0/0').split('/')[1])
+print(f'Total calls with tweet data: {total_with_tweets}')
+if total_with_tweets > 0:
+    progress = (has_x_analysis / total_with_tweets) * 100
+    print(f'X analysis progress: {progress:.1f}% complete')
 
-# 4. Check calls that should have X analysis but don't
-print("\n=== CALLS MISSING X ANALYSIS ===")
-cursor.execute("""
-    SELECT 
-        ticker,
-        buy_timestamp,
-        analyzed_at,
-        notified,
-        json_extract(raw_data, '$.token.ca') as contract_address
-    FROM calls
-    WHERE x_analyzed_at IS NULL
-    AND analyzed_at IS NOT NULL
-    AND json_extract(raw_data, '$.token.ca') IS NOT NULL
-    ORDER BY buy_timestamp DESC
-    LIMIT 10
-""")
-missing = cursor.fetchall()
+# 4. Check most recent X analysis
+print(f'\nMost recent X analyses:')
+response = requests.get(
+    f'{url}/rest/v1/crypto_calls',
+    headers=headers,
+    params={
+        'select': 'ticker,x_analyzed_at,x_analysis_score',
+        'x_analyzed_at': 'not.is.null',
+        'order': 'x_analyzed_at.desc',
+        'limit': '5'
+    }
+)
+recent_x = response.json()
+now = datetime.now(timezone.utc)
+for call in recent_x:
+    analyzed_at = datetime.fromisoformat(call['x_analyzed_at'].replace('Z', '+00:00'))
+    time_ago = (now - analyzed_at).total_seconds() / 3600
+    print(f'  {call["ticker"]:10} - Score: {call["x_analysis_score"]} - {time_ago:.1f} hours ago')
 
-print(f"\nCalls with Claude analysis but no X analysis (showing last 10):")
-for row in missing:
-    buy_time = datetime.fromtimestamp(row['buy_timestamp'] / 1000)
-    print(f"  {row['ticker']} - {buy_time.strftime('%Y-%m-%d %H:%M')} - CA: {row['contract_address'][:20]}...")
+# 5. Check if any X analysis happened in last hour
+one_hour_ago = (datetime.now(timezone.utc) - datetime.timedelta(hours=1)).isoformat()
+response = requests.get(
+    f'{url}/rest/v1/crypto_calls',
+    headers=headers_with_count,
+    params={
+        'select': 'count',
+        'x_analyzed_at': f'gte.{one_hour_ago}'
+    }
+)
+recent_count = int(response.headers.get('content-range', '0/0').split('/')[1])
+print(f'\nX analyses completed in last hour: {recent_count}')
 
-# 5. Check most recent call timestamps
-print("\n=== MOST RECENT CALLS ===")
-cursor.execute("""
-    SELECT 
-        ticker,
-        buy_timestamp,
-        analyzed_at,
-        x_analyzed_at,
-        notified
-    FROM calls
-    ORDER BY buy_timestamp DESC
-    LIMIT 5
-""")
-most_recent = cursor.fetchall()
-
-for row in most_recent:
-    buy_time = datetime.fromtimestamp(row['buy_timestamp'] / 1000)
-    print(f"\n{row['ticker']} - {buy_time.strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"  Claude analyzed: {'Yes' if row['analyzed_at'] else 'No'}")
-    print(f"  X analyzed: {'Yes' if row['x_analyzed_at'] else 'No'}")
-    print(f"  Notified: {'Yes' if row['notified'] else 'No'}")
-
-conn.close()
+# 6. Check the oldest unanalyzed call with tweets
+print(f'\nOldest calls with tweets waiting for X analysis:')
+response = requests.get(
+    f'{url}/rest/v1/crypto_calls',
+    headers=headers,
+    params={
+        'select': 'ticker,created_at',
+        'x_raw_tweets': 'not.is.null',
+        'x_analysis_score': 'is.null',
+        'order': 'created_at.asc',
+        'limit': '5'
+    }
+)
+oldest_waiting = response.json()
+for call in oldest_waiting:
+    created_at = datetime.fromisoformat(call['created_at'].replace('Z', '+00:00'))
+    days_ago = (now - created_at).days
+    print(f'  {call["ticker"]:10} - Waiting {days_ago} days')

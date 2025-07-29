@@ -110,6 +110,7 @@ def main():
     print("🚀 Batch Price Fetcher")
     print("=" * 50)
     
+    print("Getting token count...")
     total_count = get_token_count()
     print(f"📊 Total tokens needing prices: {total_count}\n")
     
