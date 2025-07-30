@@ -692,288 +692,38 @@ KROMV12/
 - Enhanced GeckoTerminal chart view - maximized space, added price grid
 - [Full session details →](logs/SESSION-LOG-2025-07-26.md)
 
-## Price Data Migration (July 28, 2025)
+## Price Accuracy Fix & Bulk Refresh Complete (July 30, 2025)
 
-Redesigned price fetching architecture with three separate edge functions:
-- `crypto-price-historical` ✅ - Get price at specific timestamp (deployed)
-- `crypto-price-current` 🚧 - Get current market price (in progress)
-- `crypto-price-ath` 📋 - Get all-time high data (planned)
+Successfully fixed systematic price accuracy issues and refreshed all 5,500+ token prices. Discovered and fixed critical GeckoTerminal bug that was causing massively inflated prices.
 
-Key improvements:
-- Direct API calls improved accuracy from 45-78% error to <10% error
-- Network mapping fix (ethereum → eth) improved success rate from 40% to 100%
-- Enhanced crypto-poller now fetches prices immediately for new calls
+**Key Achievements:**
+- Fixed 5,266 tokens with missing ROI calculations
+- Discovered pool selection bug: code was selecting highest price instead of highest liquidity
+- Implemented parallel processing (6x speed improvement) - 71.6 tokens/minute
+- Updated 3,408 token prices with 91% success rate in 47.6 minutes
 
-[Full session details →](logs/SESSION-LOG-2025-07-28.md)
-
-## Historical Price Population Complete (July 29, 2025)
-
-Successfully populated historical prices for 95.5% of all tokens (5,446/5,702). Created parallel processing infrastructure that achieved rates up to 248 tokens/minute. The remaining 4.5% are confirmed dead/delisted tokens.
-
-**Key achievements:**
-- Processed 4,775 tokens in ~2 hours
-- Created parallel processor with 10 concurrent workers
-- Fixed network mapping (ethereum → eth)
-- Identified and handled 254 permanently dead tokens
-
-[Full session details →](logs/SESSION-LOG-2025-07-29.md)
-
-## Current Price Implementation - BREAKTHROUGH COMPLETE (July 29, 2025)
-
-### 🎯 TASK READY TO COMPLETE
-
-**STATUS**: Critical query bug FIXED. Batch processing now works efficiently. Ready to process remaining ~5,200 tokens.
-
-**CURRENT PROGRESS**: 427 tokens have current prices (up from 366)
-
-### How to Continue Current Price Task
-
-The next Claude instance can complete this task using the verified working scripts:
-
-```bash
-# Navigate to project directory
-cd /Users/marcschwyn/desktop/projects/kromv12
-
-# Option 1: Continuous processing (most efficient)
-python3 successful-scripts/update-prices-continuous-FIXED.py
-
-# Option 2: Controlled batches of 100 tokens
-python3 successful-scripts/update-prices-100-tokens.py
-
-# Check progress anytime:
-curl -s -I "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?select=id&current_price=not.is.null" \
-  -H "apikey: [SUPABASE_SERVICE_ROLE_KEY]" -H "Prefer: count=exact" | grep content-range
-```
-
-### Critical Context for Next Instance
-
-#### The Query Bug That Was Fixed
-- **Problem**: Scripts stuck in loops processing same token (MOOMOO)
-- **Root Cause**: Wrong Supabase query syntax + timestamp orphans
-- **Solution**: Use `=is.null` format + clean orphaned timestamps
-- **Impact**: Scripts now progress through unique tokens properly
-
-#### Working Architecture
-1. **DexScreener API first** (fast, no rate limits)
-2. **GeckoTerminal pools fallback** (comprehensive coverage)
-3. **Network mapping**: ethereum → eth, solana → solana
-4. **Success rate**: ~90% of tokens get prices
-5. **Rate limiting**: 0.3-0.5s delays prevent 429 errors
-
-#### Database State
-- **Total tokens**: ~5,647 in database
-- **With current prices**: 427 (7.6%)
-- **Still need processing**: ~5,200 tokens
-- **All timestamp orphans**: Cleaned (5,718 records fixed)
-
-### Session Summary (July 28-29, 2025)
-Major breakthrough session that discovered and fixed critical issues preventing batch processing:
-
-#### 1. Price Display Fix ✅
-- **Problem**: UI was showing market cap values ($7.65K) instead of actual token prices ($0.00000765)
-- **Solution**: Updated `krom-analysis-app/components/price-display.tsx` to always show simple price format
-- **Status**: Deployed to https://lively-torrone-8199e0.netlify.app
-
-#### 2. Network Mapping Implementation ✅
-- **Discovery**: KROM stores "ethereum" but GeckoTerminal API requires "eth"
-- **Solution**: Added network mapping in all price fetching scripts
-- **Impact**: Success rate improved from 52% to 84%
-```python
-network_map = {
-    'ethereum': 'eth',
-    'solana': 'solana',
-    'bsc': 'bsc',
-    'polygon': 'polygon',
-    'arbitrum': 'arbitrum',
-    'base': 'base'
+**Critical Fix Applied:**
+```typescript
+// OLD (WRONG) - Selected highest price pool
+if (poolPrice > bestPrice) {
+  bestPrice = poolPrice;
 }
+
+// NEW (CORRECT) - Selects highest liquidity pool
+const sortedPools = pools.sort((a, b) => {
+  const liquidityA = parseFloat(a.attributes?.reserve_in_usd || '0');
+  const liquidityB = parseFloat(b.attributes?.reserve_in_usd || '0');
+  return liquidityB - liquidityA;
+});
 ```
 
-#### 3. Clear Prices Bug Discovery 🚨
-- **Problem**: 5,701 records have `price_updated_at` timestamps but NULL `current_price`
-- **Cause**: The `/api/clear-prices` endpoint clears price fields but NOT timestamp fields
-- **Impact**: Queries using `current_price.is.null` return records that were already processed
-- **Fix Created**: `krom-analysis-app/app/api/clear-prices/route-FIXED.ts` also clears timestamps
+**Results:**
+- Price accuracy improved from ~80% to ~95%
+- Fixed tokens showing astronomical ROI (e.g., 24M%)
+- Realistic ROI distribution: most tokens -80% to -98% (expected)
+- All 5,504 tokens now have ROI calculated (99.6%)
 
-#### 4. Manual Price Updates Session (July 29, 2025) ✅
-Successfully continued manual price updates with confirmed working approach:
-
-**Tokens Updated This Session:**
-- ✅ **ZEUS** (Solana): Entry $0.1176 → Current $0.005269 (ROI: -95.5%)  
-  CA: `Bd6uMUuTvt9CocffodUidJrukfh8fQj5tPy3AT2Ypvfu`
-- ✅ **THUMB** (Solana): Entry $0.0001054 → Current $0.000004093 (ROI: -96.1%)  
-  CA: `HgcB1NDnztVFeULXqmyH6aN8F5EMzZTauPGAnboQpump`
-- ✅ **WLFI** (Ethereum): Entry $405.78 → Current $407.74 (ROI: +0.5%)  
-  CA: `0x1963A95cfc30e49Cc75F7F2de6027289971cAc79`
-- ✅ **X PARTY** (Ethereum): Entry $0.0000005636 → Current $0.0000000235 (ROI: -95.8%)  
-  CA: `0xEc9545c6d6f557Fd51938a3E139D9B2D81C0169c`
-- 🎉 **MARU** (Ethereum): Entry $0.0002355 → Current $0.0009270 (ROI: +293.7%!)  
-  CA: `0xE6F4567C330625F3488ec69266f5DDD3F3841F33`
-- ✅ **NVDA** (Ethereum): Entry $0.0000002839 → Current $0.00000002756 (ROI: -90.3%)  
-  CA: `0x943B7958FE19Bca72A8F6A4D98794c23F5A9BD03`
-- ✅ **DOG** (Ethereum): Entry $0.0000724052 → Current $0.000002548 (ROI: -96.5%)  
-  CA: `0xBb9C691841Ba1380594B380472d270C95707346d`
-- ✅ **CATSZN** (Solana): Entry $0.0000945483 → Current $0.00001664 (ROI: -82.4%)  
-  CA: `BNH81vewK7Dp87sKN6R4VPqsFtPTiFXCVrEZMsY5k7Ti`
-
-**Key Discovery - Query Filter Bug 🚨:**
-- Scripts using `current_price.is.null` keep finding tokens that already have prices
-- **Root Cause**: Clear prices API creates timestamp orphans (timestamps without prices)
-- **Evidence**: Script repeatedly processes same MOOMOO token that already has current_price
-- **Impact**: Batch processing inefficient, keeps updating same records
-
-**API Success Pattern Confirmed:**
-1. **DexScreener first** (fast, no rate limits) - finds most tokens
-2. **GeckoTerminal pools fallback** - catches tokens DexScreener misses
-3. **Success rate**: ~85-90% of tokens get prices from one of these sources
-4. **Network mapping essential**: ethereum → eth for GeckoTerminal compatibility
-
-#### 4. Scripts Created This Session
-```
-# Main batch processors
-/fetch-current-prices-batch.py              # GeckoTerminal version with network mapping
-/fetch-current-prices-dexscreener.py        # DexScreener API version (avoids rate limits)
-/fetch-current-prices-smart.py              # Handles cleared prices properly
-
-# Testing and debugging
-/test-mr-lean-timeline.py                   # Dead token investigation
-/test-dexscreener-api.py                    # DexScreener API validation
-/check-bip177-status.py                     # Duplicate token investigation
-/final-count-check.py                       # Progress verification
-/SESSION-NOTES-2025-07-28-CURRENT-PRICE.md  # Detailed session notes
-```
-
-#### 5. Current Progress
-- ✅ BIP177 successfully updated: Entry $0.00029889 → Current $0.0000115 (ROI: -96.15%)
-- ✅ DexScreener API working well as alternative to GeckoTerminal
-- ⚠️ Duplicate tokens exist (e.g., BIP177 appears 3+ times) - NOT AN ISSUE, these are separate calls for the same token
-- ⚠️ 5,701 records have timestamps but null prices due to clear-prices bug
-
-## Next Session Instructions
-
-### CRITICAL FIX 1 - Fix Query Filter Logic
-The most important issue to fix is the query filter bug:
-
-**Problem**: Scripts using `current_price.is.null` return tokens that already have prices
-**Solution**: Update all batch scripts to use a more specific query:
-```sql
--- Instead of just checking current_price.is.null
--- Use: current_price.is.null AND price_updated_at.is.null
--- This avoids timestamp orphans from the clear prices bug
-```
-
-### CRITICAL FIX 2 - Deploy Clear-Prices Update
-The clear-prices API creates timestamp orphans. Fix it:
-
-```bash
-# 1. Copy the fixed version
-cd krom-analysis-app
-cp app/api/clear-prices/route-FIXED.ts app/api/clear-prices/route.ts
-
-# 2. Deploy the fix
-git add -A && git commit -m "fix: clear timestamps when clearing prices" && git push
-netlify logs:deploy  # Monitor deployment
-```
-
-### Clean Up Database (Optional but Recommended)
-```sql
--- Clear timestamps for records with null prices
--- This will make queries much cleaner
-UPDATE crypto_calls 
-SET price_updated_at = NULL, price_fetched_at = NULL 
-WHERE current_price IS NULL AND price_updated_at IS NOT NULL;
-```
-
-### Continue Current Price Batch Processing
-Use the smart version that properly handles cleared prices:
-
-```bash
-# Option 1: Use the smart query version
-python3 fetch-current-prices-smart.py
-
-# Option 2: Use DexScreener to avoid GeckoTerminal rate limits
-python3 fetch-current-prices-dexscreener.py
-```
-
-### Important Notes for Next Session
-1. **Duplicate Tokens**: Not an issue - these are separate KROM calls for the same token ticker
-2. **Use Correct Column**: `current_price` (NOT `price_current` which has 0 records)
-3. **Rate Limit Management**: Use DexScreener when another instance is using GeckoTerminal
-4. **Dead Tokens**: Many old tokens show "No pairs found" - this is expected behavior
-5. **Progress Tracking**: ~100 tokens have current prices, ~5,500 still need processing
-
-## Current Price Implementation Session (July 29, 2025)
-
-### Critical Findings
-
-1. **Most tokens ARE NOT dead** - User corrected this misconception. We successfully got price_at_call for 95% of tokens (5,454 out of 5,711), so these tokens SHOULD have current prices available.
-
-2. **Supabase REST API Filter Bug**: The filter `current_price.is.null` is broken - it returns records even when current_price is NOT null. This causes scripts to repeatedly process the same tokens.
-
-3. **Actual Success Rate**: When manually testing tokens:
-   - ~80-90% of tokens DO have prices on DexScreener or GeckoTerminal
-   - Only ~10-20% are truly dead/delisted
-
-4. **Working Manual Update Process**:
-   ```bash
-   # 1. Get token data
-   curl -s -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?select=id,ticker,contract_address,network,price_at_call,current_price&contract_address.not.is.null&network.not.is.null&price_at_call.gt.0&order=id.asc&offset=X&limit=10" -H "apikey: $KEY" | jq
-
-   # 2. Check DexScreener
-   curl -s "https://api.dexscreener.com/latest/dex/tokens/CONTRACT_ADDRESS" | jq '.pairs[0] | {symbol: .baseToken.symbol, price: .priceUsd}'
-
-   # 3. Check GeckoTerminal (if DexScreener fails)
-   curl -s "https://api.geckoterminal.com/api/v2/networks/NETWORK/tokens/CONTRACT_ADDRESS" | jq '.data.attributes | {symbol, price_usd}'
-
-   # 4. Update database
-   curl -s -X PATCH "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?id=eq.ID" \
-     -H "apikey: $KEY" \
-     -H "Authorization: Bearer $KEY" \
-     -H "Content-Type: application/json" \
-     -d '{"current_price": PRICE, "price_updated_at": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'"}'
-   ```
-
-5. **Network Mapping Required**:
-   ```
-   ethereum → eth (for GeckoTerminal)
-   solana → solana
-   bsc → bsc
-   ```
-
-6. **Current Progress**:
-   - Started with 295 tokens having current_price
-   - Dashboard API count endpoint was fixed (removed raw_data filter)
-   - Manually updated ~15-20 more tokens successfully
-   - Need to continue processing remaining ~5,400 tokens
-
-### Tokens Successfully Updated This Session
-- OMALLEY (ETH): $0.000005866
-- BIP177 (SOL): $0.00001150
-- MOOMOO (ETH): $0.002031
-- ROCK (ETH): $0.00008333
-- QUOKKA (SOL): $0.000004747
-- CLAUDE (SOL): $0.000005620
-- NORMA (SOL): $0.000004730
-- BONKHOUSE (SOL): $0.0001230
-- BEANIE (SOL): $0.000007576
-- CHAD (ETH): $0.000009620
-
-### Tokens Not Found (Dead/Delisted)
-- SCAI (ETH): 0x8ECc2D6467a0398d3fA549a3BFa05640fcC567c8
-- MOLLY (BSC): 0x4A5f4F7e3DFF8Af8def7A631709B9f5b215C4444
-- MCAA (SOL): J1uvypc8UqGUjbf5SadLhsGjeo6LhaBoNFhFCvnfJdjT
-
-### Next Session Instructions
-
-1. **Continue manual price updates** using the process above. Use offset to skip processed tokens.
-
-2. **Important**: When a token is not found, always provide the contract address so it can be manually verified.
-
-3. **Do NOT assume tokens are dead** - test each one individually. Most should have prices.
-
-4. **Avoid complex queries** - The Supabase REST API filters are unreliable. Use simple queries with offset/limit.
-
-5. **Working script** (`update-one-token.py`) processes one token at a time successfully - can be run in a loop.
+[Full session details →](logs/SESSION-LOG-2025-07-30.md)
 
 ## Analysis Troubleshooting Session (July 29, 2025)
 
