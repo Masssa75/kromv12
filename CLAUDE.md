@@ -846,6 +846,108 @@ const response = await fetch(`${baseUrl}/api/analyze`, {
 5. **Debugging methodology**: Test direct endpoints before investigating cron logic
 6. **Architecture principle**: Delegate rather than duplicate complex logic
 
+## ATH (All-Time High) Calculation System Implementation (July 30, 2025)
+
+### Overview
+Implemented a comprehensive 3-tier ATH calculation system using GeckoTerminal OHLCV data to find realistic selling points for each token.
+
+### Key Design Decisions
+
+#### 1. **3-Tier Approach** (Daily → Hourly → Minute)
+- **Tier 1**: Find highest daily candle (1000 days history)
+- **Tier 2**: Zoom to hourly candles around that day (±1 day window)
+- **Tier 3**: Zoom to minute candles around that hour (±1 hour window)
+- **Purpose**: Progressively narrow down to find the exact ATH moment
+
+#### 2. **Realistic ATH Price**
+- **Final Implementation**: Use `Math.max(open, close)` from the minute with highest peak
+- **Rationale**: Avoids unrealistic wick extremes while capturing best tradeable price
+- **Evolution**: Started with wick high → changed to close → finalized on max(open,close)
+
+#### 3. **Never Negative ROI**
+- All ATH ROI values use `Math.max(0, calculatedROI)`
+- Tokens that never exceeded entry price show 0% (not negative)
+- More intuitive for users
+
+### Database Schema
+Already had ATH fields ready:
+- `ath_price` - The ATH price (max of open/close)
+- `ath_timestamp` - When ATH occurred
+- `ath_roi_percent` - ROI at ATH (never negative)
+- `ath_market_cap` - Market cap at ATH (not populated yet)
+- `ath_fdv` - FDV at ATH (not populated yet)
+
+### Edge Function: crypto-ath-historical
+
+**Location**: `/supabase/functions/crypto-ath-historical/index.ts`
+
+**Key Features**:
+- Processes tokens without ATH data (`ath_price IS NULL`)
+- Network mapping (ethereum → eth for GeckoTerminal)
+- 6-second delay between tokens (respects rate limits)
+- Fallback logic: minute → hourly → daily data
+- Comprehensive error handling and logging
+
+**API Usage**:
+```bash
+curl -X POST "https://eucfoommxxvqmmwdbkdv.supabase.co/functions/v1/crypto-ath-historical" \
+  -H "Authorization: Bearer [SERVICE_ROLE_KEY]" \
+  -H "Content-Type: application/json" \
+  -d '{"limit": 10}'
+```
+
+### Testing Results
+Manually tested on multiple tokens with 100% accuracy match:
+- **TCM**: 19.7% ATH ROI (never exceeded entry much)
+- **BOOCHIE (ETH)**: 3,198% ATH ROI (37x return)
+- **GREEN**: 996.7% ATH ROI (11x return)
+- **MEERKAT**: 5,940% ATH ROI (60x return)
+
+### UI Updates
+Added tooltip to "Price/ROI" header explaining:
+> "ATH (All-Time High) shows the higher of the opening or closing price from the minute with the highest peak, providing a more realistic selling point than the absolute wick high"
+
+### Next Session: Full Database Processing
+
+**Current Status**:
+- ✅ Edge function tested and working on 10 tokens
+- ✅ Takes ~7.4 seconds per token (including 6s rate limit delay)
+- ✅ ~5,700 tokens need ATH calculation
+- ⏱️ Estimated time: ~11.8 hours for full database
+
+**Processing Strategy Options**:
+
+1. **Single Large Batch**
+   ```bash
+   # Process all at once (11+ hours)
+   curl -X POST ".../crypto-ath-historical" -d '{"limit": 6000}'
+   ```
+
+2. **Multiple Smaller Batches**
+   ```bash
+   # Process 500 at a time (~1 hour each)
+   for i in {1..12}; do
+     curl -X POST ".../crypto-ath-historical" -d '{"limit": 500}'
+     sleep 300  # 5 min break between batches
+   done
+   ```
+
+3. **Parallel Processing** (if rate limits allow)
+   - Could run 2-3 instances with different token sets
+   - Need to ensure they don't process same tokens
+
+4. **Scheduled Cron Approach**
+   - Set up cron to process 100 tokens every 15 minutes
+   - Would complete in ~14 hours spread over time
+
+**Considerations**:
+- GeckoTerminal rate limit: 30 calls/minute (we do 3 calls per token)
+- Edge function timeout: Unknown (test with larger batches)
+- Some pools may not have OHLCV data (expected failures)
+- Monitor for any 429 rate limit errors
+
+**Recommended Approach**: Start with 100-token batches to verify stability, then increase to 500-token batches for overnight processing.
+
 ## Kimi K2 Model Verification & Analysis Cleanup (July 29, 2025 - Final)
 
 ### Issue Resolution
