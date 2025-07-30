@@ -1,0 +1,10 @@
+Database Backup Summary
+======================
+
+Backup Date: July 30, 2025 at 09:24 PM
+Table: crypto_calls
+Total Records: 5811
+Dead Tokens: 175
+Purpose: Backup before removing dead_marked_at and dead_reason columns
+Compressed File: database-backups/crypto_calls_backup_20250730_212418.json.gz
+File Size: 6.97 MB

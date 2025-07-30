@@ -87,10 +87,15 @@ Deno.serve(async (req) => {
         console.log(`Call timestamp: ${new Date(callTimestamp * 1000).toISOString()}`)
         console.log(`Price at call: $${token.price_at_call}`)
 
-        // TIER 1: Daily candles
+        // FIX: Get start of call day (midnight) to avoid missing intraday peaks
+        const callDate = new Date(callTimestamp * 1000)
+        callDate.setUTCHours(0, 0, 0, 0)
+        const callDayStart = callDate.getTime() / 1000
+
+        // TIER 1: Daily candles - fetch from START of call day
         const dailyData = await fetchOHLCV(geckoNetwork, token.pool_address, 'day', 1000)
         const dailyAfterCall = dailyData
-          .filter(candle => candle.timestamp >= callTimestamp && candle.high > 0)
+          .filter(candle => candle.timestamp >= callDayStart && candle.high > 0)
           .sort((a, b) => b.high - a.high)
 
         if (dailyAfterCall.length === 0) {
@@ -135,6 +140,7 @@ Deno.serve(async (req) => {
         const minuteAroundATH = minuteData
           .filter(candle => 
             Math.abs(candle.timestamp - hourlyATH.timestamp) <= 3600 && 
+            candle.timestamp >= callTimestamp &&  // FIX: Only consider minutes AFTER actual call time
             candle.high > 0 &&
             candle.close > 0
           )

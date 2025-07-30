@@ -884,9 +884,20 @@ Already had ATH fields ready:
 **Key Features**:
 - Processes tokens without ATH data (`ath_price IS NULL`)
 - Network mapping (ethereum → eth for GeckoTerminal)
-- 6-second delay between tokens (respects rate limits)
+- **Updated**: Now uses CoinGecko Pro API (500 calls/min limit)
+- **Updated**: Reduced delay to 0.5 seconds between tokens
+- **Updated**: Processes oldest coins first (ORDER BY created_at ASC)
 - Fallback logic: minute → hourly → daily data
 - Comprehensive error handling and logging
+
+**API Configuration**:
+```typescript
+// Pro API configuration
+const API_BASE = "https://pro-api.coingecko.com/api/v3/onchain"
+const HEADERS = {"x-cg-pro-api-key": GECKO_API_KEY}
+// Rate limiting: 500 calls/minute (we make 3 calls per token)
+await new Promise(resolve => setTimeout(resolve, 500)) // 0.5 seconds
+```
 
 **API Usage**:
 ```bash
@@ -907,46 +918,18 @@ Manually tested on multiple tokens with 100% accuracy match:
 Added tooltip to "Price/ROI" header explaining:
 > "ATH (All-Time High) shows the higher of the opening or closing price from the minute with the highest peak, providing a more realistic selling point than the absolute wick high"
 
-### Next Session: Full Database Processing
+### ATH Processing Completed (July 30, 2025)
 
-**Current Status**:
-- ✅ Edge function tested and working on 10 tokens
-- ✅ Takes ~7.4 seconds per token (including 6s rate limit delay)
-- ✅ ~5,700 tokens need ATH calculation
-- ⏱️ Estimated time: ~11.8 hours for full database
+Successfully implemented 3-tier ATH calculation with critical bug fix for intraday peaks.
 
-**Processing Strategy Options**:
+**Key Achievement**: Fixed bug where ATH calculation missed same-day peaks by searching from call day start instead of exact call time.
 
-1. **Single Large Batch**
-   ```bash
-   # Process all at once (11+ hours)
-   curl -X POST ".../crypto-ath-historical" -d '{"limit": 6000}'
-   ```
+**Results**: 
+- Processed 5,553 tokens with parallel processing (~150-200 tokens/min)
+- Fixed tokens like FIRST (50.7% ROI) and COOL (166% ROI) that showed incorrect negative/zero values
+- All scripts moved to `successful-scripts/ath-calculation/`
 
-2. **Multiple Smaller Batches**
-   ```bash
-   # Process 500 at a time (~1 hour each)
-   for i in {1..12}; do
-     curl -X POST ".../crypto-ath-historical" -d '{"limit": 500}'
-     sleep 300  # 5 min break between batches
-   done
-   ```
-
-3. **Parallel Processing** (if rate limits allow)
-   - Could run 2-3 instances with different token sets
-   - Need to ensure they don't process same tokens
-
-4. **Scheduled Cron Approach**
-   - Set up cron to process 100 tokens every 15 minutes
-   - Would complete in ~14 hours spread over time
-
-**Considerations**:
-- GeckoTerminal rate limit: 30 calls/minute (we do 3 calls per token)
-- Edge function timeout: Unknown (test with larger batches)
-- Some pools may not have OHLCV data (expected failures)
-- Monitor for any 429 rate limit errors
-
-**Recommended Approach**: Start with 100-token batches to verify stability, then increase to 500-token batches for overnight processing.
+**Full documentation**: See `krom-analysis-app/ATH-IMPLEMENTATION.md`
 
 ## Kimi K2 Model Verification & Analysis Cleanup (July 29, 2025 - Final)
 
@@ -968,6 +951,6 @@ User reported seeing Claude model usage instead of Kimi K2 in analysis results. 
 [Full troubleshooting details →](logs/SESSION-LOG-2025-07-29.md#analysis-system-troubleshooting--resolution-july-29-2025---evening)
 
 ---
-**Last Updated**: July 29, 2025  
-**Status**: 🎯 CURRENT PRICE TASK READY TO COMPLETE - Query bug fixed, batch processing operational
-**Version**: 7.7.0 - Current Price Query Bug Fix & Batch Processing Complete
+**Last Updated**: July 30, 2025  
+**Status**: ✅ ATH Processing Complete - 5,497/5,555 tokens (98.9%) processed with fixed algorithm
+**Version**: 7.9.0 - ATH Bug Fix & Full Database Processing Complete
