@@ -3,6 +3,7 @@ import { corsHeaders } from '../_shared/cors.ts'
 
 // GeckoTerminal API configuration
 const GECKO_API_BASE = 'https://api.geckoterminal.com/api/v2'
+const COINGECKO_PRO_API_BASE = 'https://pro-api.coingecko.com/api/v3/onchain'
 const NETWORK_MAP: Record<string, string> = {
   'ethereum': 'eth',
   'solana': 'solana',
@@ -112,10 +113,12 @@ Deno.serve(async (req) => {
 
         if (hourlyAroundATH.length === 0) {
           // Fallback to daily data
+          const dailyRoi = ((dailyATH.high - token.price_at_call) / token.price_at_call) * 100
+          
           const athResult: ATHResult = {
             ath_price: dailyATH.high,
             ath_timestamp: dailyATH.timestamp,
-            ath_roi_percent: ((dailyATH.high - token.price_at_call) / token.price_at_call) * 100
+            ath_roi_percent: Math.max(0, dailyRoi)  // Never negative
           }
           await updateToken(supabase, token.id, athResult)
           results.push({ tokenId: token.id, ticker: token.ticker, ...athResult })
@@ -141,20 +144,28 @@ Deno.serve(async (req) => {
         
         if (minuteAroundATH.length > 0) {
           const minuteATH = minuteAroundATH[0]
-          console.log(`Minute ATH: $${minuteATH.high} (close: $${minuteATH.close})`)
+          console.log(`Minute ATH: $${minuteATH.high} (open: $${minuteATH.open}, close: $${minuteATH.close})`)
+          
+          // Use the higher of open or close for more realistic ATH
+          const bestPrice = Math.max(minuteATH.open, minuteATH.close)
+          const athRoi = ((bestPrice - token.price_at_call) / token.price_at_call) * 100
           
           athResult = {
-            ath_price: minuteATH.high,
+            ath_price: bestPrice,  // Higher of open/close for realistic selling point
             ath_timestamp: minuteATH.timestamp,
-            ath_roi_percent: ((minuteATH.high - token.price_at_call) / token.price_at_call) * 100,
-            ath_close_price: minuteATH.close  // Keep for logging but don't save to DB
+            ath_roi_percent: Math.max(0, athRoi),  // Never negative - 0 means never exceeded entry
+            ath_close_price: minuteATH.close  // Keep for logging
           }
+          
+          console.log(`Using best price (max of open/close) as ATH: $${bestPrice} (wick high was $${minuteATH.high})`)
         } else {
           // Fallback to hourly data
+          const hourlyRoi = ((hourlyATH.high - token.price_at_call) / token.price_at_call) * 100
+          
           athResult = {
             ath_price: hourlyATH.high,
             ath_timestamp: hourlyATH.timestamp,
-            ath_roi_percent: ((hourlyATH.high - token.price_at_call) / token.price_at_call) * 100
+            ath_roi_percent: Math.max(0, hourlyRoi)  // Never negative
           }
         }
 
@@ -162,9 +173,10 @@ Deno.serve(async (req) => {
         await updateToken(supabase, token.id, athResult)
         results.push({ tokenId: token.id, ticker: token.ticker, ...athResult })
         
-        // Rate limiting - GeckoTerminal allows 30 calls/minute
-        // We make 3 calls per token, so ~10 tokens per minute max
-        await new Promise(resolve => setTimeout(resolve, 6000)) // 6 seconds between tokens
+        // Rate limiting - CoinGecko Pro API allows 500 calls/minute
+        // We make 3 calls per token, so ~166 tokens per minute max
+        // Using 0.5 second delay since we're on Pro API
+        await new Promise(resolve => setTimeout(resolve, 500)) // 0.5 seconds between tokens
 
       } catch (error) {
         console.error(`Error processing ${token.ticker}:`, error)
@@ -204,14 +216,28 @@ async function fetchOHLCV(
   limit: number = 1000,
   beforeTimestamp?: number
 ): Promise<OHLCVCandle[]> {
-  const url = new URL(`${GECKO_API_BASE}/networks/${network}/pools/${poolAddress}/ohlcv/${timeframe}`)
+  // Get API key from environment
+  const apiKey = Deno.env.get('GECKO_TERMINAL_API_KEY')
+  
+  let url: URL
+  let headers: Record<string, string> = {}
+  
+  if (apiKey && apiKey.startsWith('CG-')) {
+    // Use CoinGecko Pro API for higher rate limits (500/min vs 30/min)
+    url = new URL(`${COINGECKO_PRO_API_BASE}/networks/${network}/pools/${poolAddress}/ohlcv/${timeframe}`)
+    headers['x-cg-pro-api-key'] = apiKey
+  } else {
+    // Fallback to public API
+    url = new URL(`${GECKO_API_BASE}/networks/${network}/pools/${poolAddress}/ohlcv/${timeframe}`)
+  }
+  
   url.searchParams.append('aggregate', '1')
   url.searchParams.append('limit', limit.toString())
   if (beforeTimestamp) {
     url.searchParams.append('before_timestamp', beforeTimestamp.toString())
   }
 
-  const response = await fetch(url.toString())
+  const response = await fetch(url.toString(), { headers })
   if (!response.ok) {
     throw new Error(`GeckoTerminal API error: ${response.status}`)
   }
