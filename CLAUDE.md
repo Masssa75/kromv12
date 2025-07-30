@@ -718,10 +718,56 @@ Successfully populated historical prices for 95.5% of all tokens (5,446/5,702). 
 
 [Full session details →](logs/SESSION-LOG-2025-07-29.md)
 
-## Current Price Implementation (July 28, 2025 - Session 4)
+## Current Price Implementation - BREAKTHROUGH COMPLETE (July 29, 2025)
 
-### Session Summary
-Successfully implemented current price fetching for tokens, discovered and fixed multiple issues:
+### 🎯 TASK READY TO COMPLETE
+
+**STATUS**: Critical query bug FIXED. Batch processing now works efficiently. Ready to process remaining ~5,200 tokens.
+
+**CURRENT PROGRESS**: 427 tokens have current prices (up from 366)
+
+### How to Continue Current Price Task
+
+The next Claude instance can complete this task using the verified working scripts:
+
+```bash
+# Navigate to project directory
+cd /Users/marcschwyn/desktop/projects/kromv12
+
+# Option 1: Continuous processing (most efficient)
+python3 successful-scripts/update-prices-continuous-FIXED.py
+
+# Option 2: Controlled batches of 100 tokens
+python3 successful-scripts/update-prices-100-tokens.py
+
+# Check progress anytime:
+curl -s -I "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?select=id&current_price=not.is.null" \
+  -H "apikey: [SUPABASE_SERVICE_ROLE_KEY]" -H "Prefer: count=exact" | grep content-range
+```
+
+### Critical Context for Next Instance
+
+#### The Query Bug That Was Fixed
+- **Problem**: Scripts stuck in loops processing same token (MOOMOO)
+- **Root Cause**: Wrong Supabase query syntax + timestamp orphans
+- **Solution**: Use `=is.null` format + clean orphaned timestamps
+- **Impact**: Scripts now progress through unique tokens properly
+
+#### Working Architecture
+1. **DexScreener API first** (fast, no rate limits)
+2. **GeckoTerminal pools fallback** (comprehensive coverage)
+3. **Network mapping**: ethereum → eth, solana → solana
+4. **Success rate**: ~90% of tokens get prices
+5. **Rate limiting**: 0.3-0.5s delays prevent 429 errors
+
+#### Database State
+- **Total tokens**: ~5,647 in database
+- **With current prices**: 427 (7.6%)
+- **Still need processing**: ~5,200 tokens
+- **All timestamp orphans**: Cleaned (5,718 records fixed)
+
+### Session Summary (July 28-29, 2025)
+Major breakthrough session that discovered and fixed critical issues preventing batch processing:
 
 #### 1. Price Display Fix ✅
 - **Problem**: UI was showing market cap values ($7.65K) instead of actual token prices ($0.00000765)
@@ -1071,5 +1117,5 @@ User reported seeing Claude model usage instead of Kimi K2 in analysis results. 
 
 ---
 **Last Updated**: July 29, 2025  
-**Status**: ✅ Complete analysis system operational with Kimi K2
-**Version**: 7.6.0 - Model Verification & Analysis Cleanup Complete
+**Status**: 🎯 CURRENT PRICE TASK READY TO COMPLETE - Query bug fixed, batch processing operational
+**Version**: 7.7.0 - Current Price Query Bug Fix & Batch Processing Complete

@@ -2,8 +2,99 @@
 
 ## Session: Historical Price Population Complete
 
+## Session: Current Price Query Bug Fix & Batch Processing (July 29, 2025 - Evening)
+
 ### Session Summary
-Successfully completed the historical price population task, processing 4,775 tokens and achieving 95.5% completion rate. Created parallel processing scripts that dramatically improved performance from 12 tokens/minute to over 200 tokens/minute.
+**MAJOR BREAKTHROUGH**: Discovered and fixed critical query filter bug that was preventing efficient batch processing of current prices. Successfully processed 61 additional tokens, bringing total from 366 to 427 tokens with current prices.
+
+### Critical Bug Discovery & Resolution ✅
+
+#### The Problem
+Scripts were stuck in infinite loops, repeatedly processing the same token (MOOMOO) instead of progressing through the database.
+
+#### Root Cause Analysis
+1. **Timestamp Orphans**: The clear-prices API was clearing price fields but NOT timestamp fields
+2. **Wrong Query Syntax**: Using `.is.null` instead of correct `=is.null` format
+3. **5,718 Records Affected**: Massive number of records with `price_updated_at` but NULL `current_price`
+
+#### The Fix
+```python
+# BEFORE (broken):
+query = "current_price.is.null&price_updated_at.not.is.null"
+
+# AFTER (working):  
+query = "current_price=is.null&price_updated_at=is.null"
+```
+
+### Technical Achievements
+
+#### 1. Database Cleanup ✅
+- **Identified**: 5,718 timestamp orphan records
+- **Cleaned**: All orphaned timestamps cleared
+- **Impact**: Scripts now progress properly through unique tokens
+
+#### 2. Query Syntax Correction ✅
+- **Discovered**: Supabase requires `=is.null` not `.is.null`
+- **Fixed**: All batch processing scripts updated
+- **Verified**: Scripts now find different tokens each run (TEST → ANXIETY → TRUST)
+
+#### 3. Successful Batch Processing ✅
+- **Started**: 366 tokens with current prices
+- **Ended**: 427 tokens with current prices  
+- **Processed**: 61 additional tokens in ~5 minutes
+- **Success Rate**: ~90% (DexScreener + GeckoTerminal fallback)
+
+### Scripts Created & Organized
+
+#### Working Scripts (moved to successful-scripts/)
+1. **`update-token-price-robust-FIXED.py`** - Single token processor with proper query
+2. **`update-prices-continuous-FIXED.py`** - Continuous batch processor
+3. **`update-prices-100-tokens.py`** - Limited batch with progress tracking
+4. **`cleanup-timestamp-orphans.py`** - Database maintenance tool
+
+#### Scripts to Delete (superseded/broken)
+- `update-prices-100-tokens.py` (root level - duplicate)
+- `update-prices-continuous-FIXED.py` (root level - duplicate)
+- `update-token-price-robust-FIXED.py` (root level - duplicate)
+- `batch-price-fetcher.py` (old, likely broken syntax)
+- `cleanup-null-price-timestamps.py` (less comprehensive version)
+
+### Performance Metrics
+- **Processing Rate**: ~12 tokens per minute
+- **API Success Rate**: ~90% (DexScreener first, GeckoTerminal fallback)
+- **Network Mapping**: Essential for ethereum → eth conversion
+- **Rate Limiting**: 0.3-0.5 second delays prevent API issues
+
+### Next Session Instructions
+
+**READY TO COMPLETE CURRENT PRICE TASK** 🎯
+
+The batch processing system is now fully operational and can finish the remaining ~5,000 tokens needing current prices.
+
+#### How to Continue:
+```bash
+# Navigate to project directory
+cd /Users/marcschwyn/desktop/projects/kromv12
+
+# Run the continuous processor (most efficient)
+python3 successful-scripts/update-prices-continuous-FIXED.py
+
+# OR run in 100-token batches (more controlled)
+python3 successful-scripts/update-prices-100-tokens.py
+```
+
+#### Current Status:
+- **427 tokens** have current prices (up from 366)
+- **~5,200 tokens** still need processing
+- **Success rate**: 90% of tokens get prices
+- **No more stuck loops**: Scripts progress properly
+
+#### Key Context for Next Instance:
+- **Database**: All operations use Supabase (never SQLite)
+- **Query syntax**: Must use `=is.null` format for Supabase
+- **API pattern**: DexScreener first → GeckoTerminal pools fallback
+- **Network mapping**: ethereum → eth, solana → solana, etc.
+- **Rate limiting**: 0.3-0.5s delays prevent 429 errors
 
 ### Major Achievements
 
@@ -265,6 +356,49 @@ body: JSON.stringify({ limit: limit, model: model })
 - System processing with Kimi K2 exclusively
 - Cron jobs automatically handling remaining backlog
 
-### Session Time: ~30 minutes
+### UI Bug Discovery & Complete Resolution ✅
+
+#### Initial Issue
+User showed that X analysis detail panel was displaying "claude-3-haiku" instead of actual model used.
+
+#### Root Cause Analysis - Two-Part Problem ✅
+1. **UI Component Issue**: In `/components/analysis-detail-panel.tsx` line 328:
+   ```typescript
+   // Before (WRONG - hardcoded):
+   {mode === 'call' ? (call.analysis_model || 'Unknown') : 'claude-3-haiku'}
+   
+   // After (FIXED - uses actual model):
+   {mode === 'call' ? (call.analysis_model || 'Unknown') : (call.x_analysis_model || 'Unknown')}
+   ```
+
+2. **API Endpoint Missing Field**: In `/app/api/analyzed/route.ts` results mapping:
+   ```typescript
+   // MISSING: x_analysis_model field was not included in API response
+   // ADDED: x_analysis_model: call.x_analysis_model,
+   ```
+
+#### Complete Resolution ✅
+- **Step 1**: Fixed hardcoded model display in detail panel component
+- **Step 2**: After deployment, discovered UI still showed "Unknown" 
+- **Step 3**: Investigated with Playwright and database queries
+- **Step 4**: Found API endpoint was missing `x_analysis_model` field
+- **Step 5**: Added missing field to API response mapping
+- **Step 6**: Deployed fix and verified with API testing
+
+#### Verification Results ✅
+```bash
+# API Response Now Correct:
+curl /api/analyzed | jq '.results[].x_analysis_model'
+"moonshotai/kimi-k2"
+"moonshotai/kimi-k2"
+```
+
+**Final Status**: 
+- X analysis detail panels now show correct model: `moonshotai/kimi-k2`
+- Both UI component and API endpoint fixed
+- System fully operational with accurate model display
+
+### Session Time: ~90 minutes
 ### Analyses Cleared: 30 entries  
+### Issues Fixed: 2 (UI component + API endpoint)
 ### System Status: KIMI K2 VERIFIED & OPERATIONAL ✅
