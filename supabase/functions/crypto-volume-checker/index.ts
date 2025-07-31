@@ -136,13 +136,15 @@ serve(async (req) => {
                 .update({
                   volume_24h: volumeData.volume_24h,
                   txns_24h: volumeData.txns_24h,
+                  liquidity_usd: volumeData.liquidity_usd,
+                  price_change_24h: volumeData.price_change_24h,
                   last_volume_check: new Date().toISOString()
                 })
                 .eq('id', token.id)
 
               if (!updateError) {
                 totalUpdated++
-                console.log(`Updated ${token.ticker}: $${volumeData.volume_24h.toFixed(2)} volume, ${volumeData.txns_24h} txns`)
+                console.log(`Updated ${token.ticker}: $${volumeData.volume_24h.toFixed(2)} volume, $${volumeData.liquidity_usd.toFixed(2)} liquidity, ${volumeData.price_change_24h.toFixed(1)}% change`)
               }
             } else {
               // Mark as checked even if no data found
