@@ -258,7 +258,10 @@ if __name__ == "__main__":
             print(f"  Tokens with renounced ownership: {stats['renounced_tokens']}")
             print(f"  High security (80+): {stats['high_security_tokens']}")
             print(f"  Low security (<50): {stats['low_security_tokens']}")
-            print(f"  Average security score: {stats['avg_security_score']:.1f}")
+            if stats['avg_security_score'] is not None:
+                print(f"  Average security score: {float(stats['avg_security_score']):.1f}")
+            else:
+                print(f"  Average security score: N/A")
     
     print("\n" + "-" * 60)
     

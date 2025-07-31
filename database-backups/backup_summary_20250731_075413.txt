@@ -1,0 +1,11 @@
+Database Backup Summary
+======================
+Timestamp: 20250731_075413
+Total Records: 5844
+Compressed File: database-backups/crypto_calls_backup_20250731_075413.json.gz
+File Size: 6.08 MB
+
+Recent Changes:
+- Added security analysis columns
+- Fetched security data for 50 tokens
+- Implemented security display in UI
