@@ -950,36 +950,87 @@ User reported seeing Claude model usage instead of Kimi K2 in analysis results. 
 
 [Full troubleshooting details →](logs/SESSION-LOG-2025-07-29.md#analysis-system-troubleshooting--resolution-july-29-2025---evening)
 
+## Security Feature Implementation (July 31, 2025) - PAUSED
+
+### Overview
+Implemented token security analysis using GoPlus Security API to detect liquidity locks, ownership status, and security warnings. Feature is functional but has limited coverage.
+
+### What Was Completed
+1. **Database Schema** - Added 7 security columns to Supabase:
+   - `liquidity_locked` (BOOLEAN) - Whether liquidity is locked
+   - `liquidity_lock_percent` (NUMERIC) - Percentage of liquidity locked
+   - `ownership_renounced` (BOOLEAN) - Whether ownership is renounced
+   - `security_score` (INTEGER) - Overall security score (0-100)
+   - `security_warnings` (JSONB) - Array of security warnings
+   - `security_checked_at` (TIMESTAMPTZ) - When security was checked
+   - `security_raw_data` (JSONB) - Raw API response data
+
+2. **GoPlus API Integration**
+   - **API**: https://api.gopluslabs.io/api/v1/token_security/{chain_id}
+   - **Cost**: FREE (no API key required)
+   - **Coverage**: Ethereum, BSC, Polygon, Arbitrum, Base, Avalanche, Solana
+   - **Success Rate**: ~38% (62% of tokens have no data, especially Solana pump.fun tokens)
+
+3. **UI Implementation**
+   - Added Security column to analyzed calls table
+   - Icon system: 🔒 (locked), 🔓 (unlocked), ⚠️ (warning), 🛡️ (shield)
+   - Color coding: Green (80+), Yellow (50-79), Red (<50)
+   - **Known Issue**: Modal dialog doesn't open on click (client-side hydration issue)
+
+4. **Batch Processing Script**
+   - Location: `/Users/marcschwyn/Desktop/projects/KROMV12/batch-security-analysis.py`
+   - Processes tokens without security data
+   - Orders by newest first
+   - ~150 tokens analyzed successfully
+
+### Security Scoring Algorithm
+```python
+# Start with 100 points
+score = 100
+# Deduct for issues:
+# - Honeypot: -50 points
+# - High taxes (>10%): -15 points  
+# - Mintable token: -20 points
+# - No liquidity lock: -5 points (warning only)
+# Bonus for good practices:
+# + Liquidity locked: +10 points
+# + Ownership renounced: +10 points
+```
+
+### Files Created/Modified
+- `/batch-security-analysis.py` - Main batch processor
+- `/components/security-display.tsx` - React UI component
+- `/components/ui/dialog.tsx` - Dialog component
+- `/app/api/analyzed/route.ts` - Added security fields to API
+- `/app/page.tsx` - Integrated SecurityDisplay component
+- `/tests/test-security-display.spec.ts` - Playwright tests
+
+### To Resume This Feature
+1. **Fix Dialog Issue**: Debug why security modal doesn't open on click
+2. **Create Edge Function**: Deploy `crypto-security-checker` to Supabase
+3. **Add to Orchestrator**: Include security check between analyzer and notifier
+4. **Alternative APIs**: Consider DexScreener or other APIs for better Solana coverage
+5. **Process Remaining Tokens**: ~2,400 tokens still need security analysis
+
+### Key Limitation
+GoPlus API has limited coverage for newer tokens, especially Solana pump.fun tokens. Only ~38% of tokens have security data available.
+
+### Deployment Status
+- Feature deployed to https://lively-torrone-8199e0.netlify.app
+- Security column visible in UI
+- Icons display correctly based on security status
+- Modal dialog has client-side issue (doesn't open)
+
+## DexScreener Volume & Liquidity Integration (July 31, 2025 - Later Session)
+
+Successfully integrated DexScreener API to track volume and liquidity data:
+- Edge Function processes 30 tokens per API call efficiently
+- Added volume_24h, liquidity_usd, price_change_24h to database
+- Enhanced UI with sortable columns and smart formatting
+- 100% token coverage achieved with optimized cron job
+- [Full session details →](logs/SESSION-LOG-2025-07-31.md)
+
 ---
 **Last Updated**: July 31, 2025  
-**Status**: 🔒 Security Features Implemented - Deployment Pending
-**Version**: 8.1.0 - GoPlus Security Integration Complete
-
-## Next Session Notes (July 31, 2025)
-
-### Security Feature Implementation Status
-Comprehensive security analysis using GoPlus API (FREE, no key required) has been implemented:
-
-**✅ Completed:**
-- Added 7 security columns to database (liquidity_locked, security_score, etc.)
-- SecurityDisplay component with icons (🔒 locked, 🔓 unlocked, ⚠️ warning)
-- Analyzed 100 tokens: 42 locked liquidity, 49 high security scores
-- All code committed locally in krom-analysis-app
-
-**⏳ Deployment Issue:**
-- Git push failed due to authentication issue
-- Deployed via `netlify deploy --prod` but stuck in "uploading" state
-- Check Netlify dashboard or redeploy
-
-**📋 Next Steps:**
-1. Verify deployment completed: `netlify api listSiteDeploys --data '{"site_id": "8ff019b3-29ef-4223-b6ad-2cc46e91807e"}' | jq '.[0].state'`
-2. Create edge function: `supabase functions new crypto-security-checker`
-3. Add to orchestrator between analyzer and notifier
-4. Run full database analysis: `python3 batch-security-analysis.py` (2,512 tokens remaining)
-
-**Important Files:**
-- `/batch-security-analysis.py` - Main security processor
-- `/components/security-display.tsx` - UI component (committed)
-- `/app/api/analyzed/route.ts` - API with security fields (committed)
-
-### Full session details → [logs/SESSION-LOG-2025-07-31.md](logs/SESSION-LOG-2025-07-31.md)
+**Status**: ✅ Volume/Liquidity tracking complete. Ready for smart ATH scheduling based on activity.
+**Version**: 8.2.0 - DexScreener Integration & Volume Tracking Complete
