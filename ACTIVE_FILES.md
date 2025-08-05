@@ -1,6 +1,6 @@
 # KROMV12 Active Files
 **Last Updated**: August 5, 2025
-**Version**: 8.1.0 - Row Level Security Enabled
+**Version**: 8.2.0 - Native Cron Migration & System Reliability Improvements
 
 ⚠️ **DATABASE NOTICE**: All KROM apps use SUPABASE exclusively. The local SQLite database is LEGACY only.
 ⚠️ **RLS ENABLED**: Write operations now require SUPABASE_SERVICE_ROLE_KEY (not anon key).
@@ -97,41 +97,39 @@ http://localhost:5001/standalone  # No-wallet analytics dashboard
 - **Contract addresses**: Stored in `raw_data.token.ca`
 - **Networks**: Stored in `raw_data.token.network`
 
-## Current Work: Price Data Migration (July 28, 2025)
+## Current System Status (August 5, 2025)
 
-### Active Migration Scripts
-- `repopulate-with-pagination.py` - Smart KROM API pagination for missing data
-- `backup-before-price-clear.py` - Database backup before clearing prices
-- `clear-price-data-test-50.py` - Tested price clearing on 50 records
-- `check-krom-api-trade-section.py` - KROM API structure analysis
-- `check-missing-calls-status.py` - Missing trade data analysis
+### Active Edge Functions (Supabase)
+- `crypto-orchestrator` - Main coordinator (every 30 minutes)
+- `crypto-poller` - KROM API polling (as needed)  
+- `crypto-analyzer` - Claude call analysis (every hour, 50 calls)
+- `crypto-x-analyzer-nitter` - X research analysis (every 2 hours, 20 calls)
+- `crypto-ath-update` - ATH monitoring (every minute, 25 tokens)
+- `crypto-ath-notifier` - Telegram ATH alerts (triggered by updates)
+- `crypto-volume-checker` - Volume/liquidity tracking (batch processing)
 
-### Modified Files This Session
-- `/krom-analysis-app/components/price-display.tsx` - Shows raw_data.trade.buyPrice
-- `/krom-analysis-app/app/api/analyzed/route.ts` - Returns raw_data in response
-- `/krom-analysis-app/app/page.tsx` - Passes raw_data to PriceDisplay
+### Native Cron Jobs (Supabase pg_cron)
+- ✅ All 4 cron jobs migrated from external service
+- ✅ Zero external dependencies for scheduling
+- ✅ Real-time monitoring via Supabase logs
+- ✅ Improved reliability and frequency
 
-### Migration Status
-- ✅ UI updated to show buy prices from raw_data
-- ✅ Repopulated 100+ calls with correct trade data
-- ✅ Database backed up: `database-backups/crypto_calls_backup_20250728_114514.json`
-- ✅ Test cleared 50 oldest records successfully
-- ⏳ Ready to clear all 445 records with price data
-- ⏳ Need to implement new price fetching logic
-- ⏳ Need to fix edge functions for correct price fetching
+### Recent System Maintenance
+- ✅ Fixed OpenRouter API key (analysis working again)
+- ✅ Corrected crypto-poller buy_timestamp bug
+- ✅ Backfilled 12 missing timestamp records
+- ✅ All systems operational and catching up
+- ✅ Analysis backlog: ~300 pending (processing automatically)
 
-## Edge Functions (Active)
-- `crypto-orchestrator-with-x.ts` - Main orchestrator
-- `crypto-poller.ts` - KROM API poller  
-- `crypto-analyzer.ts` - Claude analysis
-- `crypto-x-analyzer-nitter.ts` - X research (using ScraperAPI)
-- `crypto-notifier-complete.ts` - Dual bot Telegram notifications
-- `crypto-price-single` - Single token price fetching (NEW - with ATH support)
+### Configuration Files
+- `SUPABASE_CRON_SETUP.md` - Documentation for native cron setup
+- `.env` - Environment variables with updated API keys
+- `CLAUDE.md` - Updated system documentation (v8.2.0)
+- `logs/SESSION-LOG-2025-08.md` - Complete August session history
 
-## Database Status (SUPABASE ONLY)
-- **Total Calls**: 5,103+ (in Supabase crypto_calls table)
-- **Database**: All data operations use Supabase cloud database
-- **Call Analysis**: 150+ completed with scores
-- **X Analysis**: 149+ completed with scores
-- **Price Data**: Edge function ready for all tokens
-- **Database Columns**: 15 new price-related columns added
+### Monitoring & Status
+- **Total Calls**: 5,700+ tokens in crypto_calls table
+- **ATH Monitoring**: Continuous processing of all tokens
+- **Analysis Pipeline**: Auto-processing new calls and X research
+- **Notification System**: @KROMATHAlerts_bot for new ATHs >10%
+- **System Health**: All functions operational, zero external dependencies
