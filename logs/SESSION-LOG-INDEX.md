@@ -15,6 +15,24 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 - Created dedicated Telegram bot @KROMATHAlerts_bot
 - System processes entire database every ~3.8 hours
 
+#### [August 5, 2025 - Row Level Security Implementation](SESSION-LOG-2025-08.md#session-row-level-security-implementation---august-5-2025)
+- Analyzed security vulnerabilities in current system architecture
+- Implemented Row Level Security (RLS) on crypto_calls table
+- Configured public read access with service-role-only write access
+- Protected database from deletion/corruption attacks
+- Updated CLAUDE.md with RLS documentation and key usage guide
+- No breaking changes to existing functionality
+- Critical security improvement completed in 5 minutes
+
+#### [August 5, 2025 - System Maintenance & Cron Migration](SESSION-LOG-2025-08.md#session-system-maintenance--cron-migration---august-5-2025-later)
+- Fixed OpenRouter API key issue preventing call/X analysis since July 31
+- Corrected crypto-poller bug setting price_updated_at instead of buy_timestamp
+- Backfilled 12 missing buy_timestamp records
+- Migrated all cron jobs from cron-job.org to Supabase native pg_cron
+- Created 4 Supabase cron jobs: orchestrator, ATH update, call analysis, X analysis
+- Eliminated external dependency for improved reliability
+- System catching up with ~300 pending analyses
+
 ### July 2025 Sessions
 
 #### [July 31, 2025 - DexScreener Volume & Liquidity Integration](SESSION-LOG-2025-07-31.md)

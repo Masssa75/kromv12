@@ -47,7 +47,7 @@ Deno.serve(async (req) => {
     // Fetch tokens ordered by oldest checked first
     const { data: tokens, error: fetchError } = await supabase
       .from('crypto_calls')
-      .select('id, ticker, network, pool_address, buy_timestamp, price_at_call, ath_price, ath_timestamp, ath_roi_percent, ath_last_checked, raw_data')
+      .select('id, ticker, network, contract_address, pool_address, buy_timestamp, price_at_call, ath_price, ath_timestamp, ath_roi_percent, ath_last_checked, raw_data')
       .not('pool_address', 'is', null)
       .not('price_at_call', 'is', null)
       .not('is_dead', 'is', true)

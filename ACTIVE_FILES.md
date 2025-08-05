@@ -1,8 +1,9 @@
 # KROMV12 Active Files
-**Last Updated**: July 28, 2025
-**Version**: 6.6.1 - Database Documentation Clarified
+**Last Updated**: August 5, 2025
+**Version**: 8.1.0 - Row Level Security Enabled
 
 ⚠️ **DATABASE NOTICE**: All KROM apps use SUPABASE exclusively. The local SQLite database is LEGACY only.
+⚠️ **RLS ENABLED**: Write operations now require SUPABASE_SERVICE_ROLE_KEY (not anon key).
 
 These are the currently active files in the KROMV12 project:
 

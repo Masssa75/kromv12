@@ -102,12 +102,18 @@ serve(async (req)=>{
           
           callData.price_at_call = priceData.price;
           callData.price_source = priceData.source;
-          callData.price_updated_at = new Date().toISOString();
+          // If KROM didn't provide a buy timestamp, use current time as the effective buy time
+          if (!callData.buy_timestamp) {
+            callData.buy_timestamp = new Date().toISOString();
+          }
         } else {
           console.log(`No pool address or network for ${call.token?.symbol || 'UNKNOWN'} - skipping price fetch`);
           callData.price_at_call = null;
           callData.price_source = "NO_POOL_DATA";
-          callData.price_updated_at = new Date().toISOString();
+          // If KROM didn't provide a buy timestamp, use current time as the effective buy time
+          if (!callData.buy_timestamp) {
+            callData.buy_timestamp = new Date().toISOString();
+          }
         }
 
         // Try to insert - if it already exists, it will fail with unique constraint

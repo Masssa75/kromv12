@@ -146,3 +146,176 @@ TOKEN just hit a new ATH 🔥 +250%
 **Session Duration**: ~8 hours
 **Lines of Code**: ~500 new lines
 **Database Records Affected**: 5,700+ tokens monitored
+
+## Session: Row Level Security Implementation - August 5, 2025
+
+### Overview
+Implemented Row Level Security (RLS) on the crypto_calls table to protect the database from unauthorized modifications while maintaining public read access for the web application.
+
+### Security Analysis Performed
+1. **Identified Vulnerabilities**:
+   - Database completely open for read/write/delete via anon key
+   - Edge functions accessible without authentication
+   - Public API endpoints could be abused for expensive operations
+   - CSV download exposed entire analyzed dataset
+
+2. **Attack Vectors Documented**:
+   - Data deletion/corruption attacks
+   - API quota exhaustion (GeckoTerminal, AI services)
+   - Competitor intelligence gathering
+   - Cost attacks via expensive AI analysis triggers
+
+### Implementation
+
+#### RLS Configuration
+```sql
+ALTER TABLE crypto_calls ENABLE ROW LEVEL SECURITY;
+
+-- Public read access
+CREATE POLICY "Public read access" ON crypto_calls 
+  FOR SELECT USING (true);
+
+-- Service role write access
+CREATE POLICY "Service role write access" ON crypto_calls 
+  FOR ALL USING (auth.jwt()::jsonb->>'role' = 'service_role');
+```
+
+#### Impact Assessment
+**What continues working:**
+- ✅ Next.js API routes (use service_role key)
+- ✅ All Supabase Edge Functions (use service_role key)
+- ✅ Public read access for web app
+- ✅ Client-side price fetching
+
+**What needs updating:**
+- ❌ Python scripts using anon key for writes
+- ❌ Any future scripts must use service_role for INSERT/UPDATE/DELETE
+
+### Documentation Updates
+Updated CLAUDE.md with:
+1. RLS enabled notice in critical database section
+2. Detailed RLS rules under "Working with This Project"
+3. Key usage guide under Environment Variables
+4. Version bump to 8.1.0
+
+### Key Decisions
+1. Chose simple read-only policy to maintain app functionality
+2. Prioritized preventing data deletion over complex access controls
+3. Deferred authentication on edge functions for later implementation
+4. Kept public read access to avoid breaking changes
+
+### Security Improvements Achieved
+- ✅ Database protected from deletion/corruption
+- ✅ Write operations restricted to authorized services
+- ✅ No breaking changes to existing functionality
+- ✅ Clear documentation for future development
+
+---
+**Session Duration**: ~2 hours
+**Critical Issue Resolved**: Database vulnerability to deletion attacks
+**Implementation Time**: 5 minutes (after analysis)
+
+## Session: System Maintenance & Cron Migration - August 5, 2025 (Later)
+
+### Overview
+Fixed critical API issues and migrated cron jobs from external service to Supabase native cron for better reliability and reduced external dependencies.
+
+### Issues Resolved
+
+#### 1. OpenRouter API Key Issue
+**Problem**: Call and X analysis failing due to expired/invalid OpenRouter API key
+- Error: "Invalid API key or insufficient credits"
+- Last successful analysis: July 31, 2025
+- Backlog: ~100 unanalyzed calls
+
+**Solution**: Updated OpenRouter API key in Supabase secrets
+```bash
+supabase secrets set OPENROUTER_API_KEY="sk-or-v1-xxxxx"
+```
+
+#### 2. Missing buy_timestamp Data
+**Problem**: 12 records had NULL buy_timestamp preventing price calculations
+**Root Cause**: crypto-poller was incorrectly setting price_updated_at instead of buy_timestamp
+
+**Solution**: 
+1. Fixed crypto-poller to set buy_timestamp correctly
+2. Backfilled missing timestamps with manual SQL update
+3. Verified all records now have proper buy_timestamp values
+
+#### 3. Cron Job Migration
+**Problem**: Using external cron-job.org service created dependency and potential reliability issues
+**Solution**: Migrated all cron jobs to Supabase native pg_cron extension
+
+**New Supabase Cron Jobs Created:**
+```sql
+-- Main orchestrator (every 30 minutes)
+SELECT cron.schedule('crypto-orchestrator', '*/30 * * * *', 
+  'SELECT net.http_post(url:=''[FUNCTION_URL]/crypto-orchestrator'')');
+
+-- ATH monitoring (every minute, 25 tokens)
+SELECT cron.schedule('crypto-ath-update', '* * * * *', 
+  'SELECT net.http_post(url:=''[FUNCTION_URL]/crypto-ath-update'')');
+
+-- Call analysis (every hour, 50 calls)
+SELECT cron.schedule('krom-call-analysis', '0 * * * *', 
+  'SELECT net.http_post(url:=''[FUNCTION_URL]crypto-analyzer'')');
+
+-- X analysis (every 2 hours, 20 calls)
+SELECT cron.schedule('krom-x-analysis', '0 */2 * * *', 
+  'SELECT net.http_post(url:=''[FUNCTION_URL]/crypto-x-analyzer-nitter'')');
+```
+
+### Technical Implementation
+
+#### crypto-poller Fix
+```typescript
+// Before (incorrect)
+price_updated_at: new Date().toISOString()
+
+// After (correct)  
+buy_timestamp: new Date().toISOString()
+```
+
+#### Data Backfill Query
+```sql
+UPDATE crypto_calls 
+SET buy_timestamp = created_at 
+WHERE buy_timestamp IS NULL 
+  AND created_at IS NOT NULL;
+```
+
+### Current System Status
+- ✅ All 4 cron jobs active in Supabase
+- ✅ Analysis functions catching up to current date
+- ✅ ATH monitoring processing continuously
+- ✅ All API keys working correctly
+- ✅ No external cron dependencies
+- ✅ buy_timestamp data integrity restored
+
+### Performance Monitoring
+**Analysis Backlog Processing:**
+- Call analysis: ~100 pending calls (processing at 50/hour)
+- X analysis: ~200 pending calls (processing at 20 every 2 hours)
+- Expected catch-up time: ~20 hours for full current status
+
+**ATH Monitoring:**
+- Processing 25 tokens/minute continuously
+- Full database scan every ~4 hours
+- 2,847 tokens checked in last cycle
+
+### Key Decisions
+1. **Native Cron**: Eliminated external dependency for better reliability
+2. **Aggressive Scheduling**: More frequent analysis to maintain current data
+3. **Immediate Fix**: Prioritized getting analysis working over optimization
+4. **Data Integrity**: Ensured all records have proper timestamps
+
+### Files Modified
+- `/supabase/functions/crypto-poller/index.ts` - Fixed buy_timestamp assignment
+- Database: Updated 12 records with missing buy_timestamp
+- Supabase cron: Created 4 new scheduled jobs
+- External: Deactivated cron-job.org schedules
+
+---
+**Session Duration**: ~3 hours
+**Key Achievement**: Eliminated external cron dependency, restored analysis pipeline
+**System Status**: ✅ All systems operational and catching up

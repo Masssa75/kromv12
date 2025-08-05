@@ -4,6 +4,7 @@
 - **ALL KROM APPS USE SUPABASE** - This is the ONLY production database
 - **DO NOT USE `krom_calls.db`** - This local SQLite database is LEGACY/reference only
 - When you see any database operations, ALWAYS use Supabase credentials from `.env`
+- **RLS IS ENABLED** - Write operations require `SUPABASE_SERVICE_ROLE_KEY` (not anon key)
 
 ## Overview
 KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring applications. Each app serves a specific purpose in the crypto analysis ecosystem.
@@ -181,6 +182,13 @@ curl -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?selec
 3. Never use `sqlite3.connect()` or reference `krom_calls.db`
 4. If unsure, check `krom-analysis-app/` for proper Supabase usage examples
 
+### Row Level Security (RLS) is ENABLED
+**As of August 5, 2025, RLS is active on the crypto_calls table:**
+- **Read access**: Public (anon key or service_role key)
+- **Write access**: Service role only (requires `SUPABASE_SERVICE_ROLE_KEY`)
+- **Python scripts**: Must use service_role key for INSERT/UPDATE/DELETE operations
+- **Web app & Edge Functions**: Already use service_role key, no changes needed
+
 ### User Preferences
 - **Always explain before executing** - User prefers understanding what will happen before code changes
 - **NEVER show mock/fake data** - Always show real data or indicate when data is unavailable. Mock data is extremely misleading and should never be used in any UI or API responses
@@ -251,6 +259,16 @@ For all required environment variables and API keys:
 - **Local development**: Check `.env` file in project root
 - **Supabase Edge Functions**: Use `supabase secrets list` to view configured secrets
 - **To sync**: Use `supabase secrets set KEY=value` to add/update secrets from `.env`
+
+### Which Supabase Key to Use (RLS Enabled)
+- **SUPABASE_ANON_KEY**: 
+  - ✅ Reading data (SELECT queries)
+  - ✅ Client-side code (browser, React components)
+  - ❌ Writing data (INSERT/UPDATE/DELETE) - blocked by RLS
+- **SUPABASE_SERVICE_ROLE_KEY**: 
+  - ✅ All database operations (bypasses RLS)
+  - ✅ Server-side code only (API routes, Edge Functions, scripts)
+  - ❌ NEVER use in client-side code - full database access if exposed
 
 ## External Services
 
@@ -408,7 +426,17 @@ Implemented comprehensive All-Time High tracking with instant Telegram notificat
 - **Continuous monitoring**: Processes entire database every ~4 hours
 - [Full implementation details →](logs/SESSION-LOG-2025-08.md)
 
+## System Maintenance & Cron Migration (August 5, 2025)
+
+Completed major infrastructure improvements to eliminate external dependencies:
+- **Fixed OpenRouter API**: Restored call/X analysis after 5-day outage
+- **Native Cron Jobs**: Migrated from cron-job.org to Supabase pg_cron (4 jobs)
+- **Data Integrity**: Fixed buy_timestamp bug, backfilled 12 missing records
+- **Zero External Dependencies**: All scheduling now handled by Supabase
+- **Improved Reliability**: More frequent analysis schedules for better data freshness
+- [Full maintenance details →](logs/SESSION-LOG-2025-08.md)
+
 ---
 **Last Updated**: August 5, 2025  
-**Status**: ✅ ATH tracking system live and operational
-**Version**: 8.0.0 - ATH Tracking & Notification System Implementation
+**Status**: ✅ All systems operational | Analysis catching up after API fix | Native cron active
+**Version**: 8.2.0 - Native Cron Migration & System Reliability Improvements
