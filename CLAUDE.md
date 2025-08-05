@@ -183,6 +183,7 @@ curl -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?selec
 
 ### User Preferences
 - **Always explain before executing** - User prefers understanding what will happen before code changes
+- **NEVER show mock/fake data** - Always show real data or indicate when data is unavailable. Mock data is extremely misleading and should never be used in any UI or API responses
 
 ### Communication Style
 - Ask for clarification when requirements are ambiguous
