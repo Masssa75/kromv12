@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM - Bold X Gains Display</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .variation {
+            margin-bottom: 100px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #222;
+        }
+
+        .variation-title {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 40px;
+            font-family: monospace;
+        }
+
+        /* VARIATION 1 - Massive Text Wall */
+        .v1-container {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .v1-item {
+            margin-bottom: 40px;
+            line-height: 1;
+        }
+
+        .v1-token {
+            font-size: 80px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -2px;
+        }
+
+        .v1-x {
+            font-size: 120px;
+            font-weight: 900;
+            color: #00ff88;
+            text-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+        }
+
+        /* VARIATION 2 - Horizontal Scroll */
+        .v2-container {
+            display: flex;
+            gap: 80px;
+            overflow-x: auto;
+            padding: 40px 0;
+            scrollbar-width: none;
+        }
+
+        .v2-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .v2-item {
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .v2-token {
+            font-size: 48px;
+            font-weight: 800;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .v2-x {
+            font-size: 160px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #00ff88 0%, #00aa55 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 0.8;
+        }
+
+        /* VARIATION 3 - Stacked Giants */
+        .v3-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .v3-item {
+            text-align: center;
+        }
+
+        .v3-x {
+            font-size: 200px;
+            font-weight: 900;
+            color: #00ff88;
+            line-height: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .v3-token {
+            font-size: 36px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ccc;
+        }
+
+        /* VARIATION 4 - Glowing Boxes */
+        .v4-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .v4-item {
+            background: #111;
+            border: 3px solid #00ff88;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v4-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .v4-token {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .v4-x {
+            font-size: 96px;
+            font-weight: 900;
+            color: #00ff88;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* VARIATION 5 - Ticker Style */
+        .v5-container {
+            background: #000;
+            padding: 40px 0;
+            overflow: hidden;
+        }
+
+        .v5-ticker {
+            display: flex;
+            animation: tickerScroll 20s linear infinite;
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .v5-item {
+            padding: 0 60px;
+            white-space: nowrap;
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+        }
+
+        .v5-token {
+            font-size: 64px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .v5-x {
+            font-size: 80px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+
+        /* VARIATION 6 - Minimal Impact */
+        .v6-container {
+            padding: 60px 0;
+        }
+
+        .v6-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 2px solid #111;
+        }
+
+        .v6-token {
+            font-size: 72px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .v6-x {
+            font-size: 88px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+
+        /* VARIATION 7 - Explosive Layout */
+        .v7-container {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .v7-item {
+            position: absolute;
+            text-align: center;
+        }
+
+        .v7-item:nth-child(1) {
+            top: 10%;
+            left: 20%;
+        }
+
+        .v7-item:nth-child(2) {
+            top: 50%;
+            right: 15%;
+        }
+
+        .v7-item:nth-child(3) {
+            bottom: 20%;
+            left: 40%;
+        }
+
+        .v7-item:nth-child(4) {
+            top: 30%;
+            right: 35%;
+        }
+
+        .v7-x {
+            font-size: 140px;
+            font-weight: 900;
+            color: #00ff88;
+            line-height: 1;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .v7-token {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* VARIATION 8 - Neon Glow */
+        .v8-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 60px 0;
+            background: #000;
+        }
+
+        .v8-item {
+            text-align: center;
+        }
+
+        .v8-token {
+            font-size: 56px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .v8-x {
+            font-size: 120px;
+            font-weight: 900;
+            color: #00ff88;
+            text-shadow: 
+                0 0 20px #00ff88,
+                0 0 40px #00ff88,
+                0 0 60px #00ff88,
+                0 0 80px #00ff88;
+            animation: neonFlicker 1.5s infinite alternate;
+        }
+
+        @keyframes neonFlicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* VARIATION 9 - Countdown Style */
+        .v9-container {
+            background: #111;
+            padding: 60px;
+            border-radius: 20px;
+        }
+
+        .v9-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .v9-item {
+            background: #000;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid #222;
+        }
+
+        .v9-x {
+            font-size: 100px;
+            font-weight: 900;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 15px;
+        }
+
+        .v9-token {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        /* VARIATION 10 - Ultra Minimal */
+        .v10-container {
+            padding: 80px 0;
+        }
+
+        .v10-row {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .v10-token {
+            font-size: 100px;
+            font-weight: 900;
+            color: #333;
+        }
+
+        .v10-x {
+            font-size: 180px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- VARIATION 1 - Massive Text Wall -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 1: Massive Text Wall</h2>
+            <div class="v1-container">
+                <div class="v1-item">
+                    <div class="v1-token">COMPANY</div>
+                    <div class="v1-x">731X</div>
+                </div>
+                <div class="v1-item">
+                    <div class="v1-token">ZEUS</div>
+                    <div class="v1-x">301X</div>
+                </div>
+                <div class="v1-item">
+                    <div class="v1-token">ANI</div>
+                    <div class="v1-x">231X</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 2 - Horizontal Scroll -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 2: Horizontal Scroll</h2>
+            <div class="v2-container">
+                <div class="v2-item">
+                    <div class="v2-token">COMPANY</div>
+                    <div class="v2-x">731X</div>
+                </div>
+                <div class="v2-item">
+                    <div class="v2-token">ZEUS</div>
+                    <div class="v2-x">301X</div>
+                </div>
+                <div class="v2-item">
+                    <div class="v2-token">ANI</div>
+                    <div class="v2-x">231X</div>
+                </div>
+                <div class="v2-item">
+                    <div class="v2-token">MASK</div>
+                    <div class="v2-x">195X</div>
+                </div>
+                <div class="v2-item">
+                    <div class="v2-token">SUPERGROK</div>
+                    <div class="v2-x">140X</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 3 - Stacked Giants -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 3: Stacked Giants</h2>
+            <div class="v3-container">
+                <div class="v3-item">
+                    <div class="v3-x">731X</div>
+                    <div class="v3-token">COMPANY</div>
+                </div>
+                <div class="v3-item">
+                    <div class="v3-x">301X</div>
+                    <div class="v3-token">ZEUS</div>
+                </div>
+                <div class="v3-item">
+                    <div class="v3-x">231X</div>
+                    <div class="v3-token">ANI</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 4 - Glowing Boxes -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 4: Glowing Boxes</h2>
+            <div class="v4-container">
+                <div class="v4-item">
+                    <div class="v4-token">COMPANY</div>
+                    <div class="v4-x">731X</div>
+                </div>
+                <div class="v4-item">
+                    <div class="v4-token">ZEUS</div>
+                    <div class="v4-x">301X</div>
+                </div>
+                <div class="v4-item">
+                    <div class="v4-token">ANI</div>
+                    <div class="v4-x">231X</div>
+                </div>
+                <div class="v4-item">
+                    <div class="v4-token">CHLOE</div>
+                    <div class="v4-x">120X</div>
+                </div>
+                <div class="v4-item">
+                    <div class="v4-token">LMEOW</div>
+                    <div class="v4-x">98X</div>
+                </div>
+                <div class="v4-item">
+                    <div class="v4-token">CMINI</div>
+                    <div class="v4-x">79X</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 5 - Ticker Style -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 5: Ticker Style</h2>
+            <div class="v5-container">
+                <div class="v5-ticker">
+                    <div class="v5-item">
+                        <span class="v5-token">COMPANY</span>
+                        <span class="v5-x">731X</span>
+                    </div>
+                    <div class="v5-item">
+                        <span class="v5-token">ZEUS</span>
+                        <span class="v5-x">301X</span>
+                    </div>
+                    <div class="v5-item">
+                        <span class="v5-token">ANI</span>
+                        <span class="v5-x">231X</span>
+                    </div>
+                    <div class="v5-item">
+                        <span class="v5-token">MASK</span>
+                        <span class="v5-x">195X</span>
+                    </div>
+                    <div class="v5-item">
+                        <span class="v5-token">SUPERGROK</span>
+                        <span class="v5-x">140X</span>
+                    </div>
+                    <!-- Duplicate for scroll -->
+                    <div class="v5-item">
+                        <span class="v5-token">COMPANY</span>
+                        <span class="v5-x">731X</span>
+                    </div>
+                    <div class="v5-item">
+                        <span class="v5-token">ZEUS</span>
+                        <span class="v5-x">301X</span>
+                    </div>
+                    <div class="v5-item">
+                        <span class="v5-token">ANI</span>
+                        <span class="v5-x">231X</span>
+                    </div>
+                    <div class="v5-item">
+                        <span class="v5-token">MASK</span>
+                        <span class="v5-x">195X</span>
+                    </div>
+                    <div class="v5-item">
+                        <span class="v5-token">SUPERGROK</span>
+                        <span class="v5-x">140X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 6 - Minimal Impact -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 6: Minimal Impact</h2>
+            <div class="v6-container">
+                <div class="v6-item">
+                    <span class="v6-token">COMPANY</span>
+                    <span class="v6-x">731X</span>
+                </div>
+                <div class="v6-item">
+                    <span class="v6-token">ZEUS</span>
+                    <span class="v6-x">301X</span>
+                </div>
+                <div class="v6-item">
+                    <span class="v6-token">ANI</span>
+                    <span class="v6-x">231X</span>
+                </div>
+                <div class="v6-item">
+                    <span class="v6-token">MASK</span>
+                    <span class="v6-x">195X</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 7 - Explosive Layout -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 7: Explosive Layout</h2>
+            <div class="v7-container">
+                <div class="v7-item">
+                    <div class="v7-x">731X</div>
+                    <div class="v7-token">COMPANY</div>
+                </div>
+                <div class="v7-item">
+                    <div class="v7-x">301X</div>
+                    <div class="v7-token">ZEUS</div>
+                </div>
+                <div class="v7-item">
+                    <div class="v7-x">231X</div>
+                    <div class="v7-token">ANI</div>
+                </div>
+                <div class="v7-item">
+                    <div class="v7-x">140X</div>
+                    <div class="v7-token">SUPERGROK</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 8 - Neon Glow -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 8: Neon Glow</h2>
+            <div class="v8-container">
+                <div class="v8-item">
+                    <div class="v8-token">COMPANY</div>
+                    <div class="v8-x">731X</div>
+                </div>
+                <div class="v8-item">
+                    <div class="v8-token">ZEUS</div>
+                    <div class="v8-x">301X</div>
+                </div>
+                <div class="v8-item">
+                    <div class="v8-token">ANI</div>
+                    <div class="v8-x">231X</div>
+                </div>
+                <div class="v8-item">
+                    <div class="v8-token">MASK</div>
+                    <div class="v8-x">195X</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 9 - Countdown Style -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 9: Countdown Style</h2>
+            <div class="v9-container">
+                <div class="v9-grid">
+                    <div class="v9-item">
+                        <div class="v9-x">731X</div>
+                        <div class="v9-token">COMPANY</div>
+                    </div>
+                    <div class="v9-item">
+                        <div class="v9-x">301X</div>
+                        <div class="v9-token">ZEUS</div>
+                    </div>
+                    <div class="v9-item">
+                        <div class="v9-x">231X</div>
+                        <div class="v9-token">ANI</div>
+                    </div>
+                    <div class="v9-item">
+                        <div class="v9-x">195X</div>
+                        <div class="v9-token">MASK</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 10 - Ultra Minimal -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 10: Ultra Minimal</h2>
+            <div class="v10-container">
+                <div class="v10-row">
+                    <span class="v10-token">COMPANY</span>
+                    <span class="v10-x">731X</span>
+                </div>
+                <div class="v10-row">
+                    <span class="v10-token">ZEUS</span>
+                    <span class="v10-x">301X</span>
+                </div>
+                <div class="v10-row">
+                    <span class="v10-token">ANI</span>
+                    <span class="v10-x">231X</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

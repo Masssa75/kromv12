@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM - Single Call Display</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0b0d;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left Sidebar - Filters */
+        .sidebar {
+            width: 300px;
+            background: #111214;
+            border-right: 1px solid #2a2d31;
+            padding: 20px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #00ff88;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-subtitle {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .roi-slider {
+            margin-bottom: 20px;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 40px;
+            background: #1a1c1f;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .slider-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88 0%, #00ffff 100%);
+            border-radius: 20px;
+            width: 60%;
+            position: relative;
+        }
+
+        .slider-handle {
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .checkbox-item:hover {
+            color: #fff;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .checkbox.checked {
+            background: #00ff88;
+            border-color: #00ff88;
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .time-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .time-btn {
+            padding: 10px;
+            background: #1a1c1f;
+            border: 1px solid #2a2d31;
+            border-radius: 10px;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .time-btn:hover {
+            background: #222426;
+            color: #fff;
+        }
+
+        .time-btn.active {
+            background: #00ff88;
+            color: #000;
+            border-color: #00ff88;
+            font-weight: 600;
+        }
+
+        .apply-filters-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #00ff88, #00ffff);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: transform 0.3s;
+        }
+
+        .apply-filters-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .results-count {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* Early Calls Section */
+        .early-calls-section {
+            background: #000;
+            border-bottom: 1px solid #111;
+            padding: 60px 40px;
+        }
+
+        .early-calls-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .early-calls-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .early-calls-title {
+            font-size: 18px;
+            color: #00ff88;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 200;
+        }
+
+        .time-selector {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .time-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 15px;
+        }
+
+        .time-option .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #333;
+            transition: all 0.3s;
+        }
+
+        .time-option.active .dot,
+        .time-option:hover .dot {
+            background: #00ff88;
+            box-shadow: 0 0 20px #00ff8866;
+        }
+
+        .time-option .label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .time-option.active .label,
+        .time-option:hover .label {
+            color: #00ff88;
+        }
+
+        .calls-content {
+            position: relative;
+        }
+
+        .time-content {
+            display: none;
+        }
+
+        .time-content.active {
+            display: block;
+        }
+
+        .calls-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px 60px;
+            text-align: left;
+        }
+
+        .call-item {
+            font-size: 24px;
+            font-weight: 200;
+            font-family: 'Courier New', monospace;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        .bracket {
+            color: #00ff88;
+            opacity: 0.5;
+        }
+
+        .token-name {
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .token-x {
+            color: #00ff88;
+        }
+
+        /* Individual Call Display */
+        .call-display-section {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .single-call {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #111214;
+            border: 1px solid #1a1c1f;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .call-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: #0a0b0d;
+            border-bottom: 1px solid #1a1c1f;
+        }
+
+        .call-token-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .call-token {
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .call-star {
+            color: #ffcc00;
+            font-size: 16px;
+        }
+
+        .call-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .call-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .analysis-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .score-display {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .score {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .tier-badge {
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            width: fit-content;
+        }
+
+        .tier-badge.trash {
+            background: #ff444422;
+            color: #ff4444;
+        }
+
+        .tier-badge.alpha {
+            background: #00ff8822;
+            color: #00ff88;
+        }
+
+        .tier-badge.solid {
+            background: #ffcc0022;
+            color: #ffcc00;
+        }
+
+        .type-indicator {
+            font-size: 14px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .type-indicator.meme {
+            color: #ff8800;
+        }
+
+        .details-btn {
+            background: #1a1c1f;
+            border: 1px solid #2a2d31;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .details-btn:hover {
+            background: #222426;
+            border-color: #00ff88;
+        }
+
+        .price-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .price-label {
+            color: #666;
+        }
+
+        .price-value {
+            color: #fff;
+            font-family: monospace;
+            font-weight: 500;
+        }
+
+        .roi-display {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ff4444;
+            margin-top: 10px;
+        }
+
+        .roi-display.positive {
+            color: #00ff88;
+        }
+
+        .fetch-btn {
+            background: #00ff8811;
+            border: 1px solid #00ff8833;
+            color: #00ff88;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        .fetch-btn:hover {
+            background: #00ff8822;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1c1f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">KROM</h1>
+                <p class="sidebar-subtitle">Advanced Token Discovery</p>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">ROI Range</h3>
+                <div class="roi-slider">
+                    <div class="slider-labels">
+                        <span>0%</span>
+                        <span>Min: 100%</span>
+                    </div>
+                    <div class="slider">
+                        <div class="slider-fill">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Networks</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <div class="checkbox checked"></div>
+                        <span>Ethereum (2,847)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox checked"></div>
+                        <span>Solana (1,923)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <span>BSC (442)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <span>Base (189)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Time Period</h3>
+                <div class="time-filters">
+                    <button class="time-btn">Last 24 Hours</button>
+                    <button class="time-btn active">Last 7 Days</button>
+                    <button class="time-btn">Last 30 Days</button>
+                    <button class="time-btn">All Time</button>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">AI Score</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <div class="checkbox checked"></div>
+                        <span>8-10 (Alpha)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox checked"></div>
+                        <span>6-7 (Solid)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <span>4-5 (Basic)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <span>1-3 (Trash)</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="apply-filters-btn">Apply Filters</button>
+            <p class="results-count">237 tokens match your criteria</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Early Calls Section -->
+            <div class="early-calls-section">
+                <div class="early-calls-container">
+                    <div class="early-calls-header">
+                        <span class="early-calls-title">EARLY CALLS</span>
+                        <div class="time-selector">
+                            <button class="time-option" data-period="24h">
+                                <span class="dot"></span>
+                                <span class="label">24H</span>
+                            </button>
+                            <button class="time-option" data-period="7d">
+                                <span class="dot"></span>
+                                <span class="label">7D</span>
+                            </button>
+                            <button class="time-option active" data-period="90d">
+                                <span class="dot"></span>
+                                <span class="label">90D</span>
+                            </button>
+                            <button class="time-option" data-period="all">
+                                <span class="dot"></span>
+                                <span class="label">ALL TIME</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="calls-content">
+                        <!-- 24H Content -->
+                        <div class="time-content" data-content="24h">
+                            <div class="calls-grid">
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">CMINI</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">79x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">NEWGEM</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">45x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">ROCKET</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">23x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">MOONIX</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">18x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">STELLAR</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">15x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">AURORA</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">12x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">NEXUS</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">10x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">ZEPHYR</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">8x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">COSMOS</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">7x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 7D Content -->
+                        <div class="time-content" data-content="7d">
+                            <div class="calls-grid">
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">CHLOE</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">120x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">LMEOW</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">98x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">CMINI</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">79x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">MATRIX</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">67x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">VORTEX</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">54x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">QUANTUM</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">43x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">NEBULA</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">38x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">PHOENIX</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">29x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">DELTA</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">24x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 90D Content (Active) -->
+                        <div class="time-content active" data-content="90d">
+                            <div class="calls-grid">
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">COMPANY</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">731x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">ZEUS</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">301x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">ANI</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">231x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">GAMMA</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">187x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">TITAN</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">156x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">CHLOE</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">120x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">OMEGA</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">112x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">LMEOW</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">98x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">VORTEX</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">87x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ALL TIME Content -->
+                        <div class="time-content" data-content="all">
+                            <div class="calls-grid">
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">COMPANY</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">731x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">LEGACY</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">1,247x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">HISTORIC</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">893x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">GENESIS</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">567x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">PRIME</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">432x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">ANCIENT</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">389x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">ETERNAL</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">345x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">ZEUS</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">301x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                                <div class="call-item">
+                                    <span class="bracket">[</span>
+                                    <span class="token-name">TITAN</span>
+                                    <span class="bracket">:</span>
+                                    <span class="token-x">267x</span>
+                                    <span class="bracket">]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Call Display Section -->
+            <div class="call-display-section">
+                <div class="single-call">
+                    <div class="call-header">
+                        <div class="call-token-info">
+                            <span class="call-token">FROGE</span>
+                            <span class="call-star">⭐</span>
+                        </div>
+                        <div class="call-date">Jul 24</div>
+                    </div>
+                    
+                    <div class="call-body">
+                        <!-- Call Analysis Section -->
+                        <div class="analysis-section">
+                            <div class="section-title">Call Analysis</div>
+                            <div class="score-display">
+                                <div class="score">2.0</div>
+                                <div class="tier-badge trash">TRASH</div>
+                                <div class="type-indicator meme">🔥 Meme</div>
+                            </div>
+                            <button class="details-btn">Details ›</button>
+                        </div>
+
+                        <!-- X Analysis Section -->
+                        <div class="analysis-section">
+                            <div class="section-title">X Analysis</div>
+                            <div class="score-display">
+                                <div class="score">1/10</div>
+                                <div class="tier-badge trash">TRASH</div>
+                                <div class="type-indicator meme">🔥 Meme</div>
+                            </div>
+                            <button class="details-btn">Details ›</button>
+                        </div>
+
+                        <!-- Price Section -->
+                        <div class="analysis-section">
+                            <div class="section-title">Price/ROI</div>
+                            <div class="price-section">
+                                <div class="price-item">
+                                    <span class="price-label">Entry:</span>
+                                    <span class="price-value">$0.001774</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="price-label">Now:</span>
+                                    <span class="price-value">$0.000023</span>
+                                </div>
+                                <div class="roi-display">-98.7%</div>
+                            </div>
+                            <button class="fetch-btn">⟳ Fetch All</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Checkbox functionality
+        document.querySelectorAll('.checkbox-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const checkbox = this.querySelector('.checkbox');
+                checkbox.classList.toggle('checked');
+            });
+        });
+
+        // Time filter functionality
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Apply filters
+        document.querySelector('.apply-filters-btn').addEventListener('click', function() {
+            // Animate button
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+
+            // Update results count
+            const count = Math.floor(Math.random() * 300) + 100;
+            document.querySelector('.results-count').textContent = `${count} tokens match your criteria`;
+        });
+
+        // Time selector functionality for main early calls section
+        const timeOptions = document.querySelectorAll('.time-option');
+        const timeContents = document.querySelectorAll('.time-content');
+        
+        timeOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Get the period from data attribute
+                const period = this.getAttribute('data-period');
+                
+                // Update active states for buttons
+                timeOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update active content
+                timeContents.forEach(content => {
+                    if (content.getAttribute('data-content') === period) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

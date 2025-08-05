@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM - Split View Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0b0d;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left Sidebar - Filters */
+        .sidebar {
+            width: 300px;
+            background: #111214;
+            border-right: 1px solid #2a2d31;
+            padding: 20px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #00ff88;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-subtitle {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .roi-slider {
+            margin-bottom: 20px;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 40px;
+            background: #1a1c1f;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .slider-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88 0%, #00ffff 100%);
+            border-radius: 20px;
+            width: 60%;
+            position: relative;
+        }
+
+        .slider-handle {
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .checkbox-item:hover {
+            color: #fff;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .checkbox.checked {
+            background: #00ff88;
+            border-color: #00ff88;
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .time-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .time-btn {
+            padding: 10px;
+            background: #1a1c1f;
+            border: 1px solid #2a2d31;
+            border-radius: 10px;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .time-btn:hover {
+            background: #222426;
+            color: #fff;
+        }
+
+        .time-btn.active {
+            background: #00ff88;
+            color: #000;
+            border-color: #00ff88;
+            font-weight: 600;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Stats Bar */
+        .stats-bar {
+            background: #111214;
+            padding: 20px 30px;
+            border-bottom: 1px solid #2a2d31;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-group {
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00ff88;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Token Grid */
+        .token-grid {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            align-content: start;
+        }
+
+        .token-card {
+            background: #111214;
+            border: 1px solid #2a2d31;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .token-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .token-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .token-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .token-subtitle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .network-tag {
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .network-tag.eth {
+            background: rgba(98, 126, 234, 0.2);
+            color: #627eea;
+        }
+
+        .network-tag.sol {
+            background: rgba(153, 69, 255, 0.2);
+            color: #9945ff;
+        }
+
+        .roi-display {
+            text-align: right;
+        }
+
+        .roi-main {
+            font-size: 24px;
+            font-weight: 800;
+            color: #00ff88;
+        }
+
+        .roi-main.negative {
+            color: #ff4444;
+        }
+
+        .roi-ath {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .token-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #2a2d31;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #00ffff;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-action {
+            flex: 1;
+            padding: 8px;
+            background: transparent;
+            border: 1px solid #2a2d31;
+            border-radius: 8px;
+            color: #888;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-action:hover {
+            background: #1a1c1f;
+            color: #fff;
+            border-color: #333;
+        }
+
+        .hot-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff6600;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .apply-filters-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #00ff88, #00ffff);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: transform 0.3s;
+        }
+
+        .apply-filters-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .results-count {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1c1f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">KROM</h1>
+                <p class="sidebar-subtitle">Advanced Token Discovery</p>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">ROI Range</h3>
+                <div class="roi-slider">
+                    <div class="slider-labels">
+                        <span>0%</span>
+                        <span>Min: 100%</span>
+                    </div>
+                    <div class="slider">
+                        <div class="slider-fill">
+                            <div class="slider-handle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Networks</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <div class="checkbox checked"></div>
+                        <span>Ethereum (2,847)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox checked"></div>
+                        <span>Solana (1,923)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <span>BSC (442)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <span>Base (189)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Time Period</h3>
+                <div class="time-filters">
+                    <button class="time-btn">Last 24 Hours</button>
+                    <button class="time-btn active">Last 7 Days</button>
+                    <button class="time-btn">Last 30 Days</button>
+                    <button class="time-btn">All Time</button>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">AI Score</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <div class="checkbox checked"></div>
+                        <span>8-10 (Alpha)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox checked"></div>
+                        <span>6-7 (Solid)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <span>4-5 (Basic)</span>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <span>1-3 (Trash)</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="apply-filters-btn">Apply Filters</button>
+            <p class="results-count">237 tokens match your criteria</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-group">
+                    <div class="stat">
+                        <div class="stat-value">237</div>
+                        <div class="stat-label">Results</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">1,358%</div>
+                        <div class="stat-label">Top ROI</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">87</div>
+                        <div class="stat-label">1000x+</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">$2.4M</div>
+                        <div class="stat-label">24h Volume</div>
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" style="color: #ff0066;">● LIVE</div>
+                    <div class="stat-label">Status</div>
+                </div>
+            </div>
+
+            <!-- Token Grid -->
+            <div class="token-grid">
+                <div class="token-card">
+                    <div class="hot-indicator">HOT</div>
+                    <div class="token-header">
+                        <div>
+                            <div class="token-title">SOMETHING</div>
+                            <div class="token-subtitle">
+                                <span class="network-tag eth">ETH</span>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                        <div class="roi-display">
+                            <div class="roi-main">+1,358.9%</div>
+                            <div class="roi-ath">ATH: 3,206.9%</div>
+                        </div>
+                    </div>
+                    <div class="token-metrics">
+                        <div class="metric">
+                            <div class="metric-value">8/10</div>
+                            <div class="metric-label">AI Score</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">ALPHA</div>
+                            <div class="metric-label">Tier</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$2.4M</div>
+                            <div class="metric-label">Volume</div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Details</button>
+                        <button class="quick-action">Chart</button>
+                        <button class="quick-action">Buy</button>
+                    </div>
+                </div>
+
+                <div class="token-card">
+                    <div class="token-header">
+                        <div>
+                            <div class="token-title">BRAIN</div>
+                            <div class="token-subtitle">
+                                <span class="network-tag eth">ETH</span>
+                                <span>45 days ago</span>
+                            </div>
+                        </div>
+                        <div class="roi-display">
+                            <div class="roi-main">+191M%</div>
+                            <div class="roi-ath">LEGENDARY</div>
+                        </div>
+                    </div>
+                    <div class="token-metrics">
+                        <div class="metric">
+                            <div class="metric-value">10/10</div>
+                            <div class="metric-label">AI Score</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">ALPHA</div>
+                            <div class="metric-label">Tier</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$184M</div>
+                            <div class="metric-label">Volume</div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Details</button>
+                        <button class="quick-action">Chart</button>
+                        <button class="quick-action">Buy</button>
+                    </div>
+                </div>
+
+                <div class="token-card">
+                    <div class="token-header">
+                        <div>
+                            <div class="token-title">SILEN</div>
+                            <div class="token-subtitle">
+                                <span class="network-tag eth">ETH</span>
+                                <span>4 days ago</span>
+                            </div>
+                        </div>
+                        <div class="roi-display">
+                            <div class="roi-main">+195.4%</div>
+                            <div class="roi-ath">ATH: 1,868.3%</div>
+                        </div>
+                    </div>
+                    <div class="token-metrics">
+                        <div class="metric">
+                            <div class="metric-value">9/10</div>
+                            <div class="metric-label">AI Score</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">ALPHA</div>
+                            <div class="metric-label">Tier</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$1.2M</div>
+                            <div class="metric-label">Volume</div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Details</button>
+                        <button class="quick-action">Chart</button>
+                        <button class="quick-action">Buy</button>
+                    </div>
+                </div>
+
+                <div class="token-card">
+                    <div class="token-header">
+                        <div>
+                            <div class="token-title">KPOP</div>
+                            <div class="token-subtitle">
+                                <span class="network-tag eth">ETH</span>
+                                <span>17 days ago</span>
+                            </div>
+                        </div>
+                        <div class="roi-display">
+                            <div class="roi-main">+173.3%</div>
+                            <div class="roi-ath">ATH: 1,827.7%</div>
+                        </div>
+                    </div>
+                    <div class="token-metrics">
+                        <div class="metric">
+                            <div class="metric-value">6/10</div>
+                            <div class="metric-label">AI Score</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">SOLID</div>
+                            <div class="metric-label">Tier</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$800K</div>
+                            <div class="metric-label">Volume</div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Details</button>
+                        <button class="quick-action">Chart</button>
+                        <button class="quick-action">Buy</button>
+                    </div>
+                </div>
+
+                <div class="token-card">
+                    <div class="token-header">
+                        <div>
+                            <div class="token-title">PILSO</div>
+                            <div class="token-subtitle">
+                                <span class="network-tag eth">ETH</span>
+                                <span>36 days ago</span>
+                            </div>
+                        </div>
+                        <div class="roi-display">
+                            <div class="roi-main">+203.8%</div>
+                            <div class="roi-ath">ATH: 569.8%</div>
+                        </div>
+                    </div>
+                    <div class="token-metrics">
+                        <div class="metric">
+                            <div class="metric-value">7/10</div>
+                            <div class="metric-label">AI Score</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">SOLID</div>
+                            <div class="metric-label">Tier</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$650K</div>
+                            <div class="metric-label">Volume</div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Details</button>
+                        <button class="quick-action">Chart</button>
+                        <button class="quick-action">Buy</button>
+                    </div>
+                </div>
+
+                <div class="token-card">
+                    <div class="token-header">
+                        <div>
+                            <div class="token-title">神经蛙</div>
+                            <div class="token-subtitle">
+                                <span class="network-tag sol">SOL</span>
+                                <span>35 days ago</span>
+                            </div>
+                        </div>
+                        <div class="roi-display">
+                            <div class="roi-main">+7.8%</div>
+                            <div class="roi-ath">ATH: 771.7%</div>
+                        </div>
+                    </div>
+                    <div class="token-metrics">
+                        <div class="metric">
+                            <div class="metric-value">7/10</div>
+                            <div class="metric-label">AI Score</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">SOLID</div>
+                            <div class="metric-label">Tier</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$420K</div>
+                            <div class="metric-label">Volume</div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Details</button>
+                        <button class="quick-action">Chart</button>
+                        <button class="quick-action">Buy</button>
+                    </div>
+                </div>
+
+                <div class="token-card">
+                    <div class="token-header">
+                        <div>
+                            <div class="token-title">ORO</div>
+                            <div class="token-subtitle">
+                                <span class="network-tag eth">ETH</span>
+                                <span>62 days ago</span>
+                            </div>
+                        </div>
+                        <div class="roi-display">
+                            <div class="roi-main">+24.5M%</div>
+                            <div class="roi-ath">LEGENDARY</div>
+                        </div>
+                    </div>
+                    <div class="token-metrics">
+                        <div class="metric">
+                            <div class="metric-value">9/10</div>
+                            <div class="metric-label">AI Score</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">ALPHA</div>
+                            <div class="metric-label">Tier</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$91M</div>
+                            <div class="metric-label">Volume</div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Details</button>
+                        <button class="quick-action">Chart</button>
+                        <button class="quick-action">Buy</button>
+                    </div>
+                </div>
+
+                <div class="token-card">
+                    <div class="token-header">
+                        <div>
+                            <div class="token-title">TOTAKEKE</div>
+                            <div class="token-subtitle">
+                                <span class="network-tag eth">ETH</span>
+                                <span>28 days ago</span>
+                            </div>
+                        </div>
+                        <div class="roi-display">
+                            <div class="roi-main negative">-58.2%</div>
+                            <div class="roi-ath">ATH: 1,109.9%</div>
+                        </div>
+                    </div>
+                    <div class="token-metrics">
+                        <div class="metric">
+                            <div class="metric-value">8/10</div>
+                            <div class="metric-label">AI Score</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">ALPHA</div>
+                            <div class="metric-label">Tier</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$320K</div>
+                            <div class="metric-label">Volume</div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action">Details</button>
+                        <button class="quick-action">Chart</button>
+                        <button class="quick-action">Buy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Checkbox functionality
+        document.querySelectorAll('.checkbox-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const checkbox = this.querySelector('.checkbox');
+                checkbox.classList.toggle('checked');
+            });
+        });
+
+        // Time filter functionality
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Apply filters
+        document.querySelector('.apply-filters-btn').addEventListener('click', function() {
+            // Animate button
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+
+            // Update results count
+            const count = Math.floor(Math.random() * 300) + 100;
+            document.querySelector('.results-count').textContent = `${count} tokens match your criteria`;
+            document.querySelector('.stats-bar .stat-value').textContent = count;
+        });
+
+        // Card hover effects
+        document.querySelectorAll('.token-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Add click animation
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

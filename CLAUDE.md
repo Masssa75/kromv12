@@ -12,13 +12,13 @@ KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring
 
 ### Apps in KROMV12:
 
-1. **Crypto Monitor & Notifier** (Currently in root - to be moved to own folder)
-   - Original monitoring system
+1. **crypto-monitor/** - Crypto Monitor & Notifier
+   - Original monitoring system running on Supabase Edge Functions
    - Polls KROM API for new crypto calls
    - Analyzes calls with Claude API
    - Performs X (Twitter) research via ScraperAPI + Nitter
    - Sends notifications to Telegram with analysis results
-   - Uses Supabase Edge Functions
+   - **Full documentation**: See `crypto-monitor/CLAUDE.md`
 
 2. **krom-analysis-app/** (Next.js - Netlify Deployment)
    - **Live URL**: https://lively-torrone-8199e0.netlify.app
@@ -130,6 +130,8 @@ npx supabase db execute --sql "YOUR SQL"
 
 **CRITICAL**: All database operations must target Supabase. Never use the local SQLite database.
 
+**Before adding new columns**: Always check if existing fields can serve your purpose. With 70+ columns, there's often an unused field or JSONB column that can store your data.
+
 When you need to add new columns to existing tables in Supabase, use the Management API:
 
 ```bash
@@ -214,334 +216,88 @@ curl -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?selec
   - Each major section moved should be replaced with a 3-4 line summary and link
   - Session logs preserve full history while keeping main doc clean
 
-## Architecture Flow (this is for the crypto poller and notifier. should be moved into the project's own folder & claude.md file once created)
-```
-Cron Job (every minute) → crypto-orchestrator
-                              ↓
-                         crypto-poller (fetches new calls)
-                              ↓
-                    Parallel execution:
-                    ├─ crypto-analyzer (Claude analysis)
-                    └─ crypto-x-analyzer-nitter (X research)
-                              ↓
-                         crypto-notifier (Telegram notifications)
-```
 
 ## Database Schema (Supabase)
-**Note**: This schema is for the Supabase cloud database. Do NOT use the local SQLite database.
+**Table: `crypto_calls`** - Shared by all KROMV12 apps (70+ columns)
 
-**Table: `crypto_calls`** (70 columns total - Multi-Source Support)
+### Column Groups:
+- **Core Fields** (9): id, krom_id, source, network, contract_address, ticker, buy_timestamp, raw_data, created_at
+- **Call Analysis** (13): analysis_score, analysis_tier, analysis_model, analysis_reasoning, analyzed_at, etc.
+- **X Analysis** (18): x_analysis_score, x_analysis_tier, x_raw_tweets, x_analysis_reasoning, x_analyzed_at, etc.
+- **Price & ROI** (13): price_at_call, current_price, ath_price, ath_roi_percent, roi_percent, price_updated_at, etc.
+- **Market Data** (7): market_cap_at_call, current_market_cap, volume_24h, liquidity_usd, pool_address, etc.
+- **User Interaction** (5): is_coin_of_interest, coin_of_interest_notes, user_comment, etc.
+- **System Fields** (5): notified, notified_premium, is_invalidated, ath_last_checked, etc.
 
-### Core Fields (9)
-Essential fields for basic token tracking:
-- `id` (UUID PRIMARY KEY) - Universal unique ID, auto-generated
-- `krom_id` (TEXT UNIQUE NOT NULL) - KROM's original ID (NULL for other sources)
-- `source` (TEXT DEFAULT 'krom') - Signal source: 'krom', 'geckoterminal', etc.
-- `network` (TEXT) - Blockchain network: 'solana', 'ethereum', 'bsc', etc.
-- `contract_address` (TEXT) - Token contract address
-- `ticker` (TEXT) - Token symbol/ticker
-- `buy_timestamp` (TIMESTAMPTZ) - When the call was made
-- `raw_data` (JSONB NOT NULL) - Source-specific API response
-- `created_at` (TIMESTAMPTZ DEFAULT now()) - Record creation timestamp
-
-### Call Analysis Fields (13)
-AI analysis results for legitimacy scoring:
-- `analysis_tier` (TEXT) - Claude rating: ALPHA/SOLID/BASIC/TRASH
-- `analysis_description` (TEXT) - Analysis summary
-- `analyzed_at` (TIMESTAMPTZ) - When initial analysis was completed
-- `analysis_score` (INTEGER) - Legitimacy score (1-10)
-- `analysis_model` (TEXT) - AI model used (claude-3-haiku, gpt-4, kimi-k2, etc.)
-- `analysis_legitimacy_factor` (TEXT) - High/Medium/Low legitimacy
-- `analysis_token_type` (TEXT) - meme/utility classification
-- `analysis_reasoning` (TEXT) - Detailed analysis reasoning
-- `analysis_prompt_used` (TEXT) - Full prompt sent to AI
-- `analysis_batch_id` (UUID) - Batch processing identifier
-- `analysis_batch_timestamp` (TIMESTAMPTZ) - When batch was processed
-- `analysis_duration_ms` (INTEGER) - Processing time in milliseconds
-- `analysis_confidence` (NUMERIC) - AI confidence level
-- `analysis_reanalyzed_at` (TIMESTAMPTZ) - Last re-analysis timestamp
-
-### X (Twitter) Analysis Fields (18)
-Social media presence evaluation:
-- `x_analysis_tier` (TEXT) - X research rating
-- `x_analysis_summary` (TEXT) - Summary of X analysis
-- `x_raw_tweets` (JSONB) - Raw tweet data from API
-- `x_analyzed_at` (TIMESTAMPTZ) - When X analysis was completed
-- `x_analysis_score` (INTEGER) - Social media score (1-10)
-- `x_analysis_model` (TEXT) - AI model used for X analysis
-- `x_best_tweet` (TEXT) - Most relevant tweet found
-- `x_legitimacy_factor` (TEXT) - Legitimacy based on social presence
-- `x_analysis_token_type` (TEXT) - Token type from social analysis
-- `x_analysis_reasoning` (TEXT) - Detailed X analysis reasoning
-- `x_analysis_prompt_used` (TEXT) - Prompt used for X analysis
-- `x_analysis_batch_id` (UUID) - X analysis batch identifier
-- `x_analysis_batch_timestamp` (TIMESTAMPTZ) - X batch processing time
-- `x_analysis_duration_ms` (INTEGER) - X analysis processing time
-- `x_reanalyzed_at` (TIMESTAMPTZ) - Last X re-analysis timestamp
-- `x_analysis_legitimacy_factor` (TEXT) - Enhanced legitimacy assessment
-- `x_analysis_best_tweet` (TEXT) - Best tweet for analysis
-- `x_analysis_key_observations` (JSONB) - Key social media observations
-
-### Price & ROI Fields (13)
-Token price tracking and performance metrics:
-- `price_at_call` (NUMERIC) - Token price when call was made
-- `price_current` (NUMERIC) - Current/latest token price
-- `current_price` (NUMERIC) - Alternative current price field
-- `price_updated_at` (TIMESTAMPTZ) - When price was last updated
-- `price_fetched_at` (TIMESTAMPTZ) - When price data was fetched
-- `price_change_percent` (NUMERIC) - Price change percentage
-- `price_network` (TEXT) - Network used for price fetching
-- `ath_price` (NUMERIC) - All-time high price
-- `ath_timestamp` (TIMESTAMPTZ) - When ATH was reached
-- `ath_roi_percent` (NUMERIC) - ROI percentage from ATH
-- `ath_market_cap` (NUMERIC) - Market cap at ATH
-- `ath_fdv` (NUMERIC) - Fully diluted value at ATH
-- `roi_percent` (NUMERIC) - Current ROI percentage
-
-### Market Data Fields (7)
-Additional market metrics:
-- `market_cap_at_call` (NUMERIC) - Market cap when call was made
-- `current_market_cap` (NUMERIC) - Current market capitalization
-- `fdv_at_call` (NUMERIC) - Fully diluted value at call time
-- `current_fdv` (NUMERIC) - Current fully diluted value
-- `token_supply` (NUMERIC) - Total token supply
-- `pool_address` (TEXT) - DEX pool address for price fetching
-
-### User Interaction Fields (5)
-User-generated content and tracking:
-- `is_coin_of_interest` (BOOLEAN DEFAULT false) - User-marked interesting tokens
-- `coin_of_interest_marked_at` (TIMESTAMPTZ) - When marked as interesting
-- `coin_of_interest_notes` (TEXT) - User notes for interesting coins
-- `user_comment` (TEXT) - User comments on the call
-- `user_comment_updated_at` (TIMESTAMPTZ) - When comment was last updated
-
-### System & Notification Fields (5)
-Internal system tracking:
-- `notified` (BOOLEAN DEFAULT false) - Regular bot notifications sent
-- `notified_premium` (BOOLEAN DEFAULT false) - Premium bot notifications sent (SOLID/ALPHA only)
-- `is_invalidated` (BOOLEAN DEFAULT false) - Whether call is invalidated
-- `invalidated_at` (TIMESTAMPTZ) - When call was invalidated
-- `invalidation_reason` (TEXT) - Reason for invalidation
+For full schema with data types and constraints, check the database directly on Supabase.
 
 ## Edge Functions
 
-### 1. crypto-orchestrator
-- **Purpose**: Main coordinator that runs all functions in sequence
-- **File**: `/edge-functions/crypto-orchestrator-with-x.ts`
-- **Timing**: ~5-20 seconds total execution
+### Crypto Monitor Functions
+See `crypto-monitor/CLAUDE.md` for details on:
+- crypto-orchestrator, crypto-poller, crypto-analyzer
+- crypto-x-analyzer-nitter, crypto-notifier
 
-### 2. crypto-poller
-- **Purpose**: Fetches new calls from KROM API
-- **File**: `/edge-functions/crypto-poller.ts`
-- **Optimizations**: 
-  - Only fetches 10 calls from API (`?limit=10`)
-  - Only processes first 5 calls
+### ATH Tracking Functions
+1. **crypto-ath-historical** - Calculate 3-tier historical ATH (daily→hourly→minute)
+2. **crypto-ath-update** - Continuous monitoring with 1 API call optimization
+3. **crypto-ath-notifier** - Telegram notifications for new ATHs >10%
 
-### 3. crypto-analyzer
-- **Purpose**: Analyzes calls using Claude API
-- **File**: `/edge-functions/crypto-analyzer.ts`
-- **Processes**: 10 calls at a time
-- **Model**: claude-3-haiku-20240307
+For implementation details, see [ATH Tracking Session →](logs/SESSION-LOG-2025-08.md)
 
-### 4. crypto-x-analyzer-nitter
-- **Purpose**: Fetches X/Twitter data and analyzes with Claude
-- **File**: `/edge-functions/crypto-x-analyzer-nitter.ts`
-- **Method**: ScraperAPI + Nitter (free alternative to X API)
-- **Processes**: 5 calls at a time
-
-### 5. crypto-notifier
-- **Purpose**: Sends Telegram notifications to dual bots
-- **File**: `/edge-functions/crypto-notifier-complete.ts`
-- **Features**:
-  - **Dual Bot Support**: Regular bot (all calls) + Premium bot (SOLID/ALPHA only)
-  - Shows both analysis tiers
-  - Uses better tier for header and filtering
-  - Includes X summary
-  - Limits to 10 notifications per run per bot
-  - Separate tracking via `notified` and `notified_premium` columns
-
-## Environment Variables (Secrets)
-Required in Supabase:
-- `SUPABASE_URL`
-- `SUPABASE_SERVICE_ROLE_KEY`
-- `SUPABASE_ANON_KEY`
-- `KROM_API_TOKEN`
-- `ANTHROPIC_API_KEY`
-- `SCRAPERAPI_KEY`
-- `TELEGRAM_BOT_TOKEN` - Regular bot (all notifications)
-- `TELEGRAM_GROUP_ID` - Regular group chat ID
-- `TELEGRAM_BOT_TOKEN_PREMIUM` - Premium bot (SOLID/ALPHA only)
-- `TELEGRAM_GROUP_ID_PREMIUM` - Premium group chat ID (-1002511942743)
+## Environment Variables
+For all required environment variables and API keys:
+- **Local development**: Check `.env` file in project root
+- **Supabase Edge Functions**: Use `supabase secrets list` to view configured secrets
+- **To sync**: Use `supabase secrets set KEY=value` to add/update secrets from `.env`
 
 ## External Services
 
-### 1. KROM API
-- **Endpoint**: `https://krom.one/api/v1/calls`
-- **Auth**: Bearer token
-- **Limit**: Request only 10 calls with `?limit=10`
+For detailed API configurations and endpoints:
+- **Crypto Monitor APIs**: See `crypto-monitor/CLAUDE.md`
+- **Other APIs**: Check `.env` file for keys and configurations
 
-### 2. Claude API (Anthropic)
-- **Endpoint**: `https://api.anthropic.com/v1/messages`
-- **Model**: claude-3-haiku-20240307
-- **Cost**: ~$0.25 per 1M input tokens
-
-### 3. ScraperAPI
-- **Endpoint**: `https://api.scraperapi.com/`
-- **Purpose**: Fetch Nitter pages
-- **Limit**: 1000 requests/month (free tier)
-
-### 4. Nitter
-- **URL**: `https://nitter.net/search?q=CONTRACT_ADDRESS&f=tweets`
-- **Purpose**: Free Twitter mirror
-- **No API needed**
-
-### 5. Telegram Bot API
-- **Endpoint**: `https://api.telegram.org/bot{TOKEN}/sendMessage`
-- **Parse Mode**: Markdown
-- **Dual Bot Setup**:
-  - Regular Bot: KROMinstant (all calls) → Main group
-  - Premium Bot: KROMinstantALPHA (@KROMinstantALPHA_bot) → "EXTREME CALLS!!" group
-
-### 6. Cron-job.org
-- **Frequency**: Every 1 minute
-- **Target**: crypto-orchestrator Edge Function
-- **Timeout**: Set to maximum (30 seconds)
-
-## Current State & Optimizations (this is for the crypto poller and notifier. should be moved into the project's own folder & claude.md file once created)
-
-### Performance
-- Total execution: 5-20 seconds
-- Poller: ~2-4 seconds
-- Analysis: ~3-10 seconds (parallel)
-- Notifier: ~2-4 seconds
-
-### Limits
-- Claude: 10 calls per run
-- X Research: 5 calls per run
-- Notifications: 10 per run
-- ScraperAPI: 1000 requests/month
-
-### Recent Fixes
-1. X API too expensive → Switched to ScraperAPI + Nitter
-2. Notification spam → Added 10 notification limit
-3. Slow polling → Limited to 5 most recent calls
-4. Network blocks → Used ScraperAPI proxy
-
-## Testing
-
-### Manual Testing (this is for the crypto poller and notifier. should be moved into the project's own folder once created)
-```bash
-# Test individual functions
-supabase functions invoke crypto-poller
-supabase functions invoke crypto-analyzer
-supabase functions invoke crypto-x-analyzer-nitter
-supabase functions invoke crypto-notifier
-
-# Test full pipeline
-supabase functions invoke crypto-orchestrator
-```
-
-### Check Logs
-- Supabase Dashboard → Edge Functions → View Logs
-
-## Notification Format (this is for the crypto poller and notifier. should be moved into the project's own folder once created)
-```
-💎 NEW ALPHA CALL: BTC on Crypto Signals
-
-📊 Analysis Ratings:
-• Call Quality: ALPHA | X Research: SOLID
-
-📝 Original Message:
-"Big news coming for BTC! 🚀"
-
-🐦 X Summary:
-• Major exchange listing confirmed
-• Partnership with Fortune 500 company
-• Active development team
-
-📊 Token: BTC
-🏷️ Group: Crypto Signals
-[... more details ...]
-```
-
-## Common Issues & Solutions (this is for the crypto poller and notifier. should be moved into the project's own folder once created)
-
-**IMPORTANT - Database Confusion**:
-- **Always use Supabase** for any data operations
-- The local SQLite database (`krom_calls.db`) is LEGACY and should NOT be used
-- If you see `krom_calls.db` mentioned, ignore it and use Supabase instead
-- All apps in KROMV12 use the Supabase cloud database
-
-1. **No notifications sent**
-   - Check if calls are analyzed (`analyzed_at` not null)
-   - Check if X analysis completed (`x_analyzed_at` not null)
-   - Verify Telegram credentials
-
-2. **Slow performance**
-   - Reduce number of calls processed
-   - Check API rate limits
-   - Monitor Edge Function timeouts
-
-3. **X analysis failing**
-   - Verify ScraperAPI key
-   - Check if Nitter instance is up
-   - Review HTML parsing patterns
 
 ## File Structure
 ```
 KROMV12/
+├── crypto-monitor/             # Crypto monitoring system documentation
+│   ├── CLAUDE.md             # Complete documentation for edge functions
+│   └── README.md             # Overview and links
+│
 ├── krom-analysis-app/          # Next.js app for batch analysis
 │   ├── app/api/               # API routes (analyze, download-csv)
 │   ├── lib/                   # Utilities
 │   ├── package.json          
 │   └── CLAUDE.md             # App-specific documentation
 │
-├── edge-functions/            # Supabase Edge Functions
-│   ├── crypto-orchestrator-with-x.ts
-│   ├── crypto-poller.ts
-│   ├── crypto-analyzer.ts
-│   ├── crypto-x-analyzer-nitter.ts
-│   └── crypto-notifier-complete.ts
+├── krom-api-explorer/         # Next.js app for external API integration
+│   └── CLAUDE.md             # App-specific documentation
+│
+├── supabase/functions/        # Edge Functions (deployed to Supabase)
+│   ├── crypto-*              # Crypto monitor functions
+│   └── _shared/              # Shared utilities
 │
 ├── logs/                      # Session logs
-│   ├── SESSION-LOG-2025-05.md
-│   ├── SESSION-LOG-2025-07.md
-│   └── SESSION-LOG-INDEX.md
+│   ├── SESSION-LOG-*.md      # Monthly session logs
+│   └── SESSION-LOG-INDEX.md  # Session overview
 │
 ├── archive/                   # Old/deprecated files
-│   ├── old-servers/          # Previous server implementations
-│   ├── old-interfaces/       # Previous UI versions
-│   └── edge-functions/       # Old Edge Function versions
 │
 ├── Core Files:
-│   ├── all-in-one-server.py  # Main unified server (port 5001)
-│   ├── krom_calls.db         # LEGACY SQLite database (DO NOT USE - reference only)
-│   ├── .env                  # Environment variables (includes Supabase credentials)
-│   └── CLAUDE.md             # This documentation
+│   ├── .env                  # Environment variables (single source of truth)
+│   ├── CLAUDE.md             # This documentation
+│   └── krom_calls.db         # LEGACY SQLite database (DO NOT USE)
 │
-├── Dashboard Files:
-│   ├── krom-standalone-dashboard.html  # Main analytics dashboard
-│   ├── krom-dashboard-main.html       # Token-gated dashboard
-│   ├── krom-analytics.html            # KROM-styled version
-│   └── krom-analysis-viz.html         # Original visualization
-│
-├── Database Scripts:
-│   ├── download-krom-simple.py         # Download KROM calls
-│   ├── create-simple-database.sql      # Database schema
-│   └── add-enhanced-analysis-columns.sql # Analysis columns
-│
-└── Analysis Scripts:
-    ├── enhanced-crypto-analyzer.py     # AI analysis logic
-    ├── batch-analysis-api.py          # Batch processing
-    └── export-analysis-data.py        # Data export
+└── Scripts & Tools:
+    ├── batch-*.py            # Various batch processing scripts
+    └── *.sql                 # Database schema files
 ```
 
 ## Known Issues & Notes
-- X analyzer currently rates most calls as TRASH (expected - only 1-2 SOLID/ALPHA per week)
-- Premium bot will be significantly quieter than regular bot (SOLID/ALPHA calls only)
-- System is optimized for ~1-5 calls per minute normal operation
-- All functions work correctly as of last testing
-- Dual bot notification system fully operational
+- **Database**: Always use Supabase - the local SQLite database is legacy reference only
+- **Context**: Each app has its own CLAUDE.md with specific documentation
+- **Environment**: Check `.env` for all API keys and configurations
 
 ## How to Use This Documentation
 
@@ -1030,7 +786,16 @@ Successfully integrated DexScreener API to track volume and liquidity data:
 - 100% token coverage achieved with optimized cron job
 - [Full session details →](logs/SESSION-LOG-2025-07-31.md)
 
+## ATH Tracking & Notification System (August 4-5, 2025)
+
+Implemented comprehensive All-Time High tracking with instant Telegram notifications:
+- **3-tier ATH calculation** using GeckoTerminal OHLCV data (daily→hourly→minute precision)
+- **Optimized processing**: Reduced from 3 to 1 API call for updates (70% efficiency gain)
+- **Direct notifications**: Instant alerts via @KROMATHAlerts_bot when tokens hit new ATH >10%
+- **Continuous monitoring**: Processes entire database every ~4 hours
+- [Full implementation details →](logs/SESSION-LOG-2025-08.md)
+
 ---
-**Last Updated**: July 31, 2025  
-**Status**: ✅ Volume/Liquidity tracking complete. Ready for smart ATH scheduling based on activity.
-**Version**: 8.2.0 - DexScreener Integration & Volume Tracking Complete
+**Last Updated**: August 5, 2025  
+**Status**: ✅ ATH tracking system live and operational
+**Version**: 8.0.0 - ATH Tracking & Notification System Implementation

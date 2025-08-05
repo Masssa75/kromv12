@@ -37,7 +37,7 @@ Deno.serve(async (req) => {
 
   try {
     // Parse request body
-    const { limit = 10 } = await req.json().catch(() => ({}))
+    const { limit = 5 } = await req.json().catch(() => ({}))
     
     // Initialize Supabase client
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!
@@ -179,10 +179,10 @@ Deno.serve(async (req) => {
         await updateToken(supabase, token.id, athResult)
         results.push({ tokenId: token.id, ticker: token.ticker, ...athResult })
         
-        // Rate limiting - CoinGecko Pro API allows 500 calls/minute
-        // We make 3 calls per token, so ~166 tokens per minute max
-        // Using 0.5 second delay since we're on Pro API
-        await new Promise(resolve => setTimeout(resolve, 500)) // 0.5 seconds between tokens
+        // Rate limiting - Using free tier (30 calls/minute)
+        // We make 3 calls per token, processing 5 tokens per minute
+        // Using 1 second delay to stay well within limits
+        await new Promise(resolve => setTimeout(resolve, 1000)) // 1 second between tokens
 
       } catch (error) {
         console.error(`Error processing ${token.ticker}:`, error)

@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM - Top Section with Intrigue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .variation {
+            margin-bottom: 100px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #222;
+        }
+
+        .variation-title {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 40px;
+            font-family: monospace;
+        }
+
+        /* VARIATION 1 - Tag & Score Combo */
+        .v1-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .v1-item {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v1-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .v1-token {
+            font-size: 48px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .v1-score {
+            background: #00ff88;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .v1-x {
+            font-size: 72px;
+            font-weight: 900;
+            color: #00ff88;
+            margin-bottom: 15px;
+        }
+
+        .v1-tags {
+            display: flex;
+            gap: 10px;
+        }
+
+        .v1-tag {
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .v1-tag.meme {
+            background: rgba(255, 0, 102, 0.2);
+            color: #ff0066;
+            border: 1px solid #ff0066;
+        }
+
+        .v1-tag.utility {
+            background: rgba(0, 102, 255, 0.2);
+            color: #0066ff;
+            border: 1px solid #0066ff;
+        }
+
+        /* VARIATION 2 - Group Signals */
+        .v2-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .v2-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 25px;
+            background: #111;
+            border-left: 5px solid #00ff88;
+        }
+
+        .v2-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .v2-group {
+            text-align: center;
+            padding-right: 30px;
+            border-right: 1px solid #333;
+        }
+
+        .v2-group-name {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .v2-group-icon {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .v2-token {
+            font-size: 42px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .v2-x {
+            font-size: 64px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+
+        /* VARIATION 3 - Mystery Ratings */
+        .v3-container {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .v3-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .v3-item {
+            position: relative;
+        }
+
+        .v3-rating {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            background: #ff6600;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+        }
+
+        .v3-token {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .v3-x {
+            font-size: 84px;
+            font-weight: 900;
+            color: #00ff88;
+            line-height: 1;
+        }
+
+        .v3-mystery {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* VARIATION 4 - Call Source Focus */
+        .v4-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .v4-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .v4-source {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .v4-main {
+            margin-top: 20px;
+        }
+
+        .v4-token {
+            font-size: 52px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .v4-x {
+            font-size: 76px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #00ff88, #00cc66);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .v4-detail {
+            font-size: 16px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        /* VARIATION 5 - Timeline with Context */
+        .v5-container {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .v5-line {
+            position: absolute;
+            left: 100px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #333;
+        }
+
+        .v5-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .v5-time {
+            width: 80px;
+            text-align: right;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .v5-dot {
+            position: absolute;
+            left: 94px;
+            width: 14px;
+            height: 14px;
+            background: #00ff88;
+            border-radius: 50%;
+            border: 3px solid #0a0a0a;
+        }
+
+        .v5-content {
+            margin-left: 40px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .v5-token {
+            font-size: 40px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .v5-x {
+            font-size: 56px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+
+        .v5-badge {
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ccc;
+        }
+
+        /* VARIATION 6 - Tier System */
+        .v6-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .v6-section {
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .v6-section.alpha {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .v6-section.solid {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.05));
+            border: 2px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .v6-section.basic {
+            background: linear-gradient(135deg, rgba(100, 100, 100, 0.1), rgba(100, 100, 100, 0.05));
+            border: 2px solid rgba(100, 100, 100, 0.3);
+        }
+
+        .v6-tier {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .v6-tier.alpha { color: #ffd700; }
+        .v6-tier.solid { color: #00ff88; }
+        .v6-tier.basic { color: #888; }
+
+        .v6-items {
+            display: flex;
+            gap: 40px;
+            overflow-x: auto;
+        }
+
+        .v6-item {
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .v6-token {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .v6-x {
+            font-size: 48px;
+            font-weight: 900;
+        }
+
+        .v6-x.alpha { color: #ffd700; }
+        .v6-x.solid { color: #00ff88; }
+        .v6-x.basic { color: #888; }
+
+        /* VARIATION 7 - Hype Indicators */
+        .v7-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .v7-item {
+            background: #0f0f0f;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v7-hype {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .v7-flame {
+            font-size: 20px;
+            animation: flicker 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .v7-token {
+            font-size: 44px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .v7-x {
+            font-size: 68px;
+            font-weight: 900;
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+
+        .v7-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* VARIATION 8 - Question Marks */
+        .v8-container {
+            padding: 40px 0;
+        }
+
+        .v8-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: #111;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .v8-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .v8-token {
+            font-size: 48px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .v8-x {
+            font-size: 64px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+
+        .v8-mystery {
+            display: flex;
+            gap: 15px;
+        }
+
+        .v8-question {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .v8-question:hover {
+            background: #00ff88;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* VARIATION 9 - Success Metrics */
+        .v9-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .v9-item {
+            background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid #222;
+        }
+
+        .v9-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .v9-token {
+            font-size: 40px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .v9-verified {
+            width: 30px;
+            height: 30px;
+            background: #00ff88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .v9-x {
+            font-size: 60px;
+            font-weight: 900;
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+
+        .v9-stats {
+            display: flex;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .v9-stat {
+            flex: 1;
+            text-align: center;
+        }
+
+        .v9-stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00ff88;
+        }
+
+        .v9-stat-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* VARIATION 10 - Mixed Signals */
+        .v10-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .v10-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            align-items: center;
+            padding: 20px 30px;
+            background: #0a0a0a;
+            transition: all 0.3s;
+        }
+
+        .v10-item:hover {
+            background: #111;
+            transform: translateX(10px);
+        }
+
+        .v10-token {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .v10-x {
+            font-size: 48px;
+            font-weight: 900;
+            color: #00ff88;
+            text-align: center;
+        }
+
+        .v10-signal {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .v10-signal-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- VARIATION 1 - Tag & Score Combo -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 1: Tag & Score Combo</h2>
+            <div class="v1-container">
+                <div class="v1-item">
+                    <div class="v1-header">
+                        <div class="v1-token">COMPANY</div>
+                        <div class="v1-score">9.5</div>
+                    </div>
+                    <div class="v1-x">731X</div>
+                    <div class="v1-tags">
+                        <span class="v1-tag utility">UTILITY</span>
+                        <span class="v1-tag">SOLANA</span>
+                    </div>
+                </div>
+                <div class="v1-item">
+                    <div class="v1-header">
+                        <div class="v1-token">ZEUS</div>
+                        <div class="v1-score">8.8</div>
+                    </div>
+                    <div class="v1-x">301X</div>
+                    <div class="v1-tags">
+                        <span class="v1-tag meme">MEME</span>
+                        <span class="v1-tag">ETHEREUM</span>
+                    </div>
+                </div>
+                <div class="v1-item">
+                    <div class="v1-header">
+                        <div class="v1-token">ANI</div>
+                        <div class="v1-score">9.2</div>
+                    </div>
+                    <div class="v1-x">231X</div>
+                    <div class="v1-tags">
+                        <span class="v1-tag meme">MEME</span>
+                        <span class="v1-tag">SOLANA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 2 - Group Signals -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 2: Group Signals</h2>
+            <div class="v2-container">
+                <div class="v2-item">
+                    <div class="v2-left">
+                        <div class="v2-group">
+                            <div class="v2-group-icon">🚀</div>
+                            <div class="v2-group-name">Alpha Calls</div>
+                        </div>
+                        <div class="v2-token">COMPANY</div>
+                    </div>
+                    <div class="v2-x">731X</div>
+                </div>
+                <div class="v2-item">
+                    <div class="v2-left">
+                        <div class="v2-group">
+                            <div class="v2-group-icon">💎</div>
+                            <div class="v2-group-name">Diamond Picks</div>
+                        </div>
+                        <div class="v2-token">ZEUS</div>
+                    </div>
+                    <div class="v2-x">301X</div>
+                </div>
+                <div class="v2-item">
+                    <div class="v2-left">
+                        <div class="v2-group">
+                            <div class="v2-group-icon">🔥</div>
+                            <div class="v2-group-name">Hot Signals</div>
+                        </div>
+                        <div class="v2-token">ANI</div>
+                    </div>
+                    <div class="v2-x">231X</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 3 - Mystery Ratings -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 3: Mystery Ratings</h2>
+            <div class="v3-container">
+                <div class="v3-grid">
+                    <div class="v3-item">
+                        <div class="v3-rating">10</div>
+                        <div class="v3-token">COMPANY</div>
+                        <div class="v3-x">731X</div>
+                        <div class="v3-mystery">What made it special?</div>
+                    </div>
+                    <div class="v3-item">
+                        <div class="v3-rating">9.5</div>
+                        <div class="v3-token">ZEUS</div>
+                        <div class="v3-x">301X</div>
+                        <div class="v3-mystery">Why did it moon?</div>
+                    </div>
+                    <div class="v3-item">
+                        <div class="v3-rating">9.8</div>
+                        <div class="v3-token">ANI</div>
+                        <div class="v3-x">231X</div>
+                        <div class="v3-mystery">What's the secret?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 4 - Call Source Focus -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 4: Call Source Focus</h2>
+            <div class="v4-container">
+                <div class="v4-item">
+                    <div class="v4-source">Alpha Calls Group</div>
+                    <div class="v4-main">
+                        <div class="v4-token">COMPANY</div>
+                        <div class="v4-x">731X</div>
+                        <div class="v4-detail">Called 29 days ago • Utility token</div>
+                    </div>
+                </div>
+                <div class="v4-item">
+                    <div class="v4-source">Crypto Gems VIP</div>
+                    <div class="v4-main">
+                        <div class="v4-token">ZEUS</div>
+                        <div class="v4-x">301X</div>
+                        <div class="v4-detail">Called 71 days ago • Meme coin</div>
+                    </div>
+                </div>
+                <div class="v4-item">
+                    <div class="v4-source">DeFi Insiders</div>
+                    <div class="v4-main">
+                        <div class="v4-token">ANI</div>
+                        <div class="v4-x">231X</div>
+                        <div class="v4-detail">Called 18 days ago • Community driven</div>
+                    </div>
+                </div>
+                <div class="v4-item">
+                    <div class="v4-source">Moon Hunters</div>
+                    <div class="v4-main">
+                        <div class="v4-token">CHLOE</div>
+                        <div class="v4-x">120X</div>
+                        <div class="v4-detail">Called 10 days ago • AI project</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 5 - Timeline with Context -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 5: Timeline with Context</h2>
+            <div class="v5-container">
+                <div class="v5-line"></div>
+                <div class="v5-item">
+                    <div class="v5-time">3d ago</div>
+                    <div class="v5-dot"></div>
+                    <div class="v5-content">
+                        <div class="v5-token">CMINI</div>
+                        <div class="v5-x">79X</div>
+                        <div class="v5-badge">MEME</div>
+                        <div class="v5-badge">SCORE: 8.5</div>
+                    </div>
+                </div>
+                <div class="v5-item">
+                    <div class="v5-time">10d ago</div>
+                    <div class="v5-dot"></div>
+                    <div class="v5-content">
+                        <div class="v5-token">CHLOE</div>
+                        <div class="v5-x">120X</div>
+                        <div class="v5-badge">AI</div>
+                        <div class="v5-badge">SCORE: 9.0</div>
+                    </div>
+                </div>
+                <div class="v5-item">
+                    <div class="v5-time">18d ago</div>
+                    <div class="v5-dot"></div>
+                    <div class="v5-content">
+                        <div class="v5-token">ANI</div>
+                        <div class="v5-x">231X</div>
+                        <div class="v5-badge">MEME</div>
+                        <div class="v5-badge">SCORE: 9.8</div>
+                    </div>
+                </div>
+                <div class="v5-item">
+                    <div class="v5-time">29d ago</div>
+                    <div class="v5-dot"></div>
+                    <div class="v5-content">
+                        <div class="v5-token">COMPANY</div>
+                        <div class="v5-x">731X</div>
+                        <div class="v5-badge">UTILITY</div>
+                        <div class="v5-badge">SCORE: 10</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 6 - Tier System -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 6: Tier System</h2>
+            <div class="v6-container">
+                <div class="v6-section alpha">
+                    <div class="v6-tier alpha">ALPHA TIER</div>
+                    <div class="v6-items">
+                        <div class="v6-item">
+                            <div class="v6-token">COMPANY</div>
+                            <div class="v6-x alpha">731X</div>
+                        </div>
+                        <div class="v6-item">
+                            <div class="v6-token">ZEUS</div>
+                            <div class="v6-x alpha">301X</div>
+                        </div>
+                        <div class="v6-item">
+                            <div class="v6-token">ANI</div>
+                            <div class="v6-x alpha">231X</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="v6-section solid">
+                    <div class="v6-tier solid">SOLID TIER</div>
+                    <div class="v6-items">
+                        <div class="v6-item">
+                            <div class="v6-token">SUPERGROK</div>
+                            <div class="v6-x solid">140X</div>
+                        </div>
+                        <div class="v6-item">
+                            <div class="v6-token">CHLOE</div>
+                            <div class="v6-x solid">120X</div>
+                        </div>
+                        <div class="v6-item">
+                            <div class="v6-token">LMEOW</div>
+                            <div class="v6-x solid">98X</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 7 - Hype Indicators -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 7: Hype Indicators</h2>
+            <div class="v7-container">
+                <div class="v7-item">
+                    <div class="v7-hype">
+                        <span class="v7-flame">🔥</span>
+                        <span class="v7-flame">🔥</span>
+                        <span class="v7-flame">🔥</span>
+                    </div>
+                    <div class="v7-token">COMPANY</div>
+                    <div class="v7-x">731X</div>
+                    <div class="v7-tag">UTILITY GIANT</div>
+                </div>
+                <div class="v7-item">
+                    <div class="v7-hype">
+                        <span class="v7-flame">🔥</span>
+                        <span class="v7-flame">🔥</span>
+                    </div>
+                    <div class="v7-token">ZEUS</div>
+                    <div class="v7-x">301X</div>
+                    <div class="v7-tag">MEME LEGEND</div>
+                </div>
+                <div class="v7-item">
+                    <div class="v7-hype">
+                        <span class="v7-flame">🔥</span>
+                        <span class="v7-flame">🔥</span>
+                        <span class="v7-flame">🔥</span>
+                    </div>
+                    <div class="v7-token">ANI</div>
+                    <div class="v7-x">231X</div>
+                    <div class="v7-tag">COMMUNITY FAV</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 8 - Question Marks -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 8: Question Marks</h2>
+            <div class="v8-container">
+                <div class="v8-item">
+                    <div class="v8-left">
+                        <div class="v8-token">COMPANY</div>
+                        <div class="v8-x">731X</div>
+                    </div>
+                    <div class="v8-mystery">
+                        <div class="v8-question">?</div>
+                        <div class="v8-question">?</div>
+                        <div class="v8-question">?</div>
+                    </div>
+                </div>
+                <div class="v8-item">
+                    <div class="v8-left">
+                        <div class="v8-token">ZEUS</div>
+                        <div class="v8-x">301X</div>
+                    </div>
+                    <div class="v8-mystery">
+                        <div class="v8-question">?</div>
+                        <div class="v8-question">?</div>
+                        <div class="v8-question">?</div>
+                    </div>
+                </div>
+                <div class="v8-item">
+                    <div class="v8-left">
+                        <div class="v8-token">ANI</div>
+                        <div class="v8-x">231X</div>
+                    </div>
+                    <div class="v8-mystery">
+                        <div class="v8-question">?</div>
+                        <div class="v8-question">?</div>
+                        <div class="v8-question">?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 9 - Success Metrics -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 9: Success Metrics</h2>
+            <div class="v9-container">
+                <div class="v9-item">
+                    <div class="v9-header">
+                        <div class="v9-token">COMPANY</div>
+                        <div class="v9-verified">✓</div>
+                    </div>
+                    <div class="v9-x">731X</div>
+                    <div class="v9-stats">
+                        <div class="v9-stat">
+                            <div class="v9-stat-value">10/10</div>
+                            <div class="v9-stat-label">AI SCORE</div>
+                        </div>
+                        <div class="v9-stat">
+                            <div class="v9-stat-value">UTILITY</div>
+                            <div class="v9-stat-label">TYPE</div>
+                        </div>
+                        <div class="v9-stat">
+                            <div class="v9-stat-value">29d ago</div>
+                            <div class="v9-stat-label">CALLED</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="v9-item">
+                    <div class="v9-header">
+                        <div class="v9-token">ZEUS</div>
+                        <div class="v9-verified">✓</div>
+                    </div>
+                    <div class="v9-x">301X</div>
+                    <div class="v9-stats">
+                        <div class="v9-stat">
+                            <div class="v9-stat-value">9.5/10</div>
+                            <div class="v9-stat-label">AI SCORE</div>
+                        </div>
+                        <div class="v9-stat">
+                            <div class="v9-stat-value">MEME</div>
+                            <div class="v9-stat-label">TYPE</div>
+                        </div>
+                        <div class="v9-stat">
+                            <div class="v9-stat-value">71d ago</div>
+                            <div class="v9-stat-label">CALLED</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 10 - Mixed Signals -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 10: Mixed Signals</h2>
+            <div class="v10-container">
+                <div class="v10-item">
+                    <div class="v10-token">COMPANY</div>
+                    <div class="v10-x">731X</div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">10</span>
+                        AI Score
+                    </div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">ALPHA</span>
+                        Tier
+                    </div>
+                </div>
+                <div class="v10-item">
+                    <div class="v10-token">ZEUS</div>
+                    <div class="v10-x">301X</div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">9.5</span>
+                        AI Score
+                    </div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">ALPHA</span>
+                        Tier
+                    </div>
+                </div>
+                <div class="v10-item">
+                    <div class="v10-token">ANI</div>
+                    <div class="v10-x">231X</div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">9.8</span>
+                        AI Score
+                    </div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">ALPHA</span>
+                        Tier
+                    </div>
+                </div>
+                <div class="v10-item">
+                    <div class="v10-token">SUPERGROK</div>
+                    <div class="v10-x">140X</div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">8.5</span>
+                        AI Score
+                    </div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">SOLID</span>
+                        Tier
+                    </div>
+                </div>
+                <div class="v10-item">
+                    <div class="v10-token">CHLOE</div>
+                    <div class="v10-x">120X</div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">9.0</span>
+                        AI Score
+                    </div>
+                    <div class="v10-signal">
+                        <span class="v10-signal-value">SOLID</span>
+                        Tier
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM - Top Section with Real ATH Data</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .variation {
+            margin-bottom: 80px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .variation-title {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+            font-family: monospace;
+        }
+
+        /* VARIATION 1 - Classic Terminal Style */
+        .v1-container {
+            background: #000;
+            border: 1px solid #00ff00;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .v1-header {
+            color: #00ff00;
+            font-size: 24px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .v1-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .v1-box {
+            border: 1px solid #00ff00;
+            padding: 15px;
+        }
+
+        .v1-box h3 {
+            color: #00ff00;
+            font-size: 14px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 5px;
+        }
+
+        .v1-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .v1-token {
+            color: #ffff00;
+        }
+
+        .v1-roi {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        /* VARIATION 2 - FOMO Counter Style */
+        .v2-container {
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .v2-header {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #ff0066, #ff6600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .v2-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .v2-stat {
+            text-align: center;
+        }
+
+        .v2-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: #00ff88;
+            line-height: 1;
+        }
+
+        .v2-label {
+            font-size: 18px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .v2-missed {
+            font-size: 24px;
+            color: #ff0066;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* VARIATION 3 - Ticker Tape Style */
+        .v3-container {
+            background: #111;
+            padding: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .v3-ticker {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .v3-item {
+            padding: 0 30px;
+            white-space: nowrap;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .v3-token {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .v3-roi {
+            color: #00ff88;
+            font-weight: 900;
+            font-size: 24px;
+        }
+
+        .v3-time {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* VARIATION 4 - Minimal Cards */
+        .v4-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .v4-card {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .v4-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff88;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .v4-time {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .v4-roi {
+            font-size: 36px;
+            font-weight: 900;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .v4-token {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* VARIATION 5 - Timeline Style */
+        .v5-container {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .v5-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #00ff88, #00ffff);
+            transform: translateX(-50%);
+        }
+
+        .v5-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .v5-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .v5-content {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin: 0 40px;
+        }
+
+        .v5-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #00ff88;
+            border-radius: 50%;
+            border: 4px solid #0a0a0a;
+        }
+
+        .v5-roi {
+            font-size: 32px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+
+        .v5-token {
+            font-size: 20px;
+            margin-top: 5px;
+        }
+
+        .v5-time {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* VARIATION 6 - Leaderboard Style */
+        .v6-container {
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .v6-header {
+            background: linear-gradient(45deg, #00ff88, #00ffff);
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 900;
+            color: #000;
+        }
+
+        .v6-list {
+            padding: 20px;
+        }
+
+        .v6-item {
+            display: grid;
+            grid-template-columns: 50px 2fr 1fr 1fr;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #222;
+            transition: all 0.3s;
+        }
+
+        .v6-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateX(10px);
+        }
+
+        .v6-rank {
+            font-size: 24px;
+            font-weight: 900;
+            color: #666;
+        }
+
+        .v6-rank.gold {
+            color: #ffd700;
+        }
+
+        .v6-rank.silver {
+            color: #c0c0c0;
+        }
+
+        .v6-rank.bronze {
+            color: #cd7f32;
+        }
+
+        .v6-token {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .v6-roi {
+            font-size: 24px;
+            font-weight: 900;
+            color: #00ff88;
+            text-align: right;
+        }
+
+        .v6-time {
+            text-align: right;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* VARIATION 7 - Alert Style */
+        .v7-container {
+            background: linear-gradient(135deg, #ff0066 0%, #ff6600 100%);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v7-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .v7-alert {
+            font-size: 32px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .v7-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .v7-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .v7-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .v7-label {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+        }
+
+        /* VARIATION 8 - Split View */
+        .v8-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .v8-left {
+            text-align: center;
+        }
+
+        .v8-huge {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ff88, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .v8-subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .v8-right {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .v8-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .v8-item:last-child {
+            border-bottom: none;
+        }
+
+        .v8-token {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .v8-roi {
+            font-size: 24px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+
+        /* VARIATION 9 - Notification Style */
+        .v9-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .v9-notification {
+            background: #1a1a1a;
+            border-left: 4px solid #00ff88;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .v9-notification::after {
+            content: 'MISSED';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0066;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .v9-content {
+            flex: 1;
+        }
+
+        .v9-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .v9-main {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .v9-roi {
+            font-size: 36px;
+            font-weight: 900;
+            color: #00ff88;
+        }
+
+        /* VARIATION 10 - Compact Grid */
+        .v10-container {
+            background: #0f0f0f;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .v10-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .v10-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .v10-subtitle {
+            font-size: 18px;
+            color: #ff0066;
+            font-weight: 600;
+        }
+
+        .v10-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .v10-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .v10-section-title {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .v10-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .v10-token {
+            font-weight: 600;
+        }
+
+        .v10-roi {
+            font-weight: 900;
+            color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- VARIATION 1 - Classic Terminal Style (like current KROM) -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 1: Classic Terminal Style</h2>
+            <div class="v1-container">
+                <h1 class="v1-header">KROM</h1>
+                <div class="v1-grid">
+                    <div class="v1-box">
+                        <h3>top calls 24h</h3>
+                        <div class="v1-item">
+                            <span class="v1-token">CMINI</span>
+                            <span class="v1-roi">↑7,926%</span>
+                        </div>
+                        <div class="v1-item">
+                            <span class="v1-token">LMEOW</span>
+                            <span class="v1-roi">↑9,805%</span>
+                        </div>
+                        <div class="v1-item">
+                            <span class="v1-token">CHLOE</span>
+                            <span class="v1-roi">↑12,000%</span>
+                        </div>
+                    </div>
+                    <div class="v1-box">
+                        <h3>top calls 7d</h3>
+                        <div class="v1-item">
+                            <span class="v1-token">CHLOE</span>
+                            <span class="v1-roi">↑12,000%</span>
+                        </div>
+                        <div class="v1-item">
+                            <span class="v1-token">LMEOW</span>
+                            <span class="v1-roi">↑9,805%</span>
+                        </div>
+                        <div class="v1-item">
+                            <span class="v1-token">CMINI</span>
+                            <span class="v1-roi">↑7,926%</span>
+                        </div>
+                    </div>
+                    <div class="v1-box">
+                        <h3>top calls ATH</h3>
+                        <div class="v1-item">
+                            <span class="v1-token">COMPANY</span>
+                            <span class="v1-roi">↑73,193%</span>
+                        </div>
+                        <div class="v1-item">
+                            <span class="v1-token">ZEUS</span>
+                            <span class="v1-roi">↑30,195%</span>
+                        </div>
+                        <div class="v1-item">
+                            <span class="v1-token">ANI</span>
+                            <span class="v1-roi">↑23,183%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 2 - FOMO Counter Style -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 2: FOMO Counter Style</h2>
+            <div class="v2-container">
+                <h1 class="v2-header">YOU MISSED</h1>
+                <div class="v2-stats">
+                    <div class="v2-stat">
+                        <div class="v2-number">1</div>
+                        <div class="v2-label">79x This Week</div>
+                    </div>
+                    <div class="v2-stat">
+                        <div class="v2-number">8</div>
+                        <div class="v2-label">100x+ This Month</div>
+                    </div>
+                    <div class="v2-stat">
+                        <div class="v2-number">64</div>
+                        <div class="v2-label">10x+ Total</div>
+                    </div>
+                </div>
+                <div class="v2-missed">COMPANY hit 731x just 29 days ago</div>
+            </div>
+        </div>
+
+        <!-- VARIATION 3 - Ticker Tape Style -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 3: Ticker Tape Style</h2>
+            <div class="v3-container">
+                <div class="v3-ticker">
+                    <div class="v3-item">
+                        <span class="v3-token">COMPANY</span>
+                        <span class="v3-roi">+73,193%</span>
+                        <span class="v3-time">29d ago</span>
+                    </div>
+                    <div class="v3-item">
+                        <span class="v3-token">ZEUS</span>
+                        <span class="v3-roi">+30,195%</span>
+                        <span class="v3-time">71d ago</span>
+                    </div>
+                    <div class="v3-item">
+                        <span class="v3-token">ANI</span>
+                        <span class="v3-roi">+23,183%</span>
+                        <span class="v3-time">18d ago</span>
+                    </div>
+                    <div class="v3-item">
+                        <span class="v3-token">MASK</span>
+                        <span class="v3-roi">+19,525%</span>
+                        <span class="v3-time">63d ago</span>
+                    </div>
+                    <div class="v3-item">
+                        <span class="v3-token">SUPERGROK</span>
+                        <span class="v3-roi">+14,055%</span>
+                        <span class="v3-time">18d ago</span>
+                    </div>
+                    <div class="v3-item">
+                        <span class="v3-token">CHAD</span>
+                        <span class="v3-roi">+12,219%</span>
+                        <span class="v3-time">17d ago</span>
+                    </div>
+                    <div class="v3-item">
+                        <span class="v3-token">CHLOE</span>
+                        <span class="v3-roi">+12,000%</span>
+                        <span class="v3-time">10d ago</span>
+                    </div>
+                    <!-- Duplicate for continuous scroll -->
+                    <div class="v3-item">
+                        <span class="v3-token">COMPANY</span>
+                        <span class="v3-roi">+73,193%</span>
+                        <span class="v3-time">29d ago</span>
+                    </div>
+                    <div class="v3-item">
+                        <span class="v3-token">ZEUS</span>
+                        <span class="v3-roi">+30,195%</span>
+                        <span class="v3-time">71d ago</span>
+                    </div>
+                    <div class="v3-item">
+                        <span class="v3-token">ANI</span>
+                        <span class="v3-roi">+23,183%</span>
+                        <span class="v3-time">18d ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 4 - Minimal Cards -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 4: Minimal Cards</h2>
+            <div class="v4-container">
+                <div class="v4-card">
+                    <div class="v4-time">This Week</div>
+                    <div class="v4-roi">7,926%</div>
+                    <div class="v4-token">CMINI</div>
+                </div>
+                <div class="v4-card">
+                    <div class="v4-time">Last 2 Weeks</div>
+                    <div class="v4-roi">12,000%</div>
+                    <div class="v4-token">CHLOE</div>
+                </div>
+                <div class="v4-card">
+                    <div class="v4-time">This Month</div>
+                    <div class="v4-roi">73,193%</div>
+                    <div class="v4-token">COMPANY</div>
+                </div>
+                <div class="v4-card">
+                    <div class="v4-time">All Time</div>
+                    <div class="v4-roi">73,193%</div>
+                    <div class="v4-token">COMPANY</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 5 - Timeline Style -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 5: Timeline Style</h2>
+            <div class="v5-container">
+                <div class="v5-line"></div>
+                <div class="v5-item">
+                    <div class="v5-content">
+                        <div class="v5-roi">+7,926%</div>
+                        <div class="v5-token">CMINI</div>
+                        <div class="v5-time">3 days ago</div>
+                    </div>
+                    <div class="v5-dot"></div>
+                </div>
+                <div class="v5-item">
+                    <div class="v5-content">
+                        <div class="v5-roi">+9,805%</div>
+                        <div class="v5-token">LMEOW</div>
+                        <div class="v5-time">8 days ago</div>
+                    </div>
+                    <div class="v5-dot"></div>
+                </div>
+                <div class="v5-item">
+                    <div class="v5-content">
+                        <div class="v5-roi">+12,000%</div>
+                        <div class="v5-token">CHLOE</div>
+                        <div class="v5-time">10 days ago</div>
+                    </div>
+                    <div class="v5-dot"></div>
+                </div>
+                <div class="v5-item">
+                    <div class="v5-content">
+                        <div class="v5-roi">+23,183%</div>
+                        <div class="v5-token">ANI</div>
+                        <div class="v5-time">18 days ago</div>
+                    </div>
+                    <div class="v5-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 6 - Leaderboard Style -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 6: Leaderboard Style</h2>
+            <div class="v6-container">
+                <div class="v6-header">🏆 TOP ATH PERFORMERS YOU MISSED 🏆</div>
+                <div class="v6-list">
+                    <div class="v6-item">
+                        <span class="v6-rank gold">#1</span>
+                        <span class="v6-token">COMPANY</span>
+                        <span class="v6-roi">73,193%</span>
+                        <span class="v6-time">29d ago</span>
+                    </div>
+                    <div class="v6-item">
+                        <span class="v6-rank silver">#2</span>
+                        <span class="v6-token">ZEUS</span>
+                        <span class="v6-roi">30,195%</span>
+                        <span class="v6-time">71d ago</span>
+                    </div>
+                    <div class="v6-item">
+                        <span class="v6-rank bronze">#3</span>
+                        <span class="v6-token">ANI</span>
+                        <span class="v6-roi">23,183%</span>
+                        <span class="v6-time">18d ago</span>
+                    </div>
+                    <div class="v6-item">
+                        <span class="v6-rank">#4</span>
+                        <span class="v6-token">MASK</span>
+                        <span class="v6-roi">19,525%</span>
+                        <span class="v6-time">63d ago</span>
+                    </div>
+                    <div class="v6-item">
+                        <span class="v6-rank">#5</span>
+                        <span class="v6-token">SUPERGROK</span>
+                        <span class="v6-roi">14,055%</span>
+                        <span class="v6-time">18d ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 7 - Alert Style -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 7: Alert Style</h2>
+            <div class="v7-container">
+                <h1 class="v7-alert">⚠️ MASSIVE GAINS ALERT ⚠️</h1>
+                <div class="v7-grid">
+                    <div class="v7-box">
+                        <div class="v7-number">1</div>
+                        <div class="v7-label">79x this week</div>
+                    </div>
+                    <div class="v7-box">
+                        <div class="v7-number">8</div>
+                        <div class="v7-label">100x+ this month</div>
+                    </div>
+                    <div class="v7-box">
+                        <div class="v7-number">731x</div>
+                        <div class="v7-label">Biggest miss</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 8 - Split View -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 8: Split View</h2>
+            <div class="v8-container">
+                <div class="v8-left">
+                    <div class="v8-huge">64</div>
+                    <div class="v8-subtitle">10x+ gains you missed</div>
+                </div>
+                <div class="v8-right">
+                    <div class="v8-item">
+                        <span class="v8-token">COMPANY</span>
+                        <span class="v8-roi">+73,193%</span>
+                    </div>
+                    <div class="v8-item">
+                        <span class="v8-token">ZEUS</span>
+                        <span class="v8-roi">+30,195%</span>
+                    </div>
+                    <div class="v8-item">
+                        <span class="v8-token">ANI</span>
+                        <span class="v8-roi">+23,183%</span>
+                    </div>
+                    <div class="v8-item">
+                        <span class="v8-token">SUPERGROK</span>
+                        <span class="v8-roi">+14,055%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 9 - Notification Style -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 9: Notification Style</h2>
+            <div class="v9-container">
+                <div class="v9-notification">
+                    <div class="v9-content">
+                        <div class="v9-title">3 DAYS AGO</div>
+                        <div class="v9-main">You missed CMINI</div>
+                    </div>
+                    <div class="v9-roi">+7,926%</div>
+                </div>
+                <div class="v9-notification">
+                    <div class="v9-content">
+                        <div class="v9-title">8 DAYS AGO</div>
+                        <div class="v9-main">You missed LMEOW</div>
+                    </div>
+                    <div class="v9-roi">+9,805%</div>
+                </div>
+                <div class="v9-notification">
+                    <div class="v9-content">
+                        <div class="v9-title">10 DAYS AGO</div>
+                        <div class="v9-main">You missed CHLOE</div>
+                    </div>
+                    <div class="v9-roi">+12,000%</div>
+                </div>
+                <div class="v9-notification">
+                    <div class="v9-content">
+                        <div class="v9-title">18 DAYS AGO</div>
+                        <div class="v9-main">You missed ANI</div>
+                    </div>
+                    <div class="v9-roi">+23,183%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VARIATION 10 - Compact Grid -->
+        <div class="variation">
+            <h2 class="variation-title">VARIATION 10: Compact Grid</h2>
+            <div class="v10-container">
+                <div class="v10-header">
+                    <h1 class="v10-title">TOP PERFORMERS</h1>
+                    <p class="v10-subtitle">Don't miss the next one</p>
+                </div>
+                <div class="v10-grid">
+                    <div class="v10-section">
+                        <h3 class="v10-section-title">Last 7 Days</h3>
+                        <div class="v10-item">
+                            <span class="v10-token">CMINI</span>
+                            <span class="v10-roi">7,926%</span>
+                        </div>
+                        <div class="v10-item">
+                            <span class="v10-token">LMEOW</span>
+                            <span class="v10-roi">9,805%</span>
+                        </div>
+                        <div class="v10-item">
+                            <span class="v10-token">CHLOE</span>
+                            <span class="v10-roi">12,000%</span>
+                        </div>
+                    </div>
+                    <div class="v10-section">
+                        <h3 class="v10-section-title">Last 30 Days</h3>
+                        <div class="v10-item">
+                            <span class="v10-token">COMPANY</span>
+                            <span class="v10-roi">73,193%</span>
+                        </div>
+                        <div class="v10-item">
+                            <span class="v10-token">ANI</span>
+                            <span class="v10-roi">23,183%</span>
+                        </div>
+                        <div class="v10-item">
+                            <span class="v10-token">SUPERGROK</span>
+                            <span class="v10-roi">14,055%</span>
+                        </div>
+                    </div>
+                    <div class="v10-section">
+                        <h3 class="v10-section-title">All Time Best</h3>
+                        <div class="v10-item">
+                            <span class="v10-token">COMPANY</span>
+                            <span class="v10-roi">73K%</span>
+                        </div>
+                        <div class="v10-item">
+                            <span class="v10-token">ZEUS</span>
+                            <span class="v10-roi">30K%</span>
+                        </div>
+                        <div class="v10-item">
+                            <span class="v10-token">ANI</span>
+                            <span class="v10-roi">23K%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
