@@ -318,4 +318,79 @@ WHERE buy_timestamp IS NULL
 ---
 **Session Duration**: ~3 hours
 **Key Achievement**: Eliminated external cron dependency, restored analysis pipeline
+
+## Session 4: Supabase Cron Migration & Analysis Pipeline Fix (August 5, 2025 - Evening)
+
+### Issues Addressed
+1. **OpenRouter API Key Issue** - Analysis wasn't working due to missing API key in Netlify
+2. **Newest Calls Not Showing in UI** - 313 unanalyzed calls preventing new entries from appearing
+3. **External Cron Dependency** - Need to migrate from cron-job.org to Supabase native cron
+4. **Database Field Inconsistency** - buy_timestamp not being set properly
+
+### Solutions Implemented
+
+#### 1. Fixed OpenRouter API Key
+- Added `OPEN_ROUTER_API_KEY` to Netlify environment variables
+- Deployed to production, verified analysis working
+- Successfully analyzed 5 calls in test run
+
+#### 2. Migrated to Supabase Native Cron Jobs
+Created 4 pg_cron scheduled jobs:
+- `crypto-orchestrator-every-minute` - Main monitoring pipeline
+- `crypto-ath-update-every-minute` - ATH tracking
+- `krom-call-analysis-every-minute` - Kimi K2 call analysis (1-10 scores)
+- `krom-x-analysis-every-minute` - Kimi K2 X analysis (1-10 scores)
+
+Key implementation details:
+- Used URL-encoded CRON_SECRET for authentication
+- All jobs running successfully with ~5-20ms execution time
+- Netlify functions called via HTTP from Supabase
+
+#### 3. Fixed buy_timestamp Logic
+Modified `crypto-poller` edge function:
+- Now sets `buy_timestamp` when recording `price_at_call`
+- Falls back to current time if KROM doesn't provide timestamp
+- No longer incorrectly uses `price_updated_at` field
+
+#### 4. Database Cleanup
+- Updated 12 records with missing buy_timestamp values
+- Used `created_at` as fallback since raw_data didn't contain timestamps
+
+### Technical Details
+
+#### Supabase Cron Job Creation
+```sql
+select cron.schedule(
+  'krom-call-analysis-every-minute',
+  '* * * * *',
+  $$select net.http_get(
+    url:='https://lively-torrone-8199e0.netlify.app/api/cron/analyze?auth=...',
+    headers:=jsonb_build_object('Content-Type', 'application/json')
+  ) as request_id;$$
+);
+```
+
+#### Progress Tracking
+- Started: 313 unanalyzed calls
+- Processing rate: 5 calls/minute (call), 3 calls/minute (X)
+- By end of session: Down to ~200 unanalyzed
+- System catching up chronologically (reached August 1st from June/July)
+
+### Files Modified
+- `/supabase/functions/crypto-poller/index.ts` - Fixed buy_timestamp assignment
+- Database: Updated 12 records with missing buy_timestamp
+- Created: `SUPABASE_CRON_SETUP.md` - Documentation for cron job management
+- Netlify: Added OPEN_ROUTER_API_KEY environment variable
+
+### Next Steps
+- Monitor cron jobs for stability
+- Consider migrating Netlify analysis functions to Supabase edge functions
+- System will fully catch up to current calls in ~1 hour
+
+---
+**Session Duration**: ~2 hours
+**Key Achievements**: 
+- Restored analysis pipeline functionality
+- Eliminated external cron dependency
+- Fixed data integrity issues
 **System Status**: ✅ All systems operational and catching up

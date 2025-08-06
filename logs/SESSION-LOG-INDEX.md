@@ -59,5 +59,20 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### [July 2025 Sessions - Complete](SESSION-LOG-2025-07.md)
 
+### [August 2025 Sessions](SESSION-LOG-2025-08.md)
+
+#### [August 5, 2025 - Morning: ATH Tracking System Implementation](SESSION-LOG-2025-08.md#session-1-3)
+- Implemented 3-tier historical ATH calculation with daily→hourly→minute precision
+- Created continuous monitoring system processing ~25 tokens/minute
+- Set up instant Telegram notifications for ATH >10% via @KROMATHAlerts_bot
+- Reduced API calls by 70% through smart caching and incremental updates
+
+#### [August 5, 2025 - Evening: Supabase Cron Migration & Analysis Fix](SESSION-LOG-2025-08.md#session-4)
+- Fixed OpenRouter API key issue restoring Kimi K2 analysis functionality
+- Migrated all cron jobs from cron-job.org to Supabase native pg_cron
+- Created 4 scheduled jobs for orchestrator, ATH, call analysis, and X analysis
+- Fixed buy_timestamp field logic and cleaned up 12 records with missing data
+- System catching up: 313→200 unanalyzed calls, processing at 5/minute
+
 ---
 **Note**: Individual session details have been moved to their respective log files to keep this index concise and maintainable.
