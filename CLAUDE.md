@@ -41,14 +41,33 @@ Building a new public-facing interface for KROM1.com with progressive feature im
      - Additional filters (contract status, trading activity)
 
 5. **Phase 5: Additional Elements**
-   - Telegram group button (link to main KROM group)
-   - KROM token contract address display
+   - Telegram group button: https://t.me/kromcalls
+   - KROM token contract address: 9eCEK7ttNtroHsFLnW8jW7pS9MtSAPrPPrZ6QCUFpump
    - Connect KROM1.com domain (live demonstration)
 
 ### Starting HTML Structure:
-- Base template: `mockups/krom-sidebar-no-icons.html`
+- Base template: `mockups/krom-sidebar-no-icons.html` (updated with TG button & CA)
 - Initial version: Only section titles, no data
 - Progressive enhancement: Add features step by step
+
+### Current State (Ready for Demo):
+- ✅ Landing page deployed: https://lively-torrone-8199e0.netlify.app
+- ✅ Admin panel moved to: /admin/x7f9k2m3p8
+- ✅ Dark theme only (no white navigation bar)
+- ✅ Reference HTML has Telegram button and contract address
+- ✅ All build/deploy commands tested and working
+
+### Demo Commands Reference:
+```bash
+# After making changes:
+git add -A && git commit -m "feat: [description]" && git push origin main
+
+# Monitor deployment:
+netlify logs:deploy
+
+# Check deployment status:
+netlify api listSiteDeploys --data '{"site_id": "8ff019b3-29ef-4223-b6ad-2cc46e91807e"}' | jq '.[0].state'
+```
 
 ### Key Points for Demo:
 - Show how easy it is to add features incrementally
