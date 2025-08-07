@@ -9,6 +9,53 @@
 ## Overview
 KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring applications. Each app serves a specific purpose in the crypto analysis ecosystem.
 
+## 🎬 KROM Public Interface Coding Demonstration (August 7, 2025)
+
+### Demonstration Plan
+Building a new public-facing interface for KROM1.com with progressive feature implementation to showcase development process.
+
+### Implementation Steps:
+
+1. **Phase 1: Basic Landing Page Setup**
+   - Create stripped HTML with only section titles (no data)
+   - Convert to Next.js components
+   - Deploy as new main landing page at Netlify root
+   - Move current analysis page to `/admin/[obscure-url]`
+
+2. **Phase 2: Top Pinned Calls** (First Feature)
+   - Add "TOP EARLY CALLS" section with real data
+   - Include time period selector (24H, 7D, 90D, ALL TIME)
+   - Pull data from Supabase sorted by ATH ROI
+
+3. **Phase 3: Recent Calls** (Second Feature)
+   - Add "RECENT CALLS" section below pinned
+   - Show latest calls with all metrics
+   - Single prompt implementation demonstration
+
+4. **Phase 4: Progressive Filter Implementation**
+   - Add filters one by one:
+     - ROI Range slider
+     - Networks (ETH, SOL, BSC, Base)
+     - Time Period (24h, 7d, 30d, all time)
+     - AI Score (Alpha, Solid, Basic, Trash)
+     - Additional filters (contract status, trading activity)
+
+5. **Phase 5: Additional Elements**
+   - Telegram group button (link to main KROM group)
+   - KROM token contract address display
+   - Connect KROM1.com domain (live demonstration)
+
+### Starting HTML Structure:
+- Base template: `mockups/krom-sidebar-no-icons.html`
+- Initial version: Only section titles, no data
+- Progressive enhancement: Add features step by step
+
+### Key Points for Demo:
+- Show how easy it is to add features incrementally
+- Each step is a single, clear instruction
+- Real-time deployment and testing
+- Domain connection during presentation
+
 ## Project Structure
 
 ### Apps in KROMV12:
@@ -446,7 +493,41 @@ Completed major infrastructure improvements to eliminate external dependencies:
 - **Improved Reliability**: More frequent analysis schedules for better data freshness
 - [Full maintenance details →](logs/SESSION-LOG-2025-08.md)
 
+## Ultra-Tracker & Two-Tier Processing System (August 6, 2025)
+
+Successfully fixed and optimized the ATH tracking system:
+- **Pool addresses provide 100% coverage** (vs 40% with contract addresses)
+- **Two-tier processing**: Live tokens updated every minute, dead tokens checked hourly
+- **Self-optimizing**: System marks tokens dead when no trading activity detected
+- **Token revival**: Automatically resurrects tokens when trading resumes
+- Processing time improving from 15 min → 6 min as system identifies inactive tokens
+- [Full implementation details →](logs/SESSION-LOG-2025-08-06.md)
+
+## Edge Function Database Write Fix (August 7, 2025)
+
+Successfully resolved Edge Functions failing to write to database with RLS enabled. Required adding auth options to Supabase client initialization:
+```typescript
+const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    persistSession: false,
+    autoRefreshToken: false
+  }
+})
+```
+- Fixed functions: crypto-ultra-tracker, crypto-ath-verifier
+- ANI token ATH corrected: $0.03003 → $0.08960221 (23,619% ROI)
+- [Full session details →](logs/SESSION-LOG-2025-08-07.md)
+
+## ATH Verification System (August 7, 2025)
+
+Deployed `crypto-ath-verifier` Edge Function to systematically verify and correct ATH values:
+- Processes 25 tokens/minute using GeckoTerminal OHLCV data
+- Sends Telegram notifications when discrepancies >50% found
+- Excludes invalidated tokens to prevent stuck processing
+- Completes full database verification in ~2.2 hours
+- [Implementation details →](logs/SESSION-LOG-2025-08-07.md#evening-session-edge-function-fixes--ath-verification-system)
+
 ---
-**Last Updated**: August 5, 2025  
-**Status**: ✅ All systems operational - Analysis pipeline catching up | 🔒 RLS enabled for security
-**Version**: 8.2.0 - Native Cron Migration & System Reliability Improvements
+**Last Updated**: August 7, 2025 (Evening)
+**Status**: ✅ All systems operational - Edge Functions fixed, ATH verification running
+**Version**: 8.5.0 - Edge Function Auth Fix & ATH Verifier Deployed

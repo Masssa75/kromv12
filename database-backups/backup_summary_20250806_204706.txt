@@ -1,0 +1,25 @@
+Database Backup Summary
+=======================
+Date: 2025-08-06 20:47:07.654922
+Total Records: 6181
+Backup File: database-backups/crypto_calls_backup_20250806_204706.json.gz
+
+Records by Network:
+  abstract: 3
+  arbitrum: 1
+  avalanche: 29
+  base: 75
+  berachain: 1
+  bsc: 104
+  ethereum: 2484
+  hyperevm: 42
+  polygon: 1
+  solana: 3434
+  sonic: 2
+  tron: 4
+  xrpl: 1
+
+Status:
+  Dead tokens: 175
+  Invalidated tokens: 24
+  Active tokens: 5982

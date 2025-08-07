@@ -1,0 +1,20 @@
+Database Backup Summary
+=======================
+Date: 2025-08-06 20:46:45.557769
+Total Records: 1000
+Backup File: database-backups/crypto_calls_backup_20250806_204645.json.gz
+
+Records by Network:
+  abstract: 1
+  avalanche: 3
+  base: 15
+  bsc: 19
+  ethereum: 359
+  hyperevm: 7
+  solana: 594
+  tron: 2
+
+Status:
+  Dead tokens: 26
+  Invalidated tokens: 4
+  Active tokens: 970

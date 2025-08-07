@@ -6,6 +6,23 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
+#### [August 7, 2025 - Edge Function Fixes & ATH Verification](SESSION-LOG-2025-08-07.md) ✅ COMPLETED
+- Morning: Fixed ultra-tracker ATH protection logic, discovered ANI discrepancy
+- Evening: Resolved Edge Function database writes (missing auth configuration)
+- Successfully corrected ANI ATH: $0.03003 → $0.08960221 (23,619% ROI)
+- Deployed ATH verifier with discrepancy notifications (25 tokens/min)
+- Added support for new networks (hyperevm, linea, abstract, tron)
+- Fixed CLI deployment issues - must run from project root
+
+#### [August 6, 2025 - Ultra-Tracker & Two-Tier Processing System](SESSION-LOG-2025-08-06.md)
+- Fixed ultra-tracker by switching to pool addresses (100% coverage vs 40%)
+- Implemented two-tier processing: live tokens (every minute) vs dead tokens (hourly)
+- Fixed ATH notifications - received 6 alerts including 208% ROI
+- Created token-revival-checker to resurrect tokens when trading resumes
+- System now self-optimizing: 788+ tokens marked dead and growing
+- Processing time dropping from 15 min → 6 min as dead tokens identified
+- Verified all "dead" tokens have <$1000 volume on GeckoTerminal
+
 #### [August 4-5, 2025 - ATH Tracking System Implementation](SESSION-LOG-2025-08.md)
 - Implemented comprehensive All-Time High (ATH) tracking system
 - Created 3 edge functions: crypto-ath-historical, crypto-ath-update, crypto-ath-notifier
