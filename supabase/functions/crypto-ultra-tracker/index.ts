@@ -97,6 +97,11 @@ async function processAndUpdateBatch(
         is_dead: false  // Mark as alive since we have data
       }
 
+      // Update current_market_cap if we have circulating supply
+      if (token.circulating_supply && currentPrice > 0) {
+        updateData.current_market_cap = currentPrice * token.circulating_supply
+      }
+
       // Check for new ATH
       const priceAtCall = token.price_at_call || 0
       let isNewATH = false
@@ -124,6 +129,12 @@ async function processAndUpdateBatch(
             updateData.ath_price = newATH
             updateData.ath_timestamp = new Date().toISOString()
             updateData.ath_roi_percent = Math.max(0, ((newATH - priceAtCall) / priceAtCall) * 100)
+            
+            // Update ath_market_cap if we have total supply
+            if (token.total_supply && newATH > 0) {
+              updateData.ath_market_cap = newATH * token.total_supply
+            }
+            
             isNewATH = true
             
             console.log(`ATH Update for ${token.ticker}: ${existingATH} → ${newATH}`)
@@ -206,7 +217,7 @@ serve(async (req) => {
     while (allTokens.length < maxTokens) {
       const { data: batch, error: fetchError } = await supabase
         .from('crypto_calls')
-        .select('id, ticker, network, contract_address, pool_address, price_at_call, current_price, ath_price, ath_timestamp, ath_roi_percent, volume_24h, liquidity_usd, price_change_24h, ath_last_checked, last_volume_check, price_updated_at')
+        .select('id, ticker, network, contract_address, pool_address, price_at_call, current_price, ath_price, ath_timestamp, ath_roi_percent, volume_24h, liquidity_usd, price_change_24h, ath_last_checked, last_volume_check, price_updated_at, circulating_supply, total_supply')
         .not('pool_address', 'is', null)
         .eq('is_dead', false)  // Only process live tokens
         .eq('is_invalidated', false)

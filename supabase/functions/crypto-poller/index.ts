@@ -16,8 +16,8 @@ function mapNetworkName(kromNetwork: string): string {
   return networkMap[kromNetwork.toLowerCase()] || kromNetwork.toLowerCase();
 }
 
-// Function to fetch current price for new calls (within 1-3 minutes of call)
-async function fetchCurrentPrice(network: string, poolAddress: string) {
+// Function to fetch current price and supply data for new calls
+async function fetchCurrentPriceAndSupply(network: string, poolAddress: string) {
   try {
     const geckoNetwork = mapNetworkName(network);
     console.log(`Mapping network: ${network} -> ${geckoNetwork}`);
@@ -29,24 +29,35 @@ async function fetchCurrentPrice(network: string, poolAddress: string) {
     });
 
     if (!response.ok) {
-      console.log(`Current price fetch failed for pool ${poolAddress}: ${response.status}`);
-      return { price: null, source: "DEAD_TOKEN" };
+      console.log(`Price/supply fetch failed for pool ${poolAddress}: ${response.status}`);
+      return { price: null, totalSupply: null, circulatingSupply: null, source: "DEAD_TOKEN" };
     }
 
     const data = await response.json();
-    const price = parseFloat(data.data?.attributes?.base_token_price_usd || '0');
+    const attributes = data.data?.attributes;
+    const price = parseFloat(attributes?.base_token_price_usd || '0');
+    const fdv = parseFloat(attributes?.fdv_usd || '0');
+    const marketCap = parseFloat(attributes?.market_cap_usd || '0');
+    
+    // Calculate supplies from FDV and market cap
+    const totalSupply = (fdv && price > 0) ? fdv / price : null;
+    const circulatingSupply = (marketCap && price > 0) ? marketCap / price : 
+                             totalSupply; // If no market cap, assume circulating = total
     
     if (price > 0) {
-      console.log(`✅ Got current price: $${price} for pool ${poolAddress}`);
-      return { price, source: "GECKO_LIVE" };
+      console.log(`✅ Got price: $${price}, FDV: $${fdv}, MCap: $${marketCap} for pool ${poolAddress}`);
+      if (totalSupply) {
+        console.log(`   Total Supply: ${totalSupply.toLocaleString()}, Circulating: ${circulatingSupply?.toLocaleString()}`);
+      }
+      return { price, totalSupply, circulatingSupply, source: "GECKO_LIVE" };
     } else {
       console.log(`❌ No price data for pool ${poolAddress}`);
-      return { price: null, source: "DEAD_TOKEN" };
+      return { price: null, totalSupply: null, circulatingSupply: null, source: "DEAD_TOKEN" };
     }
     
   } catch (error) {
-    console.error(`Error fetching current price for pool ${poolAddress}:`, error);
-    return { price: null, source: "DEAD_TOKEN" };
+    console.error(`Error fetching price/supply for pool ${poolAddress}:`, error);
+    return { price: null, totalSupply: null, circulatingSupply: null, source: "DEAD_TOKEN" };
   }
 }
 serve(async (req)=>{
@@ -95,21 +106,46 @@ serve(async (req)=>{
           raw_data: call
         };
 
-        // Fetch current price if we have pool address and network
+        // Fetch current price and supply if we have pool address and network
         if (call.token?.pa && call.token?.network) {
-          console.log(`Fetching current price for ${call.token.symbol || 'UNKNOWN'} on ${call.token.network}...`);
-          const priceData = await fetchCurrentPrice(call.token.network, call.token.pa);
+          console.log(`Fetching price/supply for ${call.token.symbol || 'UNKNOWN'} on ${call.token.network}...`);
+          const priceData = await fetchCurrentPriceAndSupply(call.token.network, call.token.pa);
           
           callData.price_at_call = priceData.price;
           callData.price_source = priceData.source;
+          callData.total_supply = priceData.totalSupply || null;
+          callData.circulating_supply = priceData.circulatingSupply || null;
+          
+          // Calculate market_cap_at_call if we have supply data
+          if (priceData.price && priceData.totalSupply) {
+            // Check if supplies are similar (within 5%)
+            const supplyDiff = priceData.circulatingSupply && priceData.totalSupply 
+              ? Math.abs(priceData.circulatingSupply - priceData.totalSupply) / priceData.totalSupply * 100
+              : 0;
+            const suppliesAreSimilar = supplyDiff < 5;
+            
+            if (suppliesAreSimilar) {
+              callData.market_cap_at_call = priceData.price * priceData.totalSupply;
+              console.log(`   Calculated market_cap_at_call: $${callData.market_cap_at_call.toLocaleString()}`);
+            } else {
+              console.log(`   Supply mismatch (${supplyDiff.toFixed(1)}% diff), skipping market_cap_at_call`);
+            }
+          }
+          
+          if (callData.total_supply || callData.circulating_supply) {
+            callData.supply_updated_at = new Date().toISOString();
+          }
+          
           // If KROM didn't provide a buy timestamp, use current time as the effective buy time
           if (!callData.buy_timestamp) {
             callData.buy_timestamp = new Date().toISOString();
           }
         } else {
-          console.log(`No pool address or network for ${call.token?.symbol || 'UNKNOWN'} - skipping price fetch`);
+          console.log(`No pool address or network for ${call.token?.symbol || 'UNKNOWN'} - skipping price/supply fetch`);
           callData.price_at_call = null;
           callData.price_source = "NO_POOL_DATA";
+          callData.total_supply = null;
+          callData.circulating_supply = null;
           // If KROM didn't provide a buy timestamp, use current time as the effective buy time
           if (!callData.buy_timestamp) {
             callData.buy_timestamp = new Date().toISOString();
