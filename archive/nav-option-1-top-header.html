@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM - Navigation Option 1: Top Header Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0b0d;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TOP NAVIGATION BAR */
+        .top-nav {
+            background: #111214;
+            border-bottom: 1px solid #2a2d31;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #00ff88;
+            margin-right: 40px;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .nav-item {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-item:hover {
+            color: #fff;
+            background: #1a1c1f;
+        }
+
+        .nav-item.active {
+            color: #00ff88;
+            background: #1a1c1f;
+        }
+
+        /* MAIN LAYOUT - adjusted for top nav */
+        .app-container {
+            display: flex;
+            min-height: calc(100vh - 60px);
+            margin-top: 60px;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 300px;
+            background: #111214;
+            border-right: 1px solid #2a2d31;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #1a1c1f;
+        }
+
+        .sidebar-subtitle {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .filter-section {
+            border-bottom: 1px solid #1a1c1f;
+        }
+
+        .filter-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111214;
+            transition: all 0.3s;
+        }
+
+        .filter-header:hover {
+            background: #1a1c1f;
+            padding-left: 24px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background: #000;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .content-section {
+            background: #0a0b0d;
+            border: 1px solid #1a1c1f;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #00ff88;
+            letter-spacing: 3px;
+            font-weight: 200;
+            margin-bottom: 20px;
+        }
+
+        .mock-table {
+            background: #111214;
+            border: 1px solid #2a2d31;
+            border-radius: 4px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .table-row {
+            display: flex;
+            gap: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #1a1c1f;
+            align-items: center;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .token-name {
+            font-weight: 600;
+            width: 100px;
+        }
+
+        .network-badge {
+            background: #00ff88;
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: #1a1c1f;
+            border: 2px solid #00ff88;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP NAVIGATION BAR -->
+    <nav class="top-nav">
+        <div class="nav-logo">KROM</div>
+        <div class="nav-items">
+            <a href="#" class="nav-item active">Dashboard</a>
+            <a href="#" class="nav-item">Charts</a>
+            <a href="#" class="nav-item">Roadmap</a>
+            <a href="#" class="nav-item">Analytics</a>
+            <a href="#" class="nav-item">Leaderboard</a>
+            <a href="#" class="nav-item">Settings</a>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <!-- Left Sidebar with Filters -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <p class="sidebar-subtitle">Advanced Token Discovery</p>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-header">
+                    <span>TOKEN TYPE</span>
+                    <span>▼</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-header">
+                    <span>NETWORKS</span>
+                    <span>▶</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-header">
+                    <span>LIQUIDITY & MARKET CAP</span>
+                    <span>▶</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="highlight-box">
+                <h3>Option 1: Top Header Bar Navigation</h3>
+                <p>Clean horizontal navigation at the top of the page. Always visible and accessible.</p>
+                <p style="margin-top: 10px; color: #666;">Pros: Familiar pattern, doesn't interfere with sidebar filters</p>
+                <p style="color: #666;">Cons: Takes vertical space, requires fixed positioning</p>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">TOP EARLY CALLS</h2>
+                <div class="mock-table">
+                    <div class="table-row">
+                        <span class="token-name">PROF</span>
+                        <span class="network-badge">SOL</span>
+                        <span>Market Cap: $1.2M</span>
+                        <span style="color: #00ff88;">+250%</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="token-name">BRO</span>
+                        <span class="network-badge">ETH</span>
+                        <span>Market Cap: $3.5M</span>
+                        <span style="color: #00ff88;">+180%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">RECENT CALLS</h2>
+                <div class="mock-table">
+                    <div class="table-row">
+                        <span class="token-name">CLAYER</span>
+                        <span class="network-badge">BSC</span>
+                        <span>Market Cap: $800K</span>
+                        <span style="color: #ff4444;">-15%</span>
+                    </div>
+                    <div class="table-row">
+                        <span class="token-name">YE</span>
+                        <span class="network-badge">BASE</span>
+                        <span>Market Cap: $2.1M</span>
+                        <span style="color: #00ff88;">+45%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

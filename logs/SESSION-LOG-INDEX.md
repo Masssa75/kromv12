@@ -6,6 +6,13 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
+#### [August 8, 2025 - Documentation Cleanup](SESSION-LOG-2025-08.md#session-documentation-cleanup---august-8-2025) ✅ COMPLETED
+- Organized and streamlined project documentation
+- Moved detailed technical content to appropriate session logs
+- Updated CLAUDE.md with brief summaries and links to detailed sessions
+- Updated ACTIVE_FILES.md to reflect current working state
+- Maintained comprehensive session logs for historical reference
+
 #### [August 7, 2025 - Market Cap Implementation & Dead Token Revival](SESSION-LOG-2025-08.md#august-7-2025---evening-500-pm---complete-market-cap-implementation) ✅ COMPLETED
 - Evening: Implemented complete market cap tracking system
 - Phase 1: Updated crypto-poller to fetch supply data for new calls
