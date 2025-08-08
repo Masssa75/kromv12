@@ -236,7 +236,7 @@ def process_dead_tokens():
     result = supabase.table('crypto_calls').select(
         'id,ticker,network,contract_address,pool_address,price_at_call,'
         'total_supply,circulating_supply,is_dead'
-    ).eq('is_dead', True).not_.is_('pool_address', 'null').execute()  # Get ALL dead tokens
+    ).eq('is_dead', True).not_.is_('pool_address', 'null').is_('total_supply', 'null').execute()  # Process all remaining dead tokens on retry
     
     dead_tokens = result.data
     total_tokens = len(dead_tokens)

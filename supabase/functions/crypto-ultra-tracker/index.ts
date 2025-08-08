@@ -140,11 +140,11 @@ async function processAndUpdateBatch(
             console.log(`ATH Update for ${token.ticker}: ${existingATH} → ${newATH}`)
 
             // Track significant ATHs for notification
-            // Requirements: min 100% ROI AND 20% increase from previous ATH
+            // Requirements: min 250% ROI AND 20% increase from previous ATH
             const previousATH = token.ath_price || priceAtCall
             const athIncrease = ((newATH - previousATH) / previousATH) * 100
             
-            if (updateData.ath_roi_percent >= 100 && athIncrease >= 20) {
+            if (updateData.ath_roi_percent >= 250 && athIncrease >= 20) {
               newATHs.push({
                 ticker: token.ticker,
                 network: token.network,
