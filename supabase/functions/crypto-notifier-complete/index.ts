@@ -102,31 +102,34 @@ serve(async (req) => {
       throw new Error('Premium Telegram credentials not configured')
     }
 
-    // Check total count of unnotified calls (regular bot)
+    // Check total count of unnotified calls (regular bot) - exclude dead tokens
     const { count: totalUnnotified } = await supabase
       .from('crypto_calls')
       .select('*', { count: 'exact', head: true })
       .eq('notified', false)
       .not('analyzed_at', 'is', null)
+      .or('is_dead.eq.false,is_dead.is.null')  // Skip dead tokens
 
-    // Check total count of unnotified premium calls
+    // Check total count of unnotified premium calls - exclude dead tokens
     const { count: totalUnnotifiedPremium } = await supabase
       .from('crypto_calls')
       .select('*', { count: 'exact', head: true })
       .eq('notified_premium', false)
       .not('analyzed_at', 'is', null)
+      .or('is_dead.eq.false,is_dead.is.null')  // Skip dead tokens
 
     // SKIP REGULAR CALLS - Only fetch premium
     const limit = 10
     const unnotifiedCalls = [] // Skip regular calls
     const fetchError = null
 
-    // Fetch unnotified premium calls
+    // Fetch unnotified premium calls - exclude dead tokens
     const { data: unnotifiedPremiumCalls, error: premiumFetchError } = await supabase
       .from('crypto_calls')
       .select('*')
       .eq('notified_premium', false)
       .not('analyzed_at', 'is', null)
+      .or('is_dead.eq.false,is_dead.is.null')  // Skip dead tokens
       .order('buy_timestamp', { ascending: false })
       .limit(limit)
 

@@ -84,27 +84,44 @@ serve(async (req) => {
               const data = await response.json()
               const pairsArray = data.pairs || (data.pair ? [data.pair] : [])
               
-              // Check which tokens are alive
+              // Check which tokens are alive AND have sufficient liquidity
               for (const token of checkBatch) {
                 totalChecked++
                 
-                const isAlive = pairsArray.some((p: any) => 
+                const matchingPair = pairsArray.find((p: any) => 
                   p.pairAddress === token.pool_address
                 )
                 
-                if (isAlive) {
-                  // Token is trading again! Mark it as alive
-                  await supabase
-                    .from('crypto_calls')
-                    .update({ 
-                      is_dead: false,
-                      ath_last_checked: new Date().toISOString()
-                    })
-                    .eq('id', token.id)
+                if (matchingPair) {
+                  // Token exists on DexScreener - check liquidity
+                  const liquidityUsd = matchingPair.liquidity?.usd || 0
+                  const LIQUIDITY_THRESHOLD = 1000
                   
-                  revivedCount++
-                  revivedTokens.push(`${token.ticker} (${token.network})`)
-                  console.log(`Token revived: ${token.ticker} on ${token.network}`)
+                  if (liquidityUsd >= LIQUIDITY_THRESHOLD) {
+                    // Token has sufficient liquidity! Mark it as alive
+                    await supabase
+                      .from('crypto_calls')
+                      .update({ 
+                        is_dead: false,
+                        liquidity_usd: liquidityUsd,
+                        ath_last_checked: new Date().toISOString()
+                      })
+                      .eq('id', token.id)
+                    
+                    revivedCount++
+                    revivedTokens.push(`${token.ticker} (${token.network}) - $${liquidityUsd.toFixed(2)}`)
+                    console.log(`Token revived: ${token.ticker} on ${token.network} - Liquidity: $${liquidityUsd.toFixed(2)}`)
+                  } else {
+                    // Token exists but still has low liquidity
+                    await supabase
+                      .from('crypto_calls')
+                      .update({ 
+                        liquidity_usd: liquidityUsd,
+                        ath_last_checked: new Date().toISOString()
+                      })
+                      .eq('id', token.id)
+                    console.log(`Token ${token.ticker} still dead - Liquidity: $${liquidityUsd.toFixed(2)} < $${LIQUIDITY_THRESHOLD}`)
+                  }
                 } else {
                   // Still dead, just update check time
                   await supabase
@@ -142,7 +159,7 @@ serve(async (req) => {
       
       if (telegramBotToken && telegramChatId) {
         const message = `🔄 *TOKEN REVIVAL ALERT*\n\n` +
-          `${revivedCount} tokens started trading again:\n` +
+          `${revivedCount} tokens have sufficient liquidity (>$1000) again:\n` +
           revivedTokens.slice(0, 5).join('\n') +
           (revivedTokens.length > 5 ? `\n... and ${revivedTokens.length - 5} more` : '')
 

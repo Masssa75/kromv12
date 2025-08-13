@@ -1,0 +1,50 @@
+[
+  {
+    "ticker": "KROM",
+    "url": "https://krom.one",
+    "native": {
+      "success": false,
+      "time": 7.497997999191284,
+      "cost": 0.0,
+      "score": null
+    },
+    "prefetch": {
+      "success": true,
+      "time": 10.721793174743652,
+      "cost": 0.0006785000000000001,
+      "score": 3
+    }
+  },
+  {
+    "ticker": "UNI",
+    "url": "https://uniswap.org",
+    "native": {
+      "success": true,
+      "time": 10.831459045410156,
+      "cost": 8.218e-05,
+      "score": 9
+    },
+    "prefetch": {
+      "success": true,
+      "time": 13.766502857208252,
+      "cost": 0.00117578,
+      "score": 9
+    }
+  },
+  {
+    "ticker": "PEPE",
+    "url": "https://www.pepe.vip",
+    "native": {
+      "success": true,
+      "time": 3.2679731845855713,
+      "cost": 8.330000000000002e-05,
+      "score": 2
+    },
+    "prefetch": {
+      "success": true,
+      "time": 17.80511474609375,
+      "cost": 0.00118418,
+      "score": 2
+    }
+  }
+]

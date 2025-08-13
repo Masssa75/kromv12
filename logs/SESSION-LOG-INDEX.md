@@ -6,6 +6,21 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
+#### [August 12, 2025 - ATH Verifier Fix & Deployment](SESSION-LOG-2025-08.md#august-12-2025-continued---ath-verifier-fix--deployment) ✅ COMPLETED
+- Fixed verifier not running (JWT, network support, error handling)
+- Identified root cause: verifier using `high` instead of `Math.max(open, close)`
+- Fixed logic to match historical function, tested on T1 and ORC CITY
+- Re-verified 100 tokens: 18% correction rate (mostly undervalued ATHs)
+- Deployed with optimized schedule: every minute, 20 tokens, 1,170/hour
+- Changed notifications to GeckoTerminal links, 95% accuracy confirmed
+
+#### [August 8, 2025 - KROM Roadmap Implementation](SESSION-LOG-2025-08.md#august-8-2025---krom-roadmap-implementation) ✅ COMPLETED
+- Created 5 roadmap design mockups (timeline, kanban, grid, tree, cards)
+- Implemented roadmap page with expandable descriptions for 11 features
+- Integrated with FloatingMenu navigation and fixed clickability
+- Features: Referral Program, AI Analysis, Push Notifications, Token Gating, etc.
+- Deployed to production: https://lively-torrone-8199e0.netlify.app/roadmap
+
 #### [August 8, 2025 - Documentation Cleanup](SESSION-LOG-2025-08.md#session-documentation-cleanup---august-8-2025) ✅ COMPLETED
 - Organized and streamlined project documentation
 - Moved detailed technical content to appropriate session logs
@@ -105,6 +120,27 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 - Created 4 scheduled jobs for orchestrator, ATH, call analysis, and X analysis
 - Fixed buy_timestamp field logic and cleaned up 12 records with missing data
 - System catching up: 313→200 unanalyzed calls, processing at 5/minute
+
+#### [August 8, 2025 - KROM Roadmap Implementation](SESSION-LOG-2025-08.md#august-8-2025---krom-roadmap-implementation)
+- Created interactive roadmap page with 11 upcoming features
+- Implemented expandable descriptions with smooth animations
+- Connected FloatingMenu navigation to roadmap page
+- Features include Telegram Referral Program, AI Analysis, Token Gating, Vibe Coding Launchpad
+
+#### [August 8, 2025 Evening - UI Enhancements](SESSION-LOG-2025-08.md#august-8-2025-evening---krom-ui-enhancements)
+- Added Telegram button linking to @OfficialKromOne group
+- Implemented floating action menu with 5 navigation options
+- Added contract address display below KROM logo
+- Created buy button for Raydium exchange (SOL→KROM swaps)
+- Moved buy button to header for better visibility
+
+#### [August 11, 2025 - Critical Infrastructure Updates](SESSION-LOG-2025-08.md#august-11-2025---critical-infrastructure-updates)
+- **ATH Verifier Overhaul**: Rewrote to actually verify (not just update) ATH values from scratch
+- **Token Corrections**: Fixed RAVE ($0.3574→$0.00315) and RYS ($0.0359→$0.00213) inflated ATHs
+- **$1000 Liquidity Threshold**: Implemented across poller, ultra-tracker, revival, and notifier
+- **Ultra-Tracker Fix**: Resolved JWT authentication issue blocking all price updates
+- **16 tokens** marked dead due to low liquidity (SPEED, BOSS, MARU, etc.)
+- **5 edge functions** deployed with critical fixes
 
 ---
 **Note**: Individual session details have been moved to their respective log files to keep this index concise and maintainable.

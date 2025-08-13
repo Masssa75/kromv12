@@ -1,0 +1,113 @@
+[
+  {
+    "success": true,
+    "url": "https://krom.one",
+    "ticker": "KROM",
+    "contract_address": "7JFnQBJoCLkR9DHy3HKayZjvEqUF7Qzi8TCfQRPQpump",
+    "analysis": {
+      "legitimacy_score": 3,
+      "project_type": "Meme/Utility hybrid - AI-powered degen call aggregator",
+      "key_features": [
+        "Aggregated calls from 1000+ KOLs/insiders",
+        "ROI performance tracking",
+        "AI-enhanced delivery",
+        "Daily massive gainers alerts"
+      ],
+      "team_visible": false,
+      "has_roadmap": false,
+      "documentation_quality": "poor",
+      "social_links": {
+        "twitter": "https://twitter.com/kromsol",
+        "telegram": "https://t.me/kromsol"
+      },
+      "red_flags": [
+        "Single-page website with minimal content",
+        "No team information or KYC",
+        "No whitepaper or technical documentation",
+        "Generic 'join now' language with FOMO tactics",
+        "No roadmap or development timeline",
+        "Extremely limited website content",
+        "Promises of 'daily massive gainers'"
+      ],
+      "green_flags": [
+        "Active Twitter and Telegram presence",
+        "Clear value proposition (call aggregator)",
+        "Professional logo and branding",
+        "OpenGraph meta tags present"
+      ],
+      "assessment": "This appears to be a very basic meme/utility project with minimal substance beyond social media presence. The website offers almost no information beyond a landing page, lacks any team details or documentation, and relies heavily on FOMO marketing language. While the concept of an AI-powered call aggregator is interesting, there's no evidence of actual development or utility.",
+      "confidence": 0.85
+    },
+    "model": "moonshotai/kimi-k2",
+    "timestamp": "2025-08-13T06:04:32.625467"
+  },
+  {
+    "success": true,
+    "url": "https://www.pepe.vip",
+    "ticker": "PEPE",
+    "contract_address": "6n7Janary9fqzxKaJVrhL7TG1M62jgNhpF4UPeVeFED",
+    "analysis": {
+      "legitimacy_score": 3,
+      "project_type": "meme coin",
+      "key_features": [],
+      "team_visible": false,
+      "has_roadmap": false,
+      "documentation_quality": "poor",
+      "social_links": {},
+      "red_flags": [
+        "Website is a generic Wix template with no actual PEPE content",
+        "No mention of token contract, tokenomics, or project purpose",
+        "No team information or contact details",
+        "No roadmap or whitepaper",
+        "Domain name suggests official status but appears unrelated to the actual PEPE token"
+      ],
+      "green_flags": [],
+      "assessment": "This appears to be an empty Wix template website with no actual PEPE token information. The domain name suggests an official project but provides no legitimate content, making it potentially misleading.",
+      "confidence": 0.9
+    },
+    "model": "moonshotai/kimi-k2",
+    "timestamp": "2025-08-13T06:04:34.540855"
+  },
+  {
+    "success": true,
+    "url": "https://uniswap.org",
+    "ticker": "UNI",
+    "contract_address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+    "analysis": {
+      "legitimacy_score": 9,
+      "project_type": "DeFi protocol / DEX governance token",
+      "key_features": [
+        "Automated market maker (AMM) decentralized exchange",
+        "Governance voting via UNI token",
+        "Liquidity provision incentives",
+        "Cross-chain trading (Ethereum, Polygon, Arbitrum, Optimism, Base, etc.)",
+        "Concentrated liquidity (V3)",
+        "Limit orders and range orders",
+        "Mobile app and web interface"
+      ],
+      "team_visible": false,
+      "has_roadmap": false,
+      "documentation_quality": "excellent",
+      "social_links": {
+        "Twitter": "https://twitter.com/Uniswap",
+        "Discord": "https://discord.com/invite/uniswap",
+        "GitHub": "https://github.com/uniswap",
+        "Blog": "https://blog.uniswap.org"
+      },
+      "red_flags": [],
+      "green_flags": [
+        "Top-tier DeFi protocol with billions in total value locked",
+        "Multiple third-party audits (Trail of Bits, ConsenSys Diligence, ABDK, etc.)",
+        "Open-source codebase with active development",
+        "Strong institutional backing (a16z, Paradigm, Union Square Ventures)",
+        "Clear token utility (governance, fee switch potential)",
+        "Professional UI/UX and mobile apps",
+        "Wide exchange listings (Coinbase, Binance, Kraken, etc.)"
+      ],
+      "assessment": "Uniswap is the leading decentralized exchange protocol and a cornerstone of DeFi. The UNI token is a legitimate governance token with real utility and strong fundamentals. No red flags detected.",
+      "confidence": 0.98
+    },
+    "model": "moonshotai/kimi-k2",
+    "timestamp": "2025-08-13T06:05:11.219117"
+  }
+]

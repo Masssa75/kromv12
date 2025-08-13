@@ -9,11 +9,15 @@
 ## Overview
 KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring applications. Each app serves a specific purpose in the crypto analysis ecosystem.
 
-## 🎬 Complete Market Cap Implementation (August 7, 2025)
+## ✅ ATH Verifier Fixed (August 12, 2025)
 
-Successfully implemented comprehensive market cap tracking across entire database with 98.7% token coverage. System now automatically fetches supply data for new calls, maintains market caps on price updates, and includes dead token revival functionality. Notable additions include SOL ($92B market cap), FARTCOIN ($1.35B), and POPCAT ($473M).
+**Status**: Successfully debugged and deployed ATH verifier
+- Fixed logic to use `Math.max(open, close)` for realistic prices
+- Corrected 18% of tokens (mostly undervalued ATHs)
+- Running every minute, processing 1,170 tokens/hour
+- 95% accuracy confirmed through spot checks
 
-[Full implementation details →](logs/SESSION-LOG-2025-08.md#august-7-2025---evening-500-pm---complete-market-cap-implementation)
+[Full session details →](logs/SESSION-LOG-2025-08.md#august-12-2025-continued---ath-verifier-fix--deployment)
 
 ## 🎬 KROM Public Interface Development (August 7, 2025)
 
@@ -494,7 +498,25 @@ Deployed `crypto-ath-verifier` Edge Function to systematically verify and correc
 - Completes full database verification in ~2.2 hours
 - [Implementation details →](logs/SESSION-LOG-2025-08-07.md#evening-session-edge-function-fixes--ath-verification-system)
 
+## KROM Public Roadmap (August 8, 2025)
+
+Successfully implemented interactive roadmap page showcasing 11 upcoming features with expandable descriptions. Features include Telegram Referral Program, AI New Token Analysis, Token Gating, Vibe Coding Launchpad, and Community Feature Requests. Clean collapsed view shows only titles, expanding to reveal full details.
+
+**Live at**: https://lively-torrone-8199e0.netlify.app/roadmap
+
+[Full implementation details →](logs/SESSION-LOG-2025-08.md#august-8-2025---krom-roadmap-implementation)
+
+## KROM UI Enhancements (August 8, 2025 - Evening)
+
+Enhanced public interface with key user features:
+- **Telegram button**: Links to @OfficialKromOne group
+- **Floating Action Menu**: 5-option expandable navigation (Settings, Leaderboard, Analytics, Roadmap, Charts)
+- **Contract Address**: Displayed with monospace font below logo
+- **Buy button**: Grayscale button linking to Raydium exchange for SOL→KROM swaps
+
+[Full session details →](logs/SESSION-LOG-2025-08.md#august-8-2025-evening---krom-ui-enhancements)
+
 ---
-**Last Updated**: August 8, 2025
-**Status**: ✅ Documentation organized and streamlined
-**Version**: 10.1.0 - Complete Market Cap System + Documentation Cleanup
+**Last Updated**: August 12, 2025
+**Status**: ✅ ATH Verifier fixed and running
+**Version**: 10.5.0 - ATH Verifier operational with correct logic

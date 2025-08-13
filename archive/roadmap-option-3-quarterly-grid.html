@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM Roadmap - Quarterly Grid</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0b0d;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: #111214;
+            border-bottom: 1px solid #1a1c1f;
+            padding: 2rem 3rem;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 200;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header .subtitle {
+            color: #00ff88;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .year-selector {
+            background: #111214;
+            border-bottom: 1px solid #1a1c1f;
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .year-label {
+            font-size: 2rem;
+            font-weight: 200;
+            letter-spacing: 0.1em;
+        }
+        
+        .year-progress {
+            flex: 1;
+            max-width: 400px;
+            height: 6px;
+            background: #1a1c1f;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .year-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00ff88dd);
+            width: 25%;
+            transition: width 0.5s ease;
+        }
+        
+        .container {
+            padding: 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .quarters-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .quarter-section {
+            background: #111214;
+            border: 1px solid #1a1c1f;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .quarter-section:hover {
+            border-color: #2a2d31;
+            transform: translateY(-2px);
+        }
+        
+        .quarter-header {
+            background: linear-gradient(135deg, #111214, #1a1c1f);
+            padding: 1.5rem;
+            border-bottom: 1px solid #1a1c1f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .quarter-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+        
+        .quarter-status {
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .status-current {
+            background: #00ff8820;
+            color: #00ff88;
+            border: 1px solid #00ff8850;
+        }
+        
+        .status-upcoming {
+            background: #1a1c1f;
+            color: #666;
+        }
+        
+        .status-completed {
+            background: #00ff8810;
+            color: #00ff88;
+        }
+        
+        .quarter-content {
+            padding: 1.5rem;
+        }
+        
+        .milestone-list {
+            list-style: none;
+        }
+        
+        .milestone-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #1a1c1f;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .milestone-item:hover {
+            background: #1e2022;
+            border-left-color: #00ff88;
+            transform: translateX(4px);
+        }
+        
+        .milestone-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .milestone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        
+        .milestone-title {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .milestone-icon {
+            color: #00ff88;
+            opacity: 0.6;
+        }
+        
+        .milestone-description {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+        
+        .milestone-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: #111214;
+            color: #666;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, #00ff8810, #00ff8805);
+            border: 1px solid #00ff8830;
+        }
+        
+        .highlight-section .quarter-header {
+            background: linear-gradient(135deg, #00ff8815, #00ff8810);
+            border-bottom-color: #00ff8830;
+        }
+        
+        @media (max-width: 768px) {
+            .quarters-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>KROM ROADMAP</h1>
+        <div class="subtitle">2025 Development Timeline</div>
+    </div>
+    
+    <div class="year-selector">
+        <div class="year-label">2025</div>
+        <div class="year-progress">
+            <div class="year-progress-bar"></div>
+        </div>
+        <div style="color: #666; font-size: 0.9rem;">Q1 in progress</div>
+    </div>
+    
+    <div class="container">
+        <div class="quarters-grid">
+            <div class="quarter-section highlight-section">
+                <div class="quarter-header">
+                    <h2 class="quarter-title">Q1 2025</h2>
+                    <span class="quarter-status status-current">Current</span>
+                </div>
+                <div class="quarter-content">
+                    <ul class="milestone-list">
+                        <li class="milestone-item">
+                            <div class="milestone-header">
+                                <h3 class="milestone-title">Enhanced AI Analysis Engine</h3>
+                                <i data-feather="cpu" size="18" class="milestone-icon"></i>
+                            </div>
+                            <p class="milestone-description">Upgrade to GPT-4 Turbo for deeper token analysis with improved pattern recognition.</p>
+                            <div class="milestone-tags">
+                                <span class="tag">AI</span>
+                                <span class="tag">Core</span>
+                            </div>
+                        </li>
+                        <li class="milestone-item">
+                            <div class="milestone-header">
+                                <h3 class="milestone-title">Mobile App Beta</h3>
+                                <i data-feather="smartphone" size="18" class="milestone-icon"></i>
+                            </div>
+                            <p class="milestone-description">Launch iOS and Android apps with real-time notifications and portfolio tracking.</p>
+                            <div class="milestone-tags">
+                                <span class="tag">Mobile</span>
+                                <span class="tag">UX</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quarter-section">
+                <div class="quarter-header">
+                    <h2 class="quarter-title">Q2 2025</h2>
+                    <span class="quarter-status status-upcoming">Upcoming</span>
+                </div>
+                <div class="quarter-content">
+                    <ul class="milestone-list">
+                        <li class="milestone-item">
+                            <div class="milestone-header">
+                                <h3 class="milestone-title">DeFi Integration Suite</h3>
+                                <i data-feather="link" size="18" class="milestone-icon"></i>
+                            </div>
+                            <p class="milestone-description">Direct integration with Uniswap, PancakeSwap, and other DEXs for instant trading.</p>
+                            <div class="milestone-tags">
+                                <span class="tag">DeFi</span>
+                                <span class="tag">Trading</span>
+                            </div>
+                        </li>
+                        <li class="milestone-item">
+                            <div class="milestone-header">
+                                <h3 class="milestone-title">Advanced Charting Tools</h3>
+                                <i data-feather="trending-up" size="18" class="milestone-icon"></i>
+                            </div>
+                            <p class="milestone-description">TradingView integration with custom indicators for memecoin patterns.</p>
+                            <div class="milestone-tags">
+                                <span class="tag">Charts</span>
+                                <span class="tag">Analytics</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quarter-section">
+                <div class="quarter-header">
+                    <h2 class="quarter-title">Q3 2025</h2>
+                    <span class="quarter-status status-upcoming">Upcoming</span>
+                </div>
+                <div class="quarter-content">
+                    <ul class="milestone-list">
+                        <li class="milestone-item">
+                            <div class="milestone-header">
+                                <h3 class="milestone-title">Social Trading Features</h3>
+                                <i data-feather="users" size="18" class="milestone-icon"></i>
+                            </div>
+                            <p class="milestone-description">Follow top performers, copy trades, and share insights with the community.</p>
+                            <div class="milestone-tags">
+                                <span class="tag">Social</span>
+                                <span class="tag">Community</span>
+                            </div>
+                        </li>
+                        <li class="milestone-item">
+                            <div class="milestone-header">
+                                <h3 class="milestone-title">Automated Portfolio Tracking</h3>
+                                <i data-feather="pie-chart" size="18" class="milestone-icon"></i>
+                            </div>
+                            <p class="milestone-description">Connect wallets to track P&L, get tax reports, and monitor performance.</p>
+                            <div class="milestone-tags">
+                                <span class="tag">Portfolio</span>
+                                <span class="tag">Automation</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quarter-section">
+                <div class="quarter-header">
+                    <h2 class="quarter-title">Q4 2025</h2>
+                    <span class="quarter-status status-upcoming">Upcoming</span>
+                </div>
+                <div class="quarter-content">
+                    <ul class="milestone-list">
+                        <li class="milestone-item">
+                            <div class="milestone-header">
+                                <h3 class="milestone-title">DAO Governance Launch</h3>
+                                <i data-feather="award" size="18" class="milestone-icon"></i>
+                            </div>
+                            <p class="milestone-description">Decentralized governance for platform decisions and feature prioritization.</p>
+                            <div class="milestone-tags">
+                                <span class="tag">DAO</span>
+                                <span class="tag">Governance</span>
+                            </div>
+                        </li>
+                        <li class="milestone-item">
+                            <div class="milestone-header">
+                                <h3 class="milestone-title">Cross-Chain Support</h3>
+                                <i data-feather="globe" size="18" class="milestone-icon"></i>
+                            </div>
+                            <p class="milestone-description">Expand beyond EVM chains to support Solana, Cosmos, and other ecosystems.</p>
+                            <div class="milestone-tags">
+                                <span class="tag">Multi-chain</span>
+                                <span class="tag">Infrastructure</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

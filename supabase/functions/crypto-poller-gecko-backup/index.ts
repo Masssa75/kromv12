@@ -2,11 +2,10 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.7';
 const KROM_API_URL = 'https://krom.one/api/v1/calls?limit=10';
 
-// DexScreener doesn't need network mapping - uses same names as KROM
-// But keeping this for compatibility if needed
+// Map KROM network names to GeckoTerminal API network names
 function mapNetworkName(kromNetwork: string): string {
   const networkMap: Record<string, string> = {
-    'ethereum': 'ethereum',
+    'ethereum': 'eth',
     'solana': 'solana', 
     'bsc': 'bsc',
     'polygon': 'polygon',
@@ -17,14 +16,13 @@ function mapNetworkName(kromNetwork: string): string {
   return networkMap[kromNetwork.toLowerCase()] || kromNetwork.toLowerCase();
 }
 
-// Function to fetch current price, supply, liquidity AND social data from DexScreener
+// Function to fetch current price, supply, and liquidity data for new calls
 async function fetchCurrentPriceAndSupply(network: string, poolAddress: string) {
   try {
-    const dexNetwork = mapNetworkName(network);
-    console.log(`Fetching from DexScreener: ${network} -> ${dexNetwork}`);
+    const geckoNetwork = mapNetworkName(network);
+    console.log(`Mapping network: ${network} -> ${geckoNetwork}`);
     
-    // DexScreener pairs endpoint - works with pool address
-    const response = await fetch(`https://api.dexscreener.com/latest/dex/pairs/${dexNetwork}/${poolAddress}`, {
+    const response = await fetch(`https://api.geckoterminal.com/api/v2/networks/${geckoNetwork}/pools/${poolAddress}`, {
       headers: {
         'User-Agent': 'Mozilla/5.0'
       }
@@ -32,96 +30,25 @@ async function fetchCurrentPriceAndSupply(network: string, poolAddress: string) 
 
     if (!response.ok) {
       console.log(`Price/supply fetch failed for pool ${poolAddress}: ${response.status}`);
-      return { 
-        price: null, 
-        totalSupply: null, 
-        circulatingSupply: null, 
-        liquidity: 0, 
-        source: "DEAD_TOKEN",
-        socials: {} 
-      };
+      return { price: null, totalSupply: null, circulatingSupply: null, liquidity: 0, source: "DEAD_TOKEN" };
     }
 
     const data = await response.json();
+    const attributes = data.data?.attributes;
+    const price = parseFloat(attributes?.base_token_price_usd || '0');
+    const fdv = parseFloat(attributes?.fdv_usd || '0');
+    const marketCap = parseFloat(attributes?.market_cap_usd || '0');
+    const liquidity = parseFloat(attributes?.reserve_in_usd || '0');
     
-    // DexScreener returns pairs array or single pair
-    let pair = null;
-    if (data.pairs && data.pairs.length > 0) {
-      pair = data.pairs[0]; // Take first pair (usually highest liquidity)
-    } else if (data.pair) {
-      pair = data.pair;
-    } else {
-      console.log(`❌ No pair data for pool ${poolAddress}`);
-      return { 
-        price: null, 
-        totalSupply: null, 
-        circulatingSupply: null, 
-        liquidity: 0, 
-        source: "DEAD_TOKEN",
-        socials: {}
-      };
-    }
-    
-    // Extract data from DexScreener response
-    const price = parseFloat(pair.priceUsd || '0');
-    const fdv = parseFloat(pair.fdv || '0');
-    const marketCap = parseFloat(pair.marketCap || '0');
-    
-    // Handle liquidity - can be number or object
-    const liquidity = typeof pair.liquidity === 'object' 
-      ? parseFloat(pair.liquidity?.usd || '0')
-      : parseFloat(pair.liquidity || '0');
-    
-    // Calculate supplies from FDV and market cap (same as GeckoTerminal)
+    // Calculate supplies from FDV and market cap
     const totalSupply = (fdv && price > 0) ? fdv / price : null;
     const circulatingSupply = (marketCap && price > 0) ? marketCap / price : 
                              totalSupply; // If no market cap, assume circulating = total
-    
-    // Extract social links (NEW!)
-    const socials: any = {
-      website_url: null,
-      twitter_url: null,
-      telegram_url: null,
-      discord_url: null
-    };
-    
-    // Check info.socials array
-    if (pair.info?.socials && Array.isArray(pair.info.socials)) {
-      for (const social of pair.info.socials) {
-        if (!social || !social.type) continue;
-        
-        const socialType = social.type.toLowerCase();
-        const socialUrl = social.url;
-        
-        if (socialType === 'website' && !socials.website_url) {
-          socials.website_url = socialUrl;
-        } else if (socialType === 'twitter' && !socials.twitter_url) {
-          socials.twitter_url = socialUrl;
-        } else if (socialType === 'telegram' && !socials.telegram_url) {
-          socials.telegram_url = socialUrl;
-        } else if (socialType === 'discord' && !socials.discord_url) {
-          socials.discord_url = socialUrl;
-        }
-      }
-    }
-    
-    // Also check info.websites array (sometimes website is here)
-    if (!socials.website_url && pair.info?.websites) {
-      const websites = pair.info.websites;
-      if (Array.isArray(websites) && websites.length > 0) {
-        socials.website_url = typeof websites[0] === 'string' 
-          ? websites[0] 
-          : websites[0]?.url || null;
-      }
-    }
     
     if (price > 0) {
       console.log(`✅ Got price: $${price}, FDV: $${fdv}, MCap: $${marketCap}, Liquidity: $${liquidity} for pool ${poolAddress}`);
       if (totalSupply) {
         console.log(`   Total Supply: ${totalSupply.toLocaleString()}, Circulating: ${circulatingSupply?.toLocaleString()}`);
-      }
-      if (socials.website_url || socials.twitter_url) {
-        console.log(`   Social links found - Website: ${socials.website_url ? '✓' : '✗'}, Twitter: ${socials.twitter_url ? '✓' : '✗'}`);
       }
       
       // Check liquidity threshold
@@ -130,59 +57,31 @@ async function fetchCurrentPriceAndSupply(network: string, poolAddress: string) 
         console.log(`⚠️ LOW LIQUIDITY: $${liquidity.toFixed(2)} < $${LIQUIDITY_THRESHOLD} threshold`);
       }
       
-      return { 
-        price, 
-        totalSupply, 
-        circulatingSupply, 
-        liquidity, 
-        source: "DEXSCREENER_LIVE",
-        socials 
-      };
+      return { price, totalSupply, circulatingSupply, liquidity, source: "GECKO_LIVE" };
     } else {
       console.log(`❌ No price data for pool ${poolAddress}`);
-      return { 
-        price: null, 
-        totalSupply: null, 
-        circulatingSupply: null, 
-        liquidity: 0, 
-        source: "DEAD_TOKEN",
-        socials: {}
-      };
+      return { price: null, totalSupply: null, circulatingSupply: null, liquidity: 0, source: "DEAD_TOKEN" };
     }
     
   } catch (error) {
     console.error(`Error fetching price/supply for pool ${poolAddress}:`, error);
-    return { 
-      price: null, 
-      totalSupply: null, 
-      circulatingSupply: null, 
-      liquidity: 0, 
-      source: "DEAD_TOKEN",
-      socials: {}
-    };
+    return { price: null, totalSupply: null, circulatingSupply: null, liquidity: 0, source: "DEAD_TOKEN" };
   }
 }
-
 serve(async (req)=>{
   try {
     // Create Supabase client with service role
-    const supabase = createClient(
-      Deno.env.get('SUPABASE_URL') ?? '', 
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '', 
-      {
-        auth: {
-          persistSession: false,
-          autoRefreshToken: false
-        }
+    const supabase = createClient(Deno.env.get('SUPABASE_URL') ?? '', Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '', {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false
       }
-    );
-    
+    });
     // Get KROM API token
     const kromApiToken = Deno.env.get('KROM_API_TOKEN');
     if (!kromApiToken) {
       throw new Error('KROM_API_TOKEN not configured');
     }
-    
     // Fetch from KROM API
     console.log('Fetching from KROM API...');
     const response = await fetch(KROM_API_URL, {
@@ -191,22 +90,17 @@ serve(async (req)=>{
         'Authorization': `Bearer ${kromApiToken}`
       }
     });
-    
     if (!response.ok) {
       throw new Error(`KROM API error: ${response.status}`);
     }
-    
     const calls = await response.json();
     console.log(`Fetched ${calls.length} calls from KROM`);
-    
     // Only process the first 5 calls (newest ones)
     const recentCalls = calls.slice(0, 5);
     console.log(`Processing only the ${recentCalls.length} most recent calls`);
-    
     // Store new calls
     let newCallsCount = 0;
     const errors = [];
-    
     for (const call of recentCalls){
       try {
         // Prepare base call data
@@ -220,34 +114,16 @@ serve(async (req)=>{
           raw_data: call
         };
 
-        // Fetch current price, supply, liquidity AND social data if we have pool address and network
+        // Fetch current price, supply, and liquidity if we have pool address and network
         if (call.token?.pa && call.token?.network) {
-          console.log(`Fetching price/supply/liquidity/socials for ${call.token.symbol || 'UNKNOWN'} on ${call.token.network}...`);
+          console.log(`Fetching price/supply/liquidity for ${call.token.symbol || 'UNKNOWN'} on ${call.token.network}...`);
           const priceData = await fetchCurrentPriceAndSupply(call.token.network, call.token.pa);
           
-          // Price and supply data (same as before)
           callData.price_at_call = priceData.price;
           callData.price_source = priceData.source;
           callData.total_supply = priceData.totalSupply || null;
           callData.circulating_supply = priceData.circulatingSupply || null;
           callData.liquidity_usd = priceData.liquidity || 0;
-          
-          // ADD SOCIAL DATA
-          if (priceData.socials) {
-            // Only set social fields if they have actual values
-            const hasAnySocial = priceData.socials.website_url || 
-                               priceData.socials.twitter_url || 
-                               priceData.socials.telegram_url || 
-                               priceData.socials.discord_url;
-                               
-            if (hasAnySocial) {
-              callData.website_url = priceData.socials.website_url || null;
-              callData.twitter_url = priceData.socials.twitter_url || null;
-              callData.telegram_url = priceData.socials.telegram_url || null;
-              callData.discord_url = priceData.socials.discord_url || null;
-              callData.socials_fetched_at = new Date().toISOString();
-            }
-          }
           
           // Mark as dead if liquidity is below threshold
           const LIQUIDITY_THRESHOLD = 1000;
@@ -298,10 +174,9 @@ serve(async (req)=>{
 
         // Try to insert - if it already exists, it will fail with unique constraint
         const { data, error } = await supabase.from('crypto_calls').insert(callData).select();
-        
         if (error) {
           if (error.code === '23505') {
-            continue; // Duplicate - skip
+            continue;
           } else {
             console.error(`Error inserting call ${call._id}:`, error);
             errors.push({
@@ -319,13 +194,9 @@ serve(async (req)=>{
             ? `, Liquidity: $${callData.liquidity_usd.toFixed(2)}`
             : '';
           
-          const socialInfo = callData.website_url || callData.twitter_url
-            ? `, Socials: ${callData.website_url ? 'Web ' : ''}${callData.twitter_url ? 'Twitter' : ''}`
-            : '';
-          
           const deadStatus = callData.is_dead ? ' [DEAD - LOW LIQUIDITY]' : '';
           
-          console.log(`Added new call: ${call._id} - ${call.token?.symbol || 'Unknown'} on ${call.token?.network || 'unknown'} - ${priceInfo}${liquidityInfo}${socialInfo}${deadStatus}`);
+          console.log(`Added new call: ${call._id} - ${call.token?.symbol || 'Unknown'} on ${call.token?.network || 'unknown'} - ${priceInfo}${liquidityInfo}${deadStatus}`);
         }
       } catch (err) {
         console.error(`Error processing call ${call._id}:`, err);
@@ -335,7 +206,6 @@ serve(async (req)=>{
         });
       }
     }
-    
     return new Response(JSON.stringify({
       success: true,
       totalFetched: calls.length,

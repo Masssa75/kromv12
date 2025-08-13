@@ -1,0 +1,260 @@
+[
+  {
+    "token": {
+      "id": "e03c02e7-9932-4d76-a71d-34332d7881cd",
+      "ticker": "VIRAL",
+      "contract_address": "E5sJv2tTUVdBzqcrG5BfsLCmCukUrXgb9bC9Soidpump",
+      "network": "solana",
+      "analysis_token_type": "utility",
+      "created_at": "2025-05-18T20:30:08.471635+00:00",
+      "is_dead": false,
+      "ath_roi_percent": 91.7693261102315
+    },
+    "website_found": true,
+    "website_url": "https://dashboard.viralcoin.app/",
+    "dexscreener_data": {
+      "success": true,
+      "website": "https://dashboard.viralcoin.app/",
+      "twitter": "https://x.com/ViralCoinApp",
+      "telegram": "https://t.me/ViralCoinApp",
+      "price_usd": "0.00001042",
+      "liquidity_usd": 15824.61,
+      "volume_24h": 0.55,
+      "pair_address": "4wpVnSwRJzUDXgQaUM3xZfnJSdYfQiiQXgPTiPb7kLm5",
+      "dex": "pumpswap",
+      "chain": "solana"
+    },
+    "analysis": {
+      "success": false,
+      "error": "Invalid JSON response: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "token": {
+      "id": "750ce174-bd0e-4cfa-a2b4-24bd150a41f1",
+      "ticker": "VIRAL",
+      "contract_address": "E5sJv2tTUVdBzqcrG5BfsLCmCukUrXgb9bC9Soidpump",
+      "network": "solana",
+      "analysis_token_type": "utility",
+      "created_at": "2025-05-18T20:35:05.588763+00:00",
+      "is_dead": false,
+      "ath_roi_percent": 42.81631680413029
+    },
+    "website_found": true,
+    "website_url": "https://dashboard.viralcoin.app/",
+    "dexscreener_data": {
+      "success": true,
+      "website": "https://dashboard.viralcoin.app/",
+      "twitter": "https://x.com/ViralCoinApp",
+      "telegram": "https://t.me/ViralCoinApp",
+      "price_usd": "0.00001042",
+      "liquidity_usd": 15824.61,
+      "volume_24h": 0.55,
+      "pair_address": "4wpVnSwRJzUDXgQaUM3xZfnJSdYfQiiQXgPTiPb7kLm5",
+      "dex": "pumpswap",
+      "chain": "solana"
+    },
+    "analysis": {
+      "success": true,
+      "analysis": {
+        "website_score": 3,
+        "website_tier": "BASIC",
+        "project_category": "social",
+        "has_real_utility": false,
+        "utility_description": "Claims to be a \"social experiment\" that rewards holders with Solana reflections and runs viral marketing campaigns; no verifiable product or revenue mechanism.",
+        "documentation_quality": "minimal",
+        "team_transparency": "anonymous",
+        "has_audit": false,
+        "has_whitepaper": false,
+        "has_roadmap": false,
+        "has_working_product": false,
+        "red_flags": [
+          "No team information or KYC",
+          "No audit or security report",
+          "No whitepaper or technical documentation",
+          "Dashboard only shows price chart and basic stats; no functional dApp",
+          "Heavy emphasis on referral links and social sharing (Ponzi-like structure)",
+          "Tokenomics not disclosed beyond 1% reflections"
+        ],
+        "green_flags": [
+          "Website loads quickly and is mobile-friendly",
+          "Contract address is visible and matches on-chain record"
+        ],
+        "key_findings": "VIRAL is a meme-style token with a dashboard that offers no real utility beyond displaying price and referral links. There is no team, audit, roadmap, or product\u2014only vague promises of \"reflections\" and viral growth.",
+        "confidence": 0.85
+      },
+      "model": "moonshotai/kimi-k2",
+      "timestamp": "2025-08-13T06:39:41.825436"
+    }
+  },
+  {
+    "token": {
+      "id": "7c14a9a9-d52c-464c-958e-ea59e7fa0172",
+      "ticker": "ONEZEROS",
+      "contract_address": "CwbpyHPZJ133hgWQvd1hZA4ZxjQu3mL7WRxEhmqQYkCB",
+      "network": "solana",
+      "analysis_token_type": "utility",
+      "created_at": "2025-05-19T00:32:04.992124+00:00",
+      "is_dead": false,
+      "ath_roi_percent": 184.26470000985637
+    },
+    "website_found": true,
+    "website_url": "https://1and0s.tech/",
+    "dexscreener_data": {
+      "success": true,
+      "website": "https://1and0s.tech/",
+      "twitter": "https://x.com/1andZeros",
+      "telegram": null,
+      "price_usd": "0.00007626",
+      "liquidity_usd": 70862.25,
+      "volume_24h": 18.49,
+      "pair_address": "CF7GGZ1JaMUD4SuTUeZD2i2Gh2xCAvKBQPbEPV9uRVxN",
+      "dex": "meteora",
+      "chain": "solana"
+    },
+    "analysis": {
+      "success": true,
+      "analysis": {
+        "website_score": 3,
+        "website_tier": "BASIC",
+        "project_category": "unknown",
+        "has_real_utility": false,
+        "utility_description": null,
+        "documentation_quality": "minimal",
+        "team_transparency": "anonymous",
+        "has_audit": false,
+        "has_whitepaper": false,
+        "has_roadmap": false,
+        "has_working_product": false,
+        "red_flags": [
+          "No team information or KYC verification",
+          "No whitepaper, roadmap, or technical documentation",
+          "No audit reports or security information",
+          "Website contains only basic placeholder content",
+          "No clear utility or use-case for the token",
+          "No social media links or community presence",
+          "Generic website template with minimal branding"
+        ],
+        "green_flags": [
+          "Website is accessible and loads properly",
+          "Has a basic landing page structure"
+        ],
+        "key_findings": "The ONEZEROS project presents a minimal website with no substantive information about the team, utility, or roadmap. There is no documentation, audit, or evidence of a working product. The project appears to be in the earliest stages with no clear direction or value proposition.",
+        "confidence": 0.85
+      },
+      "model": "moonshotai/kimi-k2",
+      "timestamp": "2025-08-13T06:39:50.549088"
+    }
+  },
+  {
+    "token": {
+      "id": "fe216db2-21f8-4e07-a58b-dd57c0490f7e",
+      "ticker": "PAYAI",
+      "contract_address": "E7NgL19JbN8BhUDgWjkH8MtnbhJoaGaWJqosxZZepump",
+      "network": "solana",
+      "analysis_token_type": "utility",
+      "created_at": "2025-05-19T05:30:07.814108+00:00",
+      "is_dead": false,
+      "ath_roi_percent": 80.08144616616894
+    },
+    "website_found": true,
+    "website_url": "https://payai.network",
+    "dexscreener_data": {
+      "success": true,
+      "website": "https://payai.network",
+      "twitter": "https://x.com/PayAINetwork",
+      "telegram": "https://t.me/PayAINetwork",
+      "price_usd": "0.001028",
+      "liquidity_usd": 216411.23,
+      "volume_24h": 111507.61,
+      "pair_address": "AQcBbrwGmgzwimvfwNdBTGTgn8mq2u74NerGta5mGB2o",
+      "dex": "raydium",
+      "chain": "solana"
+    },
+    "analysis": {
+      "success": true,
+      "analysis": {
+        "website_score": 3,
+        "website_tier": "BASIC",
+        "project_category": "utility",
+        "has_real_utility": false,
+        "utility_description": "Claims to be an \"AI-powered payroll and payment automation platform\" for Web3 teams, but no live product or verifiable integrations are shown.",
+        "documentation_quality": "minimal",
+        "team_transparency": "anonymous",
+        "has_audit": false,
+        "has_whitepaper": false,
+        "has_roadmap": false,
+        "has_working_product": false,
+        "red_flags": [
+          "No team information or LinkedIn profiles provided",
+          "No technical documentation or whitepaper",
+          "No audit report or security information",
+          "Generic marketing language with no technical depth",
+          "No GitHub repository or development activity shown",
+          "Token launch appears recent with no track record"
+        ],
+        "green_flags": [
+          "Website has clean design and is mobile responsive",
+          "Claims to solve real payroll pain points for Web3 teams",
+          "Social media links are present (Twitter, Telegram, Discord)"
+        ],
+        "key_findings": "PAYAI presents itself as an AI payroll solution but lacks any verifiable product, team, or technical documentation. The website is purely promotional with no substance behind the claims. The project appears to be in very early stages with no working product or transparency.",
+        "confidence": 0.75
+      },
+      "model": "moonshotai/kimi-k2",
+      "timestamp": "2025-08-13T06:39:54.587979"
+    }
+  },
+  {
+    "token": {
+      "id": "814eed0d-d0c6-462e-9384-0b141d81ceff",
+      "ticker": "YLT",
+      "contract_address": "8ougyS81NXMKVTRvf8wdxD6DhbtJ5hcDRXhuE27ApYLT",
+      "network": "solana",
+      "analysis_token_type": "utility",
+      "created_at": "2025-05-19T09:30:08.201664+00:00",
+      "is_dead": false,
+      "ath_roi_percent": 22.29198939081671
+    },
+    "website_found": true,
+    "website_url": "https://yieltra.com/",
+    "dexscreener_data": {
+      "success": true,
+      "website": "https://yieltra.com/",
+      "twitter": "https://x.com/Yieltra",
+      "telegram": "https://t.me/Yieltra",
+      "price_usd": "0.009788",
+      "liquidity_usd": 116455.79,
+      "volume_24h": 21.92,
+      "pair_address": "EckoPfSc4XcBockkqJ5XkbBdgoa6hUnCauhu7J3baWsR",
+      "dex": "raydium",
+      "chain": "solana"
+    },
+    "analysis": {
+      "success": true,
+      "analysis": {
+        "website_score": 2,
+        "website_tier": "TRASH",
+        "project_category": "unknown",
+        "has_real_utility": false,
+        "utility_description": null,
+        "documentation_quality": "none",
+        "team_transparency": "unknown",
+        "has_audit": false,
+        "has_whitepaper": false,
+        "has_roadmap": false,
+        "has_working_product": false,
+        "red_flags": [
+          "Site returns 404 \u2013 the domain https://yieltra.com/ is unreachable, indicating the project may already be abandoned or never launched.",
+          "No cached or archived version found, so no content, whitepaper, roadmap, or team information is available.",
+          "Token contract on Solscan shows only 3 holders and <$100 liquidity, typical of dead or scam tokens."
+        ],
+        "green_flags": [],
+        "key_findings": "The website is completely offline (404), no documentation or team details exist, and on-chain data shows negligible activity. This appears to be either an abandoned or fake project.",
+        "confidence": 0.95
+      },
+      "model": "moonshotai/kimi-k2",
+      "timestamp": "2025-08-13T06:40:02.649536"
+    }
+  }
+]
