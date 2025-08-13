@@ -260,6 +260,62 @@
             color: #212529;
         }
         
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+        
+        .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            padding: 10px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        
+        .tooltip-container:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .website-summary {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #007bff;
+            font-style: italic;
+            color: #495057;
+        }
+        
+        .has-tooltip {
+            text-decoration: underline dotted;
+            cursor: help;
+        }
+        
         .loading {
             text-align: center;
             padding: 50px;
@@ -481,19 +537,31 @@
                                 </div>
                                 <div class="detail-item">
                                     <span class="detail-label">Documentation Quality</span>
-                                    <span class="detail-value">${item.documentation_quality || 'N/A'}</span>
+                                    <span class="detail-value tooltip-container">
+                                        <span class="has-tooltip">${item.documentation_quality || 'N/A'}</span>
+                                        ${item.documentation_quality ? `<span class="tooltip">Quality of technical documentation, whitepaper, tokenomics, and project details</span>` : ''}
+                                    </span>
                                 </div>
                                 <div class="detail-item">
                                     <span class="detail-label">Team Transparency</span>
-                                    <span class="detail-value">${item.team_transparency || 'N/A'}</span>
+                                    <span class="detail-value tooltip-container">
+                                        <span class="has-tooltip">${item.team_transparency || 'N/A'}</span>
+                                        ${item.team_transparency ? `<span class="tooltip">Team visibility and verification status. Fully visible means team members are publicly known with verifiable backgrounds.</span>` : ''}
+                                    </span>
                                 </div>
                                 <div class="detail-item">
                                     <span class="detail-label">Has Audit</span>
-                                    <span class="detail-value">${item.has_audit ? '✅ Yes' : '❌ No'}</span>
+                                    <span class="detail-value tooltip-container">
+                                        <span class="has-tooltip">${item.has_audit ? '✅ Yes' : '❌ No'}</span>
+                                        <span class="tooltip">Security audit by a reputable firm helps ensure contract safety</span>
+                                    </span>
                                 </div>
                                 <div class="detail-item">
                                     <span class="detail-label">Has Whitepaper</span>
-                                    <span class="detail-value">${item.has_whitepaper ? '✅ Yes' : '❌ No'}</span>
+                                    <span class="detail-value tooltip-container">
+                                        <span class="has-tooltip">${item.has_whitepaper ? '✅ Yes' : '❌ No'}</span>
+                                        <span class="tooltip">Technical document explaining the project's technology and goals</span>
+                                    </span>
                                 </div>
                                 <div class="detail-item">
                                     <span class="detail-label">Has Roadmap</span>
@@ -504,6 +572,13 @@
                                     <span class="detail-value">${item.has_working_product ? '✅ Yes' : '❌ No'}</span>
                                 </div>
                             </div>
+                            
+                            ${item.website_summary ? `
+                            <div class="website-summary">
+                                <div class="detail-label" style="margin-bottom: 8px; font-weight: 600;">What the AI Saw on the Website:</div>
+                                ${item.website_summary}
+                            </div>
+                            ` : ''}
                             
                             ${item.utility_description ? `
                             <div style="margin-bottom: 15px;">

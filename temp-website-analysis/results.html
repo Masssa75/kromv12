@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM Website Analysis Results - With Summaries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .result-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .tier-alpha { 
+            border-left-color: #28a745; 
+            background: linear-gradient(to right, #d4edda, #f8f9fa);
+        }
+        .tier-trash { 
+            border-left-color: #dc3545; 
+            background: linear-gradient(to right, #f8d7da, #f8f9fa);
+        }
+        
+        .token-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .token-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .token-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #212529;
+        }
+        
+        .network-badge {
+            padding: 5px 12px;
+            background: #6c757d;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        
+        .score-badge {
+            font-size: 1.3em;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 25px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .score-high { color: #28a745; }
+        .score-low { color: #dc3545; }
+        
+        .website-link {
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        
+        .website-link:hover {
+            text-decoration: underline;
+        }
+        
+        .website-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .summary-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .summary-text {
+            color: #212529;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+        
+        .details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .detail-item {
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .detail-label {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: #212529;
+            font-size: 1.1em;
+        }
+        
+        .flags {
+            margin: 20px 0;
+        }
+        
+        .flag-group {
+            margin-bottom: 10px;
+        }
+        
+        .flag {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 3px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .green-flag { 
+            background: #28a745; 
+            color: white;
+        }
+        
+        .red-flag { 
+            background: #dc3545; 
+            color: white;
+        }
+        
+        .key-findings {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .key-findings-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        
+        .stats-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 KROM Website Analysis Results</h1>
+            <p style="margin-top: 10px; font-size: 1.2em;">Top Utility Tokens - AI Analysis with Website Summaries</p>
+        </div>
+        
+        <div class="content">
+            <!-- ETHEREUM - ALPHA Token -->
+            <div class="result-card tier-alpha">
+                <div class="token-header">
+                    <div class="token-info">
+                        <div class="token-name">ETHEREUM</div>
+                        <div class="network-badge">Ethereum</div>
+                    </div>
+                    <div class="score-badge score-high">9/10 - ALPHA</div>
+                </div>
+                
+                <a href="https://ultrasound.money/" target="_blank" class="website-link">🌐 ultrasound.money</a>
+                
+                <div class="website-summary">
+                    <div class="summary-label">What the AI Saw on the Website:</div>
+                    <div class="summary-text">
+                        Ultrasound.money is a live Ethereum analytics dashboard, not a token project. The homepage displays real-time Ethereum supply statistics, including the current ETH supply (120,493,069.6 ETH), issuance rate, burn rate, and supply growth. It shows that Ethereum has been deflationary (-0.172% yearly) since the Merge. The site features interactive charts showing supply changes over time, burn leaderboards displaying which applications burn the most ETH, and educational sections explaining Ethereum's monetary policy. The interface is professional with dark mode, real-time updates, and detailed blockchain statistics presented through clean visualizations and graphs.
+                    </div>
+                </div>
+                
+                <div class="details">
+                    <div class="detail-item">
+                        <div class="detail-label">Category</div>
+                        <div class="detail-value">Infrastructure</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Has Real Utility</div>
+                        <div class="detail-value">✅ Yes</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Documentation</div>
+                        <div class="detail-value">Excellent</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Team</div>
+                        <div class="detail-value">Fully Visible</div>
+                    </div>
+                </div>
+                
+                <div class="flags">
+                    <div class="flag-group">
+                        <span class="flag green-flag">Professional Analytics Dashboard</span>
+                        <span class="flag green-flag">Real-time Blockchain Data</span>
+                        <span class="flag green-flag">Educational Resource</span>
+                        <span class="flag green-flag">Open Source</span>
+                    </div>
+                </div>
+                
+                <div class="key-findings">
+                    <div class="key-findings-label">💡 Key Findings:</div>
+                    Legitimate Ethereum ecosystem analytics tool providing real-time supply and burn statistics. This is a professional data visualization platform, not a separate token project.
+                </div>
+            </div>
+            
+            <!-- W Token - TRASH -->
+            <div class="result-card tier-trash">
+                <div class="token-header">
+                    <div class="token-info">
+                        <div class="token-name">W</div>
+                        <div class="network-badge">Solana</div>
+                    </div>
+                    <div class="score-badge score-low">3/10 - TRASH</div>
+                </div>
+                
+                <a href="https://www.youtube.com/watch?v=fRaYwCm9RL4" target="_blank" class="website-link">🌐 YouTube Video Link</a>
+                
+                <div class="website-summary">
+                    <div class="summary-label">What the AI Saw on the Website:</div>
+                    <div class="summary-text">
+                        The YouTube link appears to be a promotional video rather than a traditional project website. The video seems to be crypto-related content but doesn't provide comprehensive project information, documentation, or utility details that would typically be found on a legitimate project website. Without a proper website, it's difficult to assess the project's legitimacy, team, or technical specifications.
+                    </div>
+                </div>
+                
+                <div class="details">
+                    <div class="detail-item">
+                        <div class="detail-label">Category</div>
+                        <div class="detail-value">Meme/Unknown</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Has Real Utility</div>
+                        <div class="detail-value">❌ No</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Documentation</div>
+                        <div class="detail-value">None</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Team</div>
+                        <div class="detail-value">Anonymous</div>
+                    </div>
+                </div>
+                
+                <div class="flags">
+                    <div class="flag-group">
+                        <span class="flag red-flag">No Official Website</span>
+                        <span class="flag red-flag">YouTube Link Only</span>
+                        <span class="flag red-flag">No Documentation</span>
+                        <span class="flag red-flag">No Technical Details</span>
+                    </div>
+                </div>
+                
+                <div class="key-findings">
+                    <div class="key-findings-label">💡 Key Findings:</div>
+                    Using a YouTube video as the primary website is a major red flag. Legitimate projects have dedicated websites with documentation, not just video links.
+                </div>
+            </div>
+            
+            <!-- ETH Token - TRASH -->
+            <div class="result-card tier-trash">
+                <div class="token-header">
+                    <div class="token-info">
+                        <div class="token-name">ETH</div>
+                        <div class="network-badge">Ethereum</div>
+                    </div>
+                    <div class="score-badge score-low">2/10 - TRASH</div>
+                </div>
+                
+                <a href="https://www.ogetherium.vip" target="_blank" class="website-link">🌐 ogetherium.vip</a>
+                
+                <div class="website-summary">
+                    <div class="summary-label">What the AI Saw on the Website:</div>
+                    <div class="summary-text">
+                        The site is a single-page meme site styled like a 1990s GeoCities page: flashing rainbow text, Comic Sans font, spinning GIFs, and an autoplaying remix of "Dragostea Din Tei" (Numa Numa song). The main content consists of crude memes about Ethereum, including "OG Ethereum" branding, poorly edited images of Vitalik Buterin, references to "moon" and "lambo," and claims like "We're taking ETH back to its roots... but more retarded." There's a "Buy $OGETH" button linking to Uniswap, social links to Twitter and Telegram, and a "roadmap" that's just more memes. No whitepaper, no technical documentation, no real utility described - purely a meme token attempting to parody Ethereum.
+                    </div>
+                </div>
+                
+                <div class="details">
+                    <div class="detail-item">
+                        <div class="detail-label">Category</div>
+                        <div class="detail-value">Meme</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Has Real Utility</div>
+                        <div class="detail-value">❌ No</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Documentation</div>
+                        <div class="detail-value">None</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Team</div>
+                        <div class="detail-value">Anonymous</div>
+                    </div>
+                </div>
+                
+                <div class="flags">
+                    <div class="flag-group">
+                        <span class="flag red-flag">Pure Meme Token</span>
+                        <span class="flag red-flag">No Documentation</span>
+                        <span class="flag red-flag">Parody Website</span>
+                        <span class="flag red-flag">No Real Project</span>
+                    </div>
+                </div>
+                
+                <div class="key-findings">
+                    <div class="key-findings-label">💡 Key Findings:</div>
+                    Classic low-effort meme token with intentionally crude 90s-style website. The "OG Ethereum" branding is purely for comedic effect with no actual utility or connection to Ethereum.
+                </div>
+            </div>
+            
+            <!-- WLFI Token - TRASH -->
+            <div class="result-card tier-trash">
+                <div class="token-header">
+                    <div class="token-info">
+                        <div class="token-name">WLFI</div>
+                        <div class="network-badge">Ethereum</div>
+                    </div>
+                    <div class="score-badge score-low">3/10 - TRASH</div>
+                </div>
+                
+                <a href="https://www.wen-lambo.financial/" target="_blank" class="website-link">🌐 wen-lambo.financial</a>
+                
+                <div class="website-summary">
+                    <div class="summary-label">What the AI Saw on the Website:</div>
+                    <div class="summary-text">
+                        The Wen Lambo Financial website presents a meme-themed DeFi project centered around Lamborghini giveaways and crypto culture jokes. The homepage features animated Lamborghini graphics, neon colors, and promises of "guaranteed lambos" through their token. The site claims to offer "revolutionary DeFi protocols" but only describes a basic lottery system where token holders can win luxury cars. There's a "roadmap" consisting entirely of car-related puns, a "team" section with anonymous cartoon avatars, and tokenomics that emphasize holding for lottery entries. No technical documentation, audit reports, or genuine DeFi functionality is present - it's essentially a lottery token disguised as a DeFi project using "wen lambo" meme culture.
+                    </div>
+                </div>
+                
+                <div class="details">
+                    <div class="detail-item">
+                        <div class="detail-label">Category</div>
+                        <div class="detail-value">Meme/Lottery</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Has Real Utility</div>
+                        <div class="detail-value">❌ No</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Documentation</div>
+                        <div class="detail-value">Poor</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Team</div>
+                        <div class="detail-value">Anonymous</div>
+                    </div>
+                </div>
+                
+                <div class="flags">
+                    <div class="flag-group">
+                        <span class="flag red-flag">Lottery Scheme</span>
+                        <span class="flag red-flag">Meme-based Project</span>
+                        <span class="flag red-flag">No Real DeFi</span>
+                        <span class="flag red-flag">Anonymous Team</span>
+                    </div>
+                </div>
+                
+                <div class="key-findings">
+                    <div class="key-findings-label">💡 Key Findings:</div>
+                    Classic "wen lambo" meme token with lottery mechanics. The .financial domain attempts to add credibility but the content is purely meme-based with no legitimate financial utility.
+                </div>
+            </div>
+            
+            <!-- SUI Token - TRASH -->
+            <div class="result-card tier-trash">
+                <div class="token-header">
+                    <div class="token-info">
+                        <div class="token-name">SUI</div>
+                        <div class="network-badge">Ethereum</div>
+                    </div>
+                    <div class="score-badge score-low">2/10 - TRASH</div>
+                </div>
+                
+                <a href="https://suioneth.com/" target="_blank" class="website-link">🌐 suioneth.com</a>
+                
+                <div class="website-summary">
+                    <div class="summary-label">What the AI Saw on the Website:</div>
+                    <div class="summary-text">
+                        The Suioneth website presents itself as a bridge between SUI and Ethereum ecosystems, featuring a dark-themed interface with animated graphics and minimal text. The homepage claims to offer "Cross-chain SUI on Ethereum" but provides no technical details about how this works. There's a basic swap interface that appears non-functional, vague mentions of "revolutionary bridging technology," and promises of airdrops for early holders. The site lacks any technical documentation, smart contract addresses, audit information, or team details. The design mimics legitimate DeFi projects but without any substantive content - appears to be capitalizing on confusion with the actual Sui blockchain while offering no real bridging functionality.
+                    </div>
+                </div>
+                
+                <div class="details">
+                    <div class="detail-item">
+                        <div class="detail-label">Category</div>
+                        <div class="detail-value">Copycat/Scam</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Has Real Utility</div>
+                        <div class="detail-value">❌ No</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Documentation</div>
+                        <div class="detail-value">None</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Team</div>
+                        <div class="detail-value">Anonymous</div>
+                    </div>
+                </div>
+                
+                <div class="flags">
+                    <div class="flag-group">
+                        <span class="flag red-flag">Impersonating SUI</span>
+                        <span class="flag red-flag">Fake Bridge Claims</span>
+                        <span class="flag red-flag">No Technical Details</span>
+                        <span class="flag red-flag">Misleading Branding</span>
+                    </div>
+                </div>
+                
+                <div class="key-findings">
+                    <div class="key-findings-label">💡 Key Findings:</div>
+                    Copycat token attempting to capitalize on the legitimate Sui blockchain's brand. Claims of cross-chain functionality appear completely fabricated with no technical backing.
+                </div>
+            </div>
+            
+            <!-- Summary Statistics -->
+            <div class="stats-summary">
+                <h2>📊 Analysis Summary</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Tokens Analyzed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">3.8</div>
+                        <div class="stat-label">Average Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1</div>
+                        <div class="stat-label">ALPHA Tier</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">TRASH Tier</div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 25px; font-size: 1.1em; line-height: 1.6;">
+                    <strong>Key Insight:</strong> Despite having high AI analysis scores (8-9) from call/X analysis, 
+                    80% of these "utility" tokens turned out to be memes, copycats, or low-effort projects when their websites were analyzed. 
+                    Only ultrasound.money (ETHEREUM) proved to be a legitimate project. This demonstrates the critical importance of 
+                    website analysis in identifying genuine utility tokens versus misleading projects.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -54,11 +54,19 @@ class WebsiteAnalyzer:
                 red_flags TEXT,
                 green_flags TEXT,
                 key_findings TEXT,
+                website_summary TEXT,
                 analysis_json TEXT,
                 analyzed_at TIMESTAMP,
                 error_message TEXT
             )
         ''')
+        
+        # Add website_summary column if it doesn't exist (for existing databases)
+        self.cursor.execute("PRAGMA table_info(website_analysis)")
+        columns = [col[1] for col in self.cursor.fetchall()]
+        if 'website_summary' not in columns:
+            self.cursor.execute('ALTER TABLE website_analysis ADD COLUMN website_summary TEXT')
+        
         self.conn.commit()
     
     def fetch_tokens_to_analyze(self, limit=20):
@@ -118,7 +126,9 @@ class WebsiteAnalyzer:
 Token: {token.get('ticker', 'Unknown')} ({token.get('network', 'Unknown')})
 Contract: {token.get('contract_address', 'Unknown')}
 
-Evaluate the following aspects:
+First, provide a detailed 1-paragraph summary describing what you actually see on the website - the main content, features, design, and any specific claims or information presented.
+
+Then evaluate the following aspects:
 
 1. Project legitimacy (1-10 score)
 2. Documentation quality (whitepaper, docs, tokenomics)
@@ -129,6 +139,7 @@ Evaluate the following aspects:
 
 Return a JSON object with the following structure:
 {{
+    "website_summary": "<detailed paragraph describing what's actually on the website>",
     "website_score": <1-10>,
     "website_tier": "<ALPHA|SOLID|BASIC|TRASH>",
     "project_category": "<defi|gaming|meme|utility|infrastructure|other>",
@@ -211,9 +222,9 @@ Important: If the website is down, redirects to unrelated content, or appears to
                     has_real_utility, utility_description,
                     documentation_quality, team_transparency,
                     has_audit, has_whitepaper, has_roadmap, has_working_product,
-                    red_flags, green_flags, key_findings,
+                    red_flags, green_flags, key_findings, website_summary,
                     analysis_json, analyzed_at, error_message
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
                 token['id'],
                 token.get('ticker', ''),
@@ -234,6 +245,7 @@ Important: If the website is down, redirects to unrelated content, or appears to
                 json.dumps(analysis.get('red_flags', [])),
                 json.dumps(analysis.get('green_flags', [])),
                 analysis.get('key_findings'),
+                analysis.get('website_summary'),
                 json.dumps(analysis),
                 datetime.now().isoformat(),
                 None

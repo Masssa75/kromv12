@@ -3,7 +3,7 @@
 Simple Flask server to serve website analysis data from SQLite database
 """
 
-from flask import Flask, jsonify, send_file
+from flask import Flask, jsonify, send_file, request
 from flask_cors import CORS
 import sqlite3
 import json
@@ -25,15 +25,34 @@ def index():
 
 @app.route('/api/analysis')
 def get_analysis():
-    """Get all analysis results"""
+    """Get all analysis results with optional filtering"""
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Get all analysis results
-    cursor.execute('''
-        SELECT * FROM website_analysis 
-        ORDER BY website_score DESC
-    ''')
+    # Get query parameters for filtering
+    tier = request.args.get('tier')
+    min_score = request.args.get('min_score')
+    network = request.args.get('network')
+    limit = request.args.get('limit', 1000)
+    
+    # Build query with filters
+    query = 'SELECT * FROM website_analysis WHERE 1=1'
+    params = []
+    
+    if tier:
+        query += ' AND website_tier = ?'
+        params.append(tier)
+    if min_score:
+        query += ' AND website_score >= ?'
+        params.append(int(min_score))
+    if network:
+        query += ' AND network = ?'
+        params.append(network)
+    
+    query += ' ORDER BY website_score DESC LIMIT ?'
+    params.append(int(limit))
+    
+    cursor.execute(query, params)
     
     rows = cursor.fetchall()
     results = []
@@ -148,10 +167,10 @@ if __name__ == '__main__':
     print("=" * 60)
     print("Website Analysis Viewer Server")
     print("=" * 60)
-    print("Server running at: http://localhost:5000")
+    print("Server running at: http://localhost:5001")
     print("Open this URL in your browser to view the results")
     print("-" * 60)
     print("Press Ctrl+C to stop the server")
     print("=" * 60)
     
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5001, host='0.0.0.0')
