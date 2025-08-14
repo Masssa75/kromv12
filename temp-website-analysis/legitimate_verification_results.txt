@@ -1,0 +1,19 @@
+Verification Results for 40 LEGITIMATE Tokens
+Accuracy: 65.0%
+Correct: 26/40
+
+Tokens that need manual review:
+ANGL,ethereum,0x61c8e619Ae7c8cbEFBCceb9Fb718135AFB5D0d93,https://angltoken.io/,Contract not found on page
+AP,ethereum,0xe60e9BD04ccc0a394f1fDf29874e35a773cb07f4,https://americaparty.meme/,Contract not found on page
+ARCOS,ethereum,0x7E4c9923Fd8F18442532A737365C1BfB52579D2F,https://arcadiaos.ai/,Contract not found on page
+AURA,solana,DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2,https://infiniteaura.com/,Contract not found on page
+AWOKE,solana,ovutZfkUMXRBEH4hAXJE42j2GK3Az9ZjTdbG5taWoKe,https://awokecoin.com,Contract not found on page
+BASESHAKE,base,0x885a590198e5F0947f4c92DB815cF2a2147980B8,https://farcaster.xyz/barmstrong/0xbdd5e809,Contract not found on page
+BOATKID,solana,FJjKH9Xp2SvNDNUSN7X9T4uMNafFEYzbZpnwEZXKpump,https://boatkidsol.io,HTTP 429
+CLIPPY,solana,7eMJmn1bYWSQEwxAX7CyngBzGNGu1cT582asKxxRpump,https://www.clippycult.xyz,Error: HTTPSConnectionPool(host='www.clippycult.xyz', por
+CULTS,solana,9Poxe5aDkt8ggFWvcYZ9AX8QBBAAdgW844cgooNCULT,https://cults.fun,HTTP 403
+FARTLESS,solana,FyrBf5xKg5EwKZ9pHvSpJeLLuCWBicTpm3VvZcsibonk,https://fartless.tech,Contract not found on page
+GIB,solana,6FtbGaqgZzti1TxJksBV4PSya5of9VqA9vJNDxPwbonk,https://gibthefrog.com/,Contract not found on page
+GRAY,ethereum,0xa776A95223C500E81Cb0937B291140fF550ac3E4,https://www.gradient.trade/,Contract not found on page
+JUGS,solana,AhVJQY1mGjjQpRiMEcCXwkFc8QagKwcqUSpqwN7S9gag,https://unleashjugs.fun/,Contract not found on page
+KITTY,solana,DFfPq2hHbJeunp1F6eNyuyvBHcPpnTqaawn2tAFUpump,https://www.hellokittyfans.xyz,Contract not found on page

@@ -6,12 +6,27 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
-#### [August 13, 2025 - Website Analysis System Implementation](SESSION-LOG-2025-08.md#august-13-2025---utility-token-website-analysis-implementation) ✅ COMPLETED
-- Implemented comprehensive website analysis for 249 utility tokens using Kimi K2 AI
-- Created CA verification system discovering web search is more powerful than website-only checks
-- Built automated analysis pipeline with real-time monitoring and verification tools
-- Found legitimate projects like Keeta don't list CAs on websites but verify through web search
-- Ready for production deployment with database integration and Edge Function development
+#### [August 14, 2025 (Evening) - Manual Verification & Liquidity Analysis](SESSION-LOG-2025-08.md#august-14-2025-afternoonevening---manual-verification--liquidity-analysis) ✅ COMPLETED
+- Added manual verification tracking to CA verifier (✓ correct, ⚠️ wrong)
+- Tested 40 tokens: 95% actual accuracy (vs 65% automated)
+- Investigated BASESHAKE edge case (contract in Farcaster URL parameter)
+- Implemented social media warning system for non-website sources
+- Evaluated free APIs for liquidity lock data (GoPlus best, no Solana support)
+- Key finding: High liquidity + unlocked = major scam indicator
+
+#### [August 14, 2025 (Morning) - ATH Verifier Optimization](SESSION-LOG-2025-08.md#august-14-2025---ath-verifier-optimization) ✅ COMPLETED
+- Fixed excessive notifications from low liquidity tokens
+- Added $15K liquidity filter (skips 35% unreliable tokens)
+- Adjusted notification thresholds (50% for <$25K liquidity)
+- No database changes - used existing liquidity_usd column
+- Result: Better data quality, ~35% fewer notifications
+
+#### [August 13-14, 2025 - CA Verification & Website Analysis](SESSION-LOG-2025-08.md#august-13-2025---utility-token-website-analysis-implementation) ✅ COMPLETED
+- Analyzed 249 utility tokens for website quality (scored 1-10)
+- Discovered Google site search technique improves accuracy 60%→75%
+- Created hierarchical verification system with 6 confidence levels
+- Tested models: GPT-4o-mini Search best (75% accuracy)
+- Fixed false negatives for legitimate projects like TREN
 
 #### [August 12, 2025 - ATH Verifier Fix & Deployment](SESSION-LOG-2025-08.md#august-12-2025-continued---ath-verifier-fix--deployment) ✅ COMPLETED
 - Fixed verifier not running (JWT, network support, error handling)

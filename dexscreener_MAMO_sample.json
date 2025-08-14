@@ -1,0 +1,76 @@
+{
+  "chainId": "base",
+  "dexId": "aerodrome",
+  "url": "https://dexscreener.com/base/0xe2b3aa806e56603a244bfc111c9474f7dedd03db",
+  "pairAddress": "0xE2B3aA806e56603a244bFc111c9474F7DeDD03db",
+  "baseToken": {
+    "address": "0x7300B37DfdfAb110d83290A29DfB31B1740219fE",
+    "name": "Mamo",
+    "symbol": "MAMO"
+  },
+  "quoteToken": {
+    "address": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+    "name": "Coinbase Wrapped BTC",
+    "symbol": "cbBTC"
+  },
+  "priceNative": "0.000001291",
+  "priceUsd": "0.1536",
+  "txns": {
+    "m5": {
+      "buys": 2,
+      "sells": 1
+    },
+    "h1": {
+      "buys": 204,
+      "sells": 65
+    },
+    "h6": {
+      "buys": 869,
+      "sells": 297
+    },
+    "h24": {
+      "buys": 3913,
+      "sells": 1602
+    }
+  },
+  "volume": {
+    "h24": 2989416.22,
+    "h6": 521868.65,
+    "h1": 184127.64,
+    "m5": 2154.51
+  },
+  "priceChange": {
+    "m5": -0.37,
+    "h1": -3.51,
+    "h6": -7.04,
+    "h24": -5.04
+  },
+  "liquidity": {
+    "usd": 2648695.12,
+    "base": 9516337,
+    "quote": 9.973
+  },
+  "fdv": 153665417,
+  "marketCap": 54565156,
+  "info": {
+    "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/base/0x7300b37dfdfab110d83290a29dfb31b1740219fe.png?key=e1e8e4",
+    "header": "https://dd.dexscreener.com/ds-data/tokens/base/0x7300b37dfdfab110d83290a29dfb31b1740219fe/header.png?key=e1e8e4",
+    "openGraph": "https://cdn.dexscreener.com/token-images/og/base/0x7300b37dfdfab110d83290a29dfb31b1740219fe?timestamp=1755176400000",
+    "websites": [
+      {
+        "label": "Website",
+        "url": "https://mamo.bot/"
+      }
+    ],
+    "socials": [
+      {
+        "type": "twitter",
+        "url": "https://x.com/Mamo_agent"
+      },
+      {
+        "type": "telegram",
+        "url": "https://t.me/MamoAIbot"
+      }
+    ]
+  }
+}

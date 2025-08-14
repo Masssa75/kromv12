@@ -41,13 +41,15 @@ Deno.serve(async (req) => {
     })
 
     // Fetch tokens ordered by oldest verified first
+    // Skip low liquidity tokens to avoid unreliable price data
     const { data: tokens, error: fetchError } = await supabase
       .from('crypto_calls')
-      .select('id, ticker, network, contract_address, pool_address, buy_timestamp, price_at_call, ath_price, ath_timestamp, ath_roi_percent, ath_verified_at, raw_data')
+      .select('id, ticker, network, contract_address, pool_address, buy_timestamp, price_at_call, ath_price, ath_timestamp, ath_roi_percent, ath_verified_at, raw_data, liquidity_usd')
       .not('pool_address', 'is', null)
       .not('price_at_call', 'is', null)
       .not('is_dead', 'is', true)
       .not('is_invalidated', 'is', true)
+      .or('liquidity_usd.is.null,liquidity_usd.gte.15000') // Skip tokens with <$15K liquidity
       .order('ath_verified_at', { ascending: true, nullsFirst: true })
       .limit(limit)
 
@@ -99,6 +101,7 @@ Deno.serve(async (req) => {
         console.log(`\nVerifying ${token.ticker} on ${geckoNetwork}`)
         console.log(`Call timestamp: ${new Date(callTimestamp * 1000).toISOString()}`)
         console.log(`Price at call: $${token.price_at_call}`)
+        console.log(`Liquidity: ${token.liquidity_usd ? `$${token.liquidity_usd.toLocaleString()}` : 'Unknown'}`)
         
         // Get start of call day (midnight) to avoid missing intraday peaks
         const callDate = new Date(callTimestamp * 1000)
@@ -232,8 +235,10 @@ Deno.serve(async (req) => {
             }
             
             // Send notification for significant discrepancies
-            if (percentDifference > 0.25) { // >25% discrepancy
-              await sendDiscrepancyNotification(token, storedATH, calculatedATH, athResult.ath_roi_percent, discrepancyType, callTimestamp)
+            // Higher threshold for low liquidity tokens to reduce noise
+            const notificationThreshold = (token.liquidity_usd && token.liquidity_usd < 25000) ? 0.5 : 0.25
+            if (percentDifference > notificationThreshold) { // >50% for low liquidity, >25% for others
+              await sendDiscrepancyNotification(token, storedATH, calculatedATH, athResult.ath_roi_percent, discrepancyType, callTimestamp, token.liquidity_usd)
             }
           } else {
             console.log(`✅ ATH verified for ${token.ticker}: $${calculatedATH} (matches stored value)`)
@@ -385,7 +390,7 @@ async function updateToken(supabase: any, tokenId: string, athData: any, isVerif
   if (error) throw error
 }
 
-async function sendDiscrepancyNotification(token: any, storedATH: number, calculatedATH: number, calculatedROI: number, discrepancyType: string, callTimestamp: number) {
+async function sendDiscrepancyNotification(token: any, storedATH: number, calculatedATH: number, calculatedROI: number, discrepancyType: string, callTimestamp: number, liquidity?: number) {
   const telegramBotToken = Deno.env.get('TELEGRAM_BOT_TOKEN_ATH')
   const telegramChatId = Deno.env.get('TELEGRAM_GROUP_ID_ATH')
   
@@ -410,11 +415,14 @@ async function sendDiscrepancyNotification(token: any, storedATH: number, calcul
     timeZone: 'UTC'
   }) + ' UTC'
   
+  const liquidityInfo = liquidity ? `Liquidity: $${liquidity.toLocaleString()}\n` : ''
+  
   const message = `${emoji} *ATH VERIFICATION ALERT*\n\n` +
     `Token: ${token.ticker}\n` +
     `Network: ${token.network}\n` +
     `Type: ${discrepancyType.replace('_', ' ')}\n` +
-    `Call Date: ${formattedCallDate}\n\n` +
+    `Call Date: ${formattedCallDate}\n` +
+    `${liquidityInfo}\n` +
     `Stored ATH: $${storedATH.toFixed(8)}\n` +
     `Actual ATH: $${calculatedATH.toFixed(8)}\n` +
     `Difference: ${calculatedATH > storedATH ? '+' : '-'}${(percentDifference * 100).toFixed(1)}%\n\n` +

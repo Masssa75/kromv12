@@ -1,0 +1,84 @@
+{
+  "chainId": "ethereum",
+  "dexId": "uniswap",
+  "url": "https://dexscreener.com/ethereum/0xdabc816b691c8c2135f087a32eeb09a3f548938e",
+  "pairAddress": "0xdaBc816B691C8C2135f087a32Eeb09a3f548938E",
+  "labels": [
+    "v2"
+  ],
+  "baseToken": {
+    "address": "0xCaB84bc21F9092167fCFe0ea60f5CE053ab39a1E",
+    "name": "Block",
+    "symbol": "Block"
+  },
+  "quoteToken": {
+    "address": "0x8d0D000Ee44948FC98c9B98A4FA4921476f08B0d",
+    "name": "World Liberty Financial USD",
+    "symbol": "USD1"
+  },
+  "priceNative": "0.1902",
+  "priceUsd": "0.1902",
+  "txns": {
+    "m5": {
+      "buys": 0,
+      "sells": 1
+    },
+    "h1": {
+      "buys": 36,
+      "sells": 21
+    },
+    "h6": {
+      "buys": 128,
+      "sells": 95
+    },
+    "h24": {
+      "buys": 713,
+      "sells": 580
+    }
+  },
+  "volume": {
+    "h24": 2589732.92,
+    "h6": 389638.93,
+    "h1": 131785.72,
+    "m5": 830.55
+  },
+  "priceChange": {
+    "m5": -0.12,
+    "h1": -6.75,
+    "h6": -7.39,
+    "h24": -8.69
+  },
+  "liquidity": {
+    "usd": 2745057.35,
+    "base": 7212608,
+    "quote": 1372254
+  },
+  "fdv": 190295745,
+  "marketCap": 89439000,
+  "pairCreatedAt": 1752508307000,
+  "info": {
+    "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0xcab84bc21f9092167fcfe0ea60f5ce053ab39a1e.png?key=716271",
+    "header": "https://dd.dexscreener.com/ds-data/tokens/ethereum/0xcab84bc21f9092167fcfe0ea60f5ce053ab39a1e/header.png?key=716271",
+    "openGraph": "https://cdn.dexscreener.com/token-images/og/ethereum/0xcab84bc21f9092167fcfe0ea60f5ce053ab39a1e?timestamp=1755176400000",
+    "websites": [
+      {
+        "label": "Website",
+        "url": "https://www.blockstreet.xyz/"
+      }
+    ],
+    "socials": [
+      {
+        "type": "twitter",
+        "url": "https://x.com/blockstreetxyz"
+      },
+      {
+        "type": "telegram",
+        "url": "https://t.me/BlockStreetXYZ"
+      },
+      {
+        "type": "discord",
+        "url": "https://discord.gg/blockstreetxyz"
+      }
+    ]
+  }
+}

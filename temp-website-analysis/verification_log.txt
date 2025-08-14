@@ -1,0 +1,108 @@
+================================================================================
+CA VERIFICATION - ALL TOKENS
+================================================================================
+Found 14 tokens to verify
+Method: Intelligent website parsing (no AI)
+Started: 2025-08-14 13:33:23
+================================================================================
+
+[1/14] WETH on ethereum
+  Website: https://weth.com
+  🚫 FAKE - Contract not found
+     Checked 0 pages
+
+[2/14] ETH 2.0 on ethereum
+  Website: https://www.infinitebackrooms.com/dreams/conversation-1721366282-scenario-terminal-of-truths-txt
+  🚫 FAKE - Contract not found
+     Checked 2 pages
+
+[3/14] VINE  on ethereum
+  Website: https://vineerc.xyz/
+  ❌ ERROR: Main page error: Page.goto: net::ERR_NAME_NOT_RESO
+
+[4/14] SOL on solana
+  Website: https://sol.com
+  🚫 FAKE - Contract not found
+     Checked 0 pages
+
+[5/14] BILLY on base
+  Website: https://www.basechainbilly.xyz/
+  ✅ LEGITIMATE - Contract found
+     Location: https://www.basechainbilly.xyz/...
+     Type: main_page_visible
+
+[6/14] INTERN on solana
+  Website: https://intern.com
+  ❌ ERROR: Main page error: Page.goto: Timeout 20000ms exceed
+
+[7/14] DOGE on ethereum
+  Website: https://dogeparty.vip
+  🚫 FAKE - Contract not found
+     Checked 0 pages
+
+[8/14] XRP on solana
+  Website: https://xtremlyretardedpeople.com/
+  ❌ ERROR: Main page error: Page.goto: net::ERR_NAME_NOT_RESO
+
+[9/14] BTC on solana
+  Website: https://btc.com
+  🚫 FAKE - Contract not found
+     Checked 1 pages
+
+[10/14] W on ethereum
+  Website: https://w.com
+  ❌ ERROR: Main page error: Page.goto: net::ERR_NAME_NOT_RESO
+
+--- Progress: 10/14 (71.4%) ---
+Legitimate: 1, Fake: 5, Errors: 4
+
+[11/14] ETHEREUM on ethereum
+  Website: https://ultrasound.money/
+  🚫 FAKE - Contract not found
+     Checked 10 pages
+
+[12/14] ETH on ethereum
+  Website: https://eth.com
+  ❌ ERROR: Main page error: Page.goto: net::ERR_NAME_NOT_RESO
+
+[13/14] TTC on ethereum
+  Website: https://trump-card.xyz
+  ✅ LEGITIMATE - Contract found
+     Location: https://trump-card.xyz...
+     Type: main_page_visible
+
+[14/14] APE on ethereum
+  Website: https://apeonethog.xyz/
+  ✅ LEGITIMATE - Contract found
+     Location: https://apeonethog.xyz/...
+     Type: main_page_visible
+
+================================================================================
+VERIFICATION COMPLETE
+================================================================================
+Total tokens: 14
+✅ Legitimate: 3 (21.4%)
+🚫 Fake: 6 (42.9%)
+⚫ No website: 0 (0.0%)
+❌ Errors: 5 (35.7%)
+
+Completed: 2025-08-14 13:35:10
+
+================================================================================
+SAMPLE RESULTS
+================================================================================
+
+✅ Sample LEGITIMATE tokens:
+  APE: main_page_visible - https://apeonethog.xyz/...
+  BILLY: main_page_visible - https://www.basechainbilly.xyz/...
+  TTC: main_page_visible - https://trump-card.xyz...
+
+🚫 Sample FAKE tokens (checked most pages):
+  ETHEREUM: Checked 10 pages, still not found
+  ETH 2.0: Checked 2 pages, still not found
+  BTC: Checked 1 pages, still not found
+  SOL: Checked 0 pages, still not found
+  DOGE: Checked 0 pages, still not found
+
+Results saved to: ca_verification_final table
+View with: sqlite3 analysis_results.db 'SELECT * FROM ca_verification_final'

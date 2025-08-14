@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Investment Analysis Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .tokens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .token-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .token-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+        
+        .token-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .token-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .investment-score {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .investment-score:hover {
+            transform: scale(1.05);
+        }
+        
+        .score-exceptional {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .score-strong {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+        
+        .score-moderate {
+            background: linear-gradient(135deg, #FFC107, #ff9800);
+            color: white;
+        }
+        
+        .score-low {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+        }
+        
+        .token-details {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .token-details.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .detail-section {
+            margin-bottom: 15px;
+        }
+        
+        .detail-section h3 {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .project-summary {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .flags-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .flag-list {
+            flex: 1;
+        }
+        
+        .flag-list h4 {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .green-flags h4 {
+            color: #4CAF50;
+        }
+        
+        .red-flags h4 {
+            color: #f44336;
+        }
+        
+        .flag-item {
+            padding: 4px 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .flag-item::before {
+            margin-right: 8px;
+        }
+        
+        .green-flag::before {
+            content: "✅";
+        }
+        
+        .red-flag::before {
+            content: "⚠️";
+        }
+        
+        .reasoning {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 8px;
+            color: #555;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+        
+        .meta-info {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .website-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .website-link:hover {
+            text-decoration: underline;
+        }
+        
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 50px;
+        }
+        
+        .error {
+            background: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Crypto Investment Analysis Dashboard</h1>
+        <div id="tokensGrid" class="tokens-grid">
+            <div class="loading">Loading token data...</div>
+        </div>
+    </div>
+
+    <script>
+        let tokensData = [];
+
+        // Fetch tokens data
+        async function loadTokens() {
+            try {
+                const response = await fetch('/api/tokens');
+                const data = await response.json();
+                tokensData = data.tokens;
+                renderTokens();
+            } catch (error) {
+                document.getElementById('tokensGrid').innerHTML = 
+                    '<div class="error">Error loading tokens: ' + error.message + '</div>';
+            }
+        }
+
+        function getScoreClass(score) {
+            if (score >= 8) return 'score-exceptional';
+            if (score >= 6) return 'score-strong';
+            if (score >= 4) return 'score-moderate';
+            return 'score-low';
+        }
+
+        function renderTokens() {
+            const grid = document.getElementById('tokensGrid');
+            
+            if (!tokensData || tokensData.length === 0) {
+                grid.innerHTML = '<div class="error">No tokens found</div>';
+                return;
+            }
+
+            grid.innerHTML = tokensData.map((token, index) => `
+                <div class="token-card" data-index="${index}">
+                    <div class="token-header">
+                        <div class="token-name">${token.ticker}</div>
+                        <div class="investment-score ${getScoreClass(token.investment_score || 0)}" 
+                             onclick="toggleDetails(event, ${index})">
+                            ${token.investment_tier || 'ANALYZING'}: ${token.investment_score || '?'}
+                        </div>
+                    </div>
+                    
+                    <div class="meta-info">
+                        <div class="meta-item">
+                            <span>Website Score: ${token.website_score}/10</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>${token.network || 'Unknown'}</span>
+                        </div>
+                    </div>
+                    
+                    ${token.website_url ? `
+                        <a href="${token.website_url}" target="_blank" class="website-link">
+                            🌐 Visit Website →
+                        </a>
+                    ` : ''}
+                    
+                    <div id="details-${index}" class="token-details">
+                        ${token.investment_summary ? `
+                            <div class="detail-section">
+                                <h3>Project Summary</h3>
+                                <div class="project-summary">${token.investment_summary}</div>
+                            </div>
+                        ` : ''}
+                        
+                        <div class="flags-container">
+                            ${token.investment_green_flags ? `
+                                <div class="flag-list green-flags">
+                                    <h4>✅ Positive Signals</h4>
+                                    ${JSON.parse(token.investment_green_flags).map(flag => 
+                                        `<div class="flag-item green-flag">${flag}</div>`
+                                    ).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${token.investment_red_flags ? `
+                                <div class="flag-list red-flags">
+                                    <h4>⚠️ Concerns</h4>
+                                    ${JSON.parse(token.investment_red_flags).map(flag => 
+                                        `<div class="flag-item red-flag">${flag}</div>`
+                                    ).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        ${token.investment_reasoning ? `
+                            <div class="detail-section">
+                                <h3>Analysis Reasoning</h3>
+                                <div class="reasoning">${token.investment_reasoning}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleDetails(event, index) {
+            event.stopPropagation();
+            const details = document.getElementById(`details-${index}`);
+            details.classList.toggle('active');
+        }
+
+        // Load tokens on page load
+        loadTokens();
+        
+        // Refresh every 30 seconds
+        setInterval(loadTokens, 30000);
+    </script>
+</body>
+</html>

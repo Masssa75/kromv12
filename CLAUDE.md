@@ -27,11 +27,13 @@ Successfully deployed KROM public landing page with TOP EARLY CALLS and RECENT C
 
 [Full session details →](logs/SESSION-LOG-2025-08.md#session-krom-public-interface---pagination--sorting---august-7-2025-afternoon)
 
-## 🔍 Website Analysis System (August 13, 2025)
+## 🔍 UI Improvements & Filter Optimization (August 13, 2025 - Evening)
 
-Successfully implemented comprehensive website analysis for utility tokens using Kimi K2 AI. Developed automated tools to analyze 249 utility tokens, discovering that web search verification is more powerful than website-only checks for detecting fake associations. Built complete analysis pipeline with real-time monitoring and verification systems.
+Enhanced public interface with full contract address display, added liquidity column to RECENT CALLS, and implemented 400ms debouncing with request cancellation for all filters to eliminate glitchy behavior.
 
-[Full implementation details →](logs/SESSION-LOG-2025-08.md#august-13-2025---utility-token-website-analysis-implementation)
+**Key Achievement**: Smooth, responsive filters with no race conditions
+
+[Full session details →](logs/SESSION-LOG-2025-08.md#august-13-2025-evening---ui-improvements--filter-optimization)
 
 ## Project Structure
 
@@ -531,7 +533,26 @@ Enhanced public interface with key user features:
 
 [Full session details →](logs/SESSION-LOG-2025-08.md#august-8-2025-evening---krom-ui-enhancements)
 
+## 🔍 CA Verification & Liquidity Analysis (August 14, 2025)
+
+Enhanced CA verification with manual tracking and liquidity pattern analysis. System achieves 95% actual accuracy for legitimate tokens. Added social media warnings and evaluated free APIs for liquidity lock data.
+
+**Key findings**: High liquidity + unlocked = major scam indicator (e.g., BLOCK with $2.75M unlocked)
+**UI Enhanced**: Manual verification buttons, social media warnings, keyboard shortcuts at http://localhost:5003
+
+[Full session →](logs/SESSION-LOG-2025-08.md#august-14-2025-afternoonevening---manual-verification--liquidity-analysis)
+
+## ATH Verifier Optimization (August 14, 2025 - Later Session)
+
+Fixed ATH verifier issues with low liquidity tokens causing excessive notifications:
+- **Added $15K liquidity filter** - Skips 35% of unreliable tokens
+- **Adjusted notification thresholds** - 50% for <$25K liquidity tokens
+- **No database changes** - Used existing liquidity_usd column
+- **Impact**: Better data quality, ~35% fewer notifications
+
+[Full session details →](logs/SESSION-LOG-2025-08.md#august-14-2025---ath-verifier-optimization)
+
 ---
-**Last Updated**: August 13, 2025
-**Status**: ✅ Website analysis system implemented for utility tokens
-**Version**: 11.1.0 - Website analysis infrastructure ready for production deployment
+**Last Updated**: August 14, 2025 (Evening)
+**Status**: ✅ CA verification enhanced with manual tracking & liquidity analysis
+**Version**: 11.7.0 - Manual verification & liquidity patterns

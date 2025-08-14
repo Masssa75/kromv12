@@ -1,0 +1,84 @@
+{
+  "chainId": "solana",
+  "dexId": "meteora",
+  "url": "https://dexscreener.com/solana/6ofwm7kplfxnwmb3z5xwboxnspp3jjyirapqpsivcnsp",
+  "pairAddress": "6oFWm7KPLfxnwMb3z5xwBoXNSPP3JJyirAPqPSiVcnsp",
+  "labels": [
+    "DLMM"
+  ],
+  "baseToken": {
+    "address": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "name": "Bonk",
+    "symbol": "Bonk"
+  },
+  "quoteToken": {
+    "address": "So11111111111111111111111111111111111111112",
+    "name": "Wrapped SOL",
+    "symbol": "SOL"
+  },
+  "priceNative": "0.0000001260",
+  "priceUsd": "0.00002446",
+  "txns": {
+    "m5": {
+      "buys": 18,
+      "sells": 19
+    },
+    "h1": {
+      "buys": 278,
+      "sells": 273
+    },
+    "h6": {
+      "buys": 1030,
+      "sells": 1087
+    },
+    "h24": {
+      "buys": 5619,
+      "sells": 6299
+    }
+  },
+  "volume": {
+    "h24": 1233599.31,
+    "h6": 132330.94,
+    "h1": 39378.7,
+    "m5": 5302.37
+  },
+  "priceChange": {
+    "m5": -0.5,
+    "h1": -5.85,
+    "h6": -9.66,
+    "h24": -8.36
+  },
+  "liquidity": {
+    "usd": 230044.37,
+    "base": 9038847895,
+    "quote": 46.1029
+  },
+  "fdv": 2173642899,
+  "marketCap": 1893738797,
+  "pairCreatedAt": 1715334272000,
+  "info": {
+    "imageUrl": "https://dd.dexscreener.com/ds-data/tokens/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263.png?key=a80eae",
+    "header": "https://dd.dexscreener.com/ds-data/tokens/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/header.png?key=a80eae",
+    "openGraph": "https://cdn.dexscreener.com/token-images/og/solana/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263?timestamp=1755176400000",
+    "websites": [
+      {
+        "label": "Website",
+        "url": "https://www.bonkcoin.com"
+      }
+    ],
+    "socials": [
+      {
+        "type": "twitter",
+        "url": "https://twitter.com/bonk_inu"
+      },
+      {
+        "type": "telegram",
+        "url": "https://t.me/Official_Bonk_Inu"
+      },
+      {
+        "type": "discord",
+        "url": "https://discord.gg/qaQa6M6mN2"
+      }
+    ]
+  }
+}
