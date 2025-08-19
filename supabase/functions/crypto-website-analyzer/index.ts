@@ -132,7 +132,7 @@ function parseHtmlContent(html: string) {
 
 // Function to analyze with AI
 async function analyzeWithAI(parsedContent: any, ticker: string) {
-  const prompt = `Analyze this cryptocurrency project website for investment potential.
+  const prompt = `Analyze this cryptocurrency project website using ADAPTIVE SCORING based on token type.
 
 Project: ${ticker}
 
@@ -144,45 +144,52 @@ Navigation Links Found:
 - GitHub: ${parsedContent.navigation.github.length} links  
 - Social: ${parsedContent.navigation.social.length} links
 
-Score each category from 0-3:
-1. technical_infrastructure (GitHub, APIs, developer resources)
-2. business_utility (Real use case, solving actual problems)
-3. documentation_quality (Whitepapers, technical docs, guides)
-4. community_social (Active community, social presence)
-5. security_trust (Audits, security info, transparency)
-6. team_transparency (Team info, backgrounds, LinkedIn)
-7. website_presentation (Professional design, working features)
-
-Also identify:
-- Exceptional signals (e.g., major partnerships, high revenue, large user base)
-- Critical missing elements
-- Should this proceed to deeper Stage 2 analysis?
-- If Stage 2 is recommended, list 3-5 specific URLs from the website that would be most valuable to analyze deeper (docs, GitHub, whitepaper, etc.)
-
-TOKEN TYPE CLASSIFICATION:
-Based on the website content, classify this token as either:
-- "meme": Community-driven, humor/viral focus, no real utility, animal/cartoon themes, "to the moon" rhetoric, primarily speculation-based
+STEP 1 - TOKEN TYPE CLASSIFICATION:
+First classify this token as either:
+- "meme": Community-driven, humor/viral focus, animal/cartoon themes, "to the moon" rhetoric, cultural references, primarily speculation/entertainment
 - "utility": Clear use case, solving real problems, technical infrastructure, business model, professional presentation, actual product/service
 
-Choose the PRIMARY nature - if it has both elements, pick the dominant one.
+STEP 2 - ADAPTIVE SCORING (0-3 each category):
 
-TIER CLASSIFICATION:
-Based on total score (0-21):
-- 0-7: "TRASH" (Poor quality, likely scam or low effort)
-- 8-14: "BASIC" (Some effort, but lacking key elements)
-- 15-20: "SOLID" (Good quality, professional, most elements present)
-- 21: "ALPHA" (Exceptional, all elements perfect)
+IF MEME TOKEN - Score these 7 categories:
+1. community_strength: Social media presence, community links, engagement indicators, active following
+2. brand_identity: Memorable concept, clear theme/character, viral potential, cultural relevance
+3. website_quality: Professional design, working features, visual appeal, user experience
+4. authenticity: Original concept vs copycat, unique value proposition, creative execution
+5. transparency: Clear tokenomics, supply info, no hidden mechanics, honest presentation  
+6. safety_signals: Contract verification mentioned, security measures, liquidity info, trust indicators
+7. accessibility: Team communication, community access, clear social links, responsive presence
+
+IF UTILITY TOKEN - Score these 7 categories:
+1. technical_infrastructure: GitHub repos, APIs, developer resources, technical depth
+2. business_utility: Real use case, problem-solving, market need, practical application
+3. documentation_quality: Whitepapers, technical docs, guides, comprehensive information
+4. community_social: Active community, social presence, user engagement, ecosystem
+5. security_trust: Audits, security info, transparency measures, risk mitigation
+6. team_transparency: Team info, backgrounds, LinkedIn, credentials, accountability
+7. website_presentation: Professional design, working features, technical presentation
+
+Also identify:
+- Exceptional signals (major partnerships, high revenue, large user base, unique achievements)
+- Critical missing elements (what's lacking for this token type)
+- Should this proceed to deeper Stage 2 analysis?
+
+TIER CLASSIFICATION (0-21 total):
+- 0-7: "TRASH" (Poor quality, likely scam or very low effort)
+- 8-14: "BASIC" (Some effort, but missing key elements for its type)
+- 15-20: "SOLID" (Good quality, professional, most important elements present)
+- 21: "ALPHA" (Exceptional, all elements perfect for its type)
 
 Return JSON only:
 {
   "category_scores": {
-    "technical_infrastructure": 0-3,
-    "business_utility": 0-3,
-    "documentation_quality": 0-3,
-    "community_social": 0-3,
-    "security_trust": 0-3,
-    "team_transparency": 0-3,
-    "website_presentation": 0-3
+    "category1_name": 0-3,
+    "category2_name": 0-3,
+    "category3_name": 0-3,
+    "category4_name": 0-3,
+    "category5_name": 0-3,
+    "category6_name": 0-3,
+    "category7_name": 0-3
   },
   "total_score": 0-21,
   "tier": "TRASH/BASIC/SOLID/ALPHA",
@@ -191,9 +198,9 @@ Return JSON only:
   "missing_elements": ["element1", "element2"],
   "proceed_to_stage_2": true/false,
   "stage_2_links": ["url1", "url2", "url3"],
-  "quick_assessment": "Detailed 2-3 sentence assessment",
-  "reasoning": "Brief explanation",
-  "type_reasoning": "Why classified as meme or utility"
+  "quick_assessment": "Detailed 2-3 sentence assessment explaining the score in context of token type",
+  "reasoning": "Brief explanation of tier assignment",
+  "type_reasoning": "Why classified as meme or utility with key indicators"
 }`;
 
   try {

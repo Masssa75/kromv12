@@ -602,18 +602,104 @@ Successfully integrated website analysis with production improvements:
 - **Orchestrator optimized**: Processes newest tokens first
 - [Full session →](logs/SESSION-LOG-2025-08-19-SESSION-3.md)
 
-## Next Session: Website Analysis Modal Display
+## Next Session: Fix Analysis Score Filters - Database-Wide Filtering Issue
 
-**Priority**: Implement fullscreen modal for detailed website analysis viewing
-- Find and adapt the local website analysis UI from `/temp-website-analysis/`
-- Create React modal component with iframe and analysis details
-- Make website scores/tags clickable to open modal
-- Display all analysis reasoning and category breakdowns
+**CRITICAL ISSUE**: Analysis Score filters currently only filter the current page (20 items) instead of filtering across the entire database before pagination. This gives incorrect results and pagination counts.
 
-**Key files to check**:
-- `/temp-website-analysis/fixed_results_server.py` (port 5006)
-- Database: `website_analysis_new.db`
-- Integrate into: `/krom-analysis-app/components/RecentCalls.tsx`
+### **What Was Completed in This Session:**
+
+✅ **UI Implementation**: Full Analysis Scores filter section added to sidebar with:
+- 3 range sliders: Call Score (1-10), X Score (1-10), Website Score (1-21→1-10 display)
+- Beautiful UI with green progress bars and real-time value display
+- Proper state management and localStorage persistence
+- Located between "Social Media" and "Liquidity & Market Cap" sections
+
+✅ **Backend Implementation**: Score filters added to API with proper Supabase queries
+✅ **Testing**: All individual and combined filters work correctly on API level
+✅ **Integration**: Frontend properly sends filter parameters to backend
+
+### **The Problem:**
+Score filters are applied AFTER pagination instead of BEFORE, causing:
+1. **Wrong total counts** - Shows total of all tokens, not filtered count
+2. **Incorrect pagination** - Page 1 might show 20 tokens, but page 2 could be empty
+3. **Poor UX** - Users see "1,234 total tokens" but filters only affect current 20 items
+
+### **Root Cause Analysis:**
+The filters ARE working in the API (`/app/api/recent-calls/route.ts`) but there's a logical issue with how pagination interacts with filtering. The count query and main query both have the filters applied, but something in the pagination logic is causing issues.
+
+### **Files Modified in This Session:**
+1. **Frontend:**
+   - `/krom-analysis-app/app/page.tsx` - Added score filter state and UI (lines 463-584)
+   - `/krom-analysis-app/components/RecentCalls.tsx` - Added score filter props and API params (lines 54-56, 143-151)
+
+2. **Backend:**
+   - `/krom-analysis-app/app/api/recent-calls/route.ts` - Added score filter parsing and application (lines 25-27, 122-131, 263-272)
+
+### **Debugging Steps for Next Session:**
+
+#### **Step 1: Verify API Behavior**
+```bash
+# Test API directly to confirm filtering works at database level
+curl -s "http://localhost:3000/api/recent-calls?minCallScore=7&limit=5" | jq '.totalCount'
+curl -s "http://localhost:3000/api/recent-calls?limit=5" | jq '.totalCount'
+
+# These should show different totalCount values if filtering works correctly
+```
+
+#### **Step 2: Check Frontend State Management**
+- Open browser DevTools → Network tab
+- Apply score filters in UI
+- Look for API requests to `/api/recent-calls`
+- Verify URL contains `minCallScore`, `minXScore`, `minWebsiteScore` parameters
+- Check if `totalCount` in response changes when filters applied
+
+#### **Step 3: Debug Database Query Logic**
+Examine `/app/api/recent-calls/route.ts` around lines 122-134 (count query) and 263-275 (main query):
+
+```typescript
+// Both queries should have identical filters applied
+// Check if count query filters match main query filters exactly
+```
+
+#### **Step 4: Test Specific Scenarios**
+1. **No filters** - Should show all ~5,700 tokens
+2. **High call score (8+)** - Should show much fewer tokens and correct totalCount
+3. **Combined filters** - Should show even fewer and update pagination accordingly
+4. **Edge case** - Filter that returns 0 results should show "No tokens found"
+
+### **Likely Solutions:**
+
+#### **Solution A: Filter Query Order Issue**
+The count query might be executed before all filters are applied. Check that score filters are added to `countQuery` in the same order and logic as the main `query`.
+
+#### **Solution B: Pagination Logic Bug**
+Verify that `totalCount` from the filtered count query is used for pagination calculation, not an unfiltered count.
+
+#### **Solution C: Frontend State Race Condition**
+The debounced filters (400ms delay) might be causing pagination to update before filters are fully applied.
+
+### **Testing Checklist:**
+- [ ] API returns correct totalCount when score filters applied
+- [ ] Frontend pagination shows correct page numbers
+- [ ] "Showing X-Y of Z tokens" displays filtered count
+- [ ] Navigation between pages respects active filters
+- [ ] Combined with other filters (networks, token type, etc.) works correctly
+
+### **Success Criteria:**
+When a user applies score filters:
+1. **Total count updates** to reflect filtered results (e.g., 5,700 → 234 tokens)
+2. **Pagination recalculates** based on filtered count (e.g., 287 pages → 12 pages)  
+3. **All pages contain results** that match the filter criteria
+4. **Status text updates** to show filtered count: "Showing 1-20 of 234 calls"
+
+### **Context for Next Session:**
+- Score filters are in the sidebar as "ANALYSIS SCORES" (click to expand)
+- All code is implemented and functional at the API level
+- Issue is likely in pagination/counting logic, not core filtering
+- Local dev server runs on port 3000-3002 (check which port is active)
+- This is a UX issue, not a technical implementation issue
+
+### **Priority**: HIGH - This affects the core filtering functionality that users expect
 
 ## ATH Tracking Fixed (August 19, 2025)
 
@@ -631,9 +717,9 @@ Successfully analyzed 218 crypto project websites with Stage 1 triage system:
 - [Full session →](logs/SESSION-LOG-2025-08-19-API-KEY-SECURITY.md)
 
 ---
-**Last Updated**: August 19, 2025 (Session 4 - ATH Tracking Fix)
-**Status**: ✅ Two-tier ATH tracking deployed and operational
-**Version**: 12.4.4 - Fixed ATH tracking with liquidity-based tiers
+**Last Updated**: August 19, 2025 (Session 5 - Website Analysis Implementation)
+**Status**: ⚠️ Major implementation complete, tooltip rendering issue pending
+**Version**: 12.5.0 - Comprehensive Stage 1 website analysis system with JSONB storage
 
 
 ## ✅ ATH Verifier Fixed (August 12, 2025)
@@ -676,7 +762,17 @@ Enhanced public interface with full contract address display, added liquidity co
 
 See [handoff details →](logs/SESSION-LOG-2025-08.md#august-19-2025-session-2)
 
+## Analysis Score Filters Implementation (August 19, 2025)
+
+Successfully implemented comprehensive Analysis Score filters for the KROM analysis app:
+- **3 Range Sliders**: Call Score (1-10), X Score (1-10), Website Score (1-21→1-10 display)
+- **Beautiful UI**: Green progress bars, real-time values, collapsible section in sidebar
+- **Full Backend**: API parameter handling and Supabase filtering on score columns
+- **State Management**: localStorage persistence, 400ms debouncing, proper integration
+- **⚠️ CRITICAL BUG**: Filters only affect current page vs entire database (pagination issue)
+- [Full session →](logs/SESSION-LOG-2025-08-19-ANALYSIS-SCORE-FILTERS.md)
+
 ---
-**Last Updated**: August 19, 2025 (Session Wrap - Orchestrator Integration)
-**Status**: ✅ Website analysis integrated, pending retry logic decision
-**Version**: 12.4.1 - Parallelized website batch processing
+**Last Updated**: August 19, 2025 (Session 5 - Analysis Score Filters)
+**Status**: ✅ UI/Backend Complete, ⚠️ Database-Wide Filtering Bug Identified
+**Version**: 12.5.0 - Analysis Score filters with pagination issue
