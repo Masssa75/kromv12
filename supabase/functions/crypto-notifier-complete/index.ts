@@ -205,7 +205,7 @@ _This message was automatically generated to prevent notification flooding._`
         const message = `*${tierHeader}: ${ticker} on ${groupName}*
 
 📊 *Analysis Ratings:*
-• Call Quality: ${claudeTier} | X Research: ${xTier}
+• Call Quality: ${claudeTier} | X Research: ${xTier}${call.website_tier ? `\n• Website: ${call.website_tier} (${call.website_score}/21) - ${call.website_token_type || 'N/A'}` : ''}
 
 📝 *Original Message:*
 _"${originalMessage}"_
@@ -300,7 +300,7 @@ ${call.x_analysis_summary || '• No X data available'}
         const message = `*${tierHeader}: ${ticker} on ${groupName}*
 
 📊 *Analysis Ratings:*
-• Call Quality: ${claudeTier} | X Research: ${xTier}
+• Call Quality: ${claudeTier} | X Research: ${xTier}${call.website_tier ? `\n• Website: ${call.website_tier} (${call.website_score}/21) - ${call.website_token_type || 'N/A'}` : ''}
 
 📝 *Original Message:*
 _"${originalMessage}"_

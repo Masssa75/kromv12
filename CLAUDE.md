@@ -587,13 +587,16 @@ Fixed ATH verifier issues with low liquidity tokens causing excessive notificati
 
 [Full session details →](logs/SESSION-LOG-2025-08.md#august-14-2025---ath-verifier-optimization)
 
-## Website Analysis System (August 15-17, 2025)
+## Website Analysis System (August 15-19, 2025)
 
-Successfully built comprehensive Stage 1 website analysis system:
-- **401 projects analyzed** with 21-point scoring across 7 categories
-- **Contract addresses integrated**: 100% coverage with copy functionality
-- **UI available at**: http://localhost:5006 (run `python3 fixed_results_server.py`)
+Successfully built and integrated comprehensive website analysis system:
+- **Edge Function deployed**: `crypto-website-analyzer` with TRASH/BASIC/SOLID/ALPHA tiers
+- **Orchestrator integrated**: Analyzes up to 5 websites in parallel before notifications
+- **Batch processing optimized**: 45-second timeout, parallel execution
+- **UI enhanced**: Granular settings for scores/badges visibility
+- **Pending decision**: Retry logic for failed analyses (see Next Session Notes)
 - [Full documentation →](temp-website-analysis/CLAUDE.md)
+- [Integration session →](logs/SESSION-LOG-2025-08.md#august-19-2025-session-2)
 
 ## Next Session: CoinAPI.io Research
 
@@ -605,22 +608,30 @@ Successfully built comprehensive Stage 1 website analysis system:
 
 **Note**: All token discovery cron jobs currently DISABLED due to API quota limits
 
-## Next Session Notes (August 19, 2025)
+## Token Discovery Website Analysis (August 19, 2025)
 
-### Priority Tasks:
-1. **Test Website Analyzer**: Analyze 5-10 tokens with websites to verify tier assignment
-2. **Orchestrator Integration**: Add website analysis to pipeline after X analysis
-3. **Testing**: Ensure scores display correctly (0-10 scale) and tiers show proper colors
+Successfully implemented smart website re-checking system discovering ~45 sites/hour:
+- **Smart scheduling**: Tokens checked at optimal intervals (15min→24hr based on liquidity)
+- **Key finding**: Legitimate projects add websites 48-60 hours after launch
+- **172 tokens analyzed**: 11 qualify for Stage 2 investment analysis
+- **Technical issues**: Playwright/ScraperAPI parsing challenges with modern SPAs
+- [Full session details →](logs/SESSION-LOG-2025-08-19-TOKEN-WEBSITE-ANALYSIS.md)
 
-### Key Files for Next Session:
-- `/supabase/functions/crypto-website-analyzer/index.ts` - The analyzer to test
-- `/supabase/functions/crypto-orchestrator/index.ts` - Where to integrate
-- See handoff prompt in session log for complete details
+## Next Session: Website Parsing Solutions
+
+**Priority**: Fix website content extraction for remaining 64 tokens
+- Option 1: Create Supabase Edge Function for parsing
+- Option 2: Try ScrapFly API (key in .env)
+- Option 3: Focus on 11 Stage 2 candidates already identified
+
+**Key Files**:
+- `temp-website-analysis/token_discovery_server.py` - UI on port 5007
+- `temp-website-analysis/token_discovery_analysis.db` - 172 analyzed tokens
 
 ---
-**Last Updated**: August 19, 2025 (Session Wrap - Website Analysis Integration)
-**Status**: ✅ Website analysis integrated, ready for orchestrator
-**Version**: 12.4.0 - Website analysis with enhanced UI controls
+**Last Updated**: August 19, 2025 (Session Wrap - Token Discovery Analysis)
+**Status**: ⚠️ Analysis working but parsing issues with JavaScript sites
+**Version**: 12.4.1 - Smart website re-checking system
 
 
 ## ✅ ATH Verifier Fixed (August 12, 2025)
@@ -648,3 +659,22 @@ Enhanced public interface with full contract address display, added liquidity co
 **Key Achievement**: Smooth, responsive filters with no race conditions
 
 [Full session details →](logs/SESSION-LOG-2025-08.md#august-13-2025-evening---ui-improvements--filter-optimization)
+
+## Next Session Priority: Website Analysis Retry Logic Decision
+
+**Issue**: Website analysis currently retries forever when timeouts occur.
+
+**Options for user to decide**:
+1. Keep current behavior (infinite retries)
+2. Add retry limit with counter
+3. Mark as failed after timeout
+4. Smart retry with exponential backoff
+
+**Files to modify**: `/supabase/functions/crypto-website-analyzer-batch/index.ts`
+
+See [handoff details →](logs/SESSION-LOG-2025-08.md#august-19-2025-session-2)
+
+---
+**Last Updated**: August 19, 2025 (Session Wrap - Orchestrator Integration)
+**Status**: ✅ Website analysis integrated, pending retry logic decision
+**Version**: 12.4.1 - Parallelized website batch processing

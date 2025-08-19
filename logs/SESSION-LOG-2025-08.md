@@ -1,6 +1,6 @@
 # KROM Session Logs - August 2025
 
-## August 19, 2025 - Website Analysis Integration & UI Enhancements
+## August 19, 2025 (Session 1) - Website Analysis Integration & UI Enhancements
 
 ### Overview
 Successfully integrated the website analysis system into the KROM crypto monitoring pipeline. Updated the scoring system to use standard TRASH/BASIC/SOLID/ALPHA tiers, enhanced UI settings for granular control, and prepared for orchestrator integration.
@@ -155,3 +155,73 @@ Current prompt in `comprehensive_website_analyzer.py` is too heavily weighted on
 Successfully built Stage 1 website analysis system that evaluates crypto project websites with a 21-point scoring system (7 categories × 3 points each). System uses AI to rapidly triage thousands of projects, identifying those worth deeper investigation.
 
 [Previous session content continues...]
+
+---
+
+## August 19, 2025 (Session 2) - Website Analysis Orchestrator Integration & Parallelization
+
+### Session Overview
+Successfully integrated website analysis into the crypto monitoring orchestrator pipeline, fixing critical issue where notification decisions were made before complete analysis. Parallelized website batch processing to handle up to 5 tokens simultaneously.
+
+### Key Accomplishments
+
+#### 1. Fixed Website Analyzer Edge Function
+- **Issue**: JSON parsing error - AI response was being double-parsed
+- **Solution**: Added proper JSON handling with markdown code block stripping
+- **Tier Update**: Verified TRASH/BASIC/SOLID/ALPHA system working correctly
+- **Deployment**: Successfully deployed to `crypto-website-analyzer`
+
+#### 2. Website Analysis Testing Results
+Successfully analyzed multiple tokens with consistent scoring:
+- **VANTUM**: 9/21 (BASIC, utility) - Privacy-focused DeFi solution
+- **PROTO**: 8/21 (BASIC, utility) - Decentralized infrastructure  
+- **IRIS**: 7/21 & 6/21 (TRASH, utility) - Multiple versions
+- **JAKPOT**: 4/21 (TRASH, utility)
+- **Meme tokens**: Consistently scored 1-3/21 (TRASH tier)
+  - NEKO, SCAN, THEND, SALLY, PCRYPTO, PEPE, BORIS, PICKLE
+
+#### 3. Parallelized Batch Processing
+**Before**: Sequential processing, 3 tokens, ~60 seconds
+**After**: Parallel processing with optimizations:
+- Processes 5 tokens simultaneously (matches KROM poller intake)
+- 45-second timeout per website (increased from 30s)
+- Total execution: ~45-47 seconds for all 5
+- Uses `Promise.allSettled()` for robust error handling
+
+#### 4. Orchestrator Integration
+Added website analysis as Step 3 in orchestrator flow:
+1. Poll for new calls → 2. Call/X Analysis (parallel) → **3. Website Analysis** → 4. Notifications
+
+This ensures complete data before notification decisions, preventing premature 'notified' marking.
+
+#### 5. Critical Issue Discovery & Resolution
+**Problem**: When 5 new tokens arrive but only 3 get website analysis, notifier makes permanent decisions on incomplete data.
+**Solution**: Parallelized all 5 tokens, ensuring complete analysis before notifications.
+
+### Retry Logic Analysis
+
+Discovered inconsistent retry patterns across analyzers:
+- **Call Analysis**: Sets `score = 5` on failure (no retries)
+- **X Analysis**: Leaves DB untouched (infinite retries)
+- **Website Analysis**: Currently infinite retries (matches X pattern)
+
+**Options for next session**:
+1. Keep current behavior (infinite retries)
+2. Add retry limit with counter
+3. Mark as failed after timeout
+4. Smart retry with exponential backoff
+
+### Files Modified
+- `/supabase/functions/crypto-website-analyzer/index.ts` - Fixed JSON parsing
+- `/supabase/functions/crypto-website-analyzer-batch/index.ts` - Parallelized
+- `/supabase/functions/crypto-orchestrator-with-x/index.ts` - Added website step
+- `/supabase/functions/crypto-notifier-complete/index.ts` - Added website data
+
+### Performance Metrics
+- Website analysis success rate: ~80%
+- Processing time: ~45 seconds for 5 websites
+- Orchestrator total time: ~55-60 seconds with website analysis
+
+---
+
+**Session End: August 19, 2025 (Session 2)**

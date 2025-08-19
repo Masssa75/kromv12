@@ -40,8 +40,20 @@ serve(async (req)=>{
     console.log(`Analysis completed in ${analysisTime}ms`);
     console.log(`Claude analyzer:`, analyzerResult);
     console.log(`X analyzer:`, xAnalyzerResult);
-    // Step 3: Send notifications for analyzed calls
-    console.log('Step 3: Sending notifications...');
+    
+    // Step 3: Website analysis (if applicable)
+    console.log('Step 3: Running website analysis...');
+    const websiteStart = Date.now();
+    const websiteResponse = await fetch(`${supabaseUrl}/functions/v1/crypto-website-analyzer-batch`, {
+      method: 'POST',
+      headers
+    });
+    const websiteResult = await websiteResponse.json();
+    const websiteTime = Date.now() - websiteStart;
+    console.log(`Website analyzer completed in ${websiteTime}ms:`, websiteResult);
+    
+    // Step 4: Send notifications for analyzed calls
+    console.log('Step 4: Sending notifications...');
     const notifierStart = Date.now();
     const notifierResponse = await fetch(`${supabaseUrl}/functions/v1/crypto-notifier-complete`, {
       method: 'POST',
@@ -59,12 +71,14 @@ serve(async (req)=>{
         total: totalTime,
         poller: pollerTime,
         analysis: analysisTime,
+        website: websiteTime,
         notifier: notifierTime
       },
       results: {
         poller: pollerResult,
         analyzer: analyzerResult,
         xAnalyzer: xAnalyzerResult,
+        website: websiteResult,
         notifier: notifierResult
       }
     }), {

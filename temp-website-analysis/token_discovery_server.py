@@ -43,7 +43,6 @@ HTML_TEMPLATE = """
             <tr>
                 <th>#</th>
                 <th>Symbol</th>
-                <th>Network</th>
                 <th>Score</th>
                 <th>Stage 2</th>
                 <th>Website</th>
@@ -55,15 +54,18 @@ HTML_TEMPLATE = """
             <tr class="{% if row.total_score >= 10 %}high-score{% endif %}">
                 <td>{{ loop.index }}</td>
                 <td><strong>{{ row.ticker }}</strong></td>
-                <td>{{ row.network or 'N/A' }}</td>
                 <td>{{ row.total_score }}/21</td>
                 <td>{% if row.proceed_to_stage_2 %}<span class="stage2">YES</span>{% else %}NO{% endif %}</td>
                 <td><a href="{{ row.url }}" target="_blank" class="url">{{ row.url[:50] }}...</a></td>
                 <td>
                     {% if row.category_scores %}
-                        {% for cat, score in row.category_scores.items() %}
-                            {{ cat[:4] }}:{{ score }}
-                        {% endfor %}
+                        {% if row.category_scores is mapping %}
+                            {% for cat, score in row.category_scores.items() %}
+                                {{ cat[:4] }}:{{ score }}
+                            {% endfor %}
+                        {% elif row.category_scores is sequence %}
+                            {{ row.category_scores | join(', ') }}
+                        {% endif %}
                     {% endif %}
                 </td>
             </tr>
@@ -83,7 +85,7 @@ def index():
     # Get all results
     cursor.execute("""
         SELECT ticker, url, total_score, proceed_to_stage_2, 
-               category_scores, network
+               category_scores
         FROM website_analysis 
         ORDER BY total_score DESC, ticker
     """)
@@ -94,9 +96,15 @@ def index():
     for row in rows:
         result = dict(row)
         try:
-            result['category_scores'] = json.loads(row['category_scores']) if row['category_scores'] else {}
+            scores = json.loads(row['category_scores']) if row['category_scores'] else []
+            if isinstance(scores, list):
+                # Convert list to readable format
+                categories = ['Proj', 'Team', 'Docs', 'Comm', 'Part', 'Tech', 'Token']
+                result['category_scores'] = [f"{cat}:{score}" for cat, score in zip(categories, scores)]
+            else:
+                result['category_scores'] = scores
         except:
-            result['category_scores'] = {}
+            result['category_scores'] = []
         results.append(result)
     
     # Calculate stats
