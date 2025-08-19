@@ -20,7 +20,7 @@ import traceback
 class ComprehensiveWebsiteAnalyzer:
     def __init__(self, db_path="website_analysis_new.db"):
         self.db_path = db_path
-        self.api_key = "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"
+        self.api_key = "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"
         
     def parse_website_with_playwright(self, url):
         """Stage 1: Parse website with JavaScript rendering and extract all content"""

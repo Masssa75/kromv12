@@ -165,6 +165,13 @@ Based on the website content, classify this token as either:
 
 Choose the PRIMARY nature - if it has both elements, pick the dominant one.
 
+TIER CLASSIFICATION:
+Based on total score (0-21):
+- 0-7: "TRASH" (Poor quality, likely scam or low effort)
+- 8-14: "BASIC" (Some effort, but lacking key elements)
+- 15-20: "SOLID" (Good quality, professional, most elements present)
+- 21: "ALPHA" (Exceptional, all elements perfect)
+
 Return JSON only:
 {
   "category_scores": {
@@ -177,7 +184,7 @@ Return JSON only:
     "website_presentation": 0-3
   },
   "total_score": 0-21,
-  "tier": "HIGH/MEDIUM/LOW",
+  "tier": "TRASH/BASIC/SOLID/ALPHA",
   "token_type": "meme/utility",
   "exceptional_signals": ["signal1", "signal2"],
   "missing_elements": ["element1", "element2"],
