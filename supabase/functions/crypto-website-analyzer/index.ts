@@ -221,12 +221,24 @@ Return JSON only:
     }
 
     const data = await response.json();
-    const result = JSON.parse(data.choices[0].message.content);
+    const contentStr = data.choices[0].message.content;
     
-    // Calculate tier based on score
-    if (result.total_score >= 14) result.tier = 'HIGH';
-    else if (result.total_score >= 10) result.tier = 'MEDIUM';
-    else result.tier = 'LOW';
+    // Parse the JSON response (handle if it's wrapped in markdown code blocks)
+    let result;
+    try {
+      // First try direct parse
+      result = JSON.parse(contentStr);
+    } catch {
+      // If that fails, try removing markdown code blocks
+      const cleanedContent = contentStr.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+      result = JSON.parse(cleanedContent);
+    }
+    
+    // Calculate tier based on score (using new tier names)
+    if (result.total_score >= 21) result.tier = 'ALPHA';
+    else if (result.total_score >= 15) result.tier = 'SOLID';
+    else if (result.total_score >= 8) result.tier = 'BASIC';
+    else result.tier = 'TRASH';
     
     return result;
   } catch (error) {

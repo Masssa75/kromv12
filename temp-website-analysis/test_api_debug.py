@@ -6,8 +6,8 @@ Debug the OpenRouter API issue
 import requests
 import json
 
-# API key from the .env file (OPEN_ROUTER_API_KEY)
-api_key = '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'
+# API key from the .env file (OPEN_ROUTER_API_KEY - Updated Aug 19, 2025)
+api_key = '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'
 
 # Test with a simple prompt
 prompt = "Just respond with: {'test': 'success'}"
