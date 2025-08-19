@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM App Store - AI Analyzed Tokens</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #000;
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #00ff88, #00b8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #888;
+            font-size: 18px;
+        }
+
+        .token-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .token-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 620px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .token-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .token-card:nth-child(1) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .token-card:nth-child(2) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .token-card:nth-child(3) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .token-card:nth-child(4) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .token-card:nth-child(5) { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .token-card:nth-child(6) { background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%); }
+        .token-card:nth-child(7) { background: linear-gradient(135deg, #8ed1fc 0%, #0693e3 100%); }
+        .token-card:nth-child(8) { background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%); }
+        .token-card:nth-child(9) { background: linear-gradient(135deg, #FD6585 0%, #0D25B9 100%); }
+
+        .phone-mockup {
+            width: 100%;
+            height: 320px;
+            background: #1a1a1a;
+            border-radius: 24px;
+            padding: 12px;
+            margin-bottom: 25px;
+            box-shadow: 
+                0 0 0 10px rgba(0, 0, 0, 0.3),
+                0 15px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 25px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .phone-mockup::after {
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            z-index: 11;
+        }
+
+        .website-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            position: relative;
+            margin-top: 15px;
+        }
+
+        .website-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transform: scale(0.8);
+            transform-origin: top left;
+            width: 125%;
+            height: 125%;
+        }
+
+        .loading-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .no-website-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+        }
+
+        .no-website-placeholder .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .no-website-placeholder .text {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+
+        .token-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .token-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .token-name {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -1px;
+        }
+
+        .score-badge {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .score-badge .star {
+            color: #ffd700;
+            font-size: 16px;
+        }
+
+        .bullet-points {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            flex-grow: 1;
+        }
+
+        .bullet-points li {
+            padding: 10px 0;
+            padding-left: 32px;
+            position: relative;
+            font-size: 15px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .bullet-points li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bullet-points li:first-child:before {
+            content: '🎯';
+            font-size: 14px;
+            background: none;
+        }
+
+        .bullet-points li:nth-child(2):before {
+            content: '✨';
+            font-size: 14px;
+            background: none;
+        }
+
+        .bullet-points li:nth-child(3):before {
+            content: '🚀';
+            font-size: 14px;
+            background: none;
+        }
+
+        .bullet-points li:nth-child(4):before {
+            content: '💎';
+            font-size: 14px;
+            background: none;
+        }
+
+        .token-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-size: 24px;
+            color: #888;
+        }
+
+        .network-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+            .token-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 36px;
+            }
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>KROM APP STORE</h1>
+        <p>AI-Analyzed Token Projects with Websites</p>
+    </div>
+
+    <div id="tokenGrid" class="token-grid">
+        <div class="loading">Loading analyzed tokens...</div>
+    </div>
+
+    <script>
+        // Fetch analyzed tokens with websites
+        async function loadTokens() {
+            try {
+                const response = await fetch('http://localhost:3000/api/analyzed-with-websites');
+                const tokens = await response.json();
+                displayTokens(tokens);
+            } catch (error) {
+                console.error('Error loading tokens:', error);
+                // Try fallback to simple server
+                try {
+                    const response = await fetch('http://localhost:3001/api/latest-with-websites');
+                    const tokens = await response.json();
+                    displayTokens(processFallbackTokens(tokens));
+                } catch (fallbackError) {
+                    console.error('Fallback also failed:', fallbackError);
+                    displayMockTokens();
+                }
+            }
+        }
+
+        function processFallbackTokens(tokens) {
+            return tokens.map(token => {
+                const bulletPoints = [];
+                
+                // Add basic bullet points based on available data
+                const tokenType = token.analysis_token_type || 'Crypto';
+                bulletPoints.push(`${tokenType.charAt(0).toUpperCase() + tokenType.slice(1)} project`);
+                
+                if (token.liquidity_usd && token.liquidity_usd > 100000) {
+                    bulletPoints.push(`$${(token.liquidity_usd / 1000000).toFixed(1)}M in liquidity`);
+                }
+                
+                if (token.roi_percent && token.roi_percent > 0) {
+                    bulletPoints.push(`${token.roi_percent.toFixed(0)}% positive ROI`);
+                } else if (token.ath_roi_percent && token.ath_roi_percent > 0) {
+                    bulletPoints.push(`${token.ath_roi_percent.toFixed(0)}% ATH ROI`);
+                }
+                
+                bulletPoints.push('Active development');
+                
+                return {
+                    ...token,
+                    bulletPoints: bulletPoints.slice(0, 4)
+                };
+            });
+        }
+
+        function getNetworkForDexScreener(network) {
+            const networkMap = {
+                'ethereum': 'ethereum',
+                'solana': 'solana',
+                'bsc': 'bsc',
+                'base': 'base',
+                'arbitrum': 'arbitrum',
+                'polygon': 'polygon'
+            };
+            return networkMap[network] || network;
+        }
+
+        function displayTokens(tokens) {
+            const grid = document.getElementById('tokenGrid');
+            grid.innerHTML = tokens.map((token, index) => {
+                const dexNetwork = getNetworkForDexScreener(token.network);
+                const websiteUrl = token.website_url || '';
+                const hasWebsite = websiteUrl && websiteUrl !== '';
+                const score = token.analysis_score || token.x_analysis_score || 7;
+                
+                // Create iframe content
+                const iframeContent = hasWebsite ? `
+                    <div class="loading-placeholder">
+                        <div class="spinner"></div>
+                        <p>Loading app...</p>
+                    </div>
+                    <iframe 
+                        class="website-iframe"
+                        src="${websiteUrl}"
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin"
+                        onload="this.style.opacity='1'; this.previousElementSibling.style.display='none';"
+                        onerror="this.style.display='none'; this.previousElementSibling.innerHTML='<div class=\\'no-website-placeholder\\'><div class=\\'icon\\'>🌐</div><div class=\\'text\\'>Preview unavailable</div></div>';"
+                        style="opacity: 0; transition: opacity 0.5s ease;"
+                    ></iframe>
+                ` : `
+                    <div class="no-website-placeholder">
+                        <div class="icon">🚀</div>
+                        <div class="text">${token.ticker} App</div>
+                    </div>
+                `;
+                
+                // Use provided bullet points or create defaults
+                const bulletPoints = token.bulletPoints || [
+                    `${token.ticker} token project`,
+                    'Active development team',
+                    'Growing community',
+                    'Early stage opportunity'
+                ];
+                
+                return `
+                <div class="token-card">
+                    <div class="network-badge">${token.network}</div>
+                    
+                    <div class="phone-mockup">
+                        <div class="website-container">
+                            ${iframeContent}
+                        </div>
+                    </div>
+                    
+                    <div class="token-info">
+                        <div class="token-header">
+                            <div class="token-name">${token.ticker || 'Unknown'}</div>
+                            <div class="score-badge">
+                                <span class="star">⭐</span>
+                                <span>${score}/10</span>
+                            </div>
+                        </div>
+
+                        <ul class="bullet-points">
+                            ${bulletPoints.map(point => `<li>${point}</li>`).join('')}
+                        </ul>
+
+                        <div class="token-actions">
+                            <button class="btn btn-primary" onclick="event.stopPropagation(); ${hasWebsite ? `window.open('${websiteUrl}', '_blank')` : `window.open('https://dexscreener.com/${dexNetwork}/${token.contract_address}', '_blank')`}">
+                                ${hasWebsite ? 'Open App' : 'View Chart'}
+                            </button>
+                            <button class="btn btn-secondary" onclick="event.stopPropagation(); window.open('https://dexscreener.com/${dexNetwork}/${token.contract_address}', '_blank')">
+                                Trade
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function displayMockTokens() {
+            const mockTokens = [
+                { 
+                    ticker: 'DEFI', 
+                    network: 'ethereum', 
+                    contract_address: '0x123', 
+                    analysis_score: 9,
+                    website_url: 'https://ethereum.org',
+                    bulletPoints: ['DeFi infrastructure protocol', 'TVL over $500M', 'Backed by major VCs', '200% APY staking rewards']
+                },
+                { 
+                    ticker: 'AI', 
+                    network: 'solana', 
+                    contract_address: 'abc123', 
+                    analysis_score: 8,
+                    website_url: 'https://solana.com',
+                    bulletPoints: ['AI-powered trading bot', 'Over 10K active users', '85% win rate documented', 'Launching mobile app Q4']
+                },
+                { 
+                    ticker: 'GAME', 
+                    network: 'bsc', 
+                    contract_address: '0x456', 
+                    analysis_score: 7,
+                    website_url: '',
+                    bulletPoints: ['Play-to-earn gaming', 'Partnership with Ubisoft', 'NFT marketplace integrated', '$2M in daily volume']
+                }
+            ];
+            displayTokens(mockTokens);
+        }
+
+        // Load tokens on page load
+        loadTokens();
+    </script>
+</body>
+</html>

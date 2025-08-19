@@ -1,6 +1,32 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.7';
 
+// Helper function to mark failed analysis in database
+async function markAnalysisFailed(supabase: any, callId: string, errorMessage: string) {
+  try {
+    const { data, error } = await supabase
+      .from('crypto_calls')
+      .update({
+        website_score: 0,  // Use 0 to indicate failed analysis
+        website_tier: 'FAILED',
+        website_token_type: null,
+        website_analysis_reasoning: `Analysis failed: ${errorMessage}`,
+        website_analyzed_at: new Date().toISOString()
+      })
+      .eq('id', callId)
+      .select();
+    
+    if (error) {
+      console.error(`Failed to update database for ${callId}:`, error.message);
+      console.error('Full error:', error);
+    } else {
+      console.log(`Marked ${callId} as failed analysis in database`, data ? `(${data.length} rows updated)` : '');
+    }
+  } catch (err) {
+    console.error(`Error marking analysis as failed:`, err);
+  }
+}
+
 serve(async (req) => {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -29,12 +55,16 @@ serve(async (req) => {
 
     console.log('Starting batch website analysis...');
 
-    // Find calls with websites but no analysis
+    // Find calls with websites but no analysis (excluding failed ones)
+    // We check for website_score = null to find unanalyzed sites
+    // Failed analyses have website_score = -1, so they won't be selected
+    // Order by created_at DESC to prioritize newest tokens first
     const { data: callsToAnalyze, error: fetchError } = await supabase
       .from('crypto_calls')
       .select('id, ticker, website_url')
       .not('website_url', 'is', null)
       .is('website_score', null)
+      .order('created_at', { ascending: false })
       .limit(5); // Match the KROM poller intake limit
 
     if (fetchError) {
@@ -81,10 +111,15 @@ serve(async (req) => {
 
         if (!analyzerResponse.ok) {
           console.error(`Failed to analyze ${call.ticker}: ${analyzerResponse.status}`);
+          
+          // Mark as failed in database with score of -1
+          await markAnalysisFailed(supabase, call.id, `HTTP ${analyzerResponse.status}`);
+          
           return {
             ticker: call.ticker,
             success: false,
-            error: `HTTP ${analyzerResponse.status}`
+            error: `HTTP ${analyzerResponse.status}`,
+            markedAsFailed: true
           };
         }
         
@@ -99,10 +134,15 @@ serve(async (req) => {
         };
       } catch (error) {
         console.error(`Error analyzing ${call.ticker}:`, error.message);
+        
+        // Mark as failed in database with score of -1
+        await markAnalysisFailed(supabase, call.id, error.message);
+        
         return {
           ticker: call.ticker,
           success: false,
-          error: error.message
+          error: error.message,
+          markedAsFailed: true
         };
       }
     });

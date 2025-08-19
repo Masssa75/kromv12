@@ -6,6 +6,12 @@
 - When you see any database operations, ALWAYS use Supabase credentials from `.env`
 - **RLS IS ENABLED** - Write operations require `SUPABASE_SERVICE_ROLE_KEY` (not anon key)
 
+🔐 **CRITICAL SECURITY RULES** 🔐
+- **NEVER hardcode API keys in Python/JS files** - Always use `os.getenv()` in Python or `process.env` in JavaScript
+- **Check before committing**: Always run `git diff --staged | grep -E "sk-|api_key|API_KEY|scp-live"` before pushing
+- **Use .gitignore** for sensitive files - Add any files with keys to `.gitignore` immediately
+- **Use Supabase/Netlify secrets** for production deployments instead of hardcoding credentials
+
 ## Overview
 KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring applications. Each app serves a specific purpose in the crypto analysis ecosystem.
 

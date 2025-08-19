@@ -218,7 +218,7 @@ Return ONLY the JSON."""
     
     def analyze_with_ai(self, site_data):
         """Get AI analysis of what to parse next"""
-        OPEN_ROUTER_API_KEY = "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"
+        OPEN_ROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
         
         prompt = self.create_analysis_prompt(site_data)
         

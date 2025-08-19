@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROM - Chart Modal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0b0d;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        /* Modal Container */
+        .modal-container {
+            background: #111214;
+            border-radius: 16px;
+            border: 1px solid #2a2d31;
+            width: 100%;
+            max-width: 1200px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Modal Header */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #1a1c1f;
+            background: #0a0b0d;
+        }
+
+        .token-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .token-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .network-badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .network-eth {
+            background: #627eea22;
+            color: #627eea;
+        }
+
+        .network-sol {
+            background: #00ffa322;
+            color: #00ffa3;
+        }
+
+        .network-bsc {
+            background: #ffcc0022;
+            color: #ffcc00;
+        }
+
+        .network-base {
+            background: #0052ff22;
+            color: #0052ff;
+        }
+
+        .call-date {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .close-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: #1a1c1f;
+            border: 1px solid #2a2d31;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 20px;
+            border: none;
+        }
+
+        .close-button:hover {
+            background: #222426;
+            border-color: #333;
+            color: #fff;
+        }
+
+        /* Chart Section */
+        .chart-section {
+            height: 500px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .chart-placeholder {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .chart-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000;
+        }
+
+        /* Bottom Info Bar */
+        .info-bar {
+            background: #0a0b0d;
+            border-top: 1px solid #1a1c1f;
+            padding: 20px 24px;
+        }
+
+        .info-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-metrics {
+            display: flex;
+            gap: 40px;
+        }
+
+        .price-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .price-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .price-mcap {
+            font-size: 11px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .roi-positive {
+            color: #00ff88;
+        }
+
+        .roi-negative {
+            color: #ff4444;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: none;
+        }
+
+        .action-button.secondary {
+            background: #1a1c1f;
+            border: 1px solid #2a2d31;
+            color: #ccc;
+        }
+
+        .action-button.secondary:hover {
+            background: #222426;
+            border-color: #333;
+            color: #fff;
+        }
+
+        .action-button.primary {
+            background: linear-gradient(135deg, #00ff88, #00ffcc);
+            color: #000;
+            font-weight: 600;
+        }
+
+        .action-button.primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+
+        /* Additional Info Row */
+        .additional-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #1a1c1f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-group {
+            display: flex;
+            gap: 30px;
+        }
+
+        .info-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-stat-label {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-stat-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ccc;
+        }
+
+        .score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .score-value {
+            font-weight: 600;
+        }
+
+        .score-label {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .tier-alpha {
+            background: #00ff8822;
+            color: #00ff88;
+        }
+
+        .tier-solid {
+            background: #ffcc0022;
+            color: #ffcc00;
+        }
+
+        .tier-basic {
+            background: #88888822;
+            color: #888;
+        }
+
+        /* Contract Address */
+        .contract-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contract-address {
+            font-size: 11px;
+            color: #888;
+            font-family: 'Courier New', monospace;
+        }
+
+        .copy-button {
+            font-size: 10px;
+            padding: 4px 8px;
+            background: #1a1c1f;
+            border: 1px solid #2a2d31;
+            border-radius: 4px;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .copy-button:hover {
+            border-color: #00ff88;
+            color: #00ff88;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .modal-container {
+                max-width: 95vw;
+            }
+            
+            .price-metrics {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .action-buttons {
+                width: 100%;
+            }
+            
+            .action-button {
+                flex: 1;
+                justify-content: center;
+            }
+            
+            .additional-info {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modal Overlay -->
+    <div class="modal-overlay">
+        <div class="modal-container">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="token-info">
+                    <div class="token-name">
+                        PHOENIX
+                        <span class="network-badge network-sol">SOL</span>
+                    </div>
+                    <div class="call-date">
+                        Called: Jun 24, 2025, 01:00 AM (Thai Time)
+                    </div>
+                </div>
+                <button class="close-button" onclick="alert('Close modal')">×</button>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="chart-section">
+                <div class="chart-placeholder">
+                    [GeckoTerminal Chart will be embedded here]
+                </div>
+                <!-- In production, this would be:
+                <iframe class="chart-iframe" src="https://www.geckoterminal.com/embed/..." />
+                -->
+            </div>
+
+            <!-- Bottom Info Bar -->
+            <div class="info-bar">
+                <div class="info-content">
+                    <!-- Price Metrics -->
+                    <div class="price-metrics">
+                        <div class="price-item">
+                            <div class="price-label">Entry</div>
+                            <div class="price-value">$0.00230</div>
+                            <div class="price-mcap">MCap: $2.3M</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">Current</div>
+                            <div class="price-value">$0.00456</div>
+                            <div class="price-mcap">MCap: $4.5M</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">ATH</div>
+                            <div class="price-value">$0.00987</div>
+                            <div class="price-mcap">MCap: $9.8M</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">ROI</div>
+                            <div class="price-value roi-positive">+98.3%</div>
+                            <div class="price-mcap">1.98x</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">ATH ROI</div>
+                            <div class="price-value roi-positive">+329%</div>
+                            <div class="price-mcap">4.29x</div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-button secondary" onclick="alert('Open GeckoTerminal')">
+                            GeckoTerminal
+                            <span style="font-size: 14px;">↗</span>
+                        </button>
+                        <button class="action-button primary" onclick="alert('Open DexScreener')">
+                            DexScreener
+                            <span style="font-size: 14px;">↗</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Additional Info Row -->
+                <div class="additional-info">
+                    <div class="info-group">
+                        <!-- AI Scores -->
+                        <div class="info-stat">
+                            <div class="info-stat-label">AI Score</div>
+                            <div class="score-badge">
+                                <span class="score-value" style="color: #00ff88;">8.2</span>
+                                <span class="score-label tier-alpha">ALPHA</span>
+                            </div>
+                        </div>
+                        <div class="info-stat">
+                            <div class="info-stat-label">X Score</div>
+                            <div class="score-badge">
+                                <span class="score-value" style="color: #ffcc00;">7.5</span>
+                                <span class="score-label tier-solid">SOLID</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Market Stats -->
+                        <div class="info-stat">
+                            <div class="info-stat-label">24h Volume</div>
+                            <div class="info-stat-value">$1.2M</div>
+                        </div>
+                        <div class="info-stat">
+                            <div class="info-stat-label">Liquidity</div>
+                            <div class="info-stat-value">$450K</div>
+                        </div>
+                        <div class="info-stat">
+                            <div class="info-stat-label">Holders</div>
+                            <div class="info-stat-value">2,847</div>
+                        </div>
+                    </div>
+
+                    <!-- Contract Address -->
+                    <div class="contract-info">
+                        <span class="contract-address">8NCiev...AL7pump</span>
+                        <button class="copy-button" onclick="alert('Copied!')">Copy CA</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

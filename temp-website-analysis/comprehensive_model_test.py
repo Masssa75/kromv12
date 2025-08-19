@@ -7,7 +7,7 @@ import json
 import time
 from datetime import datetime
 
-OPEN_ROUTER_API_KEY = "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"
+OPEN_ROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
 
 # Comprehensive list of top models
 MODELS_TO_TEST = [

@@ -12,7 +12,7 @@ from datetime import datetime
 from playwright.sync_api import sync_playwright
 
 # OpenRouter API configuration for Kimi K2
-OPEN_ROUTER_API_KEY = "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"
+OPEN_ROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
 OPEN_ROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 def parse_website_with_playwright(url):

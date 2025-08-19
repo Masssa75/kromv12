@@ -6,7 +6,7 @@ import requests
 import json
 import time
 
-OPEN_ROUTER_API_KEY = "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"
+OPEN_ROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
 
 # Models to test (Chinese and others known for good web capabilities)
 MODELS_TO_TEST = [

@@ -11,7 +11,7 @@ import re
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
-OPEN_ROUTER_API_KEY = "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"
+OPEN_ROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
 
 def extract_key_details(url):
     """Extract LinkedIn profiles, team info, and notable mentions"""

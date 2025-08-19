@@ -1,68 +1,105 @@
 #!/usr/bin/env python3
+"""
+Resilient Playwright-based analyzer with aggressive timeout handling
+"""
+
 import sqlite3
-import requests
 import json
 import time
-import os
 from datetime import datetime
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+import requests
+import signal
+from contextlib import contextmanager
 
-# ScrapFly API configuration
-SCRAPFLY_API_KEY = "scp-live-2beb370f43d24c00b37aeba6514659d5"
-OPENROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
+# API Key
+OPENROUTER_API_KEY = "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"
 
-def fetch_with_scrapfly(url):
-    """Fetch website content using ScrapFly API"""
-    print(f"  Fetching {url}...")
-    api_url = "https://api.scrapfly.io/scrape"
+class TimeoutException(Exception):
+    pass
+
+@contextmanager
+def timeout(seconds):
+    """Context manager for timeout"""
+    def signal_handler(signum, frame):
+        raise TimeoutException("Operation timed out")
     
-    params = {
-        "key": SCRAPFLY_API_KEY,
-        "url": url,
-        "render_js": "true",
-        "wait_for_selector": "body",
-        "timeout": 20000,
-        "retry": "false",
-        "country": "us",
-        "format": "json"
-    }
+    signal.signal(signal.SIGALRM, signal_handler)
+    signal.alarm(seconds)
+    try:
+        yield
+    finally:
+        signal.alarm(0)
+
+def fetch_with_playwright(url, max_wait=15000):
+    """Fetch website content using Playwright with strict timeouts"""
+    content = None
     
     try:
-        response = requests.get(api_url, params=params, timeout=25)
-        
-        if response.status_code == 200:
-            data = response.json()
-            result = data.get("result", {})
-            
-            # Get the HTML content
-            html_content = result.get("content", "")
-            
-            # Simple text extraction from HTML
-            import re
-            # Remove script and style tags completely
-            html_content = re.sub(r'<script[^>]*>.*?</script>', '', html_content, flags=re.DOTALL)
-            html_content = re.sub(r'<style[^>]*>.*?</style>', '', html_content, flags=re.DOTALL)
-            # Remove HTML tags
-            text = re.sub('<[^<]+?>', ' ', html_content)
-            # Clean up whitespace
-            text = re.sub(r'\s+', ' ', text).strip()
-            
-            return text[:10000]  # Limit to 10k chars for AI analysis
-            
-        else:
-            print(f"ScrapFly error {response.status_code}: {response.text[:200]}")
-            return None
-            
-    except requests.exceptions.Timeout:
-        print(f"ScrapFly timeout for {url}")
-        return None
+        with timeout(20):  # Hard timeout at 20 seconds
+            with sync_playwright() as p:
+                browser = p.chromium.launch(
+                    headless=True,
+                    args=['--disable-blink-features=AutomationControlled']
+                )
+                
+                context = browser.new_context(
+                    viewport={'width': 1920, 'height': 1080},
+                    user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                )
+                
+                page = context.new_page()
+                
+                # Set page timeout
+                page.set_default_timeout(max_wait)
+                
+                try:
+                    # Navigate with networkidle
+                    page.goto(url, wait_until='domcontentloaded', timeout=max_wait)
+                    
+                    # Wait a bit for JavaScript
+                    page.wait_for_timeout(2000)
+                    
+                    # Get text content
+                    content = page.evaluate("""
+                        () => {
+                            // Remove scripts and styles
+                            const scripts = document.querySelectorAll('script, style, noscript');
+                            scripts.forEach(el => el.remove());
+                            
+                            // Get text
+                            return document.body ? document.body.innerText : document.documentElement.innerText;
+                        }
+                    """)
+                    
+                    if not content or len(content) < 100:
+                        # Try getting all text if body is empty
+                        content = page.inner_text('body')
+                    
+                except PlaywrightTimeout:
+                    print(f"  ⏱️ Page timeout, extracting what we have...")
+                    try:
+                        content = page.inner_text('body')
+                    except:
+                        content = None
+                
+                browser.close()
+                
+    except TimeoutException:
+        print(f"  ⏱️ Hard timeout reached")
     except Exception as e:
-        print(f"ScrapFly error: {e}")
-        return None
+        print(f"  ❌ Error: {str(e)[:100]}")
+    
+    if content:
+        print(f"  ✅ Got {len(content)} chars")
+    else:
+        print(f"  ❌ Failed to get content")
+    
+    return content
 
 def analyze_with_ai(ticker, url, website_content):
     """Analyze website content using AI"""
     
-    # Create analysis prompt
     prompt = f"""Analyze this crypto project website for investment potential. Score each category 0-3:
 
 TOKEN: {ticker}
@@ -113,11 +150,6 @@ SCORING CRITERIA (0-3 for each):
    - 2: Clear tokenomics & roadmap
    - 3: Detailed vesting/utility/milestones
 
-EXTRAORDINARY SIGNALS (Optional - list any):
-- Major achievements ($10M+ funding, 100k+ users, etc)
-- Red flags (security warnings, rug pull indicators)
-- Unique value propositions
-
 Respond in this EXACT format:
 SCORES: [cat,team,docs,comm,part,tech,token]
 TOTAL: X/21
@@ -142,16 +174,13 @@ SUMMARY: [One sentence summary]"""
             timeout=30
         )
         
-        if response.status_code != 200:
-            print(f"  API Error {response.status_code}")
-            return None
         if response.status_code == 200:
             result = response.json()
             ai_response = result['choices'][0]['message']['content']
             
-            # Parse the response
-            lines = ai_response.strip().split('\n')
+            # Parse response
             parsed = {}
+            lines = ai_response.strip().split('\n')
             
             for line in lines:
                 try:
@@ -170,34 +199,32 @@ SUMMARY: [One sentence summary]"""
                         parsed['signals'] = line.split(':', 1)[1].strip()
                     elif line.startswith('SUMMARY:'):
                         parsed['summary'] = line.split(':', 1)[1].strip()
-                except Exception as e:
-                    print(f"Error parsing line '{line}': {e}")
+                except:
                     continue
             
-            if not parsed:
-                print(f"Failed to parse AI response. Full response: {ai_response}")
-                return None
-            
-            # Ensure all required fields are present
-            if 'total' not in parsed:
-                parsed['total'] = 0
+            # Set defaults
+            if 'total' not in parsed and 'scores' in parsed:
+                parsed['total'] = sum(parsed['scores'])
             if 'tier' not in parsed:
-                parsed['tier'] = 'UNKNOWN'
+                score = parsed.get('total', 0)
+                if score >= 15:
+                    parsed['tier'] = 'ALPHA'
+                elif score >= 10:
+                    parsed['tier'] = 'SOLID'
+                elif score >= 5:
+                    parsed['tier'] = 'BASIC'
+                else:
+                    parsed['tier'] = 'TRASH'
             if 'proceed' not in parsed:
-                parsed['proceed'] = False
-            if 'signals' not in parsed:
-                parsed['signals'] = 'NONE'
-            if 'summary' not in parsed:
-                parsed['summary'] = 'No summary available'
-            if 'scores' not in parsed:
-                parsed['scores'] = [0] * 7
-            
+                parsed['proceed'] = parsed.get('total', 0) >= 10
+                
             return parsed
+        else:
+            print(f"  AI API error: {response.status_code}")
+            return None
             
     except Exception as e:
-        print(f"AI analysis error: {str(e)[:200]}")
-        import traceback
-        traceback.print_exc()
+        print(f"  AI analysis error: {str(e)[:100]}")
         return None
 
 def get_unanalyzed_tokens():
@@ -205,40 +232,31 @@ def get_unanalyzed_tokens():
     conn = sqlite3.connect('token_discovery_analysis.db')
     cursor = conn.cursor()
     
-    # Get tokens from Supabase that aren't in our analysis DB
+    # Get already analyzed tokens
+    cursor.execute("SELECT ticker FROM website_analysis")
+    analyzed_tickers = {row[0] for row in cursor.fetchall()}
+    
+    # Get tokens from Supabase
     import subprocess
     result = subprocess.run([
         'curl', '-s',
         'https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/token_discovery?select=symbol,website_url,network,initial_liquidity_usd&website_url=not.is.null&order=initial_liquidity_usd.desc',
-        '-H', f'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1Y2Zvb21teHh2cW1td2Ria2R2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NzU2Mjg4MSwiZXhwIjoyMDYzMTM4ODgxfQ.VcC7Bp3zMFYor3eVDonoG7BuS7AavemQnSOhrWcY5Y4'
+        '-H', 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1Y2Zvb21teHh2cW1td2Ria2R2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NzU2Mjg4MSwiZXhwIjoyMDYzMTM4ODgxfQ.VcC7Bp3zMFYor3eVDonoG7BuS7AavemQnSOhrWcY5Y4'
     ], capture_output=True, text=True)
-    
-    # Check if we got valid JSON
-    if not result.stdout:
-        print("No response from Supabase")
-        return []
     
     try:
         tokens = json.loads(result.stdout)
-    except json.JSONDecodeError:
-        print(f"Failed to parse JSON: {result.stdout[:200]}")
-        return []
-    
-    # Filter out already analyzed tokens
-    analyzed = cursor.execute("SELECT ticker FROM website_analysis").fetchall()
-    analyzed_tickers = {row[0] for row in analyzed}
-    
-    # Make sure tokens is a list
-    if isinstance(tokens, list):
-        unanalyzed = [t for t in tokens if t['symbol'] not in analyzed_tickers]
-    else:
-        print(f"Unexpected response format: {type(tokens)}")
-        unanalyzed = []
+        if isinstance(tokens, list):
+            unanalyzed = [t for t in tokens if t['symbol'] not in analyzed_tickers]
+            conn.close()
+            return unanalyzed
+    except:
+        pass
     
     conn.close()
-    return unanalyzed
+    return []
 
-def save_analysis(ticker, url, network, analysis_result):
+def save_analysis(ticker, url, analysis_result):
     """Save analysis results to database"""
     conn = sqlite3.connect('token_discovery_analysis.db')
     cursor = conn.cursor()
@@ -246,7 +264,6 @@ def save_analysis(ticker, url, network, analysis_result):
     if analysis_result:
         scores = analysis_result.get('scores', [0]*7)
         
-        # Use existing schema columns
         cursor.execute('''
             INSERT OR REPLACE INTO website_analysis 
             (ticker, url, total_score, tier, proceed_to_stage_2, exceptional_signals, 
@@ -265,7 +282,6 @@ def save_analysis(ticker, url, network, analysis_result):
             True
         ))
     else:
-        # Save as failed attempt
         cursor.execute('''
             INSERT OR REPLACE INTO website_analysis 
             (ticker, url, total_score, tier, proceed_to_stage_2, exceptional_signals, 
@@ -289,56 +305,64 @@ def save_analysis(ticker, url, network, analysis_result):
 
 def main():
     """Main processing loop"""
-    print("Starting ScrapFly batch analyzer...")
+    print("🚀 Starting Resilient Playwright Analyzer")
+    print(f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
     # Get unanalyzed tokens
     tokens = get_unanalyzed_tokens()
-    print(f"Found {len(tokens)} tokens to analyze")
+    print(f"📊 Found {len(tokens)} unanalyzed tokens")
     
-    # Process each token
+    # Process in small batches
+    batch_size = 5
     success_count = 0
     fail_count = 0
+    stage2_count = 0
     
-    for i, token in enumerate(tokens[:5], 1):  # Start with 5 for testing
+    for i, token in enumerate(tokens[:batch_size], 1):
         ticker = token['symbol']
         url = token['website_url']
-        network = token['network']
         liquidity = token.get('initial_liquidity_usd', 0)
         
-        print(f"\n[{i}/{min(20, len(tokens))}] Analyzing {ticker} ({network}) - ${liquidity:,.0f} liquidity")
+        print(f"\n[{i}/{min(batch_size, len(tokens))}] {ticker} - ${liquidity:,.0f} liquidity")
         print(f"  URL: {url}")
         
         # Fetch website content
-        print("  Fetching content...")
-        content = fetch_with_scrapfly(url)
+        content = fetch_with_playwright(url)
         
         if content and len(content) > 100:
-            print(f"  ✅ Got {len(content)} chars of content")
-            
             # Analyze with AI
-            print("  Analyzing with AI...")
+            print("  🤖 Analyzing with AI...")
             analysis = analyze_with_ai(ticker, url, content)
             
             if analysis:
-                print(f"  ✅ Analysis complete: {analysis.get('total', 0)}/21 - {analysis.get('tier', 'UNKNOWN')}")
-                if analysis.get('proceed'):
+                score = analysis.get('total', 0)
+                tier = analysis.get('tier', 'UNKNOWN')
+                proceed = analysis.get('proceed', False)
+                
+                print(f"  ✅ Score: {score}/21 - Tier: {tier}")
+                if proceed:
                     print(f"  🎯 QUALIFIES FOR STAGE 2!")
-                save_analysis(ticker, url, network, analysis)
+                    stage2_count += 1
+                
+                save_analysis(ticker, url, analysis)
                 success_count += 1
             else:
                 print(f"  ❌ AI analysis failed")
-                save_analysis(ticker, url, network, None)
+                save_analysis(ticker, url, None)
                 fail_count += 1
         else:
             print(f"  ❌ Failed to fetch content")
-            save_analysis(ticker, url, network, None)
+            save_analysis(ticker, url, None)
             fail_count += 1
         
         # Rate limiting
         time.sleep(2)
     
-    print(f"\n✅ Complete! Success: {success_count}, Failed: {fail_count}")
-    print(f"View results at http://localhost:5007")
+    print(f"\n✅ Complete!")
+    print(f"   Success: {success_count}")
+    print(f"   Failed: {fail_count}")
+    print(f"   Stage 2 qualified: {stage2_count}")
+    print(f"📊 View results at http://localhost:5007")
 
 if __name__ == "__main__":
     main()

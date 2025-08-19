@@ -355,7 +355,7 @@ class IntelligentWebsiteParser:
     
     def analyze_with_ai(self, parsed_content, model_id="anthropic/claude-3.5-sonnet"):
         """Send parsed content to AI for analysis"""
-        OPEN_ROUTER_API_KEY = "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"
+        OPEN_ROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
         
         # Prepare content summary for AI
         content_summary = f"Website: {self.base_url}\n\n"

@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 
 # OpenRouter API configuration
-OPEN_ROUTER_API_KEY = "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"
+OPEN_ROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
 MODEL = "moonshotai/kimi-k2"
 
 def create_analysis_prompt(website_url, ticker):

@@ -209,7 +209,7 @@ Return ONLY the JSON, no other text."""
 def analyze_with_model(model_id, model_name, website_data):
     """Analyze parsed content with a specific model"""
     
-    OPEN_ROUTER_API_KEY = "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"
+    OPEN_ROUTER_API_KEY = "OPENROUTER_API_KEY_REMOVED"
     
     prompt = create_team_focused_prompt(website_data)
     
