@@ -1,0 +1,35 @@
+{
+  "has_website": [],
+  "very_likely": [],
+  "likely": [
+    {
+      "address": "",
+      "symbol": "",
+      "name": "",
+      "network": "solana",
+      "liquidity_usd": 80711.6918,
+      "volume_24h": 3898475.26543948,
+      "price_change_24h": 229.14,
+      "pool_created_at": "2025-08-14T17:33:50Z",
+      "source": "geckoterminal_trending",
+      "reason": "Trending on GeckoTerminal",
+      "likelihood_has_website": "HIGH"
+    }
+  ],
+  "maybe": [],
+  "all": [
+    {
+      "address": "",
+      "symbol": "",
+      "name": "",
+      "network": "solana",
+      "liquidity_usd": 80711.6918,
+      "volume_24h": 3898475.26543948,
+      "price_change_24h": 229.14,
+      "pool_created_at": "2025-08-14T17:33:50Z",
+      "source": "geckoterminal_trending",
+      "reason": "Trending on GeckoTerminal",
+      "likelihood_has_website": "HIGH"
+    }
+  ]
+}

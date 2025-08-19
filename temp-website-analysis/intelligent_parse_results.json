@@ -1,0 +1,60 @@
+{
+  "website": "https://tharwa.finance/",
+  "discovered_pages": {
+    "https://www.tharwa.finance/#how": {
+      "text": "How It Works",
+      "priority": "low",
+      "type": "page"
+    },
+    "https://www.tharwa.finance/#features": {
+      "text": "Product Features",
+      "priority": "low",
+      "type": "page"
+    },
+    "https://www.tharwa.finance/#security": {
+      "text": "Security",
+      "priority": "high",
+      "type": "page"
+    },
+    "https://www.tharwa.finance/#about": {
+      "text": "About",
+      "priority": "high",
+      "type": "team"
+    },
+    "https://app.tharwa.finance/": {
+      "text": "Launch App",
+      "priority": "low",
+      "type": "page"
+    },
+    "https://github.com/tharwa-finance": {
+      "text": "GitHub",
+      "priority": "low",
+      "type": "github"
+    },
+    "https://www.tharwa.finance/terms": {
+      "text": "Terms of Use",
+      "priority": "low",
+      "type": "page"
+    },
+    "https://www.tharwa.finance/privacy": {
+      "text": "Privacy Policy",
+      "priority": "low",
+      "type": "page"
+    },
+    "mailto:team@tharwa.finance": {
+      "text": "",
+      "priority": "high",
+      "type": "team"
+    }
+  },
+  "parsed_pages": [
+    "https://www.tharwa.finance/#security",
+    "https://www.tharwa.finance/#about",
+    "mailto:team@tharwa.finance"
+  ],
+  "page_count": {
+    "total": 9,
+    "parsed": 3
+  },
+  "timestamp": "2025-08-15T06:52:10.004147"
+}

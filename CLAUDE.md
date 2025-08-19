@@ -9,32 +9,6 @@
 ## Overview
 KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring applications. Each app serves a specific purpose in the crypto analysis ecosystem.
 
-## ✅ ATH Verifier Fixed (August 12, 2025)
-
-**Status**: Successfully debugged and deployed ATH verifier
-- Fixed logic to use `Math.max(open, close)` for realistic prices
-- Corrected 18% of tokens (mostly undervalued ATHs)
-- Running every minute, processing 1,170 tokens/hour
-- 95% accuracy confirmed through spot checks
-
-[Full session details →](logs/SESSION-LOG-2025-08.md#august-12-2025-continued---ath-verifier-fix--deployment)
-
-## 🎬 KROM Public Interface Development (August 7, 2025)
-
-Successfully deployed KROM public landing page with TOP EARLY CALLS and RECENT CALLS sections, complete pagination system (20 items/page), comprehensive sorting functionality, and data consistency improvements. Added dark themed dropdown, ATH ROI filtering, and optimized database queries.
-
-**🚧 Next Session**: Ready to implement filters (ROI range slider, networks checkboxes, time period filter, AI score filter)
-
-[Full session details →](logs/SESSION-LOG-2025-08.md#session-krom-public-interface---pagination--sorting---august-7-2025-afternoon)
-
-## 🔍 UI Improvements & Filter Optimization (August 13, 2025 - Evening)
-
-Enhanced public interface with full contract address display, added liquidity column to RECENT CALLS, and implemented 400ms debouncing with request cancellation for all filters to eliminate glitchy behavior.
-
-**Key Achievement**: Smooth, responsive filters with no race conditions
-
-[Full session details →](logs/SESSION-LOG-2025-08.md#august-13-2025-evening---ui-improvements--filter-optimization)
-
 ## Project Structure
 
 ### Apps in KROMV12:
@@ -361,6 +335,7 @@ For detailed development history and implementation decisions, see:
 - [May 2025 Sessions](logs/SESSION-LOG-2025-05.md) - Early development
 - [July 2025 Sessions](logs/SESSION-LOG-2025-07.md) - Analysis app development  
 - [August 2025 Sessions](logs/SESSION-LOG-2025-08.md) - ATH tracking implementation
+- [August 16-17 Token Analysis](logs/SESSION-LOG-2025-08-16-TOKEN-WEBSITE-ANALYSIS.md) - Website discovery investigation
 
 
 ## Security Feature Implementation (July 31, 2025) - PAUSED
@@ -542,6 +517,56 @@ Enhanced CA verification with manual tracking and liquidity pattern analysis. Sy
 
 [Full session →](logs/SESSION-LOG-2025-08.md#august-14-2025-afternoonevening---manual-verification--liquidity-analysis)
 
+## 🎯 Stage 1 Website Analysis Triage System (August 15, 2025)
+
+Successfully built Stage 1 website analysis system with 1-3 scoring across 7 categories, replacing team-biased scoring with balanced evaluation. Features visual meter UI, exceptional signals detection, and automated Stage 2 recommendations.
+
+**System Complete**: 
+- Balanced 1-3 scoring (no team transparency bias)
+- UI with list view + clickable modals showing category meters
+- Green/red signal boxes for exceptional/missing elements
+- Kimi K2 integration ($0.003/analysis, 10x cheaper)
+- Ready to batch analyze 304 utility tokens (~$0.91 cost)
+
+**Status**: 95% complete with one UI issue to resolve before production batch
+
+[Implementation details →](logs/SESSION-LOG-2025-08.md#august-15-2025-continued---stage-1-website-analysis-triage-system)
+
+## 🔍 Token Discovery & Website Analysis Pipeline (August 15, 2025)
+
+Built comprehensive token discovery system monitoring 38,589 daily token launches across 6 networks with automated website detection and smart re-checking strategy.
+
+**Key Achievements**:
+- **Rapid discovery**: Captures new tokens every minute (576 tokens tracked, growth from 424)
+- **Batch website checking**: DexScreener API processes 30 tokens/call (30x faster)
+- **Reality discovered**: Only 1.2% of tokens have websites (mostly pump.fun memecoins)
+- **Smart monitoring**: Time-based re-checking (15min→30min→1h→2h→3h) with auto-pruning
+- **Dashboard enhanced**: Contract address search + "Has Website" filter at localhost:5020
+
+**Infrastructure**: 
+- Edge functions: `token-discovery-rapid`, `token-website-monitor`
+- Database: `token_discovery` table with website/social columns
+- Cron jobs: Every minute discovery + every 10min website monitoring
+
+[Full session →](logs/SESSION-LOG-2025-08-15-TOKEN-DISCOVERY.md)
+
+## 📱 Social Media Filters (August 15, 2025 - Evening)
+
+Implemented multi-select social media filters in the KROM public interface sidebar. Users can now filter tokens based on having Website, Twitter/X, and/or Telegram links.
+
+[Full session →](logs/SESSION-LOG-2025-08.md#august-15-2025---evening---social-media-filters-implementation)
+
+## 🎯 Stage 1 Website Analysis - Production Ready (August 15, 2025 - Evening)
+
+Enhanced Stage 1 triage system with smart loading detection and extraordinary achievements recognition:
+- **Smart loading**: Retries when content < 100 chars, fixes PHI/VIRUS loading screens
+- **Open category**: Captures ANY exceptional signals ($50M revenue, 4M subscribers)
+- **UI improved**: Added "View Analysis Prompt" button with full criteria
+- **95% success rate** on 20-token test batch
+- **Ready for full batch**: ~280 tokens remaining (~$0.84, 70 minutes)
+
+[Implementation details →](logs/SESSION-LOG-2025-08.md#august-15-2025---evening---stage-1-website-analysis-system-improvements)
+
 ## ATH Verifier Optimization (August 14, 2025 - Later Session)
 
 Fixed ATH verifier issues with low liquidity tokens causing excessive notifications:
@@ -552,7 +577,52 @@ Fixed ATH verifier issues with low liquidity tokens causing excessive notificati
 
 [Full session details →](logs/SESSION-LOG-2025-08.md#august-14-2025---ath-verifier-optimization)
 
+## Website Analysis System (August 15-17, 2025)
+
+Successfully built comprehensive Stage 1 website analysis system:
+- **401 projects analyzed** with 21-point scoring across 7 categories
+- **Contract addresses integrated**: 100% coverage with copy functionality
+- **UI available at**: http://localhost:5006 (run `python3 fixed_results_server.py`)
+- [Full documentation →](temp-website-analysis/CLAUDE.md)
+
+## Next Session: CoinAPI.io Research
+
+**Priority**: Explore CoinAPI.io as alternative to GeckoTerminal for token discovery
+- Check if better data quality (fewer memecoins)
+- Verify if includes website/social metadata
+- Compare rate limits and costs
+- Test new token discovery endpoints
+
+**Note**: All token discovery cron jobs currently DISABLED due to API quota limits
+
 ---
-**Last Updated**: August 14, 2025 (Evening)
-**Status**: ✅ CA verification enhanced with manual tracking & liquidity analysis
-**Version**: 11.7.0 - Manual verification & liquidity patterns
+**Last Updated**: August 17, 2025 (Session Wrap - Contract Copy Feature)
+**Status**: ✅ Website analysis complete with contract addresses
+**Version**: 12.3.1 - Added contract address copy functionality
+
+
+## ✅ ATH Verifier Fixed (August 12, 2025)
+
+**Status**: Successfully debugged and deployed ATH verifier
+- Fixed logic to use `Math.max(open, close)` for realistic prices
+- Corrected 18% of tokens (mostly undervalued ATHs)
+- Running every minute, processing 1,170 tokens/hour
+- 95% accuracy confirmed through spot checks
+
+[Full session details →](logs/SESSION-LOG-2025-08.md#august-12-2025-continued---ath-verifier-fix--deployment)
+
+## 🎬 KROM Public Interface Development (August 7, 2025)
+
+Successfully deployed KROM public landing page with TOP EARLY CALLS and RECENT CALLS sections, complete pagination system (20 items/page), comprehensive sorting functionality, and data consistency improvements. Added dark themed dropdown, ATH ROI filtering, and optimized database queries.
+
+**🚧 Next Session**: Ready to implement filters (ROI range slider, networks checkboxes, time period filter, AI score filter)
+
+[Full session details →](logs/SESSION-LOG-2025-08.md#session-krom-public-interface---pagination--sorting---august-7-2025-afternoon)
+
+## 🔍 UI Improvements & Filter Optimization (August 13, 2025 - Evening)
+
+Enhanced public interface with full contract address display, added liquidity column to RECENT CALLS, and implemented 400ms debouncing with request cancellation for all filters to eliminate glitchy behavior.
+
+**Key Achievement**: Smooth, responsive filters with no race conditions
+
+[Full session details →](logs/SESSION-LOG-2025-08.md#august-13-2025-evening---ui-improvements--filter-optimization)

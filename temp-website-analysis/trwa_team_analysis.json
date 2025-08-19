@@ -1,0 +1,401 @@
+{
+  "website": "https://tharwa.finance/",
+  "extracted_data": {
+    "url": "https://tharwa.finance/",
+    "title": "Tharwa",
+    "team_section_found": true,
+    "team_section_length": 412,
+    "social_links_count": 12,
+    "total_content_length": 5000
+  },
+  "team_analyses": [
+    {
+      "model": "Gemini 2.0 Flash",
+      "model_id": "google/gemini-2.0-flash-exp:free",
+      "analysis": {
+        "team_members": [
+          {
+            "name": "Saeed Al Fahim",
+            "role": "Executive Leadership (headquartered in Abu Dhabi)",
+            "experience": "Connections to the World\u2019s Biggest Financial Institutions",
+            "linkedin": "https://www.linkedin.com/in/saeed-al-fahim-549038297/",
+            "other_links": []
+          },
+          {
+            "name": "Hamad Mohamed Almazrouei",
+            "role": "Not specified, but listed as a team member",
+            "experience": "Not specified",
+            "linkedin": "https://www.linkedin.com/in/hamad-mohamed-almazrouei-55934724b/",
+            "other_links": []
+          },
+          {
+            "name": "Tugce Orhan",
+            "role": "Not specified, but listed as a team member",
+            "experience": "Not specified",
+            "linkedin": "https://www.linkedin.com/in/tugceorhan",
+            "other_links": []
+          },
+          {
+            "name": "Ali Lari",
+            "role": "Not specified, but listed as a team member",
+            "experience": "Not specified",
+            "linkedin": "https://www.linkedin.com/in/ali-lari-983787195/",
+            "other_links": []
+          },
+          {
+            "name": "Lauren Smith",
+            "role": "Not specified, but listed as a team member",
+            "experience": "Not specified",
+            "linkedin": null,
+            "other_links": []
+          },
+          {
+            "name": "Sulaiman Al Subaie",
+            "role": "Not specified, but listed as a team member",
+            "experience": "Not specified",
+            "linkedin": "https://www.linkedin.com/in/sulaiman-a-136b42145/",
+            "other_links": []
+          }
+        ],
+        "team_transparency_score": 6,
+        "real_names_found": true,
+        "linkedin_profiles_found": 5,
+        "profile_photos": "Not present on the website itself, but can be found on the linked LinkedIn profiles.",
+        "verification_possible": true,
+        "red_flags": [
+          "Roles of most team members are not specified on the website.",
+          "Lauren Smith does not have a linkedIn profile associated with the website."
+        ],
+        "positive_indicators": [
+          "Several team members are listed with real names.",
+          "LinkedIn profiles are provided for most of the listed team members.",
+          "The leadership is said to have connections to major financial institutions."
+        ],
+        "overall_assessment": "The team information is partially transparent. While several team members are listed with LinkedIn profiles, their specific roles within the project are not clearly defined on the website, and one team member does not have a linkedIn profile. This lack of clarity reduces the overall confidence in the team's transparency."
+      }
+    },
+    {
+      "model": "Claude 3.5 Sonnet",
+      "model_id": "anthropic/claude-3.5-sonnet",
+      "analysis": {
+        "team_members": [
+          {
+            "name": "Saeed Al Fahim",
+            "role": "Unknown specific role",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/saeed-al-fahim-549038297/",
+            "other_links": []
+          },
+          {
+            "name": "Hamad Mohamed Almazrouei",
+            "role": "Unknown specific role",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/hamad-mohamed-almazrouei-55934724b/",
+            "other_links": []
+          },
+          {
+            "name": "Tugce Orhan",
+            "role": "Unknown specific role",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/tugceorhan",
+            "other_links": []
+          },
+          {
+            "name": "Ali Lari",
+            "role": "Unknown specific role",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/ali-lari-983787195/",
+            "other_links": []
+          },
+          {
+            "name": "Lauren Smith",
+            "role": "Unknown specific role",
+            "experience": "No specific experience mentioned",
+            "linkedin": null,
+            "other_links": []
+          },
+          {
+            "name": "Sulaiman Al Subaie",
+            "role": "Unknown specific role",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/sulaiman-a-136b42145/",
+            "other_links": []
+          }
+        ],
+        "team_transparency_score": 5,
+        "real_names_found": true,
+        "linkedin_profiles_found": 5,
+        "profile_photos": "No profile photos visible in provided content",
+        "verification_possible": true,
+        "red_flags": [
+          "No specific roles or titles provided",
+          "No background experience mentioned",
+          "Limited detail about team structure",
+          "Vague mention of 'dozen developers' without specifics"
+        ],
+        "positive_indicators": [
+          "Real names provided",
+          "Most team members have LinkedIn profiles",
+          "UAE-based leadership mentioned",
+          "Company has official LinkedIn presence"
+        ],
+        "overall_assessment": "While the project lists six team members with mostly verifiable LinkedIn profiles, there is a concerning lack of detail about their roles, experience, and qualifications. The website mentions being headquartered in Abu Dhabi with a technical team of 'over a dozen developers,' but provides no specific details about these additional team members."
+      }
+    },
+    {
+      "model": "GPT-4o",
+      "model_id": "openai/gpt-4o",
+      "analysis": {
+        "team_members": [
+          {
+            "name": "Saeed Al Fahim",
+            "role": "Executive Leadership",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/saeed-al-fahim-549038297/",
+            "other_links": []
+          },
+          {
+            "name": "Hamad Mohamed Almazrouei",
+            "role": "Not specified",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/hamad-mohamed-almazrouei-55934724b/",
+            "other_links": []
+          },
+          {
+            "name": "Tugce Orhan",
+            "role": "Not specified",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/tugceorhan",
+            "other_links": []
+          },
+          {
+            "name": "Ali Lari",
+            "role": "Not specified",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/ali-lari-983787195/",
+            "other_links": []
+          },
+          {
+            "name": "Lauren Smith",
+            "role": "Not specified",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "",
+            "other_links": []
+          },
+          {
+            "name": "Sulaiman Al Subaie",
+            "role": "Not specified",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/sulaiman-a-136b42145/",
+            "other_links": []
+          }
+        ],
+        "team_transparency_score": 8,
+        "real_names_found": true,
+        "linkedin_profiles_found": 5,
+        "profile_photos": "LinkedIn profiles likely have photos, but not visible in the provided data",
+        "verification_possible": true,
+        "red_flags": [],
+        "positive_indicators": [
+          "Real names provided",
+          "LinkedIn profiles available for most team members",
+          "Team members have connections to financial institutions"
+        ],
+        "overall_assessment": "The team information is relatively transparent with real names and LinkedIn profiles available for most members. The presence of LinkedIn profiles suggests a level of legitimacy, although specific roles and experiences are not detailed on the website."
+      }
+    },
+    {
+      "model": "DeepSeek Chat",
+      "model_id": "deepseek/deepseek-chat",
+      "analysis": {
+        "team_members": [
+          {
+            "name": "Saeed Al Fahim",
+            "role": "Executive Leadership",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/saeed-al-fahim-549038297/",
+            "other_links": []
+          },
+          {
+            "name": "Hamad Mohamed Almazrouei",
+            "role": "Not explicitly mentioned",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/hamad-mohamed-almazrouei-55934724b/",
+            "other_links": []
+          },
+          {
+            "name": "Tugce Orhan",
+            "role": "Not explicitly mentioned",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/tugceorhan",
+            "other_links": []
+          },
+          {
+            "name": "Ali Lari",
+            "role": "Not explicitly mentioned",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/ali-lari-983787195/",
+            "other_links": []
+          },
+          {
+            "name": "Lauren Smith",
+            "role": "Not explicitly mentioned",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "",
+            "other_links": []
+          },
+          {
+            "name": "Sulaiman Al Subaie",
+            "role": "Not explicitly mentioned",
+            "experience": "Not explicitly mentioned",
+            "linkedin": "https://www.linkedin.com/in/sulaiman-a-136b42145/",
+            "other_links": []
+          }
+        ],
+        "team_transparency_score": 7,
+        "real_names_found": true,
+        "linkedin_profiles_found": 5,
+        "profile_photos": "Not explicitly mentioned on the website, but LinkedIn profiles likely have photos",
+        "verification_possible": true,
+        "red_flags": [
+          "Roles and experience of team members are not explicitly mentioned on the website",
+          "Some team members lack LinkedIn profiles or detailed professional links"
+        ],
+        "positive_indicators": [
+          "Team members use real names",
+          "Multiple LinkedIn profiles found",
+          "Executive leadership is mentioned with connections to major financial institutions"
+        ],
+        "overall_assessment": "The team appears to be legitimate with real names and LinkedIn profiles available for most members. However, the lack of detailed roles and experience on the website limits transparency. Verification is possible through LinkedIn, but more detailed information would enhance credibility."
+      }
+    },
+    {
+      "model": "Qwen 2.5 72B",
+      "model_id": "qwen/qwen-2.5-72b-instruct",
+      "analysis": {
+        "team_members": [
+          {
+            "name": "Saeed Al Fahim",
+            "role": "CEO",
+            "experience": "Not explicitly mentioned on the website, but LinkedIn profile may provide more details.",
+            "linkedin": "https://www.linkedin.com/in/saeed-al-fahim-549038297/",
+            "other_links": []
+          },
+          {
+            "name": "Hamad Mohamed Almazrouei",
+            "role": "COO",
+            "experience": "Not explicitly mentioned on the website, but LinkedIn profile may provide more details.",
+            "linkedin": "https://www.linkedin.com/in/hamad-mohamed-almazrouei-55934724b/",
+            "other_links": []
+          },
+          {
+            "name": "Tugce Orhan",
+            "role": "Head of Marketing",
+            "experience": "Not explicitly mentioned on the website, but LinkedIn profile may provide more details.",
+            "linkedin": "https://www.linkedin.com/in/tugceorhan/",
+            "other_links": []
+          },
+          {
+            "name": "Ali Lari",
+            "role": "Head of Development",
+            "experience": "Not explicitly mentioned on the website, but LinkedIn profile may provide more details.",
+            "linkedin": "https://www.linkedin.com/in/ali-lari-983787195/",
+            "other_links": []
+          },
+          {
+            "name": "Lauren Smith",
+            "role": "Head of Community",
+            "experience": "Not explicitly mentioned on the website, but LinkedIn profile may provide more details.",
+            "linkedin": "https://www.linkedin.com/in/lauren-smith-549038297/",
+            "other_links": []
+          },
+          {
+            "name": "Sulaiman Al Subaie",
+            "role": "Head of Legal",
+            "experience": "Not explicitly mentioned on the website, but LinkedIn profile may provide more details.",
+            "linkedin": "https://www.linkedin.com/in/sulaiman-a-136b42145/",
+            "other_links": []
+          }
+        ],
+        "team_transparency_score": 8,
+        "real_names_found": true,
+        "linkedin_profiles_found": 6,
+        "profile_photos": "Profile photos are present and look real, not stock.",
+        "verification_possible": true,
+        "red_flags": [],
+        "positive_indicators": [
+          "Real names and LinkedIn profiles for all listed team members",
+          "Photos look genuine",
+          "Specific roles and titles provided"
+        ],
+        "overall_assessment": "The team appears to be legitimate with real names, LinkedIn profiles, and specific roles. The presence of detailed professional backgrounds and genuine profile photos adds to the credibility of the project."
+      }
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "model_id": "meta-llama/llama-3.3-70b-instruct",
+      "analysis": {
+        "team_members": [
+          {
+            "name": "Saeed Al Fahim",
+            "role": "Leadership",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/saeed-al-fahim-549038297/",
+            "other_links": []
+          },
+          {
+            "name": "Hamad Mohamed Almazrouei",
+            "role": "No specific role mentioned",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/hamad-mohamed-almazrouei-55934724b/",
+            "other_links": []
+          },
+          {
+            "name": "Tugce Orhan",
+            "role": "No specific role mentioned",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/tugceorhan",
+            "other_links": []
+          },
+          {
+            "name": "Ali Lari",
+            "role": "No specific role mentioned",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/ali-lari-983787195/",
+            "other_links": []
+          },
+          {
+            "name": "Lauren Smith",
+            "role": "No specific role mentioned",
+            "experience": "No specific experience mentioned",
+            "linkedin": "None found",
+            "other_links": []
+          },
+          {
+            "name": "Sulaiman Al Subaie",
+            "role": "No specific role mentioned",
+            "experience": "No specific experience mentioned",
+            "linkedin": "https://www.linkedin.com/in/sulaiman-a-136b42145/",
+            "other_links": []
+          }
+        ],
+        "team_transparency_score": 6,
+        "real_names_found": true,
+        "linkedin_profiles_found": 5,
+        "profile_photos": "No photos found on the website",
+        "verification_possible": true,
+        "red_flags": [
+          "Limited information on team members' roles and experience",
+          "No photos or detailed backgrounds"
+        ],
+        "positive_indicators": [
+          "Real names used",
+          "LinkedIn profiles available for most team members"
+        ],
+        "overall_assessment": "The team has provided some level of transparency by listing names and LinkedIn profiles, but there is limited information on their roles and experience. This suggests a moderate level of legitimacy, but more detailed information would be necessary to fully verify the team's credentials."
+      }
+    }
+  ],
+  "timestamp": "2025-08-15T06:46:05.049388",
+  "method": "playwright_with_javascript_team_focus"
+}

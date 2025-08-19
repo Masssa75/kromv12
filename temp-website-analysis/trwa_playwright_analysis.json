@@ -1,0 +1,229 @@
+{
+  "website": "https://tharwa.finance/",
+  "extracted_data": {
+    "url": "https://tharwa.finance/",
+    "title": "Tharwa",
+    "meta_description": "Where Real-World Assets Meet Blockchain Stability.",
+    "headings": [
+      "H1: The FirstRWA-Collateralized StablecoinBacked By AnAI-Driven RWA Hedge Fund",
+      "H2: Earn Risk-Adjusted Yields from Diversified Real-World Assets Paid Out in an RWA-Backed Stablecoin",
+      "H2: A Comprehensive Product Suite for Every Aspect of Multi-Asset, Diversified Fund Tokenization & RWA-Backed Stablecoin Deployment",
+      "H2: Institutional-Grade Security",
+      "H2: A Leadership Team With Connections to the World\u2019s Biggest Financial Institutions",
+      "H2: Ready to Earn Yields From Diversified, Multi-Asset RWA Funds?",
+      "H3: Tokenizing Multi-Asset RWA Funds",
+      "H3: RWA-Backed Stablecoin",
+      "H3: AI-Based Confluence Engine",
+      "H3: The thUSDStablecoin",
+      "H3: Risk-OnVaults",
+      "H3: UAE-Based Regulatory& Sharia Compliance",
+      "H3: AI-Enabled Hedge FundAuto-Rebalancer",
+      "H3: OTCMarketplace",
+      "H3: Rigorous Smart Contract Audits",
+      "H3: 24/7 Treasury and Peg Monitoring",
+      "H3: Multi-Signature Approvals and Circuit Breakers",
+      "H3: Comprehensive Solvency Audits",
+      "H3: Saeed Al Fahim",
+      "H3: Hamad Mohamed Almazrouei",
+      "H3: Tugce Orhan",
+      "H3: Ali Lari",
+      "H3: Lauren Smith",
+      "H3: Sulaiman Al Subaie"
+    ],
+    "main_content": "How it Works\nHow it Works\nProduct Features\nProduct Features\nSecurity\nSecurity\nAbout\nAbout\nDocumentation\nDocumentation\nLaunch App\nLaunch App\nLaunch App\nHow it Works\nHow it Works\nProduct Features\nProduct Features\nSecurity\nSecurity\nAbout\nAbout\nDocumentation\nDocumentation\nThe First\nRWA-Collateralized Stablecoin\nBacked By An\nAI-Driven RWA Hedge Fund\n\n\nTokenizing diversified multi-asset funds to power RWA-backed stablecoin yields\n\nGet Started\nRead our Documentation\n1\nTokenizing Multi-Asset RWA Funds\n\nBringing diversified, multi-asset funds on-chain into blended vaults to deliver lower risk and higher yields\n\n2\nRWA-Backed Stablecoin\n\nStablecoin backed by diversified tokenized RWA funds provides stable, liquid yields and a more resilient, real world value stablecoin vs existing options\n\n3\nAI-Based Confluence Engine\n\nIntegrates results both AI analysis and CVaR-based quantitative optimization rebalance portfolio strategies and enable dynamic, humanless on-chain adjustments\n\nEarn Risk-Adjusted Yields from Diversified Real-World Assets Paid Out in an RWA-Backed Stablecoin\nTharwa is the first protocol to tokenize diversified funds with a blended, multi-asset backing composed of real estate, gold, private credit and treasury bills. This enables the potential for lower risk, higher yield returns vs single asset funds.\nYields are paid out in a stablecoin backed by these funds, offering a stable, liquid medium that can easily be deployed in DeFi activities and is backed by real-world value instead of algorithms or volatile crypto-collateralzation.\nEarn From 2 Centres of Value\n\nUse thUSD to invest and earn from real-world assets\n\nRepresents value of returns from diversified RWA-backed vaults, to offer stable, liquid, DeFi-ready yields.\n\nEarn From 2\nCentres of Value\n\u2192\n\nTharwa token aligns incentives across all ecosystem stakeholders\n\nValue accrual token offering access to revenue share of Tharwa fees to gain exposure to entire ecosystem vs individual vaults.\n\nA Comprehensive Product Suite for Every Aspect of Multi-Asset, Diversified Fund Tokenization & RWA-Backed Stablecoin Deployment\nThe thUSD\nStablecoin\n\nA multi-chain stablecoin backed by a diversified portfolio of RWAs, including gold, UAE-based real estate, oil, and U.S. Treasury bills. thUSD maintains a 1:1 peg with the U.S. dollar through a structured economic cycle (USD \u2192 thUSD \u2192 RWA investments \u2192 USD \u2192 thUSD), ensuring stability and liquidity.\n\nRisk-On\nVaults\n\nTharwa\u2019s risk-on vaults enable users to deposit stablecoins, including thUSD, and invest in portfolios of diversified, blended RWA funds, receiving receipt tokens that function like discount bonds.\n\nUAE-Based Regulatory\n& Sharia Compliance\n\nBased in the UAE, Tharwa\u2019s structure adheres to national regulations and Sharia law, establishing a unique presence in the blockchain world\u2019s financial hub and enabling investment from capital exclusive to Sharia-compliant tokenized funds.\n\nAI-Enabled Hedge Fund\nAuto-Rebalancer\n\nTharwa integrates institutional-gra",
+    "links": [
+      "TRWA Contract: https://etherscan.io/token/0x7b10d50b5885be4c7985a88408265c109bd1eec8",
+      "thUSD Contract: https://etherscan.io/token/0x76972F054aB43829064d31fF5f3AcC5Fabe57FE8"
+    ],
+    "images": 27,
+    "team_section": "A Leadership Team With Connections to the World\u2019s Biggest Financial Institutions With executive leadership headquartered in Abu Dhabi and supported by a multi-national team, Tharwa is situated at the epicentre of the global RWA tokenization movement. Reporting in to Saeed is a technical team of over a dozen developers, protocol designers, security experts, and business development and marketing professionals.",
+    "roadmap": "",
+    "tokenomics": "",
+    "features": [],
+    "social_links": [
+      "Discord: https://discord.gg/GwwvB3m7",
+      "Linkedin: https://www.linkedin.com/in/tugceorhan",
+      "Linkedin: https://www.linkedin.com/in/ali-lari-983787195/",
+      "Linkedin: https://www.linkedin.com/in/hamad-mohamed-almazrouei-55934724b/",
+      "Linkedin: https://www.linkedin.com/in/sulaiman-a-136b42145/",
+      "Linkedin: https://www.linkedin.com/company/tharwa-uae/",
+      "Github: https://github.com/tharwa-finance",
+      "Linkedin: https://www.linkedin.com/in/saeed-al-fahim-549038297/",
+      "Medium: https://medium.com/@tharwa"
+    ]
+  },
+  "analyses": [
+    {
+      "model": "Gemini 2.0 Flash",
+      "model_id": "google/gemini-2.0-flash-exp:free",
+      "analysis": {
+        "score": 6,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Clear value proposition: RWA-collateralized stablecoin backed by AI-driven hedge fund.",
+          "Identified leadership team with LinkedIn profiles and connections to major financial institutions.",
+          "Etherscan links provided for TRWA and thUSD contracts.",
+          "Multiple social media links provided.",
+          "Mentions of regulatory compliance (UAE-based & Sharia compliance).",
+          "Focus on security with mentions of audits, monitoring, and multi-signature approvals."
+        ],
+        "red_flags": [
+          "No visible roadmap on the landing page.",
+          "No tokenomics information readily available.",
+          "Repetitive 'How it Works', 'Product Features', 'Security', 'About', 'Documentation', 'Launch App' links.",
+          "Lack of detailed information about the AI-based confluence engine and its performance.",
+          "The claim of 'humanless on-chain adjustments' raises questions about governance and risk management."
+        ],
+        "technical_depth": "The documentation quality is not directly assessed from the landing page, but the mention of documentation suggests its existence. The description of the AI engine is high-level and lacks technical specifics.",
+        "team_transparency": "The team is presented with names, titles, and LinkedIn profiles, providing a degree of transparency. However, the depth of experience and specific roles within the project could be further elaborated.",
+        "reasoning": "The project presents a solid concept with a focus on RWA tokenization and a visible team. However, the lack of a roadmap, tokenomics, and detailed technical information prevents a higher score. The project needs to provide more comprehensive information to build greater trust."
+      }
+    },
+    {
+      "model": "Kimi K2",
+      "model_id": "moonshotai/kimi-k2",
+      "analysis": {
+        "score": 7,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Two smart-contract addresses are published and link to Etherscan",
+          "Named executives (Saeed Al Fahim, Hamad Mohamed Almazrouei) with LinkedIn profiles",
+          "UAE-based entity claiming regulatory & Sharia compliance",
+          "GitHub repository exists",
+          "Medium, Discord, LinkedIn social channels provided",
+          "27 images suggest professional design effort"
+        ],
+        "red_flags": [
+          "No roadmap or tokenomics disclosed on the site",
+          "Only two LinkedIn profiles resolve to actual people; the rest are 404 or generic company page",
+          "No audit reports, security vendor names, or certificates shown",
+          "No legal entity name, registration number, or office address listed",
+          "Yield promises (\u201chigher yield, lower risk\u201d) without quantitative backing"
+        ],
+        "technical_depth": "Minimal; documentation link is present but no white-paper, audit reports, or detailed protocol mechanics are surfaced on the landing page.",
+        "team_transparency": "Partial; two executives are named and linked, but broader team details, backgrounds, and company registration are missing.",
+        "reasoning": "The project presents a polished front with real contract addresses and some identifiable leadership, yet critical transparency elements\u2014roadmap, tokenomics, audits, and verifiable legal structure\u2014are absent, keeping it just shy of enterprise-grade."
+      }
+    },
+    {
+      "model": "Claude 3.5 Sonnet",
+      "model_id": "anthropic/claude-3.5-sonnet",
+      "analysis": {
+        "score": 7,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "UAE-based with regulatory compliance focus",
+          "Real team members with LinkedIn profiles",
+          "Smart contract addresses published",
+          "Institutional security measures detailed",
+          "Clear product vision around RWA tokenization",
+          "Professional website design and content",
+          "Active GitHub repository",
+          "Multiple social channels"
+        ],
+        "red_flags": [
+          "No detailed tokenomics section",
+          "No public roadmap",
+          "Limited technical documentation visibility",
+          "Team LinkedIn profiles relatively new"
+        ],
+        "technical_depth": "Moderate - focuses on high-level concepts but includes smart contract addresses and GitHub presence",
+        "team_transparency": "Above average - named team members with professional profiles, UAE-based leadership structure disclosed",
+        "reasoning": "The project demonstrates professional-grade presentation and infrastructure with real team members and regulatory compliance focus. While lacking some deeper technical details and tokenomics transparency, the combination of institutional backing, security measures, and RWA focus suggests legitimate development. The UAE base and regulatory emphasis add credibility but more technical documentation would boost confidence."
+      }
+    },
+    {
+      "model": "GPT-4o",
+      "model_id": "openai/gpt-4o",
+      "analysis": {
+        "score": 7,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Real-world asset backing",
+          "AI-driven hedge fund integration",
+          "Institutional-grade security features",
+          "Leadership team with connections to major financial institutions",
+          "Presence of smart contract audits"
+        ],
+        "red_flags": [
+          "No roadmap found",
+          "No detailed tokenomics provided",
+          "Limited information on regulatory compliance"
+        ],
+        "technical_depth": "The website mentions comprehensive documentation and smart contract audits, indicating a focus on technical robustness, but the actual documentation quality is not assessed here.",
+        "team_transparency": "The team section provides names and LinkedIn profiles for key members, suggesting a reasonable level of transparency.",
+        "reasoning": "Tharwa Finance presents itself as a professional project with a clear vision of integrating real-world assets with blockchain technology. The presence of a leadership team with notable connections and security measures adds credibility. However, the absence of a roadmap and detailed tokenomics limits full transparency."
+      }
+    },
+    {
+      "model": "DeepSeek Chat",
+      "model_id": "deepseek/deepseek-chat",
+      "analysis": {
+        "score": 7,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Professional website design",
+          "Clear product vision with detailed features",
+          "Institutional-grade security measures mentioned",
+          "LinkedIn profiles for team members",
+          "Smart contract audits and GitHub presence",
+          "Active social media links (Discord, LinkedIn, Medium)"
+        ],
+        "red_flags": [
+          "No roadmap provided",
+          "No tokenomics details",
+          "Limited technical documentation beyond basic features"
+        ],
+        "technical_depth": "Moderate - Some technical details provided (AI engine, smart contracts), but lacks deep technical documentation",
+        "team_transparency": "Good - Team members listed with LinkedIn profiles, but no detailed bios or roles",
+        "reasoning": "Tharwa presents a professional and well-structured project with a clear vision and some transparency (team, audits). However, the lack of roadmap and tokenomics details prevents it from reaching ALPHA tier. The project is SOLID but needs more comprehensive documentation to build full trust."
+      }
+    },
+    {
+      "model": "Qwen 2.5 72B",
+      "model_id": "qwen/qwen-2.5-72b-instruct",
+      "analysis": {
+        "score": 7,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Clear and detailed explanation of the project's core features and technology",
+          "Institutional-grade security measures mentioned, including smart contract audits and 24/7 treasury monitoring",
+          "Leadership team with connections to major financial institutions, providing credibility",
+          "Multiple social media links and a Github repository for further verification"
+        ],
+        "red_flags": [
+          "Lack of a detailed roadmap, which could indicate uncertainty about future plans",
+          "No tokenomics section, which is crucial for understanding the economic model and sustainability of the project"
+        ],
+        "technical_depth": "The documentation link is provided, but the quality and depth of the documentation itself are not assessed here. However, the presence of a documentation link is a positive sign.",
+        "team_transparency": "The team section provides LinkedIn profiles and a brief overview of the leadership, which adds to the project's transparency and legitimacy.",
+        "reasoning": "Tharwa presents a professional and well-explained project with a strong focus on security and a credible team. However, the lack of a detailed roadmap and tokenomics section slightly reduces its score, as these elements are critical for long-term investor confidence."
+      }
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "model_id": "meta-llama/llama-3.3-70b-instruct",
+      "analysis": {
+        "score": 7,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Clear and concise product description",
+          "Presence of a leadership team with connections to big financial institutions",
+          "Available documentation and technical details",
+          "Presence of social media links and a GitHub repository",
+          "Verifiable contract addresses on Etherscan"
+        ],
+        "red_flags": [
+          "Lack of a publicly available roadmap",
+          "No detailed tokenomics information",
+          "Some repetition in content and headings"
+        ],
+        "technical_depth": "The documentation quality is good, with clear explanations of the product features and technical details, but could be more comprehensive.",
+        "team_transparency": "The team information is partially transparent, with some team members' LinkedIn profiles available, but more information about the team's experience and expertise would be beneficial.",
+        "reasoning": "The website appears to be a professional project with a clear vision and some transparency, but lacks certain details such as a roadmap and tokenomics, which prevents it from being considered enterprise-grade. The presence of a leadership team and verifiable contract addresses are positive indicators of legitimacy. Overall, the project seems to be in a solid state, but requires more information to be considered highly legitimate."
+      }
+    }
+  ],
+  "timestamp": "2025-08-15T06:27:27.351284",
+  "method": "playwright_with_javascript"
+}

@@ -6,6 +6,20 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
+#### [August 17, 2025 - Contract Address Copy Feature](SESSION-LOG-2025-08-17-CONTRACT-COPY.md) ✅ COMPLETED
+- Added contract address copy functionality to website analysis UI
+- Fixed matching issue: switched from URL to ticker symbol matching
+- Achieved 100% coverage (401/401 tokens with contract addresses)
+- Implemented copy button with visual feedback (green confirmation)
+- Cross-browser compatible with fallback for older browsers
+
+#### [August 16-17, 2025 - Token Discovery Investigation](SESSION-LOG-2025-08-16-TOKEN-WEBSITE-ANALYSIS.md) ✅ COMPLETED
+- Analyzed token discovery pipeline with DexScreener API
+- Found only 1.2% of new tokens have websites (mostly pump.fun memecoins)
+- Implemented smart re-checking intervals (15min→30min→1h→2h→3h)
+- Discovered API quota issues causing website metadata loss
+- Disabled all token discovery cron jobs to preserve quota
+
 #### [August 14, 2025 (Evening) - Manual Verification & Liquidity Analysis](SESSION-LOG-2025-08.md#august-14-2025-afternoonevening---manual-verification--liquidity-analysis) ✅ COMPLETED
 - Added manual verification tracking to CA verifier (✓ correct, ⚠️ wrong)
 - Tested 40 tokens: 95% actual accuracy (vs 65% automated)
@@ -163,6 +177,14 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 - **Ultra-Tracker Fix**: Resolved JWT authentication issue blocking all price updates
 - **16 tokens** marked dead due to low liquidity (SPEED, BOSS, MARU, etc.)
 - **5 edge functions** deployed with critical fixes
+
+#### [August 16-17, 2025 - Token Website Analysis & API Optimization](SESSION-LOG-2025-08-16-TOKEN-WEBSITE-ANALYSIS.md) ✅ COMPLETED
+- **Website Analysis**: Analyzed 159 token websites from discovery system (avg score 5.2/21)
+- **API Crisis**: Hit 80% CoinGecko quota, disabled high-usage functions saving 79,200 calls/day
+- **Key Finding**: Only 0.47% of discovered tokens have websites (173 of 37,106)
+- **Quality Comparison**: KROM curated tokens 39% qualify vs 10.7% for discovered tokens
+- **Infrastructure**: Built viewer at localhost:5007 with contract addresses & DexScreener links
+- **Next Steps**: Explore CoinAPI.io as alternative to GeckoTerminal
 
 ---
 **Note**: Individual session details have been moved to their respective log files to keep this index concise and maintainable.

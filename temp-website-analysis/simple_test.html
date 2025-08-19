@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug UI</title>
+</head>
+<body>
+    <h1>Debug Website Analysis UI</h1>
+    <div id="debug-info"></div>
+    <div id="results"></div>
+    
+    <script>
+        async function loadResults() {
+            const debugInfo = document.getElementById('debug-info');
+            const resultsDiv = document.getElementById('results');
+            
+            try {
+                debugInfo.innerHTML = 'Loading...';
+                const response = await fetch('http://localhost:5005/api/results');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                debugInfo.innerHTML = `
+                    <p>✅ API Response: ${response.status}</p>
+                    <p>Count: ${data.count}</p>
+                    <p>Results length: ${data.results.length}</p>
+                `;
+                
+                if (data.results.length === 0) {
+                    resultsDiv.innerHTML = '<p>No results found</p>';
+                    return;
+                }
+                
+                resultsDiv.innerHTML = data.results.slice(0, 5).map((result, index) => {
+                    const ticker = result.ticker || 'N/A';
+                    const totalScore = result.total_score || 0;
+                    const tier = result.tier || 'LOW';
+                    
+                    return `
+                        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0; cursor: pointer;" onclick="showResult(${index})">
+                            <strong>${ticker}</strong> - ${totalScore}/21 - ${tier}
+                            <br><small>${result.url}</small>
+                        </div>
+                    `;
+                }).join('');
+                
+                // Store results globally for showResult function
+                window.allResults = data.results;
+                
+            } catch (error) {
+                debugInfo.innerHTML = `❌ Error: ${error.message}`;
+                console.error('Error:', error);
+            }
+        }
+        
+        function showResult(index) {
+            const result = window.allResults[index];
+            alert(JSON.stringify(result, null, 2));
+        }
+        
+        // Load on page load
+        loadResults();
+    </script>
+</body>
+</html>

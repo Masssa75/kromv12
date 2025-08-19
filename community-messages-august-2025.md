@@ -111,14 +111,34 @@ I'm swamped the rest of this week, but let me know what day works best for you n
 
 **Status**: Demo sent, positive response received
 
+### 5. Mike (Problematic Investor - $3K)
+**Context**: Small investor who has aggressively pushed for refund despite signed SAFT. Uses any pivot as ammunition for refund requests. Had multiple difficult calls where Marc explained why refunds aren't possible.
+
+**Previous interactions**:
+- June: Pushed hard for refund, claimed no clarity on terms
+- June 23: Scheduled call at 4:30pm
+- July 28: Asked for updates
+- July 30: Marc promised extensive community update in coming days
+
+**Message sent (August 15, 2025)**:
+```
+Hi Mike,
+
+The best update I can give you is in the AI coding demo I've recently put together and shared with select investors: https://drive.google.com/file/d/1qHrdj4pB2kADMDpfCNNl_TBuTiFeuPec/view?usp=sharing
+
+In the last 6 months, AI's coding capabilities have skyrocketed. I firmly believe that any project that doesn't fully master this technology will have no chance to compete. That's why I've been completely immersed in this revolution to ensure we're at the absolute forefront. The video demonstrates what's now possible with the right experience, tools, workflow, and creativity. There are also some significant breakthroughs on the horizon that I'll be able to share soon.
+```
+
+**Strategy**: Keep it brief, focus on existential shift (not cost/speed benefits), don't mention specific projects to avoid "pivot" arguments, position adaptation as survival necessity
+
 ## Upcoming Messages
 
-### 5. Larger Investors
+### 6. Larger Investors
 **Status**: Pending
 **Notes**: Will need more formal approach, focus on ROI potential and market opportunity
 
-### 6. General Community Update (Crowd/Cyrator Telegram)
-**Status**: Scheduled for tomorrow
+### 7. General Community Update (Crowd/Cyrator Telegram)
+**Status**: Scheduled for tomorrow (August 16, 2025)
 **Key Points to Cover**:
 - Acknowledge long silence
 - Explain AI coding revolution and why it changes everything
@@ -141,3 +161,14 @@ I'm swamped the rest of this week, but let me know what day works best for you n
 - Focus on action over promises
 - Emphasize continuity of vision (finding quality) not abandonment
 - Let people watch demo before deeper discussions
+
+## Session Status (August 15, 2025)
+**Messages Completed Today**:
+- ✅ Amir - Sent update about KROM development
+- ✅ PoNW - Proposed livestream demo plan
+- ✅ Daniil - To be sent (demo + call scheduling)
+- ✅ Mike - Sent carefully crafted update avoiding refund triggers
+
+**Ready for Next Session**:
+- General community update (Crowd/Cyrator Telegram) - scheduled for tomorrow
+- Larger investors - pending strategy discussion

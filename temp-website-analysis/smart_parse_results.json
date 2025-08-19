@@ -1,0 +1,61 @@
+{
+  "website": "https://tharwa.finance/",
+  "site_structure": {
+    "is_single_page": false,
+    "documents": [
+      {
+        "url": "https://tharwa.gitbook.io/tharwa",
+        "text": "Documentation\nDocumentation",
+        "type": "gitbook"
+      },
+      {
+        "url": "https://tharwa.gitbook.io/tharwa",
+        "text": "Documentation\nDocumentation",
+        "type": "gitbook"
+      },
+      {
+        "url": "https://tharwa.gitbook.io/tharwa",
+        "text": "Read our Documentation",
+        "type": "gitbook"
+      },
+      {
+        "url": "https://tharwa.gitbook.io/tharwa",
+        "text": "Documentation",
+        "type": "gitbook"
+      },
+      {
+        "url": "https://github.com/tharwa-finance",
+        "text": "GitHub",
+        "type": "github"
+      },
+      {
+        "url": "https://github.com/tharwa-finance",
+        "text": "Document",
+        "type": "github"
+      }
+    ],
+    "sections": []
+  },
+  "ai_analysis": {
+    "team_members_found": [
+      "Al Fahim (CEO, partial name only)",
+      "Unnamed Strategic Communications Advisor"
+    ],
+    "documents_importance": "Critical - GitBook documentation and GitHub repository should be reviewed for technical details and implementation specifics",
+    "site_depth": "comprehensive multi-page",
+    "missing_critical_info": [
+      "Full team member identities and backgrounds",
+      "Token economics details",
+      "Smart contract addresses",
+      "Audit reports",
+      "Regulatory licenses/compliance proof",
+      "Specific RWA fund composition details",
+      "Timeline/roadmap",
+      "Partners/integrations",
+      "Actual AUM or TVL metrics"
+    ],
+    "legitimacy_score": 5,
+    "recommendation": "Parse GitBook documentation and GitHub repository to verify technical implementation details and assess development activity. Research UAE business registration and regulatory compliance claims."
+  },
+  "timestamp": "2025-08-15T06:54:19.789505"
+}

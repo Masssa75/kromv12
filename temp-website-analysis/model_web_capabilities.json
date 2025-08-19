@@ -1,0 +1,317 @@
+[
+  {
+    "provider": "01.AI \ud83c\udde8\ud83c\uddf3",
+    "model": "Yi Large",
+    "model_id": "01-ai/yi-large",
+    "capability": "\u26a0\ufe0f NOT FOUND",
+    "response": "Model not available"
+  },
+  {
+    "provider": "01.AI \ud83c\udde8\ud83c\uddf3",
+    "model": "Yi Large Turbo",
+    "model_id": "01-ai/yi-large-turbo",
+    "capability": "\u26a0\ufe0f NOT FOUND",
+    "response": "Model not available"
+  },
+  {
+    "provider": "01.AI \ud83c\udde8\ud83c\uddf3",
+    "model": "Yi Vision",
+    "model_id": "01-ai/yi-vision",
+    "capability": "\u26a0\ufe0f NOT FOUND",
+    "response": "Model not available"
+  },
+  {
+    "provider": "AI21",
+    "model": "Jamba 1.5 Large",
+    "model_id": "ai21/jamba-1.5-large",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Alibaba \ud83c\udde8\ud83c\uddf3",
+    "model": "Qwen 2.5 72B",
+    "model_id": "qwen/qwen-2.5-72b-instruct",
+    "capability": "\u274c NO",
+    "response": "1. no\n2. cannot access\n\ni can't browse the internet or access external websites ..."
+  },
+  {
+    "provider": "Alibaba \ud83c\udde8\ud83c\uddf3",
+    "model": "Qwen 2.5 32B",
+    "model_id": "qwen/qwen-2.5-32b-instruct",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Alibaba \ud83c\udde8\ud83c\uddf3",
+    "model": "Qwen 2.5 14B",
+    "model_id": "qwen/qwen-2.5-14b-instruct",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Alibaba \ud83c\udde8\ud83c\uddf3",
+    "model": "Qwen 2.5 7B",
+    "model_id": "qwen/qwen-2.5-7b-instruct",
+    "capability": "\u274c NO",
+    "response": "1. no\n2. cannot access"
+  },
+  {
+    "provider": "Alibaba \ud83c\udde8\ud83c\uddf3",
+    "model": "Qwen 2 VL 72B (Vision)",
+    "model_id": "qwen/qwen-2-vl-72b-instruct",
+    "capability": "\u274c NO",
+    "response": "1. no\n2. cannot access\n\nas an ai, i don't have the capability to browse the inte..."
+  },
+  {
+    "provider": "Anthropic",
+    "model": "Claude 3.5 Sonnet",
+    "model_id": "anthropic/claude-3.5-sonnet",
+    "capability": "\u274c NO",
+    "response": "1. no, i cannot directly access or visit websites in real-time.\n2. cannot access..."
+  },
+  {
+    "provider": "Anthropic",
+    "model": "Claude 3.5 Haiku",
+    "model_id": "anthropic/claude-3.5-haiku",
+    "capability": "\u274c NO",
+    "response": "1. no, i cannot directly visit or access websites in real-time. i can only analy..."
+  },
+  {
+    "provider": "Anthropic",
+    "model": "Claude 3 Opus",
+    "model_id": "anthropic/claude-3-opus",
+    "capability": "\u274c NO",
+    "response": "1. no\n2. cannot access\n\nas an ai language model, i do not have the ability to br..."
+  },
+  {
+    "provider": "Cohere",
+    "model": "Command R Plus",
+    "model_id": "cohere/command-r-plus",
+    "capability": "\ud83e\udd14 UNCLEAR",
+    "response": "1. yes, i can access websites to a limited extent.\n\n2. this is a sample website ..."
+  },
+  {
+    "provider": "Cohere",
+    "model": "Command R",
+    "model_id": "cohere/command-r",
+    "capability": "\u2705 YES",
+    "response": "1. yes, i can access websites.\n2. the url provided leads to the homepage of an i..."
+  },
+  {
+    "provider": "DeepSeek \ud83c\udde8\ud83c\uddf3",
+    "model": "DeepSeek Chat",
+    "model_id": "deepseek/deepseek-chat",
+    "capability": "\u274c NO",
+    "response": "1. no  \n2. cannot access  \n\n(i can't browse the internet or access live websites..."
+  },
+  {
+    "provider": "DeepSeek \ud83c\udde8\ud83c\uddf3",
+    "model": "DeepSeek R1",
+    "model_id": "deepseek/deepseek-r1",
+    "capability": "\ud83e\udd14 UNCLEAR",
+    "response": ""
+  },
+  {
+    "provider": "DeepSeek \ud83c\udde8\ud83c\uddf3",
+    "model": "DeepSeek V3",
+    "model_id": "deepseek/deepseek-v3",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "DeepSeek \ud83c\udde8\ud83c\uddf3",
+    "model": "DeepSeek Reasoner",
+    "model_id": "deepseek/deepseek-reasoner",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Google",
+    "model": "Gemini 2.0 Flash",
+    "model_id": "google/gemini-2.0-flash-exp:free",
+    "capability": "\u2705 YES",
+    "response": "1. yes\n2. this is an example domain. this domain is for use in illustrative exam..."
+  },
+  {
+    "provider": "Google",
+    "model": "Gemini 2.0 Flash Thinking",
+    "model_id": "google/gemini-2.0-flash-thinking-exp:free",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Google",
+    "model": "Gemini Pro 1.5",
+    "model_id": "google/gemini-pro-1.5",
+    "capability": "\u2705 YES",
+    "response": "1. yes\n2. i see the title \"example domain\".  the page displays a placeholder web..."
+  },
+  {
+    "provider": "Google",
+    "model": "Gemini Flash 1.5",
+    "model_id": "google/gemini-flash-1.5",
+    "capability": "\u2705 YES",
+    "response": "1. yes\n2. the page is a simple example domain, displaying text stating \"example ..."
+  },
+  {
+    "provider": "Google",
+    "model": "Gemini Flash 1.5 8B",
+    "model_id": "google/gemini-flash-1.5-8b",
+    "capability": "\u274c NO",
+    "response": "1. yes\n\n\n2. cannot access.  the website example.com is not a valid or accessible..."
+  },
+  {
+    "provider": "Meta",
+    "model": "Llama 3.3 70B",
+    "model_id": "meta-llama/llama-3.3-70b-instruct",
+    "capability": "\u274c NO",
+    "response": "1. no\n2. cannot access"
+  },
+  {
+    "provider": "Meta",
+    "model": "Llama 3.2 90B Vision",
+    "model_id": "meta-llama/llama-3.2-90b-vision-instruct",
+    "capability": "\u274c NO",
+    "response": "here's my analysis:\n\n1. no, i'm a large language model, i don't have the capabil..."
+  },
+  {
+    "provider": "Meta",
+    "model": "Llama 3.1 405B",
+    "model_id": "meta-llama/llama-3.1-405b-instruct",
+    "capability": "\u274c NO",
+    "response": "here is my response:\n\n1. no\n2. cannot access\n\nas a text-based ai model, i don't ..."
+  },
+  {
+    "provider": "MiniMax \ud83c\udde8\ud83c\uddf3",
+    "model": "MiniMax-01",
+    "model_id": "minimax/minimax-01",
+    "capability": "\u274c NO",
+    "response": "1. no.\n2. cannot access.\n\nas an ai, i cannot browse the internet or access exter..."
+  },
+  {
+    "provider": "Mistral AI",
+    "model": "Mistral Large",
+    "model_id": "mistralai/mistral-large",
+    "capability": "\u274c NO",
+    "response": "1. no\n2. cannot access"
+  },
+  {
+    "provider": "Mistral AI",
+    "model": "Mixtral 8x22B",
+    "model_id": "mistralai/mixtral-8x22b-instruct",
+    "capability": "\u274c NO",
+    "response": " 1. no, i cannot access websites as i don't have the capability to browse the in..."
+  },
+  {
+    "provider": "Mistral AI",
+    "model": "Codestral",
+    "model_id": "mistralai/codestral",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Moonshot AI \ud83c\udde8\ud83c\uddf3",
+    "model": "Kimi K2",
+    "model_id": "moonshotai/kimi-k2",
+    "capability": "\u274c NO",
+    "response": "1. no\n2. cannot access"
+  },
+  {
+    "provider": "Moonshot AI \ud83c\udde8\ud83c\uddf3",
+    "model": "Kimi K1.5",
+    "model_id": "moonshotai/kimi-k1.5",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Nous Research",
+    "model": "Hermes 3 405B",
+    "model_id": "nousresearch/hermes-3-llama-3.1-405b",
+    "capability": "\u274c NO",
+    "response": "1. no, i cannot directly access websites.\n\n2. cannot access"
+  },
+  {
+    "provider": "OpenAI",
+    "model": "GPT-4o",
+    "model_id": "openai/gpt-4o",
+    "capability": "\u274c NO",
+    "response": "1. no  \n2. cannot access"
+  },
+  {
+    "provider": "OpenAI",
+    "model": "GPT-4o Mini",
+    "model_id": "openai/gpt-4o-mini",
+    "capability": "\u274c NO",
+    "response": "1. no  \n2. cannot access"
+  },
+  {
+    "provider": "OpenAI",
+    "model": "GPT-4 Turbo",
+    "model_id": "openai/gpt-4-turbo",
+    "capability": "\u274c NO",
+    "response": "1. can you access websites? no\n2. what do you see on the page? cannot access\n\nas..."
+  },
+  {
+    "provider": "OpenAI",
+    "model": "O1 Preview",
+    "model_id": "openai/o1-preview",
+    "capability": "\u26a0\ufe0f NOT FOUND",
+    "response": "Model not available"
+  },
+  {
+    "provider": "OpenAI",
+    "model": "O1 Mini",
+    "model_id": "openai/o1-mini",
+    "capability": "\u274c NO",
+    "response": "1. no\n2. cannot access"
+  },
+  {
+    "provider": "Perplexity",
+    "model": "Perplexity Sonar Large",
+    "model_id": "perplexity/llama-3.1-sonar-large-128k-online",
+    "capability": "\u26a0\ufe0f NOT FOUND",
+    "response": "Model not available"
+  },
+  {
+    "provider": "Perplexity",
+    "model": "Perplexity Sonar Small",
+    "model_id": "perplexity/llama-3.1-sonar-small-128k-online",
+    "capability": "\u26a0\ufe0f NOT FOUND",
+    "response": "Model not available"
+  },
+  {
+    "provider": "Stepfun \ud83c\udde8\ud83c\uddf3",
+    "model": "Step 2 16K",
+    "model_id": "stepfun/step-2-16k",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Zhipu AI \ud83c\udde8\ud83c\uddf3",
+    "model": "GLM-4 Plus",
+    "model_id": "zhipuai/glm-4-plus",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "Zhipu AI \ud83c\udde8\ud83c\uddf3",
+    "model": "GLM-4 Flash",
+    "model_id": "zhipuai/glm-4-flash",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  },
+  {
+    "provider": "xAI",
+    "model": "Grok 2",
+    "model_id": "x-ai/grok-2",
+    "capability": "\u26a0\ufe0f NOT FOUND",
+    "response": "Model not available"
+  },
+  {
+    "provider": "xAI",
+    "model": "Grok 2 Vision",
+    "model_id": "x-ai/grok-2-vision",
+    "capability": "\u26a0\ufe0f ERROR",
+    "response": "API 400"
+  }
+]

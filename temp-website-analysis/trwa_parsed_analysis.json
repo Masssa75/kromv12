@@ -1,0 +1,216 @@
+{
+  "website": "https://tharwa.finance/",
+  "extracted_data": {
+    "url": "https://tharwa.finance/",
+    "title": "Tharwa",
+    "meta_description": "Where Real-World Assets Meet Blockchain Stability.",
+    "headings": [
+      "H1: The FirstRWA-Collateralized StablecoinBacked By AnAI-Driven RWA Hedge Fund",
+      "H2: Earn Risk-Adjusted Yields from Diversified Real-World Assets Paid Out in an RWA-Backed Stablecoin",
+      "H2: A Comprehensive Product Suite for Every Aspect of Multi-Asset, Diversified Fund Tokenization & RWA-Backed Stablecoin Deployment",
+      "H2: Institutional-Grade Security",
+      "H2: A Leadership Team With Connections to the World\u2019s Biggest Financial Institutions",
+      "H2: Ready to Earn Yields From Diversified, Multi-Asset RWA Funds?",
+      "H3: Tokenizing Multi-Asset RWA Funds",
+      "H3: RWA-Backed Stablecoin",
+      "H3: AI-Based Confluence Engine",
+      "H3: The thUSDStablecoin",
+      "H3: Risk-OnVaults",
+      "H3: UAE-Based Regulatory& Sharia Compliance",
+      "H3: AI-Enabled Hedge FundAuto-Rebalancer",
+      "H3: OTCMarketplace",
+      "H3: Rigorous Smart Contract Audits",
+      "H3: 24/7 Treasury and Peg Monitoring",
+      "H3: Multi-Signature Approvals and Circuit Breakers",
+      "H3: Comprehensive Solvency Audits",
+      "H3: Saeed Al Fahim",
+      "H3: Hamad Mohamed Almazrouei",
+      "H3: Tugce Orhan",
+      "H3: Ali Lari",
+      "H3: Lauren Smith",
+      "H3: Sulaiman Al Subaie"
+    ],
+    "main_content": "Tokenizing diversified multi-asset funds to power RWA-backed stablecoin yields\nBringing diversified, multi-asset funds on-chain into blended vaults to deliver lower risk and higher yields\nStablecoin backed by diversified tokenized RWA funds provides stable, liquid yields and a more resilient, real world value stablecoin vs existing options\nIntegrates results both AI analysis and CVaR-based quantitative optimization rebalance portfolio strategies and enable dynamic, humanless on-chain adjustments\nUse thUSD to invest and earn from real-world assets\nRepresents value of returns from diversified RWA-backed vaults, to offer stable, liquid, DeFi-ready yields.\nTharwa token aligns incentives across all ecosystem stakeholders\nValue accrual token offering access to revenue share of Tharwa fees to gain exposure to entire ecosystem vs individual vaults.\nA multi-chain stablecoin backed by a diversified portfolio of RWAs, including gold, UAE-based real estate, oil, and U.S. Treasury bills. thUSD maintains a 1:1 peg with the U.S. dollar through a structured economic cycle (USD \u2192 thUSD \u2192 RWA investments \u2192 USD \u2192 thUSD), ensuring stability and liquidity.\nTharwa\u2019s risk-on vaults enable users to deposit stablecoins, including thUSD, and invest in portfolios of diversified, blended RWA funds, receiving receipt tokens that function like discount bonds.",
+    "links": [
+      "X/Twitter: https://x.com/TharwaUAE",
+      "GitHub: https://github.com/tharwa-finance"
+    ],
+    "images": 27,
+    "team_section": "",
+    "roadmap": "",
+    "tokenomics": "",
+    "features": []
+  },
+  "analyses": [
+    {
+      "model": "Gemini 2.0 Flash",
+      "model_id": "google/gemini-2.0-flash-exp:free",
+      "analysis": {
+        "score": 4,
+        "tier": "BASIC",
+        "legitimacy_indicators": [
+          "Focus on RWA (Real World Assets) which is a current trend.",
+          "Mention of UAE-based regulatory compliance.",
+          "GitHub link provided.",
+          "Mention of smart contract audits."
+        ],
+        "red_flags": [
+          "No team information provided on the website.",
+          "No roadmap available.",
+          "No tokenomics information provided.",
+          "Vague language regarding the AI-driven hedge fund and its performance.",
+          "Reliance on buzzwords like 'AI-driven' and 'humanless' without concrete details.",
+          "Lack of verifiable backing or partnerships.",
+          "The economic cycle description (USD \u2192 thUSD \u2192 RWA investments \u2192 USD \u2192 thUSD) is overly simplistic and doesn't address potential risks or complexities."
+        ],
+        "technical_depth": "The GitHub link suggests some technical development, but without examining the repository, the depth is unknown. The description of the AI-based engine lacks specific details, making it difficult to assess its technical sophistication.",
+        "team_transparency": "The complete absence of team information is a major red flag. Knowing the team's experience and background is crucial for assessing the project's credibility.",
+        "reasoning": "The project presents a basic concept with some positive indicators like RWA focus and regulatory awareness. However, the lack of team information, roadmap, tokenomics, and detailed technical explanations raises significant concerns about its legitimacy and transparency, placing it in the 'BASIC' tier."
+      }
+    },
+    {
+      "model": "Kimi K2",
+      "model_id": "moonshotai/kimi-k2",
+      "analysis": {
+        "score": 4,
+        "tier": "BASIC",
+        "legitimacy_indicators": [
+          "Claims UAE-based regulatory and Sharia compliance",
+          "GitHub repository exists",
+          "Active X/Twitter presence",
+          "Mentions smart contract audits",
+          "Clear product concept (RWA-backed stablecoin + vaults)"
+        ],
+        "red_flags": [
+          "No team information or leadership details provided",
+          "No roadmap or timeline",
+          "No tokenomics or economic model disclosed",
+          "Heavy buzzword usage (AI-driven, institutional-grade) without substantiation",
+          "No verifiable partnerships or backing mentioned",
+          "Missing whitepaper or technical documentation"
+        ],
+        "technical_depth": "Surface-level descriptions only - mentions AI analysis and CVaR optimization but provides no technical details, architecture diagrams, or implementation specifics",
+        "team_transparency": "Completely opaque - zero team members, advisors, or institutional connections disclosed despite claiming 'connections to world's biggest financial institutions'",
+        "reasoning": "While the project presents a coherent DeFi narrative around RWA tokenization, the complete absence of team transparency, technical documentation, and verifiable backing prevents any higher rating. The GitHub and social media presence provide minimal legitimacy, but without substance to support the ambitious claims, it remains at basic level."
+      }
+    },
+    {
+      "model": "Claude 3.5 Sonnet",
+      "model_id": "anthropic/claude-3.5-sonnet",
+      "analysis": {
+        "score": 6,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Clear product vision around RWA-backed stablecoin",
+          "Detailed technical infrastructure explanation",
+          "UAE regulatory compliance mentioned",
+          "Professional website design",
+          "GitHub presence",
+          "Focus on institutional-grade security",
+          "Smart contract audit commitment"
+        ],
+        "red_flags": [
+          "No visible team information",
+          "Missing roadmap",
+          "No tokenomics details",
+          "Limited social media presence",
+          "Complex financial products without detailed risk disclosure"
+        ],
+        "technical_depth": "Moderate - explains core concepts and infrastructure but lacks detailed technical documentation",
+        "team_transparency": "Poor - no team information provided despite claiming institutional connections",
+        "reasoning": "The project demonstrates professional-grade presentation and a clear vision for RWA-backed DeFi products with regulatory compliance. However, the lack of team transparency and important project details (tokenomics, roadmap) prevents a higher score. The focus on institutional partnerships without verifiable team credentials raises some concerns."
+      }
+    },
+    {
+      "model": "GPT-4o",
+      "model_id": "openai/gpt-4o",
+      "analysis": {
+        "score": 5,
+        "tier": "BASIC",
+        "legitimacy_indicators": [
+          "Integration of AI and quantitative optimization",
+          "Focus on real-world asset-backed stablecoin",
+          "Presence of institutional-grade security"
+        ],
+        "red_flags": [
+          "No team section found",
+          "No roadmap provided",
+          "Lack of detailed tokenomics"
+        ],
+        "technical_depth": "The documentation provides a basic overview of the project's features and mechanisms, but lacks detailed technical explanations and whitepapers.",
+        "team_transparency": "There is no information about the team, which raises concerns about transparency and accountability.",
+        "reasoning": "The project presents an interesting concept of RWA-backed stablecoins with AI integration, but the lack of team information, roadmap, and detailed tokenomics limits its credibility. The website provides a functional overview but lacks depth in critical areas."
+      }
+    },
+    {
+      "model": "DeepSeek Chat",
+      "model_id": "deepseek/deepseek-chat",
+      "analysis": {
+        "score": 6,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Professional website with clear vision",
+          "Detailed product descriptions and use cases",
+          "Active GitHub repository",
+          "Multiple H2/H3 headings explaining features",
+          "Focus on institutional-grade security and compliance"
+        ],
+        "red_flags": [
+          "No team section (lack of transparency)",
+          "No roadmap (unclear future plans)",
+          "No tokenomics (lack of economic details)"
+        ],
+        "technical_depth": "Moderate - GitHub presence but unclear depth of audits or AI integration",
+        "team_transparency": "Low - No team information provided",
+        "reasoning": "The project presents a professional vision with detailed product offerings and compliance focus, but lacks critical transparency elements (team, roadmap, tokenomics), preventing a higher score."
+      }
+    },
+    {
+      "model": "Qwen 2.5 72B",
+      "model_id": "qwen/qwen-2.5-72b-instruct",
+      "analysis": {
+        "score": 6,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Clear and detailed project vision",
+          "Institutional-grade security claims",
+          "AI-driven RWA hedge fund",
+          "Multi-chain stablecoin backed by diversified RWAs",
+          "Rigorous smart contract audits"
+        ],
+        "red_flags": [
+          "No team section",
+          "No roadmap",
+          "No tokenomics section"
+        ],
+        "technical_depth": "The website provides a good level of technical detail, explaining the AI-based confluence engine, the thUSD stablecoin, and the risk-on vaults. However, the lack of a tokenomics section and a roadmap is a significant gap.",
+        "team_transparency": "The website lacks a team section, which reduces transparency and makes it difficult to verify the credentials and experience of the project leaders.",
+        "reasoning": "The project has a clear and detailed vision with strong technical components, but the lack of team information, tokenomics, and a roadmap raises concerns about transparency and long-term planning."
+      }
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "model_id": "meta-llama/llama-3.3-70b-instruct",
+      "analysis": {
+        "score": 6,
+        "tier": "SOLID",
+        "legitimacy_indicators": [
+          "Clear project vision",
+          "Institutional-grade security claims",
+          "Presence of GitHub repository",
+          "Specific details on stablecoin and investment mechanisms"
+        ],
+        "red_flags": [
+          "No team section",
+          "No roadmap",
+          "No tokenomics",
+          "Overly promotional tone"
+        ],
+        "technical_depth": "Moderate, with some technical details provided but lacking comprehensive documentation",
+        "team_transparency": "Low, due to the absence of a team section",
+        "reasoning": "The website presents a clear and professional project vision, with some technical details and a GitHub repository, indicating a moderate level of legitimacy. However, the lack of a team section, roadmap, and tokenomics, along with an overly promotional tone, prevents it from being considered an enterprise-grade project. Overall, it appears to be a solid project with some substance, but requiring more transparency and documentation to establish trust."
+      }
+    }
+  ],
+  "timestamp": "2025-08-15T06:12:31.123140"
+}

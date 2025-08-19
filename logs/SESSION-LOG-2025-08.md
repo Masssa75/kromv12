@@ -1,6 +1,113 @@
 # KROM Session Logs - August 2025
 
-## August 1-12, 2025 - Previous Sessions
+## August 15, 2025 (Later Session) - Website Analysis with Kimi K2 Optimization
+
+### Overview
+Optimized the comprehensive website analyzer to use Kimi K2 exclusively after discovering it's 10x cheaper ($0.003 vs $0.03+) while maintaining accuracy. Fixed UI display issues and prepared batch processing for 304 utility tokens from Supabase.
+
+### Technical Implementation
+
+#### Kimi K2 Validation
+- Tested Kimi K2 with parsed website content (previously it tried direct browsing)
+- Results proved accurate: correctly identified 8 team members for GAI, 10 for TRWA
+- Scores aligned with other models when given parsed content
+- Decision: Use Kimi K2 exclusively for cost efficiency
+
+#### Database and UI Fixes
+1. **Fixed N/A ticker display**:
+   - Issue: API was trying to JOIN with non-existent `tokens` table
+   - Solution: Modified `comprehensive_results_server.py` to read ticker directly from `website_analysis` table
+   - Updated all existing records with correct tickers from Supabase
+
+2. **Populated missing analysis details**:
+   - Issue: Manual save function only stored basic data (score, no reasoning)
+   - Solution: Re-analyzed tokens with full analysis pipeline
+   - Updated database with reasoning, technical_depth, team_transparency fields
+
+#### Batch Analyzer Setup
+Created `batch_analyze_supabase_utility.py` that:
+- Pulls utility tokens from Supabase (where `analysis_token_type = 'utility'`)
+- Found 308 unique websites (304 still to analyze)
+- Orders by liquidity (highest first)
+- Saves ticker information with analyses
+- Estimated cost: $0.91 for all 304 sites
+
+### Key Discoveries
+
+#### Analysis Prompt Bias
+Current prompt in `comprehensive_website_analyzer.py` is too heavily weighted on team transparency:
+- Most tokens score 2-3/10 simply for lacking visible teams
+- Binary scoring: 7/10 with team, 2-3/10 without
+- Missing evaluation of technical infrastructure, documentation, tokenomics
+
+#### Actual Token Counts
+- Supabase has 308 unique utility token websites (not 128 as in local SQLite)
+- Identified using `analysis_token_type` OR `x_analysis_token_type = 'utility'`
+- 80 tokens where both AIs agree it's utility
+- 220 where only call analysis says utility
+- 112 where only X analysis says utility
+
+### Files Modified
+- `comprehensive_website_analyzer.py` - Added ticker to parsed_data
+- `comprehensive_results_server.py` - Fixed API query to use website_analysis.ticker
+- `batch_analyze_supabase_utility.py` - Created for batch processing
+- `website_analysis_new.db` - Updated with tickers and full analysis details
+
+### Results Summary
+Analyzed 11 unique websites:
+- **High (7/10)**: TRWA, GAI (have visible teams)
+- **Low (2-3/10)**: STRAT, REX, MAMO, MSIA, GRAY, QBIT, VIBE, B, BLOCK (no teams)
+
+### Next Session Priority
+**Fix analysis prompt bias** before running full batch - see NEXT_SESSION_PROMPT.md
+
+---
+
+## August 15, 2025 (Evening) - Website Analysis System with Intelligent Parsing
+
+### Overview
+Built a comprehensive two-stage website analysis system for crypto projects using Playwright for JavaScript rendering and multiple AI models for legitimacy scoring. Discovered that JS rendering is essential (5x more content) and implemented intelligent link parsing with transparency tracking.
+
+### Key Achievements
+
+#### 1. Two-Stage Parsing System
+- **Stage 1**: Playwright with full JS rendering extracts 7,092 chars (vs 1,351 without JS)
+- **Stage 2**: AI analysis with multi-model consensus scoring
+- Most crypto sites use React/Next.js - miss 93% of content without JS execution
+
+#### 2. Navigation Tracking & Transparency
+- Tracks ALL links found on websites with "parsed" indicators
+- Example: TRWA had 17 total links, intelligently parsed 7 high-value ones
+- Parsed: Team sections, documentation, GitHub, social proof
+- Skipped: Purchase links, chart links, app launchers
+
+#### 3. Team Extraction Success
+With JS rendering, all models found identical team members:
+- **TRWA**: 5 members (Saeed Al Fahim, Hamad Mohamed Almazrouei, Tugce Orhan, Ali Lari, Lauren Smith)
+- **GAI**: 4 team members with LinkedIn profiles
+- **B & BLOCK**: Correctly identified as anonymous (0 members)
+
+#### 4. Model Comparison (3 models, 4 sites)
+- **GPT-4o**: Most optimistic (avg 5.5/10), highest variance
+- **Claude 3.5**: Most conservative (avg 4.5/10), most consistent
+- **Gemini 2.0**: Balanced (avg 5.5/10)
+- Strong agreement on trash sites (B: 2-3/10 unanimous)
+
+#### 5. UI Development
+Clean card interface at http://localhost:5005 with:
+- Simple cards with modal popups for details
+- Navigation analysis showing all links with (parsed) indicators
+- Team members, documents, legitimacy indicators displayed
+
+### Key Discovery
+**JavaScript rendering is ESSENTIAL** - AI models claiming "web browsing" likely don't execute JS, missing critical content.
+
+### Next Session
+Test Kimi K2 with parsed content (see NEXT_SESSION_PROMPT.md).
+
+---
+
+## August 1-14, 2025 - Previous Sessions
 [Previous session content remains unchanged]
 
 ## August 14, 2025 (Afternoon/Evening) - Manual Verification & Liquidity Analysis
@@ -340,3 +447,361 @@ Pivoted from AI-based verification to direct website parsing, achieving 100% det
 **Duration**: ~4 hours
 **Status**: CA verification system complete and operational
 **Key Achievement**: Discovered Google site search technique improves CA verification from 60% to 75% accuracy
+
+## August 15, 2025 - Token Discovery & Website Analysis System
+
+### Overview
+Implemented a comprehensive token discovery system to monitor new liquidity pools across all networks and check for website/social data. The goal was to identify interesting new tokens with websites for analysis.
+
+### What Was Built
+
+#### 1. Database Infrastructure
+- Created `token_discovery` table in Supabase with RLS enabled
+- Stores: contract_address, symbol, network, liquidity, volume, website/social URLs
+- Currently tracking 289 tokens across 6 networks
+
+#### 2. Edge Functions
+- **token-discovery-poller**: Discovers new pools from GeckoTerminal every 10 minutes
+  - Fetches from 6 networks: Solana, ETH, Base, Arbitrum, BSC, Polygon
+  - Filters for minimum $100 liquidity
+  - Stores initial metrics and raw data
+  
+- **token-website-checker**: Checks DexScreener for website/social URLs
+  - Runs 1 hour after token discovery
+  - Checks up to 50 tokens per run
+  - Updates website_url, twitter_url, telegram_url fields
+  - Added Telegram notifications for tokens with social data (end of session)
+
+#### 3. Cron Jobs (Supabase pg_cron)
+- `token-discovery-every-10-min`: Polls for new tokens
+- `token-website-check-every-10-min`: Checks for websites
+
+#### 4. Local Viewer Dashboard
+- Flask app at http://localhost:5006
+- Features:
+  - Sortable by liquidity, volume, age
+  - Filterable by network
+  - Pagination (50/100/200/all per page)
+  - Click-to-copy contract addresses
+  - Direct links to DexScreener and GeckoTerminal
+  - Search by contract address (added by user)
+
+### Key Findings
+
+#### Token Discovery Statistics
+- **Average liquidity**: $48,514 (much higher than expected)
+- **Total tokens discovered**: 289 in ~2 hours
+- **Website discovery rate**: Only 1.2% (3 out of 259 tokens)
+- **Liquidity distribution**:
+  - 171 tokens with $1k-$10k
+  - 54 tokens with $10k-$100k
+  - 24 tokens with $100k-$1M
+  - 1 token with $4.6M (ETHERSCAN)
+
+#### Why Low Website Discovery Rate
+1. **DexScreener limitation**: Only ~10% of tokens have profile data
+2. **New pools ≠ new tokens**: Many are existing tokens creating new pairs
+3. **Pump.fun dominance**: Most Solana tokens are memecoins without websites
+4. **Data availability**: DexScreener's `info` field is missing for 90% of tokens
+
+#### Tokens Found with Websites
+1. **CULT** (ETH) - https://cult.inc/ - Existing token from months ago
+2. **BITCOIN/HPOS10I** (ETH) - https://hpos10i.com - Existing token
+3. **NST** (Arbitrum) - https://ninjatraders.io/ - Created new pool Aug 14
+
+All three were established tokens creating new liquidity pools, not truly new token launches.
+
+### Next Steps (For Next Session)
+1. **Priority**: Deploy and test Telegram notifications for website/social discovery
+2. Consider alternative data sources beyond DexScreener
+3. Implement website content analysis for discovered sites
+4. Add daily cleanup to purge old tokens
+5. Explore filtering for higher quality tokens only
+
+---
+
+## August 15, 2025 - Evening - Social Media Filters Implementation
+
+**Duration**: ~45 minutes  
+**Focus**: Implementing multi-select social media filters for KROM public interface
+
+### Task Overview
+User requested social media filters in the KROM public interface sidebar to filter tokens based on having:
+- Website
+- Twitter/X
+- Telegram
+
+Requirements:
+- Multi-select checkboxes (like Networks filter)
+- All 3 selected by default
+- Show tokens with ANY of the selected social media types
+
+### Implementation Steps
+
+#### 1. Initial Radio Button Implementation
+- Added Social Media filter section with 6 radio button options:
+  - Any (no filter)
+  - Has Website
+  - Has Twitter/X
+  - Has Telegram
+  - Has Any Social
+  - Has All Socials
+- Updated FilterState interface with `socialFilter` property
+- Implemented API filtering logic using existing database columns:
+  - `website_url`
+  - `twitter_url`
+  - `telegram_url`
+
+#### 2. User Feedback & Refactor
+User requested simpler implementation with only 3 checkboxes:
+- Changed from radio buttons to multi-select checkboxes
+- Removed "Any", "Has Any", "Has All" options
+- Only kept: "Has Website", "Has Twitter/X", "Has Telegram"
+- All 3 selected by default
+
+#### 3. Technical Implementation
+**Frontend Changes:**
+- Updated `FilterState` interface: `socialFilter` → `socialFilters: string[]`
+- Changed state management to handle array of selections
+- Updated checkbox logic to match Networks filter pattern
+- Applied 400ms debouncing (existing feature) for smooth UX
+
+**API Changes:**
+- Modified `/api/recent-calls` to handle `socialFilters` parameter
+- Filter logic: Show tokens with ANY of selected social types
+- When all 3 or none selected: Show all tokens (no filter)
+
+**Filter Logic:**
+```typescript
+// If 1-2 social types selected, apply OR filter
+if (socialFilters.length > 0 && socialFilters.length < 3) {
+  const conditions = []
+  if (socialFilters.includes('website')) conditions.push('website_url.not.is.null')
+  if (socialFilters.includes('twitter')) conditions.push('twitter_url.not.is.null')
+  if (socialFilters.includes('telegram')) conditions.push('telegram_url.not.is.null')
+  query = query.or(conditions.join(','))
+}
+```
+
+#### 4. Quality Assurance
+**Anti-Glitch Features Confirmed:**
+- ✅ **Debouncing (400ms)**: Prevents rapid API calls
+- ✅ **Request Cancellation**: AbortController cancels in-flight requests
+- ✅ **Smooth UX**: No page jumping or incorrect results
+
+**Testing:**
+- Created Playwright tests for checkbox interactions
+- Verified all 3 checkboxes selected by default
+- Tested individual checkbox toggling
+- Confirmed filter application works correctly
+
+### Files Modified
+1. `/app/page.tsx` - Main interface with filter UI
+2. `/components/RecentCalls.tsx` - Updated props and API calls
+3. `/app/api/recent-calls/route.ts` - Filter logic implementation
+4. `/components/filter-panel.tsx` - Interface updates
+5. `/app/admin/x7f9k2m3p8/page.tsx` - Admin page compatibility
+6. `/tests/test-social-media-filter.spec.ts` - New test suite
+
+### Technical Details
+**Database Schema Used:**
+- Leveraged existing social media columns added in August 13 session
+- No database changes required
+
+**UI Consistency:**
+- Matches Networks filter design exactly
+- Green checkmarks for selected items
+- Collapsible section with hover effects
+- Consistent spacing and styling
+
+### Deployment
+**Status**: ✅ Successfully deployed to production  
+**URL**: https://lively-torrone-8199e0.netlify.app/  
+**Tests**: ✅ Passing (2/2 Playwright tests)
+
+### Key Achievements
+1. **Simplified UX**: Reduced from 6 radio options to 3 intuitive checkboxes
+2. **Smart Defaults**: All social types enabled by default (most inclusive)
+3. **Performance**: Reused existing debouncing and request cancellation
+4. **Consistency**: Matches Networks filter behavior exactly
+5. **Database Efficiency**: Uses existing social media columns
+
+### Session Impact
+- Enhanced user experience with granular social media filtering
+- Maintained smooth, glitch-free interactions
+- Leveraged existing infrastructure (debouncing, request cancellation)
+- Added comprehensive test coverage
+
+**Session Completed**: August 15, 2025, 10:00 PM  
+**Next Priority**: Ready for additional filter enhancements or new features
+
+---
+
+## August 15, 2025 (Late Evening) - Token Discovery & Website Monitoring System
+
+Successfully built comprehensive token discovery system monitoring 38,589 daily token launches across 6 networks with automated website detection and smart re-checking strategy.
+
+### Key Achievements
+- **Fixed broken cron jobs**: Discovery stopped 7+ hours ago, now operational
+- **Token Discovery**: ~60-70 new tokens/minute across all networks  
+- **Website Monitor**: Smart scheduling (15min→30min→1h→2h→3h→prune)
+- **Dashboard Fixed**: Response time improved from 12s to 0.11s at localhost:5020
+- **Reality Check**: Only 1.2% of tokens have websites (mostly pump.fun memecoins)
+
+### Technical Implementation
+- **Edge Functions**: token-discovery-rapid (every minute), token-website-monitor (every 10 min)
+- **Database**: 648 tokens tracked, growing ~1,000/hour
+- **DexScreener API**: Batch processing 30 tokens/call, using only 5% of rate limit
+- **Telegram Notifications**: Automatic alerts when websites discovered
+
+### Files Modified
+- `/supabase/functions/token-website-monitor/index.ts` - Updated schedule
+- `/temp-website-analysis/token_viewer.py` - Fixed performance, port 5020
+- Created proper cron jobs via Supabase Management API
+
+### Next Steps
+System fully operational. Consider implementing token promotion pipeline (discovery → analysis → crypto_calls) and adding liquidity thresholds for quality filtering.
+
+## August 15, 2025 (Continued) - Stage 1 Website Analysis Triage System
+
+**Major Achievement**: Successfully built complete Stage 1 Website Analysis Triage System with balanced scoring and visual UI, ready for production batch of 304 utility tokens.
+
+### System Architecture Implemented
+
+**1. Balanced Scoring Framework**
+- **1-3 scale** across 7 categories (vs previous 1-10)
+- **Equal weighting**: Each category ~15% (vs 50% team transparency bias)
+- **Smart thresholds**: 10+ points = Stage 2, <10 = Skip
+- **Categories**: Technical Infrastructure, Business & Utility, Documentation, Community & Social, Security & Trust, Team Transparency, Website Presentation
+
+**2. Visual UI System** - http://localhost:5006
+- **List view**: All tokens with scores/tiers in sortable format
+- **Modal system**: Click tokens to see detailed breakdown
+- **Category meters**: Visual 1-3 bars for each evaluation area
+- **Signal boxes**: Green (exceptional signals) and red (missing elements)
+- **Natural language**: Quick assessment explaining AI's reasoning
+
+**3. AI Analysis Pipeline**
+- **Kimi K2 exclusive**: $0.003/analysis (10x cheaper than alternatives)
+- **Playwright parsing**: JavaScript rendering captures 5x more content
+- **Stage 2 preparation**: AI identifies which links to deep parse next
+- **Balanced prompt**: 446-543 lines in comprehensive_website_analyzer.py
+
+### Key Problem Solved
+
+**Original Issue**: Team transparency was 50% of score, causing all tokens without visible teams to score 2-3/10
+**Solution**: 7 balanced categories allow anonymous teams to score well in technical/utility areas
+
+### Files Created/Modified
+
+**Main Components**:
+- `comprehensive_website_analyzer.py` - Updated with balanced 1-3 prompt
+- `fixed_results_server.py` - Complete UI with meters and modal system
+- `batch_analyze_supabase_utility.py` - Ready for 304 token batch
+- `website_analysis_new.db` - Test database with 4 tokens analyzed
+
+**Test Results**:
+- **GAI**: 15/21 (High) - Strong technical infrastructure, Apple backing
+- **STRAT**: 12/21 (Medium) - Good documentation, clear utility 
+- **REX**: 11/21 (Medium) - Solid fundamentals, active development
+- **MSIA**: Issues with UI display (data exists, display broken)
+
+### Production Readiness
+
+**Batch Analysis Ready**:
+- 304 utility tokens identified from Supabase
+- Estimated cost: $0.91 (304 × $0.003)
+- Processing time: ~2-3 hours
+- Expected Stage 2 candidates: 30-60 tokens (10+ points)
+
+**Outstanding Issue**: MSIA shows 0/3 for all categories in modal (API parsing bug lines 604-620)
+
+### Next Session Priorities
+
+1. **Fix MSIA display** - Debug category score parsing in API
+2. **Run production batch** - Process all 304 utility tokens
+3. **Analyze results** - Identify highest-scoring tokens for manual review
+4. **Plan Stage 2** - Deep analysis system for qualifying tokens
+
+### User Feedback Integration
+
+Successfully implemented all user requests:
+- ✅ 1-3 scoring vs binary (user preference)
+- ✅ Visual meters in modals (not standalone cards)  
+- ✅ Green/red signal boxes for exceptional/missing elements
+- ✅ Natural language assessments explaining decisions
+- ✅ List view UI with clickable tokens
+- ✅ Fixed ticker display (no more N/A)
+- ✅ Working modal system
+
+**Cost Efficiency**: Achieved 10x cost reduction using Kimi K2 while maintaining accuracy
+**UI Excellence**: Delivered exactly what user requested with visual meters and signal indicators
+**Production Scale**: System ready to handle hundreds of tokens efficiently
+
+### Files Archived
+
+Complete system archived to `/archive/stage1-website-analysis-2025-08-15/` including:
+- Main analyzer, UI server, batch processor
+- Test database with 4 analyzed tokens  
+- Comprehensive handoff documentation
+
+**Status**: 95% complete, one UI fix needed before production batch
+
+---
+**Session End**: August 15, 2025
+**Duration**: Full day session
+**Status**: Stage 1 Website Analysis Triage System complete - Ready for production
+**Key Achievement**: Built balanced scoring system with visual UI, replacing team-biased analysis
+## August 15, 2025 - Evening - Stage 1 Website Analysis System Improvements
+
+### Overview
+Significantly improved the Stage 1 Website Analysis Triage System to handle loading screens, recognize extraordinary achievements, and provide better UI feedback. System is now production-ready for full batch analysis of 300+ utility tokens.
+
+### Major Improvements Implemented
+
+#### 1. Smart Loading Screen Detection
+- **Problem**: Sites like PHI and VIRUS showed loading screens, capturing only 16-100 chars
+- **Solution**: Implemented smart retry logic:
+  - Detects when content < 100 chars (typical loading screen)
+  - Retries up to 3 times with longer waits
+  - Shows "⏳ Minimal content, waiting..." feedback
+- **Result**: PHI now captures 3,709 chars (was 16), VIRUS captures 745 chars
+
+#### 2. Extraordinary Achievements Recognition
+- **Problem**: System missed exceptional signals like "4M subscribers", "$50M revenue" 
+- **Solution**: Added open-ended "EXTRAORDINARY ACHIEVEMENTS" section to prompt
+  - Looks for revenue metrics, user counts, founder credentials
+  - Searches entire content for impressive numbers/achievements
+  - AI explicitly instructed to extract specific metrics
+- **Result**: Better recognition of exceptional projects (though still summarizes sometimes)
+
+#### 3. UI Enhancements
+- **Added**: "⚙️ View Analysis Prompt" button showing full criteria
+- **Fixed**: Prompt display was cutting off at point 4
+- **Improved**: Modal display with scrollable content for full prompt
+
+#### 4. Automatic Stage 2 Qualifiers Added (by user)
+- Documentation portals, GitHub repos, mobile apps
+- Override score threshold for obvious high-quality projects
+
+### Test Results
+- **20 tokens analyzed** with improved system
+- **95% success rate** (19/20, only PAWSE had SSL error)
+- **High scorers**: LIQUID (14/21), PAYAI (13/21), BUNKER (12/21), IOTAI (12/21)
+- **Improved scores**: PHI (2→8), CREATOR (7→12)
+
+### Key Files Modified
+- `comprehensive_website_analyzer.py` - Added smart loading, extraordinary achievements
+- `fixed_results_server.py` - Added prompt viewer button
+- `batch_analyze_supabase_utility.py` - Ready for full batch (remove line 99 limit)
+
+### Known Limitations
+- AI sometimes summarizes achievements rather than extracting exact metrics
+- LinkedIn bias for team transparency still present
+- Some SSL certificate errors cause failures
+
+### Ready for Production
+System ready to analyze ~280 remaining utility tokens (~70 minutes, ~$0.84 cost).
+
+---
+

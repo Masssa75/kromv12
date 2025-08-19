@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Analysis Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+        
+        .filter-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .filter-select {
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 180px;
+        }
+        
+        .filter-select:hover {
+            border-color: #667eea;
+        }
+        
+        .filter-select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .model-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            background: #e5e7eb;
+            color: #666;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+        
+        .token-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .token-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .token-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .token-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .token-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .token-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .token-name {
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .token-url {
+            font-size: 12px;
+            color: #999;
+            text-decoration: none;
+        }
+        
+        .token-url:hover {
+            color: #667eea;
+        }
+        
+        .score-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+        
+        .score-number {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .score-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        
+        /* Tier-based colors */
+        .tier-alpha .token-card { border-color: #10b981; }
+        .tier-alpha .token-icon { background: linear-gradient(135deg, #10b981, #059669); }
+        .tier-alpha .score-number { color: #10b981; }
+        .tier-alpha .score-label { color: #10b981; }
+        
+        .tier-solid .token-card { border-color: #3b82f6; }
+        .tier-solid .token-icon { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .tier-solid .score-number { color: #3b82f6; }
+        .tier-solid .score-label { color: #3b82f6; }
+        
+        .tier-basic .token-card { border-color: #f59e0b; }
+        .tier-basic .token-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .tier-basic .score-number { color: #f59e0b; }
+        .tier-basic .score-label { color: #f59e0b; }
+        
+        .tier-trash .token-card { border-color: #ef4444; }
+        .tier-trash .token-icon { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .tier-trash .score-number { color: #ef4444; }
+        .tier-trash .score-label { color: #ef4444; }
+        
+        .loading {
+            text-align: center;
+            color: #666;
+            padding: 40px;
+        }
+        
+        .details-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .details-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .close-modal:hover {
+            background: #e5e7eb;
+        }
+        
+        .detail-section {
+            margin-bottom: 20px;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .detail-content {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .badge-green {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge-red {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Website Analysis Results</h1>
+        <p class="subtitle">AI-powered legitimacy scoring for crypto projects</p>
+        
+        <div class="filter-container">
+            <span class="filter-label">AI Model:</span>
+            <select id="modelFilter" class="filter-select" onchange="filterResults()">
+                <option value="all">All Models</option>
+            </select>
+        </div>
+        
+        <div id="tokenList" class="token-list">
+            <div class="loading">Loading results...</div>
+        </div>
+    </div>
+    
+    <div id="detailsModal" class="details-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    
+    <script>
+        let analysisData = [];
+        let currentFilter = 'all';
+        
+        async function loadModels() {
+            try {
+                const response = await fetch('/api/models');
+                const models = await response.json();
+                const select = document.getElementById('modelFilter');
+                
+                // Add model options
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model.model;
+                    option.textContent = `${formatModelName(model.model)} (${model.count} results)`;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading models:', error);
+            }
+        }
+        
+        function formatModelName(model) {
+            const names = {
+                'kimi-k2': 'Kimi K2',
+                'gemini-2.5-pro': 'Gemini 2.5 Pro',
+                'claude-3-haiku': 'Claude 3 Haiku',
+                'gpt-4': 'GPT-4'
+            };
+            return names[model] || model;
+        }
+        
+        async function loadResults(filter = 'all') {
+            try {
+                const response = await fetch(`/api/results?model=${filter}`);
+                analysisData = await response.json();
+                displayResults(analysisData);
+            } catch (error) {
+                console.error('Error loading results:', error);
+                // For demo, use sample data
+                displaySampleResults();
+            }
+        }
+        
+        function filterResults() {
+            const filter = document.getElementById('modelFilter').value;
+            currentFilter = filter;
+            loadResults(filter);
+        }
+        
+        function displayResults(results) {
+            const container = document.getElementById('tokenList');
+            container.innerHTML = '';
+            
+            results.forEach((result, index) => {
+                const tierClass = `tier-${result.tier.toLowerCase()}`;
+                const card = document.createElement('div');
+                card.className = tierClass;
+                card.innerHTML = `
+                    <div class="token-card" onclick="showDetails(${index})">
+                        <div class="token-info">
+                            <div class="token-icon">${result.ticker.substring(0, 2)}</div>
+                            <div class="token-details">
+                                <div class="token-name">
+                                    ${result.ticker}
+                                    <span class="model-badge">${formatModelName(result.model_used || 'unknown')}</span>
+                                </div>
+                                <a href="${result.website_url}" class="token-url" target="_blank" onclick="event.stopPropagation()">${result.website_url.replace('https://', '').replace('www.', '')}</a>
+                            </div>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-number">${result.score}</div>
+                            <div class="score-label">${result.tier}</div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+        
+        function showDetails(index) {
+            const result = analysisData[index];
+            const modal = document.getElementById('detailsModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalBody.innerHTML = `
+                <h2 style="margin-bottom: 20px;">${result.ticker} Analysis</h2>
+                
+                <div class="detail-section">
+                    <div class="detail-label">Website</div>
+                    <div class="detail-content">
+                        <a href="${result.website_url}" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 500;">
+                            ${result.website_url} →
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <div class="detail-label">Score & Tier</div>
+                    <div class="detail-content">${result.score}/10 - ${result.tier}</div>
+                </div>
+                
+                ${result.website_description ? `
+                <div class="detail-section">
+                    <div class="detail-label">What the AI Saw</div>
+                    <div class="detail-content" style="background: #f3f4f6; padding: 12px; border-radius: 8px; font-style: italic;">
+                        ${result.website_description}
+                    </div>
+                </div>
+                ` : ''}
+                
+                <div class="detail-section">
+                    <div class="detail-label">Reasoning</div>
+                    <div class="detail-content">${result.reasoning}</div>
+                </div>
+                
+                <div class="detail-section">
+                    <div class="detail-label">Legitimacy Indicators</div>
+                    <div class="badge-list">
+                        ${result.legitimacy_indicators.map(item => `<span class="badge badge-green">${item}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <div class="detail-label">Red Flags</div>
+                    <div class="badge-list">
+                        ${result.red_flags.map(item => `<span class="badge badge-red">${item}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <div class="detail-label">Technical Depth</div>
+                    <div class="detail-content">${result.technical_depth}</div>
+                </div>
+                
+                <div class="detail-section">
+                    <div class="detail-label">Team Transparency</div>
+                    <div class="detail-content">${result.team_transparency}</div>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('detailsModal').classList.remove('active');
+        }
+        
+        function displaySampleResults() {
+            // This will be replaced with actual data from the server
+            const sampleData = [
+                {
+                    ticker: "GAI",
+                    website_url: "https://www.graphai.tech/",
+                    score: 7,
+                    tier: "SOLID",
+                    reasoning: "Professional website with clear product focus and roadmap. Good technical documentation but limited team information.",
+                    legitimacy_indicators: ["Clear product focus", "Professional design", "Technical documentation"],
+                    red_flags: ["Limited team info"],
+                    technical_depth: "Good documentation and whitepaper available",
+                    team_transparency: "Team section present but lacks detailed profiles"
+                },
+                {
+                    ticker: "B",
+                    website_url: "https://www.buildon.online",
+                    score: 7,
+                    tier: "SOLID",
+                    reasoning: "Well-designed site with clear vision. Active development updates but could use more transparency.",
+                    legitimacy_indicators: ["Active development", "Clear roadmap", "Good UX"],
+                    red_flags: ["Anonymous team"],
+                    technical_depth: "Moderate technical documentation",
+                    team_transparency: "Limited team information available"
+                },
+                {
+                    ticker: "TRWA",
+                    website_url: "https://tharwa.finance/",
+                    score: 3,
+                    tier: "TRASH",
+                    reasoning: "Basic template site with minimal customization. Lacks substantial content and team information.",
+                    legitimacy_indicators: [],
+                    red_flags: ["Template site", "No team info", "Vague promises"],
+                    technical_depth: "Minimal technical documentation",
+                    team_transparency: "No team information provided"
+                },
+                {
+                    ticker: "BLOCK",
+                    website_url: "https://www.blockstreet.xyz/",
+                    score: 3,
+                    tier: "TRASH",
+                    reasoning: "Generic site with limited content. No clear value proposition or team information.",
+                    legitimacy_indicators: [],
+                    red_flags: ["Generic content", "No roadmap", "No team"],
+                    technical_depth: "No technical documentation found",
+                    team_transparency: "Complete lack of team transparency"
+                },
+                {
+                    ticker: "PAWSE",
+                    website_url: "https://pawse.xyz/",
+                    score: 3,
+                    tier: "TRASH",
+                    reasoning: "Minimal effort website with basic information only. Lacks professional presentation.",
+                    legitimacy_indicators: [],
+                    red_flags: ["Minimal content", "No documentation", "Basic design"],
+                    technical_depth: "No technical documentation available",
+                    team_transparency: "No team information available"
+                }
+            ];
+            
+            analysisData = sampleData;
+            displayResults(sampleData);
+        }
+        
+        // Load results and models on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadModels();
+            loadResults();
+        });
+        
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Close modal on background click
+        document.getElementById('detailsModal').addEventListener('click', (e) => {
+            if (e.target.id === 'detailsModal') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

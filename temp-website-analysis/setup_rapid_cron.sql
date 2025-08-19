@@ -1,0 +1,11 @@
+-- Create rapid token discovery cron job
+SELECT cron.schedule(
+  'token-discovery-rapid-every-minute',
+  '* * * * *',  -- Every minute
+  $$
+  SELECT net.http_post(
+    url:='https://eucfoommxxvqmmwdbkdv.supabase.co/functions/v1/token-discovery-rapid',
+    headers:='{"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1Y2Zvb21teHh2cW1td2Ria2R2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxOTY2NDU1MiwiZXhwIjoyMDM1MjQwNTUyfQ.MjR0vCeDKjlCwZ_9lXoiUxH64GhOgwvSC3gB8jIwXGk"}'::jsonb
+  ) AS request_id;
+  $$
+);
