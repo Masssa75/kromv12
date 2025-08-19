@@ -272,11 +272,12 @@ serve(async (req) => {
       }
     })
 
-    console.log(`Starting ultra-tracker processing (high liquidity tokens only)...`)
+    console.log(`Starting LOW-PRIORITY ultra-tracker processing (low liquidity tokens)...`)
 
-    // Get all tokens with high liquidity (>=$20K) - these are the most important to track
-    // Lower liquidity tokens will be handled by a separate low-priority tracker
-    const LIQUIDITY_THRESHOLD = 20000
+    // Get all tokens with LOW liquidity ($1K-$20K) - these are less important to track
+    // High liquidity tokens are handled by the main ultra-tracker
+    const MIN_LIQUIDITY = 1000
+    const MAX_LIQUIDITY = 20000
     
     let allTokens: any[] = []
     let offset = 0
@@ -289,7 +290,8 @@ serve(async (req) => {
         .not('pool_address', 'is', null)
         .eq('is_invalidated', false)
         .neq('is_dead', true)  // Only process active tokens
-        .gte('liquidity_usd', LIQUIDITY_THRESHOLD)  // Only high liquidity tokens
+        .gte('liquidity_usd', MIN_LIQUIDITY)  // Minimum $1K liquidity
+        .lt('liquidity_usd', MAX_LIQUIDITY)    // Less than $20K liquidity
         .order('ath_last_checked', { ascending: true, nullsFirst: true })
         .range(offset, offset + pageSize - 1)
       
@@ -314,7 +316,7 @@ serve(async (req) => {
       })
     }
 
-    console.log(`Found ${tokens.length} high-liquidity tokens (>=$${LIQUIDITY_THRESHOLD.toLocaleString()}) to process`)
+    console.log(`Found ${tokens.length} low-liquidity tokens ($${MIN_LIQUIDITY.toLocaleString()}-$${MAX_LIQUIDITY.toLocaleString()}) to process`)
 
     // Group tokens by network for efficient API calls
     const tokensByNetwork: Record<string, typeof tokens> = {}

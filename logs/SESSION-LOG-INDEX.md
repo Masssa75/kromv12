@@ -6,6 +6,12 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
+#### [August 19, 2025 - API Key Security & Token Analysis](SESSION-LOG-2025-08-19-API-KEY-SECURITY.md) ✅ COMPLETED
+- **CRITICAL**: Resolved OpenRouter API key exposure on GitHub
+- Added security rules to CLAUDE.md to prevent future exposures
+- Analyzed 37 more tokens (218 total, 18 Stage 2 qualified)
+- Created fast hybrid analyzer for efficient website parsing
+
 #### [August 19, 2025 - Website Analysis Integration & UI Enhancements](SESSION-LOG-2025-08.md#august-19-2025---website-analysis-integration--ui-enhancements) ✅ COMPLETED
 - Integrated website analysis system into crypto monitoring pipeline
 - Updated to TRASH/BASIC/SOLID/ALPHA tier system (migrated 8 tokens)

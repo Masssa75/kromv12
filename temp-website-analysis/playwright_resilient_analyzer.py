@@ -312,8 +312,8 @@ def main():
     tokens = get_unanalyzed_tokens()
     print(f"📊 Found {len(tokens)} unanalyzed tokens")
     
-    # Process in small batches
-    batch_size = 5
+    # Process more tokens
+    batch_size = 20
     success_count = 0
     fail_count = 0
     stage2_count = 0

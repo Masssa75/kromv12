@@ -253,10 +253,10 @@ See `crypto-monitor/CLAUDE.md` for details on:
 - crypto-orchestrator, crypto-poller, crypto-analyzer
 - crypto-x-analyzer-nitter, crypto-notifier
 
-### ATH Tracking Functions
-1. **crypto-ath-historical** - Calculate 3-tier historical ATH (daily→hourly→minute)
-2. **crypto-ath-update** - Continuous monitoring with 1 API call optimization
-3. **crypto-ath-notifier** - Telegram notifications for new ATHs >10%
+### ATH Tracking Functions (Two-Tier System)
+1. **crypto-ultra-tracker** - High-priority tokens >=$20K liquidity (runs every minute)
+2. **crypto-ultra-tracker-low** - Low-priority tokens $1K-$20K liquidity (runs every 10 minutes)
+3. **crypto-ath-notifier** - Telegram notifications for new ATHs >250% ROI + 20% increase
 
 For implementation details, see [ATH Tracking Session →](logs/SESSION-LOG-2025-08.md)
 
@@ -595,49 +595,45 @@ Fixed ATH verifier issues with low liquidity tokens causing excessive notificati
 
 ## Website Analysis System (August 15-19, 2025)
 
-Successfully built and integrated comprehensive website analysis system:
-- **Edge Function deployed**: `crypto-website-analyzer` with TRASH/BASIC/SOLID/ALPHA tiers
-- **Orchestrator integrated**: Analyzes up to 5 websites in parallel before notifications
-- **Batch processing optimized**: 45-second timeout, parallel execution
-- **UI enhanced**: Granular settings for scores/badges visibility
-- **Pending decision**: Retry logic for failed analyses (see Next Session Notes)
-- [Full documentation →](temp-website-analysis/CLAUDE.md)
-- [Integration session →](logs/SESSION-LOG-2025-08.md#august-19-2025-session-2)
+Successfully integrated website analysis with production improvements:
+- **Retry logic implemented**: Failed analyses marked with score=-1, tier=TRASH
+- **UI enhancements**: Website Score sorting, FAILED display in red
+- **Timeout increased**: 60 seconds for slow-loading sites
+- **Orchestrator optimized**: Processes newest tokens first
+- [Full session →](logs/SESSION-LOG-2025-08-19-SESSION-3.md)
 
-## Next Session: CoinAPI.io Research
+## Next Session: Website Analysis Modal Display
 
-**Priority**: Explore CoinAPI.io as alternative to GeckoTerminal for token discovery
-- Check if better data quality (fewer memecoins)
-- Verify if includes website/social metadata
-- Compare rate limits and costs
-- Test new token discovery endpoints
+**Priority**: Implement fullscreen modal for detailed website analysis viewing
+- Find and adapt the local website analysis UI from `/temp-website-analysis/`
+- Create React modal component with iframe and analysis details
+- Make website scores/tags clickable to open modal
+- Display all analysis reasoning and category breakdowns
 
-**Note**: All token discovery cron jobs currently DISABLED due to API quota limits
+**Key files to check**:
+- `/temp-website-analysis/fixed_results_server.py` (port 5006)
+- Database: `website_analysis_new.db`
+- Integrate into: `/krom-analysis-app/components/RecentCalls.tsx`
 
-## Token Discovery Website Analysis (August 19, 2025)
+## ATH Tracking Fixed (August 19, 2025)
 
-Successfully implemented smart website re-checking system discovering ~45 sites/hour:
-- **Smart scheduling**: Tokens checked at optimal intervals (15min→24hr based on liquidity)
-- **Key finding**: Legitimate projects add websites 48-60 hours after launch
-- **172 tokens analyzed**: 11 qualify for Stage 2 investment analysis
-- **Technical issues**: Playwright/ScraperAPI parsing challenges with modern SPAs
-- [Full session details →](logs/SESSION-LOG-2025-08-19-TOKEN-WEBSITE-ANALYSIS.md)
+Fixed CPU limit errors by splitting ultra tracker into two tiers based on $20K liquidity threshold.
+High-priority tokens checked every minute, low-priority every 10 minutes.
+[Full session →](logs/SESSION-LOG-2025-08.md#august-19-2025---ath-tracking-fix)
 
-## Next Session: Website Parsing Solutions
+## Token Website Analysis Complete (August 19, 2025)
 
-**Priority**: Fix website content extraction for remaining 64 tokens
-- Option 1: Create Supabase Edge Function for parsing
-- Option 2: Try ScrapFly API (key in .env)
-- Option 3: Focus on 11 Stage 2 candidates already identified
-
-**Key Files**:
-- `temp-website-analysis/token_discovery_server.py` - UI on port 5007
-- `temp-website-analysis/token_discovery_analysis.db` - 172 analyzed tokens
+Successfully analyzed 218 crypto project websites with Stage 1 triage system:
+- **218 tokens analyzed** with 7-category scoring (0-21 scale)
+- **18 qualify for Stage 2** deeper investment analysis (8% pass rate)
+- **Security incident resolved**: OpenRouter API key exposure fixed
+- **UI available**: http://localhost:5007 shows all results
+- [Full session →](logs/SESSION-LOG-2025-08-19-API-KEY-SECURITY.md)
 
 ---
-**Last Updated**: August 19, 2025 (Session Wrap - Token Discovery Analysis)
-**Status**: ⚠️ Analysis working but parsing issues with JavaScript sites
-**Version**: 12.4.1 - Smart website re-checking system
+**Last Updated**: August 19, 2025 (Session 4 - ATH Tracking Fix)
+**Status**: ✅ Two-tier ATH tracking deployed and operational
+**Version**: 12.4.4 - Fixed ATH tracking with liquidity-based tiers
 
 
 ## ✅ ATH Verifier Fixed (August 12, 2025)

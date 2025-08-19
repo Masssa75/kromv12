@@ -7,10 +7,10 @@ async function markAnalysisFailed(supabase: any, callId: string, errorMessage: s
     const { data, error } = await supabase
       .from('crypto_calls')
       .update({
-        website_score: 0,  // Use 0 to indicate failed analysis
-        website_tier: 'FAILED',
+        website_score: 0,  // Use 0 to indicate failed analysis (constraint doesn't allow -1)
+        website_tier: 'TRASH',  // Use TRASH tier with special score
         website_token_type: null,
-        website_analysis_reasoning: `Analysis failed: ${errorMessage}`,
+        website_analysis_reasoning: `ERROR: ${errorMessage}`,
         website_analyzed_at: new Date().toISOString()
       })
       .eq('id', callId)
@@ -57,7 +57,7 @@ serve(async (req) => {
 
     // Find calls with websites but no analysis (excluding failed ones)
     // We check for website_score = null to find unanalyzed sites
-    // Failed analyses have website_score = -1, so they won't be selected
+    // Failed analyses have website_score = 0 with ERROR in reasoning, so they won't be selected
     // Order by created_at DESC to prioritize newest tokens first
     const { data: callsToAnalyze, error: fetchError } = await supabase
       .from('crypto_calls')
@@ -112,7 +112,7 @@ serve(async (req) => {
         if (!analyzerResponse.ok) {
           console.error(`Failed to analyze ${call.ticker}: ${analyzerResponse.status}`);
           
-          // Mark as failed in database with score of -1
+          // Mark as failed in database with score of 0
           await markAnalysisFailed(supabase, call.id, `HTTP ${analyzerResponse.status}`);
           
           return {
@@ -135,7 +135,7 @@ serve(async (req) => {
       } catch (error) {
         console.error(`Error analyzing ${call.ticker}:`, error.message);
         
-        // Mark as failed in database with score of -1
+        // Mark as failed in database with score of 0
         await markAnalysisFailed(supabase, call.id, error.message);
         
         return {
