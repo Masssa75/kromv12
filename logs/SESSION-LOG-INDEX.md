@@ -6,6 +6,20 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
+#### [August 20, 2025 - GeckoTerminal Trending Integration](SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md) ⚠️ 95% COMPLETE
+- Integrated GeckoTerminal trending tokens as new data source parallel to KROM calls
+- Created efficient batch processing: 20 tokens fetched with 2 API calls (90% reduction)
+- Added full data capture: entry prices, ATH initialization, supply calculation, social data
+- Fixed critical bug: tokens incorrectly marked dead despite $1M+ liquidity
+- **Outstanding**: ROI column shows "-" instead of percentages (ultra-tracker issue)
+
+#### [August 20, 2025 - Website Analysis Integration & God Mode Admin](SESSION-LOG-2025-08.md#august-20-2025---website-analysis-integration--god-mode-admin-features) ✅ COMPLETED
+- Integrated website analysis into main orchestrator (5 sites/minute, 300/hour)
+- Consolidated 3 orchestrators into 1, archived unused Edge Functions
+- Implemented god mode admin features with `?god=mode` URL parameter
+- Added imposter marking functionality with visual indicators (red strikethrough)
+- Database: Added is_imposter column for filtering suspicious tokens
+
 #### [August 19, 2025 - Analysis Score Filters Implementation](SESSION-LOG-2025-08-19-ANALYSIS-SCORE-FILTERS.md) ⚠️ PAGINATION BUG
 - **UI/Backend**: Complete Analysis Score filters with beautiful range sliders and full API integration
 - 3 score filters: Call Analysis (1-10), X Analysis (1-10), Website Analysis (1-21→1-10)

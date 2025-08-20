@@ -374,4 +374,88 @@ useEffect(() => {
 
 ---
 
-**Session End: August 19, 2025 (Session 5)**
+## August 20, 2025 - Website Analysis Integration & God Mode Admin Features
+
+### Context
+Integrated website analysis into the main orchestrator and implemented god mode admin features for marking imposter tokens.
+
+### Session Summary
+
+#### Part 1: Website Analysis Integration
+Successfully integrated website analysis into the production crypto monitoring pipeline:
+
+**Problem Identified**: 
+- Website analysis wasn't running automatically
+- crypto-orchestrator-with-x was using wrong notifier (only premium channel)
+- Multiple orchestrator versions causing confusion
+
+**Solution Implemented**:
+1. **Updated Main Orchestrator**: Added website analysis to original crypto-orchestrator
+   - Now includes: Poller → Claude → X Analysis → Website Analysis → Notifier
+   - Processes 5 websites/minute (300/hour)
+   - ~12 hours to complete remaining 3,594 tokens
+
+2. **Orchestrator Consolidation**:
+   - Archived unused orchestrators to `/archive/edge-functions/`
+   - Deleted from Supabase: crypto-orchestrator-fast, crypto-orchestrator-with-x
+   - Also archived crypto-notifier-complete (wasn't sending notifications)
+   - Single orchestrator now handles everything
+
+**Verification**:
+- 100 websites analyzed in 20 minutes
+- Consistent rate of 5 websites/minute
+- Cron job calling updated endpoint every minute
+
+#### Part 2: God Mode Admin Features
+
+**Problem**: Many high-scoring websites were imposter sites (e.g., SPL TOKEN using horny.wtf)
+
+**Solution**: Implemented admin features with secret URL parameter
+
+1. **Database Changes**:
+   ```sql
+   ALTER TABLE crypto_calls ADD COLUMN is_imposter BOOLEAN DEFAULT false;
+   ALTER TABLE crypto_calls ADD COLUMN imposter_marked_at TIMESTAMPTZ;
+   ```
+
+2. **Access Method**: `?god=mode` URL parameter
+   - No authentication needed (security through obscurity)
+   - Chose this over Telegram auth for simplicity
+
+3. **Features Added**:
+   - "Mark Imposter" button on each token (god mode only)
+   - Visual indicators: Red strikethrough on imposter ticker names
+   - Toggle functionality: Mark/unmark with single click
+   - API endpoint: `/api/mark-imposter`
+   - Filter support: `excludeImposters` parameter ready for future use
+
+4. **UI Changes**:
+   - Normal tokens: White ticker name
+   - Imposter tokens: Red strikethrough ticker
+   - Admin button: Gray "Mark Imposter" or Red "🚫 Imposter"
+
+### Deployment Status
+✅ All features deployed to production
+- Live at: https://lively-torrone-8199e0.netlify.app
+- God mode: https://lively-torrone-8199e0.netlify.app?god=mode
+
+### Files Modified
+- `/supabase/functions/crypto-orchestrator/index.ts` - Added website analysis step
+- `/krom-analysis-app/app/page.tsx` - Added god mode detection
+- `/krom-analysis-app/components/RecentCalls.tsx` - Added admin UI
+- `/krom-analysis-app/app/api/mark-imposter/route.ts` - New API endpoint
+- `/krom-analysis-app/app/api/recent-calls/route.ts` - Added imposter filtering
+
+### Files Archived
+- `crypto-orchestrator-with-x` → `/archive/edge-functions/crypto-orchestrator-with-x-2025-08-20.ts`
+- `crypto-orchestrator-fast` → `/archive/edge-functions/crypto-orchestrator-fast-2025-08-20.ts`
+- `crypto-notifier-complete` → `/archive/edge-functions/crypto-notifier-complete-2025-08-20.ts`
+
+### Key Decisions
+1. Simplified to single orchestrator instead of maintaining multiple versions
+2. Used URL parameter for admin access instead of complex auth system
+3. Archived unused functions for reference rather than deleting completely
+
+---
+
+**Session End: August 20, 2025**

@@ -748,31 +748,52 @@ Enhanced public interface with full contract address display, added liquidity co
 
 [Full session details →](logs/SESSION-LOG-2025-08.md#august-13-2025-evening---ui-improvements--filter-optimization)
 
-## Next Session Priority: Website Analysis Retry Logic Decision
+## Next Session Priority: GeckoTerminal ROI Display Fix
 
-**Issue**: Website analysis currently retries forever when timeouts occur.
+**Issue**: ROI column shows "-" for gecko_trending tokens instead of percentages
 
-**Options for user to decide**:
-1. Keep current behavior (infinite retries)
-2. Add retry limit with counter
-3. Mark as failed after timeout
-4. Smart retry with exponential backoff
+**Root Cause**: `roi_percent` field is NULL because ultra-tracker was skipping "dead" tokens
 
-**Files to modify**: `/supabase/functions/crypto-website-analyzer-batch/index.ts`
+**What Was Fixed**:
+- Marked all gecko_trending tokens as `is_dead = false` (they have $1M+ liquidity)
+- Initialized ATH fields for proper tracking
+- Added social data fetching from DexScreener
 
-See [handoff details →](logs/SESSION-LOG-2025-08.md#august-19-2025-session-2)
+**Next Steps**:
+1. Verify ultra-tracker processes these tokens
+2. Check if `roi_percent` gets calculated
+3. Confirm UI displays actual percentages
 
-## Analysis Score Filters Implementation (August 19, 2025)
+See [full session →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
 
-Successfully implemented comprehensive Analysis Score filters for the KROM analysis app:
-- **3 Range Sliders**: Call Score (1-10), X Score (1-10), Website Score (1-21→1-10 display)
-- **Beautiful UI**: Green progress bars, real-time values, collapsible section in sidebar
-- **Full Backend**: API parameter handling and Supabase filtering on score columns
-- **State Management**: localStorage persistence, 400ms debouncing, proper integration
-- **⚠️ CRITICAL BUG**: Filters only affect current page vs entire database (pagination issue)
-- [Full session →](logs/SESSION-LOG-2025-08-19-ANALYSIS-SCORE-FILTERS.md)
+## God Mode Admin Features (August 20, 2025)
+
+Implemented admin features for marking imposter tokens:
+- **Access**: Navigate to `?god=mode` to enable admin features
+- **Database**: Added `is_imposter` column for tracking suspicious tokens
+- **UI**: Mark/unmark tokens with visual indicators (red strikethrough)
+- **Consolidated**: Merged 3 orchestrators into 1, archived unused Edge Functions
+- [Full session →](logs/SESSION-LOG-2025-08.md#august-20-2025---website-analysis-integration--god-mode-admin-features)
+
+## App Store Redesign (August 20, 2025)
+
+Transformed KROM interface from table view to App Store-style presentation:
+- **5 mockup versions** created with website previews in phone frames
+- **Fact-based descriptions** generated from AI analysis data
+- **Smart headlines** like "Cross-Chain Infrastructure", "DeFi Protocol"
+- **Realistic scores** with mixed distribution (not all 9/10)
+- [Full session →](logs/SESSION-LOG-2025-08-20-APP-STORE-REDESIGN.md)
+
+## GeckoTerminal Integration (August 20, 2025)
+
+Added GeckoTerminal trending tokens as new data source:
+- **20 trending tokens** from 5 networks (Solana, Ethereum, Base, Arbitrum, BSC)
+- **Batch processing**: 2 API calls instead of 20 (90% efficiency)
+- **Full data capture**: Entry prices, ATH, supply, social links from DexScreener
+- **11 tokens added**: AERO, EDGE, WKC, XNY with $1.4M-$72M liquidity
+- [Full session →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
 
 ---
-**Last Updated**: August 19, 2025 (Session 5 - Analysis Score Filters)
-**Status**: ✅ UI/Backend Complete, ⚠️ Database-Wide Filtering Bug Identified
-**Version**: 12.5.0 - Analysis Score filters with pagination issue
+**Last Updated**: August 20, 2025 - GeckoTerminal Integration
+**Status**: ⚠️ 95% Complete - ROI display pending
+**Version**: 12.8.0 - Multi-source token discovery with GeckoTerminal trending

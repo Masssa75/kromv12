@@ -53,9 +53,9 @@ async function processAndUpdateBatch(
   
   for (const token of batch) {
     try {
-      // Find the pair matching this token's pool address
+      // Find the pair matching this token's pool address (case-insensitive comparison)
       const matchingPair = pairsArray.find((p: any) => 
-        p.pairAddress === token.pool_address
+        p.pairAddress?.toLowerCase() === token.pool_address?.toLowerCase()
       )
 
       if (!matchingPair) {
