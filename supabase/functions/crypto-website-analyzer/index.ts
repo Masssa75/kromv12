@@ -289,6 +289,7 @@ Return JSON only:
   "missing_elements": ["element1", "element2"],
   "proceed_to_stage_2": true/false,
   "stage_2_links": ["url1", "url2", "url3"],
+  "quick_take": "VERY concise summary (max 60 chars) following format: '[Key positive], but [key negatives]' Examples: '$700k institutional trades, but no team info', 'Working DEX platform, but anonymous team', 'NFT marketplace with users, but no audits', 'Payment system, but no docs or GitHub'. If only negative: 'No real content, just placeholder'. If only positive: 'Audited DeFi platform with documentation'",
   "quick_assessment": "Detailed 2-3 sentence assessment explaining the score in context of token type",
   "reasoning": "Brief explanation of tier assignment",
   "type_reasoning": "Why classified as meme or utility with key indicators"
@@ -394,6 +395,7 @@ serve(async (req) => {
           category_scores: analysis.category_scores,
           exceptional_signals: analysis.exceptional_signals || [],
           missing_elements: analysis.missing_elements || [],
+          quick_take: analysis.quick_take || '',
           quick_assessment: analysis.quick_assessment || analysis.reasoning,
           proceed_to_stage_2: analysis.proceed_to_stage_2,
           stage_2_links: analysis.stage_2_links || [],
@@ -450,6 +452,7 @@ serve(async (req) => {
         category_scores: analysis.category_scores,
         stage2_qualified: analysis.proceed_to_stage_2,
         exceptional_signals: analysis.exceptional_signals,
+        quick_take: analysis.quick_take || '',
         reasoning: analysis.reasoning,
         type_reasoning: analysis.type_reasoning,
         database_update: {
