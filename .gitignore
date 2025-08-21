@@ -55,6 +55,7 @@ mcp-venv/
 
 # logs
 *.log
+/logs/
 
 # IDEs
 .vscode/
