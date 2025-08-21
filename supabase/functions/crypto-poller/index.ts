@@ -227,6 +227,9 @@ serve(async (req)=>{
           
           // Price and supply data (same as before)
           callData.price_at_call = priceData.price;
+          // ALSO set current_price to avoid N/A display until ultra-tracker runs
+          callData.current_price = priceData.price;
+          
           callData.price_source = priceData.source;
           callData.total_supply = priceData.totalSupply || null;
           callData.circulating_supply = priceData.circulatingSupply || null;
@@ -268,6 +271,9 @@ serve(async (req)=>{
             
             if (suppliesAreSimilar) {
               callData.market_cap_at_call = priceData.price * priceData.totalSupply;
+              // ALSO set current_market_cap to avoid N/A display
+              callData.current_market_cap = callData.market_cap_at_call;
+              
               console.log(`   Calculated market_cap_at_call: $${callData.market_cap_at_call.toLocaleString()}`);
             } else {
               console.log(`   Supply mismatch (${supplyDiff.toFixed(1)}% diff), skipping market_cap_at_call`);
