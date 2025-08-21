@@ -29,6 +29,7 @@ KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring
 
 2. **krom-analysis-app/** (Next.js - Netlify Deployment)
    - **Live URL**: https://lively-torrone-8199e0.netlify.app
+   - **GitHub Repo**: https://github.com/Masssa75/krom-analysis-app (SEPARATE REPO)
    - **Database**: Uses Supabase EXCLUSIVELY (PostgreSQL)
    - Batch historical analysis tool
    - AI-powered scoring (1-10 scale)
@@ -38,6 +39,7 @@ KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring
 
 3. **krom-api-explorer/** (Next.js - Netlify Deployment)
    - **Live URL**: https://majestic-centaur-0d5fcc.netlify.app
+   - **GitHub Repo**: https://github.com/Masssa75/krom-api-explorer (SEPARATE REPO)
    - **Purpose**: Discover trending tokens from external APIs (GeckoTerminal, DexScreener)
    - Adds tokens as additional "coin of interest" signals
    - Manual import workflow with source attribution
@@ -61,24 +63,49 @@ KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring
 - ALL production data operations should target Supabase
 - When working with any KROM app, always use Supabase credentials from `.env`
 
+## Repository Management
+
+### ⚠️ IMPORTANT: Multiple Git Repositories
+This project uses **multiple separate GitHub repositories**:
+
+1. **Main Monorepo**: `https://github.com/Masssa75/kromv12`
+   - Contains: Edge functions, scripts, shared documentation
+   - Directory: `/Users/marcschwyn/Desktop/projects/KROMV12/`
+   
+2. **krom-analysis-app**: `https://github.com/Masssa75/krom-analysis-app`
+   - Contains: Next.js analysis application
+   - Directory: `/Users/marcschwyn/Desktop/projects/KROMV12/krom-analysis-app/`
+   - **Deploy on push**: Netlify auto-deploys from this repo
+   
+3. **krom-api-explorer**: `https://github.com/Masssa75/krom-api-explorer`
+   - Contains: Next.js API explorer application
+   - Directory: `/Users/marcschwyn/Desktop/projects/KROMV12/krom-api-explorer/`
+   - **Deploy on push**: Netlify auto-deploys from this repo
+
+**CRITICAL**: Always check which directory you're in before committing:
+- Changes to `krom-analysis-app/` must be pushed to its own repo
+- Changes to `krom-api-explorer/` must be pushed to its own repo
+- Changes to edge functions or shared files go to the main kromv12 repo
+
 ## Autonomous Development Workflow
 
 ### The Golden Rule - ALWAYS Follow This Pattern:
 ```bash
 1. Make code changes
-2. git add -A && git commit -m "feat: description" && git push origin main
-3. IMMEDIATELY (within 5 seconds) start streaming logs:
+2. CHECK WHICH REPO: pwd  # Ensure you're in the right directory
+3. git add -A && git commit -m "feat: description" && git push origin main
+4. IMMEDIATELY (within 5 seconds) start streaming logs:
    netlify logs:deploy
    # Watch until you see "Build script success" or an error
-4. If build fails:
+5. If build fails:
    - Analyze the error from the logs
    - Fix the issue immediately
    - Repeat from step 1
-5. If build succeeds, verify deployment:
+6. If build succeeds, verify deployment:
    netlify api listSiteDeploys --data '{"site_id": "8ff019b3-29ef-4223-b6ad-2cc46e91807e"}' | jq '.[0].state'
    # Must show "ready"
-6. npx playwright test --headed  # Test on DEPLOYED site (use --headless by default)
-7. If tests fail:
+7. npx playwright test --headed  # Test on DEPLOYED site (use --headless by default)
+8. If tests fail:
    - Debug what's wrong
    - Fix and repeat from step 1
 ```
