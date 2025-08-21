@@ -658,6 +658,25 @@ Successfully fixed critical filtering issues and implemented hierarchical token 
 
 [Full session details →](logs/SESSION-LOG-2025-08-21-ANALYSIS-SCORE-FILTERS-AND-TOKEN-TYPE-HIERARCHY.md)
 
+## N/A Market Cap Display Fix (August 21, 2025)
+
+Fixed recurring N/A display issues for market cap and ROI fields in the UI:
+- **Always calculate market caps** with multiple fallbacks for all data patterns
+- **Initialize all fields** to prevent N/A and "-" displays  
+- **Result**: New tokens immediately show proper Entry MC, ATH MC, and ROI values
+- [Full session →](logs/SESSION-LOG-2025-08-21-NA-MARKET-CAP-FIX.md)
+
+## X Analysis Critical Fix (August 21, 2025)
+
+Fixed critical X analysis failure where high-profile tokens were scoring TRASH due to poor search methodology:
+
+**Root Cause**: Using `f=tweets` (chronological) instead of `f=top` (engagement-based), finding spam instead of quality content
+**Search Quality Enhanced**: Better HTML parsing, quality filtering (30+ chars), contract address spam elimination  
+**Database Compatibility**: Fixed field mapping issues preventing analysis storage
+**Results**: System now analyzes real engagement content vs pure spam, providing accurate assessments based on actual tweet quality
+
+[Full implementation details →](logs/SESSION-LOG-2025-08-21-X-ANALYSIS-CRITICAL-FIX.md)
+
 ## ATH Tracking Fixed (August 19, 2025)
 
 Fixed CPU limit errors by splitting ultra tracker into two tiers based on $20K liquidity threshold.
@@ -768,6 +787,6 @@ Successfully integrated GeckoTerminal trending tokens with complete fixes:
 [Full session details →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
 
 ---
-**Last Updated**: August 21, 2025 - GeckoTerminal Search & Data Quality Fix Complete
-**Status**: ✅ All gecko_trending tokens searchable, legitimate data verified
-**Version**: 12.11.1 - Fixed gecko_trending search, replaced scam token, added filter exception
+**Last Updated**: August 21, 2025 - N/A Market Cap Display Fix Complete
+**Status**: ✅ All market cap and ROI fields display properly for new tokens
+**Version**: 12.11.3 - Fixed crypto-poller market cap calculations with comprehensive fallbacks

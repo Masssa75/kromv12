@@ -263,23 +263,56 @@ serve(async (req)=>{
           
           // Calculate market_cap_at_call if we have supply data
           if (priceData.price && priceData.totalSupply) {
+            // Calculate the market cap regardless of supply similarity
+            const estimatedMarketCap = priceData.price * priceData.totalSupply;
+            
             // Check if supplies are similar (within 5%)
             const supplyDiff = priceData.circulatingSupply && priceData.totalSupply 
               ? Math.abs(priceData.circulatingSupply - priceData.totalSupply) / priceData.totalSupply * 100
               : 0;
             const suppliesAreSimilar = supplyDiff < 5;
             
-            if (suppliesAreSimilar) {
-              callData.market_cap_at_call = priceData.price * priceData.totalSupply;
-              console.log(`   Calculated market_cap_at_call: $${callData.market_cap_at_call.toLocaleString()}`);
-            } else {
-              console.log(`   Supply mismatch (${supplyDiff.toFixed(1)}% diff), skipping market_cap_at_call`);
+            if (!suppliesAreSimilar) {
+              console.log(`   Supply mismatch (${supplyDiff.toFixed(1)}% diff), but still calculating market cap`);
             }
             
-            // ALWAYS set current_market_cap to avoid N/A display (even with supply mismatch)
-            const estimatedMarketCap = priceData.price * priceData.totalSupply;
+            // ALWAYS set both market caps to avoid N/A display
+            callData.market_cap_at_call = estimatedMarketCap;
             callData.current_market_cap = estimatedMarketCap;
+            console.log(`   Calculated market_cap_at_call: $${callData.market_cap_at_call.toLocaleString()}`);
           }
+          
+          // FALLBACK 1: If we have price but no fresh supply, check existing DB supply
+          if (!callData.current_market_cap && callData.current_price) {
+            // Check if token already has supply in database
+            const existingSupply = existingToken?.total_supply || existingToken?.circulating_supply;
+            if (existingSupply) {
+              callData.current_market_cap = callData.current_price * existingSupply;
+              // Also set market_cap_at_call if not set
+              if (!callData.market_cap_at_call) {
+                callData.market_cap_at_call = callData.current_market_cap;
+              }
+              console.log(`   Fallback: Using existing supply for market cap: $${callData.current_market_cap.toLocaleString()}`);
+            }
+          }
+          
+          // FALLBACK 2: If still no market cap but we just set supply, calculate it
+          if (!callData.current_market_cap && callData.current_price && callData.total_supply) {
+            callData.current_market_cap = callData.current_price * callData.total_supply;
+            // Also set market_cap_at_call if not set
+            if (!callData.market_cap_at_call) {
+              callData.market_cap_at_call = callData.current_market_cap;
+            }
+            console.log(`   Fallback: Using new supply for market cap: $${callData.current_market_cap.toLocaleString()}`);
+          }
+          
+          // Initialize ROI fields to 0 for new tokens (so UI doesn't show "-")
+          callData.roi_percent = 0;
+          callData.ath_price = callData.current_price || callData.price_at_call;
+          callData.ath_roi_percent = 0;
+          
+          // Initialize ATH market cap to current market cap (for new tokens)
+          callData.ath_market_cap = callData.current_market_cap || callData.market_cap_at_call;
           
           if (callData.total_supply || callData.circulating_supply) {
             callData.supply_updated_at = new Date().toISOString();
