@@ -6,6 +6,13 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
+#### [August 21, 2025 - GeckoTerminal YZY Search Fix](SESSION-LOG-2025-08-21-GECKO-TRENDING-YZY-SEARCH-FIX.md) ✅ COMPLETED
+- **CRITICAL FIX**: Fixed gecko_trending tokens not appearing in search results (missing source field)
+- **DATA QUALITY**: Replaced scam YZY token ($9K liquidity) with legitimate one ($128M liquidity)
+- **FILTER EXCEPTION**: Added gecko_trending bypass to rugs filter (trending tokens always visible)
+- **INVESTIGATION**: Confirmed scam token not actually trending on GeckoTerminal (function bug)
+- **SECURITY**: Identified need for enhanced validation in gecko-trending data ingestion
+
 #### [August 21, 2025 - Analysis Score Filters & Token Type Hierarchy](SESSION-LOG-2025-08-21-ANALYSIS-SCORE-FILTERS-AND-TOKEN-TYPE-HIERARCHY.md) ✅ COMPLETED
 - **CRITICAL FIX**: Fixed Analysis Score filters database-wide filtering (decimal step bug)
 - **NEW FEATURE**: Added Exclude Imposters filter to RUGS section (6 tokens filtered)

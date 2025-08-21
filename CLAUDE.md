@@ -637,43 +637,24 @@ Enhanced website analysis tooltips to show specific, actionable content instead 
 - **Data reset**: 3,900+ tokens cleared for re-analysis with enhanced parser
 - [Full implementation details →](logs/SESSION-LOG-2025-08-21-WEBSITE-ANALYSIS-TOOLTIP-ENHANCEMENT.md)
 
+## GeckoTerminal Search & Data Quality Fix (August 21, 2025)
+
+Fixed critical gecko_trending token search functionality and replaced scam token with legitimate data:
+
+**Search Fix**: gecko_trending tokens weren't appearing in search results due to missing `source` field in search queries
+**Data Quality**: Scam YZY token ($9K liquidity) replaced with legitimate one ($128M liquidity) 
+**Filter Exception**: Added gecko_trending bypass to rugs filter ensuring trending tokens always visible
+**Investigation**: Confirmed scam token not actually trending on GeckoTerminal (function ingestion bug)
+
+[Full session details →](logs/SESSION-LOG-2025-08-21-GECKO-TRENDING-YZY-SEARCH-FIX.md)
+
 ## Analysis Score Filters & Token Type Hierarchy (August 21, 2025)
 
 Successfully fixed critical filtering issues and implemented hierarchical token classification:
 
-### **Analysis Score Filters Fixed** ✅ COMPLETED
-- **Root Cause**: Frontend sliders used `step="0.5"` sending decimal values to INTEGER database columns
-- **Solution**: Changed to `step="1"` and `parseInt()` for proper integer handling
-- **Result**: Database-wide filtering now works correctly with proper pagination counts
-- **Impact**: All score filters (Call, X, Website) work at database level before pagination
-
-### **Exclude Imposters Filter Added** ✅ COMPLETED  
-- **Location**: Added to RUGS section as requested (deselected by default)
-- **UI**: Matches existing design with green checkbox and description
-- **Functionality**: Successfully filters out 6 imposter tokens marked with `is_imposter = true`
-- **Integration**: Full state management, localStorage persistence, API parameter handling
-
-### **Hierarchical Token Type System** ✅ COMPLETED
-Implemented website analysis priority system as requested:
-
-**Priority Logic:**
-1. **Website analysis (if exists)** → Final classification overrides all others
-2. **Fallback to Call/X analysis** → If no website, ANY utility classification counts
-
-**Examples:**
-- Token with Call=meme, Website=utility → Shows as UTILITY ✅
-- Token with Call=utility, X=meme, Website=meme → Shows as MEME ✅  
-- Token with Call=utility, X=meme, No Website → Shows as UTILITY (fallback) ✅
-
-**Results:**
-- Before: 689 "utility" tokens (many were mixed meme/utility)
-- After: 723 utility tokens (website analysis priority, more accurate)
-
-### **Technical Implementation**
-- **Files**: Updated API routes, frontend components, filter interfaces
-- **Database**: Hierarchical Supabase queries with proper OR/AND logic
-- **Testing**: Comprehensive Playwright testing and API verification
-- **Deployment**: All changes live at https://lively-torrone-8199e0.netlify.app
+**Analysis Score Filters Fixed**: Frontend decimal values causing database INTEGER column mismatches
+**Exclude Imposters Filter**: Added to RUGS section filtering 6 imposter tokens  
+**Hierarchical Token Types**: Website analysis now overrides Call/X analysis for more accurate classification (689→723 utility tokens)
 
 [Full session details →](logs/SESSION-LOG-2025-08-21-ANALYSIS-SCORE-FILTERS-AND-TOKEN-TYPE-HIERARCHY.md)
 
@@ -787,6 +768,6 @@ Successfully integrated GeckoTerminal trending tokens with complete fixes:
 [Full session details →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
 
 ---
-**Last Updated**: August 21, 2025 - Analysis Score Filters & Token Type Hierarchy Complete
-**Status**: ✅ All filtering systems working correctly, hierarchical token classification implemented
-**Version**: 12.11.0 - Fixed score filters, added imposter filter, website analysis priority
+**Last Updated**: August 21, 2025 - GeckoTerminal Search & Data Quality Fix Complete
+**Status**: ✅ All gecko_trending tokens searchable, legitimate data verified
+**Version**: 12.11.1 - Fixed gecko_trending search, replaced scam token, added filter exception
