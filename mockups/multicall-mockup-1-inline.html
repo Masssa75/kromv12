@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicall Mockup 1 - Inline Expansion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #fafafa;
+        }
+        .card-bg {
+            background: #1a1a1a;
+        }
+        .border-custom {
+            border-color: #262626;
+        }
+        .text-muted {
+            color: #737373;
+        }
+        .expand-transition {
+            transition: all 0.3s ease;
+        }
+        .sub-row {
+            background: rgba(26, 26, 26, 0.5);
+            border-left: 3px solid #22c55e;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">Multicall UI - Mockup 1: Inline Expansion</h1>
+        <p class="text-muted mb-8">Click on tokens with multiple calls to expand and see individual call details</p>
+
+        <div class="card-bg rounded-lg border border-custom overflow-hidden">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b border-custom">
+                        <th class="text-left p-4 text-sm font-medium text-muted">TOKEN</th>
+                        <th class="text-left p-4 text-sm font-medium text-muted">NETWORK</th>
+                        <th class="text-left p-4 text-sm font-medium text-muted">CALLS</th>
+                        <th class="text-right p-4 text-sm font-medium text-muted">CURRENT PRICE</th>
+                        <th class="text-right p-4 text-sm font-medium text-muted">24H CHANGE</th>
+                        <th class="text-right p-4 text-sm font-medium text-muted">LIQUIDITY</th>
+                        <th class="text-right p-4 text-sm font-medium text-muted">ATH ROI</th>
+                        <th class="text-center p-4 text-sm font-medium text-muted">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody id="tokenTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        const tokens = [
+            {
+                ticker: 'YZY',
+                network: 'solana',
+                contract: 'A9kM...Kanye',
+                currentPrice: 0.001234,
+                change24h: 156.7,
+                liquidity: 2450000,
+                athRoi: 420.5,
+                calls: [
+                    { username: 'mewgambles', message: '$YZY YZY real kanye.', roi: 111, timeAgo: '2m', groupName: 'KROM Premium' },
+                    { username: 'kweensjournal', message: 'another ye play?', roi: 43, timeAgo: '3m', groupName: 'KROM Elite' },
+                    { username: 'luigiscalls', message: 'wtf', roi: 46, timeAgo: '3m', groupName: 'KROM Elite' },
+                    { username: 'VeniseGems', message: 'Official kanye coin?', roi: 40, timeAgo: '5m', groupName: 'KROM Premium' },
+                    { username: 'cryptowhale', message: 'Kanye token looks solid', roi: 38, timeAgo: '7m', groupName: 'KROM Alpha' },
+                    { username: 'degen123', message: 'YZY to the moon', roi: 35, timeAgo: '8m', groupName: 'KROM Premium' },
+                    { username: 'moonshot', message: 'Real Ye confirmed', roi: 32, timeAgo: '10m', groupName: 'KROM Elite' },
+                    { username: 'diamondhands', message: 'Loading bags', roi: 28, timeAgo: '12m', groupName: 'KROM Alpha' },
+                    { username: 'rocketcalls', message: 'YZY 100x incoming', roi: 25, timeAgo: '15m', groupName: 'KROM Premium' },
+                    { username: 'alphahunter', message: 'Kanye season', roi: 22, timeAgo: '18m', groupName: 'KROM Elite' },
+                    { username: 'traderpro', message: 'YZY chart looking bullish', roi: 20, timeAgo: '20m', groupName: 'KROM Alpha' },
+                    { username: 'whalewatch', message: 'Big buys coming in', roi: 18, timeAgo: '22m', groupName: 'KROM Premium' },
+                    { username: 'gemfinder', message: 'Found the real YZY', roi: 15, timeAgo: '25m', groupName: 'KROM Elite' },
+                    { username: 'moonshotcalls', message: 'Kanye back in crypto', roi: 12, timeAgo: '28m', groupName: 'KROM Alpha' },
+                    { username: 'earlybird', message: 'First Kanye call!', roi: 10, timeAgo: '30m', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'BONK',
+                network: 'solana',
+                contract: 'DezX...bonk',
+                currentPrice: 0.00002134,
+                change24h: 45.2,
+                liquidity: 850000,
+                athRoi: 180.2,
+                calls: [
+                    { username: 'cryptowhale', message: 'bonk is back', roi: 25, timeAgo: '10m', groupName: 'KROM Premium' },
+                    { username: 'degen123', message: 'aping bonk', roi: 22, timeAgo: '15m', groupName: 'KROM Elite' },
+                    { username: 'memecollector', message: 'bonk szn returns', roi: 18, timeAgo: '20m', groupName: 'KROM Alpha' }
+                ]
+            },
+            {
+                ticker: 'PEPE',
+                network: 'ethereum',
+                contract: '0x69...pepe',
+                currentPrice: 0.00000234,
+                change24h: -12.5,
+                liquidity: 450000,
+                athRoi: 95.3,
+                calls: [
+                    { username: 'memecollector', message: 'pepe szn', roi: 15, timeAgo: '1h', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'WIF',
+                network: 'solana',
+                contract: 'EKpQ...wif',
+                currentPrice: 2.45,
+                change24h: 23.4,
+                liquidity: 5600000,
+                athRoi: 340.2,
+                calls: [
+                    { username: 'doggocalls', message: 'wif looking strong', roi: 45, timeAgo: '5m', groupName: 'KROM Elite' },
+                    { username: 'shibmaster', message: 'dog season back', roi: 38, timeAgo: '12m', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'POPCAT',
+                network: 'solana',
+                contract: '7GCi...pop',
+                currentPrice: 0.456,
+                change24h: 67.8,
+                liquidity: 1200000,
+                athRoi: 520.3,
+                calls: [
+                    { username: 'catcoins', message: 'popcat ready to pop', roi: 78, timeAgo: '8m', groupName: 'KROM Alpha' }
+                ]
+            }
+        ];
+
+        // Render table
+        function renderTable() {
+            const tbody = document.getElementById('tokenTable');
+            tbody.innerHTML = '';
+
+            tokens.forEach((token, index) => {
+                // Main row
+                const mainRow = document.createElement('tr');
+                mainRow.className = 'border-b border-custom hover:bg-gray-900 cursor-pointer expand-transition';
+                mainRow.id = `token-${index}`;
+                
+                const isMulticall = token.calls.length > 1;
+                const isExpanded = mainRow.classList.contains('expanded');
+
+                mainRow.innerHTML = `
+                    <td class="p-4">
+                        <div class="flex items-center gap-2">
+                            ${isMulticall ? '<span class="text-gray-500">▶</span>' : '<span class="w-4"></span>'}
+                            <div>
+                                <div class="font-semibold">${token.ticker}</div>
+                                <div class="text-xs text-muted">${token.contract}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4">
+                        <span class="text-sm px-2 py-1 rounded bg-gray-800">${token.network}</span>
+                    </td>
+                    <td class="p-4">
+                        ${isMulticall ? 
+                            `<span class="bg-green-900 text-green-300 px-2 py-1 rounded-full text-xs font-semibold">
+                                ${token.calls.length} calls
+                            </span>` : 
+                            `<span class="text-muted">1 call</span>`
+                        }
+                        ${token.calls[0].timeAgo === '2m' || token.calls[0].timeAgo === '3m' || token.calls[0].timeAgo === '5m' ? 
+                            '<span class="ml-2 inline-block w-2 h-2 bg-green-500 rounded-full pulse-dot"></span>' : ''
+                        }
+                    </td>
+                    <td class="text-right p-4">
+                        <div class="font-semibold">$${token.currentPrice.toFixed(8)}</div>
+                    </td>
+                    <td class="text-right p-4">
+                        <span class="${token.change24h > 0 ? 'text-green-500' : 'text-red-500'} font-semibold">
+                            ${token.change24h > 0 ? '+' : ''}${token.change24h.toFixed(1)}%
+                        </span>
+                    </td>
+                    <td class="text-right p-4">
+                        <div class="text-sm">$${(token.liquidity / 1000000).toFixed(2)}M</div>
+                    </td>
+                    <td class="text-right p-4">
+                        <span class="text-green-400 font-bold">${token.athRoi.toFixed(1)}%</span>
+                    </td>
+                    <td class="text-center p-4">
+                        <button class="text-xs px-3 py-1 bg-green-600 hover:bg-green-700 rounded">
+                            View
+                        </button>
+                    </td>
+                `;
+
+                if (isMulticall) {
+                    mainRow.onclick = () => toggleExpand(index);
+                }
+
+                tbody.appendChild(mainRow);
+
+                // Sub-rows container (hidden by default)
+                const subRowsContainer = document.createElement('tr');
+                subRowsContainer.id = `calls-${index}`;
+                subRowsContainer.style.display = 'none';
+                subRowsContainer.innerHTML = `
+                    <td colspan="8" class="p-0">
+                        <div class="bg-black/30 p-4">
+                            <div class="space-y-2">
+                                ${token.calls.map(call => `
+                                    <div class="sub-row p-3 rounded-lg flex items-center justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="text-xs text-muted w-12">${call.timeAgo}</div>
+                                            <div>
+                                                <span class="font-semibold text-sm">${call.username}</span>
+                                                <span class="text-xs text-muted ml-2">${call.groupName}</span>
+                                            </div>
+                                            <div class="text-sm text-gray-300">"${call.message}"</div>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-green-400 font-semibold">+${call.roi}%</span>
+                                            <button class="text-xs px-2 py-1 bg-gray-700 hover:bg-gray-600 rounded">
+                                                🔗
+                                            </button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </td>
+                `;
+
+                tbody.appendChild(subRowsContainer);
+            });
+        }
+
+        function toggleExpand(index) {
+            const mainRow = document.getElementById(`token-${index}`);
+            const callsRow = document.getElementById(`calls-${index}`);
+            const arrow = mainRow.querySelector('.text-gray-500');
+            
+            if (callsRow.style.display === 'none') {
+                callsRow.style.display = 'table-row';
+                mainRow.classList.add('expanded');
+                if (arrow) arrow.textContent = '▼';
+            } else {
+                callsRow.style.display = 'none';
+                mainRow.classList.remove('expanded');
+                if (arrow) arrow.textContent = '▶';
+            }
+        }
+
+        // Initial render
+        renderTable();
+    </script>
+</body>
+</html>

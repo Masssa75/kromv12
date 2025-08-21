@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicall Mockup 4 - Hybrid with Side Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #fafafa;
+        }
+        .card-bg {
+            background: #1a1a1a;
+        }
+        .border-custom {
+            border-color: #262626;
+        }
+        .text-muted {
+            color: #737373;
+        }
+        .side-panel {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .side-panel.open {
+            transform: translateX(0);
+        }
+        .caller-avatar {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+        }
+        .caller-stack {
+            display: inline-flex;
+            margin-left: -8px;
+        }
+        .caller-stack:first-child {
+            margin-left: 0;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        .timeline-entry {
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline-entry::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 20px;
+            bottom: -20px;
+            width: 2px;
+            background: #262626;
+        }
+        .timeline-entry:last-child::before {
+            display: none;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 10px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #22c55e;
+            border: 2px solid #1a1a1a;
+            border-radius: 50%;
+        }
+        .selected-row {
+            background: rgba(34, 197, 94, 0.1) !important;
+            border-left: 3px solid #22c55e;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="flex gap-6">
+        <div class="flex-1">
+            <h1 class="text-3xl font-bold mb-2">Multicall UI - Mockup 4: Hybrid Approach</h1>
+            <p class="text-muted mb-8">Table with caller avatars - Click to view detailed timeline in side panel</p>
+
+            <div class="card-bg rounded-lg border border-custom overflow-hidden">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-custom">
+                            <th class="text-left p-4 text-sm font-medium text-muted">TOKEN</th>
+                            <th class="text-left p-4 text-sm font-medium text-muted">NETWORK</th>
+                            <th class="text-left p-4 text-sm font-medium text-muted">CALLERS</th>
+                            <th class="text-right p-4 text-sm font-medium text-muted">CURRENT PRICE</th>
+                            <th class="text-right p-4 text-sm font-medium text-muted">24H CHANGE</th>
+                            <th class="text-right p-4 text-sm font-medium text-muted">LIQUIDITY</th>
+                            <th class="text-right p-4 text-sm font-medium text-muted">ATH ROI</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tokenTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Side Panel -->
+        <div id="sidePanel" class="side-panel fixed right-0 top-0 h-full w-96 card-bg border-l border-custom shadow-2xl z-40">
+            <div class="h-full flex flex-col">
+                <div class="border-b border-custom p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 id="panelTitle" class="text-xl font-bold mb-2"></h2>
+                            <div class="flex gap-3 text-sm">
+                                <span id="panelNetwork" class="px-2 py-1 bg-gray-800 rounded"></span>
+                                <span id="panelCallCount" class="text-green-500 font-semibold"></span>
+                            </div>
+                        </div>
+                        <button onclick="closePanel()" class="text-gray-400 hover:text-white text-2xl">×</button>
+                    </div>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-6">
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <div class="text-xs text-muted mb-1">Current Price</div>
+                            <div id="panelPrice" class="text-lg font-bold"></div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted mb-1">Total ROI</div>
+                            <div id="panelRoi" class="text-lg font-bold text-green-500"></div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-sm font-semibold mb-4 text-muted">CALL TIMELINE</h3>
+                    <div id="panelTimeline" class="space-y-4">
+                        <!-- Timeline entries will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="border-t border-custom p-4">
+                    <button class="w-full px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg font-semibold">
+                        View on DexScreener
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        const tokens = [
+            {
+                ticker: 'YZY',
+                network: 'solana',
+                contract: 'A9kM...Kanye',
+                currentPrice: 0.001234,
+                change24h: 156.7,
+                liquidity: 2450000,
+                athRoi: 420.5,
+                calls: [
+                    { username: 'mewgambles', message: '$YZY YZY real kanye.', roi: 111, timeAgo: '2m', groupName: 'KROM Premium' },
+                    { username: 'kweensjournal', message: 'another ye play?', roi: 43, timeAgo: '3m', groupName: 'KROM Elite' },
+                    { username: 'luigiscalls', message: 'wtf', roi: 46, timeAgo: '3m', groupName: 'KROM Elite' },
+                    { username: 'VeniseGems', message: 'Official kanye coin?', roi: 40, timeAgo: '5m', groupName: 'KROM Premium' },
+                    { username: 'cryptowhale', message: 'Kanye token looks solid', roi: 38, timeAgo: '7m', groupName: 'KROM Alpha' },
+                    { username: 'degen123', message: 'YZY to the moon', roi: 35, timeAgo: '8m', groupName: 'KROM Premium' },
+                    { username: 'moonshot', message: 'Real Ye confirmed', roi: 32, timeAgo: '10m', groupName: 'KROM Elite' },
+                    { username: 'diamondhands', message: 'Loading bags', roi: 28, timeAgo: '12m', groupName: 'KROM Alpha' },
+                    { username: 'rocketcalls', message: 'YZY 100x incoming', roi: 25, timeAgo: '15m', groupName: 'KROM Premium' },
+                    { username: 'alphahunter', message: 'Kanye season', roi: 22, timeAgo: '18m', groupName: 'KROM Elite' },
+                    { username: 'traderpro', message: 'YZY chart looking bullish', roi: 20, timeAgo: '20m', groupName: 'KROM Alpha' },
+                    { username: 'whalewatch', message: 'Big buys coming in', roi: 18, timeAgo: '22m', groupName: 'KROM Premium' },
+                    { username: 'gemfinder', message: 'Found the real YZY', roi: 15, timeAgo: '25m', groupName: 'KROM Elite' },
+                    { username: 'moonshotcalls', message: 'Kanye back in crypto', roi: 12, timeAgo: '28m', groupName: 'KROM Alpha' },
+                    { username: 'earlybird', message: 'First Kanye call!', roi: 10, timeAgo: '30m', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'BONK',
+                network: 'solana',
+                contract: 'DezX...bonk',
+                currentPrice: 0.00002134,
+                change24h: 45.2,
+                liquidity: 850000,
+                athRoi: 180.2,
+                calls: [
+                    { username: 'cryptowhale', message: 'bonk is back', roi: 25, timeAgo: '10m', groupName: 'KROM Premium' },
+                    { username: 'degen123', message: 'aping bonk', roi: 22, timeAgo: '15m', groupName: 'KROM Elite' },
+                    { username: 'memecollector', message: 'bonk szn returns', roi: 18, timeAgo: '20m', groupName: 'KROM Alpha' }
+                ]
+            },
+            {
+                ticker: 'PEPE',
+                network: 'ethereum',
+                contract: '0x69...pepe',
+                currentPrice: 0.00000234,
+                change24h: -12.5,
+                liquidity: 450000,
+                athRoi: 95.3,
+                calls: [
+                    { username: 'memecollector', message: 'pepe szn', roi: 15, timeAgo: '1h', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'WIF',
+                network: 'solana',
+                contract: 'EKpQ...wif',
+                currentPrice: 2.45,
+                change24h: 23.4,
+                liquidity: 5600000,
+                athRoi: 340.2,
+                calls: [
+                    { username: 'doggocalls', message: 'wif looking strong', roi: 45, timeAgo: '5m', groupName: 'KROM Elite' },
+                    { username: 'shibmaster', message: 'dog season back', roi: 38, timeAgo: '12m', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'POPCAT',
+                network: 'solana',
+                contract: '7GCi...pop',
+                currentPrice: 0.456,
+                change24h: 67.8,
+                liquidity: 1200000,
+                athRoi: 520.3,
+                calls: [
+                    { username: 'catcoins', message: 'popcat ready to pop', roi: 78, timeAgo: '8m', groupName: 'KROM Alpha' }
+                ]
+            }
+        ];
+
+        let currentToken = null;
+        let selectedRow = null;
+
+        // Render table
+        function renderTable() {
+            const tbody = document.getElementById('tokenTable');
+            tbody.innerHTML = '';
+
+            tokens.forEach((token, index) => {
+                const row = document.createElement('tr');
+                row.className = 'border-b border-custom hover:bg-gray-900 cursor-pointer transition-all';
+                row.id = `row-${index}`;
+                
+                const isMulticall = token.calls.length > 1;
+                const isRecent = token.calls[0].timeAgo === '2m' || token.calls[0].timeAgo === '3m' || 
+                                token.calls[0].timeAgo === '5m';
+
+                // Create caller avatars HTML
+                const callerAvatars = token.calls.slice(0, 5).map(call => 
+                    `<span class="caller-avatar caller-stack" title="${call.username}">${call.username.substring(0, 2).toUpperCase()}</span>`
+                ).join('');
+                
+                const extraCallers = token.calls.length > 5 ? 
+                    `<span class="caller-avatar caller-stack bg-gray-700" title="${token.calls.length - 5} more">+${token.calls.length - 5}</span>` : '';
+
+                row.innerHTML = `
+                    <td class="p-4">
+                        <div>
+                            <div class="font-semibold">${token.ticker}</div>
+                            <div class="text-xs text-muted">${token.contract}</div>
+                        </div>
+                    </td>
+                    <td class="p-4">
+                        <span class="text-sm px-2 py-1 rounded bg-gray-800">${token.network}</span>
+                    </td>
+                    <td class="p-4">
+                        <div class="flex items-center gap-2">
+                            <div class="flex">
+                                ${callerAvatars}
+                                ${extraCallers}
+                            </div>
+                            ${isRecent ? '<span class="inline-block w-2 h-2 bg-green-500 rounded-full pulse-dot ml-2"></span>' : ''}
+                        </div>
+                    </td>
+                    <td class="text-right p-4">
+                        <div class="font-semibold">$${token.currentPrice.toFixed(8)}</div>
+                    </td>
+                    <td class="text-right p-4">
+                        <span class="${token.change24h > 0 ? 'text-green-500' : 'text-red-500'} font-semibold">
+                            ${token.change24h > 0 ? '+' : ''}${token.change24h.toFixed(1)}%
+                        </span>
+                    </td>
+                    <td class="text-right p-4">
+                        <div class="text-sm">$${(token.liquidity / 1000000).toFixed(2)}M</div>
+                    </td>
+                    <td class="text-right p-4">
+                        <span class="text-green-400 font-bold">${token.athRoi.toFixed(1)}%</span>
+                    </td>
+                `;
+
+                row.onclick = () => openPanel(index);
+                tbody.appendChild(row);
+            });
+        }
+
+        function openPanel(tokenIndex) {
+            currentToken = tokens[tokenIndex];
+            
+            // Update selected row
+            if (selectedRow) {
+                selectedRow.classList.remove('selected-row');
+            }
+            selectedRow = document.getElementById(`row-${tokenIndex}`);
+            selectedRow.classList.add('selected-row');
+            
+            // Update panel content
+            document.getElementById('panelTitle').textContent = currentToken.ticker;
+            document.getElementById('panelNetwork').textContent = currentToken.network;
+            document.getElementById('panelCallCount').textContent = `${currentToken.calls.length} calls`;
+            document.getElementById('panelPrice').textContent = `$${currentToken.currentPrice.toFixed(8)}`;
+            document.getElementById('panelRoi').textContent = `+${currentToken.athRoi.toFixed(1)}%`;
+
+            // Render timeline
+            const timeline = document.getElementById('panelTimeline');
+            timeline.innerHTML = currentToken.calls.map((call, i) => `
+                <div class="timeline-entry">
+                    <div class="timeline-dot ${i === 0 && (call.timeAgo === '2m' || call.timeAgo === '3m' || call.timeAgo === '5m') ? 'pulse-dot' : ''}"></div>
+                    <div class="card-bg rounded-lg p-4 border border-custom">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="font-semibold">${call.username}</span>
+                                <span class="text-xs text-muted ml-2">${call.timeAgo}</span>
+                            </div>
+                            <span class="text-green-400 font-bold text-sm">+${call.roi}%</span>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-2">"${call.message}"</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs px-2 py-0.5 bg-gray-800 rounded">${call.groupName}</span>
+                            <button class="text-xs text-gray-400 hover:text-white">Share 🔗</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Open panel
+            document.getElementById('sidePanel').classList.add('open');
+        }
+
+        function closePanel() {
+            document.getElementById('sidePanel').classList.remove('open');
+            if (selectedRow) {
+                selectedRow.classList.remove('selected-row');
+                selectedRow = null;
+            }
+        }
+
+        // Initial render
+        renderTable();
+    </script>
+</body>
+</html>

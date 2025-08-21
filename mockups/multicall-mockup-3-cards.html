@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicall Mockup 3 - Card Grid Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #fafafa;
+        }
+        .card-bg {
+            background: #1a1a1a;
+        }
+        .border-custom {
+            border-color: #262626;
+        }
+        .text-muted {
+            color: #737373;
+        }
+        .token-card {
+            background: linear-gradient(135deg, #1a1a1a, #141414);
+            transition: all 0.3s ease;
+        }
+        .token-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+        }
+        .mini-timeline {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .mini-timeline::-webkit-scrollbar {
+            width: 4px;
+        }
+        .mini-timeline::-webkit-scrollbar-track {
+            background: #262626;
+        }
+        .mini-timeline::-webkit-scrollbar-thumb {
+            background: #22c55e;
+            border-radius: 2px;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        .call-item {
+            border-left: 2px solid #22c55e;
+            padding-left: 12px;
+            margin-left: 8px;
+        }
+        .trending-badge {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">Multicall UI - Mockup 3: Card Grid Layout</h1>
+        <p class="text-muted mb-8">Tokens displayed as cards with mini-timeline of recent calls</p>
+
+        <div class="mb-6 flex gap-4">
+            <button class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg font-semibold">
+                All Tokens
+            </button>
+            <button class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg">
+                Multicalls Only
+            </button>
+            <button class="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg">
+                Trending 🔥
+            </button>
+        </div>
+
+        <div id="tokenGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        const tokens = [
+            {
+                ticker: 'YZY',
+                network: 'solana',
+                contract: 'A9kM...Kanye',
+                currentPrice: 0.001234,
+                change24h: 156.7,
+                liquidity: 2450000,
+                athRoi: 420.5,
+                marketCap: 8900000,
+                trending: true,
+                calls: [
+                    { username: 'mewgambles', message: '$YZY YZY real kanye.', roi: 111, timeAgo: '2m', groupName: 'KROM Premium' },
+                    { username: 'kweensjournal', message: 'another ye play?', roi: 43, timeAgo: '3m', groupName: 'KROM Elite' },
+                    { username: 'luigiscalls', message: 'wtf', roi: 46, timeAgo: '3m', groupName: 'KROM Elite' },
+                    { username: 'VeniseGems', message: 'Official kanye coin?', roi: 40, timeAgo: '5m', groupName: 'KROM Premium' },
+                    { username: 'cryptowhale', message: 'Kanye token looks solid', roi: 38, timeAgo: '7m', groupName: 'KROM Alpha' },
+                    { username: 'degen123', message: 'YZY to the moon', roi: 35, timeAgo: '8m', groupName: 'KROM Premium' },
+                    { username: 'moonshot', message: 'Real Ye confirmed', roi: 32, timeAgo: '10m', groupName: 'KROM Elite' },
+                    { username: 'diamondhands', message: 'Loading bags', roi: 28, timeAgo: '12m', groupName: 'KROM Alpha' },
+                    { username: 'rocketcalls', message: 'YZY 100x incoming', roi: 25, timeAgo: '15m', groupName: 'KROM Premium' },
+                    { username: 'alphahunter', message: 'Kanye season', roi: 22, timeAgo: '18m', groupName: 'KROM Elite' },
+                    { username: 'traderpro', message: 'YZY chart looking bullish', roi: 20, timeAgo: '20m', groupName: 'KROM Alpha' },
+                    { username: 'whalewatch', message: 'Big buys coming in', roi: 18, timeAgo: '22m', groupName: 'KROM Premium' },
+                    { username: 'gemfinder', message: 'Found the real YZY', roi: 15, timeAgo: '25m', groupName: 'KROM Elite' },
+                    { username: 'moonshotcalls', message: 'Kanye back in crypto', roi: 12, timeAgo: '28m', groupName: 'KROM Alpha' },
+                    { username: 'earlybird', message: 'First Kanye call!', roi: 10, timeAgo: '30m', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'BONK',
+                network: 'solana',
+                contract: 'DezX...bonk',
+                currentPrice: 0.00002134,
+                change24h: 45.2,
+                liquidity: 850000,
+                athRoi: 180.2,
+                marketCap: 3200000,
+                trending: false,
+                calls: [
+                    { username: 'cryptowhale', message: 'bonk is back', roi: 25, timeAgo: '10m', groupName: 'KROM Premium' },
+                    { username: 'degen123', message: 'aping bonk', roi: 22, timeAgo: '15m', groupName: 'KROM Elite' },
+                    { username: 'memecollector', message: 'bonk szn returns', roi: 18, timeAgo: '20m', groupName: 'KROM Alpha' }
+                ]
+            },
+            {
+                ticker: 'PEPE',
+                network: 'ethereum',
+                contract: '0x69...pepe',
+                currentPrice: 0.00000234,
+                change24h: -12.5,
+                liquidity: 450000,
+                athRoi: 95.3,
+                marketCap: 1500000,
+                trending: false,
+                calls: [
+                    { username: 'memecollector', message: 'pepe szn', roi: 15, timeAgo: '1h', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'WIF',
+                network: 'solana',
+                contract: 'EKpQ...wif',
+                currentPrice: 2.45,
+                change24h: 23.4,
+                liquidity: 5600000,
+                athRoi: 340.2,
+                marketCap: 45000000,
+                trending: true,
+                calls: [
+                    { username: 'doggocalls', message: 'wif looking strong', roi: 45, timeAgo: '5m', groupName: 'KROM Elite' },
+                    { username: 'shibmaster', message: 'dog season back', roi: 38, timeAgo: '12m', groupName: 'KROM Premium' }
+                ]
+            },
+            {
+                ticker: 'POPCAT',
+                network: 'solana',
+                contract: '7GCi...pop',
+                currentPrice: 0.456,
+                change24h: 67.8,
+                liquidity: 1200000,
+                athRoi: 520.3,
+                marketCap: 12000000,
+                trending: false,
+                calls: [
+                    { username: 'catcoins', message: 'popcat ready to pop', roi: 78, timeAgo: '8m', groupName: 'KROM Alpha' }
+                ]
+            },
+            {
+                ticker: 'MOODENG',
+                network: 'solana',  
+                contract: 'EdV...moo',
+                currentPrice: 0.0234,
+                change24h: 234.5,
+                liquidity: 780000,
+                athRoi: 890.2,
+                marketCap: 5600000,
+                trending: true,
+                calls: [
+                    { username: 'hippogang', message: 'moodeng gonna moon', roi: 234, timeAgo: '1m', groupName: 'KROM Elite' },
+                    { username: 'animalmemes', message: 'hippo szn is here', roi: 198, timeAgo: '4m', groupName: 'KROM Premium' },
+                    { username: 'degentrader', message: 'aping moodeng hard', roi: 156, timeAgo: '6m', groupName: 'KROM Alpha' },
+                    { username: 'moonwalker', message: 'thailand hippo play', roi: 134, timeAgo: '9m', groupName: 'KROM Elite' }
+                ]
+            }
+        ];
+
+        function renderCards() {
+            const grid = document.getElementById('tokenGrid');
+            grid.innerHTML = '';
+
+            tokens.forEach((token, index) => {
+                const card = document.createElement('div');
+                card.className = 'token-card rounded-xl border border-custom p-6';
+                
+                const isMulticall = token.calls.length > 1;
+                const isRecent = token.calls[0].timeAgo === '1m' || token.calls[0].timeAgo === '2m' || 
+                                token.calls[0].timeAgo === '3m' || token.calls[0].timeAgo === '4m' || 
+                                token.calls[0].timeAgo === '5m';
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-xl font-bold">${token.ticker}</h3>
+                                ${token.trending ? '<span class="trending-badge text-xs px-2 py-0.5 rounded-full text-white">🔥 HOT</span>' : ''}
+                                ${isRecent ? '<span class="inline-block w-2 h-2 bg-green-500 rounded-full pulse-dot"></span>' : ''}
+                            </div>
+                            <div class="text-xs text-muted mt-1">${token.contract}</div>
+                        </div>
+                        <span class="text-xs px-2 py-1 bg-gray-800 rounded">${token.network}</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <div>
+                            <div class="text-xs text-muted">Price</div>
+                            <div class="font-semibold">$${token.currentPrice < 0.01 ? token.currentPrice.toFixed(8) : token.currentPrice.toFixed(4)}</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">24h</div>
+                            <div class="${token.change24h > 0 ? 'text-green-500' : 'text-red-500'} font-semibold">
+                                ${token.change24h > 0 ? '+' : ''}${token.change24h.toFixed(1)}%
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">Liquidity</div>
+                            <div class="text-sm">$${(token.liquidity / 1000000).toFixed(2)}M</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-muted">ATH ROI</div>
+                            <div class="text-green-400 font-bold">${token.athRoi.toFixed(0)}%</div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-custom pt-4">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="text-sm font-semibold">Recent Calls</h4>
+                            <span class="bg-green-900 text-green-300 px-2 py-0.5 rounded-full text-xs font-semibold">
+                                ${token.calls.length} ${token.calls.length === 1 ? 'call' : 'calls'}
+                            </span>
+                        </div>
+                        
+                        <div class="mini-timeline space-y-2">
+                            ${token.calls.slice(0, 5).map(call => `
+                                <div class="call-item text-xs">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="text-muted">${call.timeAgo}</span>
+                                        <span class="font-semibold">${call.username}</span>
+                                        <span class="text-green-400">+${call.roi}%</span>
+                                    </div>
+                                    <div class="text-gray-400 truncate">"${call.message}"</div>
+                                </div>
+                            `).join('')}
+                            ${token.calls.length > 5 ? `
+                                <button class="text-green-500 hover:text-green-400 text-xs font-semibold mt-2">
+                                    View all ${token.calls.length} calls →
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex gap-2">
+                        <button class="flex-1 px-3 py-2 bg-green-600 hover:bg-green-700 rounded-lg text-sm font-semibold">
+                            View Chart
+                        </button>
+                        <button class="px-3 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm">
+                            📋
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Initial render
+        renderCards();
+    </script>
+</body>
+</html>
