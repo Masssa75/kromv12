@@ -164,10 +164,15 @@ serve(async (req) => {
         }
 
         // Store analysis results - keep top 5 quality tweets for storage
+        // Convert tier to score for compatibility
+        const score = tier === 'ALPHA' ? 9 : tier === 'SOLID' ? 7 : tier === 'BASIC' ? 4 : 2
+        
         const { error: updateError } = await supabase
           .from('crypto_calls')
           .update({
             x_analysis_tier: tier,
+            x_analysis_score: score,
+            x_analysis_reasoning: summary + (redFlags ? `\nRED FLAGS:\n${redFlags}` : ''),
             x_analysis_summary: summary + (redFlags ? `\nRED FLAGS:\n${redFlags}` : ''),
             x_raw_tweets: tweets.slice(0, 5).map(t => ({ text: t.text })), // Remove length property for storage
             x_analyzed_at: new Date().toISOString()

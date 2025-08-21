@@ -187,12 +187,14 @@ serve(async (req) => {
         };
         
         // Check if token already exists in crypto_calls
-        const { data: existingToken } = await supabase
+        const { data: existingTokens } = await supabase
           .from('crypto_calls')
           .select('id, source, coin_of_interest_notes')
           .eq('contract_address', contractAddress)
           .eq('network', mappedNetwork)
-          .single();
+          .limit(1);
+        
+        const existingToken = existingTokens?.[0];
         
         if (existingToken) {
           console.log(`Token ${ticker} already exists (source: ${existingToken.source})`);

@@ -126,5 +126,42 @@ Add health checks to detect when ultra-tracker stops processing:
 - `/check-missing-data.py` - Investigation script
 - `/test-ultra-tracker-write.py` - Permission test script
 
+## Admin Interface Improvements (August 21, 2025 - Session 2)
+
+### 3-Dot Admin Menu Implementation
+**Issue**: Large "Mark Imposter" button took up too much space in god mode interface
+
+**Solution**:
+- Replaced with compact 3-dot menu (⋮) using Radix UI dropdown
+- Added two admin actions:
+  - **Mark as Imposter/Unmark as Imposter** (🚫/✅ icons)
+  - **Invalidate Token/Restore Token** (❌/♻️ icons)
+
+**Technical Implementation**:
+1. **Added dropdown component**: `@radix-ui/react-dropdown-menu` package
+2. **Updated invalidate API**: Now accepts either `krom_id` or `id` (many tokens lack krom_id)
+3. **Visual feedback**: Added gray strikethrough for invalidated tokens
+4. **Dark theme styling**: Fixed black-on-black text visibility issue
+
+**Files Modified**:
+- `/components/ui/dropdown-menu.tsx` - New dropdown component
+- `/components/RecentCalls.tsx` - Replaced button with menu
+- `/app/api/invalidate/route.ts` - Enhanced to accept id fallback
+
+### ATH Price Inflation Bug Fix
+**Issue**: Three tokens showed massively inflated ATH prices (100-1000x too high)
+
+**Problematic Tokens**:
+- **BADGER**: $105.9 → Fixed to $0.0007245 (ROI: 980,455% → -93%)
+- **NEKO**: $0.356 → Fixed to $0.0004185 (ROI: 132,835% → 56%)  
+- **USAI**: $0.3679 → Fixed to $0.003679 (ROI: 33,315% → 234%)
+
+**Root Cause**: Data anomaly where extreme wick prices were recorded as ATH instead of realistic open/close prices
+
+**Solution**: Used Supabase Management API to correct ATH values based on actual OHLCV data
+
+**Files Archived**:
+- `fix-inflated-ath.sql` - SQL correction script
+
 ---
 **Session completed successfully with all issues resolved**

@@ -6,12 +6,30 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
-#### [August 21, 2025 - GeckoTerminal ROI & Data Processing Fixes](SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md) ✅ COMPLETED
-- Fixed ROI display showing "-" for gecko_trending tokens (case-sensitivity bug)
+#### [August 21, 2025 - Call Analysis Failure Fix & Error Handling](SESSION-LOG-2025-08-21-CALL-ANALYSIS-FAILURE-FIX.md) ✅ COMPLETED
+- **CRITICAL FIX**: Restored call analysis after complete failure (invalid OpenRouter API key)
+- **MAJOR IMPROVEMENT**: Implemented consistent FAILED tier error handling across all analysis types
+- Fixed 130+ failed analyses showing "Analysis failed" → now proper analysis with scores 2-7
+- Enhanced error messages: Generic failures → detailed ERROR: messages with actual error details
+- UI consistency: All analysis types now display "FAILED" tier in red (C: FAILED, X: FAILED, W: FAILED)
+- **Mystery**: X analysis kept working during call analysis outage despite using same API key
+
+#### [August 21, 2025 - N/A Values & Duplicates Fixed](SESSION-LOG-2025-08-21-NA-VALUES-AND-DUPLICATES-FIXED.md) ✅ COMPLETED
+- **MAJOR FIX**: Resolved N/A market cap values by fixing crypto-poller field mismatch
+- **MAJOR FIX**: Stopped GeckoTerminal duplicate token flood (74+ YZY duplicates)
+- Fixed crypto-poller to set both price_at_call AND current_price for immediate display
+- Fixed gecko-trending duplicate detection bug (.single() → .limit(1))
+- Deployed solutions: No more N/A values, no more duplicate creation
+- **Outstanding**: YZY missing from UI, X analysis scoring TRASH instead of ALPHA
+
+#### [August 21, 2025 - GeckoTerminal ROI & Data Processing Fixes + Admin UX](SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md) ✅ COMPLETED
+- Fixed ROI display showing "-" for gecko_trending tokens (case-sensitivity bug)  
 - Resolved 9-hour data processing gap leaving tokens with N/A values
 - Changed group display from "Unknown Group" to "GT Trending"
 - Manually processed backlog of ~1,400 unprocessed tokens
-- Identified potential ultra-tracker timeout issue during 17:00-23:00 UTC
+- **Admin UX**: Replaced large imposter button with compact 3-dot dropdown menu
+- **Bug Fix**: Corrected 3 tokens with 100-1000x inflated ATH prices (BADGER, NEKO, USAI)
+- Added invalidate token functionality alongside imposter marking
 
 #### [August 20, 2025 - GeckoTerminal Trending Integration](SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md) ✅ COMPLETED
 - Integrated GeckoTerminal trending tokens as new data source parallel to KROM calls
