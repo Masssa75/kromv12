@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Analysis Info Display Options</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #333;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: #4CAF50;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .token-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .token-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .token-type {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .utility {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .meme {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .network {
+            background: #1e3a8a;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .scores {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .score-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .call-score { background: #22c55e; }
+        .x-score { background: #3b82f6; }
+        .web-score { background: #f59e0b; }
+        
+        .tier {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .tier-alpha { background: #10b981; }
+        .tier-solid { background: #3b82f6; }
+        .tier-basic { background: #f59e0b; }
+        .tier-trash { background: #ef4444; }
+        
+        .option-label {
+            background: #4CAF50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .info-section {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            border: 1px solid #333;
+        }
+        
+        .info-title {
+            color: #888;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .info-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-list li {
+            padding: 5px 0;
+            color: #ddd;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-list li:before {
+            content: "•";
+            color: #ef4444;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        
+        .positive-list li:before {
+            content: "✓";
+            color: #4CAF50;
+        }
+        
+        .quote-text {
+            font-style: italic;
+            color: #aaa;
+            border-left: 3px solid #4CAF50;
+            padding-left: 15px;
+            margin: 10px 0;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .comparison-col h4 {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .comparison-col.real { border-left: 3px solid #4CAF50; padding-left: 10px; }
+        .comparison-col.this { border-left: 3px solid #ef4444; padding-left: 10px; }
+        
+        .content-preview {
+            background: #000;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #888;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .highlight {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        
+        .pros-cons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .winner {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: gold;
+            color: black;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .metrics {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .metric {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+        
+        .metric-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .metric-label {
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Website Analysis Info Display Options</h1>
+        <p class="subtitle">Two finalist options for showing website analysis in token cards</p>
+        
+        <div class="options-grid">
+            <!-- Option 1: Actual Content Summary -->
+            <div class="card">
+                <div class="option-label">OPTION 1: ACTUAL CONTENT SUMMARY</div>
+                <div class="card-header">
+                    <div class="token-info">
+                        <span class="token-name">EDGE</span>
+                        <span class="token-type utility">UTILITY</span>
+                        <span class="network">SOL</span>
+                    </div>
+                    <div class="scores">
+                        <span class="tier tier-basic">BASIC</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-title">📄 WHAT'S THERE</div>
+                    <ul class="info-list positive-list">
+                        <li>DeFi trading platform interface</li>
+                        <li>$700k institutional trade example</li>
+                        <li>Multi-chain EVM + Solana support</li>
+                        <li>Legal disclaimer & tokenomics</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-title">⚠️ WHAT'S MISSING</div>
+                    <ul class="info-list">
+                        <li>GitHub repository links</li>
+                        <li>Team backgrounds</li>
+                        <li>Security audits</li>
+                        <li>Community channels</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Option 2: Combined Best -->
+            <div class="card" style="position: relative;">
+                <div class="option-label">OPTION 2: COMBINED APPROACH</div>
+                <div class="card-header">
+                    <div class="token-info">
+                        <span class="token-name">EDGE</span>
+                        <span class="token-type utility">UTILITY</span>
+                        <span class="network">SOL</span>
+                    </div>
+                    <div class="scores">
+                        <span class="tier tier-basic">BASIC</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-title">💡 QUICK TAKE</div>
+                    <div class="info-content" style="font-size: 13px; line-height: 1.5;">
+                        DeFi trading platform with <span class="highlight">$700k institutional trades</span>, 
+                        but <span style="color: #ef4444;">no team info or audits</span>
+                    </div>
+                </div>
+                
+                <div class="pros-cons-grid">
+                    <div class="info-section" style="margin-top: 0;">
+                        <div class="info-title" style="color: #4CAF50;">✓ FOUND</div>
+                        <ul class="info-list positive-list" style="font-size: 13px;">
+                            <li>Real trading platform</li>
+                            <li>Case studies</li>
+                            <li>Multi-chain support</li>
+                        </ul>
+                    </div>
+                    <div class="info-section" style="margin-top: 0;">
+                        <div class="info-title" style="color: #ef4444;">✗ MISSING</div>
+                        <ul class="info-list" style="font-size: 13px;">
+                            <li>Team backgrounds</li>
+                            <li>Security audits</li>
+                            <li>GitHub repos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-title">🎯 WHY BASIC TIER?</div>
+                    <div class="info-content" style="font-size: 12px; color: #aaa;">
+                        "Shows real usage but missing critical trust signals for utility tokens"
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #2a2a2a; border-radius: 12px;">
+            <h2 style="margin-bottom: 10px;">Choose Your Preferred Option</h2>
+            <p style="color: #aaa; line-height: 1.6;">
+                <strong>Option 1:</strong> Clean separation of what exists vs what's missing - straightforward and factual.<br>
+                <strong>Option 2:</strong> More comprehensive with quick take, pros/cons, and tier explanation - information rich.<br><br>
+                Both avoid generic statements and provide specific, actionable insights about the actual website content.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
