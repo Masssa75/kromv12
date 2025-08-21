@@ -137,6 +137,23 @@ npx supabase db execute --sql "YOUR SQL"
 
 **CRITICAL**: All database operations must target Supabase. Never use the local SQLite database.
 
+**IMPORTANT - Database Backups**: 
+Before making any significant database changes (clearing data, schema updates, bulk updates):
+1. **Always create a backup first** in the `database-backups/` folder
+2. Use timestamped filenames: `backup_name_$(date +%Y%m%d_%H%M%S).json`
+3. Example backup command:
+```bash
+source .env && curl -s "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?select=*&limit=10000" \
+  -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" | jq '.' > \
+  database-backups/crypto_calls_backup_$(date +%Y%m%d_%H%M%S).json
+```
+4. For specific columns only (faster, smaller):
+```bash
+source .env && curl -s "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?select=id,ticker,website_url,website_score" \
+  -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" | jq '.' > \
+  database-backups/website_backup_$(date +%Y%m%d_%H%M%S).json
+```
+
 **Before adding new columns**: Always check if existing fields can serve your purpose. With 70+ columns, there's often an unused field or JSONB column that can store your data.
 
 When you need to add new columns to existing tables in Supabase, use the Management API:
@@ -784,16 +801,17 @@ Transformed KROM interface from table view to App Store-style presentation:
 - **Realistic scores** with mixed distribution (not all 9/10)
 - [Full session →](logs/SESSION-LOG-2025-08-20-APP-STORE-REDESIGN.md)
 
-## GeckoTerminal Integration (August 20, 2025)
+## GeckoTerminal Integration & Data Processing Fixes (August 20-21, 2025)
 
-Added GeckoTerminal trending tokens as new data source:
-- **20 trending tokens** from 5 networks (Solana, Ethereum, Base, Arbitrum, BSC)
-- **Batch processing**: 2 API calls instead of 20 (90% efficiency)
-- **Full data capture**: Entry prices, ATH, supply, social links from DexScreener
-- **11 tokens added**: AERO, EDGE, WKC, XNY with $1.4M-$72M liquidity
-- [Full session →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
+Successfully integrated GeckoTerminal trending tokens with complete fixes:
+- **Pool address case-sensitivity fixed**: Tokens no longer incorrectly marked as dead
+- **9-hour processing gap resolved**: Manually caught up ~1,400 unprocessed tokens
+- **ROI calculations working**: All gecko_trending tokens showing proper percentages
+- **UI improvements**: "GT Trending" label instead of "Unknown Group"
+- [Integration details →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
+- [Bug fixes & investigation →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
 
 ---
-**Last Updated**: August 20, 2025 - GeckoTerminal Integration
-**Status**: ⚠️ 95% Complete - ROI display pending
-**Version**: 12.8.0 - Multi-source token discovery with GeckoTerminal trending
+**Last Updated**: August 21, 2025 - Data Processing Fixes Complete
+**Status**: ✅ All systems operational
+**Version**: 12.8.1 - GeckoTerminal integration fully functional

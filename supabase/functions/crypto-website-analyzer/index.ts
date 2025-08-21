@@ -38,10 +38,12 @@ async function scrapeWebsite(url: string) {
   try {
     console.log(`Scraping website: ${url}`);
     
-    // Try simple fetch first
-    const scraperUrl = `http://api.scraperapi.com?api_key=${SCRAPERAPI_KEY}&url=${encodeURIComponent(url)}`;
+    // Always use JavaScript rendering with wait time for modern SPAs
+    // This ensures we get the full content, not just loading screens
+    const renderUrl = `http://api.scraperapi.com?api_key=${SCRAPERAPI_KEY}&url=${encodeURIComponent(url)}&render=true&wait=3000`;
     
-    const response = await fetch(scraperUrl, {
+    console.log('Fetching with JavaScript rendering and 3s wait...');
+    const response = await fetch(renderUrl, {
       method: 'GET',
       headers: {
         'Accept': 'text/html,application/xhtml+xml'
@@ -49,38 +51,33 @@ async function scrapeWebsite(url: string) {
     });
 
     if (!response.ok) {
-      console.log(`ScraperAPI simple fetch failed: ${response.status}, trying with render...`);
-      
-      // Fallback to JavaScript rendering
-      const renderUrl = `http://api.scraperapi.com?api_key=${SCRAPERAPI_KEY}&url=${encodeURIComponent(url)}&render=true`;
-      const renderResponse = await fetch(renderUrl);
-      
-      if (!renderResponse.ok) {
-        throw new Error(`ScraperAPI failed: ${renderResponse.status}`);
-      }
-      
-      return await renderResponse.text();
+      throw new Error(`ScraperAPI failed: ${response.status}`);
     }
 
     const html = await response.text();
     
-    // Check if we got a loading screen (less than 500 chars of actual content)
+    // Check if we still got minimal content (possible loading state)
     const textContent = html.replace(/<[^>]+>/g, '').trim();
-    if (textContent.length < 500 && html.includes('javascript')) {
-      console.log('Detected JavaScript-heavy site, retrying with render...');
+    if (textContent.length < 200) {
+      console.log(`Warning: Only ${textContent.length} chars of content after render. Possible loading screen.`);
       
-      // Retry with rendering
-      const renderUrl = `http://api.scraperapi.com?api_key=${SCRAPERAPI_KEY}&url=${encodeURIComponent(url)}&render=true`;
-      const renderResponse = await fetch(renderUrl);
+      // Try one more time with longer wait
+      const longerWaitUrl = `http://api.scraperapi.com?api_key=${SCRAPERAPI_KEY}&url=${encodeURIComponent(url)}&render=true&wait=5000`;
+      console.log('Retrying with 5s wait...');
       
-      if (renderResponse.ok) {
-        const renderHtml = await renderResponse.text();
-        if (renderHtml.length > html.length) {
-          return renderHtml;
+      const retryResponse = await fetch(longerWaitUrl);
+      if (retryResponse.ok) {
+        const retryHtml = await retryResponse.text();
+        const retryText = retryHtml.replace(/<[^>]+>/g, '').trim();
+        
+        if (retryText.length > textContent.length) {
+          console.log(`Better result with longer wait: ${retryText.length} chars`);
+          return retryHtml;
         }
       }
     }
     
+    console.log(`Successfully scraped ${html.length} chars of HTML`);
     return html;
   } catch (error) {
     console.error(`Error scraping website: ${error}`);
@@ -90,59 +87,153 @@ async function scrapeWebsite(url: string) {
 
 // Function to parse HTML and extract content
 function parseHtmlContent(html: string) {
-  // Extract text content (simple regex-based approach for Edge Function)
-  const textContent = html
+  // Extract text content (remove scripts and styles first)
+  const cleanHtml = html
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '') // Remove scripts
-    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '') // Remove styles
+    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, ''); // Remove styles
+  
+  const textContent = cleanHtml
     .replace(/<[^>]+>/g, ' ') // Remove HTML tags
     .replace(/\s+/g, ' ') // Normalize whitespace
     .trim()
-    .substring(0, 10000); // Limit to 10k chars for AI analysis
+    .substring(0, 15000); // Increased to 15k for better context
   
-  // Extract links (simplified extraction)
-  const linkRegex = /href=["'](https?:\/\/[^"']+)["']/gi;
-  const links: string[] = [];
+  // Extract ALL links with their text context
+  const linkRegex = /<a[^>]*href=["']([^"']+)["'][^>]*>([^<]*)<\/a>/gi;
+  const linksWithContext: Array<{url: string, text: string, type: string}> = [];
+  const uniqueUrls = new Set<string>();
   let match;
   
-  while ((match = linkRegex.exec(html)) !== null) {
-    links.push(match[1]);
+  while ((match = linkRegex.exec(cleanHtml)) !== null) {
+    const url = match[1];
+    const text = match[2].replace(/<[^>]+>/g, '').trim();
+    
+    // Skip duplicates and anchors
+    if (!uniqueUrls.has(url) && !url.startsWith('#')) {
+      uniqueUrls.add(url);
+      
+      // Categorize the link type
+      let type = 'other';
+      if (/docs|documentation|whitepaper|guide|tutorial|developer|build|resources|learn/i.test(url + ' ' + text)) {
+        type = 'documentation';
+      } else if (url.includes('github.com') || url.includes('gitlab.com')) {
+        type = 'github';
+      } else if (/twitter|x\.com|telegram|discord|medium|reddit|linkedin/i.test(url)) {
+        type = 'social';
+      } else if (/about|team|partners|investors/i.test(url + ' ' + text)) {
+        type = 'about';
+      } else if (/blog|news|updates|announcements/i.test(url + ' ' + text)) {
+        type = 'blog';
+      }
+      
+      linksWithContext.push({ url, text: text || 'No text', type });
+    }
   }
   
-  // Categorize links
+  // Also extract button links (modern sites use buttons for navigation)
+  const buttonRegex = /<button[^>]*onclick=["'][^"']*["'][^>]*>([^<]*)<\/button>/gi;
+  const buttonTexts: string[] = [];
+  while ((match = buttonRegex.exec(cleanHtml)) !== null) {
+    const buttonText = match[1].replace(/<[^>]+>/g, '').trim();
+    if (buttonText) buttonTexts.push(buttonText);
+  }
+  
+  // Extract headers to understand page structure
+  const headers: Array<{level: number, text: string}> = [];
+  const headerRegex = /<h([1-6])[^>]*>([^<]+)<\/h[1-6]>/gi;
+  while ((match = headerRegex.exec(cleanHtml)) !== null) {
+    headers.push({
+      level: parseInt(match[1]),
+      text: match[2].replace(/<[^>]+>/g, '').trim()
+    });
+  }
+  
+  // Extract meta tags for additional context
+  const metaDescription = html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)["']/i)?.[1] || '';
+  const metaKeywords = html.match(/<meta[^>]*name=["']keywords["'][^>]*content=["']([^"']+)["']/i)?.[1] || '';
+  const ogTitle = html.match(/<meta[^>]*property=["']og:title["'][^>]*content=["']([^"']+)["']/i)?.[1] || '';
+  const ogDescription = html.match(/<meta[^>]*property=["']og:description["'][^>]*content=["']([^"']+)["']/i)?.[1] || '';
+  
+  // Check for React/Next.js __NEXT_DATA__ (often contains pre-loaded content)
+  const nextDataMatch = html.match(/<script[^>]*id="__NEXT_DATA__"[^>]*>([^<]+)<\/script>/i);
+  let hasNextData = false;
+  let nextDataPreview = '';
+  if (nextDataMatch) {
+    hasNextData = true;
+    try {
+      const nextData = JSON.parse(nextDataMatch[1]);
+      // Extract a preview of the data (first 500 chars)
+      nextDataPreview = JSON.stringify(nextData).substring(0, 500);
+    } catch (e) {
+      // Invalid JSON, ignore
+    }
+  }
+  
+  // Build categorized link summary for backward compatibility
   const categorizedLinks = {
-    documentation: links.filter(l => 
-      /docs|documentation|whitepaper|guide|tutorial/i.test(l)
-    ),
-    github: links.filter(l => l.includes('github.com')),
-    social: links.filter(l => 
-      /twitter|telegram|discord|medium|reddit/i.test(l)
-    ),
-    all_links: links.slice(0, 100) // Limit to 100 links
+    documentation: linksWithContext.filter(l => l.type === 'documentation').map(l => l.url),
+    github: linksWithContext.filter(l => l.type === 'github').map(l => l.url),
+    social: linksWithContext.filter(l => l.type === 'social').map(l => l.url),
+    all_links: linksWithContext.slice(0, 150) // Increased limit
   };
   
   return {
     text_content: textContent,
     navigation: categorizedLinks,
+    links_with_context: linksWithContext.slice(0, 100), // New: links with their text
+    headers: headers.slice(0, 50), // New: page structure
+    button_texts: buttonTexts.slice(0, 20), // New: button navigation
+    meta_tags: { // New: meta information
+      description: metaDescription,
+      keywords: metaKeywords,
+      og_title: ogTitle,
+      og_description: ogDescription
+    },
     content_length: html.length,
+    text_length: textContent.length, // New: actual text length
     has_documentation: categorizedLinks.documentation.length > 0,
     has_github: categorizedLinks.github.length > 0,
-    has_social: categorizedLinks.social.length > 0
+    has_social: categorizedLinks.social.length > 0,
+    has_next_data: hasNextData, // New: React/Next.js app indicator
+    next_data_preview: nextDataPreview // New: preview of Next.js data
   };
 }
 
 // Function to analyze with AI
 async function analyzeWithAI(parsedContent: any, ticker: string) {
+  // Create a summary of links with their context
+  const linkSummary = parsedContent.links_with_context?.slice(0, 30).map((l: any) => 
+    `[${l.type}] ${l.text}: ${l.url}`
+  ).join('\n') || 'No links found';
+  
+  // Create a summary of headers
+  const headerSummary = parsedContent.headers?.slice(0, 20).map((h: any) => 
+    `${'  '.repeat(h.level - 1)}H${h.level}: ${h.text}`
+  ).join('\n') || 'No headers found';
+  
   const prompt = `Analyze this cryptocurrency project website using ADAPTIVE SCORING based on token type.
 
 Project: ${ticker}
 
-Website Content:
+META INFORMATION:
+- Description: ${parsedContent.meta_tags?.description || 'None'}
+- OG Title: ${parsedContent.meta_tags?.og_title || 'None'}
+- OG Description: ${parsedContent.meta_tags?.og_description || 'None'}
+
+WEBSITE STRUCTURE (Headers):
+${headerSummary}
+
+NAVIGATION LINKS (with context):
+${linkSummary}
+
+BUTTON NAVIGATION:
+${parsedContent.button_texts?.join(', ') || 'None found'}
+
+WEBSITE CONTENT (${parsedContent.text_length} chars):
 ${parsedContent.text_content}
 
-Navigation Links Found:
-- Documentation: ${parsedContent.navigation.documentation.length} links
-- GitHub: ${parsedContent.navigation.github.length} links  
-- Social: ${parsedContent.navigation.social.length} links
+IMPORTANT: Look at ALL the links above - many documentation links might be at /developers, /build, /resources, etc. not just /docs.
+Check the link text and context carefully before determining if documentation exists.
 
 STEP 1 - TOKEN TYPE CLASSIFICATION:
 First classify this token as either:
@@ -281,7 +372,8 @@ serve(async (req) => {
     
     // Step 2: Parse content
     const parsedContent = parseHtmlContent(html);
-    console.log(`Parsed ${parsedContent.content_length} chars, found ${parsedContent.navigation.all_links.length} links`);
+    console.log(`Parsed ${parsedContent.text_length} chars of text from ${parsedContent.content_length} chars of HTML`);
+    console.log(`Found ${parsedContent.links_with_context?.length || 0} links, ${parsedContent.headers?.length || 0} headers`);
     
     // Step 3: Analyze with AI
     const analysis = await analyzeWithAI(parsedContent, ticker);

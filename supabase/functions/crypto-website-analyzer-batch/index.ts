@@ -65,7 +65,7 @@ serve(async (req) => {
       .not('website_url', 'is', null)
       .is('website_score', null)
       .order('created_at', { ascending: false })
-      .limit(5); // Match the KROM poller intake limit
+      .limit(1); // Process only 1 at a time due to slower parsing with JavaScript rendering
 
     if (fetchError) {
       throw new Error(`Failed to fetch calls: ${fetchError.message}`);

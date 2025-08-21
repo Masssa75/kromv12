@@ -6,7 +6,14 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
-#### [August 20, 2025 - GeckoTerminal Trending Integration](SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md) ⚠️ 95% COMPLETE
+#### [August 21, 2025 - GeckoTerminal ROI & Data Processing Fixes](SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md) ✅ COMPLETED
+- Fixed ROI display showing "-" for gecko_trending tokens (case-sensitivity bug)
+- Resolved 9-hour data processing gap leaving tokens with N/A values
+- Changed group display from "Unknown Group" to "GT Trending"
+- Manually processed backlog of ~1,400 unprocessed tokens
+- Identified potential ultra-tracker timeout issue during 17:00-23:00 UTC
+
+#### [August 20, 2025 - GeckoTerminal Trending Integration](SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md) ✅ COMPLETED
 - Integrated GeckoTerminal trending tokens as new data source parallel to KROM calls
 - Created efficient batch processing: 20 tokens fetched with 2 API calls (90% reduction)
 - Added full data capture: entry prices, ATH initialization, supply calculation, social data
