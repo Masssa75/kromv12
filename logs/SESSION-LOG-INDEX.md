@@ -6,6 +6,13 @@ This index provides a comprehensive overview of all KROMV12 development sessions
 
 ### August 2025 Sessions
 
+#### [August 21, 2025 - Analysis Score Filters & Token Type Hierarchy](SESSION-LOG-2025-08-21-ANALYSIS-SCORE-FILTERS-AND-TOKEN-TYPE-HIERARCHY.md) ✅ COMPLETED
+- **CRITICAL FIX**: Fixed Analysis Score filters database-wide filtering (decimal step bug)
+- **NEW FEATURE**: Added Exclude Imposters filter to RUGS section (6 tokens filtered)
+- **MAJOR IMPROVEMENT**: Implemented hierarchical token type filtering with website analysis priority
+- **Results**: Utility tokens: 10 → 723 (more accurate), proper pagination counts
+- **UI/UX**: All score filters working correctly with integer steps, imposter filter integrated
+
 #### [August 21, 2025 - Call Analysis Failure Fix & Error Handling](SESSION-LOG-2025-08-21-CALL-ANALYSIS-FAILURE-FIX.md) ✅ COMPLETED
 - **CRITICAL FIX**: Restored call analysis after complete failure (invalid OpenRouter API key)
 - **MAJOR IMPROVEMENT**: Implemented consistent FAILED tier error handling across all analysis types

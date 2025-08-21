@@ -271,13 +271,14 @@ serve(async (req)=>{
             
             if (suppliesAreSimilar) {
               callData.market_cap_at_call = priceData.price * priceData.totalSupply;
-              // ALSO set current_market_cap to avoid N/A display
-              callData.current_market_cap = callData.market_cap_at_call;
-              
               console.log(`   Calculated market_cap_at_call: $${callData.market_cap_at_call.toLocaleString()}`);
             } else {
               console.log(`   Supply mismatch (${supplyDiff.toFixed(1)}% diff), skipping market_cap_at_call`);
             }
+            
+            // ALWAYS set current_market_cap to avoid N/A display (even with supply mismatch)
+            const estimatedMarketCap = priceData.price * priceData.totalSupply;
+            callData.current_market_cap = estimatedMarketCap;
           }
           
           if (callData.total_supply || callData.circulating_supply) {

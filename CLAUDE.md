@@ -637,104 +637,45 @@ Enhanced website analysis tooltips to show specific, actionable content instead 
 - **Data reset**: 3,900+ tokens cleared for re-analysis with enhanced parser
 - [Full implementation details →](logs/SESSION-LOG-2025-08-21-WEBSITE-ANALYSIS-TOOLTIP-ENHANCEMENT.md)
 
-## Next Session: Fix Analysis Score Filters - Database-Wide Filtering Issue
+## Analysis Score Filters & Token Type Hierarchy (August 21, 2025)
 
-**CRITICAL ISSUE**: Analysis Score filters currently only filter the current page (20 items) instead of filtering across the entire database before pagination. This gives incorrect results and pagination counts.
+Successfully fixed critical filtering issues and implemented hierarchical token classification:
 
-### **What Was Completed in This Session:**
+### **Analysis Score Filters Fixed** ✅ COMPLETED
+- **Root Cause**: Frontend sliders used `step="0.5"` sending decimal values to INTEGER database columns
+- **Solution**: Changed to `step="1"` and `parseInt()` for proper integer handling
+- **Result**: Database-wide filtering now works correctly with proper pagination counts
+- **Impact**: All score filters (Call, X, Website) work at database level before pagination
 
-✅ **UI Implementation**: Full Analysis Scores filter section added to sidebar with:
-- 3 range sliders: Call Score (1-10), X Score (1-10), Website Score (1-21→1-10 display)
-- Beautiful UI with green progress bars and real-time value display
-- Proper state management and localStorage persistence
-- Located between "Social Media" and "Liquidity & Market Cap" sections
+### **Exclude Imposters Filter Added** ✅ COMPLETED  
+- **Location**: Added to RUGS section as requested (deselected by default)
+- **UI**: Matches existing design with green checkbox and description
+- **Functionality**: Successfully filters out 6 imposter tokens marked with `is_imposter = true`
+- **Integration**: Full state management, localStorage persistence, API parameter handling
 
-✅ **Backend Implementation**: Score filters added to API with proper Supabase queries
-✅ **Testing**: All individual and combined filters work correctly on API level
-✅ **Integration**: Frontend properly sends filter parameters to backend
+### **Hierarchical Token Type System** ✅ COMPLETED
+Implemented website analysis priority system as requested:
 
-### **The Problem:**
-Score filters are applied AFTER pagination instead of BEFORE, causing:
-1. **Wrong total counts** - Shows total of all tokens, not filtered count
-2. **Incorrect pagination** - Page 1 might show 20 tokens, but page 2 could be empty
-3. **Poor UX** - Users see "1,234 total tokens" but filters only affect current 20 items
+**Priority Logic:**
+1. **Website analysis (if exists)** → Final classification overrides all others
+2. **Fallback to Call/X analysis** → If no website, ANY utility classification counts
 
-### **Root Cause Analysis:**
-The filters ARE working in the API (`/app/api/recent-calls/route.ts`) but there's a logical issue with how pagination interacts with filtering. The count query and main query both have the filters applied, but something in the pagination logic is causing issues.
+**Examples:**
+- Token with Call=meme, Website=utility → Shows as UTILITY ✅
+- Token with Call=utility, X=meme, Website=meme → Shows as MEME ✅  
+- Token with Call=utility, X=meme, No Website → Shows as UTILITY (fallback) ✅
 
-### **Files Modified in This Session:**
-1. **Frontend:**
-   - `/krom-analysis-app/app/page.tsx` - Added score filter state and UI (lines 463-584)
-   - `/krom-analysis-app/components/RecentCalls.tsx` - Added score filter props and API params (lines 54-56, 143-151)
+**Results:**
+- Before: 689 "utility" tokens (many were mixed meme/utility)
+- After: 723 utility tokens (website analysis priority, more accurate)
 
-2. **Backend:**
-   - `/krom-analysis-app/app/api/recent-calls/route.ts` - Added score filter parsing and application (lines 25-27, 122-131, 263-272)
+### **Technical Implementation**
+- **Files**: Updated API routes, frontend components, filter interfaces
+- **Database**: Hierarchical Supabase queries with proper OR/AND logic
+- **Testing**: Comprehensive Playwright testing and API verification
+- **Deployment**: All changes live at https://lively-torrone-8199e0.netlify.app
 
-### **Debugging Steps for Next Session:**
-
-#### **Step 1: Verify API Behavior**
-```bash
-# Test API directly to confirm filtering works at database level
-curl -s "http://localhost:3000/api/recent-calls?minCallScore=7&limit=5" | jq '.totalCount'
-curl -s "http://localhost:3000/api/recent-calls?limit=5" | jq '.totalCount'
-
-# These should show different totalCount values if filtering works correctly
-```
-
-#### **Step 2: Check Frontend State Management**
-- Open browser DevTools → Network tab
-- Apply score filters in UI
-- Look for API requests to `/api/recent-calls`
-- Verify URL contains `minCallScore`, `minXScore`, `minWebsiteScore` parameters
-- Check if `totalCount` in response changes when filters applied
-
-#### **Step 3: Debug Database Query Logic**
-Examine `/app/api/recent-calls/route.ts` around lines 122-134 (count query) and 263-275 (main query):
-
-```typescript
-// Both queries should have identical filters applied
-// Check if count query filters match main query filters exactly
-```
-
-#### **Step 4: Test Specific Scenarios**
-1. **No filters** - Should show all ~5,700 tokens
-2. **High call score (8+)** - Should show much fewer tokens and correct totalCount
-3. **Combined filters** - Should show even fewer and update pagination accordingly
-4. **Edge case** - Filter that returns 0 results should show "No tokens found"
-
-### **Likely Solutions:**
-
-#### **Solution A: Filter Query Order Issue**
-The count query might be executed before all filters are applied. Check that score filters are added to `countQuery` in the same order and logic as the main `query`.
-
-#### **Solution B: Pagination Logic Bug**
-Verify that `totalCount` from the filtered count query is used for pagination calculation, not an unfiltered count.
-
-#### **Solution C: Frontend State Race Condition**
-The debounced filters (400ms delay) might be causing pagination to update before filters are fully applied.
-
-### **Testing Checklist:**
-- [ ] API returns correct totalCount when score filters applied
-- [ ] Frontend pagination shows correct page numbers
-- [ ] "Showing X-Y of Z tokens" displays filtered count
-- [ ] Navigation between pages respects active filters
-- [ ] Combined with other filters (networks, token type, etc.) works correctly
-
-### **Success Criteria:**
-When a user applies score filters:
-1. **Total count updates** to reflect filtered results (e.g., 5,700 → 234 tokens)
-2. **Pagination recalculates** based on filtered count (e.g., 287 pages → 12 pages)  
-3. **All pages contain results** that match the filter criteria
-4. **Status text updates** to show filtered count: "Showing 1-20 of 234 calls"
-
-### **Context for Next Session:**
-- Score filters are in the sidebar as "ANALYSIS SCORES" (click to expand)
-- All code is implemented and functional at the API level
-- Issue is likely in pagination/counting logic, not core filtering
-- Local dev server runs on port 3000-3002 (check which port is active)
-- This is a UX issue, not a technical implementation issue
-
-### **Priority**: HIGH - This affects the core filtering functionality that users expect
+[Full session details →](logs/SESSION-LOG-2025-08-21-ANALYSIS-SCORE-FILTERS-AND-TOKEN-TYPE-HIERARCHY.md)
 
 ## ATH Tracking Fixed (August 19, 2025)
 
@@ -846,6 +787,6 @@ Successfully integrated GeckoTerminal trending tokens with complete fixes:
 [Full session details →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
 
 ---
-**Last Updated**: August 21, 2025 - Admin UX & ATH Inflation Bug Fixes Complete
-**Status**: ✅ All systems operational, data accuracy improved
-**Version**: 12.10.1 - Admin dropdown + corrected ATH values
+**Last Updated**: August 21, 2025 - Analysis Score Filters & Token Type Hierarchy Complete
+**Status**: ✅ All filtering systems working correctly, hierarchical token classification implemented
+**Version**: 12.11.0 - Fixed score filters, added imposter filter, website analysis priority
