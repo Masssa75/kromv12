@@ -619,6 +619,15 @@ Successfully integrated website analysis with production improvements:
 - **Orchestrator optimized**: Processes newest tokens first
 - [Full session →](logs/SESSION-LOG-2025-08-19-SESSION-3.md)
 
+## Call Analysis System Restored (August 21, 2025)
+
+Fixed critical call analysis failure and implemented consistent error handling across all analysis types:
+- **OpenRouter API key issue**: Invalid key causing all analyses to fail with score=1 "Analysis failed"
+- **130+ failed analyses restored**: Reset and re-analyzed with proper scores 2-7 and detailed reasoning
+- **FAILED tier implementation**: Consistent error handling with red "C: FAILED", "X: FAILED", "W: FAILED" badges
+- **Error detail enhancement**: Generic failures replaced with actual error messages (ERROR: prefix)
+- [Full session details →](logs/SESSION-LOG-2025-08-21-CALL-ANALYSIS-FAILURE-FIX.md)
+
 ## Website Analysis Tooltip Enhancement (August 21, 2025)
 
 Enhanced website analysis tooltips to show specific, actionable content instead of generic statements:
@@ -820,7 +829,23 @@ Successfully integrated GeckoTerminal trending tokens with complete fixes:
 - [Integration details →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
 - [Bug fixes & investigation →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
 
+## Admin UX & ATH Bug Fixes (August 21, 2025 - Session 2)
+
+**Admin Interface Improvements**:
+- **3-dot dropdown menu**: Replaced large imposter button with compact ⋮ menu
+- **Two admin actions**: Mark as Imposter and Invalidate Token with proper icons
+- **Enhanced API**: Invalidate endpoint now accepts either krom_id or id 
+- **Visual feedback**: Gray strikethrough for invalidated tokens, red for imposters
+
+**Critical ATH Bug Fixes**:
+- **BADGER**: $105.9 → $0.0007245 (ROI: 980,455% → -93%)
+- **NEKO**: $0.356 → $0.0004185 (ROI: 132,835% → 56%)
+- **USAI**: $0.3679 → $0.003679 (ROI: 33,315% → 234%)
+- **Root cause**: Data anomaly with extreme wick prices vs realistic open/close prices
+
+[Full session details →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
+
 ---
-**Last Updated**: August 21, 2025 - Website Analysis Tooltip Enhancement Complete
-**Status**: ✅ All systems operational, enhanced tooltips deployed
-**Version**: 12.9.0 - Website analysis tooltips with specific content display
+**Last Updated**: August 21, 2025 - Admin UX & ATH Inflation Bug Fixes Complete
+**Status**: ✅ All systems operational, data accuracy improved
+**Version**: 12.10.1 - Admin dropdown + corrected ATH values
