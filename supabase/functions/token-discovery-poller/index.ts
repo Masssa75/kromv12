@@ -26,7 +26,7 @@ serve(async (req) => {
     console.log('🔍 Starting token discovery polling...');
 
     // Networks to poll
-    const networks = ['solana', 'eth', 'base', 'polygon', 'arbitrum', 'bsc'];
+    const networks = ['solana', 'ethereum', 'base', 'polygon', 'arbitrum', 'bsc'];
     let totalNewTokens = 0;
     let totalErrors = 0;
 
@@ -79,7 +79,7 @@ serve(async (req) => {
               contract_address: tokenAddress,
               symbol: attrs.name?.split(' / ')[0] || null,
               name: attrs.name || null,
-              network: network,
+              network: network === 'eth' ? 'ethereum' : network,
               pool_address: attrs.address || null,
               initial_liquidity_usd: parseFloat(attrs.reserve_in_usd || '0'),
               initial_volume_24h: parseFloat(attrs.volume_usd?.h24 || '0'),

@@ -116,9 +116,20 @@ serve(async (req) => {
       .select('id, contract_address, symbol, network, initial_liquidity_usd, first_seen_at')
       .is('website_checked_at', null)
       .is('website_url', null)
+      .gt('initial_liquidity_usd', 1000) // Min $1K liquidity
       .order('initial_liquidity_usd', { ascending: false, nullsFirst: false })
       .limit(60); // Process more in each run
 
+    if (error1) {
+      console.error('❌ Failed to query never-checked tokens:', error1);
+      const errorMsg = `🚨 TOKEN WEBSITE MONITOR ERROR\n\nFailed to query never-checked tokens:\n${error1.message}\n\nFunction may have stopped working!`;
+      
+      if (telegramBotToken && telegramChatId) {
+        await sendTelegramNotification(telegramBotToken, telegramChatId, errorMsg);
+      }
+      throw new Error(`Database query failed: ${error1.message}`);
+    }
+    
     if (neverChecked && neverChecked.length > 0) {
       console.log(`  Found ${neverChecked.length} never-checked tokens`);
       stats.neverChecked = neverChecked.length;
@@ -147,6 +158,29 @@ serve(async (req) => {
 
           for (const pair of pairs) {
             const info = pair.info;
+            
+            // Update market data (liquidity, volume, price) - always capture this
+            if (pair.liquidity?.usd) {
+              updateData.current_liquidity_usd = pair.liquidity.usd;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            if (pair.volume?.h24) {
+              updateData.current_volume_24h = pair.volume.h24;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            if (pair.priceUsd) {
+              updateData.current_price_usd = pair.priceUsd;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            if (pair.fdv) {
+              updateData.current_fdv = pair.fdv;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            if (pair.marketCap) {
+              updateData.current_market_cap = pair.marketCap;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            
             if (!info) continue;
 
             // Extract social data
@@ -248,6 +282,16 @@ Website: ${updateData.website_url}
       .order('next_check_at', { ascending: true })
       .limit(30);
 
+    if (error2) {
+      console.error('❌ Failed to query scheduled tokens:', error2);
+      const errorMsg = `🚨 TOKEN WEBSITE MONITOR ERROR\n\nFailed to query scheduled rechecks:\n${error2.message}\n\nFunction may be experiencing database issues!`;
+      
+      if (telegramBotToken && telegramChatId) {
+        await sendTelegramNotification(telegramBotToken, telegramChatId, errorMsg);
+      }
+      // Don't throw here, continue with what we have
+    }
+    
     if (scheduledTokens && scheduledTokens.length > 0) {
       console.log(`  Found ${scheduledTokens.length} tokens scheduled for recheck`);
       stats.scheduled = scheduledTokens.length;
@@ -276,6 +320,29 @@ Website: ${updateData.website_url}
 
           for (const pair of pairs) {
             const info = pair.info;
+            
+            // Update market data (liquidity, volume, price) - always capture this
+            if (pair.liquidity?.usd) {
+              updateData.current_liquidity_usd = pair.liquidity.usd;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            if (pair.volume?.h24) {
+              updateData.current_volume_24h = pair.volume.h24;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            if (pair.priceUsd) {
+              updateData.current_price_usd = pair.priceUsd;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            if (pair.fdv) {
+              updateData.current_fdv = pair.fdv;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            if (pair.marketCap) {
+              updateData.current_market_cap = pair.marketCap;
+              updateData.market_data_updated_at = now.toISOString();
+            }
+            
             if (!info) continue;
 
             // Extract social data
@@ -386,11 +453,55 @@ Website: ${updateData.website_url}
       console.log(`  Slowest: ${maxHours.toFixed(1)} hours`);
     }
 
+    // Add health check - fail if no tokens were processed when there should be work
+    if (totalChecked === 0 && stats.neverChecked === 0 && stats.scheduled === 0) {
+      const { data: pendingWork } = await supabase
+        .from('token_discovery')
+        .select('id', { count: 'exact', head: true })
+        .is('website_checked_at', null)
+        .is('website_url', null)
+        .gt('initial_liquidity_usd', 1000);
+      
+      if (pendingWork && pendingWork > 0) {
+        console.error(`❌ HEALTH CHECK FAILED: ${pendingWork} tokens need checking but 0 were processed`);
+        const errorMsg = `🚨 TOKEN WEBSITE MONITOR STOPPED WORKING\n\n${pendingWork} tokens need checking but 0 were processed.\n\nFunction appears to be in silent failure mode. Manual intervention required!\n\nTry running manually to reset:\ncurl -X POST https://eucfoommxxvqmmwdbkdv.supabase.co/functions/v1/token-website-monitor`;
+        
+        if (telegramBotToken && telegramChatId) {
+          await sendTelegramNotification(telegramBotToken, telegramChatId, errorMsg);
+        }
+        throw new Error(`Function failed to process tokens despite ${pendingWork} pending`);
+      }
+    }
+    
     console.log(`\n✅ Smart website monitoring completed:`);
     console.log(`  Total checked: ${totalChecked}`);
     console.log(`  New websites found: ${newWebsitesFound}`);
     console.log(`  Never-checked processed: ${stats.neverChecked}`);
     console.log(`  Scheduled rechecks: ${stats.scheduled}`);
+
+    // Trigger analyzer if we found new websites
+    if (newWebsitesFound > 0) {
+      console.log('\n🚀 Triggering website analyzer for new discoveries...');
+      try {
+        const analyzerResponse = await fetch(`${supabaseUrl}/functions/v1/token-discovery-analyzer`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${supabaseKey}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({})
+        });
+        
+        if (analyzerResponse.ok) {
+          const analyzerResult = await analyzerResponse.json();
+          console.log(`   Analyzer completed: ${analyzerResult.analyzed} analyzed, ${analyzerResult.promoted} promoted`);
+        } else {
+          console.error('   Analyzer failed:', await analyzerResponse.text());
+        }
+      } catch (error) {
+        console.error('   Error triggering analyzer:', error);
+      }
+    }
 
     return new Response(JSON.stringify({
       success: true,
@@ -409,6 +520,20 @@ Website: ${updateData.website_url}
 
   } catch (error) {
     console.error('Error in website monitor:', error);
+    
+    // Send Telegram notification for any uncaught errors
+    try {
+      const telegramBotToken = Deno.env.get('TELEGRAM_BOT_TOKEN_ATH') || Deno.env.get('TELEGRAM_BOT_TOKEN');
+      const telegramChatId = Deno.env.get('TELEGRAM_GROUP_ID_ATH') || Deno.env.get('TELEGRAM_CHAT_ID');
+      
+      if (telegramBotToken && telegramChatId) {
+        const errorMsg = `🚨 TOKEN WEBSITE MONITOR CRITICAL ERROR\n\n${error.message}\n\nFunction crashed! This needs immediate attention.\n\nTry manual reset:\ncurl -X POST https://eucfoommxxvqmmwdbkdv.supabase.co/functions/v1/token-website-monitor`;
+        await sendTelegramNotification(telegramBotToken, telegramChatId, errorMsg);
+      }
+    } catch (notifyError) {
+      console.error('Failed to send error notification:', notifyError);
+    }
+    
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },

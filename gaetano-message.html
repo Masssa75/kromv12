@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message for Gaetano</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .message-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .highlight {
+            background: #fffacd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .copied {
+            color: green;
+            margin-left: 10px;
+            display: none;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <h2>Message for Gaetano</h2>
+        <div id="message">
+            <p>Hey Gaety, I'm sorry for the late reply. We're having a super busy time here right now. We just opened the new school 2 days ago.</p>
+
+            <p>The vibe coding AI I'm using is called Claude, specifically the Claude Code application. Claude is one of the big 4 AI providers and in my opinion the best for many things. In many ways it's better than ChatGPT or Google Gemini for actual development work.</p>
+
+            <p>This is very exciting because still only few people know how to develop complex apps with it. This means we can be ahead of the curve, which is crucial in crypto.</p>
+
+            <p>We can use this in various ways to benefit KROM and crypto in general:</p>
+
+            <p>Since you saw that video, I've massively expanded the platform. It's now monitoring every single token that gets created - over 10,000 new tokens/pools daily across all major chains. The system automatically finds the ~200 tokens that actually have websites, analyzes them with AI, and sends instant notifications for anything promising (about 5-10 high-quality opportunities per day).</p>
+
+            <p>This gives us two major advantages:</p>
+
+            <p>1. <strong>For ourselves</strong>: We'll never miss the next big token launch. We're essentially getting institutional-grade intelligence at zero cost.</p>
+
+            <p>2. <strong>For KROM</strong>: This becomes a premium feature where users need to hold KROM tokens or pay in KROM to access the most valuable alerts and analysis. Better features → more demand for KROM → increased token value.</p>
+
+            <p>What I really wanted to show with that video is that we're on the verge of the next major crypto cycle. Every big crypto wave has been triggered by new technology - DeFi, NFTs, memecoins. I believe AI-built apps will be the next trigger. When thousands of developers realize they can build complex crypto projects in days with AI, we're going to see an explosion of innovation unlike anything before. We're positioning ourselves at the very front of this wave - both with KROM and whatever else emerges. This feels like being early to NFTs in 2020 or DeFi in 2019.</p>
+        </div>
+        
+        <button onclick="copyMessage()">Copy Message</button>
+        <span class="copied" id="copiedText">✓ Copied to clipboard!</span>
+    </div>
+
+    <script>
+        function copyMessage() {
+            const messageDiv = document.getElementById('message');
+            const textContent = messageDiv.innerText;
+            
+            navigator.clipboard.writeText(textContent).then(function() {
+                document.getElementById('copiedText').style.display = 'inline';
+                setTimeout(() => {
+                    document.getElementById('copiedText').style.display = 'none';
+                }, 3000);
+            }, function(err) {
+                alert('Could not copy text. Please select and copy manually.');
+            });
+        }
+    </script>
+</body>
+</html>

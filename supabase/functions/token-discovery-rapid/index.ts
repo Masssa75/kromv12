@@ -8,12 +8,17 @@ const corsHeaders = {
 
 // Single poll function - fetch 3 pages for better coverage
 async function pollOnce(supabase: any) {
-  const networks = ['solana', 'eth', 'base', 'polygon', 'arbitrum', 'bsc'];
+  const networks = ['solana', 'eth', 'base', 'bsc'];
   let totalNewTokens = 0;
   
   for (const network of networks) {
-    // Fetch more pages for Solana due to high volume
-    const pagesToFetch = network === 'solana' ? 3 : 1;
+    // Optimized page fetching based on actual network activity
+    // Focused on high-activity networks only
+    let pagesToFetch = 1;
+    if (network === 'solana') pagesToFetch = 5;  // High volume: ~20 pools/min
+    else if (network === 'eth') pagesToFetch = 3;  // Ethereum mainnet
+    else if (network === 'base') pagesToFetch = 3;  // High activity on Base
+    else pagesToFetch = 1;  // BSC: lower activity
     
     for (let page = 1; page <= pagesToFetch; page++) {
       try {
@@ -46,7 +51,7 @@ async function pollOnce(supabase: any) {
             contract_address: tokenAddress,
             symbol: attrs.name?.split(' / ')[0] || null,
             name: attrs.name || null,
-            network: network,
+            network: network === 'eth' ? 'ethereum' : network,
             pool_address: attrs.address || null,
             initial_liquidity_usd: parseFloat(attrs.reserve_in_usd || '0'),
             initial_volume_24h: parseFloat(attrs.volume_usd?.h24 || '0'),

@@ -125,14 +125,9 @@ serve(async (req)=>{
           callData.circulating_supply = priceData.circulatingSupply || null;
           callData.liquidity_usd = priceData.liquidity || 0;
           
-          // Mark as dead if liquidity is below threshold
-          const LIQUIDITY_THRESHOLD = 1000;
-          if (priceData.liquidity < LIQUIDITY_THRESHOLD) {
-            callData.is_dead = true;
-            console.log(`🪦 Token ${call.token.symbol} marked as DEAD - liquidity $${priceData.liquidity.toFixed(2)} < $${LIQUIDITY_THRESHOLD}`);
-          } else {
-            callData.is_dead = false;
-          }
+          // Note: We do NOT mark tokens as dead based on liquidity
+          // Only ultra-tracker should mark tokens as dead if they're not found on DexScreener
+          // Low liquidity tokens are still alive, just less liquid!
           
           // Calculate market_cap_at_call if we have supply data
           if (priceData.price && priceData.totalSupply) {

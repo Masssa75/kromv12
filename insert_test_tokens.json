@@ -1,0 +1,32 @@
+[
+  {
+    "ticker": "AINU",
+    "contract_address": "BKNdE8ZRe1cWPYRVytrwy3mUaCw95aDfUqR9zwojbonk",
+    "network": "solana",
+    "website_url": "https://www.ainu.pro/",
+    "source": "manual_test",
+    "krom_id": "TEST_AINU_001",
+    "buy_timestamp": "2025-08-25T12:00:00Z",
+    "raw_data": {"test": true, "purpose": "Stage 2 analysis testing"}
+  },
+  {
+    "ticker": "UIUI",
+    "contract_address": "0x50dd9ce3e599c3209582f0429d6896ecc1dae732",
+    "network": "ethereum",
+    "website_url": "https://www.uiui.wtf/",
+    "source": "manual_test",
+    "krom_id": "TEST_UIUI_001",
+    "buy_timestamp": "2025-08-25T12:00:00Z",
+    "raw_data": {"test": true, "purpose": "Honeypot detection testing"}
+  },
+  {
+    "ticker": "BIO",
+    "contract_address": "0xcb1592591996765Ec0eFc1f92599A19767ee5ffA",
+    "network": "ethereum",
+    "website_url": "https://www.bio.xyz/",
+    "source": "manual_test",
+    "krom_id": "TEST_BIO_001",
+    "buy_timestamp": "2025-08-25T12:00:00Z",
+    "raw_data": {"test": true, "purpose": "Legitimate project testing"}
+  }
+]

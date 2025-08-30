@@ -13,7 +13,7 @@
 - **Use Supabase/Netlify secrets** for production deployments instead of hardcoding credentials
 
 ## Overview
-KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring applications. Each app serves a specific purpose in the crypto analysis ecosystem.
+KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring applications. Each app serves a specific purpose in the crypto analysis ecosystem. Each app has its own CLAUDE.md with specific documentation.
 
 ## Project Structure
 
@@ -57,16 +57,11 @@ KROMV12 is a monorepo containing multiple cryptocurrency analysis and monitoring
 - `krom_calls.db` - **LEGACY** Local SQLite database (reference only - DO NOT USE)
 - **Supabase instance** - **PRIMARY DATABASE** - All apps use this cloud database
 
-**IMPORTANT DATABASE CLARIFICATION**:
-- **krom-analysis-app uses SUPABASE EXCLUSIVELY** - Never the local SQLite database
-- The local SQLite database (`krom_calls.db`) is for legacy reference only
-- ALL production data operations should target Supabase
-- When working with any KROM app, always use Supabase credentials from `.env`
-
 ## Repository Management
 
 ### ⚠️ IMPORTANT: Multiple Git Repositories
 This project uses **multiple separate GitHub repositories**:
+
 
 1. **Main Monorepo**: `https://github.com/Masssa75/kromv12`
    - Contains: Edge functions, scripts, shared documentation
@@ -81,11 +76,6 @@ This project uses **multiple separate GitHub repositories**:
    - Contains: Next.js API explorer application
    - Directory: `/Users/marcschwyn/Desktop/projects/KROMV12/krom-api-explorer/`
    - **Deploy on push**: Netlify auto-deploys from this repo
-
-**CRITICAL**: Always check which directory you're in before committing:
-- Changes to `krom-analysis-app/` must be pushed to its own repo
-- Changes to `krom-api-explorer/` must be pushed to its own repo
-- Changes to edge functions or shared files go to the main kromv12 repo
 
 ## Autonomous Development Workflow
 
@@ -158,11 +148,9 @@ npx supabase db execute --sql "YOUR SQL"
 - ✅ Can create branches, PRs
 - ✅ Can manage secrets
 
-**You are expected to work autonomously. Don't ask for permission - just do it!**
+**You are expected to work autonomously. - However, ALWAYS Provide options and recommendations before implementing.
 
 ### Database Schema Management
-
-**CRITICAL**: All database operations must target Supabase. Never use the local SQLite database.
 
 **IMPORTANT - Database Backups**: 
 Before making any significant database changes (clearing data, schema updates, bulk updates):
@@ -173,12 +161,6 @@ Before making any significant database changes (clearing data, schema updates, b
 source .env && curl -s "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?select=*&limit=10000" \
   -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" | jq '.' > \
   database-backups/crypto_calls_backup_$(date +%Y%m%d_%H%M%S).json
-```
-4. For specific columns only (faster, smaller):
-```bash
-source .env && curl -s "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?select=id,ticker,website_url,website_score" \
-  -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" | jq '.' > \
-  database-backups/website_backup_$(date +%Y%m%d_%H%M%S).json
 ```
 
 **Before adding new columns**: Always check if existing fields can serve your purpose. With 70+ columns, there's often an unused field or JSONB column that can store your data.
@@ -225,15 +207,7 @@ curl -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?selec
 
 ## Working with This Project - Important Notes
 
-### Critical Database Rule
-**ALWAYS USE SUPABASE for any data operations**. The SQLite database (`krom_calls.db`) is legacy reference only. When you see database operations:
-1. Use Supabase credentials from `.env`
-2. Connect to the `crypto_calls` table in Supabase
-3. Never use `sqlite3.connect()` or reference `krom_calls.db`
-4. If unsure, check `krom-analysis-app/` for proper Supabase usage examples
-
 ### Row Level Security (RLS) is ENABLED
-**As of August 5, 2025, RLS is active on the crypto_calls table:**
 - **Read access**: Public (anon key or service_role key)
 - **Write access**: Service role only (requires `SUPABASE_SERVICE_ROLE_KEY`)
 - **Python scripts**: Must use service_role key for INSERT/UPDATE/DELETE operations
@@ -242,6 +216,7 @@ curl -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?selec
 ### User Preferences
 - **Always explain before executing** - User prefers understanding what will happen before code changes
 - **NEVER show mock/fake data** - Always show real data or indicate when data is unavailable. Mock data is extremely misleading and should never be used in any UI or API responses
+- **NO COSMETIC FIXES** - Never manually override scores or apply band-aid fixes to hide system issues. The goal is to fix the underlying system, not mask problems. Cosmetic fixes make it harder to identify and solve real issues
 
 ### Communication Style
 - Ask for clarification when requirements are ambiguous
@@ -272,7 +247,7 @@ curl -X GET "https://eucfoommxxvqmmwdbkdv.supabase.co/rest/v1/crypto_calls?selec
 - **Session Logging Guidelines**:
   - Keep CLAUDE.md focused on current state and essential documentation
   - Move completed work details to session logs with date stamps
-  - Each major section moved should be replaced with a 3-4 line summary and link
+  - Each major section moved should be replaced with a 1 line summary and link
   - Session logs preserve full history while keeping main doc clean
 
 
@@ -363,11 +338,6 @@ KROMV12/
     └── *.sql                 # Database schema files
 ```
 
-## Known Issues & Notes
-- **Database**: Always use Supabase - the local SQLite database is legacy reference only
-- **Context**: Each app has its own CLAUDE.md with specific documentation
-- **Environment**: Check `.env` for all API keys and configurations
-
 ## How to Use This Documentation
 
 1. **For New Sessions**: Start by reading the "Working with This Project" section
@@ -375,7 +345,6 @@ KROMV12/
 3. **For Database Work**: ALWAYS use Supabase (never the local SQLite database)
 4. **For Database Changes**: See "Database Schema Management" in Autonomous Development Workflow
 5. **For Context**: Review "Current State & Optimizations" to understand decisions made
-
 
 
 ## Development History
@@ -389,335 +358,85 @@ For detailed development history and implementation decisions, see:
 
 
 ## Security Feature Implementation (July 31, 2025) - PAUSED
+Token security analysis using GoPlus API - 38% coverage, UI deployed but modal broken. [Details →](logs/SESSION-LOG-2025-07-31.md)
 
-### Overview
-Implemented token security analysis using GoPlus Security API to detect liquidity locks, ownership status, and security warnings. Feature is functional but has limited coverage.
-
-### What Was Completed
-1. **Database Schema** - Added 7 security columns to Supabase:
-   - `liquidity_locked` (BOOLEAN) - Whether liquidity is locked
-   - `liquidity_lock_percent` (NUMERIC) - Percentage of liquidity locked
-   - `ownership_renounced` (BOOLEAN) - Whether ownership is renounced
-   - `security_score` (INTEGER) - Overall security score (0-100)
-   - `security_warnings` (JSONB) - Array of security warnings
-   - `security_checked_at` (TIMESTAMPTZ) - When security was checked
-   - `security_raw_data` (JSONB) - Raw API response data
-
-2. **GoPlus API Integration**
-   - **API**: https://api.gopluslabs.io/api/v1/token_security/{chain_id}
-   - **Cost**: FREE (no API key required)
-   - **Coverage**: Ethereum, BSC, Polygon, Arbitrum, Base, Avalanche, Solana
-   - **Success Rate**: ~38% (62% of tokens have no data, especially Solana pump.fun tokens)
-
-3. **UI Implementation**
-   - Added Security column to analyzed calls table
-   - Icon system: 🔒 (locked), 🔓 (unlocked), ⚠️ (warning), 🛡️ (shield)
-   - Color coding: Green (80+), Yellow (50-79), Red (<50)
-   - **Known Issue**: Modal dialog doesn't open on click (client-side hydration issue)
-
-4. **Batch Processing Script**
-   - Location: `/Users/marcschwyn/Desktop/projects/KROMV12/batch-security-analysis.py`
-   - Processes tokens without security data
-   - Orders by newest first
-   - ~150 tokens analyzed successfully
-
-### Security Scoring Algorithm
-```python
-# Start with 100 points
-score = 100
-# Deduct for issues:
-# - Honeypot: -50 points
-# - High taxes (>10%): -15 points  
-# - Mintable token: -20 points
-# - No liquidity lock: -5 points (warning only)
-# Bonus for good practices:
-# + Liquidity locked: +10 points
-# + Ownership renounced: +10 points
-```
-
-### Files Created/Modified
-- `/batch-security-analysis.py` - Main batch processor
-- `/components/security-display.tsx` - React UI component
-- `/components/ui/dialog.tsx` - Dialog component
-- `/app/api/analyzed/route.ts` - Added security fields to API
-- `/app/page.tsx` - Integrated SecurityDisplay component
-- `/tests/test-security-display.spec.ts` - Playwright tests
-
-### To Resume This Feature
-1. **Fix Dialog Issue**: Debug why security modal doesn't open on click
-2. **Create Edge Function**: Deploy `crypto-security-checker` to Supabase
-3. **Add to Orchestrator**: Include security check between analyzer and notifier
-4. **Alternative APIs**: Consider DexScreener or other APIs for better Solana coverage
-5. **Process Remaining Tokens**: ~2,400 tokens still need security analysis
-
-### Key Limitation
-GoPlus API has limited coverage for newer tokens, especially Solana pump.fun tokens. Only ~38% of tokens have security data available.
-
-### Deployment Status
-- Feature deployed to https://lively-torrone-8199e0.netlify.app
-- Security column visible in UI
-- Icons display correctly based on security status
-- Modal dialog has client-side issue (doesn't open)
-
-## DexScreener Volume & Liquidity Integration (July 31, 2025 - Later Session)
-
-Successfully integrated DexScreener API to track volume and liquidity data:
-- Edge Function processes 30 tokens per API call efficiently
-- Added volume_24h, liquidity_usd, price_change_24h to database
-- Enhanced UI with sortable columns and smart formatting
-- 100% token coverage achieved with optimized cron job
-- [Full session details →](logs/SESSION-LOG-2025-07-31.md)
+## DexScreener Volume & Liquidity Integration (July 31, 2025)
+Added volume/liquidity tracking via DexScreener API - 100% coverage achieved. [Details →](logs/SESSION-LOG-2025-07-31.md)
 
 ## Social Data Integration (August 13, 2025)
-
-Completed full social data pipeline from API extraction to frontend display:
-- **crypto-poller fixed**: Now properly stores website/Twitter/Telegram/Discord URLs
-- **Frontend optimized**: Modal uses database social data instead of API calls
-- **~4,000+ tokens** have social data populated
-- **Instant display**: No API latency when opening token modals
-- [Full session details →](logs/SESSION-LOG-2025-08.md#august-13-2025---social-data-integration-complete)
+Fixed crypto-poller to store social URLs - 4,000+ tokens populated. [Details →](logs/SESSION-LOG-2025-08.md#august-13-2025---social-data-integration-complete)
 
 ## ATH Tracking & Notification System (August 4-5, 2025)
-
-Implemented comprehensive All-Time High tracking with instant Telegram notifications:
-- **3-tier ATH calculation** using GeckoTerminal OHLCV data (daily→hourly→minute precision)
-- **Optimized processing**: Reduced from 3 to 1 API call for updates (70% efficiency gain)
-- **Direct notifications**: Instant alerts via @KROMATHAlerts_bot when tokens hit new ATH >10%
-- **Continuous monitoring**: Processes entire database every ~4 hours
-- [Full implementation details →](logs/SESSION-LOG-2025-08.md)
+Implemented 3-tier ATH tracking with Telegram alerts - 70% efficiency gain. [Details →](logs/SESSION-LOG-2025-08.md)
 
 ## Supabase Native Cron Jobs (August 5, 2025)
-
-Migrated all scheduled tasks from cron-job.org to Supabase pg_cron:
-- **crypto-orchestrator-every-minute** - Main monitoring pipeline
-- **crypto-ath-update-every-minute** - ATH tracking system  
-- **krom-call-analysis-every-minute** - Kimi K2 analysis (Netlify endpoint)
-- **krom-x-analysis-every-minute** - X analysis (Netlify endpoint)
-- All jobs running successfully with ~5-20ms execution time
-- [Setup documentation →](SUPABASE_CRON_SETUP.md)
+Migrated from cron-job.org to Supabase pg_cron - 4 jobs running at 5-20ms. [Details →](SUPABASE_CRON_SETUP.md)
 
 ## Website Analysis System (August 15-19, 2025)
-
-Successfully built and integrated comprehensive website analysis system:
-- **Edge Function deployed**: `crypto-website-analyzer` with TRASH/BASIC/SOLID/ALPHA tiers
-- **UI enhanced**: Granular settings for scores/badges visibility
-- **Database migrated**: 8 tokens updated to new tier system
-- **Ready for orchestrator**: Integration point identified, testing needed
-- [Full documentation →](temp-website-analysis/CLAUDE.md)
-- [Integration session →](logs/SESSION-LOG-2025-08.md#august-19-2025---website-analysis-integration--ui-enhancements)
+Deployed crypto-website-analyzer with 4-tier system. [Details →](logs/SESSION-LOG-2025-08.md#august-19-2025---website-analysis-integration--ui-enhancements)
 
 ## System Maintenance & Cron Migration (August 5, 2025)
-
-Completed major infrastructure improvements to eliminate external dependencies:
-- **Fixed OpenRouter API**: Restored call/X analysis after 5-day outage
-- **Native Cron Jobs**: Migrated from cron-job.org to Supabase pg_cron (4 jobs)
-- **Data Integrity**: Fixed buy_timestamp bug, backfilled 12 missing records
-- **Zero External Dependencies**: All scheduling now handled by Supabase
-- **Improved Reliability**: More frequent analysis schedules for better data freshness
-- [Full maintenance details →](logs/SESSION-LOG-2025-08.md)
+Fixed OpenRouter API, migrated to Supabase cron, achieved zero external dependencies. [Details →](logs/SESSION-LOG-2025-08.md)
 
 ## Ultra-Tracker & Two-Tier Processing System (August 6, 2025)
-
-Successfully fixed and optimized the ATH tracking system:
-- **Pool addresses provide 100% coverage** (vs 40% with contract addresses)
-- **Two-tier processing**: Live tokens updated every minute, dead tokens checked hourly
-- **Self-optimizing**: System marks tokens dead when no trading activity detected
-- **Token revival**: Automatically resurrects tokens when trading resumes
-- Processing time improving from 15 min → 6 min as system identifies inactive tokens
-- [Full implementation details →](logs/SESSION-LOG-2025-08-06.md)
+Fixed ATH tracking with pool addresses - 100% coverage, self-optimizing performance. [Details →](logs/SESSION-LOG-2025-08-06.md)
 
 ## Edge Function Database Write Fix (August 7, 2025)
-
-Successfully resolved Edge Functions failing to write to database with RLS enabled. Required adding auth options to Supabase client initialization:
-```typescript
-const supabase = createClient(supabaseUrl, supabaseKey, {
-  auth: {
-    persistSession: false,
-    autoRefreshToken: false
-  }
-})
-```
-- Fixed functions: crypto-ultra-tracker, crypto-ath-verifier
-- ANI token ATH corrected: $0.03003 → $0.08960221 (23,619% ROI)
-- [Full session details →](logs/SESSION-LOG-2025-08-07.md)
+Resolved RLS write failures with auth options - ANI token corrected to 23,619% ROI. [Details →](logs/SESSION-LOG-2025-08-07.md)
 
 ## ATH Verification System (August 7, 2025)
-
-Deployed `crypto-ath-verifier` Edge Function to systematically verify and correct ATH values:
-- Processes 25 tokens/minute using GeckoTerminal OHLCV data
-- Sends Telegram notifications when discrepancies >50% found
-- Excludes invalidated tokens to prevent stuck processing
-- Completes full database verification in ~2.2 hours
-- [Implementation details →](logs/SESSION-LOG-2025-08-07.md#evening-session-edge-function-fixes--ath-verification-system)
+Deployed crypto-ath-verifier - 25 tokens/minute, full DB scan in 2.2 hours. [Details →](logs/SESSION-LOG-2025-08-07.md#evening-session-edge-function-fixes--ath-verification-system)
 
 ## KROM Public Roadmap (August 8, 2025)
-
-Successfully implemented interactive roadmap page showcasing 11 upcoming features with expandable descriptions. Features include Telegram Referral Program, AI New Token Analysis, Token Gating, Vibe Coding Launchpad, and Community Feature Requests. Clean collapsed view shows only titles, expanding to reveal full details.
-
-**Live at**: https://lively-torrone-8199e0.netlify.app/roadmap
-
-[Full implementation details →](logs/SESSION-LOG-2025-08.md#august-8-2025---krom-roadmap-implementation)
+Implemented interactive roadmap with 11 features. Live at: https://lively-torrone-8199e0.netlify.app/roadmap [Details →](logs/SESSION-LOG-2025-08.md#august-8-2025---krom-roadmap-implementation)
 
 ## KROM UI Enhancements (August 8, 2025 - Evening)
+Added Telegram button, floating action menu, contract display, buy button. [Details →](logs/SESSION-LOG-2025-08.md#august-8-2025-evening---krom-ui-enhancements)
 
-Enhanced public interface with key user features:
-- **Telegram button**: Links to @OfficialKromOne group
-- **Floating Action Menu**: 5-option expandable navigation (Settings, Leaderboard, Analytics, Roadmap, Charts)
-- **Contract Address**: Displayed with monospace font below logo
-- **Buy button**: Grayscale button linking to Raydium exchange for SOL→KROM swaps
+## CA Verification & Liquidity Analysis (August 14, 2025)
+Enhanced verification with manual tracking - 95% accuracy, liquidity scam patterns identified. [Details →](logs/SESSION-LOG-2025-08.md#august-14-2025-afternoonevening---manual-verification--liquidity-analysis)
 
-[Full session details →](logs/SESSION-LOG-2025-08.md#august-8-2025-evening---krom-ui-enhancements)
+## Stage 1 Website Analysis Triage System (August 15, 2025)
+Built 7-category scoring system with Kimi K2 - $0.003/analysis. [Details →](logs/SESSION-LOG-2025-08.md#august-15-2025-continued---stage-1-website-analysis-triage-system)
 
-## 🔍 CA Verification & Liquidity Analysis (August 14, 2025)
+## Token Discovery & Website Analysis Pipeline (August 15, 2025)
+Built system monitoring 38,589 daily launches - only 1.2% have websites. [Details →](logs/SESSION-LOG-2025-08-15-TOKEN-DISCOVERY.md)
 
-Enhanced CA verification with manual tracking and liquidity pattern analysis. System achieves 95% actual accuracy for legitimate tokens. Added social media warnings and evaluated free APIs for liquidity lock data.
+## Social Media Filters (August 15, 2025 - Evening)
+Implemented multi-select filters for Website, Twitter/X, Telegram. [Details →](logs/SESSION-LOG-2025-08.md#august-15-2025---evening---social-media-filters-implementation)
 
-**Key findings**: High liquidity + unlocked = major scam indicator (e.g., BLOCK with $2.75M unlocked)
-**UI Enhanced**: Manual verification buttons, social media warnings, keyboard shortcuts at http://localhost:5003
+## Stage 1 Website Analysis - Production Ready (August 15, 2025 - Evening)
+Enhanced with smart loading detection - 95% success rate. [Details →](logs/SESSION-LOG-2025-08.md#august-15-2025---evening---stage-1-website-analysis-system-improvements)
 
-[Full session →](logs/SESSION-LOG-2025-08.md#august-14-2025-afternoonevening---manual-verification--liquidity-analysis)
-
-## 🎯 Stage 1 Website Analysis Triage System (August 15, 2025)
-
-Successfully built Stage 1 website analysis system with 1-3 scoring across 7 categories, replacing team-biased scoring with balanced evaluation. Features visual meter UI, exceptional signals detection, and automated Stage 2 recommendations.
-
-**System Complete**: 
-- Balanced 1-3 scoring (no team transparency bias)
-- UI with list view + clickable modals showing category meters
-- Green/red signal boxes for exceptional/missing elements
-- Kimi K2 integration ($0.003/analysis, 10x cheaper)
-- Ready to batch analyze 304 utility tokens (~$0.91 cost)
-
-**Status**: 95% complete with one UI issue to resolve before production batch
-
-[Implementation details →](logs/SESSION-LOG-2025-08.md#august-15-2025-continued---stage-1-website-analysis-triage-system)
-
-## 🔍 Token Discovery & Website Analysis Pipeline (August 15, 2025)
-
-Built comprehensive token discovery system monitoring 38,589 daily token launches across 6 networks with automated website detection and smart re-checking strategy.
-
-**Key Achievements**:
-- **Rapid discovery**: Captures new tokens every minute (576 tokens tracked, growth from 424)
-- **Batch website checking**: DexScreener API processes 30 tokens/call (30x faster)
-- **Reality discovered**: Only 1.2% of tokens have websites (mostly pump.fun memecoins)
-- **Smart monitoring**: Time-based re-checking (15min→30min→1h→2h→3h) with auto-pruning
-- **Dashboard enhanced**: Contract address search + "Has Website" filter at localhost:5020
-
-**Infrastructure**: 
-- Edge functions: `token-discovery-rapid`, `token-website-monitor`
-- Database: `token_discovery` table with website/social columns
-- Cron jobs: Every minute discovery + every 10min website monitoring
-
-[Full session →](logs/SESSION-LOG-2025-08-15-TOKEN-DISCOVERY.md)
-
-## 📱 Social Media Filters (August 15, 2025 - Evening)
-
-Implemented multi-select social media filters in the KROM public interface sidebar. Users can now filter tokens based on having Website, Twitter/X, and/or Telegram links.
-
-[Full session →](logs/SESSION-LOG-2025-08.md#august-15-2025---evening---social-media-filters-implementation)
-
-## 🎯 Stage 1 Website Analysis - Production Ready (August 15, 2025 - Evening)
-
-Enhanced Stage 1 triage system with smart loading detection and extraordinary achievements recognition:
-- **Smart loading**: Retries when content < 100 chars, fixes PHI/VIRUS loading screens
-- **Open category**: Captures ANY exceptional signals ($50M revenue, 4M subscribers)
-- **UI improved**: Added "View Analysis Prompt" button with full criteria
-- **95% success rate** on 20-token test batch
-- **Ready for full batch**: ~280 tokens remaining (~$0.84, 70 minutes)
-
-[Implementation details →](logs/SESSION-LOG-2025-08.md#august-15-2025---evening---stage-1-website-analysis-system-improvements)
-
-## ATH Verifier Optimization (August 14, 2025 - Later Session)
-
-Fixed ATH verifier issues with low liquidity tokens causing excessive notifications:
-- **Added $15K liquidity filter** - Skips 35% of unreliable tokens
-- **Adjusted notification thresholds** - 50% for <$25K liquidity tokens
-- **No database changes** - Used existing liquidity_usd column
-- **Impact**: Better data quality, ~35% fewer notifications
-
-[Full session details →](logs/SESSION-LOG-2025-08.md#august-14-2025---ath-verifier-optimization)
+## ATH Verifier Optimization (August 14, 2025)
+Added $15K liquidity filter - 35% fewer false notifications. [Details →](logs/SESSION-LOG-2025-08.md#august-14-2025---ath-verifier-optimization)
 
 ## Website Analysis System (August 15-19, 2025)
-
-Successfully integrated website analysis with production improvements:
-- **Retry logic implemented**: Failed analyses marked with score=-1, tier=TRASH
-- **UI enhancements**: Website Score sorting, FAILED display in red
-- **Timeout increased**: 60 seconds for slow-loading sites
-- **Orchestrator optimized**: Processes newest tokens first
-- [Full session →](logs/SESSION-LOG-2025-08-19-SESSION-3.md)
+Integrated with retry logic and 60-second timeout. [Details →](logs/SESSION-LOG-2025-08-19-SESSION-3.md)
 
 ## Call Analysis System Restored (August 21, 2025)
-
-Fixed critical call analysis failure and implemented consistent error handling across all analysis types:
-- **OpenRouter API key issue**: Invalid key causing all analyses to fail with score=1 "Analysis failed"
-- **130+ failed analyses restored**: Reset and re-analyzed with proper scores 2-7 and detailed reasoning
-- **FAILED tier implementation**: Consistent error handling with red "C: FAILED", "X: FAILED", "W: FAILED" badges
-- **Error detail enhancement**: Generic failures replaced with actual error messages (ERROR: prefix)
-- [Full session details →](logs/SESSION-LOG-2025-08-21-CALL-ANALYSIS-FAILURE-FIX.md)
+Fixed OpenRouter API key issue - 130+ failed analyses restored. [Details →](logs/SESSION-LOG-2025-08-21-CALL-ANALYSIS-FAILURE-FIX.md)
 
 ## Website Analysis Tooltip Enhancement (August 21, 2025)
-
-Enhanced website analysis tooltips to show specific, actionable content instead of generic statements:
-- **Parser improved**: Always renders JavaScript, extracts comprehensive content 
-- **UI redesigned**: Quick Take, Found/Missing columns, tier explanations
-- **AI integration**: Smart quick_take field generation for future cleanup
-- **Data reset**: 3,900+ tokens cleared for re-analysis with enhanced parser
-- [Full implementation details →](logs/SESSION-LOG-2025-08-21-WEBSITE-ANALYSIS-TOOLTIP-ENHANCEMENT.md)
+Redesigned tooltips with Quick Take and Found/Missing columns. [Details →](logs/SESSION-LOG-2025-08-21-WEBSITE-ANALYSIS-TOOLTIP-ENHANCEMENT.md)
 
 ## GeckoTerminal Search & Data Quality Fix (August 21, 2025)
-
-Fixed critical gecko_trending token search functionality and replaced scam token with legitimate data:
-
-**Search Fix**: gecko_trending tokens weren't appearing in search results due to missing `source` field in search queries
-**Data Quality**: Scam YZY token ($9K liquidity) replaced with legitimate one ($128M liquidity) 
-**Filter Exception**: Added gecko_trending bypass to rugs filter ensuring trending tokens always visible
-**Investigation**: Confirmed scam token not actually trending on GeckoTerminal (function ingestion bug)
-
-[Full session details →](logs/SESSION-LOG-2025-08-21-GECKO-TRENDING-YZY-SEARCH-FIX.md)
+Fixed search and replaced scam YZY ($9K) with legitimate ($128M). [Details →](logs/SESSION-LOG-2025-08-21-GECKO-TRENDING-YZY-SEARCH-FIX.md)
 
 ## Analysis Score Filters & Token Type Hierarchy (August 21, 2025)
-
-Successfully fixed critical filtering issues and implemented hierarchical token classification:
-
-**Analysis Score Filters Fixed**: Frontend decimal values causing database INTEGER column mismatches
-**Exclude Imposters Filter**: Added to RUGS section filtering 6 imposter tokens  
-**Hierarchical Token Types**: Website analysis now overrides Call/X analysis for more accurate classification (689→723 utility tokens)
-
-[Full session details →](logs/SESSION-LOG-2025-08-21-ANALYSIS-SCORE-FILTERS-AND-TOKEN-TYPE-HIERARCHY.md)
+Fixed decimal filter issues, added imposter filter, hierarchical classification. [Details →](logs/SESSION-LOG-2025-08-21-ANALYSIS-SCORE-FILTERS-AND-TOKEN-TYPE-HIERARCHY.md)
 
 ## N/A Market Cap Display Fix (August 21, 2025)
-
-Fixed recurring N/A display issues for market cap and ROI fields in the UI:
-- **Always calculate market caps** with multiple fallbacks for all data patterns
-- **Initialize all fields** to prevent N/A and "-" displays  
-- **Result**: New tokens immediately show proper Entry MC, ATH MC, and ROI values
-- [Full session →](logs/SESSION-LOG-2025-08-21-NA-MARKET-CAP-FIX.md)
+Fixed N/A displays with multiple fallbacks - all fields properly initialized. [Details →](logs/SESSION-LOG-2025-08-21-NA-MARKET-CAP-FIX.md)
 
 ## X Analysis Critical Fix (August 21, 2025)
-
-Fixed critical X analysis failure where high-profile tokens were scoring TRASH due to poor search methodology:
-
-**Root Cause**: Using `f=tweets` (chronological) instead of `f=top` (engagement-based), finding spam instead of quality content
-**Search Quality Enhanced**: Better HTML parsing, quality filtering (30+ chars), contract address spam elimination  
-**Database Compatibility**: Fixed field mapping issues preventing analysis storage
-**Results**: System now analyzes real engagement content vs pure spam, providing accurate assessments based on actual tweet quality
-
-[Full implementation details →](logs/SESSION-LOG-2025-08-21-X-ANALYSIS-CRITICAL-FIX.md)
+Fixed search methodology - now uses f=top for quality engagement content. [Details →](logs/SESSION-LOG-2025-08-21-X-ANALYSIS-CRITICAL-FIX.md)
 
 ## ATH Tracking Fixed (August 19, 2025)
-
-Fixed CPU limit errors by splitting ultra tracker into two tiers based on $20K liquidity threshold.
-High-priority tokens checked every minute, low-priority every 10 minutes.
-[Full session →](logs/SESSION-LOG-2025-08.md#august-19-2025---ath-tracking-fix)
+Split into two tiers at $20K liquidity to fix CPU limits. [Details →](logs/SESSION-LOG-2025-08.md#august-19-2025---ath-tracking-fix)
 
 ## Token Website Analysis Complete (August 19, 2025)
-
-Successfully analyzed 218 crypto project websites with Stage 1 triage system:
-- **218 tokens analyzed** with 7-category scoring (0-21 scale)
-- **18 qualify for Stage 2** deeper investment analysis (8% pass rate)
-- **Security incident resolved**: OpenRouter API key exposure fixed
-- **UI available**: http://localhost:5007 shows all results
-- [Full session →](logs/SESSION-LOG-2025-08-19-API-KEY-SECURITY.md)
+Analyzed 218 websites - 18 qualify for Stage 2 (8% pass rate). [Details →](logs/SESSION-LOG-2025-08-19-API-KEY-SECURITY.md)
 
 ---
 **Last Updated**: August 21, 2025 (N/A Values & Duplicates Fixed)
@@ -725,95 +444,77 @@ Successfully analyzed 218 crypto project websites with Stage 1 triage system:
 **Version**: 12.6.0 - Fixed N/A market cap display and GeckoTerminal duplicate creation
 
 
-## ✅ ATH Verifier Fixed (August 12, 2025)
+## ATH Verifier Fixed (August 12, 2025)
+Debugged Math.max logic - 18% corrected, 1,170 tokens/hour. [Details →](logs/SESSION-LOG-2025-08.md#august-12-2025-continued---ath-verifier-fix--deployment)
 
-**Status**: Successfully debugged and deployed ATH verifier
-- Fixed logic to use `Math.max(open, close)` for realistic prices
-- Corrected 18% of tokens (mostly undervalued ATHs)
-- Running every minute, processing 1,170 tokens/hour
-- 95% accuracy confirmed through spot checks
+## KROM Public Interface Development (August 7, 2025)
+Deployed landing page with pagination and sorting. [Details →](logs/SESSION-LOG-2025-08.md#session-krom-public-interface---pagination--sorting---august-7-2025-afternoon)
 
-[Full session details →](logs/SESSION-LOG-2025-08.md#august-12-2025-continued---ath-verifier-fix--deployment)
+## UI Improvements & Filter Optimization (August 13, 2025 - Evening)
+Added 400ms debouncing - smooth filters with no race conditions. [Details →](logs/SESSION-LOG-2025-08.md#august-13-2025-evening---ui-improvements--filter-optimization)
 
-## 🎬 KROM Public Interface Development (August 7, 2025)
-
-Successfully deployed KROM public landing page with TOP EARLY CALLS and RECENT CALLS sections, complete pagination system (20 items/page), comprehensive sorting functionality, and data consistency improvements. Added dark themed dropdown, ATH ROI filtering, and optimized database queries.
-
-**🚧 Next Session**: Ready to implement filters (ROI range slider, networks checkboxes, time period filter, AI score filter)
-
-[Full session details →](logs/SESSION-LOG-2025-08.md#session-krom-public-interface---pagination--sorting---august-7-2025-afternoon)
-
-## 🔍 UI Improvements & Filter Optimization (August 13, 2025 - Evening)
-
-Enhanced public interface with full contract address display, added liquidity column to RECENT CALLS, and implemented 400ms debouncing with request cancellation for all filters to eliminate glitchy behavior.
-
-**Key Achievement**: Smooth, responsive filters with no race conditions
-
-[Full session details →](logs/SESSION-LOG-2025-08.md#august-13-2025-evening---ui-improvements--filter-optimization)
-
-## Next Session Priority: GeckoTerminal ROI Display Fix
-
-**Issue**: ROI column shows "-" for gecko_trending tokens instead of percentages
-
-**Root Cause**: `roi_percent` field is NULL because ultra-tracker was skipping "dead" tokens
-
-**What Was Fixed**:
-- Marked all gecko_trending tokens as `is_dead = false` (they have $1M+ liquidity)
-- Initialized ATH fields for proper tracking
-- Added social data fetching from DexScreener
-
-**Next Steps**:
-1. Verify ultra-tracker processes these tokens
-2. Check if `roi_percent` gets calculated
-3. Confirm UI displays actual percentages
-
-See [full session →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
+## GeckoTerminal ROI Display Fix Priority
+Fixed dead token flags for $1M+ liquidity tokens. [Details →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
 
 ## God Mode Admin Features (August 20, 2025)
-
-Implemented admin features for marking imposter tokens:
-- **Access**: Navigate to `?god=mode` to enable admin features
-- **Database**: Added `is_imposter` column for tracking suspicious tokens
-- **UI**: Mark/unmark tokens with visual indicators (red strikethrough)
-- **Consolidated**: Merged 3 orchestrators into 1, archived unused Edge Functions
-- [Full session →](logs/SESSION-LOG-2025-08.md#august-20-2025---website-analysis-integration--god-mode-admin-features)
+Added ?god=mode admin access for marking imposters. [Details →](logs/SESSION-LOG-2025-08.md#august-20-2025---website-analysis-integration--god-mode-admin-features)
 
 ## App Store Redesign (August 20, 2025)
-
-Transformed KROM interface from table view to App Store-style presentation:
-- **5 mockup versions** created with website previews in phone frames
-- **Fact-based descriptions** generated from AI analysis data
-- **Smart headlines** like "Cross-Chain Infrastructure", "DeFi Protocol"
-- **Realistic scores** with mixed distribution (not all 9/10)
-- [Full session →](logs/SESSION-LOG-2025-08-20-APP-STORE-REDESIGN.md)
+Transformed to App Store-style with phone frames and AI descriptions. [Details →](logs/SESSION-LOG-2025-08-20-APP-STORE-REDESIGN.md)
 
 ## GeckoTerminal Integration & Data Processing Fixes (August 20-21, 2025)
+Fixed case-sensitivity, caught up 1,400 tokens, ROI working. [Details →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
 
-Successfully integrated GeckoTerminal trending tokens with complete fixes:
-- **Pool address case-sensitivity fixed**: Tokens no longer incorrectly marked as dead
-- **9-hour processing gap resolved**: Manually caught up ~1,400 unprocessed tokens
-- **ROI calculations working**: All gecko_trending tokens showing proper percentages
-- **UI improvements**: "GT Trending" label instead of "Unknown Group"
-- [Integration details →](logs/SESSION-LOG-2025-08-20-GECKOTERMINAL-INTEGRATION.md)
-- [Bug fixes & investigation →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
+## Admin UX & ATH Bug Fixes (August 21, 2025)
+3-dot menu for admin actions, fixed extreme ATH anomalies (BADGER/NEKO/USAI). [Details →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
 
-## Admin UX & ATH Bug Fixes (August 21, 2025 - Session 2)
+## Tooltip Implementation & Badge Fixes (August 22, 2025)
+Added interactive tooltips, fixed badge heights to 13px, secured API keys. [Details →](logs/SESSION-LOG-2025-08-22-TOOLTIPS-AND-BADGE-FIXES.md)
 
-**Admin Interface Improvements**:
-- **3-dot dropdown menu**: Replaced large imposter button with compact ⋮ menu
-- **Two admin actions**: Mark as Imposter and Invalidate Token with proper icons
-- **Enhanced API**: Invalidate endpoint now accepts either krom_id or id 
-- **Visual feedback**: Gray strikethrough for invalidated tokens, red for imposters
+## GeckoTerminal New Pools Discovery (August 22, 2025)
+Re-enabled with 1-minute polling - ~7,000 tokens/hour discovery rate. [Details →](logs/SESSION-LOG-2025-08.md#august-22-2025---new-data-sources--token-discovery)
 
-**Critical ATH Bug Fixes**:
-- **BADGER**: $105.9 → $0.0007245 (ROI: 980,455% → -93%)
-- **NEKO**: $0.356 → $0.0004185 (ROI: 132,835% → 56%)
-- **USAI**: $0.3679 → $0.003679 (ROI: 33,315% → 234%)
-- **Root cause**: Data anomaly with extreme wick prices vs realistic open/close prices
+## Token Website Monitor Enhancement (August 22, 2025)
+Added market data tracking - 90 tokens/minute with liquidity/volume updates. [Details →](logs/SESSION-LOG-2025-08.md#august-22-2025---new-data-sources--token-discovery)
 
-[Full session details →](logs/SESSION-LOG-2025-08-21-GECKOTERMINAL-ROI-AND-DATA-FIXES.md)
+## Stage 2 Deep Analysis System Design (August 25, 2025)
+Designed comprehensive Stage 2 analyzer for deep token analysis. Enhanced Stage 1 to extract links, tested with AINU/UIUI/BIO tokens. [Details →](logs/SESSION-LOG-2025-08-25-STAGE2-ANALYSIS-DESIGN.md)
+
+## Token Discovery Analyzer Implementation (August 25, 2025)
+Built automatic promotion pipeline for high-quality discovered tokens. 12 promoted, 4/12 showing in UI. [Details →](logs/SESSION-LOG-2025-08-25-TOKEN-DISCOVERY-ANALYZER.md)
+
+## Stage 2 Deep Analyzer Implementation (August 25, 2025)
+Successfully built contract analysis system with honeypot detection. UIUI correctly identified with 50% sell tax. Pure AI discovery approach. [Details →](logs/SESSION-LOG-2025-08-25-STAGE2-ANALYZER-IMPLEMENTATION.md)
+
+## Stage 2 UI Integration (August 25, 2025) - Partial
+Added Stage 2 display with S2 scores and W2 badges. Column Settings issue remains. [Details →](logs/SESSION-LOG-2025-08-25-STAGE2-UI-INTEGRATION.md)
+
+## Token Discovery Promotion Fix (August 25, 2025)
+Fixed critical column mismatch preventing promotions. 10+ tokens now promoted successfully. [Details →](logs/SESSION-LOG-2025-08-25-TOKEN-DISCOVERY-PROMOTION-FIX.md)
+
+## Favorites Feature Implementation (August 27, 2025)
+Added comprehensive favorites system with star buttons, localStorage persistence, and sidebar filter. [Details →](logs/SESSION-LOG-2025-08.md#august-27-2025---favorites-feature-implementation)
+
+## Discovery Pools Tooltips & Liquidity Fix (August 25, 2025)
+Fixed tooltip display and liquidity data issues for Discovery Pools tokens. Removed incorrect is_dead logic from crypto-poller. [Details →](logs/SESSION-LOG-2025-08-25-DISCOVERY-TOOLTIPS-LIQUIDITY-FIX.md)
+
+## Token Discovery System Recovery & Stage 2 Analysis (August 28, 2025)
+Fixed 28-hour discovery outage (JWT issue), optimized network coverage to 100%. Performed Stage 2 analysis identifying imposter patterns. [Details →](logs/SESSION-LOG-2025-08-28-TOKEN-DISCOVERY-FIX-STAGE2-ANALYSIS.md)
+
+## KROM Discovery Interface Mockups (August 29, 2025)
+Created Pinterest-style masonry mockups with website previews. Implemented proxy for iframe previews, screenshot mode pending fix. [Details →](logs/SESSION-LOG-2025-08-29-KROM-DISCOVERY-MOCKUPS.md)
+
+## Screenshot Mode Fixed with ApiFlash (August 29, 2025)
+Implemented ApiFlash for mobile screenshots, fixed typosquatting issue with fake "screeenly". Mobile viewport (iPhone 12) working perfectly. [Details →](logs/SESSION-LOG-2025-08-29-SCREENSHOT-FIX.md)
+
+## Discovery Interface with Real Data (August 29, 2025)
+Connected temp-discovery to real crypto_calls database with sorting, filtering, infinite scroll. Full tier tooltips matching main site. [Details →](logs/SESSION-LOG-2025-08-29-DISCOVERY-INTERFACE.md)
+
+## Discovery Dark Mode & Screenshot Storage (August 30, 2025)
+Converted discovery to KROM dark theme, implemented permanent screenshot storage with Supabase Storage. Added loading animations, removed 470 lines of temp code. [Details →](logs/SESSION-LOG-2025-08-30-DISCOVERY-DARK-MODE-SCREENSHOTS.md)
 
 ---
-**Last Updated**: August 21, 2025 - N/A Market Cap Display Fix Complete
-**Status**: ✅ All market cap and ROI fields display properly for new tokens
-**Version**: 12.11.3 - Fixed crypto-poller market cap calculations with comprehensive fallbacks
+**Last Updated**: August 30, 2025 (Discovery Dark Mode & Screenshot Storage Complete)
+**Status**: ✅ Discovery interface ready for integration into main app
+**Version**: 12.26.0 - Dark theme, permanent screenshots, loading states
+**Next Session**: Integrate discovery as toggleable view in main krom1.com interface
